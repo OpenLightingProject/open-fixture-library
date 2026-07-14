@@ -1,0 +1,940 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cyclone 120R",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Teddy Sourisseau", "Dino"],
+    "createDate": "2024-02-26",
+    "lastModifyDate": "2024-02-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-02-26",
+      "comment": "created by Q Light Controller Plus (version 4.11.1)"
+    }
+  },
+  "availableChannels": {
+    "Couleur (Mode normal)": {
+      "fineChannelAliases": ["Couleur (Mode Split)"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ColorPreset",
+          "comment": "Blanc (ouvert)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [15, 28],
+          "type": "ColorPreset",
+          "comment": "Rouge",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [29, 42],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff5500"]
+        },
+        {
+          "dmxRange": [43, 56],
+          "type": "ColorPreset",
+          "comment": "Jaune",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [57, 70],
+          "type": "ColorPreset",
+          "comment": "Vert",
+          "colors": ["#43ab38"]
+        },
+        {
+          "dmxRange": [71, 84],
+          "type": "ColorPreset",
+          "comment": "Bleu",
+          "colors": ["#274e9d"]
+        },
+        {
+          "dmxRange": [85, 98],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff007f"]
+        },
+        {
+          "dmxRange": [99, 112],
+          "type": "ColorPreset",
+          "comment": "Bleu ciel",
+          "colors": ["#01afeb"]
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "ColorPreset",
+          "comment": "Rose",
+          "colors": ["#e45398"]
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "ColorPreset",
+          "comment": "Effet rainbow dans le sens anti-horaire : De rapide vers lent"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorPreset",
+          "comment": "Pas de rotation"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "ColorPreset",
+          "comment": "Effet rainbow dans le sens horaire : De lent vers rapide"
+        }
+      ]
+    },
+    "Couleur (Mode Split)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Blanc (ouvert)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [8, 14],
+          "type": "ColorPreset",
+          "comment": "Blanc + Rouge",
+          "colors": ["#ffffff", "#e20725"]
+        },
+        {
+          "dmxRange": [15, 22],
+          "type": "ColorPreset",
+          "comment": "Rouge",
+          "colors": ["#e20725"]
+        },
+        {
+          "dmxRange": [23, 29],
+          "type": "ColorPreset",
+          "comment": "Rouge + Orange",
+          "colors": ["#e20725", "#ef7a1d"]
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ef7a1d"]
+        },
+        {
+          "dmxRange": [38, 44],
+          "type": "ColorPreset",
+          "comment": "Orange + Jaune",
+          "colors": ["#ef7a1d", "#f9e802"]
+        },
+        {
+          "dmxRange": [45, 52],
+          "type": "ColorPreset",
+          "comment": "Jaune",
+          "colors": ["#f9e802"]
+        },
+        {
+          "dmxRange": [53, 59],
+          "type": "ColorPreset",
+          "comment": "Jaune + Vert",
+          "colors": ["#f9e802", "#43ab38"]
+        },
+        {
+          "dmxRange": [60, 67],
+          "type": "ColorPreset",
+          "comment": "Vert",
+          "colors": ["#43ab38"]
+        },
+        {
+          "dmxRange": [68, 74],
+          "type": "ColorPreset",
+          "comment": "Vert + Bleu",
+          "colors": ["#43ab38", "#274e9d"]
+        },
+        {
+          "dmxRange": [75, 82],
+          "type": "ColorPreset",
+          "comment": "Bleu",
+          "colors": ["#274e9d"]
+        },
+        {
+          "dmxRange": [83, 89],
+          "type": "ColorPreset",
+          "comment": "Bleu + Magenta",
+          "colors": ["#274e9d", "#e2047d"]
+        },
+        {
+          "dmxRange": [90, 97],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#e2047d"]
+        },
+        {
+          "dmxRange": [98, 104],
+          "type": "ColorPreset",
+          "comment": "Magenta + Bleu ciel",
+          "colors": ["#e2047d", "#01afeb"]
+        },
+        {
+          "dmxRange": [105, 112],
+          "type": "ColorPreset",
+          "comment": "Bleu ciel",
+          "colors": ["#01afeb"]
+        },
+        {
+          "dmxRange": [113, 119],
+          "type": "ColorPreset",
+          "comment": "Bleu ciel + Rose",
+          "colors": ["#01afeb", "#e45398"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Rose",
+          "colors": ["#e45398"]
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "ColorPreset",
+          "comment": "Effet rainbow dans le sens anti-horaire : De rapide vers lent"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorPreset",
+          "comment": "Pas de rotation"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "ColorPreset",
+          "comment": "Effet rainbow dans le sens horaire : De lent vers rapide"
+        }
+      ]
+    },
+    "Gobo": {
+      "fineChannelAliases": ["Gobo Rotation"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "ouvert"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [64, 73],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "comment": "Effet Shake sur le gobo 1"
+        },
+        {
+          "dmxRange": [74, 82],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Effet Shake sur le gobo 2"
+        },
+        {
+          "dmxRange": [83, 91],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Effet Shake sur le gobo 3"
+        },
+        {
+          "dmxRange": [92, 100],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Effet Shake sur le gobo 4"
+        },
+        {
+          "dmxRange": [101, 109],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Effet Shake sur le gobo 5"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "WheelShake",
+          "slotNumber": 13,
+          "comment": "Effet Shake sur le gobo 6"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Rotation de la roue de gobos dans le sens anti-horaire : De rapide vers lent"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Pas de rotation"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Rotation de la roue de gobos dans le sens horaire : De lent vers rapide"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Indexation des gobos de 0° à 360°"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Rotation des gobo dans le sens horaire"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Pas de rotation"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Rotation des gobos dans le sens anti-horaire"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilti fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan / Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Maximum speed to minimum",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Prism macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Prism",
+          "comment": "Pas de fonction"
+        },
+        {
+          "dmxRange": [8, 38],
+          "type": "Prism",
+          "comment": "Macro de prisme 1"
+        },
+        {
+          "dmxRange": [39, 69],
+          "type": "Prism",
+          "comment": "Macro de prisme 2"
+        },
+        {
+          "dmxRange": [70, 100],
+          "type": "Prism",
+          "comment": "Macro de prisme 3"
+        },
+        {
+          "dmxRange": [101, 131],
+          "type": "Prism",
+          "comment": "Macro de prisme 4"
+        },
+        {
+          "dmxRange": [132, 162],
+          "type": "Prism",
+          "comment": "Macro de prisme 5"
+        },
+        {
+          "dmxRange": [163, 193],
+          "type": "Prism",
+          "comment": "Macro de prisme 6"
+        },
+        {
+          "dmxRange": [194, 224],
+          "type": "Prism",
+          "comment": "Macro de prisme 7"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Prism",
+          "comment": "Macro de prisme 8"
+        }
+      ]
+    },
+    "Prism rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Indexation de 0 à 360°"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Prism",
+          "comment": "Rotation du prisme dans le sens anti-horaire de rapide vers lent"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Prism",
+          "comment": "Pas de rotation"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Prism",
+          "comment": "Rotation du prisme dans le sens horaire de lent vers rapide"
+        }
+      ]
+    },
+    "Shutter Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Black-out",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Stroboscope à vitesse croissante",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Effet pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Effet pulse inversé",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Stroboscope aléatoire",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer 0 > 100%"
+      }
+    },
+    "Fonctions spéciales": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "Maintenance",
+          "comment": "Pas de fonction"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Black-out durant les mouvements PAN et TILT"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Pas de Black-out durant les mouvements PAN et TILT"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Black-out durant les changements de couleur"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "Pas de Black-out durant les changements de couleur"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "comment": "Black-out durant les changements de gobo"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "comment": "Pas de Black-out durant les changements de gobo"
+        },
+        {
+          "dmxRange": [130, 199],
+          "type": "Maintenance",
+          "comment": "Pas de Fonction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset général"
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "Maintenance",
+          "comment": "Pas de fonction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Mode musical : Enchaînement des shows 1 à 4"
+        }
+      ]
+    },
+    "Pan / Tilt Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Pas de focntion"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Effect",
+          "effectName": "Macro 5"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Effect",
+          "effectName": "Macro 6"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Effect",
+          "effectName": "Macro 7"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Effect",
+          "effectName": "Macro 8"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Effect",
+          "effectName": "Macro 9"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Effect",
+          "effectName": "Macro 10"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Effect",
+          "effectName": "Macro 11"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Effect",
+          "effectName": "Macro 12"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Effect",
+          "effectName": "Macro 13"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Effect",
+          "effectName": "Macro 14"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Effect",
+          "effectName": "Macro 15"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Effect",
+          "effectName": "Macro 16"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Macro 17"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Macro 18"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Macro 19"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Macro 20"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Macro 21"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Macro 22"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Macro 23"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Macro 24"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Macro 25"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Macro 26"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Macro 27"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Macro 28"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "Macro 29"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Macro 30"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Macro 31"
+        }
+      ]
+    },
+    "Pan / Tilt speed Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Maximum speed to minimum",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Prism",
+          "comment": "Pas de fonctin"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Prism"
+        }
+      ]
+    },
+    "Show": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Black-out"
+        },
+        {
+          "dmxRange": [8, 69],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [70, 131],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [132, 193],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Effect",
+          "effectName": "Show 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": " 1 canal",
+      "physical": {
+        "dimensions": [292, 169, 425],
+        "weight": 8,
+        "power": 150,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "MSD Platinum 2R",
+          "colorTemperature": 8000,
+          "lumens": 5150
+        },
+        "lens": {
+          "degreesMinMax": [4, 4]
+        }
+      },
+      "channels": [
+        "Show"
+      ]
+    },
+    {
+      "name": "10 canaux A",
+      "physical": {
+        "dimensions": [292, 168, 425],
+        "weight": 8,
+        "power": 150,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "MSD Platinum 2R",
+          "colorTemperature": 8000,
+          "lumens": 5150
+        },
+        "lens": {
+          "degreesMinMax": [4, 4]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Shutter Strobe",
+        "Couleur (Mode Split)",
+        "Gobo",
+        "Gobo Rotation",
+        "Prism",
+        "Prism rotation",
+        "Fonctions spéciales"
+      ]
+    },
+    {
+      "name": "16 canaux",
+      "physical": {
+        "dimensions": [292, 169, 425],
+        "weight": 8,
+        "power": 150,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "LED",
+          "colorTemperature": 8000,
+          "lumens": 5150
+        },
+        "lens": {
+          "degreesMinMax": [4, 4]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilti fine",
+        "Pan / Tilt speed",
+        "Pan / Tilt Macro",
+        "Pan / Tilt speed Macro",
+        "Dimmer",
+        "Shutter Strobe",
+        "Couleur (Mode Split)",
+        "Gobo",
+        "Gobo Rotation",
+        "Prism",
+        "Prism rotation",
+        "Prism macro",
+        "Fonctions spéciales"
+      ]
+    },
+    {
+      "name": "10 canaux B",
+      "physical": {
+        "dimensions": [292, 169, 425],
+        "weight": 8,
+        "power": 150,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "LED"
+        }
+      },
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Shutter Strobe",
+        "Couleur (Mode Split)",
+        "Gobo",
+        "Prism",
+        "Prism rotation",
+        "Fonctions spéciales",
+        "Gobo Rotation"
+      ]
+    }
+  ]
+}
