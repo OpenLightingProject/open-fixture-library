@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Linea color 12 RGB",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Tommy Confalonieri"],
+    "createDate": "2023-07-25",
+    "lastModifyDate": "2023-07-25"
+  },
+  "comment": "OLD TECLUMEN LED BAR, PRE FULL COLOR GENERATION, PRE ~2012\nNO MANUAL AVAILABLE AT THE MOMENT",
+  "links": {
+    "manual": [
+      "https://pdf.archiexpo.it/pdf/teclumen/stage-and-theater-catalog/51126-316258.html#open1940349"
+    ]
+  },
+  "physical": {
+    "dimensions": [793, 171, 141],
+    "weight": 4,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "25X45",
+      "degreesMinMax": [17, 17]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBSCD",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Wheel",
+        "Dimmer"
+      ]
+    }
+  ]
+}
