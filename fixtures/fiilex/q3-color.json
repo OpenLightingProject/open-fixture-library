@@ -1,35 +1,35 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "P3 Color",
+  "name": "Q3 Color",
   "categories": ["Dimmer", "Color Changer"],
   "helpWanted": "Please add the missing modes 8, 16, 56, 58-62, 69, 71-77.",
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2021-08-04",
-    "lastModifyDate": "2024-04-10"
+    "createDate": "2024-09-26",
+    "lastModifyDate": "2024-09-26"
   },
   "links": {
     "manual": [
-      "https://fiilex.com/downloads/P3/5870148-005_A2_USER%20GUIDE%20for%20P3%20COLOR.pdf",
-      "https://fiilex.com/downloads/DMX/DMX_Mapping_Color_Series_210903A.pdf"
+      "https://fiilex.com/downloads/Q3_CL/User%20Guide%20for%20Q3%20COLOR.pdf",
+      "https://fiilex.com/downloads/Fiilex_Profiles/DMX_Mapping_Color_Series_20240327A.pdf"
     ],
     "productPage": [
-      "https://fiilex.com/products/P3_Color.php"
+      "https://fiilex.com/products/Q3_Color.php"
     ]
   },
   "rdm": {
-    "modelId": 48
+    "modelId": 59
   },
   "physical": {
-    "dimensions": [119, 142, 206],
-    "weight": 0.84,
+    "dimensions": [144, 174, 230],
+    "weight": 2,
     "power": 90,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [20, 65]
+      "degreesMinMax": [12, 55]
     }
   },
   "availableChannels": {
