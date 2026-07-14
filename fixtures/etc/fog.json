@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fog",
+  "categories": ["Smoke", "Dimmer"],
+  "meta": {
+    "authors": ["oto"],
+    "createDate": "2025-04-02",
+    "lastModifyDate": "2025-04-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.smokemachines.net/data/highend/F100.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [298, 209, 686],
+    "weight": 14,
+    "power": 1450
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "smoke",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}
