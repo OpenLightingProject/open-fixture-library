@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sqd",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["qsd"],
+    "createDate": "2026-03-24",
+    "lastModifyDate": "2026-03-24"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org/fixture-editor"
+    ],
+    "productPage": [
+      "https://open-fixture-library.org/fixture-editor"
+    ],
+    "video": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "rdm": {
+    "modelId": 2
+  },
+  "availableChannels": {
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "qsd",
+      "shortName": "qsd",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Cyan"
+      ]
+    }
+  ]
+}
