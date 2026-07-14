@@ -1,0 +1,234 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Laser ALIEN RGB 500mW",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Clément Chauveau"],
+    "createDate": "2025-12-08",
+    "lastModifyDate": "2025-12-08"
+  },
+  "links": {
+    "manual": [
+      "https://fr.aliexpress.com/item/1005005062367156.html"
+    ]
+  },
+  "physical": {
+    "power": 14
+  },
+  "availableChannels": {
+    "Mode selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Closed light mode"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Manual mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Auto mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Sound mode"
+        }
+      ]
+    },
+    "Mode parameter": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Angle control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "comment": "Rotation angle selection"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Positive rotation speed selection"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Negative rotation speed selection"
+        }
+      ]
+    },
+    "Horizontal angle": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Horizontal flip position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Horizontal flip speed selection"
+        }
+      ]
+    },
+    "Vertical angle": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Vertical flip position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Vertical flip speed selection"
+        }
+      ]
+    },
+    "Horizontal position": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Horizontal position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Horizontal movement speed selection"
+        }
+      ]
+    },
+    "Vertical position": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Vertical position selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Vertical movement speed selection"
+        }
+      ]
+    },
+    "Pattern size control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "BeamAngle",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Fixed size"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Small to large size speed"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Large to small size speed"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Zoom size speed"
+        }
+      ]
+    },
+    "Color control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ColorPreset",
+          "comment": "Monochrome color selection"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ColorPreset",
+          "comment": "Color mixing"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "Monochrome auto"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "Auto"
+        }
+      ]
+    },
+    "Code control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Dots + lines"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Only dots"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channels",
+      "shortName": "10ch",
+      "channels": [
+        "Mode selection",
+        "Mode parameter",
+        "Angle control",
+        "Horizontal angle",
+        "Vertical angle",
+        "Horizontal position",
+        "Vertical position",
+        "Pattern size control",
+        "Color control",
+        "Code control"
+      ]
+    }
+  ]
+}
