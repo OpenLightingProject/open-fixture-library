@@ -1,0 +1,1057 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED IP PIX Strobe RGB CW+WW",
+  "categories": ["Effect", "Strobe"],
+  "meta": {
+    "authors": ["rem5"],
+    "createDate": "2025-01-02",
+    "lastModifyDate": "2025-01-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.fr/download/52200940-Instructions-158669-1.100-eurolite-led-ip-pix-strobe-rgb-cw+ww-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.fr/fr/data/mpn52200940-eurolite-led-ip-pix-strobe-rgb-cw+ww.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=f4ts1RSuK0c&si=v8FqP8gNiTDDWdye"
+    ]
+  },
+  "physical": {
+    "dimensions": [380, 145, 110],
+    "weight": 3.3,
+    "power": 135,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction",
+          "comment": "No strobe function"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe effect with increasing speed"
+        }
+      ]
+    },
+    "Auto Programs White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 47],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [48, 67],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [68, 87],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [88, 107],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [108, 127],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [188, 207],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [208, 227],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [228, 247],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Program 12"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Increasing speed of the auto programs 1 – 12 (white)"
+      }
+    },
+    "Auto Programs RGB": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [72, 87],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "Program 16"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Program 17"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Program 18"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Program 19"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "Program 20"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "Program 21"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "Program 22"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "Program 23"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "Program 24"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "Program 25"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "Program 26"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Program 27"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Generic",
+          "comment": "Program 28"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "Program 29"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Program 30"
+        }
+      ]
+    },
+    "Program Speed 2": {
+      "name": "Program Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Increasing speed of the auto programs 1 – 30 (RGB)"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Total brightness 0-100%"
+      }
+    },
+    "W-CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold",
+        "comment": "Warm white to cold white"
+      }
+    },
+    "Strobe Effect 1 White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction",
+          "comment": "No strobe function"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe effect with increasing speed"
+        }
+      ]
+    },
+    "Strobe Effect 2 White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Generic",
+          "comment": "Opening pulse effect with increasing speed"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Generic",
+          "comment": "Closing pulse effect with increasing speed"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Generic",
+          "comment": "Random strobe effect"
+        }
+      ]
+    },
+    "Auto Programs RGB 2": {
+      "name": "Auto Programs RGB",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [72, 87],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "Program 16"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Program 17"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Program 18"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Program 19"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "Program 20"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "Program 21"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "Program 22"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "Program 23"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "Program 24"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "Program 25"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "Program 26"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Program 27"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Generic",
+          "comment": "Program 28"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "Program 29"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Program 30"
+        }
+      ]
+    },
+    "Strobe Effect RGB": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe effect with increasing speed"
+        }
+      ]
+    },
+    "Background Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Background Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Background Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Direction": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Forwards"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Backwards"
+        }
+      ]
+    },
+    "Red RGB 1+2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green RGB 1+2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue RGB 1+2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White CW/WW 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White CW/WW 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red RGB 3+4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green RGB 3+4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue RGB 3+4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White CW/WW 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White CW/WW 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red RGB 5+6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green RGB 5+6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue RGB 5+6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White CW/WW 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White CW/WW 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red RGB 7+8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green RGB 7+8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue RGB 7+8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White CW/WW 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White CW/WW 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program Speed (white / RGB)": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Increasing speed of the auto programs (white / RGB)"
+      }
+    },
+    "Warm White segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red segment 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green segment 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue segment 8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Cold White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Cold White",
+        "Strobe",
+        "Auto Programs White",
+        "Program Speed",
+        "Auto Programs RGB",
+        "Program Speed 2"
+      ]
+    },
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Warm White",
+        "W-CTO",
+        "Auto Programs White",
+        "Program Speed",
+        "Strobe Effect 1 White",
+        "Strobe Effect 2 White",
+        "Auto Programs RGB",
+        "Program Speed 2",
+        "Strobe Effect RGB",
+        "Background Red",
+        "Background Green",
+        "Background Blue",
+        "Direction"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "Red RGB 1+2",
+        "Green RGB 1+2",
+        "Blue RGB 1+2",
+        "Warm White CW/WW 1",
+        "Cold White CW/WW 1",
+        "Red RGB 3+4",
+        "Green RGB 3+4",
+        "Blue RGB 3+4",
+        "Warm White CW/WW 2",
+        "Cold White CW/WW 2",
+        "Red RGB 5+6",
+        "Green RGB 5+6",
+        "Blue RGB 5+6",
+        "Warm White CW/WW 3",
+        "Cold White CW/WW 3",
+        "Red RGB 7+8",
+        "Green RGB 7+8",
+        "Blue RGB 7+8",
+        "Warm White CW/WW 4",
+        "Cold White CW/WW 4",
+        "Strobe",
+        "Auto Programs White",
+        "Auto Programs RGB",
+        "Program Speed (white / RGB)"
+      ]
+    },
+    {
+      "name": "25-channel",
+      "shortName": "25ch",
+      "channels": [
+        "Red RGB 1+2",
+        "Green RGB 1+2",
+        "Blue RGB 1+2",
+        "Warm White CW/WW 1",
+        "Cold White CW/WW 1",
+        "Red RGB 3+4",
+        "Green RGB 3+4",
+        "Blue RGB 3+4",
+        "Warm White CW/WW 2",
+        "Cold White CW/WW 2",
+        "Red RGB 5+6",
+        "Green RGB 5+6",
+        "Blue RGB 5+6",
+        "Warm White CW/WW 3",
+        "Cold White CW/WW 3",
+        "Red RGB 7+8",
+        "Green RGB 7+8",
+        "Blue RGB 7+8",
+        "Warm White CW/WW 4",
+        "Cold White CW/WW 4",
+        "Strobe",
+        "Auto Programs White",
+        "Program Speed",
+        "Auto Programs RGB",
+        "Program Speed 2"
+      ]
+    },
+    {
+      "name": "32-channel",
+      "shortName": "32ch",
+      "channels": [
+        "Warm White segment 1",
+        "Warm White segment 2",
+        "Warm White segment 3",
+        "Warm White segment 4",
+        "Cold White segment 1",
+        "Cold White segment 2",
+        "Cold White segment 3",
+        "Cold White segment 4",
+        "Red segment 1",
+        "Green segment 1",
+        "Blue segment 1",
+        "Red segment 2",
+        "Green segment 2",
+        "Blue segment 2",
+        "Red segment 3",
+        "Green segment 3",
+        "Blue segment 3",
+        "Red segment 4",
+        "Green segment 4",
+        "Blue segment 4",
+        "Red segment 5",
+        "Green segment 5",
+        "Blue segment 5",
+        "Red segment 6",
+        "Green segment 6",
+        "Blue segment 6",
+        "Red segment 7",
+        "Green segment 7",
+        "Blue segment 7",
+        "Red segment 8",
+        "Green segment 8",
+        "Blue segment 8"
+      ]
+    }
+  ]
+}
