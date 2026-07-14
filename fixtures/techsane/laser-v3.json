@@ -1,0 +1,527 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Laser V3",
+  "shortName": "TSL3",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Squishy"],
+    "createDate": "2025-11-11",
+    "lastModifyDate": "2025-11-11"
+  },
+  "comment": "Test",
+  "links": {
+    "manual": [
+      "https://docs.google.com/spreadsheets/d/1deRkflRkCVLu2TdvkpdiWeWPUfmar1N0Wnrcv18t3ms/edit?gid=1978378183#gid=1978378183"
+    ],
+    "productPage": [
+      "https://techsane.gumroad.com/l/laserv3?layout=profile"
+    ]
+  },
+  "wheels": {
+    "Shape": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Flat"
+        },
+        {
+          "type": "Gobo",
+          "name": "Circle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Infinity"
+        },
+        {
+          "type": "Gobo",
+          "name": "Square"
+        },
+        {
+          "type": "Gobo",
+          "name": "Circle to Plus"
+        },
+        {
+          "type": "Gobo",
+          "name": "Polygon Generator"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower Generator WIP"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower Generator WIP"
+        }
+      ]
+    },
+    "Ripple Select": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Ripple 0"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ripple sine"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ripple square"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ripple triangle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ripple Pulse"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ripple sine 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ripple"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "Red2"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "Green2"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "Blue2"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "Hue"
+      }
+    },
+    "Step Mix": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Step Count": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Flat To Beam": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "comment": "Flat To Beam"
+      }
+    },
+    "Beam Thickness": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "closed",
+        "openPercentEnd": "open",
+        "comment": "Beam Thickness"
+      }
+    },
+    "Beam Scroll": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Beam Amount": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Gradient select": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "Effect",
+          "effectName": "Solid"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "Effect",
+          "effectName": "Rainbow"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "Effect",
+          "effectName": "Rainbow Mirror"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "Effect",
+          "effectName": "Rainbow Alt"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "Effect",
+          "effectName": "Rainbow Alt Mirror"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "Effect",
+          "effectName": "Rainbow Random"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "Effect",
+          "effectName": "Rainbow Random Mirror"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "Effect",
+          "effectName": "Gradient Tight"
+        },
+        {
+          "dmxRange": [136, 152],
+          "type": "Effect",
+          "effectName": "Gradient Tight Mirror"
+        },
+        {
+          "dmxRange": [153, 169],
+          "type": "Effect",
+          "effectName": "Gradient Normal"
+        },
+        {
+          "dmxRange": [170, 186],
+          "type": "Effect",
+          "effectName": "Gradient Normal Mirror"
+        },
+        {
+          "dmxRange": [187, 203],
+          "type": "Effect",
+          "effectName": "Gradient Smooth"
+        },
+        {
+          "dmxRange": [204, 220],
+          "type": "Effect",
+          "effectName": "Gradient Smooth Mirror"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "Effect",
+          "effectName": "Gradient Random"
+        },
+        {
+          "dmxRange": [238, 254],
+          "type": "Effect",
+          "effectName": "Gradient Random Mirror"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gradient Scale": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Gradient Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Shape": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [36, 71],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [72, 107],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [108, 143],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [144, 179],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [180, 215],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [216, 251],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shape Adjust": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Ripple Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "Effect",
+          "effectName": "OFF"
+        },
+        {
+          "dmxRange": [36, 71],
+          "type": "Effect",
+          "effectName": "Sine"
+        },
+        {
+          "dmxRange": [72, 107],
+          "type": "Effect",
+          "effectName": "Square"
+        },
+        {
+          "dmxRange": [108, 143],
+          "type": "Effect",
+          "effectName": "Triangle"
+        },
+        {
+          "dmxRange": [144, 179],
+          "type": "Effect",
+          "effectName": "Pulse"
+        },
+        {
+          "dmxRange": [180, 215],
+          "type": "Effect",
+          "effectName": "Sine 3"
+        },
+        {
+          "dmxRange": [216, 251],
+          "type": "Effect",
+          "effectName": "Sine 3",
+          "comment": "Ripple Saw"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Ripple Scale": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Ripple Height": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Ripple Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Z Rotate": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Z Rotate Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Manual",
+          "speed": "0%"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Effect",
+          "effectName": "CW Rotate"
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "Effect",
+          "effectName": "CW Rotate"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shutter strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "31 Channel",
+      "shortName": "31ch",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Dimmer",
+        "Shutter strobe",
+        "Hue",
+        "Step Mix",
+        "Step Count",
+        "Flat To Beam",
+        "Beam Thickness",
+        "Beam Scroll",
+        "Beam Amount",
+        "Gradient select",
+        "Gradient Scale",
+        "Gradient Speed",
+        "Shape",
+        "Shape Adjust",
+        "Ripple Select",
+        "Ripple Scale",
+        "Ripple Height",
+        "Ripple Speed",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Z Rotate",
+        "Z Rotate Mode",
+        "Zoom"
+      ]
+    }
+  ]
+}
