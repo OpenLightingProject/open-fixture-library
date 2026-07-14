@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "30W COB RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Fallout Studio"],
+    "createDate": "2024-01-23",
+    "lastModifyDate": "2024-01-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/u_file/1908/file/280a3db3d2.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/led-par-cob-30w-rgb-mixed-dmx512-stage-effect-lighting-good-for-dj-disco-home-birthday-party-nightclub-p0257.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 105, 160],
+    "weight": 0.4,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LEd"
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGB STROBE": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse"
+      }
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "Auto Mode 1"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Auto Mode 2"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic",
+          "comment": "Auto Mode 3"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RED",
+      "shortName": "Red",
+      "channels": [
+        "Intensity",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "RGB STROBE",
+        "Mode",
+        "Speed"
+      ]
+    }
+  ]
+}
