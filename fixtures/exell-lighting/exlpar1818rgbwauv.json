@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EXLPAR1818RGBWAUV",
+  "categories": ["Other", "Stand"],
+  "meta": {
+    "authors": ["Artem Kuzmin"],
+    "createDate": "2025-04-22",
+    "lastModifyDate": "2025-04-22"
+  },
+  "links": {
+    "productPage": [
+      "https://digis.ru/distribution/svetovoe-oborudovanie-statsionarnye-prozhektory1974/exellproaudio_114468/"
+    ]
+  },
+  "physical": {
+    "dimensions": [308, 350, 308],
+    "weight": 3.5,
+    "power": 300,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500,
+      "lumens": 8560
+    },
+    "lens": {
+      "name": "Zoom",
+      "degreesMinMax": [8, 60]
+    }
+  },
+  "availableChannels": {
+    "Total Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function Selection": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red Dim": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green Dim": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue Dim": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "White Dim": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Yellow Dim": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "UV Dim": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11ch",
+      "channels": [
+        "Total Dimmer",
+        "Total Strobe",
+        "Function Selection",
+        "Speed",
+        "Red Dim",
+        "Green Dim",
+        "Blue Dim",
+        "White Dim",
+        "Yellow Dim",
+        "UV Dim",
+        "Zoom"
+      ]
+    }
+  ]
+}
