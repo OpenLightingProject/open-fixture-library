@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EL-300RGB",
+  "categories": ["Laser", "Color Changer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Chris D"],
+    "createDate": "2026-03-06",
+    "lastModifyDate": "2026-03-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.laserworld.com/en/download-file-2033-Laserworld_EL_300RGB_USer_Manual.html"
+    ],
+    "productPage": [
+      "https://www.laserworld.com/en/laserworld-el/laserworld-el-300rgb"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rq9OpoO4zfM"
+    ]
+  },
+  "physical": {
+    "dimensions": [192, 89, 150],
+    "weight": 1.25,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "300mW Laser"
+    },
+    "lens": {
+      "degreesMinMax": [50, 50]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 255,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "Laser Off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Automatic Mode"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Generic",
+          "comment": "Automatic Mode - Slow"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "Generic",
+          "comment": "Sound to Light Mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "DMX Mode"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Rotation Speed": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "0rpm",
+        "speedEnd": "1rpm"
+      }
+    },
+    "Rotation Direction": {
+      "defaultValue": 150,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Rotation",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Rotation",
+          "speed": "slow CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Mode",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Rotation Speed",
+        "Rotation Direction"
+      ]
+    }
+  ]
+}
