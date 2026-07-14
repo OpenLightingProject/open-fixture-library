@@ -1,0 +1,546 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mega 24Pro",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Mithrandil"],
+    "createDate": "2024-07-22",
+    "lastModifyDate": "2024-07-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/404"
+    ],
+    "productPage": [
+      "https://www.adj.eu/mega-24pro"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=1i7Lno3qQLE"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [405, 190, 71],
+    "weight": 2.92,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [1, 7],
+          "type": "ColorPreset",
+          "comment": "BASTARD AMBER",
+          "colors": ["#ffce8f"]
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "MEDIUM AMBER",
+          "colors": ["#feb199"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "PALE AMBER GOLD",
+          "colors": ["#fec08a"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "GALLO GOLD",
+          "colors": ["#fea662"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "GOLDEN AMBER",
+          "colors": ["#fe7b00"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "LIGHT RED",
+          "colors": ["#b01200"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "MEDIUM RED",
+          "colors": ["#60000b"]
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "MEDIUM PINK",
+          "colors": ["#ea8bab"]
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "BROADWAY PINK",
+          "colors": ["#e00561"]
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "FOLLIES PINK",
+          "colors": ["#af4dad"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "LIGHT LAVENDER",
+          "colors": ["#7782c7"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "SPECIAL LAVENDER",
+          "colors": ["#93a4d4"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "LAVENDER",
+          "colors": ["#5802a3"]
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "INDIGO",
+          "colors": ["#002656"]
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "HEMSLEY BLUE",
+          "colors": ["#008ed0"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "TIPTON BLUE",
+          "colors": ["#3495d1"]
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "LIGHT STEEL BLUE",
+          "colors": ["#0186c9"]
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "LIGHT SKY BLUE",
+          "colors": ["#0091d4"]
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "SKY BLUE",
+          "colors": ["#007ac0"]
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "BRILLIANT BLUE",
+          "colors": ["#0081b8"]
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "LIGHT GREEN BLUE",
+          "colors": ["#005273"]
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "BRIGHT BLUE",
+          "colors": ["#0061a6"]
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "PRIMARY BLUE",
+          "colors": ["#0164a7"]
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "CONGO BLUE",
+          "colors": ["#002856"]
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "PALE YELLOW GREEN",
+          "colors": ["#d1dbb6"]
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "MOSS GREEN",
+          "colors": ["#2aa555"]
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "PRIMARY GREEN",
+          "colors": ["#002e23"]
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "DOUBLE CTB",
+          "colors": ["#086cde"]
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "FULL CTB",
+          "colors": ["#6b9de7"]
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "HALF CTB",
+          "colors": ["#a5c6f7"]
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "DARK BLUE",
+          "colors": ["#0000bd"]
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "WHITE",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Strobe / Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [19, 37],
+          "type": "ColorPreset",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [38, 56],
+          "type": "ColorPreset",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [57, 75],
+          "type": "ColorPreset",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [76, 94],
+          "type": "ColorPreset",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [95, 113],
+          "type": "ColorPreset",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [114, 132],
+          "type": "ColorPreset",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [133, 151],
+          "type": "ColorPreset",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [152, 170],
+          "type": "ColorPreset",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [171, 189],
+          "type": "ColorPreset",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [190, 208],
+          "type": "ColorPreset",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [209, 227],
+          "type": "ColorPreset",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [228, 246],
+          "type": "ColorPreset",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "ColorPreset",
+          "comment": "All Programs"
+        }
+      ]
+    },
+    "Master dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 1": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 2": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 3": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 4": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macro",
+        "Strobe / Program Speed",
+        "Programs",
+        "Master dimmer"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Color Macro",
+        "Strobe / Program Speed",
+        "Programs",
+        "Master dimmer"
+      ]
+    },
+    {
+      "name": "12ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4"
+      ]
+    },
+    {
+      "name": "16ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Color Macro",
+        "Strobe / Program Speed",
+        "Programs",
+        "Master dimmer"
+      ]
+    }
+  ]
+}
