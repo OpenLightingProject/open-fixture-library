@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Exoraa² Profile",
+  "shortName": "Profile",
+  "categories": ["Other", "Dimmer"],
+  "meta": {
+    "authors": ["Skouza97"],
+    "createDate": "2024-07-17",
+    "lastModifyDate": "2024-07-17"
+  },
+  "links": {
+    "productPage": [
+      "https://exalux.eu/product/exoraa%c2%b2-small-studios-track-mounting-profile-fixture-bk/"
+    ]
+  },
+  "physical": {
+    "weight": 3.1,
+    "power": 38,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "zoom removable",
+      "degreesMinMax": [23, 45]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "1%"
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "Intensity",
+          "brightnessStart": "1.1%",
+          "brightnessEnd": "4%"
+        },
+        {
+          "dmxRange": [51, 75],
+          "type": "Intensity",
+          "brightnessStart": "4.2%",
+          "brightnessEnd": "9%"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Intensity",
+          "brightnessStart": "9.5%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "5000K",
+        "comment": "Pas linéaire d'environ 7.06K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity+CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
