@@ -602,7 +602,7 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged || channelName === '') {
+      if (channelName === '' || this.areCapabilitiesChanged) {
         return;
       }
 

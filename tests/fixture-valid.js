@@ -697,7 +697,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
           checkReferencedWheels();
 
-          if (capability.slotNumber !== null && shouldCheckSlotNumbers) {
+          if (shouldCheckSlotNumbers && capability.slotNumber !== null) {
             checkSlotNumbers();
           }
 
@@ -1253,7 +1253,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    * Checks if everything regarding this fixture's RDM data is correct.
    */
   function checkRdm() {
-    if (fixture.rdm === null || uniqueValues === null) {
+    if (uniqueValues === null || fixture.rdm === null) {
       return;
     }
 
