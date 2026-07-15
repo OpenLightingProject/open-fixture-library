@@ -72,7 +72,7 @@ async function importFixture(body) {
   const oflManufacturers = await importJson('../../../../fixtures/manufacturers.json', import.meta.url);
 
   for (const [key, fixture] of Object.entries(result.fixtures)) {
-    const [manufacturerKey, fixtureKey] = key.split('/');
+    const [manufacturerKey, fixtureKey] = key.split('/', 2);
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, fixture);
 

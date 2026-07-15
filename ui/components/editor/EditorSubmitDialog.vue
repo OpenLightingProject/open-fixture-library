@@ -306,7 +306,7 @@ export default {
         return null;
       }
 
-      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/');
+      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/', 2);
 
       const manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
 

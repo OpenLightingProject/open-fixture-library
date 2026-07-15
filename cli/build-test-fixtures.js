@@ -41,7 +41,7 @@ const featuresUsed = Object.fromEntries(allFixtureFeatures.map((feature) => [fea
 let fixtureFeatureResults = [];
 
 for (const manufacturerFixture of Object.keys(register.filesystem)) {
-  const [manufacturerKey, fixtureKey] = manufacturerFixture.split('/');
+  const [manufacturerKey, fixtureKey] = manufacturerFixture.split('/', 2);
 
   // pre-process data
   const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
