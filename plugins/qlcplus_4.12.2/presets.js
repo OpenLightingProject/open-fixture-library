@@ -253,7 +253,7 @@ const channelPresets = {
       const channel = capability._channel;
       const matrix = channel.fixture.matrix;
 
-      if (!channelPresets.IntensityDimmer.isApplicable(capability) || matrix === null) {
+      if (matrix === null || !channelPresets.IntensityDimmer.isApplicable(capability)) {
         return false;
       }
 
