@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VF1600 EP",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2026-07-17",
+    "lastModifyDate": "2026-07-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/ELIMINATOR_VF1600_EP_-_USER_MANUAL_a9e64602-83ad-4105-ac47-7544e2440300.pdf?v=9445408422410967334"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/vf1600-ep"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gkgUAMTCeGs"
+    ]
+  },
+  "physical": {
+    "dimensions": [324, 187, 510],
+    "weight": 7.2,
+    "power": 1600,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}
