@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F-2115-5AB",
+  "shortName": "F-2115-5AB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Wilfred"],
+    "createDate": "2026-01-31",
+    "lastModifyDate": "2026-01-31"
+  },
+  "links": {
+    "manual": [
+      "https://img1.wsimg.com/blobby/go/5f742602-38aa-40ee-abe1-8f58f4a43b97/downloads/F-2115-5AB%20manual.pdf?ver=1696898955125"
+    ],
+    "productPage": [
+      "http://www.stagelightingchina.com/list/15/192.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=O8wba31tvhw"
+    ]
+  },
+  "rdm": {
+    "modelId": 912
+  },
+  "physical": {
+    "dimensions": [340, 340, 370],
+    "weight": 10.5,
+    "power": 315,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "16Hz"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Maintenance": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Stage",
+      "shortName": "STAG",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Color Presets",
+        "Color Macros",
+        "Program Speed",
+        "Effect Speed",
+        "Maintenance"
+      ]
+    }
+  ]
+}
