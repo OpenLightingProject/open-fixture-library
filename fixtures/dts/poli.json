@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "POLI",
+  "categories": ["Flower", "Smoke", "Pixel Bar", "Effect"],
+  "meta": {
+    "authors": ["qeeq"],
+    "createDate": "2025-10-08",
+    "lastModifyDate": "2025-10-08"
+  },
+  "links": {
+    "manual": [
+      "https://recursivearts.com/es/virtual-piano/"
+    ],
+    "productPage": [
+      "https://recursivearts.com/es/virtual-piano/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Gbhs8mgyjZ0&si=p-qZ9ojt6zbbHih5"
+    ]
+  },
+  "rdm": {
+    "modelId": 4,
+    "softwareVersion": "we32"
+  },
+  "physical": {
+    "dimensions": [3, 2, 2],
+    "weight": 12,
+    "power": 1231,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "uyre5",
+      "colorTemperature": 100,
+      "lumens": 100
+    },
+    "lens": {
+      "name": "e32",
+      "degreesMinMax": [1, 1]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 95,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PRPE",
+      "shortName": "hd",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Red",
+        "Red fine"
+      ]
+    }
+  ]
+}
