@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "60W Mini LED Strobe",
+  "shortName": "LED Strobe",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-09-13",
+    "lastModifyDate": "2026-07-18",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-07-22",
+      "comment": "GDTF v1.2 fixture type ID: FE373C6C-0848-46F1-A185-B539896BD50E"
+    }
+  },
+  "comment": "60W Mini LED Strobe RGB 8 Segments + White 8000K 4 Segments",
+  "availableChannels": {
+    "Dim": {
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe Frequency": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?"
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "30 Channel",
+      "channels": [
+        "Dim 2",
+        "Strobe Frequency",
+        "R",
+        "G",
+        "B",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "Dim 3"
+      ]
+    }
+  ]
+}
