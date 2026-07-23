@@ -64,6 +64,8 @@ jobs:
             run: node tests/github/exports-valid.js
           - name: Run schema-version-reminder
             run: node tests/github/schema-version-reminder.js
+          - name: Run metadata-update-reminder
+            run: node tests/github/metadata-update-reminder.js
   markdown-link-check:
     name: Markdown Links
     runs-on: ubuntu-latest
