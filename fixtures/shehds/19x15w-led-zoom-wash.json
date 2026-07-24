@@ -1,0 +1,350 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "19x15W LED Zoom/Wash",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Strobe", "Matrix"],
+  "meta": {
+    "authors": ["grayplex"],
+    "createDate": "2026-07-24",
+    "lastModifyDate": "2026-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/15OvGXkvYhICnkI4pVQejhOPnzvjP2Is8/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam?srsltid=AfmBOoqRf2tlSZHVovUc1c6CA_sTZEBZXD0ZG0oZ3v5mzLNhVMflmUQX"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=KIzySRdayoo"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 310, 220],
+    "weight": 7.95,
+    "power": 285,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 19x15W RGBW"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "10deg",
+        "angleEnd": "60deg"
+      }
+    },
+    "Macro 1 Speed": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro 1": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [146, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [160, 172],
+          "type": "Effect",
+          "effectName": "Color Pulse"
+        },
+        {
+          "dmxRange": [173, 200],
+          "type": "Generic",
+          "comment": "Effect mode 1"
+        },
+        {
+          "dmxRange": [201, 230],
+          "type": "Generic",
+          "comment": "Effect mode 2"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Generic",
+          "comment": "Effect mode 3"
+        }
+      ]
+    },
+    "Macro 2": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "Generic",
+          "comment": "Activation CH13"
+        },
+        {
+          "dmxRange": [100, 150],
+          "type": "Generic",
+          "comment": "Self-propelled mode(1)"
+        },
+        {
+          "dmxRange": [151, 179],
+          "type": "Generic",
+          "comment": "Self-propelled mode(2)"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "off",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Rest": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red 1/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 2/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 3/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 3/3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Macro 1",
+        "Macro 1 Speed",
+        "Macro 2",
+        "Rest"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Dimmer",
+        "Shutter",
+        "Red 1/3",
+        "Green 1/3",
+        "Blue 1/3",
+        "White 1/3",
+        "Red 2/3",
+        "Green 2/3",
+        "Blue 2/3",
+        "White 2/3",
+        "Red 3/3",
+        "Green 3/3",
+        "Blue 3/3",
+        "White 3/3",
+        "Macro 1",
+        "Macro 1 Speed",
+        "Macro 2",
+        "Rest"
+      ]
+    }
+  ]
+}
