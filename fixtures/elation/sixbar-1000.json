@@ -1,0 +1,629 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sixbar 1000",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["tux300200"],
+    "createDate": "2026-07-24",
+    "lastModifyDate": "2026-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://assets.centryngroup.com/dl/files/SIX086__DL__014.pdf",
+      "https://assets.centryngroup.com/dl/files/SIX086__DL__011.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/products/sixbar-1000"
+    ]
+  },
+  "physical": {
+    "dimensions": [900, 206.4, 155],
+    "weight": 7.3,
+    "power": 145,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "12x 12W 6-in-1 RGBAW+UV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "Strobe OFF"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Strobe ON"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Strobe Effect SLOW to FAST"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Strobe ON"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Pulse Effect SLOW to FAST"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Strobe ON"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Random Strobe Effect SLOW to FAST"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Strobe ON"
+        }
+      ]
+    },
+    "Program Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 26],
+          "type": "Effect",
+          "effectName": "DREAM"
+        },
+        {
+          "dmxRange": [27, 43],
+          "type": "Effect",
+          "effectName": "METEOR"
+        },
+        {
+          "dmxRange": [44, 60],
+          "type": "Effect",
+          "effectName": "FADE"
+        },
+        {
+          "dmxRange": [61, 76],
+          "type": "Effect",
+          "effectName": "CHANGE"
+        },
+        {
+          "dmxRange": [77, 93],
+          "type": "Effect",
+          "effectName": "FLOW 1"
+        },
+        {
+          "dmxRange": [94, 110],
+          "type": "Effect",
+          "effectName": "FLOW 2"
+        },
+        {
+          "dmxRange": [111, 126],
+          "type": "Effect",
+          "effectName": "FLOW 3"
+        },
+        {
+          "dmxRange": [127, 143],
+          "type": "Effect",
+          "effectName": "FLOW 4"
+        },
+        {
+          "dmxRange": [144, 160],
+          "type": "Effect",
+          "effectName": "FLOW 5"
+        },
+        {
+          "dmxRange": [161, 176],
+          "type": "Effect",
+          "effectName": "FLOW 6"
+        },
+        {
+          "dmxRange": [177, 193],
+          "type": "Effect",
+          "effectName": "FLOW 7"
+        },
+        {
+          "dmxRange": [194, 210],
+          "type": "Effect",
+          "effectName": "FLOW 8"
+        },
+        {
+          "dmxRange": [211, 226],
+          "type": "Effect",
+          "effectName": "FLOW 9"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Fade": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "slow",
+        "parameterEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Generic",
+          "comment": "Color Macro 01"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Generic",
+          "comment": "Color Macro 02"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Generic",
+          "comment": "Color Macro 03"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "Generic",
+          "comment": "Color Macro 04"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "Generic",
+          "comment": "Color Macro 05"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "Generic",
+          "comment": "Color Macro 06"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "Generic",
+          "comment": "Color Macro 07"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "Generic",
+          "comment": "Color Macro 08"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "Generic",
+          "comment": "Color Macro 09"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "Generic",
+          "comment": "Color Macro 10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "Generic",
+          "comment": "Color Macro 11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "Generic",
+          "comment": "Color Macro 12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Generic",
+          "comment": "Color Macro 13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Generic",
+          "comment": "Color Macro 14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Generic",
+          "comment": "Color Macro 15"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Generic",
+          "comment": "Color Macro 16"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Generic",
+          "comment": "Color Macro 17"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Generic",
+          "comment": "Color Macro 18"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Generic",
+          "comment": "Color Macro 19"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Generic",
+          "comment": "Color Macro 20"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Generic",
+          "comment": "Color Macro 21"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Generic",
+          "comment": "Color Macro 22"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Generic",
+          "comment": "Color Macro 23"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Generic",
+          "comment": "Color Macro 24"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Generic",
+          "comment": "Color Macro 25"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Generic",
+          "comment": "Color Macro 26"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Generic",
+          "comment": "Color Macro 27"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Generic",
+          "comment": "Color Macro 28"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Generic",
+          "comment": "Color Macro 29"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Generic",
+          "comment": "Color Macro 30"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Generic",
+          "comment": "Color Macro 31"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Generic",
+          "comment": "Color Macro 32"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Generic",
+          "comment": "Color Macro 33"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Generic",
+          "comment": "Color Macro 34"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Generic",
+          "comment": "Color Macro 35"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Generic",
+          "comment": "Color Macro 36"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Generic",
+          "comment": "Color Macro 37"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Generic",
+          "comment": "Color Macro 38"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Generic",
+          "comment": "Color Macro 39"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Generic",
+          "comment": "Color Macro 40"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Generic",
+          "comment": "Color Macro 41"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Generic",
+          "comment": "Color Macro 42"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Generic",
+          "comment": "Color Macro 43"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Generic",
+          "comment": "Color Macro 44"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Generic",
+          "comment": "Color Macro 45"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Generic",
+          "comment": "Color Macro 46"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Generic",
+          "comment": "Color Macro 47"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Generic",
+          "comment": "Color Macro 48"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Generic",
+          "comment": "Color Macro 49"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Generic",
+          "comment": "Color Macro 50"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Generic",
+          "comment": "Color Macro 51"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Generic",
+          "comment": "Color Macro 52"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Generic",
+          "comment": "Color Macro 53"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Generic",
+          "comment": "Color Macro 54"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Generic",
+          "comment": "Color Macro 55"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Generic",
+          "comment": "Color Macro 56"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Generic",
+          "comment": "Color Macro 57"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Generic",
+          "comment": "Color Macro 58"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Generic",
+          "comment": "Color Macro 59"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Generic",
+          "comment": "Color Macro 60"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Generic",
+          "comment": "Color Macro 61"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Generic",
+          "comment": "Color Macro 62"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "Color Macro 63"
+        }
+      ]
+    },
+    "Dimming Curve Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Generic",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Generic",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Generic",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Generic",
+          "comment": "Default to unit setting"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channels",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7 channels",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "UV",
+        "Amber",
+        "White",
+        "Blue",
+        "Green",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "11 channels",
+      "shortName": "11ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Program Macros",
+        "Program Speed",
+        "Program Fade"
+      ]
+    },
+    {
+      "name": "13 channels",
+      "shortName": "13ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Program Macros",
+        "Program Speed",
+        "Program Fade",
+        "Dimming Curve Mode"
+      ]
+    }
+  ]
+}
