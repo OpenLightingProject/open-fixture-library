@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Drop B4",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["tux300200"],
+    "createDate": "2026-07-24",
+    "lastModifyDate": "2026-07-24"
+  },
+  "links": {
+    "video": [
+      "https://portal.adamhall.com/en/downloadcenter/products?brand=productBrand_CAMEO&series=series_DROP&article=CLDROPB4"
+    ]
+  },
+  "physical": {
+    "weight": 3.1,
+    "power": 75,
+    "bulb": {
+      "type": "15 W Prolight LED"
+    }
+  },
+  "availableChannels": {
+    "Test": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channels",
+      "channels": [
+        "Test"
+      ]
+    }
+  ]
+}
