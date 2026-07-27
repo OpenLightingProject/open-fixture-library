@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "12x60w RGBW 4in1 zoom wash bar light",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Leah"],
+    "createDate": "2026-01-30",
+    "lastModifyDate": "2026-01-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.kdocs.cn/l/chKf8yqhVIfq"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 300, 165],
+    "weight": 26.5,
+    "power": 800,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12pcs 4in1 60 watt LED beads"
+    }
+  },
+  "availableChannels": {
+    "Pan/Tilt Speed": {
+      "fineChannelAliases": ["Pan/Tilt Speed fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic function",
+      "channels": [
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
