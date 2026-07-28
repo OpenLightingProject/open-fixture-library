@@ -380,7 +380,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
   const panMax = getPanTiltMax('Pan', mode?.channels ?? fixture.coarseChannels);
   const tiltMax = getPanTiltMax('Tilt', mode?.channels ?? fixture.coarseChannels);
 
-  if (Object.keys(physical.jsonObject).length === 0 && panMax === 0 && tiltMax === 0) {
+  if (panMax === 0 && tiltMax === 0 && Object.keys(physical.jsonObject).length === 0) {
     // empty physical data
     return;
   }

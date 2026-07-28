@@ -5,9 +5,9 @@ import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
 
 const ignoredSassDeprecations = ['legacy-js-api']; // can only be fixed with Nuxt.js v3
-const sassDeprecationIds = Object.values(sass.deprecations).flatMap((deprecation) =>
-  (deprecation.status === 'active' && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
-);
+const sassDeprecationIds = Object.values(sass.deprecations)
+  .filter((deprecation) => deprecation.status === 'active' && !ignoredSassDeprecations.includes(deprecation.id))
+  .map((deprecation) => deprecation.id);
 
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
