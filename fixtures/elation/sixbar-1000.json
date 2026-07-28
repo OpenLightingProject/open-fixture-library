@@ -31,6 +31,7 @@
   "matrix": {
     "pixelCount": [12, 1, 1],
     "pixelGroups": {
+      "Master": "all",
       "1+2": ["1", "2"],
       "3+4": ["3", "4"],
       "5+6": ["5", "6"],
@@ -39,43 +40,45 @@
       "11+12": ["11", "12"]
     }
   },
-  "availableChannels": {
-    "Red": {
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White": {
+    "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber": {
+    "Amber $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
-    "UV": {
+    "UV $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
       }
-    },
+    }
+  },
+  "availableChannels": {
     "Dimmer": {
       "capability": {
         "type": "Intensity"
@@ -644,67 +647,29 @@
       ]
     }
   },
-  "templateChannels": {
-    "Red $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    }
-  },
   "modes": [
     {
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master"
       ]
     },
     {
       "name": "7-channel",
       "shortName": "7ch",
       "channels": [
-        "Red",
-        "UV",
-        "Amber",
-        "White",
-        "Blue",
-        "Green",
+        "Red Master",
+        "UV Master",
+        "Amber Master",
+        "White Master",
+        "Blue Master",
+        "Green Master",
         "Dimmer"
       ]
     },
@@ -712,12 +677,12 @@
       "name": "11-channel",
       "shortName": "11ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
         "Dimmer",
         "Strobe",
         "Program Macros",
@@ -729,12 +694,12 @@
       "name": "13-channel",
       "shortName": "13ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
         "Dimmer",
         "Strobe",
         "Color Macros",
