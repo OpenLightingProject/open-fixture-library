@@ -604,32 +604,32 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Theatre"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Default to unit setting"
         }
       ]
