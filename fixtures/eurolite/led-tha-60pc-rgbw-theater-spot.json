@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED THA-60PC RGBW Theater-Spot",
+  "shortName": "THA-60PC",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["NJRogelj"],
+    "createDate": "2024-01-27",
+    "lastModifyDate": "2024-01-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/41602110-Manual-95818-1.000-eurolite-led-tha-60pc-theater-spot-de_en.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [196, 334, 173],
+    "weight": 3.6,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED"
+    },
+    "lens": {
+      "degreesMinMax": [7, 39]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound control 15 colors",
+          "speed": "fast",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random strobe"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 100],
+          "type": "ColorPreset",
+          "comment": "Switching colors"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "ColorPreset",
+          "comment": "Fading colors"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control color switching",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "6 channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        "Intensity",
+        "Strobe 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros"
+      ]
+    }
+  ]
+}
