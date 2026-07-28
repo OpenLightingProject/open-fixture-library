@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "24x3 LED Par",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DJ NathiS"],
+    "createDate": "2023-08-09",
+    "lastModifyDate": "2023-08-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.eprodance.cz/user/documents/related_files/par24x3wzoom.pdf"
+    ],
+    "productPage": [
+      "https://www.musikhaus-korn.de/fr/varytec-led-studio-par-zoom-schwarz-24-x-3-watt/pd/56734"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 270, 220],
+    "weight": 6.52,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channels",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe",
+        "Focus"
+      ]
+    }
+  ]
+}
