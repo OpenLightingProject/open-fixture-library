@@ -74,13 +74,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "LEDs On"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [64, 95],
@@ -92,8 +92,7 @@
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "LEDs On"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 159],
@@ -105,8 +104,7 @@
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "LEDs On"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [192, 223],
