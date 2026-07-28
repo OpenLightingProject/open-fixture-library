@@ -66,6 +66,11 @@ section {
   text-align: center;
 }
 
+table,
+time {
+  font-variant-numeric: tabular-nums;
+}
+
 .clearfix {
   clear: both;
 }
@@ -130,6 +135,7 @@ select {
 
 input[type="number"] {
   width: 10ex;
+  font-variant-numeric: tabular-nums;
 }
 
 textarea,
