@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theater Spot 120 FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["jean7111"],
+    "createDate": "2024-05-19",
+    "lastModifyDate": "2024-05-19"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_414220_427226_v6_fr_online.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "name": "Frenel"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 CH",
+      "channels": [
+        "Intensity",
+        "Red"
+      ]
+    }
+  ]
+}
