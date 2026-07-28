@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Paulette S",
+  "shortName": "paulette S",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Tuban dimitri"],
+    "createDate": "2025-06-17",
+    "lastModifyDate": "2025-06-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.technilum.com/app/uploads/2024/12/Tech-doc-ELFE.pdf"
+    ],
+    "productPage": [
+      "https://www.technilum.com/fr/luminaire/paulette/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=UtVVmJec0Bg&t=1s"
+    ]
+  },
+  "rdm": {
+    "modelId": "invalid",
+    "softwareVersion": "V1.0"
+  },
+  "physical": {
+    "dimensions": [270, 210, 100],
+    "weight": 5,
+    "power": 16,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [19, 19]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0lm",
+        "brightnessEnd": "92lm"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0lm",
+        "brightnessEnd": "636lm"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0lm",
+        "brightnessEnd": "124lm"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0lm",
+        "brightnessEnd": "480lm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "STD",
+      "physical": {
+        "bulb": {
+          "type": "led"
+        },
+        "lens": {
+          "name": "full",
+          "degreesMinMax": [19, 19]
+        }
+      },
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
