@@ -74,43 +74,52 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Generic",
-          "comment": "Strobe OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [32, 63],
-          "type": "Generic",
-          "comment": "Strobe ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LEDs On"
         },
         {
           "dmxRange": [64, 95],
-          "type": "Generic",
-          "comment": "Strobe Effect SLOW to FAST"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 127],
-          "type": "Generic",
-          "comment": "Strobe ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LEDs On"
         },
         {
           "dmxRange": [128, 159],
-          "type": "Generic",
-          "comment": "Pulse Effect SLOW to FAST"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [160, 191],
-          "type": "Generic",
-          "comment": "Strobe ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LEDs On"
         },
         {
           "dmxRange": [192, 223],
-          "type": "Generic",
-          "comment": "Random Strobe Effect SLOW to FAST"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
-          "type": "Generic",
-          "comment": "Strobe ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
