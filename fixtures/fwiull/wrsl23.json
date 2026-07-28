@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WRSL23",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Oli"],
+    "createDate": "2025-01-08",
+    "lastModifyDate": "2025-01-08"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.de/Fwiull-Fernbedienung-Musikgesteuert-Weihnachten-WRSL23/dp/B0D6B8CH5B"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rN_E7U2MZH8"
+    ],
+    "other": [
+      "https://m.media-amazon.com/images/I/6155CH5ml3L._SY250_.jpg"
+    ]
+  },
+  "availableChannels": {
+    "Sonderkanal": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rot 01": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Rot 02": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Rot"
+      }
+    },
+    "Grün": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Grün"
+      }
+    },
+    "Blau": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blau"
+      }
+    },
+    "Motor Geschwindigkeit": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "UV",
+        "colors": ["#9a68af"]
+      }
+    },
+    "Rote LEDs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün LEDs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau LEDs": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blinken": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Fwiull WRSL23",
+      "channels": [
+        "Sonderkanal",
+        "Rot 01",
+        "Rot 02",
+        "Grün",
+        "Blau",
+        "Motor Geschwindigkeit",
+        "UV",
+        "Rote LEDs",
+        "Grün LEDs",
+        "Blau LEDs",
+        "Blinken"
+      ]
+    }
+  ]
+}
