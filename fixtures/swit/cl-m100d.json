@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CL-M100D",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous111"],
+    "createDate": "2025-03-18",
+    "lastModifyDate": "2025-03-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.swit.cc/uploads/2025/03/121406281109.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CL-M100D",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
