@@ -149,7 +149,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [1, 255],
