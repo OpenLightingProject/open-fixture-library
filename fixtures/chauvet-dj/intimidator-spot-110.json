@@ -3,9 +3,9 @@
   "name": "Intimidator Spot 110",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann"],
+    "authors": ["Flo Edelmann", "Lance Moore", "evan"],
     "createDate": "2019-07-26",
-    "lastModifyDate": "2019-07-26"
+    "lastModifyDate": "2024-01-16"
   },
   "links": {
     "manual": [
@@ -38,25 +38,39 @@
           "type": "Open"
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#ff55ff"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#00aaff"]
         }
       ]
     },

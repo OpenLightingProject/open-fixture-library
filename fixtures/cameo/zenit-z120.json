@@ -1,0 +1,440 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Zenit Z120",
+  "shortName": "Z120",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["EP", "Ken Harris", "Luke Nelson"],
+    "createDate": "2024-01-08",
+    "lastModifyDate": "2024-01-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.adamhall.com/shop/gr-en/downloads/file/id/864775656"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=q3aCVNj3t7M"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 230, 300],
+    "weight": 8.3,
+    "power": 180,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "1× RGBW LED",
+      "lumens": 2117
+    },
+    "lens": {
+      "degreesMinMax": [7, 55]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "colors": ["#ff7f00"],
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "colors": ["#e1b341"],
+          "comment": "Yellow Warm"
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "ColorPreset",
+          "colors": ["#00b7ff"],
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "ColorPreset",
+          "colors": ["#7f00ff"],
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "ColorPreset",
+          "colors": ["#ff00a2"],
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "ColorPreset",
+          "colors": ["#ff70b8"],
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "colors": ["#ffd8c2"],
+          "comment": "Warm White"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "white"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "colors": ["#e1faff"],
+          "comment": "Cold White"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Dimmer response LED"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Dimmer response Halogen"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "reset all functions"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7200K",
+          "colorTemperatureEnd": "3200K"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Zoom",
+        "Settings"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Zoom",
+        "Zoom fine"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature",
+        "Zoom",
+        "Dimmer Curve",
+        "Settings"
+      ]
+    },
+    {
+      "name": "17-channel",
+      "shortName": "17ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Macros",
+        "Color Temperature",
+        "Zoom",
+        "Zoom fine",
+        "Dimmer Curve",
+        "Settings"
+      ]
+    }
+  ]
+}

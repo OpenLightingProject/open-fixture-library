@@ -47,8 +47,7 @@
 
 <script>
 import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
-
+import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -73,11 +72,11 @@ export default {
        * @public
        */
       defaultData: {
-        fogType: ``,
-        fogOutput: ``,
+        fogType: '',
+        fogOutput: '',
         fogOutputStart: null,
         fogOutputEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

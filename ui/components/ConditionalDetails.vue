@@ -35,15 +35,15 @@ summary {
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
+    transform: rotate(135deg);
     transition-duration: 0.2s;
     transition-property: transform, top, border-color;
-    transform: rotate(135deg);
   }
 
   &:hover,
   &:focus {
-    background-color: theme-color(hover-background);
     outline: none;
+    background-color: theme-color(hover-background);
 
     &::after {
       border-color: theme-color(icon-hover);
