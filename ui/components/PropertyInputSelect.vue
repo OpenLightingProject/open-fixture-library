@@ -25,7 +25,7 @@ export default {
     value: anyProp().required,
   },
   emits: {
-    input: value => true,
+    input: (value) => true,
   },
   computed: {
     localValue: {
@@ -33,7 +33,7 @@ export default {
         return this.value;
       },
       set(newValue) {
-        this.$emit(`input`, newValue);
+        this.$emit('input', newValue);
       },
     },
   },
@@ -45,4 +45,3 @@ export default {
   },
 };
 </script>
-

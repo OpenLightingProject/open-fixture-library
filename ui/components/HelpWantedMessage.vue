@@ -90,15 +90,15 @@ import { objectProp, oneOfProp } from 'vue-ts-types';
 
 export default {
   props: {
-    type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
+    type: oneOfProp(['fixture', 'capability', 'plugin']).required,
     context: objectProp().required,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   computed: {
     location() {
-      if (this.type === `capability`) {
+      if (this.type === 'capability') {
         const capability = this.context;
         const channel = capability._channel;
         return `Channel "${channel.name}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
@@ -108,11 +108,11 @@ export default {
     },
 
     fixture() {
-      if (this.type === `fixture`) {
+      if (this.type === 'fixture') {
         return this.context;
       }
 
-      if (this.type === `capability`) {
+      if (this.type === 'capability') {
         return this.context._channel.fixture;
       }
 
@@ -120,21 +120,21 @@ export default {
     },
 
     title() {
-      if (this.type === `fixture`) {
-        return `You can help to improve this fixture definition!`;
+      if (this.type === 'fixture') {
+        return 'You can help to improve this fixture definition!';
       }
 
-      if (this.type === `plugin`) {
-        return `You can help to improve this plugin!`;
+      if (this.type === 'plugin') {
+        return 'You can help to improve this plugin!';
       }
 
       return null;
     },
 
     description() {
-      if (this.type === `fixture`) {
+      if (this.type === 'fixture') {
         if (this.fixture.helpWanted === null) {
-          return `Specific questions are included in the capabilities below.`;
+          return 'Specific questions are included in the capabilities below.';
         }
 
         if (this.fixture.isCapabilityHelpWanted) {
@@ -158,7 +158,7 @@ export default {
         bodyLines.push(`Problem description: ${this.context.helpWanted}`);
       }
 
-      const body = bodyLines.join(`\n`);
+      const body = bodyLines.join('\n');
 
       return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
