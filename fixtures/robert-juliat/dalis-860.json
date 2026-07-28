@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DALIS 860",
+  "shortName": "dalis860",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["mathis"],
+    "createDate": "2023-10-31",
+    "lastModifyDate": "2023-10-31"
+  },
+  "links": {
+    "other": [
+      "https://www.robertjuliat.fr/Ambiance/Dalis.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Royal Blue": {
+      "fineChannelAliases": ["Royal Blue fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Coolwhite": {
+      "fineChannelAliases": ["Coolwhite fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DALIS 860",
+      "shortName": "dalis860",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Cyan",
+        "Cyan fine",
+        "Amber",
+        "Amber fine",
+        "Coolwhite",
+        "Coolwhite fine",
+        "Warm White",
+        "Warm White fine"
+      ]
+    }
+  ]
+}
