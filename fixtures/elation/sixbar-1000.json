@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["tux300200"],
     "createDate": "2026-07-24",
-    "lastModifyDate": "2026-07-24"
+    "lastModifyDate": "2026-07-28"
   },
   "links": {
     "manual": [
@@ -26,6 +26,17 @@
     },
     "lens": {
       "degreesMinMax": [30, 30]
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "1+2": ["1", "2"],
+      "3+4": ["3", "4"],
+      "5+6": ["5", "6"],
+      "7+8": ["7", "8"],
+      "9+10": ["9", "10"],
+      "11+12": ["11", "12"]
     }
   },
   "availableChannels": {
@@ -633,6 +644,44 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
   "modes": [
     {
       "name": "6-channel",
@@ -686,6 +735,99 @@
         "White",
         "Amber",
         "UV",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Program Macros",
+        "Program Speed",
+        "Program Fade",
+        "Dimming Curve Mode"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "1+2",
+            "3+4",
+            "5+6",
+            "7+8",
+            "9+10",
+            "11+12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "72-channel",
+      "shortName": "72ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "75-channel",
+      "shortName": "75ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Dimmer",
+        "Strobe",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "79-channel",
+      "shortName": "79ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
         "Dimmer",
         "Strobe",
         "Color Macros",
