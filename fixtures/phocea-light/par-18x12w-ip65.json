@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PAR 18x12w IP65",
+  "name": "PAR 18x12W IP65",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Dario"],
@@ -21,10 +21,13 @@
   "physical": {
     "dimensions": [310, 310, 130],
     "weight": 3.9,
-    "power": 216,
+    "power": 160,
     "DMXconnector": "3-pin XLR IP65",
     "bulb": {
-      "type": "LED"
+      "type": "18×12W RGBWA 5-in-1 LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -67,7 +70,8 @@
   "helpWanted": "9ch mode needs implementing",
   "modes": [
     {
-      "name": "5ch",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Red",
         "Green",
