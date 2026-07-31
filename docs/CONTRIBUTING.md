@@ -87,7 +87,7 @@ We always aim to have clear, readable code. So please try to respect these princ
 
 * Document every new function with [JSDoc](https://jsdoc.app/about-getting-started.html)
 * Use [self-describing variable names](https://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
-* Prefer code readability over [micro-optimisation](https://softwareengineering.stackexchange.com/questions/99445/is-micro-optimisation-important-when-coding)
+* Prefer code readability over [micro-optimization](https://sourav-k-paul.medium.com/micro-optimization-when-the-small-stuff-matters-and-when-it-doesnt-ab5c98e5acf7)
 * Prefer [Array iteration methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Instance_methods) (like [`map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`filter(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`some(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some), [`every(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), [`find(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)) with arrow functions over loops
 * Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
 
