@@ -675,9 +675,9 @@ export async function importFixtures(buffer, filename, authorName) {
         const middleHasName = gdtfCapabilities.slice(1, -1).some((capability) => capability.$.Name !== '');
 
         if (
-          (firstName !== '' && !target.lowEndNames.has(firstName))
+          middleHasName
+          || (firstName !== '' && !target.lowEndNames.has(firstName))
           || (lastName !== '' && !target.highEndNames.has(lastName))
-          || middleHasName
         ) {
           return false;
         }
