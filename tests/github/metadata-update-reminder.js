@@ -29,22 +29,16 @@ try {
   const today = new Date().toISOString().replace(/T.*/, '');
 
   // Build the inline review comments (one per modified fixture).
-  const reviewComments = [];
-
   const sortedModified = sortByManufacturerAndFixture(modifiedFixtures);
-
-  for (const [manufacturerKey, fixtureKey] of sortedModified) {
-    const comment = await buildModifiedFixtureComment(manufacturerKey, fixtureKey, headSha, today);
-    if (comment !== null) {
-      reviewComments.push(comment);
-    }
-  }
+  const fixtureComments = await Promise.all(sortedModified.map(
+    ([manufacturerKey, fixtureKey]) => buildModifiedFixtureComment(manufacturerKey, fixtureKey, headSha, today),
+  ));
+  const reviewComments = fixtureComments.filter(Boolean);
 
   // Build the brief review summary body.
   let summaryBody = 'Some fixture metadata needs updating — see the review comments below for one-click suggestions.';
-  const addedFixturesSummary = buildAddedFixturesSummary(addedFixtures);
-  if (addedFixturesSummary !== '') {
-    summaryBody += `\n\n${addedFixturesSummary}`;
+  if (addedFixtures.length > 0) {
+    summaryBody += `\n\n${buildAddedFixturesSummary(addedFixtures)}`;
   }
 
   await pullRequest.updateReview({
@@ -157,15 +151,12 @@ async function buildModifiedFixtureComment(manufacturerKey, fixtureKey, headSha,
 /**
  * Build the "Added fixtures" section of the review summary. Added fixtures have
  * no existing `lastModifyDate` line to anchor an inline suggestion to, so they
- * are listed manually.
+ * are listed manually. The caller only invokes this when there is at least one
+ * added fixture.
  * @param {[string, string][]} addedFixtures - Added fixtures as `[manufacturerKey, fixtureKey]` tuples.
- * @returns {string} The markdown block, or `''` if there are no added fixtures.
+ * @returns {string} The markdown block.
  */
 function buildAddedFixturesSummary(addedFixtures) {
-  if (addedFixtures.length === 0) {
-    return '';
-  }
-
   const sortedAdded = sortByManufacturerAndFixture(addedFixtures);
 
   const lines = [

@@ -73,23 +73,17 @@ export async function init() {
  * @returns {Promise} A Promise that resolves to an object which describes the OFL components changed in this pull request.
  */
 export async function fetchChangedComponents() {
-  // fetch changed files in blocks of 100
-  const filePromises = [];
-  for (let index = 0; index < prData.changed_files / 100; index++) {
-    filePromises.push(githubClient.rest.pulls.listFiles({
-      owner: repoOwner,
-      repo: repoName,
-      // eslint-disable-next-line camelcase -- required by GitHub API
-      pull_number: process.env.GITHUB_PR_NUMBER,
-      // eslint-disable-next-line camelcase -- required by GitHub API
-      per_page: 100,
-      page: index + 1,
-    }));
-  }
+  // fetch all changed files
+  const files = await githubClient.paginate(githubClient.rest.pulls.listFiles, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
 
   // check which model components, plugins and fixtures have been changed in the PR
-  const fileBlocks = await Promise.all(filePromises);
-
   const changedComponents = {
     added: {
       schema: false,
@@ -117,10 +111,8 @@ export async function fetchChangedComponents() {
     },
   };
 
-  for (const block of fileBlocks) {
-    for (const fileData of block.data) {
-      handleFileData(fileData);
-    }
+  for (const file of files) {
+    handleFileData(file);
   }
 
   return changedComponents;
@@ -214,23 +206,14 @@ export async function updateComment(test) {
   ];
   const message = lines.join('\n');
 
-  const commentPromises = [];
-  for (let index = 0; index < prData.comments / 100; index++) {
-    commentPromises.push(
-      githubClient.rest.issues.listComments({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        issue_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        per_page: 100,
-        page: index + 1,
-      }),
-    );
-  }
-
-  const commentBlocks = await Promise.all(commentPromises);
-  const comments = commentBlocks.flatMap((block) => block.data);
+  const comments = await githubClient.paginate(githubClient.rest.issues.listComments, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    issue_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
 
   let isEqualFound = false;
   const promises = comments.flatMap((comment) => {
@@ -372,28 +355,17 @@ export async function updateReview(test) {
 
 /**
  * Paginate `pulls.listReviews` and return the flat array of review objects.
- * @returns {Promise<object[]>} All reviews on the current PR (up to 500).
+ * @returns {Promise<object[]>} All reviews on the current PR.
  */
 async function fetchExistingReviews() {
-  // Paginate up to 5 pages of 100 (500 reviews) — more than enough for typical re-runs,
-  // and prevents silently missing old reviews on long-lived PRs.
-  const reviewPromises = [];
-  for (let index = 0; index < 5; index++) {
-    reviewPromises.push(
-      githubClient.rest.pulls.listReviews({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        pull_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        per_page: 100,
-        page: index + 1,
-      }),
-    );
-  }
-
-  const reviewBlocks = await Promise.all(reviewPromises);
-  return reviewBlocks.flatMap((block) => block.data);
+  return githubClient.paginate(githubClient.rest.pulls.listReviews, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
 }
 
 /**
@@ -401,24 +373,14 @@ async function fetchExistingReviews() {
  * @returns {Promise<object[]>} All inline review comments on the current PR.
  */
 async function fetchExistingReviewComments() {
-  // Paginate using prData.review_comments count, mirroring the updateComment pattern.
-  const commentPromises = [];
-  for (let index = 0; index < prData.review_comments / 100; index++) {
-    commentPromises.push(
-      githubClient.rest.pulls.listReviewComments({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        pull_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        per_page: 100,
-        page: index + 1,
-      }),
-    );
-  }
-
-  const commentBlocks = await Promise.all(commentPromises);
-  return commentBlocks.flatMap((block) => block.data);
+  return githubClient.paginate(githubClient.rest.pulls.listReviewComments, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
 }
 
 /**
@@ -506,23 +468,13 @@ export async function getFileContent(filePath, ref) {
  * @returns {Promise<string | undefined>} The unified diff patch, or undefined if not available.
  */
 export async function getFilePatch(filePath) {
-  // Paginate listFiles to find the file (up to 10 pages × 100 = 1000 files)
-  const filePromises = [];
-  for (let index = 0; index < 10; index++) {
-    filePromises.push(
-      githubClient.rest.pulls.listFiles({
-        owner: repoOwner,
-        repo: repoName,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        pull_number: process.env.GITHUB_PR_NUMBER,
-        // eslint-disable-next-line camelcase -- required by GitHub API
-        per_page: 100,
-        page: index + 1,
-      }),
-    );
-  }
-
-  const blocks = await Promise.all(filePromises);
-  const files = blocks.flatMap((block) => block.data);
-  return files.find((f) => f.filename === filePath)?.patch;
+  const files = await githubClient.paginate(githubClient.rest.pulls.listFiles, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
+  return files.find((file) => file.filename === filePath)?.patch;
 }
