@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 60C",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-07-31",
+    "lastModifyDate": "2026-07-31"
+  },
+  "links": {
+    "productPage": [
+      "https://www.nanlite.com/product-forza-60c-cr#/en"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1800K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green/Magenta": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Crossfade": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Effect",
+        "effectName": "CCT to RGBW"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White Point": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8Bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "White Point",
+        "Reserved"
+      ]
+    }
+  ]
+}
