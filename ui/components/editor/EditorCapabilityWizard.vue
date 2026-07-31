@@ -49,9 +49,9 @@
 
     <table class="capabilities-table">
       <colgroup>
-        <col style="width: 5.8ex;">
+        <col style="width: 6ch;">
         <col style="width: 1ex;">
-        <col style="width: 5.8ex;">
+        <col style="width: 6ch;">
         <col>
       </colgroup>
       <thead><tr>
@@ -101,6 +101,13 @@ td,
 th {
   padding: 0 4px;
   vertical-align: top;
+}
+
+.capability-dmx-range-start,
+.capability-dmx-range-separator,
+.capability-dmx-range-end {
+  font-size: 0.9em;
+  line-height: 2rem; // keep the baseline aligned with the capability type
 }
 
 .capability-dmx-range-start {
