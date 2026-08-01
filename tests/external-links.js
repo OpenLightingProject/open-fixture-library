@@ -222,7 +222,7 @@ async function updateGithubIssue(urlResults) {
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const [repoOwner, repoName] = process.env.GITHUB_REPOSITORY.split('/');
+  const [repoOwner, repoName] = process.env.GITHUB_REPOSITORY.split('/', 2);
 
   let issue;
 

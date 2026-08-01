@@ -251,9 +251,10 @@ export default {
       },
       {
         rel: 'preload',
-        href: '/fonts/LatoLatin/LatoLatin-Regular.woff2',
+        href: '/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-Variable.woff2',
         as: 'font',
         type: 'font/woff2',
+        crossorigin: '',
       },
     ];
 

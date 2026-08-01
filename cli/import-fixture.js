@@ -37,7 +37,7 @@ try {
   };
 
   for (const [key, fixtureJson] of Object.entries(result.fixtures)) {
-    const [manufacturerKey, fixtureKey] = key.split('/');
+    const [manufacturerKey, fixtureKey] = key.split('/', 2);
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, fixtureJson);
 
