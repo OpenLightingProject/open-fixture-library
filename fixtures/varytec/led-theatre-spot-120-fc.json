@@ -170,23 +170,23 @@
         }
       ]
     },
-    "Program Speed": {
+    "Program": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction",
-          "comment": "off"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 240],
-          "type": "EffectSpeed",
+          "type": "Effect",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [241, 254],
           "type": "Effect",
-          "effectName": "Automatic color changes"
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [255, 255],
@@ -227,7 +227,7 @@
         "Dimmer White",
         "Color Wheel",
         "Strobe Speed",
-        "Program Speed"
+        "Program"
       ]
     }
   ]
