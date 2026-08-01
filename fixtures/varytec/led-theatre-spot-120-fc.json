@@ -21,7 +21,7 @@
   "physical": {
     "dimensions": [185, 160, 260],
     "weight": 5,
-    "power": 120,
+    "power": 135,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
@@ -37,19 +37,19 @@
         "color": "Red"
       }
     },
-    "Dimmer green": {
+    "Dimmer Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Dimmer blue": {
+    "Dimmer Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Dimmer white": {
+    "Dimmer White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -61,16 +61,117 @@
       }
     },
     "Strobe Speed": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "80Hz"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Color Wheel": {
-      "capability": {
-        "type": "Generic",
-        "comment": "changing colours"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 14],
+          "type": "ColorPreset",
+          "comment": "Cold white"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ColorPreset",
+          "comment": "Color macro 2"
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "ColorPreset",
+          "comment": "Color macro 3"
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "ColorPreset",
+          "comment": "Color macro 4"
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "ColorPreset",
+          "comment": "Color macro 5"
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "ColorPreset",
+          "comment": "Color macro 6"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ColorPreset",
+          "comment": "Color macro 7"
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "ColorPreset",
+          "comment": "Color macro 8"
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "ColorPreset",
+          "comment": "Color macro 9"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "ColorPreset",
+          "comment": "Color macro 10"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ColorPreset",
+          "comment": "Color macro 11"
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "ColorPreset",
+          "comment": "Color macro 12"
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "ColorPreset",
+          "comment": "Color macro 13"
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "ColorPreset",
+          "comment": "Color macro 14"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ColorPreset",
+          "comment": "Color macro 15"
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "ColorPreset",
+          "comment": "Color macro 16"
+        },
+        {
+          "dmxRange": [240, 254],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
     },
     "Program Speed": {
       "capabilities": [
@@ -87,8 +188,8 @@
         },
         {
           "dmxRange": [241, 254],
-          "type": "Generic",
-          "comment": "Automatik color changes"
+          "type": "Effect",
+          "effectName": "Automatic color changes"
         },
         {
           "dmxRange": [255, 255],
@@ -103,9 +204,9 @@
       "name": "4ch",
       "channels": [
         "Dimmer Red",
-        "Dimmer green",
-        "Dimmer blue",
-        "Dimmer white"
+        "Dimmer Green",
+        "Dimmer Blue",
+        "Dimmer White"
       ]
     },
     {
@@ -113,9 +214,9 @@
       "channels": [
         "Master Dimmer",
         "Dimmer Red",
-        "Dimmer green",
-        "Dimmer blue",
-        "Dimmer white",
+        "Dimmer Green",
+        "Dimmer Blue",
+        "Dimmer White",
         "Strobe Speed"
       ]
     },
@@ -124,9 +225,9 @@
       "channels": [
         "Master Dimmer",
         "Dimmer Red",
-        "Dimmer green",
-        "Dimmer blue",
-        "Dimmer white",
+        "Dimmer Green",
+        "Dimmer Blue",
+        "Dimmer White",
         "Color Wheel",
         "Strobe Speed",
         "Program Speed"
