@@ -260,7 +260,7 @@ export default {
 
         if (anchorElement.download === undefined) {
           // non-HTML5 workaround
-          window.location = downloadUrl;
+          window.location.assign(downloadUrl);
         }
         else {
           anchorElement.href = downloadUrl;

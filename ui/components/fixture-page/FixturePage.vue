@@ -282,7 +282,7 @@ export default {
 
         if (linkType === 'video') {
           linksOfType = linksOfType.filter(
-            (url) => !this.videos.some((video) => video.url === url),
+            (url) => this.videos.every((video) => video.url !== url),
           );
           linkDisplayNumber += this.videos.length;
         }

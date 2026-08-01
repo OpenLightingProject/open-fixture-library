@@ -26,11 +26,11 @@ const corsWhitelist = [
 
 app.use(cors({
   origin(origin, callback) {
-    const corsAllowed = process.env.NODE_ENV !== 'production'
+    const isCorsAllowed = process.env.NODE_ENV !== 'production'
       || !origin // allow non XHR/fetch requests
       || corsWhitelist.some((regex) => regex.test(origin));
 
-    callback(null, corsAllowed ? true : 'https://open-fixture-library.org');
+    callback(null, isCorsAllowed ? true : 'https://open-fixture-library.org');
   },
   optionsSuccessStatus: 200, // IE11 chokes on default 204
 }));

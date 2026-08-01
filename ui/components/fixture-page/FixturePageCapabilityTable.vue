@@ -1,9 +1,9 @@
 <template>
   <table class="capabilities-table">
     <colgroup>
-      <col style="width: 5.8ex;">
+      <col style="width: 6ch;">
       <col style="width: 1ex;">
-      <col style="width: 5.8ex;">
+      <col style="width: 6ch;">
       <col style="width: 1.8em;">
       <col>
       <col style="width: 1.8em;">
@@ -85,6 +85,13 @@ th {
   opacity: 0.6;
 }
 
+.capability-range0,
+.capability-range-separator,
+.capability-range1 {
+  font-size: 0.9em;
+  line-height: 2rem; // keep the baseline aligned with the capability name
+}
+
 .capability-range0 {
   padding-right: 2px;
   text-align: right;
@@ -152,14 +159,14 @@ export default {
         const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
         const switchChannels = [];
 
-        for (const switchingChannelKey of Object.keys(capability.switchChannels)) {
+        for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
           const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
 
           if (switchingChannelIndex > -1) {
             switchChannels.push({
               key: switchingChannelKey,
               index: switchingChannelIndex,
-              to: capability.switchChannels[switchingChannelKey],
+              to: switchToChannelKey,
             });
           }
         }

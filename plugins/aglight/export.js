@@ -129,11 +129,13 @@ function transformMatrixChannels(fixtureJson, fixture) {
  */
 function transformSingleCapabilityToArray(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
-    if (channel.capability) {
-      channel.capabilities = [channel.capability];
-      channel.singleCapability = true;
-      delete channel.capability;
+    if (!channel.capability) {
+      continue;
     }
+
+    channel.capabilities = [channel.capability];
+    channel.singleCapability = true;
+    delete channel.capability;
   }
 }
 

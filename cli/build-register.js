@@ -47,12 +47,9 @@ async function addFixturesToRegister() {
     register.addManufacturer(manufacturerKey, manufacturers[manufacturerKey]);
 
     const manufacturerDirectory = path.join(fixturesPath, manufacturerKey);
-    const fixtureFiles = await readdir(manufacturerDirectory);
+    const manufacturerDirectoryFiles = await readdir(manufacturerDirectory);
+    const fixtureFiles = manufacturerDirectoryFiles.filter((filename) => path.extname(filename) === '.json');
     for (const filename of fixtureFiles) {
-      if (path.extname(filename) !== '.json') {
-        continue;
-      }
-
       const fixtureKey = path.basename(filename, '.json');
       const fixtureData = await importJson(`${manufacturerKey}/${filename}`, fixturesPath);
 

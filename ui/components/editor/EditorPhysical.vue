@@ -159,10 +159,12 @@ export default {
       deep: true,
     },
     async 'modelValue.DMXconnector'(newValue) {
-      if (newValue === '[add-value]' && this.$root._oflRestoreComplete) {
-        await this.$nextTick();
-        this.$refs.newDmxConnectorInput.focus();
+      if (newValue !== '[add-value]' || !this.$root._oflRestoreComplete) {
+        return;
       }
+
+      await this.$nextTick();
+      this.$refs.newDmxConnectorInput.focus();
     },
   },
   mounted() {

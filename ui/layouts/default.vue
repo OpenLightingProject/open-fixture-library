@@ -82,8 +82,8 @@ export default {
     this.isBrowser = true;
 
     // adapted from https://stackoverflow.com/a/30303898/451391
-    document.addEventListener('touchstart', this.onTouchStart, true);
-    document.addEventListener('mousemove', this.onMouseMove, true);
+    document.addEventListener('touchstart', this.onTouchStart, { capture: true });
+    document.addEventListener('mousemove', this.onMouseMove, { capture: true });
   },
   beforeDestroy() {
     document.removeEventListener('touchstart', this.onTouchStart, true);

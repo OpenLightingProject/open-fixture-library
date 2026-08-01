@@ -38,9 +38,9 @@ export default {
      */
     validationData() {
       return {
-        pattern: 'pattern' in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
-        minlength: 'minLength' in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
-        maxlength: 'maxLength' in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
+        pattern: 'pattern' in this.schemaProperty ? this.schemaProperty.pattern : null,
+        minlength: 'minLength' in this.schemaProperty ? String(this.schemaProperty.minLength) : null,
+        maxlength: 'maxLength' in this.schemaProperty ? String(this.schemaProperty.maxLength) : null,
       };
     },
   },
