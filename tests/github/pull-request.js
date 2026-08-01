@@ -2,17 +2,18 @@ import '../../lib/load-env-file.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
-import chalk from 'chalk';
-
 
 const requiredEnvironmentVariables = [
-  `GITHUB_USER_TOKEN`,
-  `GITHUB_REPOSITORY`,
-  `GITHUB_PR_NUMBER`,
-  `GITHUB_PR_HEAD_REF`,
-  `GITHUB_PR_BASE_REF`,
+  'GITHUB_USER_TOKEN',
+  'GITHUB_REPOSITORY',
+  'GITHUB_PR_NUMBER',
+  'GITHUB_PR_HEAD_REF',
+  'GITHUB_PR_BASE_REF',
 ];
+const GITHUB_BODY_MAX_BYTES = 262_144; // = max 65_536 4-byte Unicode characters
+const RESERVED_COMMENT_BYTES = 2144; // reserve space for comment/issue body header
 
 /** @type {Octokit} */
 let githubClient;
@@ -20,6 +21,14 @@ let githubClient;
 let repoOwner;
 let repoName;
 let prData;
+
+/**
+ * @typedef {object} ReviewComment
+ * @property {string} path - File path (relative to the repo root) the comment is anchored to.
+ * @property {number} line - 1-indexed line number in the new version of the file.
+ * @property {'LEFT' | 'RIGHT'} [side] - Diff side. Defaults to 'RIGHT' if omitted.
+ * @property {string} body - The comment body. May contain a `suggestion` code block.
+ */
 
 /**
  * Checks if the environment variables for GitHub operations are correct.
@@ -40,8 +49,8 @@ export async function checkEnv() {
 export async function init() {
   await checkEnv();
 
-  repoOwner = process.env.GITHUB_REPOSITORY.split(`/`)[0];
-  repoName = process.env.GITHUB_REPOSITORY.split(`/`)[1];
+  repoOwner = process.env.GITHUB_REPOSITORY.split('/', 1)[0];
+  repoName = process.env.GITHUB_REPOSITORY.split('/', 2)[1];
 
   githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
@@ -50,7 +59,8 @@ export async function init() {
   const pr = await githubClient.rest.pulls.get({
     owner: repoOwner,
     repo: repoName,
-    'pull_number': process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
   });
 
   // save PR for later use
@@ -63,21 +73,17 @@ export async function init() {
  * @returns {Promise} A Promise that resolves to an object which describes the OFL components changed in this pull request.
  */
 export async function fetchChangedComponents() {
-  // fetch changed files in blocks of 100
-  const filePromises = [];
-  for (let index = 0; index < prData.changed_files / 100; index++) {
-    filePromises.push(githubClient.rest.pulls.listFiles({
-      owner: repoOwner,
-      repo: repoName,
-      'pull_number': process.env.GITHUB_PR_NUMBER,
-      'per_page': 100,
-      page: index + 1,
-    }));
-  }
+  // fetch all changed files
+  const files = await githubClient.paginate(githubClient.rest.pulls.listFiles, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
 
   // check which model components, plugins and fixtures have been changed in the PR
-  const fileBlocks = await Promise.all(filePromises);
-
   const changedComponents = {
     added: {
       schema: false,
@@ -105,24 +111,22 @@ export async function fetchChangedComponents() {
     },
   };
 
-  for (const block of fileBlocks) {
-    for (const fileData of block.data) {
-      handleFileData(fileData);
-    }
+  for (const file of files) {
+    handleFileData(file);
   }
 
   return changedComponents;
 
   /**
    * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
-   * @param {object} fileData The file object from GitHub.
+   * @param {object} fileData - The file object from GitHub.
    */
   function handleFileData(fileData) {
-    if (fileData.status === `renamed`) {
+    if (fileData.status === 'renamed') {
       // Handling renamed files would be a bit tricky, as we also had to store the previous filename.
       // That's why we simply treat the old file name as removed and the new one as added.
-      handleFile(`added`, fileData.filename);
-      handleFile(`removed`, fileData.previous_filename);
+      handleFile('added', fileData.filename);
+      handleFile('removed', fileData.previous_filename);
     }
     else {
       handleFile(fileData.status, fileData.filename);
@@ -131,45 +135,45 @@ export async function fetchChangedComponents() {
 
   /**
    * Parse the file type by its path and update the change summary of the file's status accordingly.
-   * @param {'added' | 'removed' | 'modified'} fileStatus What happened with the file in this pull request.
-   * @param {string} filePath The file name, relative to the repository's root.
+   * @param {'added' | 'removed' | 'modified'} fileStatus - What happened with the file in this pull request.
+   * @param {string} filePath - The file name, relative to the repository's root.
    */
   function handleFile(fileStatus, filePath) {
     const changeSummary = changedComponents[fileStatus];
-    const segments = filePath.split(`/`);
+    const segments = filePath.split('/');
 
-    if (segments[0] === `lib` && segments[1] === `model`) {
+    if (segments[0] === 'lib' && segments[1] === 'model') {
       changeSummary.model = true;
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `import.js`) {
+    if (segments[0] === 'plugins' && segments[2] === 'import.js') {
       changeSummary.imports.push(segments[1]); // plugin key
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `export.js`) {
+    if (segments[0] === 'plugins' && segments[2] === 'export.js') {
       changeSummary.exports.push(segments[1]); // plugin key
       return;
     }
 
-    if (segments[0] === `plugins` && segments[2] === `exportTests`) {
+    if (segments[0] === 'plugins' && segments[2] === 'exportTests') {
       changeSummary.exportTests.push([
         segments[1], // plugin key
-        segments[3].split(`.`)[0], // test key
+        segments[3].split('.', 1)[0], // test key
       ]);
       return;
     }
 
-    if (segments[0] === `schemas`) {
+    if (segments[0] === 'schemas') {
       changeSummary.schema = true;
       return;
     }
 
-    if (segments[0] === `fixtures` && segments.length === 3) {
+    if (segments[0] === 'fixtures' && segments.length === 3) {
       changeSummary.fixtures.push([
         segments[1], // man key
-        segments[2].split(`.`)[0], // fix key
+        segments[2].split('.', 1)[0], // fix key
       ]);
     }
   }
@@ -178,58 +182,51 @@ export async function fetchChangedComponents() {
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.fileUrl).
- * @param {object} test Information about the test script that wants to update the comment.
- * @param {URL} test.fileUrl URL of the test file.
- * @param {string} test.name Heading to be used in the comment
- * @param {string[]} test.lines The comment's lines of text
+ * @param {object} test - Information about the test script that wants to update the comment.
+ * @param {URL} test.fileUrl - URL of the test file.
+ * @param {string} test.name - Heading to be used in the comment
+ * @param {string[]} test.lines - The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 export async function updateComment(test) {
   if (prData.head.repo.full_name !== prData.base.repo.full_name) {
-    console.warn(chalk.yellow(`Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
+    console.warn(styleText('yellow', 'Warning:'), 'This PR is created from a forked repository, so there is no write permission for the repo.');
     return undefined;
   }
 
-  const oflRootPath = fileURLToPath(new URL(`../../`, import.meta.url));
+  const oflRootPath = fileURLToPath(new URL('../../', import.meta.url));
   const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
 
   const lines = [
     `<!-- GITHUB-TEST: ${relativeFilePath} -->`,
     `# ${test.name}`,
     `(Output of test script \`${relativeFilePath}\`.)`,
-    ``,
+    '',
     ...test.lines,
   ];
-  const message = lines.join(`\n`);
+  const message = lines.join('\n');
 
-  const commentPromises = [];
-  for (let index = 0; index < prData.comments / 100; index++) {
-    commentPromises.push(
-      githubClient.rest.issues.listComments({
-        owner: repoOwner,
-        repo: repoName,
-        'issue_number': process.env.GITHUB_PR_NUMBER,
-        'per_page': 100,
-        page: index + 1,
-      }),
-    );
-  }
+  const comments = await githubClient.paginate(githubClient.rest.issues.listComments, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    issue_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
 
-  const commentBlocks = await Promise.all(commentPromises);
-  const comments = commentBlocks.flatMap(block => block.data);
-
-  let equalFound = false;
-  const promises = comments.flatMap(comment => {
+  let isEqualFound = false;
+  const promises = comments.flatMap((comment) => {
     // get rid of \r linebreaks
-    comment.body = comment.body.replaceAll(`\r`, ``);
+    comment.body = comment.body.replaceAll('\r', '');
 
-    if (lines[0] !== comment.body.split(`\n`)[0]) {
+    if (lines[0] !== comment.body.split('\n', 1)[0]) {
       // the comment was not created by this test script
       return [];
     }
 
-    if (!equalFound && message === comment.body && test.lines.length > 0) {
-      equalFound = true;
+    if (!isEqualFound && message === comment.body && test.lines.length > 0) {
+      isEqualFound = true;
       console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return [];
     }
@@ -239,19 +236,245 @@ export async function updateComment(test) {
     return githubClient.rest.issues.deleteComment({
       owner: repoOwner,
       repo: repoName,
-      'comment_id': comment.id,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      comment_id: comment.id,
     });
   });
 
-  if (!equalFound && test.lines.length > 0) {
+  if (!isEqualFound && test.lines.length > 0) {
     console.log(`Creating test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
     promises.push(githubClient.rest.issues.createComment({
       owner: repoOwner,
       repo: repoName,
-      'issue_number': process.env.GITHUB_PR_NUMBER,
+      // eslint-disable-next-line camelcase -- required by GitHub API
+      issue_number: process.env.GITHUB_PR_NUMBER,
       body: message,
     }));
   }
 
   return Promise.all(promises);
+}
+
+/**
+ * Tries to append `newLines` to `lines`. If adding `newLines` plus `tooLongMessage`
+ * (plus any `trailingLines`) would exceed the byte limit, appends `tooLongMessage`
+ * instead and returns `true`. Otherwise appends `newLines` and returns `false`.
+ *
+ * @param {string[]} lines - Accumulated lines so far (mutated in place).
+ * @param {readonly string[]} newLines - Lines to append.
+ * @param {string} tooLongMessage - Line to append when truncation is needed.
+ * @param {readonly string[]} trailingLines - Lines always appended after the loop (not yet in `lines`), used in the byte check.
+ * @returns {boolean} `true` if truncation occurred, `false` otherwise.
+ */
+export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) {
+  const testContent = [...lines, ...newLines, tooLongMessage, ...trailingLines].join('\r\n');
+
+  if (Buffer.byteLength(testContent, 'utf-8') > GITHUB_BODY_MAX_BYTES - RESERVED_COMMENT_BYTES) {
+    lines.push(tooLongMessage);
+    return true;
+  }
+
+  lines.push(...newLines);
+  return false;
+}
+
+/**
+ * @returns {string} The SHA of the head commit of the current pull request.
+ * @throws {Error} If `init()` has not been called.
+ */
+export function getHeadSha() {
+  if (!prData) {
+    throw new Error('init() must be called before getHeadSha().');
+  }
+  return prData.head.sha;
+}
+
+/**
+ * Posts (or updates) a pull request review with a summary body and an array of inline
+ * review comments. Each inline comment may contain a `suggestion` code block, which
+ * only renders GitHub's "Apply suggestion" button when posted via the review API
+ * (not via `updateComment` / `issues.createComment`).
+ *
+ * The review is always posted with `event: 'REQUEST_CHANGES'`. This is intentional:
+ * it lets the cleanup step dismiss prior reviews (GitHub's API only allows dismissing
+ * APPROVED or CHANGES_REQUESTED reviews, not COMMENTED ones). The review is informational
+ * (not blocking merge by itself) — the inline suggestions can be applied with one click.
+ *
+ * Cleanup: any prior review whose body starts with the marker (derived from
+ * `test.fileUrl`) AND has state `CHANGES_REQUESTED` is dismissed. The inline review
+ * comments that belong to any marked review (regardless of state) are deleted. The
+ * marker check ensures we only touch our own reviews, never human ones. The state
+ * check handles the cases GitHub won't let us dismiss (COMMENTED, DISMISSED) and
+ * is a no-op for already-dismissed reviews.
+ *
+ * If both `test.body` and `test.comments` are empty, the function only performs cleanup
+ * (dismiss prior reviews, delete orphan comments) and skips creating a new review. This
+ * is useful for "nothing to remind about" cases where a prior review should be cleared
+ * without leaving a stub.
+ *
+ * @param {object} test - Information about the test script that wants to update the review.
+ * @param {URL} test.fileUrl - URL of the test file. Used to derive the marker.
+ * @param {string} test.body - The review summary body (shown once, above the inline comments).
+ * @param {ReviewComment[]} test.comments - The inline review comments to attach. Each is anchored to a specific line in a file.
+ * @returns {Promise} A promise that is fulfilled once all GitHub operations have completed.
+ */
+export async function updateReview(test) {
+  if (prData.head.repo.full_name !== prData.base.repo.full_name) {
+    console.warn(styleText('yellow', 'Warning:'), 'This PR is created from a forked repository, so there is no write permission for the repo.');
+    return undefined;
+  }
+
+  const oflRootPath = fileURLToPath(new URL('../../', import.meta.url));
+  const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
+  const marker = `<!-- GITHUB-TEST-REVIEW: ${relativeFilePath} -->`;
+
+  await cleanupPriorReviews(marker);
+
+  // Post the new review, unless the caller only wanted cleanup.
+  if (test.body === '' && test.comments.length === 0) {
+    console.log(`Skipping review creation at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} (no body, no comments — cleanup-only mode).`);
+    return undefined;
+  }
+
+  console.log(`Creating review at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} with ${test.comments.length} inline comment(s).`);
+  return githubClient.rest.pulls.createReview({
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    commit_id: getHeadSha(),
+    body: `${marker}\n${test.body}`,
+    event: 'REQUEST_CHANGES',
+    comments: test.comments.map((comment) => ({
+      ...comment,
+      side: comment.side || 'RIGHT',
+    })),
+  });
+}
+
+/**
+ * Paginate `pulls.listReviews` and return the flat array of review objects.
+ * @returns {Promise<object[]>} All reviews on the current PR.
+ */
+async function fetchExistingReviews() {
+  return githubClient.paginate(githubClient.rest.pulls.listReviews, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
+}
+
+/**
+ * Paginate `pulls.listReviewComments` and return the flat array of review comment objects.
+ * @returns {Promise<object[]>} All inline review comments on the current PR.
+ */
+async function fetchExistingReviewComments() {
+  return githubClient.paginate(githubClient.rest.pulls.listReviewComments, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
+}
+
+/**
+ * Dismiss prior reviews posted by this test and delete their inline review comments.
+ *
+ * Reviews and comments are matched to this test by a hidden marker (derived from
+ * `test.fileUrl`). The state filter (`CHANGES_REQUESTED`) means we never try to
+ * dismiss reviews we couldn't have posted (APPROVED/COMMENTED/DISMISSED) and
+ * never touch human reviews (which lack the marker). Inline comments are
+ * matched by their parent review's `pull_request_review_id` because the marker
+ * only appears in the review body, not in the comment body.
+ *
+ * `Promise.allSettled` is used so a single failure does not abort the remaining
+ * cleanup; all cleanup is best-effort.
+ *
+ * @param {string} marker - The hidden HTML marker identifying reviews from this test.
+ * @returns {Promise<void>} Resolves when all cleanup operations have completed (success or failure).
+ */
+async function cleanupPriorReviews(marker) {
+  const existingReviews = await fetchExistingReviews();
+
+  // Identify reviews posted by this test (matched by the hidden marker in their body).
+  // These IDs are used both to filter the dismissal candidates and to identify
+  // which inline review comments belong to our reviews for deletion.
+  const markedReviews = existingReviews.filter((review) => review.body && review.body.startsWith(marker));
+  const markedReviewIds = new Set(markedReviews.map((review) => review.id));
+
+  const dismissPromises = markedReviews
+    .filter((review) => review.state === 'CHANGES_REQUESTED')
+    .map((review) => {
+      console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return githubClient.rest.pulls.dismissReview({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        pull_number: process.env.GITHUB_PR_NUMBER,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        review_id: review.id,
+        message: 'Superseded by a new run of the metadata-update-reminder test.',
+      });
+    });
+
+  const existingComments = await fetchExistingReviewComments();
+
+  const deletePromises = existingComments
+    .filter((comment) => markedReviewIds.has(comment.pull_request_review_id))
+    .map((comment) => {
+      console.log(`Deleting old review comment ${comment.id} (from marked review) at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return githubClient.rest.pulls.deleteReviewComment({
+        owner: repoOwner,
+        repo: repoName,
+        // eslint-disable-next-line camelcase -- required by GitHub API
+        comment_id: comment.id,
+      });
+    });
+
+  await Promise.allSettled([...dismissPromises, ...deletePromises]);
+}
+
+/**
+ * Fetch the UTF-8 text content of a file at a specific ref.
+ * @param {string} filePath - Path of the file relative to the repo root.
+ * @param {string} ref - The git ref (branch name, tag, or commit SHA) to fetch from.
+ * @returns {Promise<string>} The file content as a UTF-8 string.
+ */
+export async function getFileContent(filePath, ref) {
+  const { data } = await githubClient.rest.repos.getContent({
+    owner: repoOwner,
+    repo: repoName,
+    path: filePath,
+    ref,
+  });
+
+  if (Array.isArray(data) || data.type !== 'file') {
+    throw new Error(`${filePath} at ${ref} is not a regular file.`);
+  }
+
+  return Buffer.from(data.content, 'base64').toString('utf-8');
+}
+
+/**
+ * Fetch the unified diff patch for a file in the PR. Returns undefined if the patch is not
+ * available (e.g., file too large, binary file, or no diff).
+ * @param {string} filePath - Path of the file relative to the repo root.
+ * @returns {Promise<string | undefined>} The unified diff patch, or undefined if not available.
+ */
+export async function getFilePatch(filePath) {
+  const files = await githubClient.paginate(githubClient.rest.pulls.listFiles, {
+    owner: repoOwner,
+    repo: repoName,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    pull_number: process.env.GITHUB_PR_NUMBER,
+    // eslint-disable-next-line camelcase -- required by GitHub API
+    per_page: 100,
+  });
+  return files.find((file) => file.filename === filePath)?.patch;
 }

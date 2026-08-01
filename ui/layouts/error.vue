@@ -29,16 +29,16 @@ export default {
   },
   head() {
     if (this.error.statusCode !== 404) {
-      console.error(`Nuxt rendering error:`, this.error);
+      console.error('Nuxt rendering error:', this.error);
     }
 
-    const title = this.error.statusCode === 404 ? `Not Found` : `Error`;
+    const title = this.error.statusCode === 404 ? 'Not Found' : 'Error';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],

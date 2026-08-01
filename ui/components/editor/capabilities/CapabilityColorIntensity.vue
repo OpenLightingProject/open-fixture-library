@@ -48,8 +48,7 @@
 
 <script>
 import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
-
+import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -74,11 +73,11 @@ export default {
        * @public
        */
       defaultData: {
-        color: ``,
+        color: '',
         brightness: null,
-        brightnessStart: `off`,
-        brightnessEnd: `bright`,
-        comment: ``,
+        brightnessStart: 'off',
+        brightnessEnd: 'bright',
+        comment: '',
       },
     };
   },

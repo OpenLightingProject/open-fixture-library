@@ -1,5 +1,12 @@
+<!-- eslint-disable vuejs-accessibility/no-static-element-interactions -- use more accessible way of highlighting -->
+
 <template>
-  <section :class="name">
+  <section
+    :class="name"
+    @focusin="$emit('focusin', $event)"
+    @focusout="$emit('focusout', $event)"
+    @mouseover="$emit('mouseover', $event)"
+    @mouseout="$emit('mouseout', $event)">
     <div class="label">
       <template v-if="label">{{ label }}</template>
       <slot name="label" />
@@ -17,6 +24,10 @@ section {
 
   & > .label {
     color: theme-color(text-secondary);
+  }
+
+  & > .value {
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -49,6 +60,12 @@ export default {
     name: stringProp().optional,
     label: stringProp().optional,
     value: stringProp().optional,
+  },
+  emits: {
+    focusin: (event) => true,
+    focusout: (event) => true,
+    mouseover: (event) => true,
+    mouseout: (event) => true,
   },
 };
 </script>
