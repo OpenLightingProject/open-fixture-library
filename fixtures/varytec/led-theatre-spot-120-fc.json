@@ -28,36 +28,36 @@
     }
   },
   "availableChannels": {
-    "Dimmer Red": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Dimmer Green": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Dimmer Blue": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Dimmer White": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Master Dimmer": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
-    "Strobe Speed": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -73,7 +73,7 @@
         }
       ]
     },
-    "Color Wheel": {
+    "Color Presets": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -200,33 +200,33 @@
     {
       "name": "4ch",
       "channels": [
-        "Dimmer Red",
-        "Dimmer Green",
-        "Dimmer Blue",
-        "Dimmer White"
+        "Red",
+        "Green",
+        "Blue",
+        "White"
       ]
     },
     {
       "name": "6ch",
       "channels": [
-        "Master Dimmer",
-        "Dimmer Red",
-        "Dimmer Green",
-        "Dimmer Blue",
-        "Dimmer White",
-        "Strobe Speed"
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
       ]
     },
     {
       "name": "8ch",
       "channels": [
-        "Master Dimmer",
-        "Dimmer Red",
-        "Dimmer Green",
-        "Dimmer Blue",
-        "Dimmer White",
-        "Color Wheel",
-        "Strobe Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Strobe",
         "Program"
       ]
     }
