@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MATRIX 5X5",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Axkana"],
+    "createDate": "2026-08-08",
+    "lastModifyDate": "2026-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1daNaqdp7Lb42qnKDVOXkB8Z45xkz-7Eo/view?usp=sharing"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 400, 100],
+    "weight": 3,
+    "power": 900,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Autorun Effects": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Autorun",
+        "comment": "Static RGB Dimming"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9CH MATRIX 5X5",
+      "channels": [
+        "Dimmer",
+        "Strobe Speed",
+        "Autorun Effects",
+        "Sound Sensitivity",
+        "Dimmer 2",
+        "Red 3",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
