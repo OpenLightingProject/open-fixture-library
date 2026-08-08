@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DragonX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["elpugli"],
+    "createDate": "2025-07-17",
+    "lastModifyDate": "2025-07-17"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/11EM-qXoBF5OoyjIHsHvkzu4eX-5pnIX8/view"
+    ],
+    "productPage": [
+      "https://www.lighting-geek.com/product/4-gig-bar-led-dj-lighting-system/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ybtzheda9A4"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [910, 242, 48],
+    "weight": 10,
+    "power": 100,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "comment": "RGB Color adjustment"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Intensity",
+          "comment": "Internal program running 1"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Intensity",
+          "comment": "Internal program running 2"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "Intensity",
+          "comment": "Internal program running 3"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Intensity",
+          "comment": "Internal program running 4"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Intensity",
+          "comment": "Internal program running 5"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Intensity",
+          "comment": "Internal program running 6"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Intensity",
+          "comment": "Internal program running 7"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "Intensity",
+          "comment": "Internal program running 8"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "Intensity",
+          "comment": "Internal program running 9"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Intensity",
+          "comment": "Internal program running 10"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Intensity",
+          "comment": "Internal program running 11"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Intensity",
+          "comment": "Internal program running 12"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "comment": "4 kinds of Audio mode Options"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "RGB brightness 0-100%"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "StrobeSpeed",
+          "speed": "0Hz",
+          "comment": "No - Strobe"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "16Hz",
+          "speedEnd": "255Hz",
+          "comment": "Strobe of Running speed choose"
+        }
+      ]
+    },
+    "Red 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "The first Red LED 0-100%"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "The first Green LED 0-100%"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "The first Blue LED 0-100%"
+      }
+    },
+    "Red 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "The second Red 2 LED 0-100%"
+      }
+    },
+    "Green 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "The second Green 2 LED 0-100%"
+      }
+    },
+    "Blue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "The second Blue 2 LED 0-100%"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "The second Red 3 LED 0-100%"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "The second Green 3 LED 0-100%"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "The second Blue 3 LED 0-100%"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "The second Red 4 LED 0-100%"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "The second Green 4 LED 0-100%"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "The second Blue 4 LED 0-100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dragonx",
+      "channels": [
+        "Mode",
+        "Dimmer",
+        "Strobe Speed",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4"
+      ]
+    }
+  ]
+}
