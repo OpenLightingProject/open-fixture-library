@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color MAT",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Axkana"],
+    "createDate": "2026-08-08",
+    "lastModifyDate": "2026-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/drive/folders/1kzc9geYsmZsciOlWd7rOnekrfEprFHSV"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 400, 100],
+    "weight": 3,
+    "power": 120
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Autorun": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "ColorPreset",
+          "comment": "Colors"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "Effect",
+          "effectName": "Autorun"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9Ch Matrix",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Autorun",
+        "Intensity",
+        "Intensity 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
