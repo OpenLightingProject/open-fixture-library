@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini par 18x3",
+  "shortName": "mini par",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["índigolabs"],
+    "createDate": "2025-10-18",
+    "lastModifyDate": "2025-10-18"
+  },
+  "links": {
+    "manual": [
+      "https://lite-tek.com.mx/docs/manuales/17%20PAR%20MINI%2018x3.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Intensidad": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Estroboscópico": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "1Hz",
+        "speedEnd": "93Hz",
+        "duration": "short"
+      }
+    },
+    "Macros de color": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Velocidad del efecto": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Rojo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Azul": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "mini parled",
+      "shortName": "minipar",
+      "channels": [
+        "Intensidad",
+        "Estroboscópico",
+        "Macros de color",
+        "Velocidad del efecto",
+        "Rojo",
+        "Verde",
+        "Azul"
+      ]
+    }
+  ]
+}
