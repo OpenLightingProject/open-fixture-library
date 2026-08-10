@@ -1,0 +1,862 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Robin 1200 LEDWash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["David", "David Mulholland"],
+    "createDate": "2026-06-30",
+    "lastModifyDate": "2026-06-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-06-30",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "450deg",
+        "comment": "Pan 0-450 deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "300deg",
+        "comment": "Tilt 0-300 deg"
+      }
+    },
+    "Pan/Tilt Speed, Time": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "comment": "Max speed, standard mode (default)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "PanTiltSpeed",
+          "comment": "Pan/Tilt speed (Speed Mode) or move time 0.1-25.5s (Time Mode) - set in fixture menu",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Special Functions": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "No function (reserved)"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "comment": "DMX input: Wired DMX (first 10s after power on; hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Maintenance",
+          "comment": "DMX input: Wireless DMX (first 10s after power on; hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "RGBW colour mixing mode (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "CMY colour mixing mode (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt speed mode (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt time mode (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Blackout while pan/tilt moving (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Disabled blackout while pan/tilt moving (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Theatre mode On (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "Theatre mode Off (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "Zoom mode: Wash, 15-53 deg (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "comment": "Zoom mode: Beam, 8-53 deg (hold 3s, shutter closed)"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Reset: Pan/Tilt (hold 3s)"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "Reset: Zoom (hold 3s)"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset: Total system (hold 3s)"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorPreset",
+          "comment": "Colour temperature correction 19000K-2700K"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom min-max beam angle (8-53 deg Beam mode / 15-53 deg Wash mode)"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer 0-100%"
+      }
+    },
+    "Shutter/Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe slow to fast (zone 4 only)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe slow to fast (all zones together)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "(sets value on Virtual Colour Selector channel)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Zone/rainbow effect speed"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Zone/rainbow effect speed fast to slow (opposite direction)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Reserved",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Opening pulses in sequence slow to fast (all zones together)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Closing pulses in sequence fast to slow (all zones together)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe slow to fast (random zone) - see notes",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe slow to fast (random zone+strobe / all zones / random LEDs) - see notes",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Virtual Colour Selector": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "Effect",
+          "effectName": "White 2700K"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Effect",
+          "effectName": "White 2700K (Halogen lamp dimming mode)"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Effect",
+          "effectName": "White 3200K"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "White 3200K (Halogen lamp dimming mode)"
+        },
+        {
+          "dmxRange": [7, 9],
+          "type": "Effect",
+          "effectName": "White 4200K"
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "Effect",
+          "effectName": "White 5600K"
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "Effect",
+          "effectName": "White 8000K"
+        },
+        {
+          "dmxRange": [16, 247],
+          "type": "Effect",
+          "effectName": "Continuous rainbow colour wheel (Blue->Green->LightBlue->Yellow->Red->Magenta->Blue)"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Effect",
+          "effectName": "Rainbow effect (with fade time)"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Effect",
+          "effectName": "Rainbow effect"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Effect",
+          "effectName": "Zone effect 1"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Effect",
+          "effectName": "Zone effect 2"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Effect",
+          "effectName": "Zone effect 3"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Effect",
+          "effectName": "Zone effect 4"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Effect",
+          "effectName": "Zone effect 5"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Zone effect 6"
+        }
+      ]
+    },
+    "Red (zone 1)": {
+      "fineChannelAliases": ["Red (zone 1) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Green (zone 1)": {
+      "fineChannelAliases": ["Green (zone 1) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Blue (zone 1)": {
+      "fineChannelAliases": ["Blue (zone 1) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "White (zone 1)": {
+      "fineChannelAliases": ["White (zone 1) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Red (zone 2)": {
+      "fineChannelAliases": ["Red (zone 2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Green (zone 2)": {
+      "fineChannelAliases": ["Green (zone 2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Blue (zone 2)": {
+      "fineChannelAliases": ["Blue (zone 2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "White (zone 2)": {
+      "fineChannelAliases": ["White (zone 2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Red (zone 3)": {
+      "fineChannelAliases": ["Red (zone 3) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Green (zone 3)": {
+      "fineChannelAliases": ["Green (zone 3) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Blue (zone 3)": {
+      "fineChannelAliases": ["Blue (zone 3) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "White (zone 3)": {
+      "fineChannelAliases": ["White (zone 3) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Red (zone 4)": {
+      "fineChannelAliases": ["Red (zone 4) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Green (zone 4)": {
+      "fineChannelAliases": ["Green (zone 4) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Blue (zone 4)": {
+      "fineChannelAliases": ["Blue (zone 4) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "White (zone 4)": {
+      "fineChannelAliases": ["White (zone 4) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Red (all zones)": {
+      "fineChannelAliases": ["Red (all zones) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Green (all zones)": {
+      "fineChannelAliases": ["Green (all zones) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Blue (all zones)": {
+      "fineChannelAliases": ["Blue (all zones) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "White (all zones)": {
+      "fineChannelAliases": ["White (all zones) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Red (zone 1+2)": {
+      "fineChannelAliases": ["Red (zone 1+2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Green (zone 1+2)": {
+      "fineChannelAliases": ["Green (zone 1+2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "Blue (zone 1+2)": {
+      "fineChannelAliases": ["Blue (zone 1+2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blue saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    },
+    "White (zone 1+2)": {
+      "fineChannelAliases": ["White (zone 1+2) Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White saturation 0-100% (in CMY mode this controls Cyan/Magenta/Yellow instead; White has no function in CMY mode - set via fixture menu)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "45-channel",
+      "shortName": "45ch",
+      "physical": {
+        "weight": 18.2,
+        "power": 650,
+        "DMXconnector": "3-pin and 5-pin",
+        "bulb": {
+          "type": "LED"
+        },
+        "lens": {
+          "degreesMinMax": [8, 53]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed, Time",
+        "Special Functions",
+        "Red (zone 1)",
+        "Red (zone 1) Fine",
+        "Green (zone 1)",
+        "Green (zone 1) Fine",
+        "Blue (zone 1)",
+        "Blue (zone 1) Fine",
+        "White (zone 1)",
+        "White (zone 1) Fine",
+        "Red (zone 2)",
+        "Red (zone 2) Fine",
+        "Green (zone 2)",
+        "Green (zone 2) Fine",
+        "Blue (zone 2)",
+        "Blue (zone 2) Fine",
+        "White (zone 2)",
+        "White (zone 2) Fine",
+        "Red (zone 3)",
+        "Red (zone 3) Fine",
+        "Green (zone 3)",
+        "Green (zone 3) Fine",
+        "Blue (zone 3)",
+        "Blue (zone 3) Fine",
+        "White (zone 3)",
+        "White (zone 3) Fine",
+        "Red (zone 4)",
+        "Red (zone 4) Fine",
+        "Green (zone 4)",
+        "Green (zone 4) Fine",
+        "Blue (zone 4)",
+        "Blue (zone 4) Fine",
+        "White (zone 4)",
+        "White (zone 4) Fine",
+        "CTC",
+        "Virtual Colour Selector",
+        "Zoom",
+        "Zoom Fine",
+        "Shutter/Strobe",
+        "Dimmer",
+        "Dimmer Fine"
+      ]
+    },
+    {
+      "name": "21-channel",
+      "shortName": "21ch",
+      "physical": {
+        "weight": 18.2,
+        "power": 650,
+        "DMXconnector": "3-pin and 5-pin",
+        "bulb": {
+          "type": "LED"
+        },
+        "lens": {
+          "degreesMinMax": [8, 53]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed, Time",
+        "Special Functions",
+        "Red (all zones)",
+        "Red (all zones) Fine",
+        "Green (all zones)",
+        "Green (all zones) Fine",
+        "Blue (all zones)",
+        "Blue (all zones) Fine",
+        "White (all zones)",
+        "White (all zones) Fine",
+        "CTC",
+        "Virtual Colour Selector",
+        "Zoom",
+        "Zoom Fine",
+        "Shutter/Strobe",
+        "Dimmer",
+        "Dimmer Fine"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "physical": {
+        "weight": 18.2,
+        "power": 650,
+        "DMXconnector": "3-pin and 5-pin",
+        "bulb": {
+          "type": "LED"
+        },
+        "lens": {
+          "degreesMinMax": [8, 53]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed, Time",
+        "Special Functions",
+        "Red (all zones)",
+        "Green (all zones)",
+        "Blue (all zones)",
+        "White (all zones)",
+        "CTC",
+        "Virtual Colour Selector",
+        "Zoom",
+        "Shutter/Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "physical": {
+        "weight": 18.2,
+        "power": 650,
+        "DMXconnector": "3-pin and 5-pin",
+        "bulb": {
+          "type": "LED"
+        },
+        "lens": {
+          "degreesMinMax": [8, 53]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed, Time",
+        "Special Functions",
+        "Virtual Colour Selector",
+        "Zoom",
+        "Shutter/Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "45-channel (extended)",
+      "shortName": "45ch (extended)",
+      "physical": {
+        "weight": 18.2,
+        "power": 650,
+        "DMXconnector": "3-pin and 5-pin",
+        "bulb": {
+          "type": "LED"
+        },
+        "lens": {
+          "degreesMinMax": [8, 53]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed, Time",
+        "Special Functions",
+        "Zoom",
+        "Zoom Fine",
+        "Shutter/Strobe",
+        "Dimmer",
+        "Dimmer Fine",
+        "CTC",
+        "Virtual Colour Selector",
+        "Red (zone 1)",
+        "Red (zone 1) Fine",
+        "Green (zone 1)",
+        "Green (zone 1) Fine",
+        "Blue (zone 1)",
+        "Blue (zone 1) Fine",
+        "White (zone 1)",
+        "White (zone 1) Fine",
+        "Red (zone 2)",
+        "Red (zone 2) Fine",
+        "Green (zone 2)",
+        "Green (zone 2) Fine",
+        "Blue (zone 2)",
+        "Blue (zone 2) Fine",
+        "White (zone 2)",
+        "White (zone 2) Fine",
+        "Red (zone 3)",
+        "Red (zone 3) Fine",
+        "Green (zone 3)",
+        "Green (zone 3) Fine",
+        "Blue (zone 3)",
+        "Blue (zone 3) Fine",
+        "White (zone 3)",
+        "White (zone 3) Fine",
+        "Red (zone 4)",
+        "Red (zone 4) Fine",
+        "Green (zone 4)",
+        "Green (zone 4) Fine",
+        "Blue (zone 4)",
+        "Blue (zone 4) Fine",
+        "White (zone 4)",
+        "White (zone 4) Fine"
+      ]
+    },
+    {
+      "name": "37-channel (compatible with Robin LEDWash 300-600)",
+      "shortName": "37ch (compatible with Robin LEDWash 300-600)",
+      "physical": {
+        "weight": 18.2,
+        "power": 650,
+        "DMXconnector": "3-pin and 5-pin",
+        "bulb": {
+          "type": "LED"
+        },
+        "lens": {
+          "degreesMinMax": [8, 53]
+        }
+      },
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed, Time",
+        "Special Functions",
+        "Red (zone 1+2)",
+        "Red (zone 1+2) Fine",
+        "Green (zone 1+2)",
+        "Green (zone 1+2) Fine",
+        "Blue (zone 1+2)",
+        "Blue (zone 1+2) Fine",
+        "White (zone 1+2)",
+        "White (zone 1+2) Fine",
+        "Red (zone 3)",
+        "Red (zone 3) Fine",
+        "Green (zone 3)",
+        "Green (zone 3) Fine",
+        "Blue (zone 3)",
+        "Blue (zone 3) Fine",
+        "White (zone 3)",
+        "White (zone 3) Fine",
+        "Red (zone 4)",
+        "Red (zone 4) Fine",
+        "Green (zone 4)",
+        "Green (zone 4) Fine",
+        "Blue (zone 4)",
+        "Blue (zone 4) Fine",
+        "White (zone 4)",
+        "White (zone 4) Fine",
+        "CTC",
+        "Virtual Colour Selector",
+        "Zoom",
+        "Zoom Fine",
+        "Shutter/Strobe",
+        "Dimmer",
+        "Dimmer Fine"
+      ]
+    }
+  ]
+}
