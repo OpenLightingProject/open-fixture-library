@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "broPAR 28x12XWAU",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Andrew161"],
+    "createDate": "2025-02-12",
+    "lastModifyDate": "2025-02-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.imlight.ru/brendy/stage4/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15CH",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
