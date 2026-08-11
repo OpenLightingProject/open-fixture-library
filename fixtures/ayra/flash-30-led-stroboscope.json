@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flash 30 LED stroboscope",
+  "shortName": "Flash 30 LED",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Sijmen"],
+    "createDate": "2023-04-10",
+    "lastModifyDate": "2023-04-10",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-02-23",
+      "comment": "GDTF v1.2 fixture type ID: 8F4E0E5A-F2CE-400A-AB93-D6AF7BD5244B"
+    }
+  },
+  "comment": "Ayra Flash 30 LED stroboscope",
+  "availableChannels": {
+    "Dim": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "StrobeM Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "0%"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "25%"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "50%"
+        },
+        {
+          "dmxRange": [129, 191],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "75%"
+        },
+        {
+          "dmxRange": [193, 254],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2 Channel",
+      "channels": [
+        "Dim",
+        "StrobeM Strobe"
+      ]
+    }
+  ]
+}
