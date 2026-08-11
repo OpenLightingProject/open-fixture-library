@@ -1,0 +1,2736 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CIRCLE FLAMER ",
+  "shortName": "CIRCLE FLAMER ",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["anonymous"],
+    "createDate": "2025-06-30",
+    "lastModifyDate": "2025-09-09",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-04-22",
+      "comment": "GDTF v1.2 fixture type ID: F2B09F7A-BCDA-4405-A978-453CE5F2A8AF"
+    }
+  },
+  "comment": "CIRCLE FLAMER X-F1800: 380W",
+  "availableChannels": {
+    "T": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-105"
+        },
+        {
+          "dmxRange": [2, 17],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-90"
+        },
+        {
+          "dmxRange": [19, 35],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-75"
+        },
+        {
+          "dmxRange": [37, 53],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-60"
+        },
+        {
+          "dmxRange": [55, 72],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-45"
+        },
+        {
+          "dmxRange": [74, 90],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-30"
+        },
+        {
+          "dmxRange": [92, 108],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "-15"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "0"
+        },
+        {
+          "dmxRange": [129, 145],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "15"
+        },
+        {
+          "dmxRange": [147, 164],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "30"
+        },
+        {
+          "dmxRange": [166, 182],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "45"
+        },
+        {
+          "dmxRange": [184, 200],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "60"
+        },
+        {
+          "dmxRange": [202, 218],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "75"
+        },
+        {
+          "dmxRange": [220, 236],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "90"
+        },
+        {
+          "dmxRange": [238, 254],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "105"
+        }
+      ]
+    },
+    "Pos MSpeed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Maximum"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Rising"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Maximum"
+        }
+      ]
+    },
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 253],
+          "type": "Intensity",
+          "brightness": 0,
+          "comment": "Safe"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Ignition"
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "PERMANENT"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "10ms"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "20ms"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "30ms"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "40ms"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "50ms"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "60ms"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "70ms"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "80ms"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "90ms"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "100ms"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "110ms"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "120ms"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "130ms"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "140ms"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "150ms"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "160ms"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "170ms"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "180ms"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "190ms"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "200ms"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "210ms"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "220ms"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "230ms"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "240ms"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "250ms"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "260ms"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "270ms"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "280ms"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "290ms"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "300ms"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "310ms"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "320ms"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "330ms"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "340ms"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "350ms"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "360ms"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "370ms"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "380ms"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "390ms"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "400ms"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "410ms"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "420ms"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "430ms"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "440ms"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "450ms"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "460ms"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "470ms"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "480ms"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "490ms"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "500ms"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "510ms"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "520ms"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "530ms"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "540ms"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "550ms"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "560ms"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "570ms"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "580ms"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "590ms"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "600ms"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "610ms"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "620ms"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "630ms"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "640ms"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "650ms"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "660ms"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "670ms"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "680ms"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "690ms"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "700ms"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "710ms"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "720ms"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "730ms"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "740ms"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "750ms"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "760ms"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "770ms"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "780ms"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "790ms"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "800ms"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "810ms"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "820ms"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "830ms"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "840ms"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "850ms"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "860ms"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "870ms"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "880ms"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "890ms"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "900ms"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "910ms"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "920ms"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "930ms"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "940ms"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "950ms"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "960ms"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "970ms"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "980ms"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "990ms"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1000ms"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1010ms"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1020ms"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1030ms"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1040ms"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1050ms"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1060ms"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1070ms"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1080ms"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1090ms"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1100ms"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1110ms"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1120ms"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1130ms"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1140ms"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1150ms"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1160ms"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1170ms"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1180ms"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1190ms"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1200ms"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1210ms"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1220ms"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1230ms"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1240ms"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1250ms"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1260ms"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1270ms"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1280ms"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1290ms"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1300ms"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1310ms"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1320ms"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1330ms"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1340ms"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1350ms"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1360ms"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1370ms"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1380ms"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1390ms"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1400ms"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1410ms"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1420ms"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1430ms"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1440ms"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1450ms"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1460ms"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1470ms"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1480ms"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1490ms"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1500ms"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1510ms"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1520ms"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1530ms"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1540ms"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1550ms"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1560ms"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1570ms"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1580ms"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1590ms"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1600ms"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1610ms"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1620ms"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1630ms"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1640ms"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1650ms"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1660ms"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1670ms"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1680ms"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1690ms"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1700ms"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1710ms"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1720ms"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1730ms"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1740ms"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1750ms"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1760ms"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1770ms"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1780ms"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1790ms"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1800ms"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1810ms"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1820ms"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1830ms"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1840ms"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1850ms"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1860ms"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1870ms"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1880ms"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1890ms"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1900ms"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1910ms"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1920ms"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1930ms"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1940ms"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1950ms"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1960ms"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1970ms"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1980ms"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1990ms"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2000ms"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2010ms"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2020ms"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2030ms"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2040ms"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2050ms"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2060ms"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2070ms"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2080ms"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2090"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2100ms"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2110ms"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2120ms"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2130ms"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2140ms"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2150ms"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2160ms"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2170ms"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2180ms"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2190ms"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2200ms"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2210ms"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2220ms"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2230ms"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2240ms"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2250ms"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2260ms"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2270ms"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2280ms"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2290ms"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2300ms"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2310ms"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2320ms"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2330ms"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2340ms"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2350ms"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2360ms"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2370ms"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2380ms"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2390ms"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2400ms"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2410ms"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2420ms"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2430ms"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2440ms"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2450ms"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2460ms"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2470ms"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2480ms"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2490ms"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2500ms"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2510ms"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2520ms"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2530ms"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2540ms"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2550ms"
+        }
+      ]
+    },
+    "Pos FX": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Off",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "Effect",
+          "effectName": "",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Effect",
+          "effectName": "Single Shot -105d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Effect",
+          "effectName": "Single Shot -90d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [8, 10],
+          "type": "Effect",
+          "effectName": "Single Shot -75d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "Effect",
+          "effectName": "Single Shot -60d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "Effect",
+          "effectName": "Single Shot -45d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Effect",
+          "effectName": "Single Shot -30d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Effect",
+          "effectName": "Single Shot -15d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [21, 22],
+          "type": "Effect",
+          "effectName": "Single Shot 0d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "Effect",
+          "effectName": "Single Shot +15d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [26, 28],
+          "type": "Effect",
+          "effectName": "Single Shot +30d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "Effect",
+          "effectName": "Single Shot +45d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [31, 33],
+          "type": "Effect",
+          "effectName": "Single Shot +60d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Effect",
+          "effectName": "Single Shot +75d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [36, 38],
+          "type": "Effect",
+          "effectName": "Single Shot +90d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "Effect",
+          "effectName": "Single Shot +105d 110ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "Effect",
+          "effectName": "Single Shot -105d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Effect",
+          "effectName": "Single Shot -90d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "Effect",
+          "effectName": "Single Shot -75d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "Effect",
+          "effectName": "Single Shot -60d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [51, 53],
+          "type": "Effect",
+          "effectName": "Single Shot -45d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [54, 56],
+          "type": "Effect",
+          "effectName": "Single Shot -30d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "Effect",
+          "effectName": "Single Shot -15d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [59, 61],
+          "type": "Effect",
+          "effectName": "Single Shot 0d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Effect",
+          "effectName": "Single Shot +15d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "Effect",
+          "effectName": "Single Shot +30d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [67, 68],
+          "type": "Effect",
+          "effectName": "Single Shot +45d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [69, 71],
+          "type": "Effect",
+          "effectName": "Single Shot +60d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Effect",
+          "effectName": "Single Shot +75d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [74, 76],
+          "type": "Effect",
+          "effectName": "Single Shot +90d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "Effect",
+          "effectName": "Single Shot +105d 410ms",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Effect",
+          "effectName": "Short Flame Step 1-15 ",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [82, 84],
+          "type": "Effect",
+          "effectName": "Short Flame Step 15-1 ",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [85, 86],
+          "type": "Effect",
+          "effectName": "Short Flame Step 5-8-11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [87, 89],
+          "type": "Effect",
+          "effectName": "Short Flame Step 11-8-5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Effect",
+          "effectName": "Short Flame Step 6-10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [92, 94],
+          "type": "Effect",
+          "effectName": "Short Flame Step 10-6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "Effect",
+          "effectName": "Short Flame Step 4-6-8-10-12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Effect",
+          "effectName": "Short Flame Step 12-10-8-6-4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Effect",
+          "effectName": "Short Flame Step 8-6-10-4-12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [102, 104],
+          "type": "Effect",
+          "effectName": "Short Flame Step 8-10-6-12-4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [105, 107],
+          "type": "Effect",
+          "effectName": "Long Flame Step 1-15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Effect",
+          "effectName": "Long Flame Step 15-1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [110, 112],
+          "type": "Effect",
+          "effectName": "Long Flame Step 5-8-11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "Effect",
+          "effectName": "Long Flame Step 11-8-5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [115, 117],
+          "type": "Effect",
+          "effectName": "Long Flame Step 6-10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Effect",
+          "effectName": "Long Flame Step 10-6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [120, 122],
+          "type": "Effect",
+          "effectName": "Long Flame Step 4-6-8-10-12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "Effect",
+          "effectName": "Long Flame Step 12-10-8-6-4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [125, 127],
+          "type": "Effect",
+          "effectName": "Long Flame Step 8-6-10-4-12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [128, 130],
+          "type": "Effect",
+          "effectName": "Long Flame Step 8-10-6-12-4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [131, 132],
+          "type": "Effect",
+          "effectName": "Wave 5-11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [133, 135],
+          "type": "Effect",
+          "effectName": "Wave 11-5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Effect",
+          "effectName": "Big Wave 1-15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [138, 140],
+          "type": "Effect",
+          "effectName": "Big Wave 15-1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [141, 142],
+          "type": "Effect",
+          "effectName": "Wave 8-1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [143, 145],
+          "type": "Effect",
+          "effectName": "Wave 8-15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Effect",
+          "effectName": "Wave 1-8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "Effect",
+          "effectName": "Wave 15-8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [151, 152],
+          "type": "Effect",
+          "effectName": "Wave 8-11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [153, 155],
+          "type": "Effect",
+          "effectName": "Wave 8-5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [156, 158],
+          "type": "Effect",
+          "effectName": "Wave 5-8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Effect",
+          "effectName": "Wave 11-8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [161, 163],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 3-13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 13-3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [166, 168],
+          "type": "Effect",
+          "effectName": "Long Flame Stepp 3-13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [169, 170],
+          "type": "Effect",
+          "effectName": "Long Flame Stepp 13-3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [171, 173],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 8-13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 13-8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "Effect",
+          "effectName": "Long Flame Stepp 8-13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [179, 181],
+          "type": "Effect",
+          "effectName": "Long Flame Stepp 13-8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [182, 183],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 8 > 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [184, 186],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 3 > 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [187, 188],
+          "type": "Effect",
+          "effectName": "Long Flame Stepp 8 > 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [189, 191],
+          "type": "Effect",
+          "effectName": "Long Flame Stepp 3 > 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 3 > 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 13 > 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [197, 198],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 2>14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [199, 201],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 14> 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [202, 203],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 8 > 5 > 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [204, 206],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 8 > 11 > 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [207, 209],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 5-11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [210, 211],
+          "type": "Effect",
+          "effectName": "Short Flame Stepp 11-5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [212, 214],
+          "type": "Effect",
+          "effectName": "Wave 8 --> 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [215, 216],
+          "type": "Effect",
+          "effectName": "Wave 13 --> 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [217, 219],
+          "type": "Effect",
+          "effectName": "Wave 8 --> 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [220, 221],
+          "type": "Effect",
+          "effectName": "Wave 3 --> 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [222, 224],
+          "type": "Effect",
+          "effectName": "Wave 3 --> 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [225, 226],
+          "type": "Effect",
+          "effectName": "Wave 13 --> 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "Effect",
+          "effectName": "8 center long",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "Dim Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Test Mode"
+        },
+        {
+          "dmxRange": [50, 206],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Armed"
+        },
+        {
+          "dmxRange": [207, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Test Mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Ch",
+      "channels": [
+        "T",
+        "Pos MSpeed",
+        "Dim",
+        "Ctrl1",
+        "Pos FX",
+        "Dim Mode"
+      ]
+    }
+  ]
+}
