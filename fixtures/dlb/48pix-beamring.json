@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "48pix-beamring",
+  "shortName": "48Pix BeamRing V2",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["DLB_Jimmy"],
+    "createDate": "2026-08-11",
+    "lastModifyDate": "2026-08-11"
+  },
+  "comment": "DLB_48Pix BeamRing (198ch)",
+  "links": {
+    "video": [
+      "https://www.fyilight.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [940, 940, 60],
+    "weight": 7.8,
+    "power": 800,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "RGBW LED",
+      "colorTemperature": 6500,
+      "lumens": 45000
+    },
+    "lens": {
+      "name": "63mm",
+      "degreesMinMax": [3, 3]
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "highlightValue": "0%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "9000deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
