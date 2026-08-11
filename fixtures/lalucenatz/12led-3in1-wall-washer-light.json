@@ -1,0 +1,318 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "12LED 3in1 Wall Washer Light",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["JM"],
+    "createDate": "2023-10-04",
+    "lastModifyDate": "2023-10-04"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/LaluceNatz-Channels-Control-Tricolor-Lighting/dp/B083TT7FY5/ref=sr_1_1_sspa?crid=26NYOZXMYICYS&keywords=lalucenatz&qid=1696408497&sprefix=laluce%2Caps%2C307&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 70, 80],
+    "weight": 3,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Closed"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colorTemperature": "warm"
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colorTemperature": "default"
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colorTemperature": "cold"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colorTemperature": "warm"
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colorTemperature": "warm"
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colorTemperature": "cold"
+        },
+        {
+          "type": "Color",
+          "name": "White",
+          "colorTemperature": "default"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Total Dimming": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Solid/Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Solid Light"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Combinations": {
+      "capability": {
+        "type": "Generic",
+        "comment": "7 Combinations (step 36)"
+      }
+    },
+    "Effect Type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Solid Color"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "Generic",
+          "comment": "35 Effects (step 5)"
+        },
+        {
+          "dmxRange": [201, 224],
+          "type": "Generic",
+          "comment": "Voice Control Effect"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Yellow Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [11, 45],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [46, 80],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [81, 115],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [116, 150],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [151, 185],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [186, 220],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        }
+      ]
+    },
+    "RGB Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "Effect",
+          "effectName": "35 RGB built-in effects (step 5)"
+        },
+        {
+          "dmxRange": [201, 224],
+          "type": "Effect",
+          "effectName": "RGB Voice Control",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "RGB Voice Control DB",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Yellow Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "Effect",
+          "effectName": "35 built-in effects (step 5)"
+        },
+        {
+          "dmxRange": [201, 224],
+          "type": "Effect",
+          "effectName": "Voice Control Effect",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Voice Control DB",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "White Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "Effect",
+          "effectName": "35 built-in Effects (step 5)"
+        },
+        {
+          "dmxRange": [201, 224],
+          "type": "Effect",
+          "effectName": "Voice Control Effect",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Sounds Sensitivity Adj",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 CH",
+      "channels": [
+        "Total Dimming",
+        "Solid/Strobe",
+        "Combinations",
+        "Effect Type",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "12 CH",
+      "channels": [
+        "Total Dimming",
+        "Solid/Strobe",
+        "Red Intensity",
+        "Green Intensity",
+        "Blue Intensity",
+        "Yellow Intensity",
+        "White Intensity",
+        "Color Wheel",
+        "RGB Effects",
+        "Yellow Effects",
+        "White Effects",
+        "Speed"
+      ]
+    }
+  ]
+}
