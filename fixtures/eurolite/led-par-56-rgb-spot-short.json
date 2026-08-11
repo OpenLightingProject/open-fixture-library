@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR-56 RGB Spot, Short",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Moritz A. Vieli"],
+    "createDate": "2024-09-24",
+    "lastModifyDate": "2024-09-24"
+  },
+  "comment": "There seem to be no official manual online anymore.",
+  "links": {
+    "manual": [
+      "https://forum.dmxcontrol-projects.org/core/index.php?attachment/4598-brukermanual-eurolite-led-par-56-kort-zip/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Modi": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "RGB Control"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "7 color fade"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 color change"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 color change"
+        }
+      ]
+    },
+    "R and Speed": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sound Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "Effect",
+          "effectName": "Automatic",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectName": "Sound control with sensitivity control",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5 Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Modi",
+        "R and Speed",
+        "G",
+        "B",
+        "Sound Control"
+      ]
+    }
+  ]
+}
