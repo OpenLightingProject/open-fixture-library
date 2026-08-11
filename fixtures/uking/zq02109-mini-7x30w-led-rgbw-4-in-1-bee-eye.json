@@ -1,0 +1,2648 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02109 Mini 7X30W LED RGBW 4 in 1 Bee Eye",
+  "shortName": "Mini740",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Gianni VW"],
+    "createDate": "2026-08-11",
+    "lastModifyDate": "2026-08-11",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-08-11",
+      "comment": "GDTF v1.2 fixture type ID: 2C1D4E90-7A64-4B1C-9E33-740301090001"
+    }
+  },
+  "comment": "Mini 740: 7x30W RGBW LED moving head wash with rotating front lens, background colour layer and RGB light strip. Built from Avolites personality ZQ02109 plus the manufacturer DMX chart (58CH).",
+  "availableChannels": {
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg",
+        "comment": "Pan"
+      }
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-102.5deg",
+        "angleEnd": "102.5deg",
+        "comment": "Tilt"
+      }
+    },
+    "Pos MSpeed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speed": 0,
+          "comment": "Fast"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": 0.039216,
+          "speedEnd": 10,
+          "comment": "Speed fast > slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "5deg",
+        "angleEnd": "60deg",
+        "comment": "Zoom narrow > wide"
+      }
+    },
+    "Prism1 Pos": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "PrismRotation",
+          "angleStart": "0rpm",
+          "angleEnd": "10rpm",
+          "comment": "Index 0 - 60 deg"
+        },
+        {
+          "dmxRange": [128, 188],
+          "type": "PrismRotation",
+          "speedStart": "-20rpm",
+          "speedEnd": "-1rpm",
+          "comment": "CCW fast > slow"
+        },
+        {
+          "dmxRange": [189, 193],
+          "type": "PrismRotation",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "PrismRotation",
+          "speedStart": "1rpm",
+          "speedEnd": "20rpm",
+          "comment": "CW slow > fast"
+        }
+      ]
+    },
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": 0,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity",
+          "brightnessStart": 0.003922,
+          "brightnessEnd": 1,
+          "comment": "Dimmer"
+        }
+      ]
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Lighting off"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Sync strobe slow > fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Pulse strobe slow > fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "5Hz",
+          "randomTiming": true,
+          "comment": "Random slow"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "5Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true,
+          "comment": "Random medium"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "10Hz",
+          "speedEnd": "15Hz",
+          "randomTiming": true,
+          "comment": "Random fast"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 0,
+          "colorTemperatureEnd": 1,
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 8000,
+          "colorTemperatureEnd": 2000,
+          "comment": "8000K > 2000K"
+        }
+      ]
+    },
+    "Color Macro1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "7000K"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "3700K"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "ColorPreset",
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "ColorPreset",
+          "comment": "Medium Yellow"
+        },
+        {
+          "dmxRange": [23, 26],
+          "type": "ColorPreset",
+          "comment": "Straw Tint"
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "Surprise Peach"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "ColorPreset",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorPreset",
+          "comment": "Medium Amber"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "ColorPreset",
+          "comment": "Gold Amber"
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorPreset",
+          "comment": "Dark Amber"
+        },
+        {
+          "dmxRange": [35, 44],
+          "type": "ColorPreset",
+          "comment": "Sunrise Red"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorPreset",
+          "comment": "Light Pink"
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "ColorPreset",
+          "comment": "Medium Pink"
+        },
+        {
+          "dmxRange": [49, 61],
+          "type": "ColorPreset",
+          "comment": "Pink Carnation"
+        },
+        {
+          "dmxRange": [62, 67],
+          "type": "ColorPreset",
+          "comment": "Light Lavender"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "ColorPreset",
+          "comment": "Sky Blue"
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "ColorPreset",
+          "comment": "Just Blue"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Deep Yellow"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "comment": "Light Amber"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "ColorPreset",
+          "comment": "Straw"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "ColorPreset",
+          "comment": "Deep Amber"
+        },
+        {
+          "dmxRange": [115, 116],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "ColorPreset",
+          "comment": "Light Rose"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "ColorPreset",
+          "comment": "English Rose"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "Light Salmon"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "comment": "Middle Rose"
+        },
+        {
+          "dmxRange": [121, 122],
+          "type": "ColorPreset",
+          "comment": "Dark Pink"
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "ColorPreset",
+          "comment": "Magenta 2"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "ColorPreset",
+          "comment": "Med Blue Green"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorPreset",
+          "comment": "Steel Blue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [129, 130],
+          "type": "ColorPreset",
+          "comment": "Deep Blue"
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "ColorPreset",
+          "comment": "Leaf Green"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "ColorPreset",
+          "comment": "Dark Green"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "ColorPreset",
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "ColorPreset",
+          "comment": "Bright Pink"
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "ColorPreset",
+          "comment": "Med Blue"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "ColorPreset",
+          "comment": "Deep Amber 2"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "ColorPreset",
+          "comment": "Pale Lavender"
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "ColorPreset",
+          "comment": "Special Lavender"
+        },
+        {
+          "dmxRange": [149, 150],
+          "type": "ColorPreset",
+          "comment": "Primary Green"
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "ColorPreset",
+          "comment": "Bright Blue"
+        },
+        {
+          "dmxRange": [157, 161],
+          "type": "ColorPreset",
+          "comment": "Apricot"
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "ColorPreset",
+          "comment": "Pale Gold"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "ColorPreset",
+          "comment": "Deep Orange"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "ColorPreset",
+          "comment": "Bastard Amber"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "ColorPreset",
+          "comment": "Flame Red"
+        },
+        {
+          "dmxRange": [175, 178],
+          "type": "ColorPreset",
+          "comment": "Daylight Blue"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "ColorPreset",
+          "comment": "Lilac Tint"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "ColorPreset",
+          "comment": "Deep Lavender"
+        },
+        {
+          "dmxRange": [184, 190],
+          "type": "ColorPreset",
+          "comment": "Dark Steel Blue"
+        },
+        {
+          "dmxRange": [191, 206],
+          "type": "ColorPreset",
+          "comment": "Congo Blue"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "ColorPreset",
+          "comment": "Alice Blue"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "ColorPreset",
+          "comment": "Dirty White"
+        },
+        {
+          "dmxRange": [209, 255],
+          "type": "ColorPreset",
+          "comment": "White"
+        }
+      ]
+    },
+    "FX1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Effect",
+          "effectName": "No function",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "Effect",
+          "effectName": "Static effect 1 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "Effect",
+          "effectName": "Static effect 2 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "Effect",
+          "effectName": "Static effect 3 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "Effect",
+          "effectName": "Static effect 4 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "Effect",
+          "effectName": "Static effect 5 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "Effect",
+          "effectName": "Static effect 6 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "Effect",
+          "effectName": "Static effect 7 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "Effect",
+          "effectName": "Static effect 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "Effect",
+          "effectName": "Static effect 9",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "Effect",
+          "effectName": "Static effect 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "Effect",
+          "effectName": "Static effect 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "Effect",
+          "effectName": "Static effect 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "Effect",
+          "effectName": "Static effect 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "Effect",
+          "effectName": "Static effect 14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [240, 254],
+          "type": "Effect",
+          "effectName": "Static effect 15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Static effect 16",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "No function",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Dynamic effect 1 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Dynamic effect 2 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Dynamic effect 3 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Dynamic effect 4 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "Dynamic effect 5 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "Dynamic effect 6 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "Dynamic effect 7 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "Dynamic effect 8 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "Dynamic effect 9 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "Dynamic effect 10 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "Dynamic effect 11 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "Dynamic effect 12 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "Dynamic effect 13 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "Dynamic effect 14 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "Dynamic effect 15 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "Dynamic effect 16 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "Dynamic effect 17 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "Dynamic effect 18 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "effectName": "Dynamic effect 19 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "effectName": "Dynamic effect 20 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "effectName": "Dynamic effect 21 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Effect",
+          "effectName": "Dynamic effect 22 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Effect",
+          "effectName": "Dynamic effect 23 (RGBW colour)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Effect",
+          "effectName": "Dynamic effect 24",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Effect",
+          "effectName": "Dynamic effect 25",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Effect",
+          "effectName": "Dynamic effect 26",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Effect",
+          "effectName": "Dynamic effect 27",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Effect",
+          "effectName": "Dynamic effect 28",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Effect",
+          "effectName": "Dynamic effect 29",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Effect",
+          "effectName": "Dynamic effect 30",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Effect",
+          "effectName": "Dynamic effect 31",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Effect",
+          "effectName": "Dynamic effect 32",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Effect",
+          "effectName": "Dynamic effect 33",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Effect",
+          "effectName": "Dynamic effect 34",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Effect",
+          "effectName": "Dynamic effect 35",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Effect",
+          "effectName": "Dynamic effect 36",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Effect",
+          "effectName": "Dynamic effect 37",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Effect",
+          "effectName": "Dynamic effect 38",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Effect",
+          "effectName": "Dynamic effect 39",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Effect",
+          "effectName": "Dynamic effect 40",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Freeze frame"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "EffectSpeed",
+          "speedStart": "-1Hz",
+          "speedEnd": "0Hz",
+          "comment": "CCW fast > slow"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Freeze frame"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "CW slow > fast"
+        }
+      ]
+    },
+    "R 2": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Background Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Background Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Background Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Background White"
+      }
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Effect motor reset (5s)"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "XY motor reset (5s)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "All motor reset (5s)"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": 0,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity",
+          "brightnessStart": 0.003922,
+          "brightnessEnd": 1,
+          "comment": "Strip dimmer"
+        }
+      ]
+    },
+    "Sh1 2": {
+      "name": "Sh1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "No function (open)"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Sync flicker slow > fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "No function (open)"
+        }
+      ]
+    },
+    "R 3": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Strip Red"
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Strip Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Strip Blue"
+      }
+    },
+    "FX1 2": {
+      "name": "FX1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Effect",
+          "effectName": "Dimming mode",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Effect",
+          "effectName": "Strip effect 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Effect",
+          "effectName": "Strip effect 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Effect",
+          "effectName": "Strip effect 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Effect",
+          "effectName": "Strip effect 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Effect",
+          "effectName": "Strip effect 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Effect",
+          "effectName": "Strip effect 6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Effect",
+          "effectName": "Strip effect 7",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Effect",
+          "effectName": "Strip effect 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Effect",
+          "effectName": "Strip effect 9",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Effect",
+          "effectName": "Strip effect 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Effect",
+          "effectName": "Strip effect 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Effect",
+          "effectName": "Strip effect 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Effect",
+          "effectName": "Strip effect 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Effect",
+          "effectName": "Strip effect 14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Effect",
+          "effectName": "Strip effect 15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Effect",
+          "effectName": "Strip effect 16",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Effect",
+          "effectName": "Strip effect 17",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Effect",
+          "effectName": "Strip effect 18",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Effect",
+          "effectName": "Strip effect 19",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Effect",
+          "effectName": "Strip effect 20",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Effect",
+          "effectName": "Strip effect 21",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Effect",
+          "effectName": "Strip effect 22",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Effect",
+          "effectName": "Strip effect 23",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Effect",
+          "effectName": "Strip effect 24",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Effect",
+          "effectName": "Strip effect 25",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Effect",
+          "effectName": "Strip effect 26",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Effect",
+          "effectName": "Strip effect 27",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Effect",
+          "effectName": "Strip effect 28",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Effect",
+          "effectName": "Strip effect 29",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Effect",
+          "effectName": "Strip effect 30",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Effect",
+          "effectName": "Strip effect 31",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Effect",
+          "effectName": "Strip effect 32",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Effect",
+          "effectName": "Strip effect 33",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Effect",
+          "effectName": "Strip effect 34",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Effect",
+          "effectName": "Strip effect 35",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Effect",
+          "effectName": "Strip effect 36",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Strip effect 37",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Effect",
+          "effectName": "Strip effect 38",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Effect",
+          "effectName": "Strip effect 39",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Effect",
+          "effectName": "Strip effect 40",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Effect",
+          "effectName": "Strip effect 41",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Effect",
+          "effectName": "Strip effect 42",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Effect",
+          "effectName": "Strip effect 43",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Effect",
+          "effectName": "Strip effect 44",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Effect",
+          "effectName": "Strip effect 45",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Effect",
+          "effectName": "Strip effect 46",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Effect",
+          "effectName": "Strip effect 47",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Effect",
+          "effectName": "Strip effect 48",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Strip effect 49",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Strip effect 50",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Strip effect 51",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate 2": {
+      "name": "FX1 Rate",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz",
+        "comment": "Slow > fast"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "fineChannelAliases": ["R 4 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "fineChannelAliases": ["G 4 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "fineChannelAliases": ["B 4 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "fineChannelAliases": ["White 3 fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White"
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 3 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Intensity",
+          "brightness": 0,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0.003922,
+          "brightnessEnd": 1,
+          "comment": "Dimmer"
+        }
+      ]
+    },
+    "Function": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1,
+        "comment": "Reserved"
+      }
+    },
+    "FX1 3": {
+      "name": "FX1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "No function",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Built-in effect 0",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Built-in effect 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Built-in effect 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Built-in effect 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Built-in effect 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Built-in effect 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Built-in effect 6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Built-in effect 7",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Built-in effect 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Built-in effect 9",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Built-in effect 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Built-in effect 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Built-in effect 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Built-in effect 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Built-in effect 14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Built-in effect 15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Built-in effect 16",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "Built-in effect 17",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "Built-in effect 18",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "Built-in effect 19",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "Built-in effect 20",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "Built-in effect 21",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Built-in effect 22",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Built-in effect 23",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Built-in effect 24",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "Built-in effect 25",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Built-in effect 26",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Built-in effect 27",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Built-in effect 28",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Built-in effect 29",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Built-in effect 30",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "Built-in effect 31",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Built-in effect 32",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Built-in effect 33",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "Built-in effect 34",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "Built-in effect 35",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "Built-in effect 36",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "Built-in effect 37",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "Built-in effect 38",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "Built-in effect 39",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "Built-in effect 40",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "Built-in effect 41",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Built-in effect 42",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Built-in effect 43",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Built-in effect 44",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "Built-in effect 45",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Built-in effect 46",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "Built-in effect 47",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "Built-in effect 48",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "Built-in effect 49",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "Built-in effect 50",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Built-in effect 51",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Built-in effect 52",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Built-in effect 53",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Built-in effect 54",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Built-in effect 55",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Built-in effect 56",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Built-in effect 57",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Built-in effect 58",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Built-in effect 59",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "Built-in effect 60",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "Built-in effect 61",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Built-in effect 62",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [71, 255],
+          "type": "Effect",
+          "effectName": "Lighting off",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Fade": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": 0,
+        "durationEnd": 1,
+        "comment": "Dilute"
+      }
+    },
+    "R 5": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Effect Red"
+      }
+    },
+    "G 5": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Effect Green"
+      }
+    },
+    "B 5": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Effect Blue"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Effect White"
+      }
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1,
+        "comment": "Effect dimmer 0 - 100%"
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1,
+        "comment": "Background dimmer 0 - 100%"
+      }
+    },
+    "FX1 Adjust1": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 1,
+        "comment": "Pattern change"
+      }
+    },
+    "FX1 Pos": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg",
+        "comment": "Pattern translation"
+      }
+    },
+    "Sh1 3": {
+      "name": "Sh1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Lighting off"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Sync strobe slow > fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Pulse strobe slow > fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "5Hz",
+          "randomTiming": true,
+          "comment": "Random slow"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "5Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true,
+          "comment": "Random medium"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "10Hz",
+          "speedEnd": "15Hz",
+          "randomTiming": true,
+          "comment": "Random fast"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        }
+      ]
+    },
+    "Sh1 4": {
+      "name": "Sh1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Lighting off"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Sync strobe slow > fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Pulse strobe slow > fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "5Hz",
+          "randomTiming": true,
+          "comment": "Random slow"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "5Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true,
+          "comment": "Random medium"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "10Hz",
+          "speedEnd": "15Hz",
+          "randomTiming": true,
+          "comment": "Random fast"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Light up"
+        }
+      ]
+    },
+    "FX2 2": {
+      "name": "FX2",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Background select",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "R 6": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R1"
+      }
+    },
+    "G 6": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G1"
+      }
+    },
+    "B 6": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B1"
+      }
+    },
+    "White 5": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W1"
+      }
+    },
+    "R 7": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R2"
+      }
+    },
+    "G 7": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G2"
+      }
+    },
+    "B 7": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B2"
+      }
+    },
+    "White 6": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W2"
+      }
+    },
+    "R 8": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R3"
+      }
+    },
+    "G 8": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G3"
+      }
+    },
+    "B 8": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B3"
+      }
+    },
+    "White 7": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W3"
+      }
+    },
+    "R 9": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R4"
+      }
+    },
+    "G 9": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G4"
+      }
+    },
+    "B 9": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B4"
+      }
+    },
+    "White 8": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W4"
+      }
+    },
+    "R 10": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R5"
+      }
+    },
+    "G 10": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G5"
+      }
+    },
+    "B 10": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B5"
+      }
+    },
+    "White 9": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W5"
+      }
+    },
+    "R 11": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R6"
+      }
+    },
+    "G 11": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G6"
+      }
+    },
+    "B 11": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B6"
+      }
+    },
+    "White 10": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W6"
+      }
+    },
+    "R 12": {
+      "name": "R",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R7"
+      }
+    },
+    "G 12": {
+      "name": "G",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G7"
+      }
+    },
+    "B 12": {
+      "name": "B",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B7"
+      }
+    },
+    "White 11": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W7"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "30CH",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Pos MSpeed",
+        "Zoom",
+        "Prism1 Pos",
+        "Dim",
+        "Sh1",
+        "R",
+        "G",
+        "B",
+        "White",
+        "CTO",
+        "Color Macro1",
+        "FX1",
+        "FX2",
+        "FX1 Rate",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 2",
+        "Ctrl1",
+        "Dim 2",
+        "Sh1 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "FX1 2",
+        "FX1 Rate 2"
+      ]
+    },
+    {
+      "name": "42CH",
+      "channels": [
+        "R 4",
+        "R 4 fine",
+        "G 4",
+        "G 4 fine",
+        "B 4",
+        "B 4 fine",
+        "White 3",
+        "White 3 fine",
+        "CTO",
+        "Color Macro1",
+        "Sh1",
+        "Dim 3",
+        "Dim 3 fine",
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Function",
+        "Ctrl1",
+        "Zoom",
+        "Prism1 Pos",
+        "FX1 3",
+        "FX1 Rate",
+        "FX1 Fade",
+        "R 5",
+        "G 5",
+        "B 5",
+        "White 4",
+        "Dim 4",
+        "Dim 5",
+        "FX1 Adjust1",
+        "FX1 Pos",
+        "Sh1 3",
+        "Sh1 4",
+        "FX2 2",
+        "Dim 2",
+        "Sh1 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "FX1 2",
+        "FX1 Rate 2"
+      ]
+    },
+    {
+      "name": "58CH",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Pos MSpeed",
+        "Zoom",
+        "Prism1 Pos",
+        "Dim",
+        "Sh1",
+        "R",
+        "G",
+        "B",
+        "White",
+        "CTO",
+        "Color Macro1",
+        "FX1",
+        "FX2",
+        "FX1 Rate",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 2",
+        "Ctrl1",
+        "Dim 2",
+        "Sh1 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "FX1 2",
+        "FX1 Rate 2",
+        "R 6",
+        "G 6",
+        "B 6",
+        "White 5",
+        "R 7",
+        "G 7",
+        "B 7",
+        "White 6",
+        "R 8",
+        "G 8",
+        "B 8",
+        "White 7",
+        "R 9",
+        "G 9",
+        "B 9",
+        "White 8",
+        "R 10",
+        "G 10",
+        "B 10",
+        "White 9",
+        "R 11",
+        "G 11",
+        "B 11",
+        "White 10",
+        "R 12",
+        "G 12",
+        "B 12",
+        "White 11"
+      ]
+    }
+  ]
+}
