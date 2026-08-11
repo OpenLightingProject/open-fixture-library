@@ -1,35 +1,35 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "P3 Color",
+  "name": "G3 Color",
   "categories": ["Dimmer", "Color Changer"],
   "helpWanted": "Please add the missing modes 8, 16, 56, 58-62, 69, 71-77.",
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2021-08-04",
+    "createDate": "2024-04-10",
     "lastModifyDate": "2024-04-10"
   },
   "links": {
     "manual": [
-      "https://fiilex.com/downloads/P3/5870148-005_A2_USER%20GUIDE%20for%20P3%20COLOR.pdf",
-      "https://fiilex.com/downloads/DMX/DMX_Mapping_Color_Series_210903A.pdf"
+      "https://fiilex.com/downloads/G3/DATASHEET%20for%20G3%20COLOR.pdf",
+      "https://fiilex.com/downloads/Fiilex_Profiles/DMX_Mapping_Color_Series_20240327A.pdf"
     ],
     "productPage": [
-      "https://fiilex.com/products/P3_Color.php"
+      "https://fiilex.com/products/G3_Color.php"
     ]
   },
   "rdm": {
-    "modelId": 48
+    "modelId": 58
   },
   "physical": {
-    "dimensions": [119, 142, 206],
-    "weight": 0.84,
+    "dimensions": [366, 218, 278],
+    "weight": 6.7,
     "power": 90,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [20, 65]
+      "degreesMinMax": [19, 50]
     }
   },
   "availableChannels": {
