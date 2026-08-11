@@ -1,38 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Skypanel S30C",
+  "name": "Orbiter",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
-    "authors": ["Jean-François Losson", "JonahKr", "Dyami Caliri"],
-    "createDate": "2018-10-17",
-    "lastModifyDate": "2022-08-10"
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-03-01",
+    "lastModifyDate": "2023-03-01"
   },
   "links": {
     "manual": [
-      "https://www.arri.com/resource/blob/31208/e3a435411261f80aee556508014ce2dd/arri-skypanel-user-manual-en-nov2018-l03301-data.pdf",
-      "https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf"
+      "https://www.arri.com/resource/blob/294120/1e4261476a297dd1ff2576e9ad8b5c1f/arri-orbiter-data-sheet-en-sep2022-2-data.pdf",
+      "https://www.arri.com/resource/blob/306142/c563bed1e5ac8c3d9d91fe0855f47c27/l5-0037960-arri-orbiter-dmx-mode-specification-en-v5-0-jul2022-data.pdf"
     ],
     "productPage": [
-      "https://www.arri.com/en/lighting/led-panel-lights/skypanel-classic/s30-c"
+      "https://www.arri.com/en/lighting/led/orbiter"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=Qq9xhKwpZqc"
+      "https://www.youtube.com/watch?v=oCkh0DAXjms",
+      "https://www.youtube.com/watch?v=3Q8W6XnOr_g"
     ]
   },
-  "rdm": {
-    "modelId": 514,
-    "softwareVersion": "4.1"
-  },
   "physical": {
-    "dimensions": [499, 133, 397],
-    "weight": 8,
-    "power": 220,
+    "dimensions": [410, 305, 330],
+    "weight": 11.7,
+    "power": 500,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
-    },
-    "lens": {
-      "degreesMinMax": [115, 115]
     }
   },
   "availableChannels": {
@@ -49,8 +43,8 @@
       "fineChannelAliases": ["Color Temperature fine"],
       "capability": {
         "type": "ColorTemperature",
-        "colorTemperatureStart": "2800K",
-        "colorTemperatureEnd": "10000K"
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K"
       }
     },
     "Green-Magenta Point 8bit": {
@@ -105,12 +99,12 @@
           "comment": "Full minus green"
         },
         {
-          "dmxRange": [9831, 30146],
+          "dmxRange": [9831, 30145],
           "type": "Generic",
           "comment": "-99%…-1%"
         },
         {
-          "dmxRange": [30147, 39976],
+          "dmxRange": [30146, 39976],
           "type": "Generic",
           "comment": "Neutral"
         },
@@ -126,8 +120,40 @@
         }
       ]
     },
-    "Cross Fade to Color": {
-      "fineChannelAliases": ["Cross Fade to Color fine"],
+    "X Coordinate": {
+      "fineChannelAliases": ["X Coordinate fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Y Coordinate": {
+      "fineChannelAliases": ["Y Coordinate fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "X2 Coordinate": {
+      "fineChannelAliases": ["X2 Coordinate fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Y2 Coordinate": {
+      "fineChannelAliases": ["Y2 Coordinate fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Crossfade to Color": {
+      "fineChannelAliases": ["Crossfade to Color fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
@@ -182,191 +208,6 @@
         "comment": "0…100%"
       }
     },
-    "Fan Control": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "NoFunction",
-          "comment": "Use Fan Mode of Fixture Menu"
-        },
-        {
-          "dmxRange": [10, 57],
-          "type": "Maintenance",
-          "comment": "Quiet, Fan speed fixed"
-        },
-        {
-          "dmxRange": [58, 105],
-          "type": "Maintenance",
-          "comment": "Variable, Fan speed variable"
-        },
-        {
-          "dmxRange": [106, 153],
-          "type": "Maintenance",
-          "comment": "High Temp, Fan speed fixed"
-        },
-        {
-          "dmxRange": [154, 201],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [202, 249],
-          "type": "Maintenance",
-          "comment": "Fan At Full Speed"
-        },
-        {
-          "dmxRange": [250, 250],
-          "type": "NoFunction",
-          "helpWanted": "Is this capability really here? Or is it just a typo in the manual?"
-        },
-        {
-          "dmxRange": [251, 255],
-          "type": "Maintenance",
-          "comment": "Fan off"
-        }
-      ]
-    },
-    "Presets": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 11],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [12, 23],
-          "type": "ColorPreset",
-          "comment": "Preset 01 - User Defined"
-        },
-        {
-          "dmxRange": [24, 35],
-          "type": "ColorPreset",
-          "comment": "Preset 02 - User Defined"
-        },
-        {
-          "dmxRange": [36, 47],
-          "type": "ColorPreset",
-          "comment": "Preset 03 - User Defined"
-        },
-        {
-          "dmxRange": [48, 59],
-          "type": "ColorPreset",
-          "comment": "Preset 04 - User Defined"
-        },
-        {
-          "dmxRange": [60, 71],
-          "type": "ColorPreset",
-          "comment": "Preset 05 - User Defined"
-        },
-        {
-          "dmxRange": [72, 83],
-          "type": "ColorPreset",
-          "comment": "Preset 06 - User Defined"
-        },
-        {
-          "dmxRange": [84, 95],
-          "type": "ColorPreset",
-          "comment": "Preset 07 - User Defined"
-        },
-        {
-          "dmxRange": [96, 107],
-          "type": "ColorPreset",
-          "comment": "Preset 08 - User Defined"
-        },
-        {
-          "dmxRange": [108, 119],
-          "type": "ColorPreset",
-          "comment": "Preset 09 - User Defined"
-        },
-        {
-          "dmxRange": [120, 131],
-          "type": "ColorPreset",
-          "comment": "Preset 10 - User Defined"
-        },
-        {
-          "dmxRange": [132, 143],
-          "type": "ColorPreset",
-          "colorTemperature": "2900K",
-          "comment": "Preset 01",
-          "colors": ["#ffb165"]
-        },
-        {
-          "dmxRange": [144, 155],
-          "type": "ColorPreset",
-          "colorTemperature": "3200K",
-          "comment": "Preset 02",
-          "colors": ["#ffbb78"]
-        },
-        {
-          "dmxRange": [156, 167],
-          "type": "ColorPreset",
-          "colorTemperature": "5600K",
-          "comment": "Preset 03",
-          "colors": ["#ffe8d5"]
-        },
-        {
-          "dmxRange": [168, 179],
-          "type": "ColorPreset",
-          "colorTemperature": "6500K",
-          "comment": "Preset 04",
-          "colors": ["#fff9fd"]
-        },
-        {
-          "dmxRange": [180, 191],
-          "type": "ColorPreset",
-          "comment": "Preset 05 - 120° Hue, 100% Saturation"
-        },
-        {
-          "dmxRange": [192, 203],
-          "type": "ColorPreset",
-          "comment": "Preset 06 - 240° Hue, 100% Saturation"
-        },
-        {
-          "dmxRange": [204, 215],
-          "type": "ColorPreset",
-          "comment": "Preset 07 - Rosco 3408",
-          "colorTemperature": "5600K",
-          "colors": ["#fcc286"]
-        },
-        {
-          "dmxRange": [216, 227],
-          "type": "ColorPreset",
-          "comment": "Preset 08 - Lee 187",
-          "colorTemperature": "3200K",
-          "colors": ["#f5e4d7"]
-        },
-        {
-          "dmxRange": [228, 239],
-          "type": "ColorPreset",
-          "comment": "Preset 09 - Rosco 3152",
-          "colorTemperature": "3200K",
-          "colors": ["#f5802c"]
-        },
-        {
-          "dmxRange": [240, 255],
-          "type": "ColorPreset",
-          "comment": "Preset 10 - Lee 162",
-          "colorTemperature": "3200K",
-          "colors": ["#fcded8"]
-        }
-      ]
-    },
-    "Strobe": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 19],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [20, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "25Hz"
-        }
-      ]
-    },
     "Crossfade to gel": {
       "fineChannelAliases": ["Crossfade to gel fine"],
       "defaultValue": 0,
@@ -375,61 +216,24 @@
         "comment": "Gel 1 … Gel 2"
       }
     },
-    "Gel Transition Type": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 51],
-          "type": "Maintenance",
-          "comment": "Direct"
-        },
-        {
-          "dmxRange": [52, 102],
-          "type": "Maintenance",
-          "comment": "Through White Point"
-        },
-        {
-          "dmxRange": [103, 153],
-          "type": "Maintenance",
-          "comment": "Through Black Point"
-        },
-        {
-          "dmxRange": [154, 204],
-          "type": "Maintenance",
-          "comment": "Over White Point"
-        },
-        {
-          "dmxRange": [205, 255],
-          "type": "Maintenance",
-          "comment": "Under White Point"
-        }
-      ]
-    },
     "Gel 1, CCT": {
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "ColorTemperature",
-          "colorTemperature": "3200K"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "ColorTemperature",
-          "colorTemperature": "5600K"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K"
+      }
     },
     "Gel 1, Color Matching": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 84],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "Best Color"
         },
         {
-          "dmxRange": [85, 170],
+          "dmxRange": [128, 170],
           "type": "Maintenance",
           "comment": "Brightest"
         },
@@ -2545,29 +2349,22 @@
     },
     "Gel 2, CCT": {
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "ColorTemperature",
-          "colorTemperature": "3200K"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "ColorTemperature",
-          "colorTemperature": "5600K"
-        }
-      ]
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K"
+      }
     },
     "Gel 2, Color Matching": {
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 84],
+          "dmxRange": [0, 127],
           "type": "Maintenance",
           "comment": "Best Color"
         },
         {
-          "dmxRange": [85, 170],
+          "dmxRange": [128, 170],
           "type": "Maintenance",
           "comment": "Brightest"
         },
@@ -4681,6 +4478,229 @@
         }
       ]
     },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Use Fan Mode of Fixture Menu"
+        },
+        {
+          "dmxRange": [10, 57],
+          "type": "Maintenance",
+          "comment": "Quiet, Fan speed fixed"
+        },
+        {
+          "dmxRange": [58, 105],
+          "type": "Maintenance",
+          "comment": "Variable, Fan speed variable"
+        },
+        {
+          "dmxRange": [106, 153],
+          "type": "Maintenance",
+          "comment": "High Temp, Fan speed fixed"
+        },
+        {
+          "dmxRange": [154, 201],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [202, 249],
+          "type": "Maintenance",
+          "comment": "Fan At Full Speed"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "NoFunction",
+          "helpWanted": "Is this capability really here? Or is it just a typo in the manual?"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Favorites": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Maintenance",
+          "comment": "Favorite"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 1"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 2"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 3"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 4"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 5"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 6"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 7"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 8"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 9"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "comment": "Load DMX Preset 10"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "comment": "High Speed Mode Off"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "comment": "High Speed Mode On"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "DMX Dimmer Smoothing Off"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "comment": "DMX Dimmer Smoothing On"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "comment": "Unlink CRMX"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "High CRI Vari Fan"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "comment": "High Output"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "comment": "Low Noise"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "ARRI ALEXA Vari Fan"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "comment": "ARRI ALEXA High Temp"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "comment": "ARRI ALEXA Low Noise"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Maintenance",
+          "comment": "Tungsten Mode Off"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Maintenance",
+          "comment": "Tungsten Mode On"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Maintenance",
+          "comment": "Exponential Dimming Curve"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimming Curve"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Maintenance",
+          "comment": "Linear Dimming Curve"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Maintenance",
+          "comment": "S Dimming Curve"
+        },
+        {
+          "dmxRange": [155, 255],
+          "type": "Maintenance",
+          "comment": "Reserved (No Function)"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
     "Reserved for future use": {
       "capability": {
         "type": "NoFunction"
@@ -4695,15 +4715,15 @@
         "Dimmer",
         "Color Temperature",
         "Green-Magenta Point 8bit",
-        "Cross Fade to Color",
+        "Crossfade to Color",
         "Red",
         "Green",
         "Blue",
         "White",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4714,9 +4734,9 @@
         "Color Temperature",
         "Green-Magenta Point 8bit",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4726,13 +4746,13 @@
         "Dimmer",
         "Color Temperature",
         "Green-Magenta Point 8bit",
-        "Cross Fade to Color",
+        "Crossfade to Color",
         "Hue",
         "Saturation",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4745,9 +4765,9 @@
         "Blue",
         "White",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4758,9 +4778,9 @@
         "Hue",
         "Saturation",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4773,8 +4793,8 @@
         "Color Temperature fine",
         "Green-Magenta Point 16bit",
         "Green-Magenta Point 16bit fine",
-        "Cross Fade to Color",
-        "Cross Fade to Color fine",
+        "Crossfade to Color",
+        "Crossfade to Color fine",
         "Red",
         "Red fine",
         "Green",
@@ -4784,9 +4804,9 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4800,9 +4820,9 @@
         "Green-Magenta Point 16bit",
         "Green-Magenta Point 16bit fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4815,16 +4835,16 @@
         "Color Temperature fine",
         "Green-Magenta Point 16bit",
         "Green-Magenta Point 16bit fine",
-        "Cross Fade to Color",
-        "Cross Fade to Color fine",
+        "Crossfade to Color",
+        "Crossfade to Color fine",
         "Hue",
         "Hue fine",
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4842,9 +4862,9 @@
         "White",
         "White fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4858,104 +4878,9 @@
         "Saturation",
         "Saturation fine",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P11: CCT & RGBW 8/16bit",
-      "shortName": "P11",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
-        "Color Temperature fine",
-        "Green-Magenta Point 8bit",
-        "Cross Fade to Color",
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P12: CCT 8/16bit",
-      "shortName": "P12",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
-        "Color Temperature fine",
-        "Green-Magenta Point 8bit",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P13: CCT & HSI 8/16bit",
-      "shortName": "P13",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Color Temperature",
-        "Color Temperature fine",
-        "Green-Magenta Point 8bit",
-        "Cross Fade to Color",
-        "Hue",
-        "Hue fine",
-        "Saturation",
-        "Saturation fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P14: RGBW 8/16bit",
-      "shortName": "P14",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
-      ]
-    },
-    {
-      "name": "P15: HSI 8/16bit",
-      "shortName": "P15",
-      "channels": [
-        "Dimmer",
-        "Dimmer fine",
-        "Hue",
-        "Hue fine",
-        "Saturation",
-        "Saturation fine",
-        "Fan Control",
-        "Presets",
-        "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4974,11 +4899,11 @@
         "Gel 2, Brand",
         "Gel 2, Category",
         "Gel 2",
-        "Gel Transition Type",
+        "Reserved for future use",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
       ]
     },
     {
@@ -4999,11 +4924,51 @@
         "Gel 2, Brand",
         "Gel 2, Category",
         "Gel 2",
-        "Gel Transition Type",
+        "Reserved for future use",
         "Fan Control",
-        "Presets",
+        "Favorites",
         "Strobe",
-        "Reserved for future use"
+        "Control"
+      ]
+    },
+    {
+      "name": "P18: x,y 8bit",
+      "shortName": "P18",
+      "channels": [
+        "Dimmer",
+        "X Coordinate",
+        "Y Coordinate",
+        "Crossfade to Color",
+        "X2 Coordinate",
+        "Y2 Coordinate",
+        "Reserved for future use",
+        "Fan Control",
+        "Favorites",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "P19: x,y 16bit",
+      "shortName": "P19",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "X Coordinate",
+        "X Coordinate fine",
+        "Y Coordinate",
+        "Y Coordinate fine",
+        "Crossfade to Color",
+        "Crossfade to Color fine",
+        "X2 Coordinate",
+        "X2 Coordinate fine",
+        "Y2 Coordinate",
+        "Y2 Coordinate fine",
+        "Reserved for future use",
+        "Fan Control",
+        "Favorites",
+        "Strobe",
+        "Control"
       ]
     }
   ]
