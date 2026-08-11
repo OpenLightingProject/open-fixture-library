@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dyno 650C",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Jakub"],
+    "createDate": "2023-08-08",
+    "lastModifyDate": "2023-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolightdirect.co.uk/wp-content/uploads/Dyno-650C%EF%BC%8FDyno-1200C-DMX-REFERENCE-GUIDE（V1-20201012）-002.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green/Magenta": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colour Crossfade": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green/Magenta",
+        "Colour Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
