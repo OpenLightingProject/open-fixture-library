@@ -1,0 +1,282 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W RGB Light 8-Segment LED Stage Effect",
+  "shortName": "200W RGB FLASH",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Kemelion"],
+    "createDate": "2026-05-19",
+    "lastModifyDate": "2026-05-19"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/14GfBPoEyHW0PF3pqgLK_tutUzqxz38_C/view"
+    ],
+    "productPage": [
+      "https://shehds.com/products/new-arrival-led-200w-rgb-marquee-strobe-light-8-segments-suitable-for-night-clubdjwedding?_pos=1&_sid=13cf78047&_ss=r&variant=43003534835765"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=SGNU0QI6k5k"
+    ]
+  },
+  "physical": {
+    "dimensions": [401, 216, 99],
+    "weight": 2.95,
+    "power": 216,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Color Macro"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 4": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 5": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 6": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 7": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 8": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 9": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 10": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 11": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 12": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 13": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 14": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 15": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 16": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 17": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 18": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 19": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 20": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 21": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 22": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 23": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer 24": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer 25": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24ch",
+      "shortName": "24ch",
+      "channels": [
+        "Dimmer 4",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 5",
+        "Dimmer 6",
+        "Dimmer 7",
+        "Dimmer 8",
+        "Dimmer 9",
+        "Dimmer 10",
+        "Dimmer 11",
+        "Dimmer 12",
+        "Dimmer 13",
+        "Dimmer 14",
+        "Dimmer 15",
+        "Dimmer 16",
+        "Dimmer 17",
+        "Dimmer 18",
+        "Dimmer 19",
+        "Dimmer 20",
+        "Dimmer 21",
+        "Dimmer 22",
+        "Dimmer 23",
+        "Dimmer 24",
+        "Dimmer 25"
+      ]
+    }
+  ]
+}
