@@ -1,0 +1,529 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DMX 2-in-1 Spot & Animation LED Moving Head -  MHSPOT30-FX",
+  "shortName": "MHSPOT30-FX",
+  "categories": ["Moving Head", "Color Changer", "Effect", "Strobe", "Other", "Dimmer"],
+  "meta": {
+    "authors": ["Juno"],
+    "createDate": "2024-03-16",
+    "lastModifyDate": "2024-03-16"
+  },
+  "links": {
+    "manual": [
+      "https://lotronic.net/gb/index.php?controller=attachment&id_attachment=562"
+    ],
+    "productPage": [
+      "https://lotronic.net/gb/spot-moving-head/782-MHSPOT30-FX-5420047136060.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=QSGhq3HJn88"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 300, 145],
+    "weight": 2.65,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "30W white 4in1 LED, 12pcs 5050 RGB 3in1 LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 13]
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [9, 17],
+          "type": "ColorPreset",
+          "comment": "White + Color 1"
+        },
+        {
+          "dmxRange": [18, 26],
+          "type": "ColorPreset",
+          "comment": "Color 1"
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "ColorPreset",
+          "comment": "Color 1 + Color 2"
+        },
+        {
+          "dmxRange": [36, 44],
+          "type": "ColorPreset",
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [45, 53],
+          "type": "ColorPreset",
+          "comment": "Color 2 + Color 3"
+        },
+        {
+          "dmxRange": [54, 62],
+          "type": "ColorPreset",
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "ColorPreset",
+          "comment": "Color 3 + Color 4"
+        },
+        {
+          "dmxRange": [72, 80],
+          "type": "ColorPreset",
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [81, 89],
+          "type": "ColorPreset",
+          "comment": "Color 4 + Color 5"
+        },
+        {
+          "dmxRange": [90, 98],
+          "type": "ColorPreset",
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [99, 107],
+          "type": "ColorPreset",
+          "comment": "Color 5 + Color 6"
+        },
+        {
+          "dmxRange": [108, 116],
+          "type": "ColorPreset",
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [117, 125],
+          "type": "ColorPreset",
+          "comment": "Color 6 + Color 7"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "ColorPreset",
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "ColorPreset",
+          "comment": "Color Wheel Clockwise rotation from fast to slow"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorPreset",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "ColorPreset",
+          "comment": "Color Wheel Counterclockwise rotation from slow to fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "White Shake"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "comment": "Gobo 1 Shake"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "comment": "Gobo 2 Shake"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "comment": "Gobo 3 Shake"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "comment": "Gobo 4 Shake"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "comment": "Gobo 5 Shake"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "comment": "Gobo 6 Shake"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "comment": "Gobo 7 Shake"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Gobo Scroll"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Gobo Scroll"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "StrobeSpeed",
+          "speed": "0%",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Halo Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "Closed"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "Effect",
+          "effectName": "Part 1 Red"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "Effect",
+          "effectName": "Part 1 Green"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "Effect",
+          "effectName": "Part 1 Blue"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "Effect",
+          "effectName": "Part 2 Red"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "Effect",
+          "effectName": "Part 2 Green"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "Effect",
+          "effectName": "Part 2 Blue"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "Effect",
+          "effectName": "Part 3 Red"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "Effect",
+          "effectName": "Part 3 Green"
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "Effect",
+          "effectName": "Part 3 Blue"
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "Effect",
+          "effectName": "Part 4 Red"
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "Effect",
+          "effectName": "Part 4 Green"
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "Effect",
+          "effectName": "Part 4 Blue"
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "Effect",
+          "effectName": "Opposite Two Part Red"
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "Effect",
+          "effectName": "Opposite Two Part Green"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "Effect",
+          "effectName": "Opposite Two Part Blue"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "Effect",
+          "effectName": "The other Opposite Two Part Red"
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "Effect",
+          "effectName": "Opposite Two Part Green"
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "Effect",
+          "effectName": "Opposite Two Part Blue"
+        },
+        {
+          "dmxRange": [114, 119],
+          "type": "Effect",
+          "effectName": "All Red"
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "Effect",
+          "effectName": "All Green"
+        },
+        {
+          "dmxRange": [126, 131],
+          "type": "Effect",
+          "effectName": "All Blue"
+        },
+        {
+          "dmxRange": [132, 179],
+          "type": "Effect",
+          "effectName": "All Full Color"
+        },
+        {
+          "dmxRange": [180, 217],
+          "type": "Effect",
+          "effectName": "Color Gradual Change"
+        },
+        {
+          "dmxRange": [218, 255],
+          "type": "Effect",
+          "effectName": "Color Jump Change"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [28, 82],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "100%"
+        },
+        {
+          "dmxRange": [83, 112],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [113, 168],
+          "type": "Generic",
+          "comment": "Auto Run"
+        },
+        {
+          "dmxRange": [169, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Pan Fine"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg",
+        "comment": "Tilt Fine"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Halo Effect",
+        "Auto Mode"
+      ]
+    },
+    {
+      "name": "11 Channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Halo Effect",
+        "Auto Mode"
+      ]
+    }
+  ]
+}
