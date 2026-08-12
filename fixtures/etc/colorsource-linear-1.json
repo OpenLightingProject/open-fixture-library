@@ -1,0 +1,155 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorSource Linear 1",
+  "categories": ["Pixel Bar", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["KAILASH"],
+    "createDate": "2022-01-07",
+    "lastModifyDate": "2022-01-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737494637"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/ColorSource-Linear/Features.aspx"
+    ],
+    "video": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/ColorSource-Linear/Features.aspx"
+    ]
+  },
+  "physical": {
+    "dimensions": [499, 109, 153],
+    "weight": 5.1,
+    "power": 112,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "40 Lumileds LUXEON® Z LEDs (per segment)",
+      "lumens": 3039
+    },
+    "lens": {
+      "degreesMinMax": [15.6, 15.6]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "highlightValue": 254,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "33Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "No Strobe"
+        }
+      ]
+    },
+    "Lime": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Direct",
+      "shortName": "dir",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "rgb",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
