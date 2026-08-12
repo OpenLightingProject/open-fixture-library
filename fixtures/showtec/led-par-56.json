@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Par 56",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Heiko Fanieng", "DatSori"],
+    "createDate": "2024-02-19",
+    "lastModifyDate": "2024-02-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-02-19",
+      "comment": "created by Q Light Controller Plus (version 4.11.2 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [223, 215, 220],
+    "weight": 1.56,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Full Color": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Strobe and Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "comment": "Strobe and speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "RGB Control"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "7 Color Fade"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "7 color change"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "music controlled"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Full Color",
+        "Strobe and Speed",
+        "Mode"
+      ]
+    }
+  ]
+}
