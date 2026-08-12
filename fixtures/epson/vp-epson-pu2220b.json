@@ -1,0 +1,565 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VP Epson PU2220B",
+  "shortName": "PU2220B",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["steward05"],
+    "createDate": "2024-01-28",
+    "lastModifyDate": "2024-01-28"
+  },
+  "comment": "Control Artnet PU2220B Epson Video Projector",
+  "links": {
+    "productPage": [
+      "https://www.epson.fr/fr_FR/produits/projecteurs/projecteurs-d%E2%80%99installation/eb-pu2220b/p/34365"
+    ]
+  },
+  "physical": {
+    "dimensions": [586, 218, 492],
+    "weight": 24.4,
+    "power": 1143,
+    "bulb": {
+      "type": "Laser tri-LCD",
+      "lumens": 20000
+    },
+    "lens": {
+      "name": "ELPL"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Adjusts the image brightness"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
+    },
+    "Switch source": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "HDMI"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "HD-BasteT"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "DVI-D"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "SDI"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Computer"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "LAN"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "USB"
+        },
+        {
+          "dmxRange": [104, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    },
+    "Lens Position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Move to home position"
+        },
+        {
+          "dmxRange": [64, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    },
+    "Horizontal Lens Shift": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (large)"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "Generic",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (large)"
+        }
+      ]
+    },
+    "Vertical Lens Shift": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (large)"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (meidum)"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (meidum)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (large)"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (large)"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (large)"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (large)"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (large)"
+        }
+      ]
+    },
+    "Distorsion": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (large)"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(+) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (small)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (medium)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(-) lens adjustment (large)"
+        }
+      ]
+    },
+    "Lens Memory": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Generic",
+          "comment": "Memory 1"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Generic",
+          "comment": "Memory 2"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Generic",
+          "comment": "Memory 3"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "Memory 4"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "Memory 5"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "Memory 6"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Generic",
+          "comment": "Memory 7"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "Memory 8"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Generic",
+          "comment": "Memory 9"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Generic",
+          "comment": "Memory 10"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    },
+    "Power Control": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Power off"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Power on"
+        }
+      ]
+    },
+    "Geometry Correction": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Non-operational"
+      }
+    },
+    "Artnet Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "ArtNet disabled"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "ArtNet enabled"
+        }
+      ]
+    },
+    "Freeze": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "Generic",
+          "comment": "Freeze off"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "Generic",
+          "comment": "Freeze on"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    },
+    "Fade-in (shutter)": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Generic",
+          "comment": "Fade in"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    },
+    "Fade-out (shutter)": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Generic",
+          "comment": "Fade out"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    },
+    "Light Source Control": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Content playback": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        },
+        {
+          "dmxRange": [4, 203],
+          "type": "Generic",
+          "comment": "Playlist #"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "NoFunction",
+          "comment": "Non-operational"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "ArtNet",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Switch source",
+        "Lens Position",
+        "Horizontal Lens Shift",
+        "Vertical Lens Shift",
+        "Zoom",
+        "Focus",
+        "Distorsion",
+        "Lens Memory",
+        "Power Control",
+        "Geometry Correction",
+        "Artnet Control",
+        "Freeze",
+        "Fade-in (shutter)",
+        "Fade-out (shutter)",
+        "Light Source Control",
+        "Content playback"
+      ]
+    }
+  ]
+}
