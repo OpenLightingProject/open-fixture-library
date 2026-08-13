@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dream Barr",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["boch"],
+    "createDate": "2022-04-21",
+    "lastModifyDate": "2022-04-21"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=6U3XtMf9CoE"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 104, 140],
+    "weight": 3.3,
+    "power": 54,
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "Ext",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    }
+  ]
+}
