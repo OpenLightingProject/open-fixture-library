@@ -31,8 +31,8 @@ Return search results for given parameters.
   "categoriesQuery": [
     "string"
   ],
-  "channelsMinQuery": 0,
-  "channelsMaxQuery": 0,
+  "channelsMinQuery": 1,
+  "channelsMaxQuery": 1,
   "channelTypesQuery": [
     "string"
   ],
@@ -49,8 +49,8 @@ Return search results for given parameters.
 |searchQuery|body|string|true|none|
 |manufacturersQuery|body|[string]|true|none|
 |categoriesQuery|body|[string]|true|none|
-|channelsMinQuery|body|integer¦null|true|none|
-|channelsMaxQuery|body|integer¦null|true|none|
+|channelsMinQuery|body|integer,null|true|none|
+|channelsMaxQuery|body|integer,null|true|none|
 |channelTypesQuery|body|[string]|true|none|
 |colorsQuery|body|[string]|true|none|
 
