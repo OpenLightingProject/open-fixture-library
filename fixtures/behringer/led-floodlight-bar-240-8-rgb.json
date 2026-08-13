@@ -1,0 +1,449 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED FLOODLIGHT BAR 240-8 RGB",
+  "shortName": "Floodlight",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["CP Smit"],
+    "createDate": "2023-05-29",
+    "lastModifyDate": "2023-05-29"
+  },
+  "links": {
+    "manual": [
+      "https://mediadl.musictribe.com/media/PLM/data/docs/P0E67/LED-FLOODLIGHT-BAR-240-8-RGB_QSG_WW.pdf"
+    ],
+    "productPage": [
+      "https://www.behringer.com/product.html?modelCode=P0E67"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4FXbs-0B1v4"
+    ]
+  },
+  "physical": {
+    "dimensions": [1120, 150, 150],
+    "weight": 1.85,
+    "power": 23,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 2250
+    }
+  },
+  "availableChannels": {
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "red+green"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "green+blue"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "red+blue"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "red+green+blue"
+        },
+        {
+          "dmxRange": [64, 231],
+          "type": "Effect",
+          "effectName": "Show Color"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "low",
+          "comment": "Sound color show"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Speed/Sound": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [64, 231],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Show color speed: slow to fast"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Full Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Led on / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "LED on"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction",
+          "comment": "LED Off"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "Effect",
+          "effectName": "Slow on slow off, speed: slow to fast"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "Effect",
+          "effectName": "Slow on fast off,speed: slow to fast"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "Effect",
+          "effectName": "Fast on slow off, speed: slow to fast"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "Effect",
+          "effectName": "Random strobe, speed: slow to fast"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Effect",
+          "effectName": "Lightning strobe, speed: slow to fast"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "Effect",
+          "effectName": "Fixed frequency strobe, speed: slow to fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "LED On"
+        }
+      ]
+    },
+    "R1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B5": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B6": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B7": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED On/Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "LED On"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction",
+          "comment": "LED Off"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "Effect",
+          "effectName": "Slow on slow off, speed: slow to fast"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "Effect",
+          "effectName": "Slow on fast off, speed: slow to fast"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "Effect",
+          "effectName": "Fast on slow off, speed: slow to fast"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random strobe, speed: slow to fast"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Lightning strobe, speed: slow to fast"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Fixed frequency strobe, speed: slow to fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "LED On"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2 channel",
+      "shortName": "2ch",
+      "channels": [
+        "Effect",
+        "Speed/Sound"
+      ]
+    },
+    {
+      "name": "3 channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Full Dimmer",
+        "Led on / Strobe"
+      ]
+    },
+    {
+      "name": "28 channel",
+      "shortName": "28ch",
+      "channels": [
+        "R1",
+        "G1",
+        "B1",
+        "R2",
+        "G2",
+        "B2",
+        "R3",
+        "G3",
+        "B3",
+        "R4",
+        "G4",
+        "B4",
+        "R5",
+        "G5",
+        "B5",
+        "R6",
+        "G6",
+        "B6",
+        "R7",
+        "G7",
+        "B7",
+        "R8",
+        "G8",
+        "B8",
+        "Full Dimmer",
+        "LED On/Strobe",
+        "Effect",
+        "Speed/Sound"
+      ]
+    }
+  ]
+}
