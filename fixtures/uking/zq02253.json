@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02253",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Mickytelford"],
+    "createDate": "2025-06-04",
+    "lastModifyDate": "2025-06-04"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/19pcs-focusing-19pcs15w-4-in-1-led-dmx512-moving-head-par-light-for-dj-karaoke-dance-hall-ktv-disco-bar/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8500
+    }
+  },
+  "availableChannels": {
+    "Pan 540": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 270": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "XY Speed from Fast to Slow": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Functional Mode": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Mode"
+      }
+    },
+    "Functional Mode Speed": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Functional Mode Speed"
+      }
+    },
+    "Pan F1ne": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pan Fine"
+      }
+    },
+    "Tilt F1ne": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Tilt Fine"
+      }
+    },
+    "Not Used": {
+      "capability": {
+        "type": "Generic",
+        "comment": "No Used"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Pan 540",
+        "Tilt 270",
+        "XY Speed from Fast to Slow",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom",
+        "Functional Mode",
+        "Functional Mode Speed",
+        "Pan F1ne",
+        "Tilt F1ne",
+        "Not Used",
+        "Reset"
+      ]
+    }
+  ]
+}
