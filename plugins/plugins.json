@@ -2,7 +2,8 @@
   "importPlugins": [
     "ecue",
     "gdtf",
-    "qlcplus_4.12.2"
+    "qlcplus_4.12.2",
+    "daslight"
   ],
   "exportPlugins": [
     "aglight",
@@ -109,6 +110,12 @@
         "fixture-tool-validation",
         "xsd-schema-conformity"
       ]
+    },
+    "daslight": {
+      "name": "Daslight (SSL)",
+      "importPluginVersion": "0.0.1",
+      "exportPluginVersion": "0.0.1",
+      "exportTests": []
     }
   }
 }
