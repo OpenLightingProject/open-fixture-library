@@ -61,6 +61,15 @@ Currently used to create matrix channels.</p>
 </dd>
 </dl>
 
+## Constants
+
+<dl>
+<dt><a href="#CHANNEL_TYPES">CHANNEL_TYPES</a> : <code>Array.&lt;string&gt;</code></dt>
+<dd><p>All possible values of <a href="#CoarseChannel+type">type</a>, except <code>Unknown</code> (which is only returned as a
+fallback and can&#39;t be searched for) and <code>NoFunction</code> (which is not a meaningful search criterion).</p>
+</dd>
+</dl>
+
 ## Typedefs
 
 <dl>
@@ -2680,6 +2689,13 @@ Creates a new WheelSlot instance.
 ### wheelSlot.ceilSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
 **Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the ceil (end) slot. Null for non-split slots.  
+<a name="CHANNEL_TYPES"></a>
+
+## CHANNEL\_TYPES : <code>Array.&lt;string&gt;</code>
+All possible values of [type](#CoarseChannel+type), except `Unknown` (which is only returned as a
+fallback and can't be searched for) and `NoFunction` (which is not a meaningful search criterion).
+
+**Kind**: global constant  
 <a name="Resolution"></a>
 
 ## Resolution : <code>number</code>
