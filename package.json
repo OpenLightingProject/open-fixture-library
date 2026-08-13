@@ -16,9 +16,10 @@
     "start": "nuxt start",
 
     "build": "npm run build-without-nuxt && npm run build:nuxt",
-    "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
+    "build-without-nuxt": "npm run build:register && npm run build:search-attributes && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
     "build:nuxt": "nuxt build",
     "build:register": "node cli/build-register.js",
+    "build:search-attributes": "node cli/build-search-attributes.js",
     "build:plugin-data": "node cli/build-plugin-data.js",
     "build:test-fixtures": "node cli/build-test-fixtures.js",
     "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
