@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "MaizeDMX",
+  "description": [
+    "<p><em>MaizeDMX</em> is a simple and easy to use DMX lighting control application for macOS and",
+    "Windows, aimed at beginner lighting operators and designers.</p>",
+
+    "<p>Fixtures are defined as JSON profiles that can be written by hand or downloaded as a",
+    "collection from the MaizeDMX website.</p>"
+  ],
+  "links": {
+    "Website": "https://www.maizesoft.com/dmx/",
+    "Fixture library download": "https://www.maizesoft.com/download/dmx/profiles.zip",
+    "Fixture format documentation": "https://www.maizesoft.com/download/dmx/document.pdf"
+  },
+  "fixtureUsage": [
+    "<p>Click the <em>Fixtures</em> page, then <em>Patch new fixture</em>, and use the browse button",
+    "to locate the downloaded profile JSON file.</p>"
+  ]
+}
