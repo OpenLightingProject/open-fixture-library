@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Geo LED",
+  "shortName": "gled",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["GeoSport"],
+    "createDate": "2023-01-21",
+    "lastModifyDate": "2023-01-21"
+  },
+  "comment": "White with dimmer",
+  "links": {
+    "productPage": [
+      "http://geosportlighting.com/led-scenes/clir-series-led/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
