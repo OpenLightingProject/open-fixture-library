@@ -1,0 +1,599 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rogue Outcast 1 Beam Wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Camden Benedict"],
+    "createDate": "2025-06-26",
+    "lastModifyDate": "2025-06-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2021/06/Rogue_Outcast_1_Beam_Wash_DMX_Chart_Rev5.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/rogue-outcast-1-beamwash/"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "260deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Ring Preset Color": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Center Preset Color": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Pattern": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Pattern"
+        }
+      ]
+    },
+    "LED Macro": {
+      "capability": {
+        "type": "Generic",
+        "comment": "LED Macro"
+      }
+    },
+    "LED Macro Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "LED Macro Delay": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Background Color": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Background Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Ring Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Center Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Ring Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [25, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "100%",
+          "speedEnd": "0%",
+          "randomTiming": true,
+          "comment": "Fading Strobe 100-0%"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Fading Strobe 0-100%"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Random Strobe"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "100%",
+          "speedEnd": "0%",
+          "randomTiming": true,
+          "comment": "Random Fading Strobe, 100-0%"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "randomTiming": true,
+          "comment": "Random Fading Strobe, 0-100%"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Pulse Strobe"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Random Pulse Strobe"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Random Pulse Strobe"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Center Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [25, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "100%",
+          "speedEnd": "0%"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "100%",
+          "speedEnd": "0%",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "soundControlled": true,
+          "speedStart": "100%",
+          "speedEnd": "0%"
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Generic",
+          "comment": "Blackout on pan/tilt"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "Preset Color HTP on"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "Preset Color HTP off"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "Reserved for Future Use"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "Synchronize Ring & Center LEDs"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic",
+          "comment": "De-synchronize Ring & Center LEDs"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Generic",
+          "comment": "Defrost Fan On"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "Defrost Fan Off"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "Reset Pan"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "Reset Tilt"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "Reset Zoom"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "Reserved For Future Use"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "Reset All"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "PWM 600 Hz"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "PWM 1200 Hz"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "PWM 2000 Hz"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "PWM 4000 Hz"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "PWM 6000 Hz"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Generic",
+          "comment": "PWM 15000 Hz"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Generic",
+          "comment": "Reserved for future use"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Generic",
+          "comment": "Red Shift On"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Generic",
+          "comment": "Red Shift Off"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Generic",
+          "comment": "Fan Mode Eco"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "Fan Mode Full"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Generic",
+          "comment": "Fan Mode Auto"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Generic",
+          "comment": "Dimmer Mode Fast"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Generic",
+          "comment": "Dimmer Mode Smooth"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Generic",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Generic",
+          "comment": "Square Dimmer Curve"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Generic",
+          "comment": "Inverse Square Dimmer Curve"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Generic",
+          "comment": "S-Curve Dimmer Curve"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Generic",
+          "comment": "White Mode"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Generic",
+          "comment": "Full Mode"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Generic",
+          "comment": "Single Color Calibration Off"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Generic",
+          "comment": "Single Color Calibration On"
+        },
+        {
+          "dmxRange": [185, 239],
+          "type": "Generic",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "Calibration On"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Calibration Off"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "CTC",
+        "Ring Preset Color",
+        "Center Preset Color",
+        "Pattern",
+        "LED Macro",
+        "LED Macro Speed",
+        "LED Macro Delay",
+        "Background Color",
+        "Background Dimmer",
+        "Ring Dimmer",
+        "Center Dimmer",
+        "Ring Strobe",
+        "Center Strobe",
+        "Zoom",
+        "Control",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
