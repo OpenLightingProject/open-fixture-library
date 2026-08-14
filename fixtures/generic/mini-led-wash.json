@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Led Wash",
+  "shortName": "China",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Charod"],
+    "createDate": "2026-06-30",
+    "lastModifyDate": "2026-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.alibaba.com/product-detail/Guangzhou-Top-Stage-Light-Factory-in_1600836933091.html?mark=google_shopping&pcy=ca_en&src=sem_ggl&field=UG&from=sem_ggl&cmpgn=22601186621&adgrp=183115180274&fditm=&tgt=pla-293946777986&locintrst=&locphyscl=9000264&mtchtyp=&ntwrk=g&device=c&dvcmdl=&creative=754577009438&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&gad_campaignid=22601186621&gbraid=0AAAAAD8m77rvXZDj3mB7jQi9c4GnPjpho&gclid=Cj0KCQjwr4jSBhCSARIsAOX1E-J36-geL5T1BJ6jlqr35ZiJhwtI_jdxPGCS9F6TDjqEmaQWuowh6H0aAtikEALw_wcB"
+    ],
+    "productPage": [
+      "https://www.alibaba.com/product-detail/Guangzhou-Top-Stage-Light-Factory-in_1600836933091.html?mark=google_shopping&pcy=ca_en&src=sem_ggl&field=UG&from=sem_ggl&cmpgn=22601186621&adgrp=183115180274&fditm=&tgt=pla-293946777986&locintrst=&locphyscl=9000264&mtchtyp=&ntwrk=g&device=c&dvcmdl=&creative=754577009438&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&gad_campaignid=22601186621&gbraid=0AAAAAD8m77rvXZDj3mB7jQi9c4GnPjpho&gclid=Cj0KCQjwr4jSBhCSARIsAOX1E-J36-geL5T1BJ6jlqr35ZiJhwtI_jdxPGCS9F6TDjqEmaQWuowh6H0aAtikEALw_wcB"
+    ],
+    "video": [
+      "https://www.alibaba.com/product-detail/Guangzhou-Top-Stage-Light-Factory-in_1600836933091.html?mark=google_shopping&pcy=ca_en&src=sem_ggl&field=UG&from=sem_ggl&cmpgn=22601186621&adgrp=183115180274&fditm=&tgt=pla-293946777986&locintrst=&locphyscl=9000264&mtchtyp=&ntwrk=g&device=c&dvcmdl=&creative=754577009438&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&gad_campaignid=22601186621&gbraid=0AAAAAD8m77rvXZDj3mB7jQi9c4GnPjpho&gclid=Cj0KCQjwr4jSBhCSARIsAOX1E-J36-geL5T1BJ6jlqr35ZiJhwtI_jdxPGCS9F6TDjqEmaQWuowh6H0aAtikEALw_wcB"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mini Led Wash",
+      "shortName": "Mini Led Wash",
+      "channels": [
+        "Tilt",
+        "Pan",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Program Speed"
+      ]
+    }
+  ]
+}
