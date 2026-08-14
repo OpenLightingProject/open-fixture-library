@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Compar kit jr",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Niek"],
+    "createDate": "2026-01-17",
+    "lastModifyDate": "2026-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.bax-shop.nl/downloads/products/9000-0061-3536/ayra_compar_kit_jr_handleiding.pdf"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/downloads/products/9000-0061-3536/ayra_compar_kit_jr_handleiding.pdf"
+    ],
+    "video": [
+      "https://www.bax-shop.nl/downloads/products/9000-0061-3536/ayra_compar_kit_jr_handleiding.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Rood1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Groen1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blauw1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wit1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rood2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Groen2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blauw2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wit2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rood3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Groen3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blauw3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wit3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rood4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Groen4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blauw4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wit4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18kanaal",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Rood1",
+        "Groen1",
+        "Blauw1",
+        "Wit1",
+        "Rood2",
+        "Groen2",
+        "Blauw2",
+        "Wit2",
+        "Rood3",
+        "Groen3",
+        "Blauw3",
+        "Wit3",
+        "Rood4",
+        "Groen4",
+        "Blauw4",
+        "Wit4"
+      ]
+    }
+  ]
+}
