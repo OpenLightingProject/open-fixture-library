@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SL1 Switch",
+  "shortName": "SL1Switch",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Linkredible"],
+    "createDate": "2025-09-26",
+    "lastModifyDate": "2025-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://emea.rosco.com/sites/default/files/content/resource/2024-11/DMG_USERMANUAL-SWITCH-SL1-01-03.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "5600K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "CCT"
+      ]
+    }
+  ]
+}
