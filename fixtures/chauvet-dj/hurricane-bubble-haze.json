@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HURRICANE BUBBLE HAZE",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["sch"],
+    "createDate": "2025-12-02",
+    "lastModifyDate": "2025-12-02"
+  },
+  "comment": "Bubble haze",
+  "links": {
+    "manual": [
+      "https://fr.chauvetdj.com/wp-content/uploads/2019/07/Hurricane_Bubble_Haze_QRG_Rev6_ML6.pdf"
+    ],
+    "productPage": [
+      "https://fr.chauvetdj.com/products/hurricane-bubble-haze/"
+    ],
+    "video": [
+      "https://www.youtube.com/embed/73DDCpJsWvw?rel=0&autoplay=1"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [310, 312, 394],
+    "weight": 9.2,
+    "power": 558,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Sortie de bulles": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "OnFunction"
+        }
+      ]
+    },
+    "Volume de brume": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Intensity",
+          "brightness": "100%",
+          "comment": "Volume de brume"
+        }
+      ]
+    },
+    "Vitesse ventilateur soufflant": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "soufflant bas"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "soufflant moyen"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "soufflant haut"
+        }
+      ]
+    },
+    "Mode Nettoyage à bulle": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "nettoyage pompe à bulles uniquement"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "sortie de bulles",
+      "shortName": "bulles",
+      "channels": [
+        "Sortie de bulles",
+        "Volume de brume",
+        "Vitesse ventilateur soufflant",
+        "Mode Nettoyage à bulle"
+      ]
+    }
+  ]
+}
