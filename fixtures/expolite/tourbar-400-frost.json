@@ -1,0 +1,238 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tourbar 400 Frost",
+  "shortName": "Tourbar 400",
+  "categories": ["Color Changer", "Dimmer", "Blinder", "Effect", "Pixel Bar", "Strobe"],
+  "meta": {
+    "authors": ["Tim Schürmann"],
+    "createDate": "2026-02-12",
+    "lastModifyDate": "2026-02-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.focon-showtechnic.com/myfactory/CustomUpload/374O357O340O370O356O369O350O325O366O354O366O365O/TourBAR_Frost_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.focon-showtechnic.com/artikeldetails.aspx?WPParams=50C9D4C6C5D2E6BDA5A98991A397"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 97, 166],
+    "weight": 9,
+    "power": 350,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "480 x 0,5W RGB / 240 x 1W CW"
+    },
+    "lens": {
+      "degreesMinMax": [104, 110]
+    }
+  },
+  "availableChannels": {
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dim ALL": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Virtual Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Dimmer Mode": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Glow Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Glow Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Glow Effect"
+      }
+    },
+    "Glow Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Glow Virtual Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Halo Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Halo Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Halo Effect"
+      }
+    },
+    "Halo Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 CH",
+      "shortName": "4 CH",
+      "channels": [
+        "Frost",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5 CH",
+      "shortName": "5 CH",
+      "channels": [
+        "Frost",
+        "Red",
+        "Green",
+        "Blue 4",
+        "White"
+      ]
+    },
+    {
+      "name": "6 CH",
+      "shortName": "6 CH",
+      "channels": [
+        "Frost",
+        "Dim ALL",
+        "Red",
+        "Green",
+        "Blue 4",
+        "White"
+      ]
+    },
+    {
+      "name": "11 CH",
+      "shortName": "11 CH",
+      "channels": [
+        "Frost",
+        "Dim ALL",
+        "Red",
+        "Green",
+        "Blue 4",
+        "White",
+        "Strobe",
+        "Effect",
+        "Auto Speed",
+        "Virtual Color Wheel",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "14 CH",
+      "shortName": "14 CH",
+      "channels": [
+        "Frost",
+        "Dim ALL",
+        "Red",
+        "Green",
+        "Blue 4",
+        "White",
+        "Glow Strobe",
+        "Glow Effect",
+        "Glow Auto Speed",
+        "Glow Virtual Color Wheel",
+        "Halo Strobe",
+        "Halo Effect",
+        "Halo Auto Speed",
+        "Dimmer Mode"
+      ]
+    }
+  ]
+}
