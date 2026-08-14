@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 720B",
+  "categories": [
+    "Dimmer"
+  ],
+  "meta": {
+    "authors": [
+      "Showrunner"
+    ],
+    "createDate": "2022-12-06",
+    "lastModifyDate": "2022-12-06"
+  },
+  "helpWanted": "fill out the rest of the modes",
+  "links": {
+    "other": [
+      "https://nanliteus.com/nanlite-forza-720b-bicolor-led-spot-light/",
+      "https://manuals.plus/nanlite/forza-720b-led-monolig-manual#axzz7mjTF5sZ7"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Fan On/Fan Off": {
+      "name": "Fan Control",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Fan On/Fan Off"
+      ]
+    }
+  ]
+}
