@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TH-352 FRESNEL 600AZ-CW+WW",
+  "shortName": "TH-352",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Marvin M."],
+    "createDate": "2024-07-10",
+    "lastModifyDate": "2024-07-10"
+  },
+  "comment": "LED Fresnel Spot with Barndoors\nModel with AutoZoom",
+  "links": {
+    "manual": [
+      "https://5irorwxhonoliik.leadongcdn.com/TH-352+FRESNEL+600AZ-CW%2BWW+2IN1-aidjkBpoKimRiiSjpmjmnlqk.pdf?dp=GvUApKfKKUAU"
+    ],
+    "productPage": [
+      "https://www.theonestudio.com.cn/TH-352-600W-LED-Theater-Studio-Theatre-Fresnel-Lighting-Equipment-pd73475987.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [397, 378, 211],
+    "weight": 9,
+    "power": 600,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "6000K"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "STD",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Zoom",
+        "Zoom Speed"
+      ]
+    }
+  ]
+}
