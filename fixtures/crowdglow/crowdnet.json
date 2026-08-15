@@ -1,0 +1,161 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CrowdNet",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Roberto Geroldi"],
+    "createDate": "2025-04-03",
+    "lastModifyDate": "2025-04-03"
+  },
+  "links": {
+    "other": [
+      "https://www.crowdglow.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Screen Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Animation Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Led Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Led Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Video (Experimetal)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Vibrate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Palette ID": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [13, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Push Notification (Experimental)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Map (Experimental)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CrowdNet",
+      "shortName": "CWNet",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Screen Mode",
+        "Animation Speed",
+        "Led Mode",
+        "Led Speed",
+        "Video (Experimetal)",
+        "Gobo",
+        "Vibrate",
+        "Palette ID",
+        "Push Notification (Experimental)",
+        "Map (Experimental)"
+      ]
+    }
+  ]
+}
