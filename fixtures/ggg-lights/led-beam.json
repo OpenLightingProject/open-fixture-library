@@ -1,0 +1,547 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "led beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["dancha"],
+    "createDate": "2025-07-08",
+    "lastModifyDate": "2025-07-08"
+  },
+  "links": {
+    "video": [
+      "https://vltglight.com/portfolio-item/moving-head-light-tv-led200-beam/"
+    ]
+  },
+  "rdm": {
+    "modelId": 4,
+    "softwareVersion": "2.0"
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "fast",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "orange"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "pink"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "roseo"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "light blue"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "lower the temperature"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "pale green"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "heating up"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "half colour1"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "half colour2"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "half colour3"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "half colour4"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "half colour5"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "half colour6"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "half colour7"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "half colour8"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "half colour9"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "half colour10"
+        },
+        {
+          "dmxRange": [176, 209],
+          "type": "ColorPreset",
+          "comment": "colour speed"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "colour disc"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 0,
+          "comment": "round"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "gobo1"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "gobo2"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "gobo3"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "gobo4"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "gobo5"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "gobo6"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "gobo7"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "gobo8"
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "gobo9"
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "gobo10"
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "gobo11"
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "gobo12"
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "gobo13"
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "gobo14"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo14 speed"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo13 speed"
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo12 speed"
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo11 speed"
+        },
+        {
+          "dmxRange": [114, 119],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo10 speed"
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo9 speed"
+        },
+        {
+          "dmxRange": [126, 131],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo8 speed"
+        },
+        {
+          "dmxRange": [132, 137],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo7 speed"
+        },
+        {
+          "dmxRange": [138, 143],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo6 speed"
+        },
+        {
+          "dmxRange": [144, 149],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo5 speed"
+        },
+        {
+          "dmxRange": [150, 155],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo4 speed"
+        },
+        {
+          "dmxRange": [156, 161],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo3 speed"
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo2 speed"
+        },
+        {
+          "dmxRange": [168, 173],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "gobo1 speed"
+        },
+        {
+          "dmxRange": [174, 214],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "patern"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "patern"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Prism",
+          "speed": "stop",
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "Prism",
+          "comment": "opening"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PrismRotation",
+          "angle": "360deg",
+          "comment": "rotation"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "quick to go",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "led beam",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe 2",
+        "Color Presets",
+        "Gobo Wheel",
+        "Prism",
+        "Sound Sensitivity",
+        "Reserved"
+      ]
+    }
+  ]
+}
