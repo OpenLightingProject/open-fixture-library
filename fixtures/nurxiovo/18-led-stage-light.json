@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18-LED Stage Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Tim Brown"],
+    "createDate": "2023-02-21",
+    "lastModifyDate": "2023-02-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-02-21",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [176, 186, 94],
+    "weight": 0.65,
+    "power": 18,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Effect",
+          "effectName": "Strobe -",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Manual Control (Ch 1 - Ch 5)"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Color Selection (Color Controlled by Ch 7)"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Effect",
+          "effectName": "Gradual Fade (Color Controlled by Ch 7 -",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Effect",
+          "effectName": "Variable Pulse (Color Controlled by Ch 7 -",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Effect",
+          "effectName": "Jump Change (Color Controlled by Ch 7)"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Sound Activated Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Selection Effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Color Selection / Discoloration Speed -",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Effects",
+        "Color Selection Effect"
+      ]
+    }
+  ]
+}
