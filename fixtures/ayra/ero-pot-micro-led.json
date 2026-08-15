@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ero pot micro led",
+  "categories": ["Moving Head", "Dimmer", "Effect", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["edo floyd de jong"],
+    "createDate": "2024-02-15",
+    "lastModifyDate": "2024-02-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2405443/Ayra-Ero-Micro-Spot.html"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/led-moving-head/ayra-ero-micro-spot-led-moving-head?gclsrc=aw.ds&utm_source=google&utm_medium=cpc&utm_campaign=20891809323&utm_term=&adgroup=&creative=&gad_source=1&gclid=CjwKCAiAibeuBhAAEiwAiXBoJEd3eSoJItF_5t_itegxpIvC0ETlcgF57JkvrsRiGlcjQ-aaUUFOTRoCEmUQAvD_BwE#video"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rc3FTfC6PIk"
+    ]
+  },
+  "physical": {
+    "dimensions": [170, 150, 270],
+    "weight": 3,
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    },
+    "lens": {
+      "name": "manual"
+    }
+  },
+  "availableChannels": {
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "defaultValue": 2,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1%",
+        "angleEnd": "100%"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed 3": {
+      "name": "Pan/Tilt Speed",
+      "defaultValue": 7,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Pan/Tilt Speed",
+        "Pan/Tilt Speed 2",
+        "Color Wheel",
+        "Gobo Wheel Rotation",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed 3"
+      ]
+    }
+  ]
+}
