@@ -1,0 +1,203 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spider",
+  "shortName": "Spider",
+  "categories": ["Effect", "Blinder"],
+  "meta": {
+    "authors": ["EpicLauncherN"],
+    "createDate": "2025-11-06",
+    "lastModifyDate": "2025-11-06"
+  },
+  "comment": "Spider from Amazon",
+  "links": {
+    "manual": [
+      "https://hurradurrar.com"
+    ],
+    "productPage": [
+      "https://hurrardurrar.com"
+    ],
+    "video": [
+      "https://nope.co.uk"
+    ]
+  },
+  "availableChannels": {
+    "Blade System Rotation 1": {
+      "capability": {
+        "type": "Rotation",
+        "comment": "Rotation Y1"
+      }
+    },
+    "Blade System Rotation 2": {
+      "capability": {
+        "type": "Rotation",
+        "comment": "Rotation Y2"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Y1/Y2 Speed"
+      }
+    },
+    "Brightness": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "On"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "250Hz",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "Effect",
+          "effectName": "On"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "Effect",
+          "effectName": "Fast start"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "Effect",
+          "effectName": "On"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "Effect",
+          "effectName": "Slow Start"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "On"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "250Hz"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "On"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Effect Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 63],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Sound Control"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "14ch",
+      "channels": [
+        "Blade System Rotation 1",
+        "Blade System Rotation 2",
+        "Pan/Tilt Speed",
+        "Brightness",
+        "Function",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Effect Duration"
+      ]
+    }
+  ]
+}
