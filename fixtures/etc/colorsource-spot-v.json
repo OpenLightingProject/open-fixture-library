@@ -1,0 +1,261 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorSource Spot V",
+  "shortName": "colorsource-spot-v",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Randy Hall"],
+    "createDate": "2024-09-09",
+    "lastModifyDate": "2024-09-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737512730"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/ColorSource-Spot-V/Features.aspx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-BHUGXIcn9E"
+    ]
+  },
+  "rdm": {
+    "modelId": 657
+  },
+  "physical": {
+    "dimensions": [339, 593, 672],
+    "weight": 7.7,
+    "power": 199,
+    "bulb": {
+      "lumens": 9498
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 40],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "comment": "Dark Strobe"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "comment": "Bright Strobe"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "soundControlled": true,
+          "speedStart": "1Hz",
+          "speedEnd": "40Hz",
+          "comment": "Strobe includes a fade up and fade down on each pulse"
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Strobe pulses at random intervals"
+        },
+        {
+          "dmxRange": [161, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Flicker effect. Strobe pulses at random intervals and at random intensity levels"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [241, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Fan Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Auto - as fixture temperature increases, the fan speed increases to accommodate it"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "parameter": "off",
+          "comment": "When the fixture gets too hot, the fixture reduces the intensity instead of turning on the fan"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "comment": "Minimum fan speed"
+        },
+        {
+          "dmxRange": [21, 248],
+          "type": "Maintenance",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Linear Increase - fan speed remains constant, and intensity is reduced as needed when the fixture gets too hot"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Maintenance",
+          "parameter": "fast",
+          "comment": "Maximum fan speed (100%)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Auto"
+        }
+      ]
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "No strobe"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "33Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "No strobe"
+        }
+      ]
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "This mode controls the intensity of Preset 1"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "stn",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Direct",
+      "shortName": "dir",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Indigo",
+        "Lime",
+        "Shutter / Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Intensity 2"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "rgb",
+      "rdmPersonalityIndex": 4,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5 Channel (Legacy ColorSource)",
+      "shortName": "5ch",
+      "rdmPersonalityIndex": 5,
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
