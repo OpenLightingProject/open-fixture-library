@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "1915z",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["STUDIO5"],
+    "createDate": "2025-09-17",
+    "lastModifyDate": "2025-09-17"
+  },
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/78/78695_macwash1915zusermanual.pdf?_gl=1*q12gfa*_gcl_au*ODAxMTk1MDc0LjE3NTgxMTI3ODg.*_ga*MTQ1NTkxNDYwNi4xNzU4MTEyNzg4*_ga_17YNWB2EZT*czE3NTgxMTI3ODckbzEkZzAkdDE3NTgxMTI3ODckajYwJGwwJGgw"
+    ]
+  },
+  "availableChannels": {
+    "PAN": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "PAN_FINE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "TILT": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "TILE_FINE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "P/T SPEED": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ZOOM": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "MODE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "MODE SPEED": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RESET": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "channels": [
+        "PAN",
+        "PAN_FINE",
+        "TILT",
+        "TILE_FINE",
+        "P/T SPEED",
+        "ZOOM",
+        "DIMMER",
+        "STROBE",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "MODE",
+        "MODE SPEED",
+        "RESET"
+      ]
+    }
+  ]
+}
