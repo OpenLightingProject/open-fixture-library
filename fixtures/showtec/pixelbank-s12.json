@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PixelBank S12",
+  "shortName": "PBS12",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Nicolas Garsolke"],
+    "createDate": "2023-02-10",
+    "lastModifyDate": "2023-02-10"
+  },
+  "links": {
+    "productPage": [
+      "https://m.german.alibaba.com/p-detail/12x18W-Waterproof-Outdoor-LED-Pixel-Stage-62034374453.html"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12x6Channel",
+      "shortName": "12x6CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV"
+      ]
+    }
+  ]
+}
