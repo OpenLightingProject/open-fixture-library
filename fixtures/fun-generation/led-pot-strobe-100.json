@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Pot Strobe 100",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Luzius Klöti", "Luzius"],
+    "createDate": "2024-08-23",
+    "lastModifyDate": "2024-08-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-08-23",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [168, 172, 130],
+    "weight": 0.76,
+    "power": 38,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED SMD",
+      "colorTemperature": 6100,
+      "lumens": 430
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer (0% ... 100%)"
+      }
+    },
+    "Operating mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Maintenance",
+          "comment": "Programme speed (0% ... 100%)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Sensitivity sound control (0% ... 100%)"
+        }
+      ]
+    },
+    "Strobe effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe frequency (0% ... 100%)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-Kanal",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3-Kanal",
+      "channels": [
+        "Dimmer",
+        "Operating mode",
+        "Strobe effect"
+      ]
+    }
+  ]
+}
