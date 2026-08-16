@@ -1,0 +1,615 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Perseo Profile",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["BYFRNDTHJY"],
+    "createDate": "2024-12-19",
+    "lastModifyDate": "2024-12-19"
+  },
+  "comment": "Incomplete",
+  "links": {
+    "manual": [
+      "https://www.ayrton.eu/wp-content/uploads/2020/06/PERSEO-UM-20210323.pdf"
+    ],
+    "productPage": [
+      "https://www.ayrton.eu/produit/perseo-profile/"
+    ]
+  },
+  "physical": {
+    "dimensions": [490, 710, 330],
+    "weight": 38.8,
+    "power": 800,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6900,
+      "lumens": 40000
+    },
+    "lens": {
+      "name": "13-elements, 8:1 zoom high-resolution optic system",
+      "degreesMinMax": [7, 58]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "263deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [21, 117],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [118, 126],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [127, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Chase Patterns": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Chase 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Chase 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Chase 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Chase 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Chase 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Chase 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Chase 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Chase 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Chase 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Chase 10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Chase 11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Chase 12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Chase 13"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Chase Fade": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Auto Focus": {
+      "fineChannelAliases": ["Auto Focus fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Focus",
+          "distance": "5m"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Focus",
+          "distance": "7.5m"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Focus",
+          "distance": "10m"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Focus",
+          "distance": "15m"
+        }
+      ]
+    },
+    "Color": {
+      "fineChannelAliases": ["Color fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "fineChannelAliases": ["CTO fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "CTO"
+      }
+    },
+    "Rotating Gobos, Cont rotation 1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel Rotation 1": {
+      "fineChannelAliases": ["Gobo Wheel Rotation 1 fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Fixed gobo 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Animation Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Iris": {
+      "fineChannelAliases": ["Iris fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Iris",
+          "openPercentStart": "open",
+          "openPercentEnd": "closed"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "IrisEffect",
+          "effectName": "Pulse closing",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "IrisEffect",
+          "effectName": "Pulse opening",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Prisme 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "speed": "0%"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Prisme 1 Rotation": {
+      "fineChannelAliases": ["Prisme 1 Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Prisme 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prisme 2 Rotation": {
+      "fineChannelAliases": ["Prisme 2 Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Frost 1": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Frost 2": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Blade 1A": {
+      "fineChannelAliases": ["Blade 1A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 11,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 1B": {
+      "fineChannelAliases": ["Blade 1B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 12,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2A": {
+      "fineChannelAliases": ["Blade 2A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 21,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2B": {
+      "fineChannelAliases": ["Blade 2B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 22,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3A": {
+      "fineChannelAliases": ["Blade 3A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 31,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3B": {
+      "fineChannelAliases": ["Blade 3B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 32,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4A": {
+      "fineChannelAliases": ["Blade 4A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 41,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4B": {
+      "fineChannelAliases": ["Blade 4B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 42,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "All Blade Rotation": {
+      "fineChannelAliases": ["All Blade Rotation fine"],
+      "capability": {
+        "type": "BladeSystemRotation",
+        "angle": "360deg"
+      }
+    },
+    "Control, reset, internal programs": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Chase Patterns",
+        "Chase Speed",
+        "Chase Fade",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Auto Focus",
+        "Auto Focus fine",
+        "Color",
+        "Color fine",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTO",
+        "CTO fine",
+        "Rotating Gobos, Cont rotation 1",
+        "Gobo Wheel Rotation 1",
+        "Gobo Wheel Rotation 1 fine",
+        "Fixed gobo 2",
+        "Animation Wheel",
+        "Iris",
+        "Iris fine",
+        "Prisme 1",
+        "Prisme 1 Rotation",
+        "Prisme 1 Rotation fine",
+        "Prisme 2",
+        "Prisme 2 Rotation",
+        "Prisme 2 Rotation fine",
+        "Frost 1",
+        "Frost 2",
+        "Blade 1A",
+        "Blade 1A fine",
+        "Blade 1B",
+        "Blade 1B fine",
+        "Blade 2A",
+        "Blade 2A fine",
+        "Blade 2B",
+        "Blade 2B fine",
+        "Blade 3A",
+        "Blade 3A fine",
+        "Blade 3B",
+        "Blade 3B fine",
+        "Blade 4A",
+        "Blade 4A fine",
+        "Blade 4B",
+        "Blade 4B fine",
+        "All Blade Rotation",
+        "All Blade Rotation fine",
+        "Control, reset, internal programs"
+      ]
+    }
+  ]
+}
