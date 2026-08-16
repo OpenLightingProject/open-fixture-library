@@ -1,0 +1,499 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2bright Par 720 IP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["An Millot"],
+    "createDate": "2026-04-09",
+    "lastModifyDate": "2026-04-09"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/545591_c_545590_545591_r1_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 305, 137],
+    "weight": 5.3,
+    "power": 140,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7 × 6in1 RBGLAC LED, 20 W each"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LEDs on"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "LEDs off"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "randomTiming": true,
+          "comment": "Random impulses, increasing speed"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true,
+          "comment": "Randomly increasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true,
+          "comment": "Randomly decreasing brightness, increasing speed"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe effect, increasing speed"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "speedStart": "0.2Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe impulses (interval 5 s to 1 s)"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe effect, increasing speed (1 … 20 Hz)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LEDs on"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [11, 13],
+          "type": "ColorPreset",
+          "comment": "Colour 1"
+        },
+        {
+          "dmxRange": [14, 16],
+          "type": "ColorPreset",
+          "comment": "Colour 2"
+        },
+        {
+          "dmxRange": [17, 19],
+          "type": "ColorPreset",
+          "comment": "Colour 3"
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "ColorPreset",
+          "comment": "Colour 4"
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "ColorPreset",
+          "comment": "Colour 5"
+        },
+        {
+          "dmxRange": [26, 28],
+          "type": "ColorPreset",
+          "comment": "Colour 6"
+        },
+        {
+          "dmxRange": [29, 31],
+          "type": "ColorPreset",
+          "comment": "Colour 7"
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorPreset",
+          "comment": "Colour 8"
+        },
+        {
+          "dmxRange": [35, 37],
+          "type": "ColorPreset",
+          "comment": "Colour 9"
+        },
+        {
+          "dmxRange": [38, 40],
+          "type": "ColorPreset",
+          "comment": "Colour 10"
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "ColorPreset",
+          "comment": "Colour 11"
+        },
+        {
+          "dmxRange": [44, 46],
+          "type": "ColorPreset",
+          "comment": "Colour 12"
+        },
+        {
+          "dmxRange": [47, 49],
+          "type": "ColorPreset",
+          "comment": "Colour 13"
+        },
+        {
+          "dmxRange": [50, 52],
+          "type": "ColorPreset",
+          "comment": "Colour 14"
+        },
+        {
+          "dmxRange": [53, 55],
+          "type": "ColorPreset",
+          "comment": "Colour 15"
+        },
+        {
+          "dmxRange": [56, 58],
+          "type": "ColorPreset",
+          "comment": "Colour 16"
+        },
+        {
+          "dmxRange": [59, 61],
+          "type": "ColorPreset",
+          "comment": "Colour 17"
+        },
+        {
+          "dmxRange": [62, 64],
+          "type": "ColorPreset",
+          "comment": "Colour 18"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "ColorPreset",
+          "comment": "Colour 19"
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "ColorPreset",
+          "comment": "Colour 20"
+        },
+        {
+          "dmxRange": [71, 73],
+          "type": "ColorPreset",
+          "comment": "Colour 21"
+        },
+        {
+          "dmxRange": [74, 76],
+          "type": "ColorPreset",
+          "comment": "Colour 22"
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "ColorPreset",
+          "comment": "Colour 23"
+        },
+        {
+          "dmxRange": [80, 82],
+          "type": "ColorPreset",
+          "comment": "Colour 24"
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "ColorPreset",
+          "comment": "Colour 25"
+        },
+        {
+          "dmxRange": [86, 88],
+          "type": "ColorPreset",
+          "comment": "Colour 26"
+        },
+        {
+          "dmxRange": [89, 91],
+          "type": "ColorPreset",
+          "comment": "Colour 27"
+        },
+        {
+          "dmxRange": [92, 94],
+          "type": "ColorPreset",
+          "comment": "Colour 28"
+        },
+        {
+          "dmxRange": [95, 98],
+          "type": "ColorPreset",
+          "comment": "Colour 29"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "ColorPreset",
+          "comment": "Colour 30"
+        },
+        {
+          "dmxRange": [103, 106],
+          "type": "ColorPreset",
+          "comment": "Colour 31"
+        },
+        {
+          "dmxRange": [107, 110],
+          "type": "ColorPreset",
+          "comment": "Colour 32"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "Colour 33"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "Colour 34"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "Colour 35"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectName": "Colour change stop"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Colour change colour 1…12, increasing speed"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Slow colour change with dissolve colour 1…12, increasing speed"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 25],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [26, 45],
+          "type": "ColorTemperature",
+          "colorTemperature": "2900K"
+        },
+        {
+          "dmxRange": [46, 65],
+          "type": "ColorTemperature",
+          "colorTemperature": "3100K"
+        },
+        {
+          "dmxRange": [66, 75],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "ColorTemperature",
+          "colorTemperature": "3700K"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [112, 131],
+          "type": "ColorTemperature",
+          "colorTemperature": "4400K"
+        },
+        {
+          "dmxRange": [132, 151],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [152, 171],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [172, 191],
+          "type": "ColorTemperature",
+          "colorTemperature": "5800K"
+        },
+        {
+          "dmxRange": [192, 211],
+          "type": "ColorTemperature",
+          "colorTemperature": "6400K"
+        },
+        {
+          "dmxRange": [212, 231],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Generic",
+          "comment": "Linear course"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Exponential course"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Logarithmic course"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "S-curve shaped course"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "Cyan"
+      ]
+    },
+    {
+      "name": "9ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "Cyan",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "Cyan",
+        "Color Macros",
+        "Color Temperature 2",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}
