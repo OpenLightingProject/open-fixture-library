@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Robin BMFL",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["KK"],
+    "createDate": "2022-07-04",
+    "lastModifyDate": "2022-07-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.robelighting.de/bmfl-blade#downloads"
+    ],
+    "productPage": [
+      "https://www.robelighting.de/bmfl-blade#downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=TJqn_oqldSs"
+    ]
+  },
+  "wheels": {
+    "Color Wheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Color Wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "CMY+CTO+Colour wheel time": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Effect Wheel position": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Effect Wheel animation": {
+      "slots": [
+        {
+          "type": "AnimationGoboStart"
+        }
+      ]
+    },
+    "Rotation gobo wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Rot. Gobo indexing /rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Power/Special functions": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel 1": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Color Wheel 1 2": {
+      "name": "Color Wheel 1",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Color Wheel 2": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Color Wheel 2 2": {
+      "name": "Color Wheel 2",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO Filter": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "CMY + CTO + CW1 + CW2 Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CMY+CTO+Colour wheel time": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Framing shutters+Zoom+Focus+Frost+Iris+Prism Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "0%",
+        "timeEnd": "100%"
+      }
+    },
+    "Effect Wheel position": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Effect Wheel rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Effect Wheel animation": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Static gobo wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Rotation gobo wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Rot. Gobo indexing /rotation": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "slotNumber": 0,
+        "speed": "0%"
+      }
+    },
+    "Rot. Gobo indexing/rotation": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "slotNumber": 0,
+        "speed": "0%"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Iris": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Iris 2": {
+      "name": "Iris",
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Focus 2": {
+      "name": "Focus",
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutters module rotation": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing shutter 1 movement": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 1 swivelling": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 2 movement": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 2 swivelling": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 3 movement": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 3 swivelling": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 4 movement": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutter 4 swivelling": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutters Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Framing Shutters Macro Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter/Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer/Intensitiy": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer/Intensity": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 49CH",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Color Wheel 1",
+        "Color Wheel 1 2",
+        "Color Wheel 2",
+        "Color Wheel 2 2",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO Filter",
+        "CMY + CTO + CW1 + CW2 Macros",
+        "Effect Speed",
+        "CMY+CTO+Colour wheel time",
+        "Framing shutters+Zoom+Focus+Frost+Iris+Prism Time",
+        "Effect Wheel position",
+        "Effect Wheel rotation",
+        "Effect Wheel animation",
+        "Static gobo wheel",
+        "Rotation gobo wheel",
+        "Rot. Gobo indexing /rotation",
+        "Rot. Gobo indexing/rotation",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Iris",
+        "Iris 2",
+        "Zoom",
+        "Zoom 2",
+        "Focus",
+        "Focus 2",
+        "Reserved",
+        "Framing Shutters module rotation",
+        "Framing shutter 1 movement",
+        "Framing Shutter 1 swivelling",
+        "Framing Shutter 2 movement",
+        "Framing Shutter 2 swivelling",
+        "Framing Shutter 3 movement",
+        "Framing Shutter 3 swivelling",
+        "Framing Shutter 4 movement",
+        "Framing Shutter 4 swivelling",
+        "Framing Shutters Macros",
+        "Framing Shutters Macro Speed",
+        "Shutter/Strobe",
+        "Dimmer/Intensitiy",
+        "Dimmer/Intensity"
+      ]
+    },
+    {
+      "name": "2 42CH",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Power/Special functions",
+        "Color Wheel 1",
+        "Color Wheel 2",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO Filter",
+        "CMY + CTO + CW1 + CW2 Macros",
+        "Effect Speed",
+        "CMY+CTO+Colour wheel time",
+        "Framing shutters+Zoom+Focus+Frost+Iris+Prism Time",
+        "Effect Wheel position",
+        "Effect Wheel rotation",
+        "Effect Wheel animation",
+        "Static gobo wheel",
+        "Rotation gobo wheel",
+        "Rot. Gobo indexing /rotation",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Focus",
+        "Reserved",
+        "Framing Shutters module rotation",
+        "Framing shutter 1 movement",
+        "Framing Shutter 1 swivelling",
+        "Framing Shutter 2 movement",
+        "Framing Shutter 2 swivelling",
+        "Framing Shutter 3 movement",
+        "Framing Shutter 3 swivelling",
+        "Framing Shutter 4 movement",
+        "Framing Shutter 4 swivelling",
+        "Framing Shutters Macros",
+        "Framing Shutters Macro Speed",
+        "Shutter/Strobe",
+        "Dimmer/Intensitiy"
+      ]
+    }
+  ]
+}
