@@ -1,0 +1,195 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Bee Eye Beam 6x15W RGBW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Stefano Dall'Igna", "Fano"],
+    "createDate": "2026-06-23",
+    "lastModifyDate": "2026-06-23",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-06-23",
+      "comment": "created by Q Light Controller Plus (version 4.14.1)"
+    }
+  },
+  "physical": {
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom - Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Position offset"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "speed": "fast CW",
+          "comment": "Positive rotation"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Rotation",
+          "speed": "fast CCW",
+          "comment": "Reverse rotation"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Moves and Colors": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [11, 95],
+          "type": "ColorPreset",
+          "comment": "Preset color Mode",
+          "colors": ["null"]
+        },
+        {
+          "dmxRange": [96, 174],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speed": "undefinedHz",
+          "comment": "Auto Run Mode"
+        },
+        {
+          "dmxRange": [175, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Voice Control Mode"
+        }
+      ]
+    },
+    "Mode (CH13) Speed adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Zoom - Rotation",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Moves and Colors",
+        "Mode (CH13) Speed adjustment"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Zoom - Rotation",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Moves and Colors",
+        "Mode (CH13) Speed adjustment"
+      ]
+    }
+  ]
+}
