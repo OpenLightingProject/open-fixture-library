@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fusion MBL 40",
+  "shortName": "MBL40",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["PierreM"],
+    "createDate": "2023-06-22",
+    "lastModifyDate": "2023-06-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.glp.de/fr/produkte/marken/fusion/fusion-mbl40"
+    ],
+    "productPage": [
+      "https://www.glp.de/fr/produkte/marken/fusion/fusion-mbl40"
+    ],
+    "video": [
+      "https://www.glp.de/fr/produkte/marken/fusion/fusion-mbl40"
+    ]
+  },
+  "physical": {
+    "dimensions": [380, 320, 217],
+    "weight": 10,
+    "power": 400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500,
+      "lumens": 33300
+    },
+    "lens": {
+      "name": "Wash",
+      "degreesMinMax": [145, 145]
+    }
+  },
+  "availableChannels": {
+    "Color Temperature": {
+      "defaultValue": 0,
+      "highlightValue": 63,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0K",
+          "colorTemperatureEnd": "0K",
+          "comment": "No Light Output"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "2700K"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2 Channels",
+      "shortName": "2ch",
+      "channels": [
+        "Color Temperature",
+        "Dimmer"
+      ]
+    }
+  ]
+}
