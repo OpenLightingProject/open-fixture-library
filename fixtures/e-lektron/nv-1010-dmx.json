@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "NV-1010-DMX",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Sven Boekelder"],
+    "createDate": "2023-02-08",
+    "lastModifyDate": "2023-02-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-02-08",
+      "comment": "created by Q Light Controller Plus (version 4.12.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [205, 180, 340],
+    "weight": 8.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Smoke": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Color Mode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color Switch"
+      }
+    },
+    "Color Mode Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Smoke",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Mode",
+        "Color Mode Speed"
+      ]
+    }
+  ]
+}
