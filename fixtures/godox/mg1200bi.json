@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MG1200Bi",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Godox"],
+    "createDate": "2023-11-23",
+    "lastModifyDate": "2023-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230421/1682062655359815.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-b/MG1200Bi.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=_cg4Fh9UnVg&t=26s",
+      "https://www.youtube.com/watch?v=X77Uv_qh0Hg"
+    ]
+  },
+  "physical": {
+    "power": 1200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 2 fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "fineChannelAliases": ["Color Temperature 2 fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Off"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Flash"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Cloudy"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Broken Bulb"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Candle"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Firework"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Explosion"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Welding"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "SOS"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "Effect",
+          "effectName": "Preset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8-Bit",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "CCT 16-Bit",
+      "channels": [
+        "Intensity 2",
+        "Intensity 2 fine",
+        "Color Temperature 2",
+        "Color Temperature 2 fine"
+      ]
+    }
+  ]
+}
