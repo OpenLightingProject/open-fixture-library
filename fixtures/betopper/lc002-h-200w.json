@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LC002-H 200W",
+  "shortName": "LED Par",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gabriel"],
+    "createDate": "2025-12-09",
+    "lastModifyDate": "2025-12-09"
+  },
+  "comment": "2 channels",
+  "links": {
+    "manual": [
+      "https://betopperdj.com/products/betopper-200w-cob-light-lc002-h?dm_cam=23135473328&dm_grp=&dm_ad=&dm_kw=&dm_net=adwords&gad_source=1&gad_campaignid=23135494304&gbraid=0AAAAA_fDo50X3OX4SrCWHBEzQuOqLXDPC&gclid=Cj0KCQiAubrJBhCbARIsAHIdxD_i7XkzwYBCyXQnXALowZLzDIvf0ciM1XLS-wbEIXOnq78ioqtDQwkaAjN-EALw_wcB&variant=39672283562120"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-200w-cob-light-lc002-h?dm_cam=23135473328&dm_grp=&dm_ad=&dm_kw=&dm_net=adwords&gad_source=1&gad_campaignid=23135494304&gbraid=0AAAAA_fDo50X3OX4SrCWHBEzQuOqLXDPC&gclid=Cj0KCQiAubrJBhCbARIsAHIdxD_i7XkzwYBCyXQnXALowZLzDIvf0ciM1XLS-wbEIXOnq78ioqtDQwkaAjN-EALw_wcB&variant=39672283562120"
+    ],
+    "video": [
+      "https://betopperdj.com/products/betopper-200w-cob-light-lc002-h?dm_cam=23135473328&dm_grp=&dm_ad=&dm_kw=&dm_net=adwords&gad_source=1&gad_campaignid=23135494304&gbraid=0AAAAA_fDo50X3OX4SrCWHBEzQuOqLXDPC&gclid=Cj0KCQiAubrJBhCbARIsAHIdxD_i7XkzwYBCyXQnXALowZLzDIvf0ciM1XLS-wbEIXOnq78ioqtDQwkaAjN-EALw_wcB&variant=39672283562120"
+    ]
+  },
+  "physical": {
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3800
+    },
+    "lens": {
+      "name": "N/A",
+      "degreesMinMax": [78, 78]
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Channel 1",
+      "shortName": "WW Dimming",
+      "channels": [
+        "Warm White",
+        "Cold White"
+      ]
+    }
+  ]
+}
