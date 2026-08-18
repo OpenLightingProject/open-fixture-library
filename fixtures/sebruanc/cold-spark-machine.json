@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cold Spark Machine",
+  "shortName": "Spark",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Tom Rgh"],
+    "createDate": "2025-02-06",
+    "lastModifyDate": "2025-02-06"
+  },
+  "comment": "Fontaine Etincelles Froides",
+  "links": {
+    "manual": [
+      "https://img.kwcdn.com/product-file-public/1f193480000/d0132f4fc6e55b7e5910bb1008a8d232.pdf?_x_ads_account=18350&_x_ads_id=1857643&_x_ns_iradname=test%20app&_x_ns_iradsize=&_x_ns_prodsku=&_x_ns_irmptype=mediapartner&_x_ns_sharedid=749761&_x_ns_ts=1738783221511&_x_ns_randint=3749631&_x_ns_adtype=TEXT_LINK&_x_ns_irmpgroupname=%22jw%22&_x_ads_channel=impact&_x_ns_mp_value2=&_x_ns_mp_value3=&_x_ns_irmpname=MaxBounty.com%20ULC&_x_ns_irpid=10813&_x_ns_irclickid=3OTX26QLzxyKW7VzdARYu1Z7Uks2q3SlEy74T00&_x_sessn_id=3xoycglhw8&refer_page_name=bgt_order_detail&refer_page_id=10045_1738783338855_74pz1sh8f7&refer_page_sn=10045"
+    ],
+    "productPage": [
+      "https://www.temu.com/goods.html?_bg_fs=1&goods_id=601099817746076&sku_id=17593434220395&_x_sessn_id=ure24b6djg&refer_page_name=bgt_order_detail&refer_page_id=10045_1738783485272_gyquzdwaqv&refer_page_sn=10045"
+    ],
+    "video": [
+      "https://www.mokalighting.com/en-fr?utm_source=google2&utm_medium=search1&utm_campaign=quandiangroup2&utm_content=home2&gad_source=2&gclid=CjwKCAiAtYy9BhBcEiwANWQQL4HYc5O-8bY-QYImbtngCe5apQKNY5e7ijx50HjYecmdk4HvjAQONxoCtE4QAvD_BwE"
+    ]
+  },
+  "physical": {
+    "dimensions": [188, 198, 238],
+    "weight": 6,
+    "power": 750,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Preheat": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Préchauffage"
+      }
+    },
+    "Spraying": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "ON-OFF": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Preheat",
+      "shortName": "Chauffe",
+      "channels": [
+        "Preheat"
+      ]
+    },
+    {
+      "name": "spraying",
+      "shortName": "Puissance",
+      "channels": [
+        "Spraying"
+      ]
+    },
+    {
+      "name": "Fonction",
+      "shortName": "ON-OFF",
+      "channels": [
+        "ON-OFF"
+      ]
+    }
+  ]
+}
