@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Vertical Fog Machine",
+  "shortName": "LED VFM",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["LB Techniek & Entertainment"],
+    "createDate": "2026-01-31",
+    "lastModifyDate": "2026-01-31"
+  },
+  "links": {
+    "productPage": [
+      "https://www.alibaba.com/product-detail/DMX-512-1500W-Vertical-Fog-Machine_1601525175774.html?spm=a2756.order-detail-ta-bn-b.0.0.21d7f19cWXjRi3"
+    ]
+  },
+  "physical": {
+    "dimensions": [190, 370, 350],
+    "weight": 9.1,
+    "power": 2500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "24x 10W RGBW"
+    }
+  },
+  "availableChannels": {
+    "Smoke": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Vertical Fogger",
+      "shortName": "VF-1500",
+      "channels": [
+        "Smoke",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Auto"
+      ]
+    }
+  ]
+}
