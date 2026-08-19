@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "T4-E",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["LBE"],
+    "createDate": "2025-07-17",
+    "lastModifyDate": "2025-07-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.innled.fr/media/T4E-manuel-utilisation-V1-en.pdf"
+    ],
+    "productPage": [
+      "https://www.innled.fr/t4e-a.html"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature 3": {
+      "name": "Color Temperature",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "3000K"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "4000K"
+      }
+    },
+    "Dimmer 4": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "5600K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "only existing",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    }
+  ]
+}
