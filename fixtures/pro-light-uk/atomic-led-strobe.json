@@ -1,0 +1,1266 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Atomic Led Strobe",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["NCH MLN"],
+    "createDate": "2026-08-19",
+    "lastModifyDate": "2026-08-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-08-19",
+      "comment": "created by Q Light Controller Plus (version 5.2.2)"
+    }
+  },
+  "physical": {
+    "power": 197,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Total dimming": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Strobe": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "R 1 red dimming": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 2 red dimming": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 3 red dimming": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 4 red dimming": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 5 red dimming": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 6 red dimming": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 7 red dimming": {
+      "defaultValue": 21,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 8 red dimming": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 9 red dimming": {
+      "defaultValue": 27,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 10 red dimming": {
+      "defaultValue": 30,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 11 red dimming": {
+      "defaultValue": 33,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 12 red dimming": {
+      "defaultValue": 36,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 13 red dimming": {
+      "defaultValue": 39,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 14 red dimming": {
+      "defaultValue": 42,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 15 red dimming": {
+      "defaultValue": 45,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 16 red dimming": {
+      "defaultValue": 48,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 17 red dimming": {
+      "defaultValue": 51,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 18 red dimming": {
+      "defaultValue": 54,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 19 red dimming": {
+      "defaultValue": 57,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 20 red dimming": {
+      "defaultValue": 60,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 21 red dimming": {
+      "defaultValue": 63,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 22 red dimming": {
+      "defaultValue": 66,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 23 red dimming": {
+      "defaultValue": 69,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 24 red dimming": {
+      "defaultValue": 72,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 25 red dimming": {
+      "defaultValue": 75,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 26 red dimming": {
+      "defaultValue": 78,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 27 red dimming": {
+      "defaultValue": 81,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 28 red dimming": {
+      "defaultValue": 84,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 29 red dimming": {
+      "defaultValue": 87,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 30 red dimming": {
+      "defaultValue": 90,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 31 red dimming": {
+      "defaultValue": 93,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 32 red dimming": {
+      "defaultValue": 96,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 33 red dimming": {
+      "defaultValue": 99,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 34 red dimming": {
+      "defaultValue": 102,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 35 red dimming": {
+      "defaultValue": 105,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 36 red dimming": {
+      "defaultValue": 108,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 37 red dimming": {
+      "defaultValue": 111,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 38 red dimming": {
+      "defaultValue": 114,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 39 red dimming": {
+      "defaultValue": 117,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 40 red dimming": {
+      "defaultValue": 120,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 41 red dimming": {
+      "defaultValue": 123,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 42 red dimming": {
+      "defaultValue": 126,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 43 red dimming": {
+      "defaultValue": 129,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 44 red dimming": {
+      "defaultValue": 132,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 45 red dimming": {
+      "defaultValue": 135,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 46 red dimming": {
+      "defaultValue": 138,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 47 red dimming": {
+      "defaultValue": 141,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R 48 red dimming": {
+      "defaultValue": 144,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 1 Green dimming": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 2 Green dimming": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 3 Green dimming": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 4 Green dimming": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 5 Green dimming": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 6 Green dimming": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 7 Green dimming": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 8 Green dimming": {
+      "defaultValue": 25,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 9 Green dimming": {
+      "defaultValue": 28,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 10 Green dimming": {
+      "defaultValue": 31,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 11 Green dimming": {
+      "defaultValue": 34,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 12 Green dimming": {
+      "defaultValue": 37,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 13 Green dimming": {
+      "defaultValue": 40,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 14 Green dimming": {
+      "defaultValue": 43,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 15 Green dimming": {
+      "defaultValue": 46,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 16 Green dimming": {
+      "defaultValue": 49,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 17 Green dimming": {
+      "defaultValue": 52,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 18 Green dimming": {
+      "defaultValue": 55,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 19 Green dimming": {
+      "defaultValue": 58,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 20 Green dimming": {
+      "defaultValue": 61,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 21 Green dimming": {
+      "defaultValue": 64,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 22 Green dimming": {
+      "defaultValue": 67,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 23 Green dimming": {
+      "defaultValue": 70,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 24 Green dimming": {
+      "defaultValue": 73,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 25 Green dimming": {
+      "defaultValue": 76,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 26 Green dimming": {
+      "defaultValue": 79,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 27 Green dimming": {
+      "defaultValue": 82,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 28 Green dimming": {
+      "defaultValue": 85,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 29 Green dimming": {
+      "defaultValue": 88,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 30 Green dimming": {
+      "defaultValue": 91,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 31 Green dimming": {
+      "defaultValue": 94,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 32 Green dimming": {
+      "defaultValue": 97,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 33 Green dimming": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 34 Green dimming": {
+      "defaultValue": 103,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 35 Green dimming": {
+      "defaultValue": 106,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 36 Green dimming": {
+      "defaultValue": 109,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 37 Green dimming": {
+      "defaultValue": 112,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 38 Green dimming": {
+      "defaultValue": 115,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 39 Green dimming": {
+      "defaultValue": 118,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 40 Green dimming": {
+      "defaultValue": 121,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 41 Green dimming": {
+      "defaultValue": 124,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 42 Green dimming": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 43 Green dimming": {
+      "defaultValue": 130,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 44 Green dimming": {
+      "defaultValue": 133,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 45 Green dimming": {
+      "defaultValue": 136,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 46 Green dimming": {
+      "defaultValue": 139,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 47 Green dimming": {
+      "defaultValue": 142,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G 48 Green dimming": {
+      "defaultValue": 145,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 1 Blue dimming": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 2 Blue dimming": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 3 Blue dimming": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 4 Blue dimming": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 5 Blue dimming": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 6 Blue dimming": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 7 Blue dimming": {
+      "defaultValue": 23,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 8 Blue dimming": {
+      "defaultValue": 26,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 9 Blue dimming": {
+      "defaultValue": 29,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 10 Blue dimming": {
+      "defaultValue": 32,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 11 Blue dimming": {
+      "defaultValue": 35,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 12 Blue dimming": {
+      "defaultValue": 38,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 13 Blue dimming": {
+      "defaultValue": 41,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 14 Blue dimming": {
+      "defaultValue": 44,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 15 Blue dimming": {
+      "defaultValue": 47,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 16 Blue dimming": {
+      "defaultValue": 50,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 17 Blue dimming": {
+      "defaultValue": 53,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 18 Blue dimming": {
+      "defaultValue": 56,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 19 Blue dimming": {
+      "defaultValue": 59,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 20 Blue dimming": {
+      "defaultValue": 62,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 21 Blue dimming": {
+      "defaultValue": 65,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 22 Blue dimming": {
+      "defaultValue": 68,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 23 Blue dimming": {
+      "defaultValue": 71,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 24 Blue dimming": {
+      "defaultValue": 74,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 25 Blue dimming": {
+      "defaultValue": 77,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 26 Blue dimming": {
+      "defaultValue": 80,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 27 Blue dimming": {
+      "defaultValue": 83,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 28 Blue dimming": {
+      "defaultValue": 86,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 29 Blue dimming": {
+      "defaultValue": 89,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 30 Blue dimming": {
+      "defaultValue": 92,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 31 Blue dimming": {
+      "defaultValue": 95,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 32 Blue dimming": {
+      "defaultValue": 98,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 33 Blue dimming": {
+      "defaultValue": 101,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 34 Blue dimming": {
+      "defaultValue": 104,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 35 Blue dimming": {
+      "defaultValue": 107,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 36 Blue dimming": {
+      "defaultValue": 110,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 37 Blue dimming": {
+      "defaultValue": 113,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 38 Blue dimming": {
+      "defaultValue": 116,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 39 Blue dimming": {
+      "defaultValue": 119,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 40 Blue dimming": {
+      "defaultValue": 122,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 41 Blue dimming": {
+      "defaultValue": 125,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 42 Blue dimming": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 43 Blue dimming": {
+      "defaultValue": 131,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 44 Blue dimming": {
+      "defaultValue": 134,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 45 Blue dimming": {
+      "defaultValue": 137,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 46 Blue dimming": {
+      "defaultValue": 140,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 47 Blue dimming": {
+      "defaultValue": 143,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B 48 Blue dimming": {
+      "defaultValue": 146,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "W 1 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 2 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 3 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 4 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 5 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 6 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 7 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "W 8 White strobe dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Modo 154-channel",
+      "shortName": "Modo 154ch",
+      "channels": [
+        "Total dimming",
+        "Total Strobe",
+        "R 1 red dimming",
+        "G 1 Green dimming",
+        "B 1 Blue dimming",
+        "R 2 red dimming",
+        "G 2 Green dimming",
+        "B 2 Blue dimming",
+        "R 3 red dimming",
+        "G 3 Green dimming",
+        "B 3 Blue dimming",
+        "R 4 red dimming",
+        "G 4 Green dimming",
+        "B 4 Blue dimming",
+        "R 5 red dimming",
+        "G 5 Green dimming",
+        "B 5 Blue dimming",
+        "R 6 red dimming",
+        "G 6 Green dimming",
+        "B 6 Blue dimming",
+        "R 7 red dimming",
+        "G 7 Green dimming",
+        "B 7 Blue dimming",
+        "R 8 red dimming",
+        "G 8 Green dimming",
+        "B 8 Blue dimming",
+        "R 9 red dimming",
+        "G 9 Green dimming",
+        "B 9 Blue dimming",
+        "R 10 red dimming",
+        "G 10 Green dimming",
+        "B 10 Blue dimming",
+        "R 11 red dimming",
+        "G 11 Green dimming",
+        "B 11 Blue dimming",
+        "R 12 red dimming",
+        "G 12 Green dimming",
+        "B 12 Blue dimming",
+        "R 13 red dimming",
+        "G 13 Green dimming",
+        "B 13 Blue dimming",
+        "R 14 red dimming",
+        "G 14 Green dimming",
+        "B 14 Blue dimming",
+        "R 15 red dimming",
+        "G 15 Green dimming",
+        "B 15 Blue dimming",
+        "R 16 red dimming",
+        "G 16 Green dimming",
+        "B 16 Blue dimming",
+        "R 17 red dimming",
+        "G 17 Green dimming",
+        "B 17 Blue dimming",
+        "R 18 red dimming",
+        "G 18 Green dimming",
+        "B 18 Blue dimming",
+        "R 19 red dimming",
+        "G 19 Green dimming",
+        "B 19 Blue dimming",
+        "R 20 red dimming",
+        "G 20 Green dimming",
+        "B 20 Blue dimming",
+        "R 21 red dimming",
+        "G 21 Green dimming",
+        "B 21 Blue dimming",
+        "R 22 red dimming",
+        "G 22 Green dimming",
+        "B 22 Blue dimming",
+        "R 23 red dimming",
+        "G 23 Green dimming",
+        "B 23 Blue dimming",
+        "R 24 red dimming",
+        "G 24 Green dimming",
+        "B 24 Blue dimming",
+        "R 25 red dimming",
+        "G 25 Green dimming",
+        "B 25 Blue dimming",
+        "R 26 red dimming",
+        "G 26 Green dimming",
+        "B 26 Blue dimming",
+        "R 27 red dimming",
+        "G 27 Green dimming",
+        "B 27 Blue dimming",
+        "R 28 red dimming",
+        "G 28 Green dimming",
+        "B 28 Blue dimming",
+        "R 29 red dimming",
+        "G 29 Green dimming",
+        "B 29 Blue dimming",
+        "R 30 red dimming",
+        "G 30 Green dimming",
+        "B 30 Blue dimming",
+        "R 31 red dimming",
+        "G 31 Green dimming",
+        "B 31 Blue dimming",
+        "R 32 red dimming",
+        "G 32 Green dimming",
+        "B 32 Blue dimming",
+        "R 33 red dimming",
+        "G 33 Green dimming",
+        "B 33 Blue dimming",
+        "R 34 red dimming",
+        "G 34 Green dimming",
+        "B 34 Blue dimming",
+        "R 35 red dimming",
+        "G 35 Green dimming",
+        "B 35 Blue dimming",
+        "R 36 red dimming",
+        "G 36 Green dimming",
+        "B 36 Blue dimming",
+        "R 37 red dimming",
+        "G 37 Green dimming",
+        "B 37 Blue dimming",
+        "R 38 red dimming",
+        "G 38 Green dimming",
+        "B 38 Blue dimming",
+        "R 39 red dimming",
+        "G 39 Green dimming",
+        "B 39 Blue dimming",
+        "R 40 red dimming",
+        "G 40 Green dimming",
+        "B 40 Blue dimming",
+        "R 41 red dimming",
+        "G 41 Green dimming",
+        "B 41 Blue dimming",
+        "R 42 red dimming",
+        "G 42 Green dimming",
+        "B 42 Blue dimming",
+        "R 43 red dimming",
+        "G 43 Green dimming",
+        "B 43 Blue dimming",
+        "R 44 red dimming",
+        "G 44 Green dimming",
+        "B 44 Blue dimming",
+        "R 45 red dimming",
+        "G 45 Green dimming",
+        "B 45 Blue dimming",
+        "R 46 red dimming",
+        "G 46 Green dimming",
+        "B 46 Blue dimming",
+        "R 47 red dimming",
+        "G 47 Green dimming",
+        "B 47 Blue dimming",
+        "R 48 red dimming",
+        "G 48 Green dimming",
+        "B 48 Blue dimming",
+        "W 1 White strobe dimming",
+        "W 2 White strobe dimming",
+        "W 3 White strobe dimming",
+        "W 4 White strobe dimming",
+        "W 5 White strobe dimming",
+        "W 6 White strobe dimming",
+        "W 7 White strobe dimming",
+        "W 8 White strobe dimming"
+      ]
+    }
+  ]
+}
