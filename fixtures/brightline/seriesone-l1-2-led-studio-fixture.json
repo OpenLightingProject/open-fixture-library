@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SeriesONE L1.2 LED Studio Fixture",
+  "shortName": "L1.2",
+  "categories": ["Other", "Dimmer"],
+  "meta": {
+    "authors": ["Matthew Beck"],
+    "createDate": "2024-07-31",
+    "lastModifyDate": "2024-07-31"
+  },
+  "comment": "variable white color temperature from 3200 to 5600 degrees Kelvin",
+  "links": {
+    "manual": [
+      "https://brightlines.com/wp-content/uploads/2023/09/L1.2-Manual.pdf"
+    ],
+    "productPage": [
+      "https://brightlines.com/product/seriesone-l1-2-led-studio-fixture/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=qDCbZDP2hto"
+    ]
+  },
+  "physical": {
+    "dimensions": [425.07, 197.55, 231.45],
+    "weight": 7.71,
+    "power": 110,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
