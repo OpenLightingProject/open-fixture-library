@@ -1,0 +1,273 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TMH-155",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["@David-san"],
+    "createDate": "2022-01-28",
+    "lastModifyDate": "2022-01-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.fr/download/51786410-Manual-14428-2.400-eurolite-tmh-155-moving-head-de_en_es_fr.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.fr/en/mpn51786410-eurolite-tmh-155-moving-head.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=6yKPaP0DVQw"
+    ]
+  },
+  "physical": {
+    "dimensions": [335, 360, 330],
+    "weight": 12,
+    "power": 265,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "HTI 150W 90V",
+      "colorTemperature": 6900
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angle": "360deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angle": "250deg"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [5, 120],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [121, 139],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [14, 63],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        }
+      ]
+    },
+    "Dimmer/Strob": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [3, 29],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [30, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Open Shutter"
+        }
+      ]
+    },
+    "Pan 16b": {
+      "fineChannelAliases": ["Pan 16b fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angle": "360deg"
+      }
+    },
+    "Pan 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angle": "360deg"
+      }
+    },
+    "Tilt 16": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Tilt",
+        "angle": "250deg"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "ColorPreset",
+          "comment": "Violet"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [136, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow Fx"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Regular",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel",
+        "Dimmer/Strob",
+        "Pan 16",
+        "Tilt 16"
+      ]
+    }
+  ]
+}
