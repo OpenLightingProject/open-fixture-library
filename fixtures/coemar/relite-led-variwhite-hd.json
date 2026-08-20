@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ReLite LED  VariWhite HD+",
+  "categories": ["Color Changer", "Effect", "Dimmer"],
+  "meta": {
+    "authors": ["SW"],
+    "createDate": "2025-04-08",
+    "lastModifyDate": "2025-04-08"
+  },
+  "comment": "Could not get rid of colour changer and effect for some reason. This is just a dimming LED with colour temperature control",
+  "links": {
+    "manual": [
+      "https://www.coemar.com/wp-content/uploads/2018/11/ReLite-Led-Kit-HD-external-box-User-Manual-vrs.-1.6.pdf"
+    ],
+    "productPage": [
+      "https://www.coemar.com/products/relite-hd/"
+    ]
+  },
+  "physical": {
+    "power": 330,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Colour Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Intensity",
+        "Colour Temperature"
+      ]
+    }
+  ]
+}
