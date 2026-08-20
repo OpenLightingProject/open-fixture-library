@@ -1,0 +1,372 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Looping",
+  "shortName": "Looping",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Phil_Event"],
+    "createDate": "2026-05-15",
+    "lastModifyDate": "2026-05-15"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/DIV/GHOST/200001_LOOPING/200001_LOOPING_FR.pdf"
+    ],
+    "productPage": [
+      "https://www.ghost-france.com/produit/looping/"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer du Beam"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer de l'anneau"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction",
+          "comment": "Strobe Anneau"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode fonctionnement anneau": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Anneau en mode fixe"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Anneau en mode chase"
+        }
+      ]
+    },
+    "Mode couleurs de l'anneau": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Generic",
+          "comment": "Macro de couleurs de l'anneau"
+        }
+      ]
+    },
+    "Fonctions speciales": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Mode audio"
+        }
+      ]
+    },
+    "Dimmer General": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer du Beam"
+      }
+    },
+    "Strobe General": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Beam Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Beam Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Beam Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Beam White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Ring segment 1 Anneau - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ring segment 1 Anneau - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ring segment 1 Anneau - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Ring segment 2 Anneau - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ring segment 2 Anneau - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ring segment 2 Anneau - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Ring segment 3 Anneau - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ring segment 3 Anneau - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ring segment 3 Anneau - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Ring segment 4 Anneau - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ring segment 4 Anneau - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ring segment 4 Anneau - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Ring segment 5 Anneau - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ring segment 5 Anneau - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ring segment 5 Anneau - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Ring segment 6 Anneau - Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ring segment 6 Anneau - Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ring segment 6 Anneau - Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16_canaux",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer 2",
+        "Strobe 2",
+        "Mode fonctionnement anneau",
+        "Mode couleurs de l'anneau",
+        "Fonctions speciales"
+      ]
+    },
+    {
+      "name": "30_canaux",
+      "shortName": "30ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer General",
+        "Strobe General",
+        "Beam Red",
+        "Beam Green",
+        "Beam Blue",
+        "Beam White",
+        "Ring segment 1 Anneau - Red",
+        "Ring segment 1 Anneau - Green",
+        "Ring segment 1 Anneau - Blue",
+        "Ring segment 2 Anneau - Red",
+        "Ring segment 2 Anneau - Green",
+        "Ring segment 2 Anneau - Blue",
+        "Ring segment 3 Anneau - Red",
+        "Ring segment 3 Anneau - Green",
+        "Ring segment 3 Anneau - Blue",
+        "Ring segment 4 Anneau - Red",
+        "Ring segment 4 Anneau - Green",
+        "Ring segment 4 Anneau - Blue",
+        "Ring segment 5 Anneau - Red",
+        "Ring segment 5 Anneau - Green",
+        "Ring segment 5 Anneau - Blue",
+        "Ring segment 6 Anneau - Red",
+        "Ring segment 6 Anneau - Green",
+        "Ring segment 6 Anneau - Blue",
+        "Fonctions speciales"
+      ]
+    }
+  ]
+}
