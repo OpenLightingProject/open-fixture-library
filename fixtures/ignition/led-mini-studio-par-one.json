@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Mini Studio Par One",
+  "shortName": "LED Mini Par",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["anonymus"],
+    "createDate": "2025-10-17",
+    "lastModifyDate": "2025-10-17"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/455597_c_455442_455597_v2_de_online.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Voreinstellung"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-Channel",
+      "shortName": "7CH",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
