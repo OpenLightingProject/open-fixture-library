@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MH-Elias-Y1",
+  "shortName": "MHElias1",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["JonnyOberr"],
+    "createDate": "2023-05-28",
+    "lastModifyDate": "2023-05-28"
+  },
+  "comment": "Elias MH ddf1",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/"
+    ]
+  },
+  "physical": {
+    "weight": 7,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 1700,
+      "lumens": 3
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Strobo in the line (from slow to fast)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7Chanel",
+      "shortName": "7CH",
+      "channels": [
+        "Dimmer 3",
+        "Strobe"
+      ]
+    }
+  ]
+}
