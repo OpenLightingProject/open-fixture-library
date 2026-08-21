@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Clubpar 12/6",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["MG"],
+    "createDate": "2024-10-11",
+    "lastModifyDate": "2024-10-11"
+  },
+  "links": {
+    "productPage": [
+      "https://www.showtec-lights.com/en/42651-club-par-12-6-rgbwauv.html"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Programm": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Programm",
+        "Program Speed",
+        "Program duration"
+      ]
+    }
+  ]
+}
