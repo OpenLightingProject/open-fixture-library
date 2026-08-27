@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lyre LED 200W",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["thomas"],
+    "createDate": "2026-08-27",
+    "lastModifyDate": "2026-08-27"
+  },
+  "links": {
+    "other": [
+      "https://github.com/OpenFixtureLibrary/ofl"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Gold Ring": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "LED Macro"
+      }
+    },
+    "Motor Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Motor Macro"
+      }
+    },
+    "Auto/Sound Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Auto/Sound Macro"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14CH",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Gold Ring",
+        "LED Macro",
+        "Motor Macro",
+        "Auto/Sound Macro",
+        "Reset"
+      ]
+    }
+  ]
+}
