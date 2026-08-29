@@ -1,0 +1,181 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18x18W 6in1 Zoom Par",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["RobGal", "Franco Piccolo"],
+    "createDate": "2025-04-25",
+    "lastModifyDate": "2025-04-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-04-25",
+      "comment": "created by Q Light Controller Plus (version 4.14.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [220, 220, 220],
+    "weight": 3.7,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [23, 49]
+    }
+  },
+  "availableChannels": {
+    "RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AMBER": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Total Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 40],
+          "type": "Effect",
+          "effectName": "Auto mode 1 (Zoom can control)"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "Effect",
+          "effectName": "Auto mode 2 (Zoom can control)"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "Effect",
+          "effectName": "Auto mode 3 (Zoom can control)"
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "Effect",
+          "effectName": "Auto mode 1"
+        },
+        {
+          "dmxRange": [161, 200],
+          "type": "Effect",
+          "effectName": "Auto mode 2"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "Effect",
+          "effectName": "Auto mode 3"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Auto mode speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "AMBER",
+        "UV",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Total Dimmer",
+        "Strobe",
+        "Function",
+        "Auto mode speed",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "AMBER",
+        "UV",
+        "Zoom"
+      ]
+    }
+  ]
+}
