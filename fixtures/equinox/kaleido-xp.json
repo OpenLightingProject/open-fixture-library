@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kaleido XP",
+  "shortName": "Kaleido XP",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Justin Noe"],
+    "createDate": "2022-01-07",
+    "lastModifyDate": "2022-01-07"
+  },
+  "comment": "Kaleidoscope LED Projector",
+  "links": {
+    "manual": [
+      "http://www.prolight.co.uk/ftp-in/EQLED086_Manual.pdf"
+    ],
+    "productPage": [
+      "https://prolight.co.uk/product/kaleido-xp-100w"
+    ],
+    "video": [
+      "https://prolight.co.uk/product/kaleido-xp-100w"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 230, 340],
+    "weight": 4.2,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 247],
+          "type": "StrobeSpeed",
+          "speed": "1Hz"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 120],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [121, 134],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [135, 245],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Rotation",
+          "speed": "stop"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Effect",
+          "effectName": "Pattern stop",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [195, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channel",
+      "shortName": "4 channel",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Prism Rotation",
+        "Gobo Wheel Rotation"
+      ]
+    }
+  ]
+}
