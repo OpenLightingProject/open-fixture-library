@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Minipar 46 Quad",
+  "shortName": "minipar46q",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["anon3333"],
+    "createDate": "2025-12-22",
+    "lastModifyDate": "2025-12-22"
+  },
+  "comment": "simple rgbw mini par with fade modes and strobe",
+  "links": {
+    "manual": [
+      "https://cdn.algam.net/pub/collections/documents_AE/ALGLIG/MINIPAR%2046%20QUAD%20-%20USERMANUAL%20-%202024-03%20-%20WEB.pdf"
+    ],
+    "productPage": [
+      "https://algam-lighting.com/en/par/1477-minipar-46-quad-3700166375185.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [130, 130, 130],
+    "weight": 0.5,
+    "power": 24,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Total": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Strobe Off"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "10Hz",
+          "speedEnd": "50Hz"
+        }
+      ]
+    },
+    "Auto Modes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "\"DMX Channels Control\""
+        },
+        {
+          "dmxRange": [4, 19],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 35],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [36, 51],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [52, 67],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [68, 83],
+          "type": "Generic",
+          "comment": "R+G"
+        },
+        {
+          "dmxRange": [84, 99],
+          "type": "Generic",
+          "comment": "G+B"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "R+B"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Generic",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "Color jumping mode 1"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Generic",
+          "comment": "Color jumping mode 2"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Color jumping mode 3"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Generic",
+          "comment": "Color Fade Mode"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "Generic",
+          "comment": "Sound Mode"
+        }
+      ]
+    },
+    "Speed for jump / fade mode": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8chan",
+      "channels": [
+        "Total",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Auto Modes",
+        "Speed for jump / fade mode"
+      ]
+    }
+  ]
+}
