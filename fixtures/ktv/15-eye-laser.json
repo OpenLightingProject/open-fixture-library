@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "15 Eye Laser",
+  "shortName": "15eye",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["rennist"],
+    "createDate": "2023-03-11",
+    "lastModifyDate": "2023-03-11"
+  },
+  "links": {
+    "productPage": [
+      "https://www.ktvlights.com/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Special": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red Laser 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Laser 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Laser": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Laser": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Motor Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "LED UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Flash": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11channel",
+      "shortName": "11ch",
+      "channels": [
+        "Special",
+        "Red Laser 1",
+        "Red Laser 2",
+        "Green Laser",
+        "Blue Laser",
+        "Motor Speed",
+        "LED UV",
+        "LED Red",
+        "LED Green",
+        "LED Blue",
+        "Flash"
+      ]
+    }
+  ]
+}
