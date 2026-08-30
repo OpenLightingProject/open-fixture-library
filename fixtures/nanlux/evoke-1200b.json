@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evoke 1200b",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Bob"],
+    "createDate": "2025-05-20",
+    "lastModifyDate": "2025-05-20"
+  },
+  "links": {
+    "productPage": [
+      "https://www.nanlux.com/product-evoke-1200b"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-bit CTC Reduced",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine"
+      ]
+    }
+  ]
+}
