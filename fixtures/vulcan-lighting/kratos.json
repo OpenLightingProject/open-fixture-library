@@ -1,0 +1,196 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kratos",
+  "shortName": "Kratos",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Dan Wicks"],
+    "createDate": "2023-06-22",
+    "lastModifyDate": "2026-06-23",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-06-27",
+      "comment": "GDTF v1.2 fixture type ID: C0B6B779-0D5A-4809-A604-B29DC504266E"
+    }
+  },
+  "comment": "Kratos Par",
+  "availableChannels": {
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dim": {
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "StrobeM Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (StrobeModeShutter)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Unknown (StrobeModeShutter)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Strobe S>F"
+        }
+      ]
+    },
+    "FX1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Effect",
+          "effectName": "Open",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "Effect",
+          "effectName": "Index",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [51, 80],
+          "type": "Effect",
+          "effectName": "Jump",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [81, 110],
+          "type": "Effect",
+          "effectName": "Fade",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [111, 140],
+          "type": "Effect",
+          "effectName": "Pulse",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [141, 170],
+          "type": "Effect",
+          "effectName": "Sound1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "Effect",
+          "effectName": "Sound2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [201, 230],
+          "type": "Effect",
+          "effectName": "Sound3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Sound4",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6CH",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10Ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Amber",
+        "UV",
+        "Dim 2",
+        "StrobeM Shutter",
+        "FX1",
+        "FX1 Rate"
+      ]
+    }
+  ]
+}
