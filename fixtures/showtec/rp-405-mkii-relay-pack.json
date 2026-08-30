@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RP-405 MKII Relay Pack",
+  "shortName": "Dimmerpack",
+  "categories": ["Dimmer", "Other"],
+  "meta": {
+    "authors": ["theo"],
+    "createDate": "2025-01-23",
+    "lastModifyDate": "2025-01-23"
+  },
+  "comment": "give dmx control to non dmx fixtures only dimm no RGB",
+  "links": {
+    "other": [
+      "https://www.thomann.de/de/showtec_rp_405_mkii_relay_pack.htm?gad_source=1&gclid=Cj0KCQiA7se8BhCAARIsAKnF3ry3ABJErFEilCBxl8A0CIl1-_ppoqMPqOoECJGBB5gwdcl6uyZAG9EaArMrEALw_wcB"
+    ]
+  },
+  "physical": {
+    "dimensions": [20, 30, 10],
+    "weight": 1.5,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "intesity",
+      "shortName": "dimm",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
