@@ -1,0 +1,247 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vector Spot Zoom 2.0",
+  "shortName": "Vector 2.0",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["State of Light"],
+    "createDate": "2023-10-18",
+    "lastModifyDate": "2023-10-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.musicstore.com/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/en_US/ms-rs/EUR/ViewProductAttachment-ResolveManualURL?File=EN_LIG0016698-000.pdf"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/en_RS/EUR/lightmaXX-VECTOR-SPOT-ZOOM-2-0/art-LIG0016698-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=OCZHNmpmgKk"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel 3": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channel",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Intensity",
+        "Shutter",
+        "No function",
+        "No function 2"
+      ]
+    },
+    {
+      "name": "18 channel",
+      "channels": [
+        "Intensity",
+        "Shutter",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel 3",
+        "Gobo Wheel 2",
+        "Gobo Wheel Rotation",
+        "Focus",
+        "Zoom",
+        "Prism",
+        "Prism Rotation",
+        "Color Macros",
+        "Effect Speed",
+        "Reserved"
+      ]
+    }
+  ]
+}
