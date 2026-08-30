@@ -1,0 +1,352 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED moving head ZOOM and Rotation 19X40",
+  "shortName": "LED moving head 19X40 36 Chanel",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Markus"],
+    "createDate": "2024-11-22",
+    "lastModifyDate": "2024-11-22"
+  },
+  "links": {
+    "other": [
+      "http://www.sebogmbh.de"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [434, 260, 577],
+    "weight": 15.2,
+    "power": 850,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 0
+    }
+  },
+  "availableChannels": {
+    "Red dimmer": {
+      "fineChannelAliases": ["Red dimmer fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimmer": {
+      "fineChannelAliases": ["Green dimmer fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "fineChannelAliases": ["Blue dimmer fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White dimmer": {
+      "fineChannelAliases": ["White dimmer fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Marco color": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "soundControlled": true,
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Reset with 5 second"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Lens Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "0 to 60 degree"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Generic",
+          "comment": "Unlimited anticlockwise rotation from fast to slow"
+        },
+        {
+          "dmxRange": [190, 191],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Unlimited clockwise rotation from fast to slow"
+        }
+      ]
+    },
+    "Sharp macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 14],
+          "type": "Generic",
+          "comment": "Static effects"
+        },
+        {
+          "dmxRange": [15, 87],
+          "type": "Generic",
+          "comment": "Dynamic effects"
+        },
+        {
+          "dmxRange": [88, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shape speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Dynamic shape anti clockwise rotation from fast to slow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Dynamic shape clockwise rotation from slow to fast"
+        }
+      ]
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shape red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Shape green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Shape blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shape white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shape dimmer": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape Dimmer"
+      }
+    },
+    "Background Dimmer": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background Dimmer"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shape transition": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape transition"
+      }
+    },
+    "Shape strobe": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape strobe"
+      }
+    },
+    "Background strobe": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background strobe"
+      }
+    },
+    "Background shape (needs to light up via 1 to 12 chanel)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 15],
+          "type": "Generic",
+          "comment": "Every 1 DMX value is one kind of backgroud shape"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "36 Chanel",
+      "channels": [
+        "Red dimmer",
+        "Red dimmer fine",
+        "Green dimmer",
+        "Green dimmer fine",
+        "Blue dimmer",
+        "Blue dimmer fine",
+        "White dimmer",
+        "White dimmer fine",
+        "CTO",
+        "Marco color",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Reserved",
+        "Reset",
+        "Zoom",
+        "Lens Rotation",
+        "Sharp macro",
+        "Shape speed",
+        "Reserved 2",
+        "Shape red",
+        "Shape green",
+        "Shape blue",
+        "Shape white",
+        "Shape dimmer",
+        "Background Dimmer",
+        "Reserved 3",
+        "Shape transition",
+        "Shape strobe",
+        "Background strobe",
+        "Background shape (needs to light up via 1 to 12 chanel)",
+        "Reserved 4"
+      ]
+    }
+  ]
+}
