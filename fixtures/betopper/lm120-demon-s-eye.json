@@ -1,0 +1,402 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LM120 Demon's Eye",
+  "shortName": "LM120",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2025-05-03",
+    "lastModifyDate": "2025-05-03"
+  },
+  "comment": "Tiny MH with strong output",
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/Betopper_LED_120W_RGBW_4in1_Moving_Head_Light_User_Manual.pdf?v=1725257285"
+    ],
+    "productPage": [
+      "https://betopperdj.com/de/products/betopper-led-120w-rgbw-4in1-moving-head-light"
+    ]
+  },
+  "physical": {
+    "dimensions": [26, 31, 21],
+    "weight": 4.15,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED RGBW",
+      "colorTemperature": 6000,
+      "lumens": 3300
+    },
+    "lens": {
+      "name": "Pebble-Convex",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "1,7 seconds"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random SLOW"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random MEDIUM"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Randmom FAST"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "FX": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "Effect",
+          "effectName": "Gradient"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "Effect",
+          "effectName": "Chasing"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "Effect",
+          "effectName": "Rainbow"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "Effect",
+          "effectName": "GRADIENT 1"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "Effect",
+          "effectName": "GRADIENT 2"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "Effect",
+          "effectName": "GRADIENT 3"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "Effect",
+          "effectName": "GRADIENT 4"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "Effect",
+          "effectName": "GRADIENT 5"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "Effect",
+          "effectName": "GRADIENT 6"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Effect",
+          "effectName": "GRADIENT 7"
+        }
+      ]
+    },
+    "FX Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "LightStrip Dim": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LightStrip Strobo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "PULSE"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random SLOW"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Random MEDIUM"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random FAST"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strip R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Strip G": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Strip B": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LightStrip FX": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "NOTHING",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Effect",
+          "effectName": "Effect 1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [128, 181],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [182, 255],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        }
+      ]
+    },
+    "LightStrip FX Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "RESET": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "Generic",
+          "comment": "AUTO-MOVE"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "Generic",
+          "comment": "RESET - stay for 5 seconds"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "23 Channel DMX",
+      "shortName": "Ch23",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Color Macros",
+        "FX",
+        "FX Speed",
+        "LightStrip Dim",
+        "LightStrip Strobo",
+        "Strip R",
+        "Strip G",
+        "Strip B",
+        "LightStrip FX",
+        "LightStrip FX Speed",
+        "RESET"
+      ]
+    }
+  ]
+}
