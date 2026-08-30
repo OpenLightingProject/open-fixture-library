@@ -1,0 +1,279 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Katros",
+  "shortName": "Katros",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["francesco"],
+    "createDate": "2024-07-26",
+    "lastModifyDate": "2024-07-26"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 5": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 6": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 7": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 8": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 5": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 6": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 7": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 8": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 5": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 6": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 7": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 8": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "32",
+      "shortName": "32",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "White 7",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "White 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "White 8",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "White 5"
+      ]
+    }
+  ]
+}
