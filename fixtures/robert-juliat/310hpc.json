@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "310HPC",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["J2M"],
+    "createDate": "2023-02-16",
+    "lastModifyDate": "2023-02-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.com/Product_Specifications/Fiches_EN/Standard/DSEN007_310HPC.pdf"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.com/singlelenslum/310h.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 440, 465],
+    "weight": 8.5,
+    "power": 1200,
+    "bulb": {
+      "type": "Tungsten CP90",
+      "colorTemperature": 3200,
+      "lumens": 30000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [8, 63]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
