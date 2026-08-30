@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Megastrobe FX12",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Tryll", "Luke Nelson", "RONNY"],
+    "createDate": "2025-12-18",
+    "lastModifyDate": "2025-12-18",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-12-18",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [350, 171, 98],
+    "weight": 1.9,
+    "power": 66,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      6,
+      2,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Shutter Basic": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "26Hz",
+          "comment": "Strobe 0…26Hz"
+        }
+      ]
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 32],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe sound-controlled",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed Sound Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [33, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse strobe (Asynchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [50, 66],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Ramp up strobe (Asynchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [67, 83],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Ramp down strobe (Asynchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [84, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Ramp up and down strobe (Asynchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [101, 117],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe (Asynchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [118, 134],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [135, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse strobe (Synchronous - Pulse 1)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [152, 168],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse strobe (Synchronous - Pulse 2)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [169, 185],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Ramp up strobe (Synchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [186, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Ramp down strobe (Synchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [203, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Ramp up and down strobe (Synchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [220, 236],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe (Synchronous)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        },
+        {
+          "dmxRange": [237, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed",
+          "switchChannels": {
+            "Shutter Speed / Shutter Speed Sound Sensitivity": "Shutter Speed"
+          }
+        }
+      ]
+    },
+    "Shutter Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe speed 0…26Hz"
+      }
+    },
+    "Program Speed Sound Sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound sensitivity 0…100%",
+        "soundControlled": true
+      }
+    },
+    "Shutter Speed Sound Sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound sensitivity 0…100%",
+        "soundControlled": true
+      }
+    },
+    "Pixels": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Pixel control"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Effect speed slow…fast"
+      }
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 48],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Pixels"
+          }
+        },
+        {
+          "dmxRange": [49, 64],
+          "type": "Effect",
+          "effectName": "Auto Program 1",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [65, 80],
+          "type": "Effect",
+          "effectName": "Auto Program 2",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [81, 96],
+          "type": "Effect",
+          "effectName": "Auto Program 3",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [97, 112],
+          "type": "Effect",
+          "effectName": "Auto Program 4",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [113, 128],
+          "type": "Effect",
+          "effectName": "Auto Program 5",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [129, 144],
+          "type": "Effect",
+          "effectName": "Auto Program 6",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [145, 160],
+          "type": "Effect",
+          "effectName": "Auto Program 7",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [161, 176],
+          "type": "Effect",
+          "effectName": "Auto Program 8",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [177, 192],
+          "type": "Effect",
+          "effectName": "Auto Program 9",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [193, 208],
+          "type": "Effect",
+          "effectName": "Auto Program 10",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [209, 224],
+          "type": "Effect",
+          "effectName": "Auto Program 11",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [225, 240],
+          "type": "Effect",
+          "effectName": "Auto Program 12",
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "switchChannels": {
+            "Pixels / Program Speed / Program Speed Sound Sensitivity": "Program Speed Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Shutter Effects": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Generic"
+      }
+    },
+    "Shutter Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe speed slow…fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Shutter Basic",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Shutter Speed / Shutter Speed Sound Sensitivity",
+        "Pixels / Program Speed / Program Speed Sound Sensitivity",
+        "Auto Programs"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4",
+        "Dimmer 5",
+        "Dimmer 6",
+        "Shutter Effects",
+        "Shutter Effect Speed"
+      ]
+    }
+  ]
+}
