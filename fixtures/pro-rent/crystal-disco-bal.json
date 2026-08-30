@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "crystal disco bal",
+  "shortName": "Moving Head",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["anynonums"],
+    "createDate": "2023-09-13",
+    "lastModifyDate": "2025-07-11",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-09-03",
+      "comment": "GDTF v1.2 fixture type ID: 0C2B5497-D82E-4291-840C-D4239AE002A7"
+    }
+  },
+  "comment": "Basic Moving Head",
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "R": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "G": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "B": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe1": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz"
+      }
+    },
+    "P": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 47],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "180deg",
+          "comment": "manual rot"
+        },
+        {
+          "dmxRange": [48, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "100deg",
+          "comment": "auto rot"
+        }
+      ]
+    },
+    "Color FX1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1",
+      "channels": [
+        "Dim",
+        "R",
+        "G",
+        "B",
+        "Strobe1",
+        "P",
+        "Color FX1"
+      ]
+    }
+  ]
+}
