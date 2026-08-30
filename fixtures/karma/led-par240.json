@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR240",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["User", "Monny"],
+    "createDate": "2023-12-06",
+    "lastModifyDate": "2023-12-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-12-06",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rosso": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blu": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Bianco": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed"
+      }
+    },
+    "Cambia Colori": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "Effect",
+          "effectName": "Seleziona Colori"
+        },
+        {
+          "dmxRange": [31, 119],
+          "type": "Effect",
+          "effectName": "Cambia Colori Graduale Controllo Velocità canale 8"
+        },
+        {
+          "dmxRange": [120, 199],
+          "type": "Effect",
+          "effectName": "Seleziona colori macro"
+        },
+        {
+          "dmxRange": [200, 231],
+          "type": "Effect",
+          "effectName": "Cambio Colori"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Sound AUTO",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Velocità": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Canali",
+      "channels": [
+        "Dimmer",
+        "Rosso",
+        "Verde",
+        "Blu",
+        "Bianco",
+        "Strobo",
+        "Cambia Colori",
+        "Velocità"
+      ]
+    }
+  ]
+}
