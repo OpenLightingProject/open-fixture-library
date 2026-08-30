@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Autark ID07 LED Fluter",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Polzin Production"],
+    "createDate": "2025-02-07",
+    "lastModifyDate": "2025-02-07"
+  },
+  "links": {
+    "productPage": [
+      "https://www.manualslib.de/manual/441539/Nowsonic-Autark-Id07.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 240, 235],
+    "weight": 3.8,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED Fluter"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "No function",
+        "No function 2",
+        "No function 3"
+      ]
+    }
+  ]
+}
