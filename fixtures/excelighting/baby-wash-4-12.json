@@ -1,0 +1,254 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Baby Wash 4*12",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Fpan"],
+    "createDate": "2022-10-22",
+    "lastModifyDate": "2022-10-22"
+  },
+  "links": {
+    "productPage": [
+      "http://excelighting.com/affichage_produits.php?produitid=210&idcat=104"
+    ]
+  },
+  "physical": {
+    "weight": 3.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Leds"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [200, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [8, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "Effect",
+          "effectName": "Strobe 1"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "Effect",
+          "effectName": "Strobe 2"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Intensity",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Random Strobe"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "15ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Dimmer 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Macros",
+        "Strobe",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
