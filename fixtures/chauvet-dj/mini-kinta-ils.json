@@ -1,0 +1,189 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Kinta ILS",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Alistair Smith"],
+    "createDate": "2024-05-15",
+    "lastModifyDate": "2024-05-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2022/05/Mini_Kinta_ILS_QRG_ML6_Rev4.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/mini-kinta-ils/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Motor Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 20],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [21, 35],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [36, 50],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [51, 65],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [66, 80],
+          "type": "ColorPreset",
+          "comment": "Red and green"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "ColorPreset",
+          "comment": "Red and blue"
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "ColorPreset",
+          "comment": "Red and white"
+        },
+        {
+          "dmxRange": [111, 125],
+          "type": "ColorPreset",
+          "comment": "Green and blue"
+        },
+        {
+          "dmxRange": [126, 140],
+          "type": "ColorPreset",
+          "comment": "Green and white"
+        },
+        {
+          "dmxRange": [141, 155],
+          "type": "ColorPreset",
+          "comment": "Blue and white"
+        },
+        {
+          "dmxRange": [156, 170],
+          "type": "ColorPreset",
+          "comment": "Red, green and blue"
+        },
+        {
+          "dmxRange": [171, 185],
+          "type": "ColorPreset",
+          "comment": "Red, green and white"
+        },
+        {
+          "dmxRange": [186, 200],
+          "type": "ColorPreset",
+          "comment": "Green, blue and white"
+        },
+        {
+          "dmxRange": [201, 215],
+          "type": "ColorPreset",
+          "comment": "Red, green, blue and white"
+        },
+        {
+          "dmxRange": [216, 230],
+          "type": "ColorPreset",
+          "comment": "Automatic 4-color chase"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ColorPreset",
+          "comment": "Automatic 7-color chase"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Motor Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speed": "stop",
+          "comment": "This moves the motor to a specific index between 1 & 127. It's not known what these indexes actually are."
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "The speed at which the motor moves"
+        }
+      ]
+    },
+    "Overrides": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 200],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic program"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "Sound-active program"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Color",
+        "Strobe",
+        "Motor Rotation",
+        "Overrides"
+      ]
+    }
+  ]
+}
