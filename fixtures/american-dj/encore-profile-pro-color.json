@@ -1,0 +1,445 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore Profile Pro Color",
+  "shortName": "Encore Profile Pro Color",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["David Dempsey"],
+    "createDate": "2025-04-07",
+    "lastModifyDate": "2025-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/encore-profile-pro-color"
+    ],
+    "productPage": [
+      "https://www.adj.com/encore-profile-pro-color"
+    ],
+    "video": [
+      "https://www.adj.com/encore-profile-pro-color"
+    ]
+  },
+  "physical": {
+    "dimensions": [invalid, invalid, invalid],
+    "weight": 20,
+    "power": 280,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6900,
+      "lumens": 6000
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color Temperature Linear": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Color Temperature Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 76],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "2700K"
+        },
+        {
+          "dmxRange": [77, 121],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [122, 166],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "4000K"
+        },
+        {
+          "dmxRange": [167, 211],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [212, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "6500K"
+        }
+      ]
+    },
+    "Color Temperature Red to Green": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dim Modes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Intensity",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Intensity",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Intensity",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Intensity",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Intensity",
+          "comment": "Stage 2"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow",
+          "comment": "0.1"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.2"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.3"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.4"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.5"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.6"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.7"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "0.8"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "EffectSpeed",
+          "speed": "slow",
+          "comment": "0.9"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "1.5"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "9"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "10"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Default to Unit Setting"
+        }
+      ]
+    },
+    "Dim Curves": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Intensity",
+          "comment": "Square"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Intensity",
+          "comment": "Inv.Squa"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Intensity",
+          "comment": "S.Curve"
+        },
+        {
+          "dmxRange": [81, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "LED Refresh Rates": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [29, 78],
+          "type": "StrobeSpeed",
+          "speedStart": "1080Hz",
+          "speedEnd": "25000Hz"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "StrobeSpeed",
+          "speed": "0Hz"
+        },
+        {
+          "dmxRange": [80, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Lime",
+        "Color Temperature Linear",
+        "Color Temperature Presets",
+        "Color Temperature Red to Green",
+        "Color Macros",
+        "Shutter",
+        "Dimmer",
+        "Dimmer 2",
+        "Dim Modes",
+        "Dim Curves",
+        "LED Refresh Rates"
+      ]
+    }
+  ]
+}
