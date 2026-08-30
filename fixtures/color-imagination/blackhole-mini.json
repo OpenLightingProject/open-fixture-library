@@ -1,0 +1,265 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Blackhole Mini",
+  "shortName": "SI-345",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Gal"],
+    "createDate": "2023-01-10",
+    "lastModifyDate": "2023-01-10"
+  },
+  "links": {
+    "productPage": [
+      "https://www.color-imagination.com/blackhole-mini-led-stage-lighting-moving-head.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=dNN3Aq7uEC8"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 130],
+          "type": "PanContinuous",
+          "speed": "fast CW",
+          "comment": "fast to slow"
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "PanContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "PanContinuous",
+          "speed": "slow CCW",
+          "comment": "slow to fast"
+        }
+      ]
+    },
+    "Pan Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Talon Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "720deg"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Rotation",
+          "speed": "fast CW",
+          "comment": "fast to slow"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Rotation",
+          "speed": "slow CCW",
+          "comment": "slow to fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe slow to fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow open fast close"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow close fast open"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "StrobeDuration",
+          "duration": "instant",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Internal Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 59],
+          "type": "Generic",
+          "comment": "Internal Program 1"
+        },
+        {
+          "dmxRange": [60, 87],
+          "type": "Generic",
+          "comment": "Internal Program 2"
+        },
+        {
+          "dmxRange": [88, 115],
+          "type": "Generic",
+          "comment": "Internal Program 3"
+        },
+        {
+          "dmxRange": [116, 143],
+          "type": "Generic",
+          "comment": "Internal Program 4"
+        },
+        {
+          "dmxRange": [144, 171],
+          "type": "Generic",
+          "comment": "Internal Program 5"
+        },
+        {
+          "dmxRange": [172, 199],
+          "type": "Generic",
+          "comment": "Internal Program 6"
+        },
+        {
+          "dmxRange": [200, 227],
+          "type": "Generic",
+          "comment": "Internal Program 7"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "Generic",
+          "comment": "Internal Program 8"
+        }
+      ]
+    },
+    "Program Jump Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Program Fade Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Device Setting": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Generic",
+          "comment": "Reset Fixture"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13 Channels",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan Rotation",
+        "Pan Speed",
+        "Talon Effect",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Internal Program",
+        "Program Jump Speed",
+        "Program Fade Speed",
+        "Device Setting"
+      ]
+    }
+  ]
+}
