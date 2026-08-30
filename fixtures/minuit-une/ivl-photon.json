@@ -1,0 +1,798 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IVL Photon",
+  "shortName": "ivlphoton",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Captainflo"],
+    "createDate": "2018-03-30",
+    "lastModifyDate": "2023-12-21",
+    "importPlugin": {
+      "plugin": "ecue",
+      "date": "2023-12-21"
+    }
+  },
+  "physical": {
+    "dimensions": [594.3, 200, 551.9],
+    "weight": 13,
+    "power": 125
+  },
+  "availableChannels": {
+    "Control": {
+      "defaultValue": 191,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 23],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [24, 36],
+          "type": "Maintenance",
+          "comment": "Reset MOTOR"
+        },
+        {
+          "dmxRange": [37, 51],
+          "type": "Maintenance",
+          "comment": "Reset SOURCE"
+        },
+        {
+          "dmxRange": [52, 64],
+          "type": "Maintenance",
+          "comment": "Reset ALL"
+        },
+        {
+          "dmxRange": [65, 125],
+          "type": "Generic",
+          "comment": "ON fast mode"
+        },
+        {
+          "dmxRange": [126, 255],
+          "type": "Generic",
+          "comment": "On normal mode"
+        }
+      ]
+    },
+    "Strobe": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [15, 27],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [28, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe 30 1440"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe Duty Cyc": {
+      "defaultValue": 127,
+      "highlightValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Short",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Mid",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Long",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Gobo Beams Div": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "WheelSlot",
+          "comment": "1 Beam"
+        },
+        {
+          "dmxRange": [28, 55],
+          "type": "WheelSlot",
+          "comment": "2 Beams"
+        },
+        {
+          "dmxRange": [56, 83],
+          "type": "WheelSlot",
+          "comment": "4 Beams"
+        },
+        {
+          "dmxRange": [84, 111],
+          "type": "WheelSlot",
+          "comment": "8 Beams"
+        },
+        {
+          "dmxRange": [112, 139],
+          "type": "WheelSlot",
+          "comment": "16 Beams"
+        },
+        {
+          "dmxRange": [140, 167],
+          "type": "WheelSlot",
+          "comment": "32 Beams"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "WheelSlot",
+          "comment": "64 Beams"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "WheelSlot",
+          "comment": "128 Beams"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "comment": "256 Beams"
+        }
+      ]
+    },
+    "Index": {
+      "fineChannelAliases": ["Index fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "index 360deg"
+      }
+    },
+    "Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "Rotation",
+          "comment": "Index"
+        },
+        {
+          "dmxRange": [13, 122],
+          "type": "Rotation",
+          "comment": "Rotation fast CCW"
+        },
+        {
+          "dmxRange": [123, 133],
+          "type": "Rotation",
+          "comment": "Rotation stop"
+        },
+        {
+          "dmxRange": [134, 242],
+          "type": "Rotation",
+          "comment": "Rotation fast CW"
+        },
+        {
+          "dmxRange": [243, 255],
+          "type": "Rotation",
+          "comment": "Index"
+        }
+      ]
+    },
+    "Gobo Beam Size": {
+      "fineChannelAliases": ["Gobo Beam Size fine"],
+      "defaultValue": 65535,
+      "highlightValue": 65535,
+      "capability": {
+        "type": "WheelSlot",
+        "comment": "Beam 360deg"
+      }
+    },
+    "Reflector Zoom": {
+      "fineChannelAliases": ["Reflector Zoom fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Zoom",
+          "comment": "Mirror"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Zoom",
+          "comment": "Reflector"
+        }
+      ]
+    },
+    "Reflector Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Speed",
+          "comment": "Fast"
+        }
+      ]
+    },
+    "Tilt 1": {
+      "fineChannelAliases": ["Tilt 1 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 2": {
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 2": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 2": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 2": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 3": {
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 3": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 3": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 3": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 4": {
+      "fineChannelAliases": ["Tilt 4 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 4": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 4": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 4": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 4": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 5": {
+      "fineChannelAliases": ["Tilt 5 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 5": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 5": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 5": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 5": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 6": {
+      "fineChannelAliases": ["Tilt 6 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 6": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 6": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 6": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 6": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 7": {
+      "fineChannelAliases": ["Tilt 7 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 7": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 7": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 7": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 7": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "Tilt 8": {
+      "fineChannelAliases": ["Tilt 8 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Frost",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [0, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Tilt Centre",
+          "menuClick": "center"
+        },
+        {
+          "dmxRange": [32767, 65535],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Reflective",
+          "menuClick": "center"
+        }
+      ]
+    },
+    "Dimmer 8": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red 8": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green 8": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue 8": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "25-channel",
+      "shortName": "25ch",
+      "channels": [
+        "Control",
+        "Strobe",
+        "Strobe Duty Cyc",
+        "Gobo Beams Div",
+        "Index",
+        "Index fine",
+        "Rotation",
+        "Gobo Beam Size",
+        "Gobo Beam Size fine",
+        "Reflector Zoom",
+        "Reflector Zoom fine",
+        "Reflector Speed",
+        "Tilt 1",
+        "Tilt 1 fine",
+        "Dimmer 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Dimmer 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Dimmer 3",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Tilt 4",
+        "Tilt 4 fine",
+        "Dimmer 4",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Tilt 5",
+        "Tilt 5 fine",
+        "Dimmer 5",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Tilt 6",
+        "Tilt 6 fine",
+        "Dimmer 6",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Tilt 7",
+        "Tilt 7 fine",
+        "Dimmer 7",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Tilt 8",
+        "Tilt 8 fine",
+        "Dimmer 8",
+        "Red 8",
+        "Green 8",
+        "Blue 8"
+      ]
+    }
+  ]
+}
