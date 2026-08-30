@@ -1,0 +1,327 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MH-640 Washlight",
+  "shortName": "mh-640",
+  "categories": ["Moving Head", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Max Jöhnk"],
+    "createDate": "2023-08-08",
+    "lastModifyDate": "2023-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1102831/Future-Light-Mh-640.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [426, 500, 372],
+    "weight": 25,
+    "power": 400,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD 230 V/250 W GY-9,5"
+    },
+    "lens": {
+      "degreesMinMax": [8, 22]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "colorTemperature": "3200K"
+        },
+        {
+          "type": "Color",
+          "colorTemperature": "5600K"
+        },
+        {
+          "type": "Color",
+          "name": "UV-filter"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking Mode"
+        },
+        {
+          "dmxRange": [1, 249],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Vector Mode"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Blackout while Movement (Tracking Mode)"
+        }
+      ]
+    },
+    "Special Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Open, speed of fan (silent operation)"
+        },
+        {
+          "dmxRange": [128, 139],
+          "type": "Generic",
+          "comment": "Switch on the lamp, reset, open position"
+        },
+        {
+          "dmxRange": [140, 229],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Switch off the lamp after 3 seconds"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Cyan": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Magenta": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Yellow": {
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CMY / Dimmer Speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [71, 230],
+          "type": "Generic",
+          "comment": "Beam Shaper"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Frost",
+          "frostIntensityStart": "low",
+          "frostIntensityEnd": "high"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter / Strobe": {
+      "highlightValue": "100%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "max 10 flashes/second"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [54, 72],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [73, 90],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [91, 108],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [109, 127],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Forwards rainbow effect"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CMY / Dimmer Speed",
+        "Color Macros",
+        "Effects",
+        "No function",
+        "Shutter / Strobe",
+        "Intensity"
+      ]
+    }
+  ]
+}
