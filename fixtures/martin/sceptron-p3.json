@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sceptron P3",
+  "shortName": "sceptronP3",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Bardess"],
+    "createDate": "2023-04-10",
+    "lastModifyDate": "2023-04-10"
+  },
+  "comment": "For control of a P3 processor (not direct control of sceptron units).",
+  "links": {
+    "productPage": [
+      "https://www.martin.com/en/product_families/system-controllers"
+    ],
+    "video": [
+      "https://training.harmanpro.com/mod/page/view.php?id=418"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic (5ch)",
+      "shortName": "basic5ch",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
