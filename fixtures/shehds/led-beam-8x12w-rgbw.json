@@ -1,0 +1,496 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Beam 8x12W RGBW",
+  "categories": ["Pixel Bar", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["grayplex"],
+    "createDate": "2026-07-24",
+    "lastModifyDate": "2026-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/18VPPdB7BcrinPOCefGrjRmks_8AuFio1/view"
+    ],
+    "productPage": [
+      "https://shehds.com/products/led-8x12w-bar-beam-moving-head-light-rgbw-perfect-for-dj-party-nightclub-disco-light-christmas-sound-active-dmx-disco-1?srsltid=AfmBOopQeDShgSmFMlkr0n1j5_UghgPMrNIa7Q_d2jZr7U1gvAKDci8h"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=LWUFgQEOizc"
+    ]
+  },
+  "physical": {
+    "dimensions": [1070, 130, 80],
+    "weight": 7.5,
+    "power": 96,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "8x12W RGBW LED"
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Color Effect"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Effect 2": {
+      "name": "Color Effect",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Built-in effect 1"
+        },
+        {
+          "dmxRange": [21, 31],
+          "type": "Effect",
+          "effectName": "Built-in effect 2"
+        },
+        {
+          "dmxRange": [32, 42],
+          "type": "Effect",
+          "effectName": "Built-in effect 3"
+        },
+        {
+          "dmxRange": [43, 53],
+          "type": "Effect",
+          "effectName": "Built-in effect 4"
+        },
+        {
+          "dmxRange": [54, 64],
+          "type": "Effect",
+          "effectName": "Built-in effect 5"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Effect",
+          "effectName": "Built-in effect 6"
+        },
+        {
+          "dmxRange": [76, 86],
+          "type": "Effect",
+          "effectName": "Built-in effect 7"
+        },
+        {
+          "dmxRange": [87, 97],
+          "type": "Effect",
+          "effectName": "Built-in effect 8"
+        },
+        {
+          "dmxRange": [98, 108],
+          "type": "Effect",
+          "effectName": "Built-in effect 9"
+        },
+        {
+          "dmxRange": [109, 119],
+          "type": "Effect",
+          "effectName": "Built-in effect 10"
+        },
+        {
+          "dmxRange": [120, 130],
+          "type": "Effect",
+          "effectName": "Built-in effect 11"
+        },
+        {
+          "dmxRange": [131, 141],
+          "type": "Effect",
+          "effectName": "Built-in effect 12"
+        },
+        {
+          "dmxRange": [142, 152],
+          "type": "Effect",
+          "effectName": "Built-in effect 13"
+        },
+        {
+          "dmxRange": [153, 163],
+          "type": "Effect",
+          "effectName": "Built-in effect 14"
+        },
+        {
+          "dmxRange": [164, 174],
+          "type": "Effect",
+          "effectName": "Built-in effect 15"
+        },
+        {
+          "dmxRange": [175, 185],
+          "type": "Effect",
+          "effectName": "Built-in effect 16"
+        },
+        {
+          "dmxRange": [186, 196],
+          "type": "Effect",
+          "effectName": "Built-in effect 17"
+        },
+        {
+          "dmxRange": [197, 207],
+          "type": "Effect",
+          "effectName": "Built-in effect 18"
+        },
+        {
+          "dmxRange": [208, 218],
+          "type": "Effect",
+          "effectName": "Built-in effect 19"
+        },
+        {
+          "dmxRange": [219, 229],
+          "type": "Effect",
+          "effectName": "Built-in effect 20"
+        },
+        {
+          "dmxRange": [230, 240],
+          "type": "Effect",
+          "effectName": "Built-in effect 21"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Effect",
+          "effectName": "Built-in effect 22"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Voice control effect",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red 1/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1/8": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White 1/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1/8 2": {
+      "name": "White 1/8",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 5/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4/8 2": {
+      "name": "Green 4/8",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 5/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 6/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 7/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 8/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 5/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 6/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 7/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 8/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 4/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 5/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 6/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 7/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 8/8": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Effect",
+        "Effect Speed",
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "38 Channel",
+      "shortName": "38ch",
+      "channels": [
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Effect 2",
+        "Effect Speed",
+        "Dimmer",
+        "Strobe",
+        "Red 1/8",
+        "Green 1/8",
+        "Blue 1/8",
+        "White 1/8",
+        "Red 2/8",
+        "Green 2/8",
+        "Blue 2/8",
+        "White 2/8",
+        "Red 3/8",
+        "Green 3/8",
+        "Blue 3/8",
+        "White 3/8",
+        "Red 4/8",
+        "Green 4/8",
+        "Blue 4/8",
+        "White 4/8",
+        "Red 5/8",
+        "Green 5/8",
+        "Blue 5/8",
+        "White 5/8",
+        "Red 6/8",
+        "Green 6/8",
+        "Blue 6/8",
+        "White 6/8",
+        "Red 7/8",
+        "Green 7/8",
+        "Blue 7/8",
+        "White 7/8",
+        "Red 8/8",
+        "Green 8/8",
+        "Blue 8/8",
+        "White 8/8"
+      ]
+    }
+  ]
+}
