@@ -1,0 +1,2445 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EPIX Strip IP 1m",
+  "shortName": "EPIX Strip IP 1m",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["James Hunt Lighting"],
+    "createDate": "2025-04-29",
+    "lastModifyDate": "2025-04-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/products/epix-strip-ip/"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/epix-strip-ip/"
+    ],
+    "video": [
+      "https://www.chauvetprofessional.com/products/epix-strip-ip/"
+    ]
+  },
+  "physical": {
+    "dimensions": [20, 1000, 40],
+    "weight": 2.7,
+    "power": 44,
+    "DMXconnector": "4 Pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5000,
+      "lumens": 8500
+    },
+    "lens": {
+      "name": "Milky Frost",
+      "degreesMinMax": [160, 160]
+    }
+  },
+  "availableChannels": {
+    "Instance 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 4 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 5 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 5 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 5 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 6 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 6 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 6 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 7 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 7 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 7 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 8 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 8 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 8 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 9 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 9 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 9 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 10 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 10 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 10 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 11 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 11 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 11 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 12 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 12 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 12 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 13 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 13 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 13 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 14 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 14 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 14 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 15 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 15 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 15 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 16 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 16 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 16 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 17 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 17 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 17 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 18 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 18 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 18 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 19 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 19 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 19 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 20 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 20 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 20 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 21 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 21 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 21 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 22 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 22 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 22 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 23 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 23 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 23 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 24 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 24 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 24 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 25 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 25 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 25 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 26 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 26 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 26 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 27 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 27 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 27 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 28 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 28 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 28 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 29 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 29 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 29 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 30 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 30 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 30 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 31 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 31 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 31 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 32 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 32 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 32 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 33 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 33 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 33 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 34 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 34 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 34 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 35 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 35 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Instance 35 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 36 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 36 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 36 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 37 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 37 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 37 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 38 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 38 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 38 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 39 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 39 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 39 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 40 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 40 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 40 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 41 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 41 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 41 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 42 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 42 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 42 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 43 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 43 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 43 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 44 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 44 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 44 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 45 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 45 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 45 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 46 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 46 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 46 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 47 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 47 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 47 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 48 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 48 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 48 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 49 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 49 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 49 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 50 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 50 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 50 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 51 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 51 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 51 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 52 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 52 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 52 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 53 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 53 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 53 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 54 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 54 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 54 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 55 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Instance 55 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 55 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 56 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 56 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 56 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 57 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 57 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 57 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 58 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 58 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 58 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 59 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 59 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 59 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 60 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 60 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 60 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 61 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 61 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 61 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 62 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 62 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 62 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 63 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 63 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 63 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 64 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 64 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 64 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 65 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 65 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 65 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 66 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 66 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 66 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 67 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 67 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 67 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 68 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 68 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 68 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 69 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 69 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 69 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 70 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 70 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 70 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 71 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 71 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 71 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 72 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 72 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 72 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 73 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 73 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 73 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 74 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 74 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 74 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 75 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 75 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 75 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 76 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 76 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 76 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 77 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 77 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 77 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 78 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 78 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 78 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 79 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 79 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 79 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 80 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 80 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 80 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 81 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 81 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 81 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 82 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 82 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 82 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 83 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 83 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 83 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 84 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 84 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 84 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 85 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 85 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 85 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 86 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 86 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 86 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 87 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 87 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 87 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 88 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 88 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 88 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 89 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 89 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 89 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 90 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 90 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 90 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 91 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 91 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 91 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 92 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 92 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 92 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 93 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 93 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 93 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 94 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 94 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 94 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 95 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 95 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 95 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 96 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 96 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 96 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 97 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 97 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 97 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 98 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 98 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 98 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 99 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 99 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 99 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Instance 100 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Instance 100 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Instance 100 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pixel",
+      "shortName": "Pixel",
+      "channels": [
+        "Instance 1 Red",
+        "Instance 1 Green",
+        "Instance 1 Blue",
+        "Instance 2 Red",
+        "Instance 2 Green",
+        "Instance 2 Blue",
+        "Instance 3 Red",
+        "Instance 3 Green",
+        "Instance 3 Blue",
+        "Instance 4 Red",
+        "Instance 4 Green",
+        "Instance 4 Blue",
+        "Instance 5 Red",
+        "Instance 5 Green",
+        "Instance 5 Blue",
+        "Instance 6 Red",
+        "Instance 6 Green",
+        "Instance 6 Blue",
+        "Instance 7 Red",
+        "Instance 7 Green",
+        "Instance 7 Blue",
+        "Instance 8 Red",
+        "Instance 8 Green",
+        "Instance 8 Blue",
+        "Instance 9 Red",
+        "Instance 9 Green",
+        "Instance 9 Blue",
+        "Instance 10 Red",
+        "Instance 10 Green",
+        "Instance 10 Blue",
+        "Instance 11 Red",
+        "Instance 11 Green",
+        "Instance 11 Blue",
+        "Instance 12 Red",
+        "Instance 12 Green",
+        "Instance 12 Blue",
+        "Instance 13 Red",
+        "Instance 13 Green",
+        "Instance 13 Blue",
+        "Instance 14 Red",
+        "Instance 14 Green",
+        "Instance 14 Blue",
+        "Instance 15 Red",
+        "Instance 15 Green",
+        "Instance 15 Blue",
+        "Instance 16 Red",
+        "Instance 16 Green",
+        "Instance 16 Blue",
+        "Instance 17 Red",
+        "Instance 17 Green",
+        "Instance 17 Blue",
+        "Instance 18 Red",
+        "Instance 18 Green",
+        "Instance 18 Blue",
+        "Instance 19 Red",
+        "Instance 19 Green",
+        "Instance 19 Blue",
+        "Instance 20 Red",
+        "Instance 20 Green",
+        "Instance 20 Blue",
+        "Instance 21 Red",
+        "Instance 21 Green",
+        "Instance 21 Blue",
+        "Instance 22 Red",
+        "Instance 22 Green",
+        "Instance 22 Blue",
+        "Instance 23 Red",
+        "Instance 23 Green",
+        "Instance 23 Blue",
+        "Instance 24 Red",
+        "Instance 24 Green",
+        "Instance 24 Blue",
+        "Instance 25 Red",
+        "Instance 25 Green",
+        "Instance 25 Blue",
+        "Instance 26 Red",
+        "Instance 26 Green",
+        "Instance 26 Blue",
+        "Instance 27 Red",
+        "Instance 27 Green",
+        "Instance 27 Blue",
+        "Instance 28 Red",
+        "Instance 28 Green",
+        "Instance 28 Blue",
+        "Instance 29 Red",
+        "Instance 29 Green",
+        "Instance 29 Blue",
+        "Instance 30 Red",
+        "Instance 30 Green",
+        "Instance 30 Blue",
+        "Instance 31 Red",
+        "Instance 31 Green",
+        "Instance 31 Blue",
+        "Instance 32 Red",
+        "Instance 32 Green",
+        "Instance 32 Blue",
+        "Instance 33 Red",
+        "Instance 33 Green",
+        "Instance 33 Blue",
+        "Instance 34 Red",
+        "Instance 34 Green",
+        "Instance 34 Blue",
+        "Instance 35 Red",
+        "Instance 35 Green",
+        "Instance 35 Blue",
+        "Instance 36 Red",
+        "Instance 36 Green",
+        "Instance 36 Blue",
+        "Instance 37 Red",
+        "Instance 37 Green",
+        "Instance 37 Blue",
+        "Instance 38 Red",
+        "Instance 38 Green",
+        "Instance 38 Blue",
+        "Instance 39 Red",
+        "Instance 39 Green",
+        "Instance 39 Blue",
+        "Instance 40 Red",
+        "Instance 40 Green",
+        "Instance 40 Blue",
+        "Instance 41 Red",
+        "Instance 41 Green",
+        "Instance 41 Blue",
+        "Instance 42 Red",
+        "Instance 42 Green",
+        "Instance 42 Blue",
+        "Instance 43 Red",
+        "Instance 43 Green",
+        "Instance 43 Blue",
+        "Instance 44 Red",
+        "Instance 44 Green",
+        "Instance 44 Blue",
+        "Instance 45 Red",
+        "Instance 45 Green",
+        "Instance 45 Blue",
+        "Instance 46 Red",
+        "Instance 46 Green",
+        "Instance 46 Blue",
+        "Instance 47 Red",
+        "Instance 47 Green",
+        "Instance 47 Blue",
+        "Instance 48 Red",
+        "Instance 48 Green",
+        "Instance 48 Blue",
+        "Instance 49 Red",
+        "Instance 49 Green",
+        "Instance 49 Blue",
+        "Instance 50 Red",
+        "Instance 50 Green",
+        "Instance 50 Blue",
+        "Instance 51 Red",
+        "Instance 51 Green",
+        "Instance 51 Blue",
+        "Instance 52 Red",
+        "Instance 52 Green",
+        "Instance 52 Blue",
+        "Instance 53 Red",
+        "Instance 53 Green",
+        "Instance 53 Blue",
+        "Instance 54 Red",
+        "Instance 54 Green",
+        "Instance 54 Blue",
+        "Instance 55 Red",
+        "Instance 55 Green",
+        "Instance 55 Blue",
+        "Instance 56 Red",
+        "Instance 56 Green",
+        "Instance 56 Blue",
+        "Instance 57 Red",
+        "Instance 57 Green",
+        "Instance 57 Blue",
+        "Instance 58 Red",
+        "Instance 58 Green",
+        "Instance 58 Blue",
+        "Instance 59 Red",
+        "Instance 59 Green",
+        "Instance 59 Blue",
+        "Instance 60 Red",
+        "Instance 60 Green",
+        "Instance 60 Blue",
+        "Instance 61 Red",
+        "Instance 61 Green",
+        "Instance 61 Blue",
+        "Instance 62 Red",
+        "Instance 62 Green",
+        "Instance 62 Blue",
+        "Instance 63 Red",
+        "Instance 63 Green",
+        "Instance 63 Blue",
+        "Instance 64 Red",
+        "Instance 64 Green",
+        "Instance 64 Blue",
+        "Instance 65 Red",
+        "Instance 65 Green",
+        "Instance 65 Blue",
+        "Instance 66 Red",
+        "Instance 66 Green",
+        "Instance 66 Blue",
+        "Instance 67 Red",
+        "Instance 67 Green",
+        "Instance 67 Blue",
+        "Instance 68 Red",
+        "Instance 68 Green",
+        "Instance 68 Blue",
+        "Instance 69 Red",
+        "Instance 69 Green",
+        "Instance 69 Blue",
+        "Instance 70 Red",
+        "Instance 70 Green",
+        "Instance 70 Blue",
+        "Instance 71 Red",
+        "Instance 71 Green",
+        "Instance 71 Blue",
+        "Instance 72 Red",
+        "Instance 72 Green",
+        "Instance 72 Blue",
+        "Instance 73 Red",
+        "Instance 73 Green",
+        "Instance 73 Blue",
+        "Instance 74 Red",
+        "Instance 74 Green",
+        "Instance 74 Blue",
+        "Instance 75 Red",
+        "Instance 75 Green",
+        "Instance 75 Blue",
+        "Instance 76 Red",
+        "Instance 76 Green",
+        "Instance 76 Blue",
+        "Instance 77 Red",
+        "Instance 77 Green",
+        "Instance 77 Blue",
+        "Instance 78 Red",
+        "Instance 78 Green",
+        "Instance 78 Blue",
+        "Instance 79 Red",
+        "Instance 79 Green",
+        "Instance 79 Blue",
+        "Instance 80 Red",
+        "Instance 80 Green",
+        "Instance 80 Blue",
+        "Instance 81 Red",
+        "Instance 81 Green",
+        "Instance 81 Blue",
+        "Instance 82 Red",
+        "Instance 82 Green",
+        "Instance 82 Blue",
+        "Instance 83 Red",
+        "Instance 83 Green",
+        "Instance 83 Blue",
+        "Instance 84 Red",
+        "Instance 84 Green",
+        "Instance 84 Blue",
+        "Instance 85 Red",
+        "Instance 85 Green",
+        "Instance 85 Blue",
+        "Instance 86 Red",
+        "Instance 86 Green",
+        "Instance 86 Blue",
+        "Instance 87 Red",
+        "Instance 87 Green",
+        "Instance 87 Blue",
+        "Instance 88 Red",
+        "Instance 88 Green",
+        "Instance 88 Blue",
+        "Instance 89 Red",
+        "Instance 89 Green",
+        "Instance 89 Blue",
+        "Instance 90 Red",
+        "Instance 90 Green",
+        "Instance 90 Blue",
+        "Instance 91 Red",
+        "Instance 91 Green",
+        "Instance 91 Blue",
+        "Instance 92 Red",
+        "Instance 92 Green",
+        "Instance 92 Blue",
+        "Instance 93 Red",
+        "Instance 93 Green",
+        "Instance 93 Blue",
+        "Instance 94 Red",
+        "Instance 94 Green",
+        "Instance 94 Blue",
+        "Instance 95 Red",
+        "Instance 95 Green",
+        "Instance 95 Blue",
+        "Instance 96 Red",
+        "Instance 96 Green",
+        "Instance 96 Blue",
+        "Instance 97 Red",
+        "Instance 97 Green",
+        "Instance 97 Blue",
+        "Instance 98 Red",
+        "Instance 98 Green",
+        "Instance 98 Blue",
+        "Instance 99 Red",
+        "Instance 99 Green",
+        "Instance 99 Blue",
+        "Instance 100 Red",
+        "Instance 100 Green",
+        "Instance 100 Blue"
+      ]
+    }
+  ]
+}
