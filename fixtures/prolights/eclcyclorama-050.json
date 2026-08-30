@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclCyclorama 050",
+  "shortName": "ECLCY050",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Emma"],
+    "createDate": "2022-02-04",
+    "lastModifyDate": "2022-02-04"
+  },
+  "links": {
+    "productPage": [
+      "https://www.prolights.it/en/product/ECLCYC050"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [500, 119, 148],
+    "weight": 5,
+    "power": 170,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "colorTemperature": 5600,
+      "lumens": 13896
+    },
+    "lens": {
+      "degreesMinMax": [40, 80]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Theater",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
