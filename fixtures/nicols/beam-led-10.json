@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beam Led 10",
+  "shortName": "LED",
+  "categories": ["Fan", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2024-10-03",
+    "lastModifyDate": "2024-10-03"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/doc/fr/5185639/beam-led-10-manuel-d-utilisation"
+    ],
+    "productPage": [
+      "https://nicols-lighting.fr/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=fc7S7D5rjKo"
+    ]
+  },
+  "physical": {
+    "dimensions": [172, 215, 195],
+    "weight": 3.3,
+    "power": 23,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer/Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 247],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "NoFunction",
+          "comment": "Fix Light"
+        }
+      ]
+    },
+    "Colors": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "All Colors"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "stop"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Global",
+      "channels": [
+        "Dimmer/Strobe",
+        "Colors",
+        "Color Wheel Rotation"
+      ]
+    }
+  ]
+}
