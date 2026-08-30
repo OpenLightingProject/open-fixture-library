@@ -1,0 +1,173 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB 8",
+  "categories": ["Color Changer", "Stand"],
+  "meta": {
+    "authors": ["Teknoc'ss"],
+    "createDate": "2026-04-01",
+    "lastModifyDate": "2026-04-01"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/333919_c_333919_v7_en_online.pdf?_gl=1*1my31cr*_gcl_aw*R0NMLjE3NzUwNjIxMzAuQ2p3S0NBandoTFBPQmhCaUVpd0E4X3dKSEduTnNFaElxa2JoNDJWZFdaRjM1OUJ2bWlPRWlRb3JfN0daX1hDcnBaN3BSN3oxdzJzdXlob0N2dlFRQXZEX0J3RQ..*FPAU*MTkzNTk3MjIwOC4xNzY3ODA4MDUy*_ga*NzgyODA4NzkuMTc0OTA0OTgwMA..*_ga_QNTG1E3BFT*czE3NzUwNjIxMzAkbzUkZzAkdDE3NzUwNjIxMzQkajU2JGwwJGgyNjk3MDIxMjA.*_fplc*NThuQnU0NW9EdXB2YnphaXQ4RFlrQVFucW9kNERoVWwxNkd1SVZlY3RvWGV0aWRsOFhBcHg4YjBIWndjSmdmbmJocm1kVFpkcmhUdmJFWEp0SHo4TFpKZnV3NlNIMFVIaWJVUURLJTJGWnhLWjVObk1zcEswVXdPbzE3VEVHVWclM0QlM0Q.*_ga_CQB6MP7VD2*czE3NzUwNjIxMzAkbzUkZzAkdDE3NzUwNjIxMzAkajYwJGwwJGgw"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/stairville_clb8_compact_led_bar_8_rgbw_8w.htm?gad_source=1&gad_campaignid=1544038013&gclid=CjwKCAjwhLPOBhBiEiwA8_wJHGnNsEhIqkbh42VdWZF359BvmiOEiQor_7GZ_XCrpZ7pR7z1w2suyhoCvvQQAvD_BwE"
+    ]
+  },
+  "physical": {
+    "dimensions": [845, 310, 70],
+    "weight": 8.9,
+    "power": 192,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "RED 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RED 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18ch",
+      "channels": [
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "WHITE 1",
+        "RED 2",
+        "GREEN 2",
+        "BLUE 2",
+        "WHITE 2",
+        "RED 3",
+        "GREEN 3",
+        "BLUE 3",
+        "WHITE 3",
+        "RED 4",
+        "GREEN 4",
+        "BLUE 4",
+        "WHITE 4",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
