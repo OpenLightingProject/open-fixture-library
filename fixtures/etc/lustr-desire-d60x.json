@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lustr+ Desire D60X",
+  "shortName": "D60X",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Warren Gandy"],
+    "createDate": "2021-11-05",
+    "lastModifyDate": "2021-11-05"
+  },
+  "comment": "LED par color mixing",
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737501159"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/Desire-D60/Features.aspx?LangType=1033"
+    ]
+  },
+  "physical": {
+    "weight": 10.43,
+    "power": 124,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4317
+    }
+  },
+  "availableChannels": {
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue control"
+      }
+    },
+    "Hue (fin)": {
+      "capability": {
+        "type": "Generic",
+        "comment": "The fine channel from the manual..."
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fan control": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "N/A": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "In this profile it does nothing"
+      }
+    },
+    "Plus7 on/off": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Plus7 - (1) - RED": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Red"
+      }
+    },
+    "Plus7 - (2) - White": {
+      "capability": {
+        "type": "Generic",
+        "comment": "White"
+      }
+    },
+    "Plus7 - (3) - Amber": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Amber"
+      }
+    },
+    "Plus7 - (4) - Green": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Green"
+      }
+    },
+    "Plus7 - (5) - Cyan": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Cyan"
+      }
+    },
+    "Plus7 - (6) - Blue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Blue"
+      }
+    },
+    "Plus7 - (7) - Indigo": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Indigo"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSI",
+      "channels": [
+        "Hue",
+        "Hue (fin)",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan control",
+        "N/A",
+        "Plus7 on/off",
+        "Plus7 - (1) - RED",
+        "Plus7 - (2) - White",
+        "Plus7 - (3) - Amber",
+        "Plus7 - (4) - Green",
+        "Plus7 - (5) - Cyan",
+        "Plus7 - (6) - Blue",
+        "Plus7 - (7) - Indigo"
+      ]
+    }
+  ]
+}
