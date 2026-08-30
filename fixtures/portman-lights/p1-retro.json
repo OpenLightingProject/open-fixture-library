@@ -1,0 +1,271 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "P1 Retro",
+  "shortName": "P1E",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Tomasz"],
+    "createDate": "2023-06-27",
+    "lastModifyDate": "2025-05-29",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-06-26",
+      "comment": "GDTF v1.2 fixture type ID: E427CF5A-B2C6-4EB9-8602-EC1812B1F5A7"
+    }
+  },
+  "comment": "Beautiful warm tungsten light and smooth dimming in a timeless unique fixture design.\n7ch Dimmer",
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#e40100"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#e47700"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#e4e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Spring Green",
+          "colors": ["#77e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Sea Green",
+          "colors": ["#04e477"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#07e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Azzure",
+          "colors": ["#0577e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Violet",
+          "colors": ["#7700e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#e404e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#e40277"]
+        },
+        {
+          "type": "Color",
+          "name": "Red 1",
+          "colors": ["#e40100"]
+        },
+        {
+          "type": "Color",
+          "name": "Color Spin",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Open 1",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Shutter": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Shutter Open",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Shutter Closed",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Strobe",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Shutter Open 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Random Strobe",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Shutter Open 2",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Control": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "No Function",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Flicker Mode 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Flicker Mode 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Flicker Mode 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Dimming Curve Linear",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Dimming Curve Logarithmic",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Reserved",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Default Values",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 8": {
+      "name": "Dim",
+      "highlightValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Dim",
+        "Dim 2",
+        "Dim 3",
+        "Dim 4",
+        "Dim 5",
+        "Dim 6",
+        "Dim 7"
+      ]
+    }
+  ]
+}
