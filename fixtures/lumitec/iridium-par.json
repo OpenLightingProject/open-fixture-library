@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Iridium PAR",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Clément"],
+    "createDate": "2026-03-03",
+    "lastModifyDate": "2026-03-03"
+  },
+  "links": {
+    "manual": [
+      "https://bklumitec.com/ARC-Par-7Z-Zoom-7-x-20W-RGBW-4in1-IP65/114362"
+    ],
+    "productPage": [
+      "https://bklumitec.com/ARC-Par-7Z-Zoom-7-x-20W-RGBW-4in1-IP65/114362"
+    ],
+    "video": [
+      "https://bklumitec.com/ARC-Par-7Z-Zoom-7-x-20W-RGBW-4in1-IP65/114362"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channels",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
