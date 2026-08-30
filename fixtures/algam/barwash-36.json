@@ -1,0 +1,260 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Barwash 36",
+  "categories": ["Color Changer", "Pixel Bar"],
+  "meta": {
+    "authors": ["Paolo M"],
+    "createDate": "2022-03-29",
+    "lastModifyDate": "2022-03-29"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.algam.net/pub/collections//documents_AE/ALGLIG/BARWASH36_MANUAL.pdf"
+    ],
+    "productPage": [
+      "https://www.laboitenoiredumusicien.com/algam-lighting-projecteurs-a-led-barwash-36-p549903/"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 51, 157],
+    "weight": "invalid",
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 LEDs,3W tri-color RGB ( 3 groupes de 4)"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "All color": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Stroboscopies": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Programs selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 36],
+          "type": "Effect",
+          "effectName": "P1/Snd1",
+          "parameter": "off",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [37, 68],
+          "type": "Effect",
+          "effectName": "P2/Snd2",
+          "parameterStart": "off",
+          "parameterEnd": "off",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [69, 100],
+          "type": "Effect",
+          "effectName": "P3/Snd3",
+          "parameterStart": "off",
+          "parameterEnd": "off",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [101, 132],
+          "type": "Effect",
+          "effectName": "P4/Snd4",
+          "parameterStart": "off",
+          "parameterEnd": "off",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [133, 164],
+          "type": "Effect",
+          "effectName": "P5/Snd5",
+          "parameterStart": "off",
+          "parameterEnd": "off",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [165, 196],
+          "type": "Effect",
+          "effectName": "P6/Snd6",
+          "parameterStart": "off",
+          "parameterEnd": "off",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [197, 228],
+          "type": "Effect",
+          "effectName": "P7/Snd7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [229, 255],
+          "type": "Effect",
+          "effectName": "P8/Snd8",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Speed selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "EffectSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound-Active mode",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "All color",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "13",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Stroboscopies",
+        "Programs selection",
+        "Speed selection",
+        "All color"
+      ]
+    }
+  ]
+}
