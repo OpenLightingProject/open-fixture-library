@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spatial Wash COB RGBW",
+  "categories": ["Color Changer", "Stand", "Dimmer"],
+  "meta": {
+    "authors": ["Brandon Elder"],
+    "createDate": "2023-03-07",
+    "lastModifyDate": "2023-03-07"
+  },
+  "links": {
+    "manual": [
+      "https://springtree.net/manuals/"
+    ],
+    "productPage": [
+      "http://www.springtree.net"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 129],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [130, 249],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Shutter / Strobe",
+        "Color Macros"
+      ]
+    }
+  ]
+}
