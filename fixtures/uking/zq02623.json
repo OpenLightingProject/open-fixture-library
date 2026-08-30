@@ -1,0 +1,330 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02623",
+  "categories": ["Color Changer", "Flower"],
+  "meta": {
+    "authors": ["Michael Tiko"],
+    "createDate": "2026-07-16",
+    "lastModifyDate": "2026-07-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ02623-Six-armed-Stage-light-with-RGBW-Moving-Head-Light.pdf?v=7737787510528484498"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/uking-zq02623-moving-head-light?_pos=1&_psq=zq02623&_psid=b076a73d0&_ss=e&_v=1.0"
+    ]
+  },
+  "physical": {
+    "dimensions": [34, 25, 34],
+    "weight": 3,
+    "power": 120,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "fineChannelAliases": ["Pan/Tilt Speed fine"],
+      "defaultValue": "2%",
+      "highlightValue": "0%",
+      "constant": true,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel Rotation": {
+      "fineChannelAliases": ["Color Wheel Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Blade Rotation 1": {
+      "fineChannelAliases": ["Blade Rotation 1 fine"],
+      "defaultValue": 4,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 1,
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Blade Rotation 2": {
+      "fineChannelAliases": ["Blade Rotation 2 fine"],
+      "defaultValue": 5,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 2,
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Blade Rotation 3": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 3,
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Blade Rotation 4": {
+      "fineChannelAliases": ["Blade Rotation 4 fine"],
+      "defaultValue": 6,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 4,
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Blade Rotation 5": {
+      "fineChannelAliases": ["Blade Rotation 5 fine"],
+      "defaultValue": 8,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 5,
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Blade Rotation 6": {
+      "fineChannelAliases": ["Blade Rotation 6 fine"],
+      "defaultValue": 9,
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 6,
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 10,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Kaleidoscope Red": {
+      "fineChannelAliases": ["Kaleidoscope Red fine"],
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Kaleidoscope Green": {
+      "fineChannelAliases": ["Kaleidoscope Green fine"],
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Kaleidoscope Blue": {
+      "fineChannelAliases": ["Kaleidoscope Blue fine"],
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Kaleidoscope White": {
+      "fineChannelAliases": ["Kaleidoscope White fine"],
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Light Beam Red": {
+      "fineChannelAliases": ["Light Beam Red fine"],
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Light Beam Green": {
+      "fineChannelAliases": ["Light Beam Green fine"],
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Light Beam Blue": {
+      "fineChannelAliases": ["Light Beam Blue fine"],
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Light Beam White": {
+      "fineChannelAliases": ["Light Beam White fine"],
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Light Beam White 2": {
+      "name": "Light Beam White",
+      "fineChannelAliases": ["Light Beam White 2 fine"],
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red LS": {
+      "fineChannelAliases": ["Red LS fine"],
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green LS": {
+      "fineChannelAliases": ["Green LS fine"],
+      "defaultValue": 21,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White Light Flash Speed": {
+      "fineChannelAliases": ["White Light Flash Speed fine"],
+      "defaultValue": 22,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gold Light Flash Speed": {
+      "fineChannelAliases": ["Gold Light Flash Speed fine"],
+      "defaultValue": 23,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro Control": {
+      "fineChannelAliases": ["Macro Control fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 24,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 150],
+          "type": "Generic",
+          "comment": "Random Walk"
+        },
+        {
+          "dmxRange": [151, 250],
+          "type": "Generic",
+          "comment": "Sound Control from the Walk"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "3 seconds reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Pan/Tilt Speed",
+        "Color Wheel Rotation",
+        "Blade Rotation 1",
+        "Blade Rotation 2",
+        "Blade Rotation 3",
+        "Blade Rotation 4",
+        "Blade Rotation 5",
+        "Blade Rotation 6",
+        "Dimmer",
+        "Strobe Speed",
+        "Kaleidoscope Red",
+        "Kaleidoscope Green",
+        "Kaleidoscope Blue",
+        "Kaleidoscope White",
+        "Light Beam Red",
+        "Light Beam Green",
+        "Light Beam Blue",
+        "Light Beam White 2",
+        "Red LS",
+        "Green LS",
+        "White Light Flash Speed",
+        "Gold Light Flash Speed",
+        "Macro Control"
+      ]
+    }
+  ]
+}
