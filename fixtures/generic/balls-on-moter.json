@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Balls on Moter",
+  "shortName": "Ghost",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["THIS FUCKING SUCKS"],
+    "createDate": "2023-09-04",
+    "lastModifyDate": "2023-09-04"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/10f9VI4yKIK4qCxxfZaySqBlMrdIGxsKF/view"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Light Height": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channel",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue dimmer",
+        "Dimmer",
+        "Strobe",
+        "Light Height"
+      ]
+    }
+  ]
+}
