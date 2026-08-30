@@ -1,0 +1,180 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "19x15 Moving Head Wash with Focus",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Brad Mayberry"],
+    "createDate": "2026-05-16",
+    "lastModifyDate": "2026-05-16"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/19X15W-Activated-Control-Wedding-Lighting/dp/B0DG8N8VCM/ref=sr_1_1_sspa?crid=270EGQL8EHMVH&dib=eyJ2IjoiMSJ9.73B8HBfpc2ksRZBUlhi6OFde9SYRmmXRxTRQPr7SdKhcgeMy3lMdTGqIiyYzTpYF_Rf1-A5lkdJOGqgO5GHOA3RSNefw6n93tzH-cyeF7S4.tQQxl2lhCT7N5HcTbQU36tVsQayuRueWbp0B5r2eLgk&dib_tag=se&keywords=datewink%2B19x15&qid=1778889147&sprefix=datewink%2B19x15%2Caps%2C322&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 155],
+          "type": "Effect",
+          "effectName": "Led Effect"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Effect",
+          "effectName": "Self Propelled"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Effect",
+          "effectName": "Sound Active"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "No function": {
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 21],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [22, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2400K",
+          "colorTemperatureEnd": "8500K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Channel",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Strobe",
+        "Focus",
+        "Color Macros",
+        "Effect Speed",
+        "Pan 2",
+        "Tilt 2",
+        "No function",
+        "CTO"
+      ]
+    }
+  ]
+}
