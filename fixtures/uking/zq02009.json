@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02009",
+  "categories": ["Dimmer", "Moving Head"],
+  "meta": {
+    "authors": ["Zu Kim"],
+    "createDate": "2024-10-05",
+    "lastModifyDate": "2024-10-05"
+  },
+  "comment": "Some of the advanced functions(e.g., Color or Gobo) are not implemented",
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1U989Jbic4N6Es4hgflhJYHaCLDP4Jd81/view"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Color (Unimplemented)": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo (Unimplemented)": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimming (Unimplemented)": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Model (Unimplemented)": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimming mode (Unimplemented)": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color (Unimplemented)",
+        "Gobo (Unimplemented)",
+        "Dimming (Unimplemented)",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Model (Unimplemented)",
+        "Dimming mode (Unimplemented)"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Color (Unimplemented)",
+        "Gobo (Unimplemented)",
+        "Dimming (Unimplemented)",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Model (Unimplemented)",
+        "Dimming mode (Unimplemented)"
+      ]
+    }
+  ]
+}
