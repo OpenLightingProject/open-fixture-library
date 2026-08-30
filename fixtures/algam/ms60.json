@@ -1,0 +1,256 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MS60",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Justin"],
+    "createDate": "2025-04-22",
+    "lastModifyDate": "2025-04-22"
+  },
+  "links": {
+    "productPage": [
+      "https://algam-lighting.com/en/sm_algam_lighting_projecteurs_asservis_spot/1422-60W-LED-Spot-Moving-Head-3700166370647.html"
+    ]
+  },
+  "physical": {
+    "weight": 3,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "1"
+        },
+        {
+          "type": "Gobo",
+          "name": "2"
+        },
+        {
+          "type": "Gobo",
+          "name": "3"
+        },
+        {
+          "type": "Gobo",
+          "name": "4"
+        },
+        {
+          "type": "Gobo",
+          "name": "5"
+        },
+        {
+          "type": "Gobo",
+          "name": "6"
+        },
+        {
+          "type": "Gobo",
+          "name": "7"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "ColorPreset",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "ColorPreset",
+          "comment": "magenta"
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "ColorPreset",
+          "comment": "orange"
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "ColorPreset",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [144, 255],
+          "type": "ColorPreset",
+          "comment": "color auto"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "8"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlotRotation",
+          "slotNumber": 9,
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Prism",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism",
+          "comment": "on"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "prism slow - fast"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction",
+        "comment": "RESET"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13 ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Presets",
+        "Gobo Wheel",
+        "Prism",
+        "Focus",
+        "No function",
+        "No function 2"
+      ]
+    }
+  ]
+}
