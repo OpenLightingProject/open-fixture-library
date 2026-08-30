@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 24 x 5 in 1",
+  "shortName": "Wash PAR Light (HL-028)",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2022-09-01",
+    "lastModifyDate": "2022-09-01"
+  },
+  "links": {
+    "productPage": [
+      "https://henlilighting.en.made-in-china.com/product/hvYQqCJOnKca/China-5in1-15W-24PCS-LED-Wash-PAR-Light-HL-028-.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2h4jJpJlSQM"
+    ]
+  },
+  "physical": {
+    "dimensions": [370, 230, 290],
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Program_color": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24 x 5 in 1",
+      "shortName": "LED PAR 24 x 5 in 1",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Color Presets"
+      ]
+    }
+  ]
+}
