@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 36/56/64 (2013)",
+  "shortName": "led-par-36-56-64",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Raine M. Ekman"],
+    "createDate": "2024-05-31",
+    "lastModifyDate": "2024-05-31"
+  },
+  "comment": "This older version LED PAR can be identified from having an \"Auto/Music\" switch.\nManual says DMX channel can be set to 123 max.\nPhysical data for PAR 64, 36/56 are smaller and lighter.",
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_193245_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 260, 260],
+    "weight": 2.12,
+    "power": 16,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGB LED"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "RGB control"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "7 colour fades",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "7 colour changes"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "3 colour changes"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Generic",
+          "comment": "Speed control by the device, via music or controller"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Mode",
+        "Red",
+        "Green",
+        "Blue",
+        "Program Speed"
+      ]
+    }
+  ]
+}
