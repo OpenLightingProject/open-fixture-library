@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VC-Dot",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Matthew Wright"],
+    "createDate": "2025-07-19",
+    "lastModifyDate": "2025-07-19"
+  },
+  "comment": "Works for VC-Dot 1, 4 and 9 models.\n\n[PLEASE ADD RGB CHANNELS AS PER THE DMX MODES WHEN ADDING THIS REQUEST TO LIBRARY - WILL TAKE ME FOREVER TO ADD THEM IN THIS GUI! THANKS!]",
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/martin-vc-dots-user-manual"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/vc-dot-1#downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Ui4-LZc6DSY"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channel (RGB)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Full Pixel Control - VC-Dot 1 (RGB x100)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    },
+    {
+      "name": "Full Pixel Control - VC-Dot 4 (RGB x64)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    },
+    {
+      "name": "Full Pixel Control - VC-Dot 9 (RGB x36)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    }
+  ]
+}
