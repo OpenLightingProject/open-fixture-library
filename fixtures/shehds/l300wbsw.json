@@ -1,0 +1,369 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "L300WBSW",
+  "shortName": "L300WBSW",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["AB Stage"],
+    "createDate": "2022-05-31",
+    "lastModifyDate": "2025-05-21",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-07-07",
+      "comment": "GDTF v1.2 fixture type ID: 260F6BBE-2CDD-479F-BC0A-5E519F4742B2"
+    }
+  },
+  "wheels": {
+    "1": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Wheel Slot 1",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Prism1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Prism1",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32766],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32767, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32768, 65534],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32766],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32767, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32768, 65534],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "PT Speed": {
+      "capability": {
+        "type": "Unknown (PT Speed)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Sh1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "helpWanted": "What does physical value 0…1 mean?",
+        "comment": "Shutter1"
+      }
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "C1": {
+      "fineChannelAliases": ["C1 fine"],
+      "highlightValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "wheel": "1",
+        "slotNumberStart": null,
+        "slotNumberEnd": null
+      }
+    },
+    "G1": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "wheel": "1",
+        "slotNumberStart": null,
+        "slotNumberEnd": null
+      }
+    },
+    "G2": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "wheel": "Unknown",
+        "slotNumber": 8,
+        "comment": "Gobo2"
+      }
+    },
+    "Rotate": {
+      "capability": {
+        "type": "WheelSlotRotation",
+        "wheel": "1",
+        "speedStart": "0rpm",
+        "speedEnd": "0.16666666666666669rpm"
+      }
+    },
+    "Prism1": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "Prism",
+        "comment": "Empty Channel Set"
+      }
+    },
+    "Rotate1": {
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "0rpm",
+        "speedEnd": "0.16666666666666669rpm"
+      }
+    },
+    "Frost1": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": 0,
+        "frostIntensityEnd": 1
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": 0,
+        "frostIntensityEnd": 1,
+        "comment": "Frost1 "
+      }
+    },
+    "Focus1": {
+      "fineChannelAliases": ["Focus1 fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": 0,
+        "distanceEnd": 1
+      }
+    },
+    "All Reset": {
+      "capability": {
+        "type": "Unknown (All Reset)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Ring Strobe": {
+      "capability": {
+        "type": "Unknown (Ring Strobe)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Ring Mode": {
+      "capability": {
+        "type": "Unknown (Ring Mode)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Ring Speed": {
+      "capability": {
+        "type": "Unknown (Ring Speed)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Sh1 2": {
+      "name": "Sh1",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed",
+        "comment": "Closed"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "C1 2": {
+      "name": "C1",
+      "highlightValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "wheel": "Unknown",
+        "slotNumber": 8,
+        "comment": "Color 7"
+      }
+    },
+    "G1 2": {
+      "name": "G1",
+      "highlightValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "wheel": "Unknown",
+        "slotNumberStart": null,
+        "slotNumberEnd": null
+      }
+    },
+    "G2 2": {
+      "name": "G2",
+      "highlightValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "wheel": "Unknown",
+        "slotNumber": 8,
+        "comment": "Gobo 7"
+      }
+    },
+    "Prism1 2": {
+      "name": "Prism1",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Prism",
+          "comment": "Prism1"
+        }
+      ]
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0deg",
+        "angleEnd": "1deg",
+        "comment": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "23 DMX",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "PT Speed",
+        "Sh1",
+        "Dim",
+        "Dim fine",
+        "C1",
+        "C1 fine",
+        "G1",
+        "G2",
+        "Rotate",
+        "Prism1",
+        "Rotate1",
+        "Frost1",
+        "Zoom",
+        "Focus1",
+        "Focus1 fine",
+        "All Reset",
+        "Ring Strobe",
+        "Ring Mode",
+        "Ring Speed"
+      ]
+    },
+    {
+      "name": "20 DMX ",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "PT Speed",
+        "Sh1 2",
+        "Dim 2",
+        "C1 2",
+        "G1 2",
+        "G2 2",
+        "Rotate",
+        "Prism1 2",
+        "Rotate1",
+        "Frost1",
+        "Zoom 2",
+        "Focus1",
+        "All Reset",
+        "Ring Strobe",
+        "Ring Mode",
+        "Ring Speed"
+      ]
+    }
+  ]
+}
