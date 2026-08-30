@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PLL-480 CW-WW",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Hans Van Eylen"],
+    "createDate": "2025-11-18",
+    "lastModifyDate": "2025-11-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1580377/Eurolite-Led-Pll-480.html"
+    ],
+    "productPage": [
+      "https://www.thomann.nl/eurolite_led_pll_480_cw_ww_panel.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7A518m3uzlY"
+    ]
+  },
+  "physical": {
+    "dimensions": [64, 12, 33],
+    "weight": 12.6,
+    "power": 205,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Dim speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Response characteristics of LEDs"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Response characteristics of halogen lamps, fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Response characteristics of halogen lamps, middle"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Response characteristics of halogen lamps, slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Warm White",
+        "Cold White",
+        "Dimmer",
+        "Strobe Speed",
+        "Dim speed"
+      ]
+    }
+  ]
+}
