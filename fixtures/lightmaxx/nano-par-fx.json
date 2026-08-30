@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Nano PAR FX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["rebase.bandcamp.com", "Re:Base"],
+    "createDate": "2024-11-06",
+    "lastModifyDate": "2024-11-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-11-06",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "weight": 0.6,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green Dimmer"
+      }
+    },
+    "Blue Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Effect",
+          "effectName": "Par & Strobe Flashing Both"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Effect",
+          "effectName": "Par Flashing Only"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Strobe Flashing Only"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "comment": "Strobe Speed +"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Maintenance",
+          "comment": "Manual Mode, Available CH1-CH7"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Maintenance",
+          "comment": "Jump change, Same as ‚FF**‘ mode, CH6 adjust speed"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "N/A"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Master Dimmer",
+        "Red Dimmer",
+        "Green dimmer",
+        "Blue Dimmer",
+        "White Dimmer",
+        "Strobe Function",
+        "Strobe Speed",
+        "Mode"
+      ]
+    }
+  ]
+}
