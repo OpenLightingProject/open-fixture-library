@@ -1,0 +1,221 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mac Spot 250",
+  "shortName": "Mac Spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["yves"],
+    "createDate": "2025-07-03",
+    "lastModifyDate": "2025-07-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.fr/manual/500402/Mac-Mah-Mac-Spot-250.html?page=9#manual"
+    ],
+    "productPage": [
+      "https://fr.audiofanzine.com/lyre/mac-mah/Mac-pro-spot-250/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=aQFFYkLNgPA"
+    ]
+  },
+  "physical": {
+    "weight": 25,
+    "power": 500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD250",
+      "colorTemperature": 8500,
+      "lumens": 18000
+    },
+    "lens": {
+      "name": "Focus",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "RED"
+        },
+        {
+          "type": "Color",
+          "name": "YELLOW"
+        },
+        {
+          "type": "Color",
+          "name": "MAGENTA"
+        },
+        {
+          "type": "Color",
+          "name": "GREEN"
+        },
+        {
+          "type": "Color",
+          "name": "ORANGE"
+        },
+        {
+          "type": "Color",
+          "name": "BLUE"
+        },
+        {
+          "type": "Color",
+          "name": "PINK"
+        },
+        {
+          "type": "Color",
+          "name": "RAINBOW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "1"
+        },
+        {
+          "type": "Gobo",
+          "name": "2"
+        },
+        {
+          "type": "Gobo",
+          "name": "3"
+        },
+        {
+          "type": "Gobo",
+          "name": "4"
+        },
+        {
+          "type": "Gobo",
+          "name": "5"
+        },
+        {
+          "type": "Gobo",
+          "name": "SHAKE"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Lamp Reset": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 1,
+        "slotNumberEnd": 9
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 1,
+        "slotNumberEnd": 7
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13 Canaux",
+      "shortName": "1",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Lamp Reset",
+        "Color Wheel",
+        "Prism",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Focus",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
