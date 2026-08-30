@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Blinder 2 COB",
+  "shortName": "LED Blinder 2 COB",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Ralf Martin"],
+    "createDate": "2026-01-26",
+    "lastModifyDate": "2026-01-26"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_409616_v2_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [530, 330, 150],
+    "weight": 4.5,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2700
+    },
+    "lens": {
+      "degreesMinMax": [70, 70]
+    }
+  },
+  "availableChannels": {
+    "Dimmer LED 1 and 2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer LED 1": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer LED 2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [6, 123],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe Effect, increasing frequency"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "NoFunction",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 185],
+          "type": "Generic",
+          "comment": "Strobe effect, random frequency, LED 1 and 2 synchronous"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "NoFunction",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [191, 249],
+          "type": "Generic",
+          "comment": "Strobe effect, random frequency, LED 1 and 2 asynchronous"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction",
+          "comment": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer LED 1 and 2"
+      ]
+    },
+    {
+      "name": "2-channel 2a",
+      "shortName": "2cha",
+      "channels": [
+        "Dimmer LED 1",
+        "Dimmer LED 2"
+      ]
+    },
+    {
+      "name": "2-channel 2b",
+      "shortName": "2chb",
+      "channels": [
+        "Dimmer LED 1 and 2",
+        "Strobe Effects"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer LED 1",
+        "Dimmer LED 2",
+        "Strobe Effects"
+      ]
+    }
+  ]
+}
