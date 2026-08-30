@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BWS200",
+  "shortName": "BSW200",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["NSL"],
+    "createDate": "2025-12-10",
+    "lastModifyDate": "2025-12-10"
+  },
+  "links": {
+    "manual": [
+      "https://nsl.as/"
+    ],
+    "productPage": [
+      "https://nsl.as/"
+    ],
+    "video": [
+      "https://nsl.as/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 10000,
+      "lumens": 10000
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan Fin": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "slow"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt Fin": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Macro"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Led Ring": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Led Ring"
+      }
+    },
+    "Led Ring Hastighet": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "NSL BSW200",
+      "channels": [
+        "Color Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Color Presets",
+        "Frost",
+        "Zoom",
+        "Pan",
+        "Pan Fin",
+        "Tilt",
+        "Tilt Fin",
+        "Color Macros",
+        "Reset",
+        "Shutter",
+        "Led Ring",
+        "Led Ring Hastighet"
+      ]
+    }
+  ]
+}
