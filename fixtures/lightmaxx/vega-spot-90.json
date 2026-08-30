@@ -1,0 +1,804 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VEGA SPOT 90",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Rafaell"],
+    "createDate": "2025-07-24",
+    "lastModifyDate": "2025-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/424193/Lightmaxx-Vega-Spot-90.html"
+    ],
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/lightmaXX-VEGA-SPOT-90/art-LIG0013623-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=C-Z7zVsUP0Q"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 180, 430],
+    "weight": 7,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000,
+      "lumens": 2000
+    }
+  },
+  "wheels": {
+    "Ch 9 GOBO STATISCH": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo8"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Ch 10 GOBO DREHBAR": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Color",
+          "name": "vorwärts Regenbogen langsam/schnell"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "CH1": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "360%"
+      }
+    },
+    "CH2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "0deg"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "CH3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "CH4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "BeamAngle",
+          "angleStart": "closed",
+          "angleEnd": "wide"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "BeamAngle",
+          "angleStart": "wide",
+          "angleEnd": "wide"
+        }
+      ]
+    },
+    "CH5": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 47],
+          "type": "Effect",
+          "effectName": "AUTO PLAY 1"
+        },
+        {
+          "dmxRange": [48, 87],
+          "type": "Effect",
+          "effectName": "AUTO PLAY 2"
+        },
+        {
+          "dmxRange": [88, 127],
+          "type": "Effect",
+          "effectName": "AUTO PLAY 3"
+        },
+        {
+          "dmxRange": [128, 167],
+          "type": "Effect",
+          "effectName": "AUTO PLAY 4"
+        },
+        {
+          "dmxRange": [168, 207],
+          "type": "Effect",
+          "effectName": "AUTO PLAY 5"
+        },
+        {
+          "dmxRange": [208, 247],
+          "type": "Effect",
+          "effectName": "AUTO PLAY 6"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "FARBE GOBI SOUNDKONTROLLE",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "CH6": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 32],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 1"
+        },
+        {
+          "dmxRange": [33, 58],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 2"
+        },
+        {
+          "dmxRange": [59, 84],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 3"
+        },
+        {
+          "dmxRange": [85, 110],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 4"
+        },
+        {
+          "dmxRange": [111, 136],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 5"
+        },
+        {
+          "dmxRange": [137, 162],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 6"
+        },
+        {
+          "dmxRange": [163, 188],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 7"
+        },
+        {
+          "dmxRange": [189, 214],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 8"
+        },
+        {
+          "dmxRange": [215, 240],
+          "type": "Effect",
+          "effectName": "X/Y Auto Run 9"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "X/Y Soundkontrolle"
+        }
+      ]
+    },
+    "CH1 2": {
+      "name": "CH1",
+      "fineChannelAliases": ["CH1 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "CH2 2": {
+      "name": "CH2",
+      "fineChannelAliases": ["CH2 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "CH2 3": {
+      "name": "CH2",
+      "fineChannelAliases": ["CH2 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "CH 1 X": {
+      "fineChannelAliases": ["CH 1 X fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "0%"
+      }
+    },
+    "CH 3 Y": {
+      "fineChannelAliases": ["CH 3 Y fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "CH 5 XY Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CH 6 Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CH 7 STROBE": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "BeamAngle",
+          "angleStart": "closed",
+          "angleEnd": "wide"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "BeamAngle",
+          "angleStart": "wide",
+          "angleEnd": "wide"
+        }
+      ]
+    },
+    "CH 8 Farbe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "White (OPEN)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [5, 13],
+          "type": "ColorPreset",
+          "comment": "White/REd",
+          "colors": ["#ffffff", "#ff0000"]
+        },
+        {
+          "dmxRange": [14, 22],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [23, 31],
+          "type": "ColorPreset",
+          "comment": "Red/Orange",
+          "colors": ["#ff0000", "#ff8800"]
+        },
+        {
+          "dmxRange": [32, 40],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8800"]
+        },
+        {
+          "dmxRange": [41, 49],
+          "type": "ColorPreset",
+          "comment": "Orange/Green",
+          "colors": ["#ff8800", "#008000"]
+        },
+        {
+          "dmxRange": [50, 58],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#008000"]
+        },
+        {
+          "dmxRange": [59, 67],
+          "type": "ColorPreset",
+          "comment": "Green/Blue",
+          "colors": ["#008000", "#0000ff"]
+        },
+        {
+          "dmxRange": [68, 76],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [77, 85],
+          "type": "ColorPreset",
+          "comment": "Blue/Yellow",
+          "colors": ["#0000ff", "#ffde21"]
+        },
+        {
+          "dmxRange": [86, 94],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffde21"]
+        },
+        {
+          "dmxRange": [95, 103],
+          "type": "ColorPreset",
+          "comment": "Yellow/Light Blue",
+          "colors": ["#ffde21", "#90d5ff"]
+        },
+        {
+          "dmxRange": [104, 112],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#90d5ff"]
+        },
+        {
+          "dmxRange": [113, 121],
+          "type": "ColorPreset",
+          "comment": "Light Blue/Purple",
+          "colors": ["#90d5ff", "#b200ed"]
+        },
+        {
+          "dmxRange": [122, 130],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#b200ed"]
+        },
+        {
+          "dmxRange": [131, 139],
+          "type": "ColorPreset",
+          "comment": "White (OPEN)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [140, 195],
+          "type": "Effect",
+          "effectName": "Clocwise Rotation"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Rotating Slow"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Anti clockwise Rotation"
+        }
+      ]
+    },
+    "Ch 9 GOBO STATISCH": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [6, 21],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [22, 37],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [38, 53],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [54, 69],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [70, 85],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [86, 101],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [102, 117],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [118, 133],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [134, 194],
+          "type": "WheelSlotRotation",
+          "slotNumber": 9,
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [195, 255],
+          "type": "WheelSlotRotation",
+          "speed": "slow CW"
+        }
+      ]
+    },
+    "Ch 10 GOBO DREHBAR": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 28],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [29, 49],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [50, 70],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [71, 91],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [92, 112],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [113, 133],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [134, 194],
+          "type": "ColorPreset",
+          "comment": "vorwärts Regenbogeneffekt schnell bis langsam"
+        },
+        {
+          "dmxRange": [195, 255],
+          "type": "ColorPreset",
+          "comment": "rückwärts Regenbogeneffekt langsam bis schnell"
+        }
+      ]
+    },
+    "CH 11 GOBO DREHUNG": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "BladeRotation",
+          "blade": "Top",
+          "angleStart": "0%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [10, 129],
+          "type": "BladeRotation",
+          "blade": "Right",
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "BladeRotation",
+          "blade": "Top",
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "BladeRotation",
+          "blade": "Left",
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        }
+      ]
+    },
+    "CH 12 FOKUS": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "CH 13 PRISMA": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Prism",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "PrismRotation",
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        }
+      ]
+    },
+    "CH 14 AUTOPLAY": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 47],
+          "type": "Effect",
+          "effectName": "AUTOPLAY 1",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [48, 87],
+          "type": "Effect",
+          "effectName": "AUTOPLAY 2",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [88, 127],
+          "type": "Effect",
+          "effectName": "AUTOPLAY 3",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [128, 167],
+          "type": "Effect",
+          "effectName": "AUTOPLAY 4",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [168, 207],
+          "type": "Effect",
+          "effectName": "AUTOPLAY 5",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [208, 247],
+          "type": "Effect",
+          "effectName": "AUTOPLAY 6",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "FARBE GOBO SOUNDKONTROL"
+        }
+      ]
+    },
+    "CH 15 LEER": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "CH 16 AUTORUN": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 32],
+          "type": "Generic",
+          "comment": "X/Y Autorun 1"
+        },
+        {
+          "dmxRange": [33, 58],
+          "type": "Generic",
+          "comment": "X/Y Autorun 2"
+        },
+        {
+          "dmxRange": [59, 84],
+          "type": "Generic",
+          "comment": "X/Y Autorun 3"
+        },
+        {
+          "dmxRange": [85, 110],
+          "type": "Generic",
+          "comment": "X/Y Autorun 4"
+        },
+        {
+          "dmxRange": [111, 136],
+          "type": "Generic",
+          "comment": "X/Y Autorun 5"
+        },
+        {
+          "dmxRange": [137, 162],
+          "type": "Generic",
+          "comment": "X/Y Autorun 6"
+        },
+        {
+          "dmxRange": [163, 188],
+          "type": "Generic",
+          "comment": "X/Y Autorun 7"
+        },
+        {
+          "dmxRange": [189, 214],
+          "type": "Generic",
+          "comment": "X/Y Autorun 8"
+        },
+        {
+          "dmxRange": [215, 240],
+          "type": "Generic",
+          "comment": "X/Y Autorun 9"
+        },
+        {
+          "dmxRange": [241, 249],
+          "type": "Generic",
+          "comment": "X/Y Soundkontrolle"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Zurücksetzen(105)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Chanel",
+      "channels": [
+        "CH1",
+        "CH2",
+        "CH3",
+        "CH4",
+        "CH5",
+        "CH6"
+      ]
+    },
+    {
+      "name": "16 Channel",
+      "channels": [
+        "CH 1 X",
+        "CH 1 X fine",
+        "CH 3 Y",
+        "CH 3 Y fine",
+        "CH 5 XY Speed",
+        "CH 6 Dimmer",
+        "CH 7 STROBE",
+        "CH 8 Farbe",
+        "Ch 9 GOBO STATISCH",
+        "Ch 10 GOBO DREHBAR",
+        "CH 11 GOBO DREHUNG",
+        "CH 12 FOKUS",
+        "CH 13 PRISMA",
+        "CH 14 AUTOPLAY",
+        "CH 15 LEER",
+        "CH 16 AUTORUN"
+      ]
+    }
+  ]
+}
