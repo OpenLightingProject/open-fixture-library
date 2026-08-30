@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation E-910FC",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Anthony Iannone"],
+    "createDate": "2024-07-24",
+    "lastModifyDate": "2024-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_E-910FC_UM_Rev16.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-e-910fc/"
+    ],
+    "other": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_E-910FC_QRG_ML5_Rev12_L.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "999Hz"
+      }
+    },
+    "Virtual Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [6, 225],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "6500K"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Intensity",
+          "brightness": "off"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channel",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Strobe",
+        "Virtual Color Wheel",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "5 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime"
+      ]
+    },
+    {
+      "name": "7 Channel",
+      "channels": [
+        "Dimmer 2",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Strobe"
+      ]
+    }
+  ]
+}
