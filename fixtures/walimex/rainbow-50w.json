@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rainbow 50w",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["oskm"],
+    "createDate": "2026-06-01",
+    "lastModifyDate": "2026-06-01"
+  },
+  "links": {
+    "productPage": [
+      "https://www.fotowalser.com/se/walimex-pro-led-rainbow-50w-rgbww-area-light/1023034"
+    ]
+  },
+  "physical": {
+    "power": 50,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
