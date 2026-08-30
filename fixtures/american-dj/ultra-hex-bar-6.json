@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ultra Hex Bar 6",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Kristian Streich"],
+    "createDate": "2025-12-19",
+    "lastModifyDate": "2025-12-19"
+  },
+  "comment": "ADJ Ultra Hex Bar with different functions",
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/617"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/ultra-hex-bar-6"
+    ]
+  },
+  "physical": {
+    "dimensions": [110, 165, 585],
+    "weight": 2.82,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1172
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "MasterDimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6Channel",
+      "shortName": "6ChannelMode",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7Channel",
+      "shortName": "7ChannelMode",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "MasterDimmer"
+      ]
+    }
+  ]
+}
