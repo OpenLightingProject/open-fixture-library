@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Niki",
+  "shortName": "NiL",
+  "categories": ["Matrix", "Flower", "Hazer", "Laser", "Barrel Scanner", "Blinder", "Pixel Bar", "Moving Head", "Stand", "Smoke"],
+  "meta": {
+    "authors": ["NIki"],
+    "createDate": "2026-05-29",
+    "lastModifyDate": "2026-05-29"
+  },
+  "links": {
+    "manual": [
+      "https://rocketshow.net/designer/app/?id=&token="
+    ],
+    "productPage": [
+      "https://open-fixture-library.org/fixture-editor"
+    ],
+    "video": [
+      "https://www.youtube.com/shorts/r2cM-5-tlXs"
+    ]
+  },
+  "rdm": {
+    "modelId": 41,
+    "softwareVersion": "NnBJG"
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 9,
+      "lumens": 7
+    },
+    "lens": {
+      "name": "IK Lens",
+      "degreesMinMax": [31, 31]
+    }
+  },
+  "availableChannels": {
+    "DBB Chanel": {
+      "defaultValue": 11,
+      "highlightValue": 7,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "durationStart": "short",
+        "durationEnd": "short",
+        "randomTiming": true
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "EdeYT",
+      "shortName": "YT",
+      "rdmPersonalityIndex": 24,
+      "physical": {
+        "dimensions": [29, 29, 18]
+      },
+      "channels": [
+        "DBB Chanel"
+      ]
+    }
+  ]
+}
