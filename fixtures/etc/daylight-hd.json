@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Daylight HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["P"],
+    "createDate": "2022-01-26",
+    "lastModifyDate": "2022-01-26"
+  },
+  "comment": "ff",
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/About/News/ETC-unveils-new-Source-Four-LED-Series-2-arrays--Daylight-HD-and-Tungsten-HD.aspx"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/About/News/ETC-unveils-new-Source-Four-LED-Series-2-arrays--Daylight-HD-and-Tungsten-HD.aspx"
+    ],
+    "video": [
+      "https://www.etcconnect.com/About/News/ETC-unveils-new-Source-Four-LED-Series-2-arrays--Daylight-HD-and-Tungsten-HD.aspx"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 chanel",
+      "channels": [
+        "Red",
+        "No function",
+        "Green",
+        "Blue",
+        "Indigo",
+        "No function 2",
+        "No function 3",
+        "Intensity",
+        "Strobe",
+        "Intensity 2"
+      ]
+    }
+  ]
+}
