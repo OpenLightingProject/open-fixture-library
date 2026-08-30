@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mymovinghead",
+  "categories": ["Color Changer", "Moving Head", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["imov"],
+    "createDate": "2026-05-26",
+    "lastModifyDate": "2026-05-26"
+  },
+  "links": {
+    "other": [
+      "https://jb-systems.eu/clubwash-mini"
+    ]
+  },
+  "availableChannels": {
+    "1pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "2tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "3red": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "3 red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "4green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "5blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channel",
+      "shortName": "5ch",
+      "channels": [
+        "1pan",
+        "2tilt",
+        "3 red",
+        "4green",
+        "5blue"
+      ]
+    }
+  ]
+}
