@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Theater Spot 40 WW (TS 40 WW)",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["An Millot"],
+    "createDate": "2025-04-29",
+    "lastModifyDate": "2025-04-29"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/405067_cameo_ts_40_60_en_de_fr_es_pl_it.pdf"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/11910/ts-40-ww"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 205, 240],
+    "weight": 3.6,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200,
+      "lumens": 1570
+    },
+    "lens": {
+      "name": "Plan-Convexe"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 3 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Set dimmer curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Generic",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
+    },
+    "Device settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Generic",
+          "comment": "Dimmer Response LED (Hold 3s)"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Dimmer Response Halogen (Hold 3s)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Dimmer 3",
+        "Dimmer 3 fine",
+        "Strobe",
+        "Set dimmer curve",
+        "Device settings"
+      ]
+    }
+  ]
+}
