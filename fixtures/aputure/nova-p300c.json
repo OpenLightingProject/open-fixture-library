@@ -57,7 +57,7 @@
         }
       ]
     },
-    "CCT <-> RGB": {
+    "Cross Fade to Color": {
       "capability": {
         "type": "Generic",
         "comment": "crossfade to color"
@@ -121,12 +121,6 @@
         "type": "Intensity",
         "brightnessStart": "0%",
         "brightnessEnd": "100%"
-      }
-    },
-    "CCT <-> HSI": {
-      "capability": {
-        "type": "Generic",
-        "comment": "Cross Fade To Color"
       }
     },
     "Gel R/L": {
@@ -581,7 +575,7 @@
         "Intensity",
         "CCT",
         "Green/Magenta Point",
-        "CCT <-> RGB",
+        "Cross Fade to Color",
         "Red",
         "Green",
         "Blue"
@@ -601,7 +595,7 @@
         "Intensity",
         "CCT",
         "Green/Magenta Point",
-        "CCT <-> HSI",
+        "Cross Fade to Color",
         "Hue",
         "Saturation"
       ]
