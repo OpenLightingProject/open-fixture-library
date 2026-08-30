@@ -1,0 +1,539 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02015",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Max"],
+    "createDate": "2025-12-27",
+    "lastModifyDate": "2025-12-27"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/b243-50w-moving-head-light-with-led-belt-black/"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 295, 200],
+    "weight": 2.5,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Pink+Light Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange+Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Green+Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Blue+Green"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow+Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Red+Yellow"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        },
+        {
+          "type": "Gobo",
+          "name": "x"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "ColorPreset",
+          "comment": "Automatic color change, slow to fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 63],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelShake",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Automatic change pattern from slow to fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "StrobeSpeed",
+          "speed": "0Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Automatic Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Generic",
+          "comment": "Other channels function"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Generic",
+          "comment": "Automatic mode 3"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Generic",
+          "comment": "Automatic mode 2"
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Generic",
+          "comment": "Automatic mode 1"
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Generic",
+          "comment": "Automatic mode 0"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Generic",
+          "comment": "Voice-control mode 3"
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Generic",
+          "comment": "Voice-control mode 2"
+        },
+        {
+          "dmxRange": [210, 234],
+          "type": "Generic",
+          "comment": "Voice-control mode 1"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Generic",
+          "comment": "Voice-control mode 0"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "parameter": "high",
+          "hold": "5s",
+          "comment": "Resets the device"
+        }
+      ]
+    },
+    "Light strips": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "Behavior not specified"
+        },
+        {
+          "dmxRange": [5, 109],
+          "type": "ColorPreset",
+          "comment": "Color selection"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "ColorPreset",
+          "comment": "Color auto operation"
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeed": "fast",
+          "shakeAngle": "narrow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel 2",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Automatic Mode",
+        "Reset",
+        "Light strips"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel 2",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Automatic Mode",
+        "Reset",
+        "Light strips"
+      ]
+    }
+  ]
+}
