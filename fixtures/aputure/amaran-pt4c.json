@@ -1,0 +1,2729 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Amaran PT4C",
+  "shortName": "PT4C",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ben Gilliam"],
+    "createDate": "2025-09-07",
+    "lastModifyDate": "2025-09-07"
+  },
+  "links": {
+    "manual": [
+      "https://amarancreators.com/cdn/shop/files/amaran-PT-Product-Manual-V1.2-0207_783bd847-06b0-4c68-be41-32b7ce55bf2c.pdf"
+    ],
+    "productPage": [
+      "https://amarancreators.com/pages/amaran-pt4c"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hMRHD8Jfgi4"
+    ]
+  },
+  "physical": {
+    "dimensions": [42, 1200, 42],
+    "weight": 1.375,
+    "power": 23,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600,
+      "lumens": 1000
+    },
+    "lens": {
+      "degreesMinMax": [180, 180]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Reserved for Future Use": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Reserved for Future Use"
+      }
+    },
+    "Reserved for Future Use 2": {
+      "name": "Reserved for Future Use",
+      "defaultValue": 9,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Reserved for Future Use"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "CCT ↔ HSI": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Hue": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Lightning": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 4,
+          "comment": "Loop"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "EffectParameter",
+          "parameterStart": 5,
+          "parameterEnd": 27,
+          "comment": "Trigger"
+        },
+        {
+          "dmxRange": [70, 255],
+          "type": "EffectParameter",
+          "parameterStart": 28,
+          "parameterEnd": 100,
+          "comment": "Stop"
+        }
+      ]
+    },
+    "Other Effects": {
+      "defaultValue": 2,
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 27,
+          "comment": "Loop"
+        },
+        {
+          "dmxRange": [70, 255],
+          "type": "EffectParameter",
+          "parameterStart": 28,
+          "parameterEnd": 100,
+          "comment": "Stop"
+        }
+      ]
+    },
+    "FX Selection": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Paparazzi"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Faulty Bulb"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Cop Car"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Party Lights"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Fireworks"
+        },
+        {
+          "dmxRange": [90, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "FX Parameter 1": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "FX Parameter 2": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "FX Parameter 3": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "FX Parameter 4": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Intensity (LE02)": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE02)": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE02)": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE02)": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE02)": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE02)": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE02)": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE02)": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Intensity (LE02) 2": {
+      "name": "Intensity (LE02)",
+      "defaultValue": 4,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Saturation (LE02)": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity LE03": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE03)": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE03)": {
+      "defaultValue": 17,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE03)": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE03)": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE03)": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE03)": {
+      "defaultValue": 21,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE04)": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE04)": {
+      "defaultValue": 23,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE04)": {
+      "defaultValue": 24,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE04)": {
+      "defaultValue": 25,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE04)": {
+      "defaultValue": 26,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE04)": {
+      "defaultValue": 27,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE04)": {
+      "defaultValue": 28,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE05)": {
+      "defaultValue": 29,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE05)": {
+      "defaultValue": 30,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE05)": {
+      "defaultValue": 31,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE05)": {
+      "defaultValue": 32,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE05)": {
+      "defaultValue": 33,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE05)": {
+      "defaultValue": 34,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE05)": {
+      "defaultValue": 35,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE06)": {
+      "defaultValue": 36,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE06)": {
+      "defaultValue": 37,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE06)": {
+      "defaultValue": 38,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE06)": {
+      "defaultValue": 39,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE06)": {
+      "defaultValue": 40,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE06)": {
+      "defaultValue": 41,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE06)": {
+      "defaultValue": 42,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE07)": {
+      "defaultValue": 43,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE07)": {
+      "defaultValue": 44,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE07)": {
+      "defaultValue": 45,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE07)": {
+      "defaultValue": 46,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE07)": {
+      "defaultValue": 47,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE07)": {
+      "defaultValue": 48,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE07)": {
+      "defaultValue": 49,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE08)": {
+      "defaultValue": 50,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE08)": {
+      "defaultValue": 51,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE08)": {
+      "defaultValue": 52,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE08)": {
+      "defaultValue": 53,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE08)": {
+      "defaultValue": 54,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE08)": {
+      "defaultValue": 55,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE08)": {
+      "defaultValue": 56,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue 2": {
+      "name": "Hue",
+      "defaultValue": 2,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation 2": {
+      "name": "Saturation",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue 3": {
+      "name": "Hue",
+      "defaultValue": 2,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation 3": {
+      "name": "Saturation",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue 4": {
+      "name": "Hue",
+      "defaultValue": 2,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation 4": {
+      "name": "Saturation",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue 5": {
+      "name": "Hue",
+      "defaultValue": 2,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation 5": {
+      "name": "Saturation",
+      "defaultValue": 3,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE09)": {
+      "defaultValue": 57,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE09)": {
+      "defaultValue": 58,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE09)": {
+      "defaultValue": 59,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE09)": {
+      "defaultValue": 60,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE09)": {
+      "defaultValue": 61,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE09)": {
+      "defaultValue": 62,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE09)": {
+      "defaultValue": 63,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE10)": {
+      "defaultValue": 64,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE10)": {
+      "defaultValue": 65,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE10)": {
+      "defaultValue": 66,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE10)": {
+      "defaultValue": 67,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE10)": {
+      "defaultValue": 68,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE10)": {
+      "defaultValue": 69,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE10)": {
+      "defaultValue": 70,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE11)": {
+      "defaultValue": 71,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE11)": {
+      "defaultValue": 72,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE11)": {
+      "defaultValue": 73,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE11)": {
+      "defaultValue": 74,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE11)": {
+      "defaultValue": 75,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE11)": {
+      "defaultValue": 76,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE11)": {
+      "defaultValue": 77,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE12)": {
+      "defaultValue": 78,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE12)": {
+      "defaultValue": 79,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE12)": {
+      "defaultValue": 80,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE12)": {
+      "defaultValue": 81,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE12)": {
+      "defaultValue": 82,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE12)": {
+      "defaultValue": 83,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE12)": {
+      "defaultValue": 84,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE13)": {
+      "defaultValue": 85,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE13)": {
+      "defaultValue": 86,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE13)": {
+      "defaultValue": 87,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE13)": {
+      "defaultValue": 88,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE13)": {
+      "defaultValue": 89,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE13)": {
+      "defaultValue": 90,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE13)": {
+      "defaultValue": 91,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE14)": {
+      "defaultValue": 92,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE14)": {
+      "defaultValue": 93,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE14)": {
+      "defaultValue": 94,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE14)": {
+      "defaultValue": 95,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE14)": {
+      "defaultValue": 96,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE14)": {
+      "defaultValue": 97,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE14)": {
+      "defaultValue": 98,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE15)": {
+      "defaultValue": 99,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE15)": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE15)": {
+      "defaultValue": 101,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE15)": {
+      "defaultValue": 102,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE15)": {
+      "defaultValue": 103,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE15)": {
+      "defaultValue": 104,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE15)": {
+      "defaultValue": 105,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE16)": {
+      "defaultValue": 106,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "CCT (LE16)": {
+      "defaultValue": 107,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G / M (LE16)": {
+      "defaultValue": 108,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "Full Minus Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99% to -1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral / No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "1% to 99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "Full Plus Green"
+        }
+      ]
+    },
+    "CCT ↔ RGB (LE16)": {
+      "defaultValue": 109,
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade to Color"
+      }
+    },
+    "Red (LE16)": {
+      "defaultValue": 110,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue (LE16)": {
+      "defaultValue": 112,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green (LE16)": {
+      "defaultValue": 111,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity LE03 2": {
+      "name": "Intensity LE03",
+      "defaultValue": 7,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE03)": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE03)": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE04) 2": {
+      "name": "Intensity (LE04)",
+      "defaultValue": 10,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE04)": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE04)": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE05) 2": {
+      "name": "Intensity (LE05)",
+      "defaultValue": 13,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE05)": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE05)": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE06) 2": {
+      "name": "Intensity (LE06)",
+      "defaultValue": 16,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE06)": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE06)": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE07) 2": {
+      "name": "Intensity (LE07)",
+      "defaultValue": 19,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE07)": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE07)": {
+      "defaultValue": 21,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE08)": {
+      "defaultValue": 23,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1%",
+        "angleEnd": "360%"
+      }
+    },
+    "Saturation (LE08)": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE08) 2": {
+      "name": "Intensity (LE08)",
+      "defaultValue": 22,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE09) 2": {
+      "name": "Intensity (LE09)",
+      "defaultValue": 25,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE09)": {
+      "defaultValue": 26,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE09)": {
+      "defaultValue": 27,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE10) 2": {
+      "name": "Intensity (LE10)",
+      "defaultValue": 28,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE10)": {
+      "defaultValue": 29,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE10)": {
+      "defaultValue": 30,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE11) 2": {
+      "name": "Intensity (LE11)",
+      "defaultValue": 31,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE11)": {
+      "defaultValue": 32,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE11)": {
+      "defaultValue": 33,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE12) 2": {
+      "name": "Intensity (LE12)",
+      "defaultValue": 34,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE12)": {
+      "defaultValue": 35,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE12)": {
+      "defaultValue": 36,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE13) 2": {
+      "name": "Intensity (LE13)",
+      "defaultValue": 37,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE13)": {
+      "defaultValue": 38,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE13)": {
+      "defaultValue": 39,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE14) 2": {
+      "name": "Intensity (LE14)",
+      "defaultValue": 40,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE14)": {
+      "defaultValue": 41,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE14)": {
+      "defaultValue": 42,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Intensity (LE15) 2": {
+      "name": "Intensity (LE15)",
+      "defaultValue": 43,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE15)": {
+      "defaultValue": 44,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE15)": {
+      "defaultValue": 45,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity (LE16) 2": {
+      "name": "Intensity (LE16)",
+      "defaultValue": 46,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue (LE16)": {
+      "defaultValue": 47,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Saturation (LE16)": {
+      "defaultValue": 48,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGB",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "CCT & HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "CCT ↔ HSI",
+        "Hue",
+        "Saturation",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation",
+        "Reserved for Future Use",
+        "Reserved for Future Use 2",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "System FX - List of Effects",
+      "channels": [
+        "Intensity",
+        "Lightning",
+        "FX Selection",
+        "FX Parameter 1",
+        "FX Parameter 2",
+        "FX Parameter 3",
+        "FX Parameter 4"
+      ]
+    },
+    {
+      "name": "Light Engine CCT & RGB 2 Pixels (PT1c / PT2c / PT4c )",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity (LE02)",
+        "CCT (LE02)",
+        "G / M (LE02)",
+        "CCT ↔ RGB (LE02)",
+        "Red (LE02)",
+        "Green (LE02)",
+        "Blue (LE02)"
+      ]
+    },
+    {
+      "name": "Light Engine CCT & RGB 4 Pixels (PT1c / PT2c / PT4c )",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity (LE02)",
+        "CCT (LE02)",
+        "G / M (LE02)",
+        "CCT ↔ RGB (LE02)",
+        "Red (LE02)",
+        "Green (LE02)",
+        "Blue (LE02)",
+        "Intensity LE03",
+        "CCT (LE03)",
+        "G / M (LE03)",
+        "CCT ↔ RGB (LE03)",
+        "Red (LE03)",
+        "Green (LE03)",
+        "Blue (LE03)",
+        "Intensity (LE04)",
+        "CCT (LE04)",
+        "G / M (LE04)",
+        "CCT ↔ RGB (LE04)",
+        "Red (LE04)",
+        "Green (LE04)",
+        "Blue (LE04)"
+      ]
+    },
+    {
+      "name": "Light Engine CCT & RGB 8 Pixels (PT2c / PT4c )",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity (LE02)",
+        "CCT (LE02)",
+        "G / M (LE02)",
+        "CCT ↔ RGB (LE02)",
+        "Red (LE02)",
+        "Green (LE02)",
+        "Blue (LE02)",
+        "Intensity LE03",
+        "CCT (LE03)",
+        "G / M (LE03)",
+        "CCT ↔ RGB (LE03)",
+        "Red (LE03)",
+        "Green (LE03)",
+        "Blue (LE03)",
+        "Intensity (LE04)",
+        "CCT (LE04)",
+        "G / M (LE04)",
+        "CCT ↔ RGB (LE04)",
+        "Red (LE04)",
+        "Green (LE04)",
+        "Blue (LE04)",
+        "Intensity (LE05)",
+        "CCT (LE05)",
+        "G / M (LE05)",
+        "CCT ↔ RGB (LE05)",
+        "Red (LE05)",
+        "Green (LE05)",
+        "Blue (LE05)",
+        "Intensity (LE06)",
+        "CCT (LE06)",
+        "G / M (LE06)",
+        "CCT ↔ RGB (LE06)",
+        "Red (LE06)",
+        "Green (LE06)",
+        "Blue (LE06)",
+        "Intensity (LE07)",
+        "CCT (LE07)",
+        "G / M (LE07)",
+        "CCT ↔ RGB (LE07)",
+        "Red (LE07)",
+        "Green (LE07)",
+        "Blue (LE07)",
+        "Intensity (LE08)",
+        "CCT (LE08)",
+        "G / M (LE08)",
+        "CCT ↔ RGB (LE08)",
+        "Red (LE08)",
+        "Green (LE08)",
+        "Blue (LE08)"
+      ]
+    },
+    {
+      "name": "Light Engine CCT & RGB 16 Pixels (PT4c )",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "G / M",
+        "CCT ↔ RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Intensity (LE02)",
+        "CCT (LE02)",
+        "G / M (LE02)",
+        "CCT ↔ RGB (LE02)",
+        "Red (LE02)",
+        "Green (LE02)",
+        "Blue (LE02)",
+        "Intensity LE03",
+        "CCT (LE03)",
+        "G / M (LE03)",
+        "CCT ↔ RGB (LE03)",
+        "Red (LE03)",
+        "Green (LE03)",
+        "Blue (LE03)",
+        "Intensity (LE04)",
+        "CCT (LE04)",
+        "G / M (LE04)",
+        "CCT ↔ RGB (LE04)",
+        "Red (LE04)",
+        "Green (LE04)",
+        "Blue (LE04)",
+        "Intensity (LE05)",
+        "CCT (LE05)",
+        "G / M (LE05)",
+        "CCT ↔ RGB (LE05)",
+        "Red (LE05)",
+        "Green (LE05)",
+        "Blue (LE05)",
+        "Intensity (LE06)",
+        "CCT (LE06)",
+        "G / M (LE06)",
+        "CCT ↔ RGB (LE06)",
+        "Red (LE06)",
+        "Green (LE06)",
+        "Blue (LE06)",
+        "Intensity (LE07)",
+        "CCT (LE07)",
+        "G / M (LE07)",
+        "CCT ↔ RGB (LE07)",
+        "Red (LE07)",
+        "Green (LE07)",
+        "Blue (LE07)",
+        "Intensity (LE08)",
+        "CCT (LE08)",
+        "G / M (LE08)",
+        "CCT ↔ RGB (LE08)",
+        "Red (LE08)",
+        "Green (LE08)",
+        "Blue (LE08)",
+        "Intensity (LE09)",
+        "CCT (LE09)",
+        "G / M (LE09)",
+        "CCT ↔ RGB (LE09)",
+        "Red (LE09)",
+        "Green (LE09)",
+        "Blue (LE09)",
+        "Intensity (LE10)",
+        "CCT (LE10)",
+        "G / M (LE10)",
+        "CCT ↔ RGB (LE10)",
+        "Red (LE10)",
+        "Green (LE10)",
+        "Blue (LE10)",
+        "Intensity (LE11)",
+        "CCT (LE11)",
+        "G / M (LE11)",
+        "CCT ↔ RGB (LE11)",
+        "Red (LE11)",
+        "Green (LE11)",
+        "Blue (LE11)",
+        "Intensity (LE12)",
+        "CCT (LE12)",
+        "G / M (LE12)",
+        "CCT ↔ RGB (LE12)",
+        "Red (LE12)",
+        "Green (LE12)",
+        "Blue (LE12)",
+        "Intensity (LE13)",
+        "CCT (LE13)",
+        "G / M (LE13)",
+        "CCT ↔ RGB (LE13)",
+        "Red (LE13)",
+        "Green (LE13)",
+        "Blue (LE13)",
+        "Intensity (LE14)",
+        "CCT (LE14)",
+        "G / M (LE14)",
+        "CCT ↔ RGB (LE14)",
+        "Red (LE14)",
+        "Green (LE14)",
+        "Blue (LE14)",
+        "Intensity (LE15)",
+        "CCT (LE15)",
+        "G / M (LE15)",
+        "CCT ↔ RGB (LE15)",
+        "Red (LE15)",
+        "Green (LE15)",
+        "Blue (LE15)",
+        "Intensity (LE16)",
+        "CCT (LE16)",
+        "G / M (LE16)",
+        "CCT ↔ RGB (LE16)",
+        "Red (LE16)",
+        "Green (LE16)",
+        "Blue (LE16)"
+      ]
+    },
+    {
+      "name": "Light Engine HSI 2 Pixels (PT1c / PT2c / PT4c )",
+      "channels": [
+        "Intensity",
+        "Hue 2",
+        "Saturation 2",
+        "Intensity (LE02) 2",
+        "Hue (LE02)",
+        "Saturation (LE02)"
+      ]
+    },
+    {
+      "name": "Light Engine HSI 4 Pixels (PT1c / PT2c / PT4c )",
+      "channels": [
+        "Intensity",
+        "Hue 3",
+        "Saturation 3",
+        "Intensity (LE02) 2",
+        "Hue (LE02)",
+        "Saturation (LE02)",
+        "Intensity LE03 2",
+        "Hue (LE03)",
+        "Saturation (LE03)",
+        "Intensity (LE04) 2",
+        "Hue (LE04)",
+        "Saturation (LE04)"
+      ]
+    },
+    {
+      "name": "Light Engine HSI 8 Pixels (PT2c / PT4c )",
+      "channels": [
+        "Intensity",
+        "Hue 4",
+        "Saturation 4",
+        "Intensity (LE02) 2",
+        "Hue (LE02)",
+        "Saturation (LE02)",
+        "Intensity LE03 2",
+        "Hue (LE03)",
+        "Saturation (LE03)",
+        "Intensity (LE04) 2",
+        "Hue (LE04)",
+        "Saturation (LE04)",
+        "Intensity (LE05) 2",
+        "Hue (LE05)",
+        "Saturation (LE05)",
+        "Intensity (LE06) 2",
+        "Hue (LE06)",
+        "Saturation (LE06)",
+        "Intensity (LE07) 2",
+        "Hue (LE07)",
+        "Saturation (LE07)",
+        "Intensity (LE08) 2",
+        "Hue (LE08)",
+        "Saturation (LE08)"
+      ]
+    },
+    {
+      "name": "Light Engine HSI 16 Pixels (PT4c )",
+      "channels": [
+        "Intensity",
+        "Hue 5",
+        "Saturation 5",
+        "Intensity (LE02) 2",
+        "Hue (LE02)",
+        "Saturation (LE02)",
+        "Intensity LE03 2",
+        "Hue (LE03)",
+        "Saturation (LE03)",
+        "Intensity (LE04) 2",
+        "Hue (LE04)",
+        "Saturation (LE04)",
+        "Intensity (LE05) 2",
+        "Hue (LE05)",
+        "Saturation (LE05)",
+        "Intensity (LE06) 2",
+        "Hue (LE06)",
+        "Saturation (LE06)",
+        "Intensity (LE07) 2",
+        "Hue (LE07)",
+        "Saturation (LE07)",
+        "Intensity (LE08) 2",
+        "Hue (LE08)",
+        "Saturation (LE08)",
+        "Intensity (LE09) 2",
+        "Hue (LE09)",
+        "Saturation (LE09)",
+        "Intensity (LE10) 2",
+        "Hue (LE10)",
+        "Saturation (LE10)",
+        "Intensity (LE11) 2",
+        "Hue (LE11)",
+        "Saturation (LE11)",
+        "Intensity (LE12) 2",
+        "Hue (LE12)",
+        "Saturation (LE12)",
+        "Intensity (LE13) 2",
+        "Hue (LE13)",
+        "Saturation (LE13)",
+        "Intensity (LE14) 2",
+        "Hue (LE14)",
+        "Saturation (LE14)",
+        "Intensity (LE15) 2",
+        "Hue (LE15)",
+        "Saturation (LE15)",
+        "Intensity (LE16) 2",
+        "Hue (LE16)",
+        "Saturation (LE16)"
+      ]
+    }
+  ]
+}
