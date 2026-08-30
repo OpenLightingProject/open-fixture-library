@@ -1,0 +1,195 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED BC-6",
+  "categories": ["Flower", "Effect"],
+  "meta": {
+    "authors": ["Johannes"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "manual": [
+      "https://data.showtechnic.de/data/documents/00119096.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=udO-saJqBgs"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 186, 153],
+    "weight": 0.5,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Music Mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "DMX Mode"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [4, 31],
+          "type": "Effect",
+          "effectName": "RR-GY-BW-RRGY-RRBW-GYBW-RRGYBW"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "RR-GY-BW"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "RR-GY-RRBW-GYBW"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "RR-GY-BW-RRGY-RRBW-GYBW-RRGYBW"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "RR-GY-BW",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "RRGY-RRBW-GYBW",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "RR-GY-BW-RRGY-RRBW-GYBW-RRGYBW",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "No strobe"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "Effect",
+          "effectName": "Auto strobe"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Strobe to music",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Fade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [16, 223],
+          "type": "Effect",
+          "effectName": "Fade with increasing speed"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound controlled fade",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Motor rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 95],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [96, 255],
+          "type": "Generic",
+          "comment": "On"
+        }
+      ]
+    },
+    "Motor rotation speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Mode",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Presets",
+        "Strobe",
+        "Fade",
+        "Motor rotation",
+        "Motor rotation speed"
+      ]
+    }
+  ]
+}
