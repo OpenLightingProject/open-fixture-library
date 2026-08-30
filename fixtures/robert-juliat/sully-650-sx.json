@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SULLY 650 SX",
+  "shortName": "SULLY 650 SX",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["PLDL"],
+    "createDate": "2024-10-23",
+    "lastModifyDate": "2024-10-23"
+  },
+  "comment": "SULLY 650 SX",
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.fr/Decoupes/SULLY_650SX"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.fr/Decoupes/SULLY_650SX"
+    ],
+    "video": [
+      "https://www.robertjuliat.fr/Decoupes/SULLY_650SX"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "1000ms"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10000Hz"
+      }
+    },
+    "Response time": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Control Mode": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Source TYpe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gel:Type": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gel:Reference": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gel:Saturation": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gel:Transmission": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gel:Fadetime": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gel: Fade Mode": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Tunable white: CCT": {
+      "fineChannelAliases": ["Tunable white: CCT fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Tunable white: Delta UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Colour: Red": {
+      "fineChannelAliases": ["Colour: Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Colour: Green": {
+      "fineChannelAliases": ["Colour: Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Colour: Blue": {
+      "fineChannelAliases": ["Colour: Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Colour: Lime": {
+      "fineChannelAliases": ["Colour: Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "SULLY 650 SX",
+      "shortName": "SULLY650SX",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Response time",
+        "Control Mode",
+        "Source TYpe",
+        "Gel:Type",
+        "Gel:Reference",
+        "Gel:Saturation",
+        "Gel:Transmission",
+        "Gel:Fadetime",
+        "Gel: Fade Mode",
+        "Tunable white: CCT",
+        "Tunable white: CCT fine",
+        "Tunable white: Delta UV",
+        "Colour: Red",
+        "Colour: Red fine",
+        "Colour: Green",
+        "Colour: Green fine",
+        "Colour: Blue",
+        "Colour: Blue fine",
+        "Colour: Lime",
+        "Colour: Lime fine"
+      ]
+    }
+  ]
+}
