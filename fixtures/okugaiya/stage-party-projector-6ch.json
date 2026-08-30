@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Party Projector 6ch",
+  "shortName": "6 eye rgb laser",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["bj mackay"],
+    "createDate": "2026-06-18",
+    "lastModifyDate": "2026-06-18"
+  },
+  "links": {
+    "other": [
+      "https://www.okugaiya.com"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "U/K": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "U/K 2": {
+      "name": "U/K",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "U/K 3": {
+      "name": "U/K",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "U/K 4": {
+      "name": "U/K",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "U/K 5": {
+      "name": "U/K",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "U/K 6": {
+      "name": "U/K",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "U/K",
+      "channels": [
+        "U/K",
+        "U/K 2",
+        "U/K 3",
+        "U/K 4",
+        "U/K 5",
+        "U/K 6"
+      ]
+    }
+  ]
+}
