@@ -1,0 +1,392 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PIXEL STROBE 400 RGB",
+  "shortName": "PIX400",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Pau"],
+    "createDate": "2025-07-10",
+    "lastModifyDate": "2025-07-10",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-07-10",
+      "comment": "GDTF v1.0 fixture type ID: 24626918-63CB-470B-82B6-FBBD9DC08C91"
+    }
+  },
+  "comment": "PIXEL SRTOBE 400 RGB: Estrobo LED de 400 W RGB pixelable con 20 secciones",
+  "availableChannels": {
+    "Dim": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "max"
+        }
+      ]
+    },
+    "Strobe1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min strobe"
+        },
+        {
+          "dmxRange": [6, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "mid strobe"
+        },
+        {
+          "dmxRange": [131, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max strobe"
+        }
+      ]
+    },
+    "R": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "defaultValue": 255,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "FX1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "No macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectName": "Macro 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectName": "Macro 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectName": "Macro 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Macro 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Macro 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Macro 6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "Macro 7",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "Macro 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Macro 9",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Macro 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Macro 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Macro 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Macro 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Macro 14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Macro 15",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "No macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectName": "Macro 16",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectName": "Macro 17",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectName": "Macro 18",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Macro 19",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Macro 20",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Macro 21",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "Macro 22",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "Macro 23",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Macro 24",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Macro 25",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Macro 26",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Macro 27",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Macro 28",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Macro 29",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Macro mix",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "EffectSpeed",
+          "speedStart": "0m/s",
+          "speedEnd": "1m/s",
+          "comment": "min speed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "EffectSpeed",
+          "speedStart": "0m/s",
+          "speedEnd": "1m/s",
+          "comment": ">>> from min to max"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "EffectSpeed",
+          "speedStart": "0m/s",
+          "speedEnd": "1m/s",
+          "comment": "max speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Dim",
+        "Strobe1",
+        "R",
+        "G",
+        "B",
+        "FX1",
+        "FX2",
+        "FX1 Rate"
+      ]
+    }
+  ]
+}
