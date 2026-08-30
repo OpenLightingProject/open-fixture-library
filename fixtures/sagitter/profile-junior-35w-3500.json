@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Profile Junior 35w 3500",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Giulio"],
+    "createDate": "2025-09-21",
+    "lastModifyDate": "2025-09-21"
+  },
+  "links": {
+    "other": [
+      "https://sagitter.com/en/prodotto/sg-jnrprocw-profile-spot-30w-5600k-led/"
+    ]
+  },
+  "physical": {
+    "dimensions": [140, 160, 120],
+    "weight": 1.1,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led",
+      "colorTemperature": 3500,
+      "lumens": 3500
+    },
+    "lens": {
+      "degreesMinMax": [19, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "255Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Slave/normal",
+      "channels": [
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
