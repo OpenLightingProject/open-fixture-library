@@ -1,0 +1,607 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tetra Bar",
+  "categories": ["Pixel Bar", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["grayplex"],
+    "createDate": "2026-07-24",
+    "lastModifyDate": "2026-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://venuelightingeffects.com/wp-content/uploads/2024/06/Venue-Tetra-Bar-Manual.pdf"
+    ],
+    "productPage": [
+      "https://venuelightingeffects.com/dp/tetra-bar/"
+    ]
+  },
+  "physical": {
+    "dimensions": [61, 170, 1004],
+    "weight": 3.6,
+    "power": 46,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x4W LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Red Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber Master": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Shutter / Strobe Master": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Master": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red 1/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 3/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 4/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 4/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber 1/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 2/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 3/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Amber 4/4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer/Strobe 1/4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer/Strobe 2/4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer/Strobe 3/4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer/Strobe 4/4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer 1/4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2/4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3/4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4/4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe 1/4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe 2/4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe 3/4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe 4/4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 4": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 5": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 6": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 7": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 8": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 9": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 10": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 11": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 12": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "Shutter / Strobe Master"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "Dimmer Master",
+        "Strobe Master"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Amber 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Amber 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Amber 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4",
+        "Amber 4/4"
+      ]
+    },
+    {
+      "name": "20-channel",
+      "shortName": "20ch",
+      "channels": [
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Amber 1/4",
+        "Dimmer/Strobe 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Amber 2/4",
+        "Dimmer/Strobe 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Amber 3/4",
+        "Dimmer/Strobe 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4",
+        "Amber 4/4",
+        "Dimmer/Strobe 4/4"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Amber 1/4",
+        "Dimmer 1/4",
+        "Strobe 1/4",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Amber 2/4",
+        "Dimmer 2/4",
+        "Strobe 2/4",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Amber 3/4",
+        "Dimmer 3/4",
+        "Strobe 3/4",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4",
+        "Amber 4/4",
+        "Dimmer 4/4",
+        "Strobe 4/4"
+      ]
+    },
+    {
+      "name": "Tetra Control 28-channel",
+      "shortName": "tetra-control-28ch",
+      "channels": [
+        "Red 1/4",
+        "Green 1/4",
+        "Blue 1/4",
+        "Amber 1/4",
+        "No function",
+        "No function 2",
+        "No function 3",
+        "Red 2/4",
+        "Green 2/4",
+        "Blue 2/4",
+        "Amber 2/4",
+        "No function 4",
+        "No function 5",
+        "No function 6",
+        "Red 3/4",
+        "Green 3/4",
+        "Blue 3/4",
+        "Amber 3/4",
+        "No function 7",
+        "No function 8",
+        "No function 9",
+        "Red 4/4",
+        "Green 4/4",
+        "Blue 4/4",
+        "Amber 4/4",
+        "No function 10",
+        "No function 11",
+        "No function 12"
+      ]
+    }
+  ]
+}
