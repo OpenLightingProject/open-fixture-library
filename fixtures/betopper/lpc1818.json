@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LPC1818",
+  "shortName": "RGB LED PAR LIGHT",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["John Stewart"],
+    "createDate": "2026-07-28",
+    "lastModifyDate": "2026-07-28"
+  },
+  "comment": "UPGRADED 18X18W LIME AMBER UV + RGB LED PAR LIGHT",
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/Betopper_LPC1818_User_Manual.pdf?v=1780977377"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-18x18w-rgbw-amber-uv-6-in-1-led-par-light"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=WYNiD_hgQTg&t=1s"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "LED Par": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11",
+      "channels": [
+        "LED Par"
+      ]
+    }
+  ]
+}
