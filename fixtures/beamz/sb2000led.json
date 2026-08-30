@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SB2000LED",
+  "categories": ["Effect", "Smoke", "Other", "Color Changer", "Strobe", "Dimmer", "Hazer"],
+  "meta": {
+    "authors": ["prtr"],
+    "createDate": "2023-01-31",
+    "lastModifyDate": "2023-01-31"
+  },
+  "comment": "Smoke and Bubble Machine with LED RGB Light. Setup is the same as for the SB1500LED",
+  "links": {
+    "manual": [
+      "https://cdn.competec.ch/documents2/1/0/5/51999501/51999501.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/sb2000led-smoke-bubble-machine-rgb-leds/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=89EK2Dg-ZV8"
+    ]
+  },
+  "physical": {
+    "dimensions": [530, 380, 335],
+    "weight": 11.9,
+    "power": 2000,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGB"
+    }
+  },
+  "availableChannels": {
+    "Fog Intensity": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "0%",
+        "fogOutputEnd": "100%"
+      }
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Bubbles ON"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Automatic Modus"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal 8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Fog Intensity",
+        "Effect Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe Speed",
+        "Program Speed"
+      ]
+    }
+  ]
+}
