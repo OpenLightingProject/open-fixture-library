@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ECL Profile FWVW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Jérémy Bourmier"],
+    "createDate": "2026-07-20",
+    "lastModifyDate": "2026-07-20"
+  },
+  "links": {
+    "manual": [
+      "https://prostage.no/media/multicase/documents/pdf%20music%20and%20lights/eclfwvwbk_user_manual.pdf"
+    ],
+    "productPage": [
+      "https://prolights.it/en/product/ECLFWVW"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=VIvr05sNNx8&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Fprolights.it%2F"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 310, 320],
+    "weight": 11.3,
+    "power": 265,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Cold White": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "shortName": "3Ch",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White"
+      ]
+    }
+  ]
+}
