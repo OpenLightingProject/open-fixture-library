@@ -1,0 +1,568 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Chauvet Pro COLORdash Accent 3",
+  "shortName": "COLORdash Accent 3",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ryan Brady"],
+    "createDate": "2022-11-30",
+    "lastModifyDate": "2022-11-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2021/01/COLORdash_Accent_3_UM_Rev3.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/colordash-accent3/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1573,
+    "softwareVersion": "V1"
+  },
+  "physical": {
+    "dimensions": [163, 133, 80],
+    "weight": 0.9,
+    "power": 18,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "HueFine": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 28],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [29, 46],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [47, 64],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [65, 82],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [83, 100],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [101, 118],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [119, 136],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [137, 154],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [155, 172],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [173, 190],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [191, 208],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [209, 226],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [227, 244],
+          "type": "ColorTemperature",
+          "colorTemperature": "8500K"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "1000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Preset Dimmer Speed from display menu"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Dimming Curve Off (linear dimmer)"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Maintenance",
+          "parameter": 1,
+          "comment": "Nonlinear Dimming Curve 1 (fastest)"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Maintenance",
+          "parameter": 2,
+          "comment": "Nonlinear dimming curve 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Maintenance",
+          "parameter": 3,
+          "comment": "Nonlinear dimming curve 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Maintenance",
+          "parameter": 4,
+          "comment": "Nonlinear dimming curve 4"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "DimmerFine": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red:100 Green:Up Blue:0"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Red: Down Green: 100% Blue: 0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Red: 0 Green: 100 Blue: Up"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Red: Up Green: 0 Blue: 100"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Red: 100 Green: 0 Blue: Down"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red: 100 Green: Up Blue: Up"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "Red: Down Green: Down BlueL 100"
+        },
+        {
+          "dmxRange": [171, 195],
+          "type": "ColorPreset",
+          "comment": "All LED at full Output"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorTemperature",
+          "colorTemperature": "8500K"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "1000K"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "parameter": 1,
+          "comment": "Auto 1"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "parameter": 2,
+          "comment": "Auto 2"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "parameter": 3,
+          "comment": "Auto 3"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Maintenance",
+          "parameter": 4,
+          "comment": "Auto 4"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Maintenance",
+          "parameter": 5,
+          "comment": "Auto 5"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Maintenance",
+          "parameter": 6,
+          "comment": "Auto 6"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Maintenance",
+          "parameter": 7,
+          "comment": "Auto 7"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Maintenance",
+          "parameter": 8,
+          "comment": "Auto 8"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Maintenance",
+          "parameter": 9,
+          "comment": "Auto 9"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Maintenance",
+          "parameter": 10,
+          "comment": "Auto 10"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Maintenance",
+          "parameter": 1,
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Maintenance",
+          "parameter": 2,
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Maintenance",
+          "parameter": 3,
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Maintenance",
+          "parameter": 4,
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Maintenance",
+          "parameter": 5,
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Maintenance",
+          "parameter": 6,
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Maintenance",
+          "parameter": 7,
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Maintenance",
+          "parameter": 8,
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Maintenance",
+          "parameter": 9,
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Maintenance",
+          "parameter": 10,
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto Spped Adjustment": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 4 Channel",
+      "shortName": "Basic",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "HSIC 7 Channel",
+      "shortName": "HSIC",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Intensity",
+        "Hue",
+        "HueFine",
+        "Saturation",
+        "Color Temperature",
+        "Strobe",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "Advanced 11 Channels",
+      "shortName": "Advanced",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Dimmer",
+        "DimmerFine",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Color Macros",
+        "Auto Programs",
+        "Auto Spped Adjustment",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}
