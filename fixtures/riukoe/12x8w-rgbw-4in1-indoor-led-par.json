@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "12X8W RGBW 4IN1 INDOOR LED PAR",
+  "shortName": "12X8W",
+  "categories": ["Color Changer", "Effect"],
+  "meta": {
+    "authors": ["MANKI AUDIO"],
+    "createDate": "2026-07-08",
+    "lastModifyDate": "2026-07-08"
+  },
+  "links": {
+    "other": [
+      "https://secure.chamsys.co.uk/fixturefinder/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [212, 175, 62],
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LED PAR 4IN1",
+      "shortName": "LED PAR",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe",
+        "Effect Speed",
+        "Program Speed"
+      ]
+    }
+  ]
+}
