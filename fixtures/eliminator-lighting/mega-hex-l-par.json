@@ -1,0 +1,879 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mega Hex L Par",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["chris"],
+    "createDate": "2024-11-22",
+    "lastModifyDate": "2024-11-22",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-11-22",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [260, 261, 110],
+    "weight": 1.87,
+    "power": 24,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1100
+    },
+    "lens": {
+      "degreesMinMax": [17, 20]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset",
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset",
+          "comment": "R+G"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "ColorPreset",
+          "comment": "R+B"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "ColorPreset",
+          "comment": "R+L"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "ColorPreset",
+          "comment": "R+A"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "ColorPreset",
+          "comment": "R+UV"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "ColorPreset",
+          "comment": "G+B"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "G+L"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "G+A"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "G+UV"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "ColorPreset",
+          "comment": "B+L"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "ColorPreset",
+          "comment": "B+A"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "ColorPreset",
+          "comment": "B+UV"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "ColorPreset",
+          "comment": "L+A"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "ColorPreset",
+          "comment": "L+UV"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "ColorPreset",
+          "comment": "A+UV"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "ColorPreset",
+          "comment": "R+G+B"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "ColorPreset",
+          "comment": "R+G+L"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "ColorPreset",
+          "comment": "R+G+A"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "ColorPreset",
+          "comment": "R+G+UV"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ColorPreset",
+          "comment": "R+B+L"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "ColorPreset",
+          "comment": "R+B+A"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "ColorPreset",
+          "comment": "R+B+UV"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "ColorPreset",
+          "comment": "R+L+A"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ColorPreset",
+          "comment": "R+L+UV"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ColorPreset",
+          "comment": "R+A+UV"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "ColorPreset",
+          "comment": "G+B+L"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "ColorPreset",
+          "comment": "G+B+A"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "ColorPreset",
+          "comment": "G+B+UV"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "ColorPreset",
+          "comment": "G+L+A"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "ColorPreset",
+          "comment": "G+L+UV"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "ColorPreset",
+          "comment": "G+A+UV"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "ColorPreset",
+          "comment": "B+L+A"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "ColorPreset",
+          "comment": "B+L+UV"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "ColorPreset",
+          "comment": "B+A+UV"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "ColorPreset",
+          "comment": "L+A+UV"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "ColorPreset",
+          "comment": "R+G+B+L"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "ColorPreset",
+          "comment": "R+G+B+A"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "ColorPreset",
+          "comment": "R+G+B+UV"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "ColorPreset",
+          "comment": "R+G+L+A"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "ColorPreset",
+          "comment": "R+G+L+UV"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "ColorPreset",
+          "comment": "R+G+A+UV"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "ColorPreset",
+          "comment": "R+B+L+A"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "ColorPreset",
+          "comment": "R+B+L+UV"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "ColorPreset",
+          "comment": "R+B+A+UV"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "ColorPreset",
+          "comment": "R+L+A+UV"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "ColorPreset",
+          "comment": "G+B+L+A"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "ColorPreset",
+          "comment": "G+B+L+UV"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "ColorPreset",
+          "comment": "G+B+A+UV"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "ColorPreset",
+          "comment": "G+L+A+UV"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "ColorPreset",
+          "comment": "B+L+A+UV"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "ColorPreset",
+          "comment": "R+G+B+L+A"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "ColorPreset",
+          "comment": "R+G+B+L+UV"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "ColorPreset",
+          "comment": "R+G+B+A+UV"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "ColorPreset",
+          "comment": "R+G+L+A+UV"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorPreset",
+          "comment": "R+B+L+A+UV"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "ColorPreset",
+          "comment": "G+B+L+A+UV"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "R+G+B+L+A+UV"
+        }
+      ]
+    },
+    "White Color Temp Linear": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "2300k - 9900k"
+      }
+    },
+    "White Color Temp Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 22],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [23, 99],
+          "type": "ColorPreset",
+          "comment": "Color Temerature 2300k - 9900k"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shutter, Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse Strobe"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random Strobe"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Master dimmer": {
+      "fineChannelAliases": ["Master dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Auto Programms": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Off"
+        },
+        {
+          "dmxRange": [11, 26],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [27, 43],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [44, 60],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [61, 76],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [77, 93],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [94, 110],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
+        },
+        {
+          "dmxRange": [111, 126],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
+        },
+        {
+          "dmxRange": [127, 143],
+          "type": "Effect",
+          "effectName": "Auto Program 8"
+        },
+        {
+          "dmxRange": [144, 160],
+          "type": "Effect",
+          "effectName": "Auto Program 9"
+        },
+        {
+          "dmxRange": [161, 176],
+          "type": "Effect",
+          "effectName": "Auto Program 10"
+        },
+        {
+          "dmxRange": [177, 193],
+          "type": "Effect",
+          "effectName": "Auto Program 11"
+        },
+        {
+          "dmxRange": [194, 210],
+          "type": "Effect",
+          "effectName": "Auto Program 12"
+        },
+        {
+          "dmxRange": [211, 226],
+          "type": "Effect",
+          "effectName": "Auto Program 13"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto Programs Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Programs Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "least to most"
+      }
+    },
+    "Dim Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Effect",
+          "effectName": "Default to unit setting"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectName": "Standard"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "Stage"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Effect",
+          "effectName": "Architectural"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Effect",
+          "effectName": "Theatre"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Effect",
+          "effectName": "Stage 2"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.1s"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.2s"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.3s"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.4s"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.5s"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.6s"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.7s"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.8s"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Effect",
+          "effectName": "Dim Speed 0.9s"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Effect",
+          "effectName": "Dim Speed 1.0s"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Effect",
+          "effectName": "Dim Speed 1.5s"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Effect",
+          "effectName": "Dim Speed 2s"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Effect",
+          "effectName": "Dim Speed 3s"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Effect",
+          "effectName": "Dim Speed 4s"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Effect",
+          "effectName": "Dim Speed 5s"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Effect",
+          "effectName": "Dim Speed 6s"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Effect",
+          "effectName": "Dim Speed 7s"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Effect",
+          "effectName": "Dim Speed 8s"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Effect",
+          "effectName": "Dim Speed 9s"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Effect",
+          "effectName": "Dim Speed 10s"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Effect",
+          "effectName": "Default to unit setting"
+        }
+      ]
+    },
+    "Dim Curves": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Effect",
+          "effectName": "Square"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectName": "Linear"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "Inv. Square"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "S. Curve"
+        },
+        {
+          "dmxRange": [81, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Shutter, Strobe",
+        "Master dimmer"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Shutter, Strobe",
+        "Master dimmer",
+        "Master dimmer fine"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Color macro",
+        "White Color Temp Linear",
+        "White Color Temp Presets",
+        "Shutter, Strobe",
+        "Master dimmer",
+        "Master dimmer fine"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Shutter, Strobe",
+        "Master dimmer",
+        "Master dimmer fine",
+        "Auto Programms",
+        "Auto Programs Speed",
+        "Auto Programs Fade",
+        "Dim Mode",
+        "Dim Curves"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Color macro",
+        "White Color Temp Linear",
+        "White Color Temp Presets",
+        "Shutter, Strobe",
+        "Master dimmer",
+        "Master dimmer fine",
+        "Auto Programms",
+        "Auto Programs Speed",
+        "Auto Programs Fade"
+      ]
+    },
+    {
+      "name": "17-channel",
+      "shortName": "17ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Amber",
+        "UV",
+        "Color macro",
+        "White Color Temp Linear",
+        "White Color Temp Presets",
+        "Shutter, Strobe",
+        "Master dimmer",
+        "Master dimmer fine",
+        "Auto Programms",
+        "Auto Programs Speed",
+        "Auto Programs Fade",
+        "Dim Mode",
+        "Dim Curves"
+      ]
+    }
+  ]
+}
