@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclDisplay UNFC",
+  "shortName": "ECL",
+  "categories": ["Dimmer", "Effect", "Other"],
+  "meta": {
+    "authors": ["GioDeca"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=39320&ID_USER="
+    ],
+    "productPage": [
+      "https://www.prolights.it/it/product/ECLDISPLAYUNFC"
+    ]
+  },
+  "physical": {
+    "dimensions": [124, 200, 228],
+    "weight": 2,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBW"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Crossfade": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "Ext",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Strobe",
+        "CTC",
+        "Crossfade",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    }
+  ]
+}
