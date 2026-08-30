@@ -1,0 +1,451 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WAL-L710 Par",
+  "shortName": "WAL-L710",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Simon"],
+    "createDate": "2026-07-05",
+    "lastModifyDate": "2026-07-05"
+  },
+  "comment": "Hex colors are not included, as they contain white values, which are not supported. Please refer to the manual.",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_474388_474390_477173_v7_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomannmusic.com/ignition_wal_l710_par.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i8970p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [249, 291, 165],
+    "weight": 4.3,
+    "power": 70,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500,
+      "lumens": 3616
+    },
+    "lens": {
+      "degreesMinMax": [10, 10]
+    }
+  },
+  "availableChannels": {
+    "Red intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Master dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Predefined color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Predefined color"
+        }
+      ]
+    },
+    "Programmes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [71, 81],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [82, 92],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [93, 103],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [104, 114],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [115, 125],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [126, 136],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [137, 147],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [148, 158],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [159, 169],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [170, 180],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "Effect",
+          "effectName": "Programme"
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "Effect",
+          "effectName": "Custom programme"
+        },
+        {
+          "dmxRange": [203, 213],
+          "type": "Effect",
+          "effectName": "Custom programme"
+        },
+        {
+          "dmxRange": [214, 224],
+          "type": "Effect",
+          "effectName": "Custom programme"
+        },
+        {
+          "dmxRange": [225, 235],
+          "type": "Effect",
+          "effectName": "Custom programme"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Custom programme"
+        }
+      ]
+    },
+    "Programme speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red intensity",
+        "Green intensity",
+        "Blue intensity",
+        "White intensity"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master dimmer",
+        "Red intensity",
+        "Green intensity",
+        "Blue intensity",
+        "White intensity",
+        "Strobe effect"
+      ]
+    },
+    {
+      "name": "9-Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Master dimmer",
+        "Red intensity",
+        "Green intensity",
+        "Blue intensity",
+        "White intensity",
+        "Predefined color",
+        "Programmes",
+        "Programme speed",
+        "Strobe effect"
+      ]
+    }
+  ]
+}
