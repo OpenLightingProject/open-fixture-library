@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EARTHKOLOR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Elliott"],
+    "createDate": "2023-10-04",
+    "lastModifyDate": "2023-10-04"
+  },
+  "links": {
+    "productPage": [
+      "https://www.star-way.com/earthkolor-en-flight-proj-sur-batterie-12-led-de-12w-rvbaw-uv-ip65"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe"
+      ]
+    }
+  ]
+}
