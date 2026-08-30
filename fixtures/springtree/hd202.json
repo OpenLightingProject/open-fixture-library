@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HD202",
+  "shortName": "HD202",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Timato"],
+    "createDate": "2023-04-05",
+    "lastModifyDate": "2023-04-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.springtree.net/wp-content/uploads/2021/12/HD200RGBWW-LED-Ellipsoidal-Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.springtree.net/product/rgbw-economy-ellipsoidal/"
+    ]
+  },
+  "physical": {
+    "dimensions": [635, 165, 165],
+    "weight": 5.9,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3500,
+      "lumens": 6000
+    },
+    "lens": {
+      "name": "26-degree",
+      "degreesMinMax": [26, 26]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Master Dimmer"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity",
+        "comment": "Fine Dimmer"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Various Functions based on value"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer 2",
+        "Dimmer 2 fine"
+      ]
+    },
+    {
+      "name": "7ch",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Dimmer",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
