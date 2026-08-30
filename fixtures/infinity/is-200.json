@@ -1,0 +1,289 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "iS-200",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["purple", "Anonymous"],
+    "createDate": "2022-07-26",
+    "lastModifyDate": "2022-07-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-07-26",
+      "comment": "created by Q Light Controller Plus (version 4.12.5 GIT)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Color wheel 1": {
+      "slots": []
+    },
+    "Color wheel 2": {
+      "slots": []
+    },
+    "Rotating Gobo wheel": {
+      "slots": []
+    },
+    "Fixed Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Master dimmer"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [4, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 76],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe, slow to fast(0-10 Strobe/Sec.)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [77, 145],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "pulsing Strobe, slow to fast(0-10 Strobe/Sec.)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [146, 215],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color wheel 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color wheel 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Rotating Gobo wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Gobo Index"
+        },
+        {
+          "dmxRange": [64, 147],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [148, 231],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo Bounce"
+        }
+      ]
+    },
+    "Fixed Gobo Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Prisma": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Prism",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Prism",
+          "comment": "3x Prisma"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Prism Index"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Prism",
+          "comment": "CW rotation, slow - fast"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Prism",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Prism",
+          "comment": "CCW rotation, slow - fast"
+        }
+      ]
+    },
+    "Iris": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Iris Big - small"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Auto Zoom, slow - fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Zoom out, slow - fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Zoom in, slow - fast"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Frost"
+      }
+    },
+    "Channel funktions": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Master dimmer",
+        "Pan/Tilt speed",
+        "Dimmer",
+        "Shutter",
+        "Color wheel 1",
+        "Color wheel 2",
+        "Rotating Gobo wheel",
+        "Gobo rotation",
+        "Fixed Gobo Wheel",
+        "Prisma",
+        "Prism Rotation",
+        "Iris",
+        "Focus",
+        "Frost",
+        "Channel funktions"
+      ]
+    }
+  ]
+}
