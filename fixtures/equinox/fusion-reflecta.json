@@ -1,0 +1,134 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fusion Reflecta",
+  "shortName": "Fusion-reflecta",
+  "categories": ["Moving Head", "Effect"],
+  "meta": {
+    "authors": ["Jason Scott"],
+    "createDate": "2026-06-23",
+    "lastModifyDate": "2026-06-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.farnell.com/datasheets/4510997.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 8,
+    "power": 30,
+    "DMXconnector": "3-pin XLR IP65"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Continuous Tilt Rotation": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Continuous Tilt Rotation"
+      }
+    },
+    "Mirror Ball Rotation": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Mirror Ball Rotation"
+      }
+    },
+    "Ring Colour Macro": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Ring Macro Program": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Ring Macro"
+      }
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Control": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Continuous Tilt Rotation",
+        "Mirror Ball Rotation",
+        "Ring Colour Macro",
+        "Ring Macro Program",
+        "Macro Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Control"
+      ]
+    }
+  ]
+}
