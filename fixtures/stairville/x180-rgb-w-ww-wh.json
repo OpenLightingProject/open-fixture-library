@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "x180 RGB(W) (WW) (WH)",
+  "shortName": "x180",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Luca Heß"],
+    "createDate": "2024-12-06",
+    "lastModifyDate": "2024-12-06"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_467326_467328_524858_524859_v2_de_online.pdf?_gl=1*1kqkvpm*_gcl_aw*R0NMLjE3MzMxNTQ2NTMuQ2p3S0NBaUEwclc2QmhBY0Vpd0FRSDI4SWl1N2w3NDFqX2NvcjN6QkNLbS1RV3RyQ3dVMDJKbDVRNlIzSVl6MXp6eHF4ZnU2cUlSREpob0NKajRRQXZEX0J3RQ..*_gcl_au*ODQzNDg3MjYwLjE3MzA2MzAxNDk.*FPAU*OTU2NzYyODY0LjE3MzA2MzAxNDY.*_ga*MTIzMTkwOTY2OC4xNzMwNjMwMTQ2*_ga_QNTG1E3BFT*MTczMzQ3MjgxOS4yMi4xLjE3MzM0NzI4MjUuMC4wLjE3MDY1NzY4MjM.*_fplc*NU1pTkZ4MjNXUkhEZUJFVVNiS1VZaGhUWWxYJTJCUjlkUFFIJTJGNkZncXVTY3N2cW5ZM2JoVkxySkpIVzN3QzUlMkZJVEFJZnFZZDFmcFA4QmhQVldzbGtaYk1HWmlieTZaZzhFTEt4UGdKJTJCZXBwUDU5YnpTVlpNWm9ZZGZDclFKQlElM0QlM0Q."
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_hl_x180_rgb_ww.htm"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-Ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
