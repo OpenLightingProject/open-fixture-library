@@ -1,0 +1,331 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q-2",
+  "categories": ["Strobe", "Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["TJAWK"],
+    "createDate": "2022-07-06",
+    "lastModifyDate": "2022-07-06"
+  },
+  "links": {
+    "productPage": [
+      "https://sgmlight.com/products/q·2"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "RED All Panels": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "No RED -> Maximum RED"
+      }
+    },
+    "GREEN All Panels": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "No GREEN -> Maximum GREEN"
+      }
+    },
+    "BLUE All Panels": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "No BLUE -> Maximum BLUE"
+      }
+    },
+    "WHITE All Panels": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "No WHITE -> Maximum WHITE"
+      }
+    },
+    "SHUTTER": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [152, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse - Open"
+        },
+        {
+          "dmxRange": [176, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse - Close"
+        },
+        {
+          "dmxRange": [200, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Strobe - Random"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "comment": "No LIGHT -> Maximum LIGHT"
+      }
+    },
+    "CTC": {
+      "defaultValue": 182,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "≈ 5600° K"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "No CTC (RAW)"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "CTO",
+          "colorTemperatureEnd": "CTB",
+          "comment": "2000K - 10000K"
+        }
+      ]
+    },
+    "RED Panel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN Panel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE Panel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED Panel 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN Panel 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE Panel 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RED Panel 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN Panel 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE Panel 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100% Intensity"
+      }
+    },
+    "Red All Panels": {
+      "fineChannelAliases": ["Red All Panels fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green All Panels": {
+      "fineChannelAliases": ["Green All Panels fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue All Panels": {
+      "fineChannelAliases": ["Blue All Panels fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White All Panels": {
+      "fineChannelAliases": ["White All Panels fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channels (Full Color Calibrated)",
+      "shortName": "3CH",
+      "channels": [
+        "RED All Panels",
+        "GREEN All Panels",
+        "BLUE All Panels"
+      ]
+    },
+    {
+      "name": "4 channels (RAW)",
+      "shortName": "4CH",
+      "channels": [
+        "RED All Panels",
+        "GREEN All Panels",
+        "BLUE All Panels",
+        "WHITE All Panels"
+      ]
+    },
+    {
+      "name": "6 channels (Full Color Calibrated)",
+      "shortName": "6CH",
+      "channels": [
+        "SHUTTER",
+        "Intensity",
+        "CTC",
+        "RED All Panels",
+        "GREEN All Panels",
+        "BLUE All Panels"
+      ]
+    },
+    {
+      "name": "6 channels (RAW)",
+      "shortName": "6CH-RGBW",
+      "channels": [
+        "SHUTTER",
+        "Intensity",
+        "RED All Panels",
+        "GREEN All Panels",
+        "BLUE All Panels",
+        "WHITE All Panels"
+      ]
+    },
+    {
+      "name": "9 channels (Full Color Calibrated)",
+      "shortName": "9CH",
+      "channels": [
+        "RED Panel 1",
+        "GREEN Panel 1",
+        "BLUE Panel 1",
+        "RED Panel 2",
+        "GREEN Panel 2",
+        "BLUE Panel 2",
+        "RED Panel 3",
+        "GREEN Panel 3",
+        "BLUE Panel 3"
+      ]
+    },
+    {
+      "name": "10 channels",
+      "shortName": "10CH",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Red All Panels",
+        "Red All Panels fine",
+        "Green All Panels",
+        "Green All Panels fine",
+        "Blue All Panels",
+        "Blue All Panels fine",
+        "White All Panels",
+        "White All Panels fine"
+      ]
+    },
+    {
+      "name": "12 channels (Full Color Calibrated)",
+      "shortName": "12CH",
+      "channels": [
+        "SHUTTER",
+        "Intensity",
+        "CTC",
+        "RED Panel 1",
+        "GREEN Panel 1",
+        "BLUE Panel 1",
+        "RED Panel 2",
+        "GREEN Panel 2",
+        "BLUE Panel 2",
+        "RED Panel 3",
+        "GREEN Panel 3",
+        "BLUE Panel 3"
+      ]
+    }
+  ]
+}
