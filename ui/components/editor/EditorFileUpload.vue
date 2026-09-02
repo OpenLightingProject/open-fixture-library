@@ -12,8 +12,8 @@ import { anyProp, booleanProp, stringProp } from 'vue-ts-types';
 
 export default {
   model: {
-    prop: `model-value`,
-    event: `update:model-value`,
+    prop: 'model-value',
+    event: 'update:model-value',
   },
   props: {
     required: booleanProp().withDefault(false),
@@ -21,12 +21,12 @@ export default {
     modelValue: anyProp().optional,
   },
   emits: {
-    'update:model-value': value => true,
+    'update:model-value': (value) => true,
   },
   watch: {
     modelValue(newFile) {
       if (!newFile) {
-        this.$refs.fileInput.value = ``;
+        this.$refs.fileInput.value = '';
       }
     },
   },
@@ -38,13 +38,12 @@ export default {
       const file = this.$refs.fileInput.files[0];
 
       if (!file) {
-        this.$emit(`update:model-value`, undefined);
+        this.$emit('update:model-value', undefined);
         return;
       }
 
-      this.$emit(`update:model-value`, file);
+      this.$emit('update:model-value', file);
     },
   },
 };
 </script>
-

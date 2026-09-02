@@ -11,10 +11,10 @@ All model classes are located in the [`lib/model/`](../lib/model) directory. Whe
 ```js
 import { fixtureFromRepository } from './lib/model.js';
 
-const myFixture = await fixtureFromRepository(`cameo`, `nanospot-120`); // instanceof Fixture
+const myFixture = await fixtureFromRepository('cameo', 'nanospot-120'); // instanceof Fixture
 
 const physicalData = myFixture.physical; // instanceof Physical
-const panFine = myFixture.getChannelByKey(`Pan fine`); // instanceof FineChannel
+const panFine = myFixture.getChannelByKey('Pan fine'); // instanceof FineChannel
 
 if (panFine.coarseChannel.hasHighlightValue) {
   console.log(`Highlight at ${panFine.coarseChannel.highlightValue}`);
@@ -49,12 +49,12 @@ export default class Fixture {
   }
 
   get hasShortName() {
-    return `shortName` in this._jsonObject;
+    return 'shortName' in this._jsonObject;
   }
 
   // avoid creating a new Meta object for each property access by caching it
   get meta() {
-    return cacheResult(this, `meta`, new Meta(this._jsonObject.meta));
+    return cacheResult(this, 'meta', new Meta(this._jsonObject.meta));
   }
 
   // defaults to null as there is no meaningful other default
