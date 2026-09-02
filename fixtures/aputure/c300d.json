@@ -6,16 +6,17 @@
   "meta": {
     "authors": ["alexis", "Luke Nelson"],
     "createDate": "2025-04-21",
-    "lastModifyDate": "2025-04-21"
+    "lastModifyDate": "2026-07-28"
   },
   "links": {
     "manual": [
-      "https://www.aputure.com/wp-content/uploads/2019/10/LS-C300d-II_Product_Manual_EN.pdf",
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20300d%20II/All%20files/LS-C300d-II_Product_Manual_EN.pdf",
       "https://www.aputure.com/wp-content/uploads/2022/06/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf"
     ]
   },
   "physical": {
     "dimensions": [215.6, 344.5, 298.4],
+    "weight": 5,
     "power": 350,
     "DMXconnector": "5-pin",
     "bulb": {
@@ -52,7 +53,7 @@
           "type": "Effect",
           "effectName": "Paparazzi",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         },
         {
@@ -60,7 +61,7 @@
           "type": "Effect",
           "effectName": "Fireworks",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         },
         {
@@ -68,7 +69,7 @@
           "type": "Effect",
           "effectName": "Faulty bulb",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         },
         {
@@ -76,7 +77,7 @@
           "type": "Effect",
           "effectName": "Lightning",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "Lightning Mode Options"
+            "FX Options": "Lightning Mode Options"
           }
         },
         {
@@ -84,7 +85,7 @@
           "type": "Effect",
           "effectName": "TV",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         },
         {
@@ -92,7 +93,7 @@
           "type": "Effect",
           "effectName": "Pulsing",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         },
         {
@@ -100,7 +101,7 @@
           "type": "Effect",
           "effectName": "Strobe",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         },
         {
@@ -108,14 +109,14 @@
           "type": "Effect",
           "effectName": "Explosion",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "Explosion Mode Options"
+            "FX Options": "Explosion Mode Options"
           }
         },
         {
           "dmxRange": [160, 255],
           "type": "NoFunction",
           "switchChannels": {
-            "Lightning Mode Options / Explosion Mode Options": "No Function"
+            "FX Options": "No Function"
           }
         }
       ]
@@ -245,7 +246,7 @@
         "Mode Selection",
         "FX Control",
         "FX Frequency Control",
-        "Lightning Mode Options / Explosion Mode Options"
+        "FX Options"
       ]
     }
   ]
