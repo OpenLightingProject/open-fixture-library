@@ -1,0 +1,189 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Spot 90",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["hunderteins GmbH"],
+    "createDate": "2021-11-30",
+    "lastModifyDate": "2021-11-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/449224_c_449224_481677_v3_r1_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/varytec_hero_spot_90.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/de/varytec_hero_spot_90.htm"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg",
+        "comment": "128 Midpoint"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg",
+        "comment": "Middle 128"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "5Hz",
+          "speedEnd": "250Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 47],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [48, 87],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [88, 127],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [128, 167],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [168, 207],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [208, 247],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound controlled"
+        }
+      ]
+    },
+    "Pan / Tilt Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 32],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 1"
+        },
+        {
+          "dmxRange": [33, 58],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 2"
+        },
+        {
+          "dmxRange": [59, 84],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 3"
+        },
+        {
+          "dmxRange": [85, 110],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 4"
+        },
+        {
+          "dmxRange": [111, 136],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 5"
+        },
+        {
+          "dmxRange": [137, 162],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 6"
+        },
+        {
+          "dmxRange": [163, 188],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 7"
+        },
+        {
+          "dmxRange": [189, 214],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 8"
+        },
+        {
+          "dmxRange": [215, 240],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Preset 9"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Pan-Tilt-Sound controlled"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Program",
+        "Pan / Tilt Presets"
+      ]
+    }
+  ]
+}
