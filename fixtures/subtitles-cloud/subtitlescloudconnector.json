@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SubtitlesCloudConnector",
+  "shortName": "SCC",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Jari Kalinainen"],
+    "createDate": "2025-03-02",
+    "lastModifyDate": "2025-03-02"
+  },
+  "comment": "Fixture to control accessibility services in  Subtitles Cloud admin tool.",
+  "links": {
+    "manual": [
+      "https://support.subtitles.cloud"
+    ],
+    "productPage": [
+      "https://subtitles.cloud"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "RJ45"
+  },
+  "availableChannels": {
+    "Next": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "Trigger next row"
+        }
+      ]
+    },
+    "Previous": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "Trigger previous row"
+        }
+      ]
+    },
+    "Hide/Show": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Hide row"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Show row"
+        }
+      ]
+    },
+    "Brightness toggle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "Light mode"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "brightness": "dark",
+          "comment": "Dark mode"
+        }
+      ]
+    },
+    "Adjust brightness": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "Dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Control Show",
+      "channels": [
+        "Previous",
+        "Next",
+        "Hide/Show",
+        "Brightness toggle",
+        "Adjust brightness"
+      ]
+    }
+  ]
+}
