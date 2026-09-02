@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["José"],
     "createDate": "2023-02-11",
-    "lastModifyDate": "2023-02-11"
+    "lastModifyDate": "2026-09-02"
   },
   "links": {
     "manual": [
@@ -92,25 +92,13 @@
         {
           "dmxRange": [0, 15],
           "type": "NoFunction",
-          "switchChannels": {
-            "Red / NoFunction": "Red",
-            "Green / NoFunction": "Green",
-            "Blue / NoFunction": "Blue",
-            "Amber / NoFunction": "Amber",
-            "Strobe / NoFunction": "Strobe"
-          }
+          "comment": "Fixed color determined by CH1-4"
         },
         {
           "dmxRange": [16, 255],
           "type": "Effect",
           "effectName": "Color Macros",
-          "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Strobe / NoFunction": "NoFunction"
-          }
+          "comment": "Auto color macros, CH1-4 not used"
         }
       ]
     },
@@ -121,14 +109,15 @@
         {
           "dmxRange": [0, 15],
           "type": "StrobeSpeed",
-          "speedStart": "stop",
-          "speedEnd": "stop"
+          "speed": "stop",
+          "comment": "Full bright, no strobe"
         },
         {
           "dmxRange": [16, 255],
           "type": "StrobeSpeed",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Strobe, increasing speed"
         }
       ]
     },
@@ -139,12 +128,8 @@
         {
           "dmxRange": [0, 31],
           "type": "NoFunction",
+          "comment": "Fixed color determined by CH1-4",
           "switchChannels": {
-            "Red / NoFunction": "Red",
-            "Green / NoFunction": "Green",
-            "Blue / NoFunction": "Blue",
-            "Amber / NoFunction": "Amber",
-            "Color Macros / NoFunction": "Color Macros",
             "Strobe / Program Speed": "Strobe"
           }
         },
@@ -154,11 +139,6 @@
           "effectPreset": "ColorFade",
           "comment": "Fade-out effect",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Program Speed"
           }
         },
@@ -168,11 +148,6 @@
           "effectPreset": "ColorFade",
           "comment": "Fade-out effect",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Program Speed"
           }
         },
@@ -182,11 +157,6 @@
           "effectPreset": "ColorFade",
           "comment": "Fade-in-out effect",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Program Speed"
           }
         },
@@ -195,11 +165,6 @@
           "type": "Effect",
           "effectName": "Auto-mix",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Program Speed"
           }
         },
@@ -209,11 +174,6 @@
           "effectPreset": "ColorJump",
           "comment": "Chase (4 colours)",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Program Speed"
           }
         },
@@ -223,11 +183,6 @@
           "effectPreset": "ColorJump",
           "comment": "Chase (4 colours)",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Program Speed"
           }
         },
@@ -236,13 +191,8 @@
           "type": "Effect",
           "effectName": "Sound Control",
           "soundControlled": true,
-          "helpWanted": "Are channels 1-5 still NoFunction? Is Strobe available?",
+          "helpWanted": "Are channels 1-4 still NoFunction? Is Strobe available?",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction",
-            "Color Macros / NoFunction": "NoFunction",
             "Strobe / Program Speed": "Strobe"
           }
         }
@@ -272,10 +222,7 @@
           "type": "NoFunction",
           "comment": "RGB Control",
           "switchChannels": {
-            "Red / NoFunction": "Red",
-            "Green / NoFunction": "Green",
-            "Blue / NoFunction": "Blue",
-            "Amber / NoFunction": "Amber"
+            "Effect Speed (6ch)": "Effect Speed"
           }
         },
         {
@@ -284,10 +231,7 @@
           "effectPreset": "ColorJump",
           "comment": "7 color changes",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction"
+            "Effect Speed (6ch)": "Effect Speed"
           }
         },
         {
@@ -296,10 +240,7 @@
           "effectPreset": "ColorJump",
           "comment": "12 color changes",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction"
+            "Effect Speed (6ch)": "Effect Speed"
           }
         },
         {
@@ -308,18 +249,10 @@
           "effectPreset": "ColorJump",
           "comment": "4 color changes",
           "switchChannels": {
-            "Red / NoFunction": "NoFunction",
-            "Green / NoFunction": "NoFunction",
-            "Blue / NoFunction": "NoFunction",
-            "Amber / NoFunction": "NoFunction"
+            "Effect Speed (6ch)": "Effect Speed"
           }
         }
       ]
-    },
-    "NoFunction": {
-      "capability": {
-        "type": "NoFunction"
-      }
     }
   },
   "modes": [
@@ -338,22 +271,22 @@
       "shortName": "6ch",
       "channels": [
         "Mode",
-        "Red / NoFunction",
-        "Green / NoFunction",
-        "Blue / NoFunction",
-        "Amber / NoFunction",
-        "Effect Speed"
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Effect Speed (6ch)"
       ]
     },
     {
       "name": "8-channel",
       "shortName": "8ch",
       "channels": [
-        "Red / NoFunction",
-        "Green / NoFunction",
-        "Blue / NoFunction",
-        "Amber / NoFunction",
-        "Color Macros / NoFunction",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Color Macros",
         "Strobe / Program Speed",
         "Programs",
         "Dimmer"
