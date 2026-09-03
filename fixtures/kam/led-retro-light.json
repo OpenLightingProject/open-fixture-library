@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED RETRO LIGht",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["THe pro"],
+    "createDate": "2026-08-26",
+    "lastModifyDate": "2026-08-26"
+  },
+  "links": {
+    "manual": [
+      "https://gdtf-share.com/"
+    ],
+    "productPage": [
+      "https://help.malighting.com/grandMA2/en/help/key_dmx_profiles.html"
+    ],
+    "video": [
+      "https://mail.google.com/mail/u/0/#inbox/FMfcgzQhWBlfsZGgswlpFNMwDWPmFxvc"
+    ]
+  },
+  "rdm": {
+    "modelId": 34312234
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8CH",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
