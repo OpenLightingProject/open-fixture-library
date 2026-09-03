@@ -131,8 +131,8 @@ export default {
     return {
       helpWantedContext: undefined,
       libraryNames: {
-        main: `Main (system) library`,
-        user: `User library`,
+        main: 'Main (system) library',
+        user: 'User library',
       },
     };
   },
@@ -143,7 +143,7 @@ export default {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -157,9 +157,11 @@ export default {
       return this.pluginData.importPluginVersion;
     },
     fileLocationOSes() {
-      return `fileLocations` in this.pluginData ? Object.keys(this.pluginData.fileLocations).filter(
-        os => os !== `subDirectoriesAllowed`,
-      ) : null;
+      return 'fileLocations' in this.pluginData
+        ? Object.keys(this.pluginData.fileLocations).filter(
+            (os) => os !== 'subDirectoriesAllowed',
+          )
+        : null;
     },
   },
   methods: {

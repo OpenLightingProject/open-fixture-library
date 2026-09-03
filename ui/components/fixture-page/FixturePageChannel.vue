@@ -157,14 +157,13 @@ import FineChannel from '../../../lib/model/FineChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 import NullChannel from '../../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
-
 import ChannelTypeIcon from '../ChannelTypeIcon.vue';
 import ConditionalDetails from '../ConditionalDetails.vue';
 import LabeledValue from '../LabeledValue.vue';
 import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
 
 export default {
-  name: `FixturePageChannel`,
+  name: 'FixturePageChannel',
   components: {
     ConditionalDetails,
     ChannelTypeIcon,
@@ -177,7 +176,7 @@ export default {
     appendToHeading: stringProp().optional,
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     return {
@@ -190,14 +189,14 @@ export default {
   computed: {
     channelKey() {
       if (this.channel instanceof NullChannel) {
-        return `null`;
+        return 'null';
       }
 
       if (this.channel.key !== this.channel.name) {
         return this.channel.key;
       }
 
-      return ``;
+      return '';
     },
     resolutionInMode() {
       return this.channel.getResolutionInMode(this.mode);

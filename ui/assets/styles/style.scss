@@ -12,12 +12,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font: 12pt/2 $font-stack-text;
+  font: 12pt/2 $font-stack;
   color: theme-color(text-primary);
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   background-color: theme-color(page-background);
-  transition: background-color 0.3s, color 0.3s;
   text-rendering: optimizelegibility;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 html {
@@ -66,6 +66,11 @@ section {
   text-align: center;
 }
 
+table,
+time {
+  font-variant-numeric: tabular-nums;
+}
+
 .clearfix {
   clear: both;
 }
@@ -94,7 +99,7 @@ template {
 }
 
 code {
-  font-family: $font-stack-code;
+  font-family: $font-stack;
   font-weight: 400;
   color: theme-color(text-secondary);
 }
@@ -129,7 +134,8 @@ select {
 }
 
 input[type="number"] {
-  width: 10ex;
+  width: 9ch;
+  font-variant-numeric: tabular-nums;
 }
 
 textarea,
@@ -150,7 +156,7 @@ input[type="number"] {
   box-sizing: border-box;
   max-width: 100%;
   padding: 0.4em;
-  font-family: $font-stack-text;
+  font-family: $font-stack;
   font-size: 0.95em;
   color: theme-color(text-primary);
   background: theme-color(form-field-background);
@@ -183,7 +189,7 @@ textarea[readonly] {
   height: 15em;
   padding: 1em;
   overflow: auto;
-  font-family: $font-stack-code;
+  font-family: $font-stack;
   font-size: 0.9em;
   font-weight: 400;
   line-height: 1.3;

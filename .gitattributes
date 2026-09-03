@@ -18,3 +18,7 @@ schemas/*.json linguist-detectable=true
 *.md text eol=lf
 *.ts text eol=lf
 *.vue text eol=lf
+
+# mark agent lock files as generated and avoid manual conflict resolution
+# see https://github.github.com/gh-aw/reference/glossary/#workflow-lock-file-lockyml
+.github/workflows/*.lock.yml linguist-generated=true merge=ours

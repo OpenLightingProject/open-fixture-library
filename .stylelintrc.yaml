@@ -27,6 +27,9 @@ rules:
       - color-to-rgb-string
       - /^[a-z]+\.[a-z\-]+$/ # all `@use`d Sass functions
 
+  # causes false positives with Sass
+  nesting-selector-no-missing-scoping-root: null
+
   # decrease severity for this rule only
   no-descending-specificity:
     - true

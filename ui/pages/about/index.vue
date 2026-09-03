@@ -16,7 +16,7 @@
 
     <h2>Used resources</h2>
     <p>
-      Fonts: <a href="https://www.latofonts.com/">Lato</a> and <a href="https://levien.com/type/myfonts/inconsolata.html" class="monospaced">Inconsolata</a><br>
+      Font: <a href="https://www.brailleinstitute.org/freefont/">Atkinson Hyperlegible Next</a><br>
       Icons: <a href="https://pictogrammers.com/library/mdi/">Material Design Icons</a>
     </p>
 
@@ -27,7 +27,7 @@
     <p><a href="mailto:flo@open-fixture-library.org">flo@open-fixture-library.org</a> or via <a href="https://github.com/FloEdelmann">GitHub</a></p>
 
     <h2>Privacy</h2>
-    <p>We respect users' privacy and thus collect as few data as possible. No personal data about our visitors is stored on our server or sent to other sites without users' consent. The communication between users' browsers and our server is encrypted via HTTPS. Videos are embetted with <a href="https://github.com/heiseonline/embetty">embetty</a>, so no information is sent from users' browsers to the video hosting platform (e.g. YouTube) until the video is played. The fixture editor only uses the entered data to open a pull request in our public GitHub repository; this means that the chosen author name and GitHub username – the only personal data – will be made public. Unfinished fixtures and the last submitted author name / GitHub username are saved locally in users' browsers. Other technical measures to improve privacy and security <a href="https://observatory.mozilla.org/analyze/open-fixture-library.org">are implemented</a>.</p>
+    <p>We respect users' privacy and thus collect as few data as possible. No personal data about our visitors is stored on our server or sent to other sites without users' consent. The communication between users' browsers and our server is encrypted via HTTPS. Videos are embetted with <a href="https://github.com/heiseonline/embetty">embetty</a>, so no information is sent from users' browsers to the video hosting platform (e.g. YouTube) until the video is played. The fixture editor only uses the entered data to open a pull request in our public GitHub repository; this means that the chosen author name and GitHub username – the only personal data – will be made public. Unfinished fixtures and the last submitted author name / GitHub username are saved locally in users' browsers. Other technical measures to improve privacy and security <a href="https://developer.mozilla.org/en-US/observatory/analyze?host=open-fixture-library.org">are implemented</a>.</p>
 
   </div>
 </template>
@@ -41,23 +41,18 @@ h2 {
   margin: 1.5rem 0 -0.5rem;
   line-height: 1.3;
 }
-
-.monospaced {
-  font-family: $font-stack-code;
-  font-weight: 400;
-}
 </style>
 
 <script>
 export default {
   head() {
-    const title = `About`;
+    const title = 'About';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],

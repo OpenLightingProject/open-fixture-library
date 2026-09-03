@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WashX.432 sw",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Julian Vogel"],
+    "createDate": "2026-02-03",
+    "lastModifyDate": "2026-02-03"
+  },
+  "links": {
+    "manual": [
+      "https://lmp.de/media/pdf/40/96/0b/A184886_washx-432-sw_manual_de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/litecraft_washx.432_sw.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [370, 227, 113],
+    "weight": 3.5,
+    "power": 120,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "432x Multichip LEDs"
+    }
+  },
+  "availableChannels": {
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 204],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3000K",
+          "colorTemperatureEnd": "6400K"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "LEDs 100%",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel Macro + Dimmer",
+      "shortName": "MC+DIM",
+      "channels": [
+        "Color Temperature",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "2-channel Cold White + Warm White",
+      "shortName": "CW+WW",
+      "channels": [
+        "Cold White",
+        "Warm White"
+      ]
+    }
+  ]
+}
