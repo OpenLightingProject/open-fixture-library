@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BBP54",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Adrian Gehrig"],
+    "createDate": "2026-08-30",
+    "lastModifyDate": "2026-08-30"
+  },
+  "comment": "Battery powered uplight",
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2026/03/150.602_-150.604-BBP54-Uplight-IP65_manual_V1.4.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/bbp54-battery-uplight-par-4x-12w-outdoor/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wICMl0E1BaM&si=qS_68DkPLzpwGfMH"
+    ]
+  },
+  "physical": {
+    "dimensions": [131, 163, 131],
+    "weight": 2.85,
+    "DMXconnector": "Wireless DMX (Eazylink)",
+    "bulb": {
+      "type": "LED",
+      "lumens": 4238
+    },
+    "lens": {
+      "degreesMinMax": [23, 44]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "35Hz"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "ColorPreset",
+          "comment": "40 preset colours"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "63 factory presets"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 87],
+          "type": "Effect",
+          "effectName": "Colour fade"
+        },
+        {
+          "dmxRange": [88, 155],
+          "type": "Effect",
+          "effectName": "Colour jump"
+        },
+        {
+          "dmxRange": [156, 223],
+          "type": "Effect",
+          "effectName": "Colour pulse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound control"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Control panel"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "Generic",
+          "comment": "Dimmer curve 0"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "Generic",
+          "comment": "Dimmer curve 1"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "Generic",
+          "comment": "Dimmer curve 2"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Generic",
+          "comment": "Dimmer curve 3"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic",
+          "comment": "Dimmer curve 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "D001",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "A001",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Color Presets",
+        "Color Macros",
+        "Effect Speed",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
