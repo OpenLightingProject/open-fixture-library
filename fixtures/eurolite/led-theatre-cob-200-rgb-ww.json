@@ -1,25 +1,28 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED Theatre COB 200 RGB/WW",
+  "name": "LED Theatre COB 200 RGB+WW",
+  "shortName": "LED THA COB 200",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["diam0ndkiller"],
-    "createDate": "2025-06-28",
-    "lastModifyDate": "2025-06-28",
-    "importPlugin": {
-      "plugin": "qlcplus_4.12.1",
-      "date": "2025-06-28",
-      "comment": "created by Q Light Controller Plus (version 4.12.7)"
-    }
+    "authors": ["Benjamin Blaikner / Theater der Mitte", "diam0ndkiller"],
+    "createDate": "2024-11-25",
+    "lastModifyDate": "2026-09-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.at/download/41602038-Anleitung-131953-1.000-eurolite-led-theatre-cob-200-rgb+ww-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.at/de/mpn41602038-eurolite-led-theatre-cob-200-rgb+ww.html"
+    ]
   },
   "physical": {
-    "dimensions": [259, 376, 200],
+    "dimensions": [260, 380, 200],
     "weight": 4.11,
     "power": 140,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
-      "colorTemperature": 1800,
+      "type": "1 x COB (Chip-on-board) 4in1 QCL RGB/WW",
       "lumens": 14000
     },
     "lens": {
@@ -28,58 +31,51 @@
   },
   "availableChannels": {
     "Red": {
-      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Warm white": {
-      "defaultValue": 0,
+    "Warm White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Warm White"
       }
     },
-    "Master dimmer": {
-      "defaultValue": 0,
+    "Master Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
-    "Strobe effect": {
-      "defaultValue": 0,
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe (Slow to Fast)"
+          "speedEnd": "fast"
         }
       ]
     },
-    "Preset colors": {
-      "defaultValue": 0,
+    "Color Presets": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -106,7 +102,7 @@
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "comment": "Warm white",
+          "comment": "Warm White",
           "colors": ["#fefec8"]
         },
         {
@@ -136,7 +132,7 @@
         {
           "dmxRange": [90, 99],
           "type": "ColorPreset",
-          "comment": "Green Yellow",
+          "comment": "Green yellow",
           "colors": ["#7fff00"]
         },
         {
@@ -154,7 +150,7 @@
         {
           "dmxRange": [120, 129],
           "type": "ColorPreset",
-          "comment": "Light Green",
+          "comment": "Light green",
           "colors": ["#64ff64"]
         },
         {
@@ -178,13 +174,13 @@
         {
           "dmxRange": [160, 169],
           "type": "ColorPreset",
-          "comment": "Light Blue",
+          "comment": "Light blue",
           "colors": ["#68badd"]
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorPreset",
-          "comment": "Dark Blue",
+          "comment": "Dark blue",
           "colors": ["#00098f"]
         },
         {
@@ -196,13 +192,12 @@
         {
           "dmxRange": [190, 255],
           "type": "ColorPreset",
-          "comment": "Full On",
+          "comment": "Full on",
           "colors": ["#ffffff"]
         }
       ]
     },
-    "Internal programs": {
-      "defaultValue": 0,
+    "Internal Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -211,115 +206,113 @@
         {
           "dmxRange": [10, 19],
           "type": "Effect",
-          "effectName": "Auto Program 1"
+          "effectName": "Auto program 1"
         },
         {
           "dmxRange": [20, 29],
           "type": "Effect",
-          "effectName": "Auto Program 2"
+          "effectName": "Auto program 2"
         },
         {
           "dmxRange": [30, 39],
           "type": "Effect",
-          "effectName": "Auto Program 3"
+          "effectName": "Auto program 3"
         },
         {
           "dmxRange": [40, 49],
           "type": "Effect",
-          "effectName": "Auto Program 4"
+          "effectName": "Auto program 4"
         },
         {
           "dmxRange": [50, 59],
           "type": "Effect",
-          "effectName": "Auto Program 5"
+          "effectName": "Auto program 5"
         },
         {
           "dmxRange": [60, 69],
           "type": "Effect",
-          "effectName": "Auto Program 6"
+          "effectName": "Auto program 6"
         },
         {
           "dmxRange": [70, 79],
           "type": "Effect",
-          "effectName": "Auto Program 7"
+          "effectName": "Auto program 7"
         },
         {
           "dmxRange": [80, 89],
           "type": "Effect",
-          "effectName": "Auto Program 8"
+          "effectName": "Auto program 8"
         },
         {
           "dmxRange": [90, 99],
           "type": "Effect",
-          "effectName": "Auto Program 9"
+          "effectName": "Auto program 9"
         },
         {
           "dmxRange": [100, 109],
           "type": "Effect",
-          "effectName": "Sound Control Program 1",
+          "effectName": "Sound control program 1",
           "soundControlled": true
         },
         {
           "dmxRange": [110, 119],
           "type": "Effect",
-          "effectName": "Sound Control Program 2",
+          "effectName": "Sound control program 2",
           "soundControlled": true
         },
         {
           "dmxRange": [120, 129],
           "type": "Effect",
-          "effectName": "Sound Control Program 3",
+          "effectName": "Sound control program 3",
           "soundControlled": true
         },
         {
           "dmxRange": [130, 139],
           "type": "Effect",
-          "effectName": "Sound Control Program 4",
+          "effectName": "Sound control program 4",
           "soundControlled": true
         },
         {
           "dmxRange": [140, 149],
           "type": "Effect",
-          "effectName": "Sound Control Program 5",
+          "effectName": "Sound control program 5",
           "soundControlled": true
         },
         {
           "dmxRange": [150, 159],
           "type": "Effect",
-          "effectName": "Sound Control Program 6",
+          "effectName": "Sound control program 6",
           "soundControlled": true
         },
         {
           "dmxRange": [160, 169],
           "type": "Effect",
-          "effectName": "Sound Control Program 7",
+          "effectName": "Sound control program 7",
           "soundControlled": true
         },
         {
           "dmxRange": [170, 179],
           "type": "Effect",
-          "effectName": "Sound Control Program 8",
+          "effectName": "Sound control program 8",
           "soundControlled": true
         },
         {
           "dmxRange": [180, 255],
           "type": "Effect",
-          "effectName": "Sound Control Program 9",
+          "effectName": "Sound control program 9",
           "soundControlled": true
         }
       ]
     },
-    "Speed Internal programs": {
-      "defaultValue": 0,
+    "Program Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Speed internal programs, increasing"
+        "speedEnd": "fast"
       }
     },
-    "6ch function": {
-      "defaultValue": 0,
+    "Strobe 2": {
+      "name": "Strobe",
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -328,8 +321,10 @@
         {
           "dmxRange": [1, 5],
           "type": "Effect",
-          "effectName": "Sound Control",
-          "soundControlled": true
+          "effectName": "Music-controlled program",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
         },
         {
           "dmxRange": [6, 10],
@@ -340,13 +335,11 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe"
+          "speedEnd": "fast"
         }
       ]
     },
-    "Color temperature": {
-      "defaultValue": 0,
+    "Color Temperature": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -354,51 +347,43 @@
         },
         {
           "dmxRange": [10, 39],
-          "type": "ColorPreset",
-          "comment": "1800K",
-          "colors": ["#ff7e00"]
+          "type": "ColorTemperature",
+          "colorTemperature": "1800K"
         },
         {
           "dmxRange": [40, 69],
-          "type": "ColorPreset",
-          "comment": "2200K",
-          "colors": ["#ff932c"]
+          "type": "ColorTemperature",
+          "colorTemperature": "2200K"
         },
         {
           "dmxRange": [70, 99],
-          "type": "ColorPreset",
-          "comment": "2700K",
-          "colors": ["#ffa957"]
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
         },
         {
           "dmxRange": [100, 129],
-          "type": "ColorPreset",
-          "comment": "3200K",
-          "colors": ["#ffbb78"]
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [130, 159],
-          "type": "ColorPreset",
-          "comment": "4300K",
-          "colors": ["#ffd7b1"]
+          "type": "ColorTemperature",
+          "colorTemperature": "4300K"
         },
         {
           "dmxRange": [160, 189],
-          "type": "ColorPreset",
-          "comment": "5600K",
-          "colors": ["#ffeee3"]
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
         },
         {
           "dmxRange": [190, 219],
-          "type": "ColorPreset",
-          "comment": "6500K",
-          "colors": ["#fff9fd"]
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
         },
         {
           "dmxRange": [220, 255],
-          "type": "ColorPreset",
-          "comment": "8000K",
-          "colors": ["#e3e9ff"]
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
         }
       ]
     }
@@ -420,18 +405,18 @@
         "Red",
         "Green",
         "Blue",
-        "Warm white"
+        "Warm White"
       ]
     },
     {
       "name": "5-channel",
       "shortName": "5ch",
       "channels": [
-        "Master dimmer",
-        "Strobe effect",
-        "Preset colors",
-        "Internal programs",
-        "Speed Internal programs"
+        "Master Dimmer",
+        "Strobe",
+        "Color Presets",
+        "Internal Programs",
+        "Program Speed"
       ]
     },
     {
@@ -441,25 +426,25 @@
         "Red",
         "Green",
         "Blue",
-        "Warm white",
-        "Master dimmer",
-        "6ch function"
+        "Warm White",
+        "Master Dimmer",
+        "Strobe 2"
       ]
     },
     {
       "name": "10-channel",
       "shortName": "10ch",
       "channels": [
-        "Master dimmer",
-        "Strobe effect",
+        "Master Dimmer",
+        "Strobe",
         "Red",
         "Green",
         "Blue",
-        "Warm white",
-        "Preset colors",
-        "Internal programs",
-        "Speed Internal programs",
-        "Color temperature"
+        "Warm White",
+        "Color Presets",
+        "Internal Programs",
+        "Program Speed",
+        "Color Temperature"
       ]
     }
   ]
