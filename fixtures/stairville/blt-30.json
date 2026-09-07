@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "blt 30",
+  "shortName": "battery truss",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Domenico"],
+    "createDate": "2022-10-29",
+    "lastModifyDate": "2022-10-29"
+  },
+  "links": {
+    "productPage": [
+      "https://open-fixture-library.org/fixture-editor",
+      "https://open-fixture-library.org/fixture-editor"
+    ],
+    "video": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "physical": {
+    "power": 0,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "bel 30",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
