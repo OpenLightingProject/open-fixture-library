@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT400",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Rudi Massyn"],
+    "createDate": "2023-08-17",
+    "lastModifyDate": "2023-08-17"
+  },
+  "links": {
+    "productPage": [
+      "https://www.beamzlighting.com/product/bt400-lightweight-par-12x-10w-rgbw/"
+    ],
+    "video": [
+      "https://www.beamzlighting.com/product/bt400-lightweight-par-12x-10w-rgbw/"
+    ]
+  },
+  "physical": {
+    "dimensions": [285, 214, 118],
+    "weight": 2.2,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Full On"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Strobe Effect Slow To Fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Full On"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Pulse Effect In Sequence Slow To Fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Full On"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Random Strobe Effect Slow To Fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Full On"
+        }
+      ]
+    },
+    "Color Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Color Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Color Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color White": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Macro Colour": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Colour Temp": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Macro Run": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Macro Run",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro Run Speed": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Red",
+        "Color Green",
+        "Color Blue",
+        "Color White",
+        "Macro Colour",
+        "Colour Temp",
+        "Macro Run",
+        "Macro Run Speed"
+      ]
+    }
+  ]
+}
