@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Moving Head 108x3W WASH 25°",
+  "shortName": "WASH LED 108x3",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Stripeshirt"],
+    "createDate": "2022-06-15",
+    "lastModifyDate": "2022-06-15"
+  },
+  "links": {
+    "manual": [
+      "https://flash-butrym.pl/en_US/p/LED-Moving-Head-108x3W-WASH-25/523"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Empty": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Empty 2": {
+      "name": "Empty",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 64],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [65, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Empty",
+        "Color Macros",
+        "Empty 2",
+        "Function"
+      ]
+    }
+  ]
+}
