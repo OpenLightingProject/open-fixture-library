@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Unity",
+  "shortName": "Unity",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MG"],
+    "createDate": "2022-09-29",
+    "lastModifyDate": "2022-09-29"
+  },
+  "links": {
+    "manual": [
+      "http://acclaimlighting.com"
+    ],
+    "productPage": [
+      "http://acclaimlighting.com"
+    ],
+    "video": [
+      "http://acclaimlighting.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [311, 450, 288],
+    "weight": 14,
+    "power": 360,
+    "bulb": {
+      "type": "LED",
+      "lumens": 10007
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "8000K",
+        "colorTemperatureEnd": "2500K"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Color Temperature",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5ch",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime"
+      ]
+    }
+  ]
+}
