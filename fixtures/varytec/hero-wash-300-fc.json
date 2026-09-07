@@ -1,0 +1,418 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Wash 300 FC",
+  "shortName": "Hero Wash 300 FC",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tripdobrasil"],
+    "createDate": "2023-03-09",
+    "lastModifyDate": "2023-03-09"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_477542_v1_r2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/es/varytec_hero_wash_300_fc.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gaPJ-7U2YOw&ab_channel=JZNLIGHTINGROOM"
+    ]
+  },
+  "physical": {
+    "dimensions": [310, 410, 208],
+    "weight": 10.1,
+    "power": 240,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid",
+      "lumens": 7000
+    },
+    "lens": {
+      "name": "LEd",
+      "degreesMinMax": [6, 50]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "540º hortizontal"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "255deg",
+        "comment": "220 º vertical"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 80],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [81, 140],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [141, 200],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "White"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightness": "off"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "warm"
+        }
+      ]
+    },
+    "Color Temperature 2": {
+      "name": "Color Temperature",
+      "constant": true,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "warm",
+        "comment": "2800-6800"
+      }
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 15],
+          "type": "Effect",
+          "effectName": "Follow path 1"
+        },
+        {
+          "dmxRange": [16, 25],
+          "type": "Effect",
+          "effectName": "Follow path 2"
+        },
+        {
+          "dmxRange": [26, 35],
+          "type": "Effect",
+          "effectName": "Follow path 3"
+        },
+        {
+          "dmxRange": [36, 45],
+          "type": "Effect",
+          "effectName": "Follow path 4",
+          "comment": "Follow path 4"
+        },
+        {
+          "dmxRange": [46, 55],
+          "type": "Effect",
+          "effectName": "Follow path 5"
+        },
+        {
+          "dmxRange": [56, 65],
+          "type": "Effect",
+          "effectName": "Follow path 6"
+        },
+        {
+          "dmxRange": [66, 75],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [76, 90],
+          "type": "Effect",
+          "effectName": "Follow path 7"
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "Effect",
+          "effectName": "Follow path 8",
+          "comment": "Follow path 8"
+        },
+        {
+          "dmxRange": [106, 120],
+          "type": "Effect",
+          "effectName": "Follow path 9",
+          "comment": "Follow path 8"
+        },
+        {
+          "dmxRange": [121, 135],
+          "type": "Effect",
+          "effectName": "Follow path 10"
+        },
+        {
+          "dmxRange": [136, 150],
+          "type": "Effect",
+          "effectName": "Follow path 11"
+        },
+        {
+          "dmxRange": [151, 165],
+          "type": "Effect",
+          "effectName": "Follow path 12"
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "Effect",
+          "effectName": "Follow path 13"
+        },
+        {
+          "dmxRange": [181, 195],
+          "type": "Effect",
+          "effectName": "Follow path 14"
+        },
+        {
+          "dmxRange": [196, 210],
+          "type": "Effect",
+          "effectName": "Follow path 15"
+        },
+        {
+          "dmxRange": [211, 225],
+          "type": "Effect",
+          "effectName": "Follow path 16"
+        },
+        {
+          "dmxRange": [226, 240],
+          "type": "Effect",
+          "effectName": "Follow path 17"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Follow path 18"
+        }
+      ]
+    },
+    "Transition": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speed": "slow"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 39],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Zoom",
+          "angle": "narrow"
+        }
+      ]
+    },
+    "Program Speed 2": {
+      "name": "Program Speed",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "PanTiltSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "low"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "Reset, sending data al least 3 seconds"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Channel",
+      "shortName": "15Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Intensity",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Program Duration",
+        "Transition",
+        "Program Speed",
+        "Program Speed 2"
+      ]
+    }
+  ]
+}
