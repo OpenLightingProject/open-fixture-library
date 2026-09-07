@@ -119,14 +119,18 @@ a {
   fill: theme-color(icon);
   transition: color 0.1s, fill 0.1s, background-color 0.1s, text-decoration-color 0.1s;
 
+  &:visited {
+    color: theme-color(link-visited);
+  }
+
   &:hover,
   &:focus {
     text-decoration-color: currentcolor;
   }
 
   &:active {
-    color: theme-color(orange-background);
-    fill: theme-color(orange-background);
+    color: theme-color(link-active);
+    fill: theme-color(link-active);
   }
 }
 
@@ -248,6 +252,8 @@ input::placeholder {
 
 button,
 a.button {
+  text-decoration: none;
+
   &.primary,
   &.secondary {
     display: inline-block;

@@ -154,6 +154,7 @@ select {
       display: block;
       padding: 0.2ex 2ex;
       color: theme-color(text-primary);
+      text-decoration: none;
       transition: background-color 0.2s;
     }
 
