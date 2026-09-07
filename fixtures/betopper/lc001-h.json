@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LC001-H",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["frumaki"],
+    "createDate": "2022-06-18",
+    "lastModifyDate": "2022-06-18"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopifycdn.net/s/files/1/0084/5230/9047/files/BETOPPER_Stage_Led_Light_COB_Par_Light_LC001-H_User_Manual.pdf?v=1630045858"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-100w-cob-light-lc001-h"
+    ]
+  },
+  "physical": {
+    "dimensions": [241, 230, 237],
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [95, 95]
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "D",
+      "channels": [
+        "Warm White",
+        "Cold White"
+      ]
+    },
+    {
+      "name": "A",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White",
+        "Strobe"
+      ]
+    }
+  ]
+}
