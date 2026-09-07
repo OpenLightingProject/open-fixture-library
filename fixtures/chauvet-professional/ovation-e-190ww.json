@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation E-190WW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Scott Shelton"],
+    "createDate": "2022-11-21",
+    "lastModifyDate": "2022-11-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/06/Ovation_E-190WW_UM_Rev8-_WO2.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 3200
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
