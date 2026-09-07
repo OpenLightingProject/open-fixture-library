@@ -1,0 +1,189 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vizi BSW 300",
+  "shortName": "Vizi BSW 300",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["MR_Luke"],
+    "createDate": "2022-05-13",
+    "lastModifyDate": "2022-05-13"
+  },
+  "links": {
+    "manual": [
+      "https://s3-eu-west-1.amazonaws.com/adjmedia/binaries/ADJ%20Vizi%20BSW%20300%20DMX%20Traits.pdf"
+    ],
+    "productPage": [
+      "https://www.americandj.eu/en/vizi-bsw300.html"
+    ],
+    "video": [
+      "https://www.americandj.eu/en/vizi-bsw300.html"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Color Wheel 2": {
+      "name": "Color Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CW"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17 Ch Basic",
+      "shortName": "17CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Color Wheel 2",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel 2",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Focus",
+        "No function",
+        "No function 2",
+        "Pan/Tilt Speed",
+        "No function 3"
+      ]
+    }
+  ]
+}
