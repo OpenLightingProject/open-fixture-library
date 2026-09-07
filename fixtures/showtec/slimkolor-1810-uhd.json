@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimKolor 1810 UHD",
+  "shortName": "SK 1810",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["PierreM%"],
+    "createDate": "2023-01-30",
+    "lastModifyDate": "2023-01-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/slimkolor-1810-uhd-ip"
+    ],
+    "productPage": [
+      "https://www.star-way.com/slimkolor-1810-uhd-ip"
+    ],
+    "video": [
+      "https://www.star-way.com/slimkolor-1810-uhd-ip"
+    ]
+  },
+  "physical": {
+    "dimensions": [349, 132, 340],
+    "weight": 7.8,
+    "power": 200,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Wash",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
