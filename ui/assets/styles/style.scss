@@ -113,14 +113,20 @@ code.channel-key {
 
 a {
   color: theme-color(link);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
   fill: theme-color(icon);
-  transition: color 0.1s, fill 0.1s, background-color 0.1s;
+  transition: color 0.1s, fill 0.1s, background-color 0.1s, text-decoration-color 0.1s;
 
   &:hover,
   &:focus {
-    color: theme-color(link-hover);
-    fill: theme-color(icon-hover);
+    text-decoration-color: currentcolor;
+  }
+
+  &:active {
+    color: theme-color(orange-background);
+    fill: theme-color(orange-background);
   }
 }
 
