@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "19x15W Zoom Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["duco"],
+    "createDate": "2022-11-09",
+    "lastModifyDate": "2022-11-09"
+  },
+  "links": {
+    "productPage": [
+      "https://nl.aliexpress.com/item/4000539805322.html?spm=a2g0o.productlist.0.0.65061b80tEwPxo&algo_pvid=bf71398b-1635-420d-9c30-45463f5235d3&algo_exp_id=bf71398b-1635-420d-9c30-45463f5235d3-5&pdp_ext_f=%7B%22sku_id%22%3A%2212000029352794998%22%7D&pdp_npi=2%40dis%21EUR%21246.67%21209.67%21%21%21%21%21%402100bddf16680192655076691eca1e%2112000029352794998%21sea&curPageLogUid=EYHrV4usmdjx"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "19x15W Zoom Moving Head",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter",
+        "Focus",
+        "Intensity",
+        "Program Speed"
+      ]
+    }
+  ]
+}
