@@ -1,0 +1,198 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "15 Eyes Strobe Laser Party Light",
+  "shortName": "AL-15EYE",
+  "categories": ["Color Changer", "Strobe", "Laser", "Dimmer", "Blinder", "Effect"],
+  "meta": {
+    "authors": ["Roger oddBeat"],
+    "createDate": "2022-12-21",
+    "lastModifyDate": "2022-12-21"
+  },
+  "links": {
+    "manual": [
+      "https://cf.shopee.com.my/file/eb66fc0de76386df30fa9ef8c8db9b61"
+    ],
+    "productPage": [
+      "https://www.aliexpress.com/item/1005001392030510.html"
+    ],
+    "video": [
+      "https://video.aliexpress-media.com/play/u/ae_sg_item/1867228930/p/1/e/6/t/10301/343747982613.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 85, 116],
+    "weight": 1150,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW LED, UV Purple, RGBW Strobo, RGB Laser"
+    },
+    "lens": {
+      "degreesMinMax": [150, 150]
+    }
+  },
+  "availableChannels": {
+    "Special Channel": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 70],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [71, 111],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [112, 150],
+          "type": "Effect",
+          "effectName": "AUTO mode"
+        },
+        {
+          "dmxRange": [151, 190],
+          "type": "Effect",
+          "effectName": "LED Sound"
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "Effect",
+          "effectName": "LED Auto"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red Laser 1": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Laser 2": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Laser": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Laser": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Motor Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "LED Red": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED Green": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED Blue": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [30, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15 eyes 11Ch",
+      "shortName": "11ch",
+      "channels": [
+        "Special Channel",
+        "Red Laser 1",
+        "Red Laser 2",
+        "Green Laser",
+        "Blue Laser",
+        "Motor Speed",
+        "UV",
+        "LED Red",
+        "LED Green",
+        "LED Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
