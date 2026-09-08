@@ -119,7 +119,7 @@ function sortByManufacturerAndFixture(fixtures) {
  * @returns {Promise<ReviewComment[]>} Date update comments for all fixtures.
  */
 async function collectFixtureReviewComments(fixtures, headSha, today, fields, requiresDiffHunk = false) {
-  const fixtureResults = await Promise.all(sortByManufacturerAndFixture(fixtures).map(
+  const fixtureComments = await Promise.all(sortByManufacturerAndFixture(fixtures).map(
     ([manufacturerKey, fixtureKey]) => buildFixtureReviewComments(
       manufacturerKey,
       fixtureKey,
@@ -129,7 +129,7 @@ async function collectFixtureReviewComments(fixtures, headSha, today, fields, re
       requiresDiffHunk,
     ),
   ));
-  return fixtureResults.flat(2);
+  return fixtureComments.flat();
 }
 
 /**
@@ -156,7 +156,9 @@ async function buildFixtureReviewComments(manufacturerKey, fixtureKey, headSha, 
   }
 
   const fileLines = fileContent.split('\n');
-  return Promise.all(fields.flatMap(async (field) => {
+  const patch = isModifiedFile ? await pullRequest.getFilePatch(filePath) : undefined;
+
+  return fields.flatMap((field) => {
     const lineIndex = fileLines.findIndex((line) => line.includes(`"${field}"`));
     if (lineIndex === -1) {
       console.warn(styleText('yellow', 'Warning:'), `No "${field}" line found in ${filePath}; skipping review comment.`);
@@ -170,13 +172,8 @@ async function buildFixtureReviewComments(manufacturerKey, fixtureKey, headSha, 
       return [];
     }
 
-    let isIncludedInDiffHunk = true;
     const lineNumber = lineIndex + 1; // 1-indexed for the GitHub API
-    if (isModifiedFile) {
-      // GitHub rejects suggestions outside diff hunks.
-      const patch = await pullRequest.getFilePatch(filePath);
-      isIncludedInDiffHunk = patch === undefined || isLineInDiffHunk(patch, lineNumber);
-    }
+    const isIncludedInDiffHunk = !isModifiedFile || patch === undefined || isLineInDiffHunk(patch, lineNumber);
 
     const updatedLine = oldLine.replace(
       new RegExp(String.raw`"${field}"\s*:\s*"[^"]*"`),
@@ -198,7 +195,7 @@ async function buildFixtureReviewComments(manufacturerKey, fixtureKey, headSha, 
       body,
       isIncludedInDiffHunk,
     }];
-  }));
+  });
 }
 
 /**
