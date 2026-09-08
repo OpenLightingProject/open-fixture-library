@@ -115,6 +115,7 @@ select {
     padding: 0.5ex 2ex;
     font-weight: 700;
     color: $primary-text-light;
+    text-decoration: none;
     cursor: pointer;
     background: theme-color(orange-background);
     border-radius: 2px;
