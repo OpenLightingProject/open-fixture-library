@@ -161,7 +161,9 @@
   }
 
   & a {
-    display: inline-block;
+    display: inline-flex;
+    gap: 0.5ex;
+    align-items: center;
     margin-top: 4px;
   }
 }
