@@ -1,0 +1,232 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2.0 led 19x15 wash_zoom light",
+  "shortName": "2.0 ledwash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Szabó Bence"],
+    "createDate": "2023-05-06",
+    "lastModifyDate": "2023-05-06"
+  },
+  "links": {
+    "other": [
+      "https://fenytechnikashop.hu/LED-Wash-19x15W-ROBOTLAMPA"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 400, 200],
+    "weight": 7.5,
+    "power": 350,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8500
+    },
+    "lens": {
+      "degreesMinMax": [8, 60]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Group1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Group1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Group1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Group1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "fast",
+        "speedEnd": "slow reverse"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Functional mode speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Panfine": {
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "fast CW"
+      }
+    },
+    "Tiltfine": {
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "fast CCW"
+      }
+    },
+    "Rest255": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Total": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red Group2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Group2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Group2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Group2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red Group3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Group3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Group3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Group3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 channel",
+      "shortName": "16CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red Group1",
+        "Green Group1",
+        "Blue Group1",
+        "White Group1",
+        "Shutter",
+        "Focus",
+        "Function",
+        "Functional mode speed",
+        "Panfine",
+        "Tiltfine",
+        "Rest255",
+        "Total"
+      ]
+    },
+    {
+      "name": "24 channel",
+      "shortName": "24CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red Group1",
+        "Green Group1",
+        "Blue Group1",
+        "White Group1",
+        "Red Group2",
+        "Green Group2",
+        "Blue Group2",
+        "White Group2",
+        "Red Group3",
+        "Green Group3",
+        "Blue Group3",
+        "White Group3",
+        "Shutter",
+        "Focus",
+        "Function",
+        "Functional mode speed",
+        "Panfine",
+        "Tiltfine",
+        "Rest255",
+        "Total"
+      ]
+    }
+  ]
+}
