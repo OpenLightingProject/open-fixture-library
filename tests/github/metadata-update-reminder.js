@@ -129,7 +129,7 @@ async function collectFixtureReviewComments(fixtures, headSha, today, fields, re
       requiresDiffHunk,
     ),
   ));
-  return fixtureResults.flat();
+  return fixtureResults.flat(2);
 }
 
 /**
