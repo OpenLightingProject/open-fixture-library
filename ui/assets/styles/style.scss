@@ -113,14 +113,24 @@ code.channel-key {
 
 a {
   color: theme-color(link);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
   fill: theme-color(icon);
-  transition: color 0.1s, fill 0.1s, background-color 0.1s;
+  transition: color 0.1s, fill 0.1s, background-color 0.1s, text-decoration-color 0.1s;
+
+  &:visited {
+    color: theme-color(link-visited);
+  }
 
   &:hover,
   &:focus {
-    color: theme-color(link-hover);
-    fill: theme-color(icon-hover);
+    text-decoration-color: currentcolor;
+  }
+
+  &:active {
+    color: theme-color(link-active);
+    fill: theme-color(link-active);
   }
 }
 
@@ -249,6 +259,7 @@ a.button {
     font-size: 0.9em;
     font-weight: 700;
     line-height: 1.4;
+    text-decoration: none;
     cursor: pointer;
     border: 1px solid;
     border-radius: 2px;
@@ -267,6 +278,7 @@ a.button {
     &:not(:disabled):active {
       position: relative;
       top: 1px;
+      fill: currentcolor;
     }
   }
 
