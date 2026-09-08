@@ -3,7 +3,7 @@
   "name": "18x12W RGBW Par",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Gemini", "Mamoz"],
+    "authors": ["Mamoz"],
     "createDate": "2026-08-28",
     "lastModifyDate": "2026-09-06",
     "importPlugin": {
@@ -46,32 +46,28 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red intensity"
+        "color": "Red"
       }
     },
     "Green": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Green intensity"
+        "color": "Green"
       }
     },
     "Blue": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Blue intensity"
+        "color": "Blue"
       }
     },
     "White": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "White intensity"
+        "color": "White"
       }
     },
     "Strobe": {
@@ -79,7 +75,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 255],
@@ -95,18 +92,17 @@
       "capabilities": [
         {
           "dmxRange": [0, 50],
-          "type": "Effect",
-          "effectName": "No effect"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [51, 100],
           "type": "Effect",
-          "effectName": "Color jump"
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [101, 150],
           "type": "Effect",
-          "effectName": "Color gradient"
+          "effectPreset": "ColorFade"
         },
         {
           "dmxRange": [151, 200],
@@ -124,11 +120,10 @@
     "Speed": {
       "defaultValue": 0,
       "capability": {
-        "type": "Speed",
-        "comment": "Function Speed Adjustment",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "Are the automatically added speed values correct?"
+        "helpWanted": "Is this slow…fast or fast…slow?"
       }
     }
   },
