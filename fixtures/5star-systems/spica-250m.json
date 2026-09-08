@@ -4,7 +4,7 @@
   "shortName": "Spica250M",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann", "Felix Edelmann"],
+    "authors": ["Flo Edelmann", "Felix Edelmann", "test 2: modify fixture near date"],
     "createDate": "2017-01-23",
     "lastModifyDate": "2018-08-09",
     "importPlugin": {
@@ -134,7 +134,7 @@
         {
           "dmxRange": [250, 255],
           "type": "PanTiltSpeed",
-          "comment": "test 1: modify fixture somewhere at the bottom",
+          "comment": "black while moving",
           "speed": "fast"
         }
       ]
