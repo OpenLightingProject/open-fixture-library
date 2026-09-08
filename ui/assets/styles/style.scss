@@ -278,6 +278,7 @@ a.button {
     &:not(:disabled):active {
       position: relative;
       top: 1px;
+      fill: currentcolor;
     }
   }
 
