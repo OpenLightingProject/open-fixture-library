@@ -133,8 +133,8 @@ async function collectFixtureReviewComments(fixtures, headSha, today, fields, re
 }
 
 /**
- * Build date-field update review comments for a fixture. Modified fixtures can fall back to a
- * comments are marked as not included in a diff hunk when their date line is outside one.
+ * Build date-field update review comments for a fixture. Comments for modified fixtures
+ * are marked as not included in a diff hunk when their date line is outside one.
  * @param {string} manufacturerKey - The manufacturer key.
  * @param {string} fixtureKey - The fixture key.
  * @param {string} headSha - The PR head commit SHA used to fetch the file content.
