@@ -252,8 +252,6 @@ input::placeholder {
 
 button,
 a.button {
-  text-decoration: none;
-
   &.primary,
   &.secondary {
     display: inline-block;
@@ -261,6 +259,7 @@ a.button {
     font-size: 0.9em;
     font-weight: 700;
     line-height: 1.4;
+    text-decoration: none;
     cursor: pointer;
     border: 1px solid;
     border-radius: 2px;
