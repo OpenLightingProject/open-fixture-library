@@ -1,10 +1,10 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/capability.json",
 
   "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
 
-  "definitions": {
+  "$defs": {
     "dmxRange": {
       "type": "array",
       "minItems": 2,
@@ -44,19 +44,19 @@
   "oneOf": [
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "NoFunction" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "additionalProperties": false
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "ShutterStrobe" },
         "shutterEffect": { "enum": [
           "Open",
@@ -80,8 +80,8 @@
         "randomTiming": { "type": "boolean" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "shutterEffect"],
       "not": {
@@ -90,7 +90,7 @@
           { "required": ["duration", "durationStart"] }
         ]
       },
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "durationStart": ["durationEnd"],
@@ -100,22 +100,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "StrobeSpeed" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -123,22 +123,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "StrobeDuration" },
         "duration": { "$ref": "definitions.json#/entities/time" },
         "durationStart": { "$ref": "definitions.json#/entities/time" },
         "durationEnd": { "$ref": "definitions.json#/entities/time" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["duration"] },
         { "required": ["durationStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "durationStart": ["durationEnd"],
         "durationEnd": ["durationStart"]
       },
@@ -146,19 +146,19 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Intensity" },
         "brightness": { "$ref": "definitions.json#/entities/brightness" },
         "brightnessStart": { "$ref": "definitions.json#/entities/brightness" },
         "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "not": { "required": ["brightness", "brightnessStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "brightnessStart": ["brightnessEnd"],
         "brightnessEnd": ["brightnessStart"]
       },
@@ -166,7 +166,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "ColorIntensity" },
         "color": {
           "enum": [
@@ -190,12 +190,12 @@
         "brightnessEnd": { "$ref": "definitions.json#/entities/brightness" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "color"],
       "not": { "required": ["brightness", "brightnessStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "brightnessStart": ["brightnessEnd"],
         "brightnessEnd": ["brightnessStart"]
       },
@@ -203,7 +203,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "ColorPreset" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "colors": {
@@ -225,8 +225,8 @@
         "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
         "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "not": {
@@ -235,7 +235,7 @@
           { "required": ["colorTemperature", "colorTemperatureStart"] }
         ]
       },
-      "dependencies": {
+      "dependentRequired": {
         "colorsStart": ["colorsEnd"],
         "colorsEnd": ["colorsStart"],
         "colorTemperatureStart": ["colorTemperatureEnd"],
@@ -245,22 +245,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "ColorTemperature" },
         "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" },
         "colorTemperatureStart": { "$ref": "definitions.json#/entities/colorTemperature" },
         "colorTemperatureEnd": { "$ref": "definitions.json#/entities/colorTemperature" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["colorTemperature"] },
         { "required": ["colorTemperatureStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "colorTemperatureStart": ["colorTemperatureEnd"],
         "colorTemperatureEnd": ["colorTemperatureStart"]
       },
@@ -268,22 +268,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Pan" },
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
       },
@@ -291,22 +291,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "PanContinuous" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -314,22 +314,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Tilt" },
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
       },
@@ -337,22 +337,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "TiltContinuous" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -360,7 +360,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "PanTiltSpeed" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
@@ -370,8 +370,8 @@
         "durationEnd": { "$ref": "definitions.json#/entities/time" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
@@ -380,7 +380,7 @@
         { "required": ["duration"] },
         { "required": ["durationStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "durationStart": ["durationEnd"],
@@ -390,7 +390,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "WheelSlot" },
         "wheel": { "$ref": "definitions.json#/nonEmptyString" },
         "slotNumber": { "$ref": "definitions.json#/entities/slotNumber" },
@@ -398,15 +398,15 @@
         "slotNumberEnd": { "$ref": "definitions.json#/entities/slotNumber" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["slotNumber"] },
         { "required": ["slotNumberStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "slotNumberStart": ["slotNumberEnd"],
         "slotNumberEnd": ["slotNumberStart"]
       },
@@ -414,7 +414,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "WheelShake" },
         "wheel": {},
         "isShaking": {
@@ -431,8 +431,8 @@
         "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "not": {
@@ -442,7 +442,7 @@
           { "required": ["shakeAngle", "shakeAngleStart"] }
         ]
       },
-      "dependencies": {
+      "dependentRequired": {
         "shakeSpeedStart": ["shakeSpeedEnd"],
         "shakeSpeedEnd": ["shakeSpeedStart"],
         "shakeAngleStart": ["shakeAngleEnd"],
@@ -483,7 +483,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "WheelSlotRotation" },
         "wheel": {},
         "slotNumber": { "$ref": "definitions.json#/entities/slotNumber" },
@@ -497,8 +497,8 @@
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
@@ -508,7 +508,7 @@
         { "required": ["angleStart"] }
       ],
       "not": { "required": ["slotNumber", "slotNumberStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "slotNumberStart": ["slotNumberEnd"],
         "slotNumberEnd": ["slotNumberStart"],
         "speedStart": ["speedEnd"],
@@ -549,7 +549,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "WheelRotation" },
         "wheel": {
           "oneOf": [
@@ -570,8 +570,8 @@
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
@@ -580,7 +580,7 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "angleStart": ["angleEnd"],
@@ -590,7 +590,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Effect" },
         "effectName": { "$ref": "definitions.json#/nonEmptyString" },
         "effectPreset": { "$ref": "definitions.json#/effectPreset" },
@@ -609,8 +609,8 @@
         "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
@@ -625,7 +625,7 @@
           { "required": ["soundSensitivity", "soundSensitivityStart"] }
         ]
       },
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "durationStart": ["durationEnd"],
@@ -639,22 +639,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "EffectSpeed" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -662,22 +662,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "EffectDuration" },
         "duration": { "$ref": "definitions.json#/entities/time" },
         "durationStart": { "$ref": "definitions.json#/entities/time" },
         "durationEnd": { "$ref": "definitions.json#/entities/time" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["duration"] },
         { "required": ["durationStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "durationStart": ["durationEnd"],
         "durationEnd": ["durationStart"]
       },
@@ -685,22 +685,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "EffectParameter" },
         "parameter": { "$ref": "definitions.json#/entities/parameter" },
         "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
         "parameterEnd": { "$ref": "definitions.json#/entities/parameter" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["parameter"] },
         { "required": ["parameterStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "parameterStart": ["parameterEnd"],
         "parameterEnd": ["parameterStart"]
       },
@@ -708,22 +708,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "SoundSensitivity" },
         "soundSensitivity": { "$ref": "definitions.json#/entities/percent" },
         "soundSensitivityStart": { "$ref": "definitions.json#/entities/percent" },
         "soundSensitivityEnd": { "$ref": "definitions.json#/entities/percent" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["soundSensitivity"] },
         { "required": ["soundSensitivityStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "soundSensitivityStart": ["soundSensitivityEnd"],
         "soundSensitivityEnd": ["soundSensitivityStart"]
       },
@@ -731,22 +731,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "BeamAngle" },
         "angle": { "$ref": "definitions.json#/entities/beamAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
         "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
       },
@@ -754,7 +754,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "BeamPosition" },
         "horizontalAngle": { "$ref": "definitions.json#/entities/horizontalAngle" },
         "horizontalAngleStart": { "$ref": "definitions.json#/entities/horizontalAngle" },
@@ -764,8 +764,8 @@
         "verticalAngleEnd": { "$ref": "definitions.json#/entities/verticalAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "anyOf": [
@@ -778,7 +778,7 @@
           { "required": ["verticalAngleStart"] }
         ] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "horizontalAngleStart": ["horizontalAngleEnd"],
         "horizontalAngleEnd": ["horizontalAngleStart"],
         "verticalAngleStart": ["verticalAngleEnd"],
@@ -788,22 +788,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Focus" },
         "distance": { "$ref": "definitions.json#/entities/distance" },
         "distanceStart": { "$ref": "definitions.json#/entities/distance" },
         "distanceEnd": { "$ref": "definitions.json#/entities/distance" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["distance"] },
         { "required": ["distanceStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "distanceStart": ["distanceEnd"],
         "distanceEnd": ["distanceStart"]
       },
@@ -811,22 +811,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Zoom" },
         "angle": { "$ref": "definitions.json#/entities/beamAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
         "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
       },
@@ -834,22 +834,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Iris" },
         "openPercent": { "$ref": "definitions.json#/entities/irisPercent" },
         "openPercentStart": { "$ref": "definitions.json#/entities/irisPercent" },
         "openPercentEnd": { "$ref": "definitions.json#/entities/irisPercent" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["openPercent"] },
         { "required": ["openPercentStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "openPercentStart": ["openPercentEnd"],
         "openPercentEnd": ["openPercentStart"]
       },
@@ -857,7 +857,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "IrisEffect" },
         "effectName": { "$ref": "definitions.json#/nonEmptyString" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
@@ -865,12 +865,12 @@
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "effectName"],
       "not": { "required": ["speed", "speedStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -878,22 +878,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Frost" },
         "frostIntensity": { "$ref": "definitions.json#/entities/percent" },
         "frostIntensityStart": { "$ref": "definitions.json#/entities/percent" },
         "frostIntensityEnd": { "$ref": "definitions.json#/entities/percent" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["frostIntensity"] },
         { "required": ["frostIntensityStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "frostIntensityStart": ["frostIntensityEnd"],
         "frostIntensityEnd": ["frostIntensityStart"]
       },
@@ -901,7 +901,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "FrostEffect" },
         "effectName": { "$ref": "definitions.json#/nonEmptyString" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
@@ -909,12 +909,12 @@
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "effectName"],
       "not": { "required": ["speed", "speedStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -922,7 +922,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Prism" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
@@ -932,8 +932,8 @@
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "not": {
@@ -946,7 +946,7 @@
           { "required": ["speedStart", "angleStart"] }
         ]
       },
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "angleStart": ["angleEnd"],
@@ -956,7 +956,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "PrismRotation" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
@@ -966,8 +966,8 @@
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
@@ -976,7 +976,7 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "angleStart": ["angleEnd"],
@@ -986,7 +986,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "BladeInsertion" },
         "blade": {
           "oneOf": [
@@ -999,15 +999,15 @@
         "insertionEnd": { "$ref": "definitions.json#/entities/insertion" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "blade"],
       "oneOf": [
         { "required": ["insertion"] },
         { "required": ["insertionStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "insertionStart": ["insertionEnd"],
         "insertionEnd": ["insertionStart"]
       },
@@ -1015,7 +1015,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "BladeRotation" },
         "blade": {
           "oneOf": [
@@ -1028,15 +1028,15 @@
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "blade"],
       "oneOf": [
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
       },
@@ -1044,22 +1044,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "BladeSystemRotation" },
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "angleStart": ["angleEnd"],
         "angleEnd": ["angleStart"]
       },
@@ -1067,7 +1067,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Fog" },
         "fogType": { "enum": ["Fog", "Haze"] },
         "fogOutput": { "$ref": "definitions.json#/entities/fogOutput" },
@@ -1075,12 +1075,12 @@
         "fogOutputEnd": { "$ref": "definitions.json#/entities/fogOutput" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "not": { "required": ["fogOutput", "fogOutputStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "fogOutputStart": ["fogOutputEnd"],
         "fogOutputEnd": ["fogOutputStart"]
       },
@@ -1088,22 +1088,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "FogOutput" },
         "fogOutput": { "$ref": "definitions.json#/entities/fogOutput" },
         "fogOutputStart": { "$ref": "definitions.json#/entities/fogOutput" },
         "fogOutputEnd": { "$ref": "definitions.json#/entities/fogOutput" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["fogOutput"] },
         { "required": ["fogOutputStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "fogOutputStart": ["fogOutputEnd"],
         "fogOutputEnd": ["fogOutputStart"]
       },
@@ -1111,20 +1111,20 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "FogType" },
         "fogType": { "enum": ["Fog", "Haze"] },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type", "fogType"],
       "additionalProperties": false
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Rotation" },
         "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
         "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
@@ -1134,8 +1134,8 @@
         "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
@@ -1144,7 +1144,7 @@
         { "required": ["angle"] },
         { "required": ["angleStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"],
         "angleStart": ["angleEnd"],
@@ -1154,22 +1154,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Speed" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
         "speedStart": { "$ref": "definitions.json#/entities/speed" },
         "speedEnd": { "$ref": "definitions.json#/entities/speed" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["speed"] },
         { "required": ["speedStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "speedStart": ["speedEnd"],
         "speedEnd": ["speedStart"]
       },
@@ -1177,22 +1177,22 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Time" },
         "time": { "$ref": "definitions.json#/entities/time" },
         "timeStart": { "$ref": "definitions.json#/entities/time" },
         "timeEnd": { "$ref": "definitions.json#/entities/time" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "oneOf": [
         { "required": ["time"] },
         { "required": ["timeStart"] }
       ],
-      "dependencies": {
+      "dependentRequired": {
         "timeStart": ["timeEnd"],
         "timeEnd": ["timeStart"]
       },
@@ -1200,7 +1200,7 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Maintenance" },
         "parameter": { "$ref": "definitions.json#/entities/parameter" },
         "parameterStart": { "$ref": "definitions.json#/entities/parameter" },
@@ -1208,12 +1208,12 @@
         "hold": { "$ref": "definitions.json#/entities/time" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "not": { "required": ["parameter", "parameterStart"] },
-      "dependencies": {
+      "dependentRequired": {
         "parameterStart": ["parameterEnd"],
         "parameterEnd": ["parameterStart"]
       },
@@ -1221,12 +1221,12 @@
     },
     {
       "properties": {
-        "dmxRange": { "$ref": "#/definitions/dmxRange" },
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Generic" },
         "comment": { "$ref": "definitions.json#/nonEmptyString" },
         "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-        "menuClick": { "$ref": "#/definitions/menuClick" },
-        "switchChannels": { "$ref": "#/definitions/switchChannels" }
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
       },
       "required": ["type"],
       "additionalProperties": false
