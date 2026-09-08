@@ -48,7 +48,7 @@
               target="_blank"
               rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
-              {{ link.name }}
+              <span class="link-name">{{ link.name }}</span>
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
@@ -173,8 +173,18 @@
   margin: 0;
   list-style: none;
 
+  a {
+    text-decoration-line: none;
+  }
+
+  .link-name {
+    margin-right: 1ex;
+    margin-left: 0.5ex;
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+  }
+
   .hostname {
-    padding-left: 1ex;
     font-size: 0.9em;
     color: theme-color(text-secondary);
   }
