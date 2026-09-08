@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Kai Otte", "Ryan Goodwin"],
     "createDate": "2021-07-09",
-    "lastModifyDate": "2023-07-12"
+    "lastModifyDate": "2026-09-08"
   },
   "links": {
     "manual": [
@@ -130,51 +130,61 @@
         {
           "dmxRange": [51, 60],
           "type": "ColorPreset",
+          "colors": ["#ff8080"],
           "comment": "Red, White"
         },
         {
           "dmxRange": [61, 70],
           "type": "ColorPreset",
+          "colors": ["#80ff80"],
           "comment": "Green, White"
         },
         {
           "dmxRange": [71, 80],
           "type": "ColorPreset",
+          "colors": ["#8080ff"],
           "comment": "Blue, White"
         },
         {
           "dmxRange": [81, 90],
           "type": "ColorPreset",
+          "colors": ["#ffff00"],
           "comment": "Red, Green"
         },
         {
           "dmxRange": [91, 100],
           "type": "ColorPreset",
+          "colors": ["#00ffff"],
           "comment": "Green, Blue"
         },
         {
           "dmxRange": [101, 110],
           "type": "ColorPreset",
+          "colors": ["#ff00ff"],
           "comment": "Red, Blue"
         },
         {
           "dmxRange": [111, 120],
           "type": "ColorPreset",
+          "colors": ["#ffffff"],
           "comment": "Red, Green, Blue"
         },
         {
           "dmxRange": [121, 130],
           "type": "ColorPreset",
+          "colors": ["#80ffff"],
           "comment": "Green, Blue, White"
         },
         {
           "dmxRange": [131, 140],
           "type": "ColorPreset",
+          "colors": ["#ff80ff"],
           "comment": "Red, Blue, White"
         },
         {
           "dmxRange": [141, 150],
           "type": "ColorPreset",
+          "colors": ["#ffffff"],
           "comment": "Red, Green, Blue, White"
         },
         {
