@@ -174,6 +174,9 @@
   list-style: none;
 
   a {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
     text-decoration-line: none;
   }
 
@@ -185,8 +188,10 @@
   }
 
   .hostname {
+    min-width: 0;
     font-size: 0.9em;
     color: theme-color(text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .link-other {
