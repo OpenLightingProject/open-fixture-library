@@ -1004,6 +1004,7 @@ A physical DMX device.
     * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.nullSwitchingChannelAliases](#Fixture+nullSwitchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
     * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
     * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.allChannels](#Fixture+allChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
@@ -1013,6 +1014,7 @@ A physical DMX device.
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;string&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getNullChannelForSwitchingAlias(alias)](#Fixture+getNullChannelForSwitchingAlias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
@@ -1220,6 +1222,11 @@ Template channels are used to automatically generate channels.
 ### fixture.nullChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>Array.&lt;string&gt;</code> - All null channels' keys.  
+<a name="Fixture+nullSwitchingChannelAliases"></a>
+
+### fixture.nullSwitchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Array.&lt;string&gt;</code> - Switching channel aliases that switch to null, ordered by appearance.  
 <a name="Fixture+nullChannels"></a>
 
 ### fixture.nullChannels ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
@@ -1281,6 +1288,16 @@ Searches the template channel with the given key. Fine and switching template ch
 | Param | Type | Description |
 | --- | --- | --- |
 | channelKey | <code>string</code> | The template channel's key |
+
+<a name="Fixture+getNullChannelForSwitchingAlias"></a>
+
+### fixture.getNullChannelForSwitchingAlias(alias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>NullChannel</code>](#NullChannel) \| <code>null</code> - The null channel for the alias, or null if it does not switch to null.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| alias | <code>string</code> | The switching channel alias. |
 
 <a name="Fixture+getChannelByKey"></a>
 
@@ -2323,7 +2340,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
 
 * [SwitchingChannel](#SwitchingChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new SwitchingChannel(alias, triggerChannel)](#new_SwitchingChannel_new)
-    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
     * [.fixture](#SwitchingChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
     * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>Record.&lt;string, Array.&lt;Range&gt;&gt;</code>
@@ -2347,13 +2364,13 @@ Creates a new SwitchingChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | alias | <code>string</code> | The unique switching channel alias as defined in the trigger channel's `switchChannels` properties. |
-| triggerChannel | [<code>Readonly.&lt;AbstractChannel&gt;</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
+| triggerChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel whose DMX value this channel depends on. |
 
 <a name="SwitchingChannel+triggerChannel"></a>
 
-### switchingChannel.triggerChannel ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+### switchingChannel.triggerChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>AbstractChannel</code>](#AbstractChannel) - The channel whose DMX value this switching channel depends on.  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The channel whose DMX value this switching channel depends on.  
 <a name="SwitchingChannel+fixture"></a>
 
 ### switchingChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
