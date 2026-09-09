@@ -313,9 +313,7 @@ function addCapabilityAliases(xmlCapability, capability) {
   for (const [alias, switchedChannelKey] of Object.entries(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = switchedChannelKey === null
-      ? fixture.getNullChannelForSwitchingAlias(alias)
-      : fixture.getChannelByKey(switchedChannelKey);
+    const switchedChannel = fixture.getChannelByKey(switchedChannelKey);
 
     if (defaultChannel === switchedChannel) {
       continue;
