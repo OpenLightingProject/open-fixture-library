@@ -28,23 +28,44 @@ try {
 
   const today = new Date().toISOString().replace(/T.*/, '');
 
-  // Build the inline review comments (one per modified fixture).
-  const sortedModified = sortByManufacturerAndFixture(modifiedFixtures);
-  const fixtureComments = await Promise.all(sortedModified.map(
-    ([manufacturerKey, fixtureKey]) => buildModifiedFixtureComment(manufacturerKey, fixtureKey, headSha, today),
-  ));
-  const reviewComments = fixtureComments.filter(Boolean);
+  const modifiedComments = await collectFixtureReviewComments(
+    modifiedFixtures,
+    headSha,
+    today,
+    ['lastModifyDate'],
+    true,
+  );
+  const addedComments = await collectFixtureReviewComments(
+    addedFixtures,
+    headSha,
+    today,
+    ['createDate', 'lastModifyDate'],
+  );
+
+  const reviewComments = [...modifiedComments, ...addedComments];
+  const inlineReviewComments = reviewComments.filter((comment) => comment.isIncludedInDiffHunk);
+  const bodyOnlyComments = reviewComments.filter((comment) => !comment.isIncludedInDiffHunk);
+
+  if (bodyOnlyComments.length === 0 && inlineReviewComments.length === 0) {
+    // Remove the previous review
+    await pullRequest.updateReview({
+      fileUrl: new URL(import.meta.url),
+      body: '',
+      comments: [],
+    });
+    process.exit(0);
+  }
 
   // Build the brief review summary body.
   let summaryBody = 'Some fixture metadata needs updating — see the review comments below for one-click suggestions.';
-  if (addedFixtures.length > 0) {
-    summaryBody += `\n\n${buildAddedFixturesSummary(addedFixtures)}`;
+  if (bodyOnlyComments.length > 0) {
+    summaryBody += `\n\n${buildBodyOnlySummary(bodyOnlyComments)}`;
   }
 
   await pullRequest.updateReview({
     fileUrl: new URL(import.meta.url),
     body: summaryBody,
-    comments: reviewComments,
+    comments: inlineReviewComments,
   });
 }
 catch (error) {
@@ -89,17 +110,40 @@ function sortByManufacturerAndFixture(fixtures) {
 }
 
 /**
- * Build the inline review comment that suggests updating `lastModifyDate` for one
- * modified fixture. Returns `null` if the suggestion cannot be produced (e.g. the
- * file is missing at the head SHA, has no `lastModifyDate` line, or that line is
- * not inside a diff hunk); a warning is logged in each of those cases.
+ * Sort fixtures and build their date update comments.
+ * @param {[string, string][]} fixtures - Fixtures to check.
+ * @param {string} headSha - The PR head commit SHA used to fetch file content.
+ * @param {string} today - Today's date as an ISO `YYYY-MM-DD` string.
+ * @param {string[]} fields - The fixture metadata date fields to update.
+ * @param {boolean} [requiresDiffHunk=false] - Whether suggestions must be inside a diff hunk.
+ * @returns {Promise<ReviewComment[]>} Date update comments for all fixtures.
+ */
+async function collectFixtureReviewComments(fixtures, headSha, today, fields, requiresDiffHunk = false) {
+  const fixtureComments = await Promise.all(sortByManufacturerAndFixture(fixtures).map(
+    ([manufacturerKey, fixtureKey]) => buildFixtureReviewComments(
+      manufacturerKey,
+      fixtureKey,
+      headSha,
+      today,
+      fields,
+      requiresDiffHunk,
+    ),
+  ));
+  return fixtureComments.flat();
+}
+
+/**
+ * Build date-field update review comments for a fixture. Comments for modified fixtures
+ * are marked as not included in a diff hunk when their date line is outside one.
  * @param {string} manufacturerKey - The manufacturer key.
  * @param {string} fixtureKey - The fixture key.
  * @param {string} headSha - The PR head commit SHA used to fetch the file content.
- * @param {string} today - The replacement date as an ISO `YYYY-MM-DD` string.
- * @returns {Promise<ReviewComment | null>} The review comment, or `null` if skipped.
+ * @param {string} today - Today's date as an ISO `YYYY-MM-DD` string.
+ * @param {string[]} fields - The fixture metadata date fields to update.
+ * @param {boolean} [isModifiedFile=false] - Whether the fixture file existed in the target branch before this PR.
+ * @returns {Promise<ReviewComment[]>} Date update comments.
  */
-async function buildModifiedFixtureComment(manufacturerKey, fixtureKey, headSha, today) {
+async function buildFixtureReviewComments(manufacturerKey, fixtureKey, headSha, today, fields, isModifiedFile = false) {
   const filePath = `fixtures/${manufacturerKey}/${fixtureKey}.json`;
 
   let fileContent;
@@ -108,60 +152,62 @@ async function buildModifiedFixtureComment(manufacturerKey, fixtureKey, headSha,
   }
   catch (error) {
     console.warn(styleText('yellow', 'Warning:'), `Could not fetch ${filePath} at ${headSha}:`, error.message);
-    return null;
+    return [];
   }
 
   const fileLines = fileContent.split('\n');
-  const lineIndex = fileLines.findIndex((line) => line.includes('"lastModifyDate"'));
-  if (lineIndex === -1) {
-    console.warn(styleText('yellow', 'Warning:'), `No "lastModifyDate" line found in ${filePath}; skipping review comment.`);
-    return null;
-  }
+  const patch = isModifiedFile ? await pullRequest.getFilePatch(filePath) : undefined;
 
-  const lineNumber = lineIndex + 1; // 1-indexed for the GitHub API
-  const oldLine = fileLines[lineIndex];
-
-  // Check that the line is in a diff hunk (otherwise GitHub will reject the comment)
-  const patch = await pullRequest.getFilePatch(filePath);
-  if (patch !== undefined) {
-    const inHunk = isLineInDiffHunk(patch, lineNumber);
-    if (!inHunk) {
-      console.warn(styleText('yellow', 'Warning:'), `lastModifyDate line ${lineNumber} is not in a diff hunk in ${filePath}; skipping.`);
-      return null;
+  return fields.flatMap((field) => {
+    const lineIndex = fileLines.findIndex((line) => line.includes(`"${field}"`));
+    if (lineIndex === -1) {
+      console.warn(styleText('yellow', 'Warning:'), `No "${field}" line found in ${filePath}; skipping review comment.`);
+      return [];
     }
-  }
-  const updatedLine = oldLine.replace(/"lastModifyDate"\s*:\s*"[^"]*"/, () => `"lastModifyDate": "${today}"`);
 
-  const body = [
-    'Update `meta.lastModifyDate` to today.',
-    '',
-    '```suggestion',
-    updatedLine,
-    '```',
-  ].join('\n');
+    const oldLine = fileLines[lineIndex];
+    const currentDateMatch = new RegExp(String.raw`"${field}"\s*:\s*"([^"]*)"`).exec(oldLine);
+    if (currentDateMatch && currentDateMatch[1] === today) {
+      console.warn(styleText('yellow', 'Warning:'), `"${field}" is already today in ${filePath}; skipping review comment.`);
+      return [];
+    }
 
-  return {
-    path: filePath,
-    line: lineNumber,
-    side: 'RIGHT',
-    body,
-  };
+    const lineNumber = lineIndex + 1; // 1-indexed for the GitHub API
+    const isIncludedInDiffHunk = !isModifiedFile || patch === undefined || isLineInDiffHunk(patch, lineNumber);
+
+    const updatedLine = oldLine.replace(
+      new RegExp(String.raw`"${field}"\s*:\s*"[^"]*"`),
+      () => `"${field}": "${today}"`,
+    );
+
+    const body = [
+      `Update \`meta.${field}\` to today.`,
+      '',
+      '```suggestion',
+      updatedLine,
+      '```',
+    ].join('\n');
+
+    return [{
+      path: filePath,
+      line: lineNumber,
+      side: 'RIGHT',
+      body,
+      isIncludedInDiffHunk,
+    }];
+  });
 }
 
 /**
- * Build the "Added fixtures" section of the review summary. Added fixtures have
- * no existing `lastModifyDate` line to anchor an inline suggestion to, so they
- * are listed manually. The caller only invokes this when there is at least one
- * added fixture.
- * @param {[string, string][]} addedFixtures - Added fixtures as `[manufacturerKey, fixtureKey]` tuples.
+ * Build the review-body section listing modified fixtures whose `lastModifyDate`
+ * line is outside any diff hunk (so no inline suggestion is possible).
+ * @param {ReviewComment[]} comments - Comments that cannot be posted inline.
  * @returns {string} The markdown block.
  */
-function buildAddedFixturesSummary(addedFixtures) {
-  const sortedAdded = sortByManufacturerAndFixture(addedFixtures);
-
+function buildBodyOnlySummary(comments) {
   const lines = [
-    '**Added fixtures** (no suggestion possible — set `createDate`, `lastModifyDate`, and `authors` manually):',
-    ...sortedAdded.map(([manufacturerKey, fixtureKey]) => `- \`${manufacturerKey}/${fixtureKey}\``),
+    '**Modified fixtures** (suggestion not possible — update `lastModifyDate` manually):',
+    ...comments.map((comment) => `- \`${comment.path.replaceAll(/^fixtures\/|\.json$/g, '')}\``),
   ];
   return lines.join('\n');
 }
