@@ -39,7 +39,8 @@
         <tr
           v-for="switchChannel of cap.switchChannels"
           :key="`cap-${index}-switch-${switchChannel.key}`"
-          class="switch-to-channel">
+          class="switch-to-channel"
+          :data-capability-type="cap.model.type">
           <td colspan="4" />
           <td colspan="2">
             <span class="switching-channel-key">Channel&nbsp;{{ switchChannel.index + 1 }} →</span>&nbsp;{{ switchChannel.to }}
@@ -81,7 +82,7 @@ th {
 }
 
 .capability[data-capability-type="NoFunction"],
-.capability[data-capability-type="NoFunction"] + .switch-to-channel {
+.switch-to-channel[data-capability-type="NoFunction"] {
   opacity: 0.6;
 }
 
