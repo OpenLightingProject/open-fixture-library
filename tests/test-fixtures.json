@@ -309,6 +309,36 @@
   },
   {
     "man": "martin",
+    "key": "mac-aura",
+    "name": "MAC Aura",
+    "features": [
+      "capability-type-NoFunction",
+      "capability-type-ShutterStrobe",
+      "capability-type-Intensity",
+      "capability-type-ColorIntensity",
+      "capability-type-ColorPreset",
+      "capability-type-ColorTemperature",
+      "capability-type-Pan",
+      "capability-type-Tilt",
+      "capability-type-Effect",
+      "capability-type-EffectSpeed",
+      "capability-type-EffectDuration",
+      "capability-type-EffectParameter",
+      "capability-type-Zoom",
+      "capability-type-Maintenance",
+      "duplicate-channel-names",
+      "fine-channel-alias",
+      "floating-point-weight",
+      "multiple-categories",
+      "null-channels-0",
+      "null-channels-1",
+      "rdm",
+      "reused-channels",
+      "switching-channels"
+    ]
+  },
+  {
+    "man": "martin",
     "key": "mac-axiom-hybrid",
     "name": "MAC Axiom Hybrid",
     "features": [
@@ -576,27 +606,6 @@
       "wheel-slot-type-Open",
       "wheel-slot-type-Color",
       "wheel-slot-type-Gobo"
-    ]
-  },
-  {
-    "man": "stairville",
-    "key": "octagon-theater-20x6w-cw-ww-a",
-    "name": "Octagon Theater 20x6W CW/WW/A",
-    "features": [
-      "16bit-default-value",
-      "capability-type-NoFunction",
-      "capability-type-ShutterStrobe",
-      "capability-type-StrobeSpeed",
-      "capability-type-Intensity",
-      "capability-type-ColorIntensity",
-      "capability-type-Effect",
-      "capability-type-EffectSpeed",
-      "capability-type-Generic",
-      "duplicate-channel-names",
-      "floating-point-weight",
-      "null-channels-0",
-      "null-channels-1",
-      "switching-channels"
     ]
   },
   {
