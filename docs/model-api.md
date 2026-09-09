@@ -167,7 +167,7 @@ A capability represents a range of a channel.
         * [.helpWanted](#Capability+helpWanted) ⇒ <code>string</code> \| <code>null</code>
         * [.menuClick](#Capability+menuClick) ⇒ <code>&#x27;start&#x27;</code> \| <code>&#x27;center&#x27;</code> \| <code>&#x27;end&#x27;</code> \| <code>&#x27;hidden&#x27;</code>
         * [.menuClickDmxValue](#Capability+menuClickDmxValue) ⇒ <code>number</code>
-        * [.switchChannels](#Capability+switchChannels) ⇒ <code>Record.&lt;string, (string\|null)&gt;</code>
+        * [.switchChannels](#Capability+switchChannels) ⇒ <code>Record.&lt;string, string&gt;</code>
         * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
         * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
         * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
@@ -286,9 +286,9 @@ Create a new Capability instance.
 **Returns**: <code>number</code> - The DMX value to set when this capability is chosen in a lighting software's auto menu.  
 <a name="Capability+switchChannels"></a>
 
-### capability.switchChannels ⇒ <code>Record.&lt;string, (string\|null)&gt;</code>
+### capability.switchChannels ⇒ <code>Record.&lt;string, string&gt;</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>Record.&lt;string, (string\|null)&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
+**Returns**: <code>Record.&lt;string, string&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
 <a name="Capability+shutterEffect"></a>
 
 ### capability.shutterEffect ⇒ <code>string</code> \| <code>null</code>
@@ -2340,7 +2340,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
 
 * [SwitchingChannel](#SwitchingChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new SwitchingChannel(alias, triggerChannel)](#new_SwitchingChannel_new)
-    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
     * [.fixture](#SwitchingChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
     * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>Record.&lt;string, Array.&lt;Range&gt;&gt;</code>
@@ -2364,13 +2364,13 @@ Creates a new SwitchingChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | alias | <code>string</code> | The unique switching channel alias as defined in the trigger channel's `switchChannels` properties. |
-| triggerChannel | [<code>Readonly.&lt;AbstractChannel&gt;</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
+| triggerChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel whose DMX value this channel depends on. |
 
 <a name="SwitchingChannel+triggerChannel"></a>
 
-### switchingChannel.triggerChannel ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+### switchingChannel.triggerChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>AbstractChannel</code>](#AbstractChannel) - The channel whose DMX value this switching channel depends on.  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The channel whose DMX value this switching channel depends on.  
 <a name="SwitchingChannel+fixture"></a>
 
 ### switchingChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
