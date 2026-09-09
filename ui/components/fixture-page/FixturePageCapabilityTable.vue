@@ -166,7 +166,7 @@ export default {
             switchChannels.push({
               key: switchingChannelKey,
               index: switchingChannelIndex,
-              to: switchToChannelKey,
+              to: switchToChannelKey ?? 'No Function',
             });
           }
         }
