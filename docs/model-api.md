@@ -1695,7 +1695,7 @@ Dummy channel used to represent `null` in a mode's channel list.
 **Extends**: [<code>CoarseChannel</code>](#CoarseChannel)  
 
 * [NullChannel](#NullChannel) ⇐ [<code>CoarseChannel</code>](#CoarseChannel)
-    * [new NullChannel(fixture)](#new_NullChannel_new)
+    * [new NullChannel(fixture, number)](#new_NullChannel_new)
     * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>object</code>
     * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#CoarseChannel+name) ⇒ <code>string</code>
@@ -1731,14 +1731,15 @@ Dummy channel used to represent `null` in a mode's channel list.
 
 <a name="new_NullChannel_new"></a>
 
-### new NullChannel(fixture)
+### new NullChannel(fixture, number)
 Creates a new NullChannel instance by creating a Channel object with NoFunction channel data.
-Uses a unique uuid as channel key.
+Uses a numbered, unique key while always displaying the name "No Function".
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this channel is associated to. |
+| number | <code>number</code> | The channel's number, used to make the key unique. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
