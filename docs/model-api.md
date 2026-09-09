@@ -167,7 +167,7 @@ A capability represents a range of a channel.
         * [.helpWanted](#Capability+helpWanted) ⇒ <code>string</code> \| <code>null</code>
         * [.menuClick](#Capability+menuClick) ⇒ <code>&#x27;start&#x27;</code> \| <code>&#x27;center&#x27;</code> \| <code>&#x27;end&#x27;</code> \| <code>&#x27;hidden&#x27;</code>
         * [.menuClickDmxValue](#Capability+menuClickDmxValue) ⇒ <code>number</code>
-        * [.switchChannels](#Capability+switchChannels) ⇒ <code>Record.&lt;string, string&gt;</code>
+        * [.switchChannels](#Capability+switchChannels) ⇒ <code>Record.&lt;string, (string\|null)&gt;</code>
         * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
         * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
         * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
@@ -286,9 +286,9 @@ Create a new Capability instance.
 **Returns**: <code>number</code> - The DMX value to set when this capability is chosen in a lighting software's auto menu.  
 <a name="Capability+switchChannels"></a>
 
-### capability.switchChannels ⇒ <code>Record.&lt;string, string&gt;</code>
+### capability.switchChannels ⇒ <code>Record.&lt;string, (string\|null)&gt;</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>Record.&lt;string, string&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
+**Returns**: <code>Record.&lt;string, (string\|null)&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
 <a name="Capability+shutterEffect"></a>
 
 ### capability.shutterEffect ⇒ <code>string</code> \| <code>null</code>
@@ -1004,6 +1004,7 @@ A physical DMX device.
     * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.nullSwitchingChannelAliases](#Fixture+nullSwitchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
     * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
     * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.allChannels](#Fixture+allChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
@@ -1013,6 +1014,7 @@ A physical DMX device.
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;string&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getNullChannelForSwitchingAlias(alias)](#Fixture+getNullChannelForSwitchingAlias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
@@ -1220,6 +1222,11 @@ Template channels are used to automatically generate channels.
 ### fixture.nullChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>Array.&lt;string&gt;</code> - All null channels' keys.  
+<a name="Fixture+nullSwitchingChannelAliases"></a>
+
+### fixture.nullSwitchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Array.&lt;string&gt;</code> - Switching channel aliases that switch to null, ordered by appearance.  
 <a name="Fixture+nullChannels"></a>
 
 ### fixture.nullChannels ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
@@ -1281,6 +1288,16 @@ Searches the template channel with the given key. Fine and switching template ch
 | Param | Type | Description |
 | --- | --- | --- |
 | channelKey | <code>string</code> | The template channel's key |
+
+<a name="Fixture+getNullChannelForSwitchingAlias"></a>
+
+### fixture.getNullChannelForSwitchingAlias(alias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>NullChannel</code>](#NullChannel) \| <code>null</code> - The null channel for the alias, or null if it does not switch to null.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| alias | <code>string</code> | The switching channel alias. |
 
 <a name="Fixture+getChannelByKey"></a>
 
