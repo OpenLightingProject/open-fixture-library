@@ -1,6 +1,6 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
-import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
+import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 export const version = '0.4.0';
