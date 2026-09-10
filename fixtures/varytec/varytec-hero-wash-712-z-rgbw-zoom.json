@@ -1,0 +1,318 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Varytec Hero Wash 712 Z RGBW Zoom",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Stefan Krumm"],
+    "createDate": "2022-04-02",
+    "lastModifyDate": "2022-04-02",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-04-02",
+      "comment": "created by Q Light Controller Plus (version 4.12.5 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [215, 300, 145],
+    "weight": 4.2,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [6, 36]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "190deg"
+      }
+    },
+    "Pan/Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "comment": "Stroboscope, increasing speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colour Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Colour temperature (0 % to 100 %)"
+      }
+    },
+    "Colour Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "comment": "Red, White"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "comment": "Green, White"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "Blue, White"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "comment": "Red, Green"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "comment": "Green, Blue"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "comment": "Red, Blue"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "comment": "Red, Green, White"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorPreset",
+          "comment": "Green, Blue, White"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorPreset",
+          "comment": "Red, Blue, White"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorPreset",
+          "comment": "Red, Green, Blue, White"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ColorPreset",
+          "comment": "Colour sequence, increasing speed"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorPreset",
+          "comment": "Colour transition (fade), increasing speed"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Auto programmes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 1"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 2"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 3"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 4"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 8"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "Effect",
+          "effectName": "Sound control, from sound control off to high microphone sensitivity",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Effect",
+          "effectName": "Reset, if the value is transmitted for at least 3 seconds"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt speed",
+        "Dimmer",
+        "Strobe",
+        "Colour Macros",
+        "Zoom",
+        "Auto programmes"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Colour Temperature",
+        "Colour Macros",
+        "Zoom",
+        "Auto programmes"
+      ]
+    }
+  ]
+}
