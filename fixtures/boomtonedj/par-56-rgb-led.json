@@ -78,7 +78,8 @@
         {
           "dmxRange": [0, 100],
           "type": "Effect",
-          "effectPreset": "ColorJump"
+          "effectPreset": "ColorJump",
+          "helpWanted": "Do the auto effects start at DMX value zero? Can a static RGB color be shown on its own?"
         },
         {
           "dmxRange": [101, 150],
