@@ -37,7 +37,7 @@
             name-prefix="fixture" />
         </section>
 
-        <section class="fixture-modes">
+        <MasonryCardContainer>
           <EditorMode
             v-for="(mode, index) of fixture.modes"
             :key="mode.uuid"
@@ -48,12 +48,10 @@
             @open-channel-editor="openChannelEditor($event)"
             @remove="fixture.modes.splice(index, 1)" />
 
-          <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode()">
+          <a class="card add-mode-link" href="#add-mode" @click.prevent="addNewMode()">
             <h2>+ Add mode</h2>
           </a>
-
-          <div class="clearfix" />
-        </section>
+        </MasonryCardContainer>
 
         <section class="user card">
           <h2>Author data</h2>
@@ -144,6 +142,7 @@ import EditorPhysical from '../components/editor/EditorPhysical.vue';
 import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
+import MasonryCardContainer from '../components/MasonryCardContainer.vue';
 import PropertyInputText from '../components/PropertyInputText.vue';
 
 export default {
@@ -157,6 +156,7 @@ export default {
     EditorRestoreDialog,
     EditorSubmitDialog,
     LabeledInput,
+    MasonryCardContainer,
     PropertyInputText,
   },
   async asyncData({ $axios, error }) {

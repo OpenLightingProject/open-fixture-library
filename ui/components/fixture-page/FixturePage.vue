@@ -101,14 +101,13 @@
 
     </section>
 
-    <section class="fixture-modes">
+    <MasonryCardContainer>
       <FixturePageMode
         v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
         @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
-      <div class="clearfix" />
-    </section>
+    </MasonryCardContainer>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
       <h2><OflSvg name="alert" /> This fixture is big!</h2>
@@ -222,6 +221,7 @@ import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysic
 import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
+import MasonryCardContainer from '../../components/MasonryCardContainer.vue';
 
 const VIDEOS_TO_EMBED = 2;
 
@@ -235,6 +235,7 @@ export default {
     FixturePageWheel,
     HelpWantedMessage,
     LabeledValue,
+    MasonryCardContainer,
   },
   props: {
     fixture: instanceOfProp(Fixture).required,
