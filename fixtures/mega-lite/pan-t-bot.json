@@ -27,8 +27,12 @@
       "powerCON": "input and output"
     },
     "DMXconnector": "3-pin and 5-pin",
+    "lens": {
+      "degreesMinMax": [40, 89]
+    },
     "bulb": {
-      "type": "960 RGB 0.5 Watts / 300 White 1 Watt (6670K)",
+      "type": "960× RGB 0.5W + 300× White 1W LEDs",
+      "colorTemperature": 6670,
       "lumens": 28595
     }
   },
