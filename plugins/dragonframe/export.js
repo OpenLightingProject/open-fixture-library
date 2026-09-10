@@ -1,5 +1,6 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
+import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 // needed for export test
@@ -66,6 +67,7 @@ function getFixtureFile(fixture) {
   jsonData.oflURL = fixture.url;
 
   downgradePhysical(jsonData.physical);
+  replaceNullSwitchChannels(jsonData, fixture);
 
   for (const mode of jsonData.modes) {
     downgradePhysical(mode.physical);
