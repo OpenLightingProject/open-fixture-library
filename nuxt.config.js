@@ -5,9 +5,9 @@ import { fixtureFromRepository } from './lib/model.js';
 import plugins from './plugins/plugins.json';
 
 const ignoredSassDeprecations = ['legacy-js-api']; // can only be fixed with Nuxt.js v3
-const sassDeprecationIds = Object.values(sass.deprecations).flatMap((deprecation) =>
-  (deprecation.status === 'active' && !ignoredSassDeprecations.includes(deprecation.id) ? [deprecation.id] : []),
-);
+const sassDeprecationIds = Object.values(sass.deprecations)
+  .filter((deprecation) => deprecation.status === 'active' && !ignoredSassDeprecations.includes(deprecation.id))
+  .map((deprecation) => deprecation.id);
 
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
@@ -71,8 +71,14 @@ export default {
         },
       },
     },
-    transpile: ['a11y-dialog', 'embetty-vue', 'vue-ts-types'],
+    transpile: ['a11y-dialog', 'embetty-vue', 'uuid', 'vue-ts-types'],
+    babel: {
+      plugins: ['@babel/plugin-transform-logical-assignment-operators'],
+    },
     extend(config, context) {
+      // uuid v14 removed the `main` field and uses only `exports`, which webpack 4 doesn't support
+      config.resolve.alias.uuid = fileURLToPath(new URL('node_modules/uuid/dist/index.js', import.meta.url));
+
       // exclude /assets/icons from url-loader
       const iconsPath = fileURLToPath(new URL('ui/assets/icons/', import.meta.url));
       const urlLoader = config.module.rules.find((rule) => rule.test.toString().includes('|svg|'));
@@ -245,9 +251,10 @@ export default {
       },
       {
         rel: 'preload',
-        href: '/fonts/LatoLatin/LatoLatin-Regular.woff2',
+        href: '/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-Variable.woff2',
         as: 'font',
         type: 'font/woff2',
+        crossorigin: '',
       },
     ];
 

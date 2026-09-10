@@ -48,7 +48,7 @@
               target="_blank"
               rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
-              {{ link.name }}
+              <span class="link-name">{{ link.name }}</span>
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
@@ -161,7 +161,9 @@
   }
 
   & a {
-    display: inline-block;
+    display: inline-flex;
+    gap: 0.5ex;
+    align-items: center;
     margin-top: 4px;
   }
 }
@@ -171,10 +173,25 @@
   margin: 0;
   list-style: none;
 
+  a {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-decoration-line: none;
+  }
+
+  .link-name {
+    margin-right: 1ex;
+    margin-left: 0.5ex;
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+  }
+
   .hostname {
-    padding-left: 1ex;
+    min-width: 0;
     font-size: 0.9em;
     color: theme-color(text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .link-other {
@@ -282,7 +299,7 @@ export default {
 
         if (linkType === 'video') {
           linksOfType = linksOfType.filter(
-            (url) => !this.videos.some((video) => video.url === url),
+            (url) => this.videos.every((video) => video.url !== url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -366,7 +383,7 @@ const supportedVideoFormats = {
 };
 
 /**
- * @param {string} url The video URL.
+ * @param {string} url - The video URL.
  * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
@@ -391,7 +408,7 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {string} url The URL to extract the hostname from.
+ * @param {string} url - The URL to extract the hostname from.
  * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {

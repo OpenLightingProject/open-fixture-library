@@ -18,9 +18,15 @@ const deploymentConfig = {
   webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
-startServer()
-  .then(() => console.log('Exited'))
-  .catch((error) => console.error('Exited with error', error));
+(async () => {
+  try {
+    await startServer();
+    console.log('Exited');
+  }
+  catch (error) {
+    console.error('Exited with error', error);
+  }
+})();
 
 /**
  * @returns {Promise} Promise that resolves/rejects when the server process terminates.
@@ -60,9 +66,9 @@ function startServer() {
  * Handle a received request from the server and check if it is valid. If so,
  * call {@link redeploy} to update the corresponding app.
  *
- * @param {string} url The absolute path the request was received at.
- * @param {Buffer} body The raw body from GitHub.
- * @param {Record<string, string>} headers Headers of the request.
+ * @param {string} url - The absolute path the request was received at.
+ * @param {Buffer} body - The raw body from GitHub.
+ * @param {Record<string, string>} headers - Headers of the request.
  */
 function processRequest(url, body, headers) {
   console.log(`Received webhook request at ${url}`);
@@ -108,7 +114,7 @@ function processRequest(url, body, headers) {
 
 /**
  * Calls redeploy bash script and notify admin via email if script fails.
- * @param {object} webhookPayload The data delivered by GitHub via the webhook.
+ * @param {object} webhookPayload - The data delivered by GitHub via the webhook.
  */
 function redeploy(webhookPayload) {
   try {

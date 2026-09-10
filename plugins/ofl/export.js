@@ -6,11 +6,11 @@ import importJson from '../../lib/import-json.js';
 export const version = fixtureSchema.version;
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -38,7 +38,8 @@ export async function exportFixtures(fixtures, options) {
   const usedManufacturerData = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/manufacturers.json`,
   };
-  for (const manufacturer of Object.keys(manufacturers).toSorted()) {
+  const manufacturerKeys = Object.keys(manufacturers).toSorted((a, b) => a.localeCompare(b));
+  for (const manufacturer of manufacturerKeys) {
     if (usedManufacturers.has(manufacturer)) {
       usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }
@@ -53,8 +54,8 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Fixture} fixture The fixture to export.
- * @param {string} displayedPluginVersion The plugin version that should be displayed in the exported file.
+ * @param {Fixture} fixture - The fixture to export.
+ * @param {string} displayedPluginVersion - The plugin version that should be displayed in the exported file.
  * @returns {object} The generated fixture JSON file.
  */
 function getFixtureFile(fixture, displayedPluginVersion) {

@@ -215,9 +215,9 @@ Create a new Capability instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The capability data from the channel's JSON. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The capability data from the channel's JSON. |
 | resolution | [<code>Resolution</code>](#Resolution) | How fine this capability is declared. |
-| channel | [<code>CoarseChannel</code>](#CoarseChannel) | The channel instance this channel is associated to. |
+| channel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel instance this channel is associated to. |
 
 <a name="Capability+jsonObject"></a>
 
@@ -563,8 +563,8 @@ Create a new CoarseChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The channel's identifier, must be unique in the fixture. |
-| jsonObject | <code>object</code> | The channel data from the fixture's JSON. |
-| fixture | [<code>Fixture</code>](#Fixture) | The fixture instance this channel is associated to. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The channel data from the fixture's JSON. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture instance this channel is associated to. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -902,7 +902,7 @@ Creates a new FineChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The fine channel alias as defined in the coarse channel. |
-| coarseChannel | [<code>CoarseChannel</code>](#CoarseChannel) | The coarse (MSB) channel. |
+| coarseChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The coarse (MSB) channel. |
 
 <a name="FineChannel+coarseChannel"></a>
 
@@ -1004,6 +1004,7 @@ A physical DMX device.
     * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.nullSwitchingChannelAliases](#Fixture+nullSwitchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
     * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
     * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.allChannels](#Fixture+allChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
@@ -1013,6 +1014,7 @@ A physical DMX device.
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;string&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getNullChannelForSwitchingAlias(alias)](#Fixture+getNullChannelForSwitchingAlias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
@@ -1023,9 +1025,9 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| manufacturer | [<code>Manufacturer</code>](#Manufacturer) | A Manufacturer instance. |
+| manufacturer | [<code>Readonly.&lt;Manufacturer&gt;</code>](#Manufacturer) | A Manufacturer instance. |
 | key | <code>string</code> | The fixture's unique key. Equals to filename without '.json'. |
-| jsonObject | <code>object</code> | The fixture's parsed JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The fixture's parsed JSON data. |
 
 <a name="Fixture+manufacturer"></a>
 
@@ -1220,6 +1222,11 @@ Template channels are used to automatically generate channels.
 ### fixture.nullChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>Array.&lt;string&gt;</code> - All null channels' keys.  
+<a name="Fixture+nullSwitchingChannelAliases"></a>
+
+### fixture.nullSwitchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Array.&lt;string&gt;</code> - Switching channel aliases that switch to null, ordered by appearance.  
 <a name="Fixture+nullChannels"></a>
 
 ### fixture.nullChannels ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
@@ -1282,6 +1289,16 @@ Searches the template channel with the given key. Fine and switching template ch
 | --- | --- | --- |
 | channelKey | <code>string</code> | The template channel's key |
 
+<a name="Fixture+getNullChannelForSwitchingAlias"></a>
+
+### fixture.getNullChannelForSwitchingAlias(alias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>NullChannel</code>](#NullChannel) \| <code>null</code> - The null channel for the alias, or null if it does not switch to null.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| alias | <code>string</code> | The switching channel alias. |
+
 <a name="Fixture+getChannelByKey"></a>
 
 ### fixture.getChannelByKey(key) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
@@ -1316,7 +1333,7 @@ Creates a new Manufacturer instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
-| jsonObject | <code>object</code> | The manufacturer's JSON object. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The manufacturer's JSON object. |
 
 <a name="Manufacturer+name"></a>
 
@@ -1374,7 +1391,7 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The fixture's JSON object containing the matrix information. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The fixture's JSON object containing the matrix information. |
 
 <a name="Matrix+jsonObject"></a>
 
@@ -1522,7 +1539,7 @@ Creates a new Meta instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | A meta object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A meta object from the fixture's JSON data. |
 
 <a name="Meta+authors"></a>
 
@@ -1591,8 +1608,8 @@ Creates a new Mode instance
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The mode object from the fixture's JSON data. |
-| fixture | [<code>Fixture</code>](#Fixture) | The fixture this mode is associated to. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The mode object from the fixture's JSON data. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this mode is associated to. |
 
 <a name="Mode+jsonObject"></a>
 
@@ -1695,7 +1712,7 @@ Dummy channel used to represent `null` in a mode's channel list.
 **Extends**: [<code>CoarseChannel</code>](#CoarseChannel)  
 
 * [NullChannel](#NullChannel) ⇐ [<code>CoarseChannel</code>](#CoarseChannel)
-    * [new NullChannel(fixture)](#new_NullChannel_new)
+    * [new NullChannel(fixture, number)](#new_NullChannel_new)
     * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>object</code>
     * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#CoarseChannel+name) ⇒ <code>string</code>
@@ -1731,14 +1748,15 @@ Dummy channel used to represent `null` in a mode's channel list.
 
 <a name="new_NullChannel_new"></a>
 
-### new NullChannel(fixture)
+### new NullChannel(fixture, number)
 Creates a new NullChannel instance by creating a Channel object with NoFunction channel data.
-Uses a unique uuid as channel key.
+Uses a numbered, unique key while always displaying the name "No Function".
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| fixture | [<code>Fixture</code>](#Fixture) | The fixture this channel is associated to. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this channel is associated to. |
+| number | <code>number</code> | The channel's number, used to make the key unique. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -2003,7 +2021,7 @@ Creates a new Physical instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | A fixture's or mode's physical JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A fixture's or mode's physical JSON data. |
 
 <a name="Physical+jsonObject"></a>
 
@@ -2249,7 +2267,7 @@ Creates a new Resource instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | An embedded resource object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | An embedded resource object from the fixture's JSON data. |
 
 <a name="Resource+name"></a>
 
@@ -2322,7 +2340,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
 
 * [SwitchingChannel](#SwitchingChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new SwitchingChannel(alias, triggerChannel)](#new_SwitchingChannel_new)
-    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
     * [.fixture](#SwitchingChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
     * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>Record.&lt;string, Array.&lt;Range&gt;&gt;</code>
@@ -2346,13 +2364,13 @@ Creates a new SwitchingChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | alias | <code>string</code> | The unique switching channel alias as defined in the trigger channel's `switchChannels` properties. |
-| triggerChannel | [<code>AbstractChannel</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
+| triggerChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel whose DMX value this channel depends on. |
 
 <a name="SwitchingChannel+triggerChannel"></a>
 
-### switchingChannel.triggerChannel ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+### switchingChannel.triggerChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>AbstractChannel</code>](#AbstractChannel) - The channel whose DMX value this switching channel depends on.  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The channel whose DMX value this switching channel depends on.  
 <a name="SwitchingChannel+fixture"></a>
 
 ### switchingChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -2461,8 +2479,8 @@ Creates new TemplateChannel instance. Also clears cache by setting jsonObject.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The templateChannel's key with the required variables. |
-| jsonObject | <code>object</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
-| fixture | [<code>Fixture</code>](#Fixture) | The Fixture instance. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The Fixture instance. |
 
 <a name="TemplateChannel+allTemplateKeys"></a>
 
@@ -2533,7 +2551,7 @@ Creates a new Wheel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | wheelName | <code>string</code> | The wheel's name, like specified in the JSON. |
-| jsonObject | <code>object</code> | A wheel object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A wheel object from the fixture's JSON data. |
 
 <a name="Wheel+name"></a>
 
@@ -2615,10 +2633,10 @@ Creates a new WheelSlot instance.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| jsonObject | <code>object</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
-| wheel | [<code>Wheel</code>](#Wheel) |  | The wheel that this slot belongs to. |
-| floorSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
-| ceilSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
+| wheel | [<code>Readonly.&lt;Wheel&gt;</code>](#Wheel) |  | The wheel that this slot belongs to. |
+| floorSlot | [<code>Readonly.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
+| ceilSlot | [<code>Readonly.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
 
 <a name="WheelSlot+isSplitSlot"></a>
 

@@ -188,7 +188,7 @@ describe('random capabilities', () => {
 });
 
 /**
- * @param {number} resolution The resolution of the original ranges. Must be 2 or higher.
+ * @param {number} resolution - The resolution of the original ranges. Must be 2 or higher.
  * @returns {[number, number][]} List of adjacent [start, end] ranges, scaled down to the next-lower resolution.
  */
 function getScaledDownRanges(resolution) {
@@ -198,7 +198,7 @@ function getScaledDownRanges(resolution) {
 }
 
 /**
- * @param {number} resolution The resolution (1 for 8bit, 2 for 16bit, etc.).
+ * @param {number} resolution - The resolution (1 for 8bit, 2 for 16bit, etc.).
  * @returns {[number, number][]} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
  */
 function getRandomCapabilityRanges(resolution) {

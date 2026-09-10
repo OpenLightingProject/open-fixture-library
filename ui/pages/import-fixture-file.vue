@@ -105,8 +105,7 @@
 </template>
 
 <script>
-import scrollIntoView from 'scroll-into-view';
-import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
+import { getEmptyFormState, scrollToFirstInvalidField } from '../assets/scripts/editor-utilities.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -157,18 +156,7 @@ export default {
   methods: {
     async onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector('.vf-field-invalid');
-
-        scrollIntoView(field, {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: (target) => target === window,
-        }, () => field.focus());
-
+        scrollToFirstInvalidField();
         return;
       }
 
@@ -194,7 +182,7 @@ export default {
       }
 
       /**
-       * @param {File} file A File object from an HTML5 file input.
+       * @param {File} file - A File object from an HTML5 file input.
        * @returns {Promise<string>} Resolves with the file contents as dataURL string.
        */
       function getFileDataUrl(file) {

@@ -91,9 +91,9 @@ export const gdtfUnits = {
 };
 
 /**
- * @param {number} value1 The first physical value.
- * @param {number | null} value2 The second physical value, or null.
- * @param {(value: number) => boolean} predicate A function returning a boolean.
+ * @param {number} value1 - The first physical value.
+ * @param {number | null} value2 - The second physical value, or null.
+ * @param {(value: number) => boolean} predicate - A function returning a boolean.
  * @returns {boolean} True if all provided values fulfill the condition predicate.
  */
 function physicalValuesFulfillCondition(value1, value2, predicate) {
@@ -1195,7 +1195,7 @@ const gdtfAttributes = {
 };
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {object} gdtfCapability - The enhanced <ChannelSet> XML object.
  * @returns {'speed' | 'duration'} The OFL property to use for this capability.
  */
 function guessSpeedOrDuration(gdtfCapability) {

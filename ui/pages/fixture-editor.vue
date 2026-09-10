@@ -126,7 +126,6 @@ noscript.card {
 </style>
 
 <script>
-import scrollIntoView from 'scroll-into-view';
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
@@ -134,6 +133,7 @@ import {
   getEmptyFixture,
   getEmptyFormState,
   getEmptyMode,
+  scrollToFirstInvalidField,
 } from '../assets/scripts/editor-utilities.js';
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
@@ -163,6 +163,7 @@ export default {
     let manufacturers;
     try {
       manufacturers = await $axios.$get('/api/v1/manufacturers');
+      delete manufacturers.generic;
     }
     catch (requestError) {
       return error(requestError);
@@ -228,7 +229,7 @@ export default {
     },
 
     /**
-     * @param {string} channelUuid The channel's UUID.
+     * @param {string} channelUuid - The channel's UUID.
      * @returns {string} The channel's name.
      */
     getChannelName(channelUuid) {
@@ -249,7 +250,7 @@ export default {
     /**
      * Called from {@link EditorMode}.
      * @public
-     * @param {string} channelUuid The channel's UUID.
+     * @param {string} channelUuid - The channel's UUID.
      * @returns {boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) {
@@ -261,8 +262,8 @@ export default {
     },
 
     /**
-     * @param {string} channelUuid The channel's UUID.
-     * @param {string | null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     * @param {string} channelUuid - The channel's UUID.
+     * @param {string | null} [modeUuid] - The mode's UUID. If not supplied, remove channel everywhere.
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
@@ -295,7 +296,7 @@ export default {
 
     /**
      * Saves the entered user data to the browser's local storage if available.
-     * @param {'fixture' | 'channel'} objectName The object to save.
+     * @param {'fixture' | 'channel'} objectName - The object to save.
      */
     autoSave(objectName) {
       if (!this.readyToAutoSave) {
@@ -359,9 +360,9 @@ export default {
 
       try {
         const prefillObject = JSON.parse(this.$route.query.prefill);
-        for (const key of Object.keys(prefillObject)) {
+        for (const [key, value] of Object.entries(prefillObject)) {
           if (isPrefillable(prefillObject, key)) {
-            this.fixture[key] = prefillObject[key];
+            this.fixture[key] = value;
           }
         }
       }
@@ -387,18 +388,7 @@ export default {
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector('.vf-field-invalid');
-
-        scrollIntoView(field, {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: (target) => target === window,
-        }, () => field.focus());
-
+        scrollToFirstInvalidField();
         return;
       }
 
@@ -436,8 +426,8 @@ export default {
 };
 
 /**
- * @param {object} prefillObject The object supplied in the page query.
- * @param {string} key The key to check.
+ * @param {object} prefillObject - The object supplied in the page query.
+ * @param {string} key - The key to check.
  * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
  */
 function isPrefillable(prefillObject, key) {

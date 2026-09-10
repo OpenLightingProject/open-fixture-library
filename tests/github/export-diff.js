@@ -41,14 +41,9 @@ try {
   for (const task of tasks) {
     const taskResultLines = await performTask(task);
 
-    // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
-    // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if ([...lines, ...taskResultLines, tooLongMessage].join('\r\n').length > 260_000) {
-      lines.push(tooLongMessage);
+    if (pullRequest.appendOrTruncate(lines, taskResultLines, tooLongMessage)) {
       break;
     }
-
-    lines.push(...taskResultLines);
   }
 
   await pullRequest.updateComment({
@@ -63,7 +58,7 @@ catch (error) {
 }
 
 /**
- * @param {object} changedComponents The PR's changed OFL components.
+ * @param {object} changedComponents - The PR's changed OFL components.
  * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
  */
 async function getDiffTasks(changedComponents) {
@@ -92,18 +87,16 @@ async function getDiffTasks(changedComponents) {
     })
     .toSorted((a, b) => {
       const manufacturerFixtureCompare = a.manufacturerFixture.localeCompare(b.manufacturerFixture);
-      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
-      const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
-
       if (manufacturerFixtureCompare !== 0) {
         return manufacturerFixtureCompare;
       }
 
+      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
       if (currentPluginCompare !== 0) {
         return currentPluginCompare;
       }
 
-      return comparePluginCompare;
+      return a.comparePluginKey.localeCompare(b.comparePluginKey);
     });
 
   /**
@@ -185,7 +178,7 @@ async function getDiffTasks(changedComponents) {
 }
 
 /**
- * @param {Task} task The export diff task to fulfill.
+ * @param {Task} task - The export diff task to fulfill.
  * @returns {Promise<string[]>} An array of message lines.
  */
 async function performTask(task) {
@@ -224,13 +217,13 @@ async function performTask(task) {
       );
     }
 
-    for (const file of Object.keys(output.changedFiles)) {
+    for (const [file, value] of Object.entries(output.changedFiles)) {
       lines.push(
         '<details>',
         `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
         '',
         '```diff',
-        output.changedFiles[file],
+        value,
         '```',
         '</details>',
       );
@@ -253,7 +246,7 @@ async function performTask(task) {
  */
 
 /**
- * @param {object} diffOutput Output object from {@link diffPluginOutputs}.
+ * @param {object} diffOutput - Output object from {@link diffPluginOutputs}.
  * @returns {ChangeFlags} Object with change flags.
  */
 function getChangeFlags(diffOutput) {
@@ -270,7 +263,7 @@ function getChangeFlags(diffOutput) {
 }
 
 /**
- * @param {ChangeFlags} changeFlags Object with flags that tell what changed.
+ * @param {ChangeFlags} changeFlags - Object with flags that tell what changed.
  * @returns {string} String containing a GitHub emoji depicting the changes.
  */
 function getEmoji(changeFlags) {

@@ -8,7 +8,7 @@ let manufacturers;
 
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getSearchResults({ request }) {
@@ -27,12 +27,12 @@ export async function getSearchResults({ request }) {
 
 /**
  * Test if a fixture matches the search query.
- * @param {string} searchQuery Search query that the user entered.
- * @param {string} fixtureKey Key of the fixture to test.
+ * @param {string} searchQuery - Search query that the user entered.
+ * @param {string} fixtureKey - Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
-  const manufacturer = fixtureKey.split('/')[0];
+  const manufacturer = fixtureKey.split('/', 1)[0];
   const fixtureData = register.filesystem[fixtureKey];
 
   return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixtureData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
@@ -40,12 +40,12 @@ function queryMatch(searchQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the manufacturer query.
- * @param {string[]} manufacturersQuery Selected manufacturers.
- * @param {string} fixtureKey Key of the fixture to test.
+ * @param {string[]} manufacturersQuery - Selected manufacturers.
+ * @param {string} fixtureKey - Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
-  const manufacturer = fixtureKey.split('/')[0];
+  const manufacturer = fixtureKey.split('/', 1)[0];
 
   return (
     manufacturersQuery.length === 0
@@ -56,8 +56,8 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the category query.
- * @param {string[]} categoriesQuery Selected categories.
- * @param {string} fixtureKey Key of the fixture to test.
+ * @param {string[]} categoriesQuery - Selected categories.
+ * @param {string} fixtureKey - Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the category query, false otherwise.
  */
 function categoryMatch(categoriesQuery, fixtureKey) {

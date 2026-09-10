@@ -13,11 +13,11 @@ const registerPromise = importJson('../../fixtures/register.json', import.meta.u
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
- * @param {ServerResponse} response The Node ServerResponse object.
- * @param {string} pluginKey Key of the export plugin to use.
- * @param {Fixture[]} fixtures Array of fixtures to export.
- * @param {string} zipName Name of the zip file (if multiple files should be downloaded).
- * @param {string} errorDesc String describing what fixture(s) should have been downloaded.
+ * @param {ServerResponse} response - The Node ServerResponse object.
+ * @param {string} pluginKey - Key of the export plugin to use.
+ * @param {Fixture[]} fixtures - Array of fixtures to export.
+ * @param {string} zipName - Name of the zip file (if multiple files should be downloaded).
+ * @param {string} errorDesc - String describing what fixture(s) should have been downloaded.
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
@@ -78,7 +78,7 @@ router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, ne
     Object.keys(register.filesystem).filter(
       (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
     ).map((fixture) => {
-      const [manufacturer, key] = fixture.split('/');
+      const [manufacturer, key] = fixture.split('/', 2);
       return fixtureFromRepository(manufacturer, key);
     }),
   );
@@ -100,7 +100,7 @@ router.post(/^\/download-editor\.(?<format>[a-z0-9_.-]+)$/, async (request, resp
 
   const outObject = request.body;
   const fixtures = await Promise.all(Object.entries(outObject.fixtures).map(async ([key, jsonObject]) => {
-    const [manufacturerKey, fixtureKey] = key.split('/');
+    const [manufacturerKey, fixtureKey] = key.split('/', 2);
 
     const manufacturer = new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey]);
     await embedResourcesIntoFixtureJson(jsonObject);

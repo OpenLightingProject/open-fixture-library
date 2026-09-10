@@ -160,7 +160,7 @@ export default {
   computed: {
     fixtureResults() {
       return this.results.map((key) => {
-        const manufacturer = key.split('/')[0];
+        const manufacturer = key.split('/', 1)[0];
 
         return {
           key,
@@ -195,7 +195,7 @@ export default {
 };
 
 /**
- * @param {object} query The raw query returned by Vue Router
+ * @param {object} query - The raw query returned by Vue Router
  * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {

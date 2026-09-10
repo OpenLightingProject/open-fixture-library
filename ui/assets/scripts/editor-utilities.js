@@ -1,3 +1,4 @@
+import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
 export const constants = {
@@ -12,6 +13,43 @@ export const constants = {
  */
 export function getEmptyFormState() {
   return {};
+}
+
+/**
+ * Opens all `<details>` ancestors of currently invalid fields in the given container (so they
+ * become visible), then scrolls to and focuses the first invalid field.
+ * @param {Document|Element} [container] - The DOM element to search within; defaults to the whole page.
+ */
+export function scrollToFirstInvalidField(container = document) {
+  const invalidFields = [...container.querySelectorAll('.vf-invalid')];
+
+  if (invalidFields.length === 0) {
+    return;
+  }
+
+  for (let index = 0; index < invalidFields.length; index++) {
+    const enclosingDetails = invalidFields[index].closest('details:not([open])');
+
+    if (enclosingDetails) {
+      enclosingDetails.open = true;
+
+      // current field could be enclosed another time, so repeat
+      index--;
+    }
+  }
+
+  const firstField = invalidFields[0];
+  const firstFieldInput = firstField.parentElement.querySelector('input, select, textarea') ?? firstField;
+  const scrollContainer = firstField.closest('.dialog') ?? window;
+  scrollIntoView(firstField, {
+    time: 300,
+    align: {
+      top: 0,
+      left: 0,
+      topOffset: 100,
+    },
+    isScrollable: (target) => target === scrollContainer,
+  }, () => firstFieldInput.focus());
 }
 
 /**
@@ -45,7 +83,7 @@ export function getEmptyFixture() {
 }
 
 /**
- * @param {string} linkType The type of the new link.
+ * @param {string} linkType - The type of the new link.
  * @returns {object} An empty fixture link object.
  */
 export function getEmptyLink(linkType = 'manual') {
@@ -124,8 +162,8 @@ export function getEmptyChannel() {
 }
 
 /**
- * @param {string} coarseChannelId The UUID of the coarse channel.
- * @param {number} resolution The resolution of the newly created fine channel.
+ * @param {string} coarseChannelId - The UUID of the coarse channel.
+ * @param {number} resolution - The resolution of the newly created fine channel.
  * @returns {object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
@@ -161,7 +199,7 @@ export function getEmptyWheelSlot() {
 }
 
 /**
- * @param {object} channel The channel object.
+ * @param {object} channel - The channel object.
  * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
@@ -189,7 +227,7 @@ export function isChannelChanged(channel) {
 }
 
 /**
- * @param {object} capability The capability object.
+ * @param {object} capability - The capability object.
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(capability) {
@@ -205,7 +243,7 @@ export function isCapabilityChanged(capability) {
 }
 
 /**
- * @param {string | null} hexString A string of comma-separated hex values, or null.
+ * @param {string | null} hexString - A string of comma-separated hex values, or null.
  * @returns {string[] | null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
@@ -225,7 +263,7 @@ export function colorsHexStringToArray(hexString) {
 }
 
 /**
- * @param {object} channel The channel object that shall be sanitized.
+ * @param {object} channel - The channel object that shall be sanitized.
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {

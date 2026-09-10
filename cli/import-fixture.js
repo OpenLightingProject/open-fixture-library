@@ -36,10 +36,10 @@ try {
     errors: {},
   };
 
-  for (const key of Object.keys(result.fixtures)) {
-    const [manufacturerKey, fixtureKey] = key.split('/');
+  for (const [key, fixtureJson] of Object.entries(result.fixtures)) {
+    const [manufacturerKey, fixtureKey] = key.split('/', 2);
 
-    const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
+    const checkResult = await checkFixture(manufacturerKey, fixtureKey, fixtureJson);
 
     result.warnings[key].push(...checkResult.warnings);
     result.errors[key] = checkResult.errors;

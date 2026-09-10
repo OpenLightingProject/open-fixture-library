@@ -65,8 +65,8 @@ try {
 
   // each file
   for (const result of results) {
-    const failed = result.errors.length > 0;
-    totalFails += failed ? 1 : 0;
+    const isFailed = result.errors.length > 0;
+    totalFails += isFailed ? 1 : 0;
     totalWarnings += result.warnings.length;
 
     printFileResult(result);
@@ -105,11 +105,11 @@ async function runTests() {
     for (const manufacturerKey of manufacturerKeys) {
       const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
 
-      for (const file of await readdir(manufacturersDirectoryUrl)) {
-        if (path.extname(file) === '.json') {
-          const fixtureKey = path.basename(file, '.json');
-          promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
-        }
+      const manufacturerDirectoryFiles = await readdir(manufacturersDirectoryUrl);
+      const manufacturerFiles = manufacturerDirectoryFiles.filter((file) => path.extname(file) === '.json');
+      for (const file of manufacturerFiles) {
+        const fixtureKey = path.basename(file, '.json');
+        promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
       }
     }
     promises.push(checkManufacturers());
@@ -138,8 +138,8 @@ async function runTests() {
 
 /**
  * Checks (asynchronously) the given fixture.
- * @param {string} manufacturerKey The manufacturer key.
- * @param {string} fixtureKey The fixture key.
+ * @param {string} manufacturerKey - The manufacturer key.
+ * @param {string} fixtureKey - The fixture key.
  * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkFixtureFile(manufacturerKey, fixtureKey) {
@@ -198,7 +198,7 @@ async function checkManufacturers() {
       if ('rdmId' in manufacturerProperties) {
         checkUniqueness(
           uniqueValues.manRdmIds,
-          `${manufacturerProperties.rdmId}`,
+          String(manufacturerProperties.rdmId),
           uniquenessTestResults,
           `Manufacturer RDM ID '${manufacturerProperties.rdmId}' is not unique.`,
         );
@@ -214,13 +214,13 @@ async function checkManufacturers() {
 }
 
 /**
- * @param {object} result The result object for a single file.
+ * @param {object} result - The result object for a single file.
  */
 function printFileResult(result) {
-  const failed = result.errors.length > 0;
+  const isFailed = result.errors.length > 0;
 
   console.log(
-    failed ? styleText('red', '[FAIL]') : styleText('green', '[PASS]'),
+    isFailed ? styleText('red', '[FAIL]') : styleText('green', '[PASS]'),
     result.name,
   );
 
