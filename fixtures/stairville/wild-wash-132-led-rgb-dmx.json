@@ -2,11 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Wild Wash 132 LED RGB DMX",
   "shortName": "WildWash132LEDRGB",
-  "categories": ["Strobe", "Color Changer", "Blinder", "Dimmer"],
+  "comment": "Item number 399664",
+  "categories": ["Color Changer", "Strobe", "Blinder"],
   "meta": {
     "authors": ["Max Jöhnk"],
     "createDate": "2024-10-14",
-    "lastModifyDate": "2024-11-23"
+    "lastModifyDate": "2026-09-10"
   },
   "links": {
     "manual": [
@@ -25,7 +26,7 @@
     "power": 30,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "132× 0.2W RGB LED"
     },
     "lens": {
       "degreesMinMax": [75, 75]
@@ -153,8 +154,8 @@
         },
         {
           "dmxRange": [126, 128],
-          "type": "Effect",
-          "effectPreset": "ColorJump"
+          "type": "EffectSpeed",
+          "speed": "stop"
         },
         {
           "dmxRange": [129, 192],
@@ -216,7 +217,7 @@
         }
       ]
     },
-    "Strobe Flash Duration": {
+    "Flash Duration": {
       "defaultValue": 0,
       "capability": {
         "type": "StrobeDuration",
@@ -336,7 +337,7 @@
       "channels": [
         "Dimmer",
         "Shutter / Strobe",
-        "Strobe Flash Duration"
+        "Flash Duration"
       ]
     },
     {
