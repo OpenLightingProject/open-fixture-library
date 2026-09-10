@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Luminex LumiNet Monitor",
+  "description": [
+    "<p><em>LumiNet Monitor</em> is Luminex's free lighting control software, which includes a fixture",
+    "library / editor. Its fixture format is a set of XML files (validated against a published XSD",
+    "schema) that describe each DMX channel by a fixed <code>Name</code> (e.g. <code>Pan</code>,",
+    "<code>Gobo1</code>, <code>Cyan</code>) and, optionally, per-range details.</p>",
+
+    "<p>Luminex also maintains an <strong>open source</strong> library of these fixture files:",
+    "<a href=\"https://github.com/LuminexLCE/lamplibrary\">LuminexLCE/lamplibrary</a>.</p>"
+  ],
+  "links": {
+    "Website": "http://www.luminex.be/support/product-support/",
+    "Fixture library download": "https://github.com/LuminexLCE/lamplibrary",
+    "Fixture format documentation": "http://www.luminex.be/wp-content/uploads/doccenter/lu_01_00035_man.pdf"
+  },
+  "fixtureUsage": [
+    "<p>Each fixture in the library is a folder containing a <code>main.xml</code> (fixture name and",
+    "type) and one channel definition XML file per mode. Select the channel definition XML file",
+    "(<em>not</em> <code>main.xml</code>) to import a single mode.</p>"
+  ]
+}
