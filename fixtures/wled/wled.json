@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "WLED",
-  "shortName": "wled",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["mxklb"],
@@ -10,12 +9,13 @@
   },
   "comment": "LED Stripe and Matrix Controller Firmware. All effects are LED stripe effects, except: # are LED matrix only; + is matrix & stripe; * are audio loudness reactive; ** are audio frequency reactive; ~ don't use palette, just colors",
   "links": {
-    "manual": [
-      "https://kno.wled.ge/interfaces/e1.31-dmx",
+    "productPage": [
+      "https://kno.wled.ge/interfaces/e1.31-dmx/",
       "https://kno.wled.ge/features/effects"
     ],
-    "productPage": ["https://kno.wled.ge"],
-    "video": ["https://www.youtube.com/watch?v=J2tsm4LEXWs&si=4gwgfMUSoDQ5OsEF"]
+    "video": [
+      "https://www.youtube.com/watch?v=J2tsm4LEXWs&si=4gwgfMUSoDQ5OsEF"
+    ]
   },
   "physical": {
     "bulb": {
