@@ -313,7 +313,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
-        "comment": "See gel overview"
+        "comment": "See gel overview",
+        "helpWanted": "The gels could be included in this fixture definition as a switching channel."
       }
     },
     "Base CCT": {
@@ -389,7 +390,8 @@
       "fineChannelAliases": ["Parameter 1 fine"],
       "capability": {
         "type": "Generic",
-        "comment": "See effects overview"
+        "comment": "See effects overview",
+        "helpWanted": "The effect parameters could be included in this fixture definition as switching channels."
       }
     },
     "Parameter 2": {
