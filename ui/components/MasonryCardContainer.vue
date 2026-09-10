@@ -25,6 +25,7 @@
 
   .masonry-card-container::after {
     clear: both;
+    display: block;
     content: "";
   }
 
