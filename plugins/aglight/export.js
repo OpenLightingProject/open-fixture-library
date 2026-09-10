@@ -11,7 +11,7 @@ import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replac
 const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
 const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectName', 'effectPreset', 'shutterEffect', 'wheel', 'isShaking', 'fogType', 'menuClick']);
 
-export const version = '1.0.1';
+export const version = '1.0.2';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
