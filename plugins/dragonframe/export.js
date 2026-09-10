@@ -1,7 +1,7 @@
-import { downgradeShutterEffect } from '../../lib/downgrade-burst-shutter-effect.js';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
-import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
+import { downgradeShutterEffect } from '../../lib/plugin-downgrade-helpers/downgrade-burst-shutter-effect.js';
+import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 // needed for export test
