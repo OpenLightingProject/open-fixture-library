@@ -1,3 +1,4 @@
+import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
 export const constants = {
@@ -15,48 +16,83 @@ export function getEmptyFormState() {
 }
 
 /**
+ * Opens all `<details>` ancestors of currently invalid fields in the given container (so they
+ * become visible), then scrolls to and focuses the first invalid field.
+ * @param {Document|Element} [container] - The DOM element to search within; defaults to the whole page.
+ */
+export function scrollToFirstInvalidField(container = document) {
+  const invalidFields = [...container.querySelectorAll('.vf-invalid')];
+
+  if (invalidFields.length === 0) {
+    return;
+  }
+
+  for (let index = 0; index < invalidFields.length; index++) {
+    const enclosingDetails = invalidFields[index].closest('details:not([open])');
+
+    if (enclosingDetails) {
+      enclosingDetails.open = true;
+
+      // current field could be enclosed another time, so repeat
+      index--;
+    }
+  }
+
+  const firstField = invalidFields[0];
+  const firstFieldInput = firstField.parentElement.querySelector('input, select, textarea') ?? firstField;
+  const scrollContainer = firstField.closest('.dialog') ?? window;
+  scrollIntoView(firstField, {
+    time: 300,
+    align: {
+      top: 0,
+      left: 0,
+      topOffset: 100,
+    },
+    isScrollable: (target) => target === scrollContainer,
+  }, () => firstFieldInput.focus());
+}
+
+/**
  * @returns {object} An empty fixture object.
  */
 export function getEmptyFixture() {
   return {
-    key: `[new]`,
+    key: '[new]',
     useExistingManufacturer: true,
-    manufacturerKey: ``,
-    newManufacturerName: ``,
-    newManufacturerWebsite: ``,
-    newManufacturerComment: ``,
+    manufacturerKey: '',
+    newManufacturerName: '',
+    newManufacturerWebsite: '',
+    newManufacturerComment: '',
     newManufacturerRdmId: null,
-    name: ``,
-    shortName: ``,
+    name: '',
+    shortName: '',
     categories: [],
-    comment: ``,
+    comment: '',
     links: [
-      getEmptyLink(`manual`),
-      getEmptyLink(`productPage`),
-      getEmptyLink(`video`),
+      getEmptyLink('manual'),
+      getEmptyLink('productPage'),
+      getEmptyLink('video'),
     ],
     rdmModelId: null,
-    rdmSoftwareVersion: ``,
+    rdmSoftwareVersion: '',
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
-    metaAuthor: ``,
+    metaAuthor: '',
     availableChannels: {},
   };
 }
 
-
 /**
- * @param {string} linkType The type of the new link.
+ * @param {string} linkType - The type of the new link.
  * @returns {object} An empty fixture link object.
  */
-export function getEmptyLink(linkType = `manual`) {
+export function getEmptyLink(linkType = 'manual') {
   return {
     uuid: uuidv4(),
     type: linkType,
-    url: ``,
+    url: '',
   };
 }
-
 
 /**
  * @returns {object} An empty fixture's or mode's physical object.
@@ -66,20 +102,19 @@ export function getEmptyPhysical() {
     dimensions: null,
     weight: null,
     power: null,
-    DMXconnector: ``,
-    DMXconnectorNew: ``,
+    DMXconnector: '',
+    DMXconnectorNew: '',
     bulb: {
-      type: ``,
+      type: '',
       colorTemperature: null,
       lumens: null,
     },
     lens: {
-      name: ``,
+      name: '',
       degreesMinMax: null,
     },
   };
 }
-
 
 /**
  * @returns {object} An empty mode object.
@@ -87,8 +122,8 @@ export function getEmptyPhysical() {
 export function getEmptyMode() {
   return {
     uuid: uuidv4(),
-    name: ``,
-    shortName: ``,
+    name: '',
+    shortName: '',
     rdmPersonalityIndex: null,
     enablePhysicalOverride: false,
     physical: getEmptyPhysical(),
@@ -96,24 +131,23 @@ export function getEmptyMode() {
   };
 }
 
-
 /**
  * @returns {object} An empty channel object.
  */
 export function getEmptyChannel() {
   return {
     uuid: uuidv4(),
-    editMode: ``,
-    modeId: ``,
-    name: ``,
+    editMode: '',
+    modeId: '',
+    name: '',
     resolution: constants.RESOLUTION_8BIT,
     dmxValueResolution: constants.RESOLUTION_8BIT,
-    defaultValue: ``,
-    highlightValue: ``,
+    defaultValue: '',
+    highlightValue: '',
     constant: null,
-    precedence: ``,
+    precedence: '',
     wheel: {
-      direction: ``,
+      direction: '',
       slots: [],
     },
     wizard: {
@@ -127,10 +161,9 @@ export function getEmptyChannel() {
   };
 }
 
-
 /**
- * @param {string} coarseChannelId The UUID of the coarse channel.
- * @param {number} resolution The resolution of the newly created fine channel.
+ * @param {string} coarseChannelId - The UUID of the coarse channel.
+ * @param {number} resolution - The resolution of the newly created fine channel.
  * @returns {object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
@@ -141,7 +174,6 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
   };
 }
 
-
 /**
  * @returns {object} An empty capability object.
  */
@@ -150,11 +182,10 @@ export function getEmptyCapability() {
     uuid: uuidv4(),
     open: true,
     dmxRange: null,
-    type: ``,
+    type: '',
     typeData: {},
   };
 }
-
 
 /**
  * @returns {object} An empty wheel slot object.
@@ -162,43 +193,41 @@ export function getEmptyCapability() {
 export function getEmptyWheelSlot() {
   return {
     uuid: uuidv4(),
-    type: ``,
+    type: '',
     typeData: {},
   };
 }
 
-
 /**
- * @param {object} channel The channel object.
+ * @param {object} channel - The channel object.
  * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
-  return Object.keys(channel).some(property => {
-    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(property)) {
+  return Object.keys(channel).some((property) => {
+    if (['uuid', 'editMode', 'modeId', 'wizard'].includes(property)) {
       return false;
     }
 
-    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(property)) {
+    if (['defaultValue', 'highlightValue', 'invert', 'constant', 'crossfade'].includes(property)) {
       return channel[property] !== null;
     }
 
-    if (property === `resolution` || property === `dmxValueResolution`) {
+    if (property === 'resolution' || property === 'dmxValueResolution') {
       return channel[property] !== constants.RESOLUTION_8BIT;
     }
 
-    if (property === `capabilities`) {
+    if (property === 'capabilities') {
       return channel.capabilities.some(
-        capability => isCapabilityChanged(capability),
+        (capability) => isCapabilityChanged(capability),
       );
     }
 
-    return channel[property] !== ``;
+    return channel[property] !== '';
   });
 }
 
-
 /**
- * @param {object} capability The capability object.
+ * @param {object} capability - The capability object.
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(capability) {
@@ -206,25 +235,24 @@ export function isCapabilityChanged(capability) {
     return true;
   }
 
-  if (capability.type !== ``) {
+  if (capability.type !== '') {
     return true;
   }
 
-  return Object.values(capability.typeData).some(value => value !== `` && value !== null);
+  return Object.values(capability.typeData).some((value) => value !== '' && value !== null);
 }
 
-
 /**
- * @param {string | null} hexString A string of comma-separated hex values, or null.
+ * @param {string | null} hexString - A string of comma-separated hex values, or null.
  * @returns {string[] | null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
-  if (typeof hexString !== `string`) {
+  if (typeof hexString !== 'string') {
     return null;
   }
 
-  const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
-    hex => hex.match(/^#[\da-f]{6}$/),
+  const hexArray = hexString.split(/\s*,\s*/).map((hex) => hex.trim().toLowerCase()).filter(
+    (hex) => hex.match(/^#[\da-f]{6}$/),
   );
 
   if (hexArray.length === 0) {
@@ -234,9 +262,8 @@ export function colorsHexStringToArray(hexString) {
   return hexArray;
 }
 
-
 /**
- * @param {object} channel The channel object that shall be sanitized.
+ * @param {object} channel - The channel object that shall be sanitized.
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {

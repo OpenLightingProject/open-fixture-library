@@ -249,7 +249,7 @@ export default {
   },
   computed: {
     wheelDirectionFactor() {
-      return this.wheel.direction === `CCW` ? -1 : 1;
+      return this.wheel.direction === 'CCW' ? -1 : 1;
     },
     slotRadius() {
       const usableRadius = this.wheelRadius - this.wheelPadding;
@@ -276,7 +276,7 @@ export default {
       return 2 * Math.PI * Math.abs(this.slotRotateRadius);
     },
     slotSvgFragments() {
-      return this.wheel.slots.map(slot => {
+      return this.wheel.slots.map((slot) => {
         if (slot.colors !== null) {
           return getColorCircleSvgFragment(slot.colors, this.slotRadius);
         }
@@ -294,7 +294,7 @@ export default {
     },
     slotTitles() {
       return this.wheel.slots.map((slot, index) => {
-        if (slot.type === `AnimationGoboStart`) {
+        if (slot.type === 'AnimationGoboStart') {
           const splitSlot = this.wheel.getSlot(index + 1.5);
           return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
         }

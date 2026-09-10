@@ -9,17 +9,17 @@
 </template>
 
 <script>
-const storageKey = `theme`;
+const storageKey = 'theme';
 
-let cookieName = `theme`;
+let cookieName = 'theme';
 const cookieOptions = {
-  path: `/`,
+  path: '/',
   maxAge: 60 * 60 * 24 * 7 * 4, // 4 weeks
   sameSite: true,
 };
 
-if (process.env.NODE_ENV === `production`) {
-  cookieName = `__Host-theme`;
+if (process.env.NODE_ENV === 'production') {
+  cookieName = '__Host-theme';
   cookieOptions.secure = true;
 }
 
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       cssVariablesSupported: false,
-      theme: `light`,
+      theme: 'light',
       prefersDarkMediaQuery: null,
     };
   },
@@ -38,16 +38,16 @@ export default {
       },
       meta: [
         {
-          hid: `theme-color`,
-          name: `theme-color`,
-          content: this.theme === `dark` ? `#383838` : `#fafafa`, // SCSS: theme-color(header-background)
+          hid: 'theme-color',
+          name: 'theme-color',
+          content: this.theme === 'dark' ? '#383838' : '#fafafa', // SCSS: theme-color(header-background)
         },
       ],
     };
   },
   computed: {
     otherTheme() {
-      return this.theme === `light` ? `dark` : `light`;
+      return this.theme === 'light' ? 'dark' : 'light';
     },
   },
   watch: {
@@ -60,21 +60,21 @@ export default {
     },
   },
   mounted() {
-    this.cssVariablesSupported = window.CSS && CSS.supports(`color`, `var(--primary)`);
+    this.cssVariablesSupported = window.CSS && CSS.supports('color', 'var(--primary)');
 
     if (!this.cssVariablesSupported) {
       return;
     }
 
-    window.addEventListener(`storage`, this.onStorageChange);
+    window.addEventListener('storage', this.onStorageChange);
 
-    this.prefersDarkMediaQuery = window.matchMedia(`(prefers-color-scheme: dark)`);
+    this.prefersDarkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.prefersDarkMediaQuery.addListener(this.onMediaQueryMatchChange);
 
     this.onMediaQueryMatchChange();
   },
   beforeDestroy() {
-    window.removeEventListener(`storage`, this.onStorageChange);
+    window.removeEventListener('storage', this.onStorageChange);
 
     if (this.prefersDarkMediaQuery) {
       this.prefersDarkMediaQuery.removeListener(this.onMediaQueryMatchChange);
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     getDefaultPreferredTheme() {
-      return this.prefersDarkMediaQuery.matches ? `dark` : `light`;
+      return this.prefersDarkMediaQuery.matches ? 'dark' : 'light';
     },
     onMediaQueryMatchChange() {
       const savedTheme = localStorage.getItem(storageKey);
