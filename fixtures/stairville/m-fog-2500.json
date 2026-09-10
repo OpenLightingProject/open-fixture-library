@@ -1,28 +1,28 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "M-Fog 1000",
-  "shortName": "M-1000",
+  "name": "M-Fog 2500",
+  "shortName": "M-2500",
   "categories": ["Hazer"],
   "meta": {
-    "authors": ["Brioche"],
+    "authors": ["Flo Edelmann"],
     "createDate": "2026-09-10",
     "lastModifyDate": "2026-09-10"
   },
   "links": {
     "productPage": [
-      "https://www.thomannmusic.com/stairville_m_fog_1000_dmx_fog_machine.htm"
+      "https://www.thomannmusic.com/stairville_m_fog_2500_dmx_fog_machine.htm"
     ],
     "manual": [
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_355877_355990_355991_v6_en_online.pdf"
     ],
     "video": [
-      "https://video1.thomann.de/vidiot/02591c1c/video_i4309p10_yd59vqpa.mp4"
+      "https://video1.thomann.de/vidiot/02591c1c/video_i4308p10_yd59vqpa.mp4"
     ]
   },
   "physical": {
-    "dimensions": [234, 227, 414],
-    "weight": 6,
-    "power": 1000,
+    "dimensions": [300, 262, 595],
+    "weight": 13,
+    "power": 2500,
     "DMXconnector": "3-pin"
   },
   "availableChannels": {
@@ -38,7 +38,7 @@
           "dmxRange": [11, 255],
           "type": "FogOutput",
           "fogOutputStart": "0m^3/min",
-          "fogOutputEnd": "240m^3/min"
+          "fogOutputEnd": "470m^3/min"
         }
       ]
     },
