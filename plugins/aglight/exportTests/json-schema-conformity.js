@@ -71,7 +71,7 @@ async function getSchemas() {
   fixtureSchema.properties.oflURL = true;
 
   // AGLight resolves template channels and marks their source pixel
-  fixtureSchema.properties.templateChannels = undefined;
+  delete fixtureSchema.properties.templateChannels;
   fixtureSchema.dependencies = undefined;
   channelSchema.properties.pixelKey = true;
 
