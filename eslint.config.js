@@ -363,6 +363,7 @@ export default defineConfig([
     ignores: [
       'package-lock.json',
       'fixtures/register.json',
+      'fixtures/search-attributes.json',
       'server/ofl-secrets.json',
       '.vscode/',
       '.nuxt/',
