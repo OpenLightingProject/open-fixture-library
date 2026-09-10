@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FL-C400D",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["MSP78", "Dyami Caliri"],
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.swit.cc/uploads/2025/03/121411183967.pdf"
+    ],
+    "productPage": [
+      "https://www.swit.cc/index.php?c=article&id=2875"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 175, 175],
+    "weight": 6.85,
+    "power": 400,
+    "lens": {
+      "degreesMinMax": [15, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "shortName": "normal",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
