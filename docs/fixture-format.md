@@ -194,7 +194,7 @@ A *switching channel* is a channel whose functionality depends on the value of a
 
 E.g. in a given mode, the first channel could be used to select auto-programs and channel 2 could be either "Microphone Sensitivity" (if channel 1 is set to *Sound control*) or "Program Speed" (if channel 1 is set to anything else).
 
-To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
+To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. A value of `null` can be used to switch to an unused channel. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
 
 See the [Futurelight PRO Slim PAR-7 HCL fixture](../fixtures/futurelight/pro-slim-par-7-hcl.json) for a simple application example.
 
@@ -299,7 +299,7 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
     {
       "insert": "matrixChannels", // static value for matrix channels
       "repeatFor": "eachPixelXYZ", // see below
-      "channelOrder": "perPixel", // or "perChannel"
+      "channelOrder": "perPixel", // see below
       "templateChannels": [
         "Red $pixelKey",
         "Green $pixelKey",
@@ -319,6 +319,24 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
 * `"eachPixelGroup"`: Gets computed into an array of all pixel group keys, ordered by appearance in the JSON file.
   - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
 
+`channelOrder` defines how the channels are ordered. Possible values are:
+
+* `"perPixel"`: For the above [matrix structure](#matrix-structure) example, this results in
+  ```json
+  [
+    "Red Inner ring", "Green Inner ring", "Blue Inner ring",
+    "Red Middle ring", "Green Middle ring", "Blue Middle ring",
+    "Red Outer ring", "Green Outer ring", "Blue Outer ring"
+  ]
+  ```
+* `"perChannel"`: For the above [matrix structure](#matrix-structure) example, this results in
+  ```json
+  [
+    "Red Inner ring", "Red Middle ring", "Red Outer ring",
+    "Green Inner ring", "Green Middle ring", "Green Outer ring",
+    "Blue Inner ring", "Blue Middle ring", "Blue Outer ring"
+  ]
+  ```
 
 ### Wheels
 

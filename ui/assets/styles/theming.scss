@@ -23,11 +23,15 @@
   }
 
   $themed-color: map.get($default-theme, $color-name);
-  $alpha: math.div($opacity, 100%) * color.alpha($themed-color);
+  $alpha: math.div($opacity, 100%) * color.channel($themed-color, "alpha");
 
   @return #{"rgba(var(--theme-#{$color-name}, #{color-to-rgb-string($themed-color)}), #{$alpha})"};
 }
 
 @function color-to-rgb-string($hexColor) {
-  @return "#{color.red($hexColor)}, #{color.green($hexColor)}, #{color.blue($hexColor)}";
+  $red: color.channel($hexColor, "red");
+  $green: color.channel($hexColor, "green");
+  $blue: color.channel($hexColor, "blue");
+
+  @return "#{$red}, #{$green}, #{$blue}";
 }

@@ -19,7 +19,9 @@
     "productPage": [
       "https://www.thomann.de/gb/varytec_giga_bar_frost_pix_8_rgb.htm"
     ],
-    "video": ["https://www.youtube.com/watch?v=PixpS09Mc-I"]
+    "video": [
+      "https://www.youtube.com/watch?v=PixpS09Mc-I"
+    ]
   },
   "physical": {
     "dimensions": [1020, 80, 65],
@@ -76,7 +78,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Multi-function": {
@@ -87,7 +89,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Closed",
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -96,7 +98,7 @@
           "comment": "Constant uni-colored pattern in red",
           "colors": ["#ff2600"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -106,7 +108,7 @@
           "helpWanted": "Are these patterns uni-colored (yellow in this case) or multi-colored?",
           "colors": ["#ff2600", "#00f900"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -115,7 +117,7 @@
           "comment": "Constant uni-colored pattern in green",
           "colors": ["#00f900"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -124,7 +126,7 @@
           "comment": "Constant uni-colored pattern in blue and green",
           "colors": ["#0433ff", "#00f900"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -133,7 +135,7 @@
           "comment": "Constant uni-colored pattern in blue",
           "colors": ["#0433ff"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -142,7 +144,7 @@
           "comment": "Constant uni-colored pattern in blue and red",
           "colors": ["#0433ff", "#ff2600"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -151,7 +153,7 @@
           "comment": "Constant uni-colored pattern in red, green and blue",
           "colors": ["#ffffff"],
           "switchChannels": {
-            "Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": null
           }
         },
         {
@@ -188,12 +190,6 @@
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high"
-      }
-    },
-    "No function": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "NoFunction"
       }
     }
   },

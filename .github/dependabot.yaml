@@ -8,11 +8,25 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
+    groups:
+      eslint:
+        patterns:
+          - "eslint"
+          - "@eslint/js"
     ignore:
       - dependency-name: "eslint-plugin-jsdoc"
         update-types:
           - "version-update:semver-patch"
           - "version-update:semver-minor"
+      - dependency-name: "nuxt"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@nuxtjs/*"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "sass-loader"
+        update-types:
+          - "version-update:semver-major"
 
   - package-ecosystem: "github-actions"
     directory: "/"
