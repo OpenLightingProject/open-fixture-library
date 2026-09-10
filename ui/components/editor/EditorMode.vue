@@ -1,5 +1,5 @@
 <template>
-  <section :data-mode-uuid="mode.uuid" class="fixture-mode card">
+  <section :data-mode-uuid="mode.uuid" class="editor-mode card">
 
     <a
       v-if="fixture.modes.length > 1"
@@ -133,7 +133,7 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-mode ::v-deep section {
+.editor-mode ::v-deep section {
   flex-direction: column;
 
   & > .label {
@@ -242,7 +242,7 @@ export default {
             }
 
             const channelUuid = dragElement.getAttribute('data-channel-uuid');
-            const modeUuid = to.el.closest('.fixture-mode').getAttribute('data-mode-uuid');
+            const modeUuid = to.el.closest('.editor-mode').getAttribute('data-mode-uuid');
             const targetMode = this.fixture.modes.find((mode) => mode.uuid === modeUuid);
 
             if (targetMode.channels.includes(channelUuid)) {
