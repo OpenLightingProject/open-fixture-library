@@ -71,12 +71,12 @@
       "capabilities": [
         {
           "type": "Generic",
-          "dmxRange": [0, 31906],
+          "dmxRange": [0, 0],
           "comment": "Neutral"
         },
         {
           "type": "Generic",
-          "dmxRange": [31907, 65535],
+          "dmxRange": [1, 65535],
           "comment": "-0.027 to 0.027"
         }
       ]
@@ -95,12 +95,12 @@
       "capabilities": [
         {
           "type": "Generic",
-          "dmxRange": [0, 21844],
+          "dmxRange": [0, 1],
           "comment": "Default 100%"
         },
         {
           "type": "Generic",
-          "dmxRange": [21845, 65535],
+          "dmxRange": [1, 65535],
           "comment": "0% to 100%"
         }
       ]
@@ -111,12 +111,12 @@
       "capabilities": [
         {
           "type": "Generic",
-          "dmxRange": [0, 21844],
+          "dmxRange": [0, 1],
           "comment": "Default 50%"
         },
         {
           "type": "Generic",
-          "dmxRange": [21845, 65535],
+          "dmxRange": [1, 65535],
           "comment": "0% to 100%"
         }
       ]
