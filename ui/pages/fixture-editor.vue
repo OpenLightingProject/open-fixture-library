@@ -163,6 +163,7 @@ export default {
     let manufacturers;
     try {
       manufacturers = await $axios.$get('/api/v1/manufacturers');
+      delete manufacturers.generic;
     }
     catch (requestError) {
       return error(requestError);
