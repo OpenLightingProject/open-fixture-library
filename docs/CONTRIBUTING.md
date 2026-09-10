@@ -29,8 +29,8 @@ As soon as an issue is assigned to somebody, it means that this person is respon
   >     - link to a manual PDF containing all DMX modes
   >     - link to a product page on the official manufacturer website
   >     - link to a YouTube or Vimeo video that showcases or explains the fixture
-  > 2. Checking whether all DMX modes from the manual are included in the fixture definition.  
-  > 3. Checking whether all DMX modes' channels from the manual are included in the fixture definition.  
+  > 2. Checking whether all DMX modes from the manual are included in the fixture definition.
+  > 3. Checking whether all DMX modes' channels from the manual are included in the fixture definition.
   > 4. Checking whether all DMX channels' capabilities from the manual are included in the fixture definition.
 
   If you could go through some [PRs with the `new-fixture` label](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture) and comment on them with the results of those checks, that would help immensely. Thank you already :)
@@ -38,9 +38,21 @@ As soon as an issue is assigned to somebody, it means that this person is respon
   For the fixtures passing these tests, these are some common tasks that often need to be fixed:
 
   - replace capability type `StrobeSpeed` with `ShutterStrobe` where that one fits better
-  - replace capability type `Generic` with `Maintenance` where that one fits better
+  - replace capability type `Generic` with a more specific type, see [capability types](./capability-types.md)
+  - add `"soundControlled": true` to sound-triggered `Effect` capabilities
   - rename modes that have no name in the manual to the usual `5-channel`/`5ch` format
   - link to an English manual / product page (if one exists) instead of one in another language
+  - use `fineChannelAliases` in the coarse channel instead of separate fine channel entries
+  - use `templateChannels` with a `matrix` for fixtures with per-pixel color or intensity channels
+  - use `WheelSlot` capabilities with `.5` slot numbers for split (half-and-half) color/gobo wheel slots
+  - add `colors` arrays to `ColorPreset` capabilities (use `colorsStart`/`colorsEnd` for `ColorPreset` capabilities that transition between two colors)
+  - avoid all-uppercase channel names / capability comments
+  - use `effectPreset`s instead of a free-form `effectName` where applicable
+  - remove redundant `comment` values that duplicate information already expressed by other properties
+  - add `physical` data from the manual or product page
+  - add a `hold` property to timed `Maintenance` capabilities (e.g. lamp on, motor reset)
+
+  See [common-mistakes.md](common-mistakes.md) for concrete before/after examples of these issues.
 
   Pull requests with these fixes against the original fixture pull requests (see e.g. [#2023](https://github.com/OpenLightingProject/open-fixture-library/pull/2023)) are highly appreciated!
 
@@ -75,10 +87,8 @@ We always aim to have clear, readable code. So please try to respect these princ
 
 * Document every new function with [JSDoc](https://jsdoc.app/about-getting-started.html)
 * Use [self-describing variable names](https://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
-* Prefer code readability over [micro-optimisation](https://softwareengineering.stackexchange.com/questions/99445/is-micro-optimisation-important-when-coding)
-* Use JavaScript features that improve code readability, for example:
-  - Prefer [Array iteration methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Instance_methods) (like [`map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`filter(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`some(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some), [`every(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), [`find(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)) with arrow functions over loops
-  - Always use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (backticks instead of single or double quotes: ``const str = `My name is ${name}.`;``) as [they are strictly better strings](https://ponyfoo.com/articles/template-literals-strictly-better-strings) and make string concatenation (`const str = 'My name is ' + name + '.';`) more readable
+* Prefer code readability over [micro-optimization](https://sourav-k-paul.medium.com/micro-optimization-when-the-small-stuff-matters-and-when-it-doesnt-ab5c98e5acf7)
+* Prefer [Array iteration methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Instance_methods) (like [`map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`filter(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`some(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some), [`every(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), [`find(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)) with arrow functions over loops
 * Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
 
 We automatically check code style using [ESLint](https://eslint.org/). Maybe your IDE supports ESLint highlighting (there's a good [extension for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)) – this helps spotting bad code style as quickly as possible.

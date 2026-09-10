@@ -194,6 +194,7 @@ const unicornRules = {
   'unicorn/prefer-number-coercion': 'off', // `Number.parseInt(x, 10)` is intentional and not equivalent to `Number(x)`
   'unicorn/prefer-private-class-fields': 'off', // `#private` members are not documented by jsdoc2md in `build:model-docs`
   'unicorn/prefer-uint8array-base64': 'off', // `Uint8Array.fromBase64()`/`toBase64()` are not available in the supported Node.js/browser versions yet
+  'unicorn/single-line-block-comment-style': 'off', // too verbose for type annotations and import declarations
   'unicorn/text-encoding-identifier-case': ['error', { withDash: true }],
 };
 

@@ -1,9 +1,9 @@
 <template>
   <table class="capabilities-table">
     <colgroup>
-      <col style="width: 5.8ex;">
+      <col style="width: 6ch;">
       <col style="width: 1ex;">
-      <col style="width: 5.8ex;">
+      <col style="width: 6ch;">
       <col style="width: 1.8em;">
       <col>
       <col style="width: 1.8em;">
@@ -39,7 +39,8 @@
         <tr
           v-for="switchChannel of cap.switchChannels"
           :key="`cap-${index}-switch-${switchChannel.key}`"
-          class="switch-to-channel">
+          class="switch-to-channel"
+          :data-capability-type="cap.model.type">
           <td colspan="4" />
           <td colspan="2">
             <span class="switching-channel-key">Channel&nbsp;{{ switchChannel.index + 1 }} →</span>&nbsp;{{ switchChannel.to }}
@@ -81,8 +82,15 @@ th {
 }
 
 .capability[data-capability-type="NoFunction"],
-.capability[data-capability-type="NoFunction"] + .switch-to-channel {
+.switch-to-channel[data-capability-type="NoFunction"] {
   opacity: 0.6;
+}
+
+.capability-range0,
+.capability-range-separator,
+.capability-range1 {
+  font-size: 0.9em;
+  line-height: 2rem; // keep the baseline aligned with the capability name
 }
 
 .capability-range0 {
@@ -159,7 +167,7 @@ export default {
             switchChannels.push({
               key: switchingChannelKey,
               index: switchingChannelIndex,
-              to: switchToChannelKey,
+              to: switchToChannelKey ?? 'No Function',
             });
           }
         }

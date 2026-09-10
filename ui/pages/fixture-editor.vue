@@ -126,7 +126,6 @@ noscript.card {
 </style>
 
 <script>
-import scrollIntoView from 'scroll-into-view';
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
@@ -134,6 +133,7 @@ import {
   getEmptyFixture,
   getEmptyFormState,
   getEmptyMode,
+  scrollToFirstInvalidField,
 } from '../assets/scripts/editor-utilities.js';
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
@@ -387,18 +387,7 @@ export default {
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector('.vf-field-invalid');
-
-        scrollIntoView(field, {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: (target) => target === window,
-        }, () => field.focus());
-
+        scrollToFirstInvalidField();
         return;
       }
 

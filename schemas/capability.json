@@ -27,6 +27,10 @@
       "additionalProperties": {
         "oneOf": [
           {
+            "$comment": "null channel",
+            "type": "null"
+          },
+          {
             "$comment": "channel key or channel alias key",
             "$ref": "definitions.json#/noVariablesString"
           },

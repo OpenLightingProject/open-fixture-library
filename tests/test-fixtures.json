@@ -48,7 +48,7 @@
       "fine-matrix-channel",
       "matrix-channel-used-directly",
       "multiple-categories",
-      "null-channels",
+      "null-channels-0",
       "reused-channels"
     ]
   },
@@ -308,26 +308,33 @@
     ]
   },
   {
-    "man": "lixada",
-    "key": "mini-moving-head-rgbw",
-    "name": "Mini Moving Head RGBW",
+    "man": "martin",
+    "key": "mac-aura",
+    "name": "MAC Aura",
     "features": [
       "capability-type-NoFunction",
       "capability-type-ShutterStrobe",
       "capability-type-Intensity",
       "capability-type-ColorIntensity",
       "capability-type-ColorPreset",
+      "capability-type-ColorTemperature",
       "capability-type-Pan",
       "capability-type-Tilt",
-      "capability-type-PanTiltSpeed",
       "capability-type-Effect",
       "capability-type-EffectSpeed",
+      "capability-type-EffectDuration",
+      "capability-type-EffectParameter",
+      "capability-type-Zoom",
       "capability-type-Maintenance",
+      "duplicate-channel-names",
       "fine-channel-alias",
       "floating-point-weight",
       "multiple-categories",
-      "redirect-reason-SameAsDifferentBrand",
-      "reused-channels"
+      "null-channels-0",
+      "null-channels-1",
+      "rdm",
+      "reused-channels",
+      "switching-channels"
     ]
   },
   {
@@ -593,6 +600,34 @@
       "floating-point-weight",
       "multiple-categories",
       "redirect-reason-FixtureRenamed",
+      "reused-channels",
+      "wheel-type-Color",
+      "wheel-type-Gobo",
+      "wheel-slot-type-Open",
+      "wheel-slot-type-Color",
+      "wheel-slot-type-Gobo"
+    ]
+  },
+  {
+    "man": "uking",
+    "key": "mini-gobo-moving-head-light",
+    "name": "Mini Gobo Moving Head Light",
+    "features": [
+      "capability-type-NoFunction",
+      "capability-type-ShutterStrobe",
+      "capability-type-Intensity",
+      "capability-type-Pan",
+      "capability-type-Tilt",
+      "capability-type-PanTiltSpeed",
+      "capability-type-WheelSlot",
+      "capability-type-WheelShake",
+      "capability-type-WheelRotation",
+      "capability-type-Effect",
+      "capability-type-Maintenance",
+      "fine-channel-alias",
+      "floating-point-weight",
+      "multiple-categories",
+      "redirect-reason-SameAsDifferentBrand",
       "reused-channels",
       "wheel-type-Color",
       "wheel-type-Gobo",
