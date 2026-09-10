@@ -1,0 +1,167 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS 100 WW",
+  "shortName": "CLTS100WW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2024-10-09",
+    "lastModifyDate": "2024-10-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/-2008593426"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/19235/ts-100-ww"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 370, 310],
+    "weight": 7.4,
+    "power": 120,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3100,
+      "lumens": 4100
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [14, 38]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "S-shaped Dimmer Curve"
+        }
+      ]
+    },
+    "Device Settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Response LED"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Response Halogen"
+        },
+        {
+          "dmxRange": [128, 154],
+          "type": "Maintenance",
+          "parameter": 650,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [155, 181],
+          "type": "Maintenance",
+          "parameter": 1530,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [182, 208],
+          "type": "Maintenance",
+          "parameter": 3600,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [209, 235],
+          "type": "Maintenance",
+          "parameter": 25,
+          "hold": "3s",
+          "comment": "PWM Frequency"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe",
+        "Dimmer Curve",
+        "Device Settings"
+      ]
+    }
+  ]
+}

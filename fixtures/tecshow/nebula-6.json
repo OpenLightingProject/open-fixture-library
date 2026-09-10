@@ -6,20 +6,17 @@
   "meta": {
     "authors": ["Esteban Zallocco"],
     "createDate": "2022-01-03",
-    "lastModifyDate": "2022-01-03"
+    "lastModifyDate": "2026-01-30"
   },
   "links": {
     "manual": [
-      "http://amproweb.com/_admin/files/02b55bNebula%206%20B.pdf"
+      "https://web.archive.org/web/20190919043507/http://amproweb.com/_admin/files/02b55bNebula%206%20B.pdf"
     ],
     "productPage": [
-      "http://tecshow.amproweb.com/es/nebula6"
+      "https://amproweb.com/producto/nebula-6/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=IQQqpnKiArE"
-    ],
-    "other": [
-      "http://amproweb.com/_admin/files/6a5bd4Nebula6.zip"
     ]
   },
   "physical": {
@@ -84,13 +81,15 @@
         },
         {
           "dmxRange": [8, 99],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "100Hz"
         },
         {
           "dmxRange": [100, 149],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "100Hz",
           "speedEnd": "0Hz",
           "helpWanted": "A strobe speed of 100Hz is highly unlikely. Is there really an increasing strobe speed between DMX values 8 and 99 and then a decreasing strobe speed between DMX values 100 and 149?"
@@ -108,9 +107,9 @@
         },
         {
           "dmxRange": [246, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "200Hz",
-          "speedEnd": "200Hz",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "200Hz",
           "helpWanted": "What can be selected here? A strobe speed of 200Hz is highly unlikely. Is the fastest strobe speed at DMX values 246 to 255 the same as between DMX values 99 and 100?"
         }
       ]

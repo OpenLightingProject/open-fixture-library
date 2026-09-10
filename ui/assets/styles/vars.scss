@@ -1,7 +1,6 @@
 @use "sass:color";
 
-$font-stack-text: "LatoLatin", "Source Sans Pro", "Helvetica", "Arial", sans-serif;
-$font-stack-code: "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+$font-stack: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Helvetica", "Arial", sans-serif;
 
 // 2014 Material Design color palettes
 // from https://material.io/design/color/#tools-for-picking-colors
@@ -97,7 +96,8 @@ $themes: (
     icon-inactive: $icon-inactive-dark,
 
     link: $blue-700,
-    link-hover: $blue-300,
+    link-visited: $blue-800,
+    link-active: $orange-500,
 
     form-field-background: #ffffff,
     form-field-border: #cfd6e6,
@@ -146,7 +146,8 @@ $themes: (
     icon-inactive: $icon-inactive-light,
 
     link: $blue-300,
-    link-hover: $blue-700,
+    link-visited: $blue-100,
+    link-active: $orange-800,
 
     form-field-background: #000000,
     form-field-border: #555555,

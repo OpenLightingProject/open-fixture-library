@@ -24,13 +24,16 @@ export default {
     additionHint: stringProp().optional,
     value: anyProp().required,
   },
+  emits: {
+    input: (value) => true,
+  },
   computed: {
     localValue: {
       get() {
         return this.value;
       },
       set(newValue) {
-        this.$emit(`input`, newValue);
+        this.$emit('input', newValue);
       },
     },
   },
@@ -42,4 +45,3 @@ export default {
   },
 };
 </script>
-

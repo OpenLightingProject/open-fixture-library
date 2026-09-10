@@ -4,9 +4,9 @@
   "shortName": "SCX500",
   "categories": ["Scanner", "Color Changer"],
   "meta": {
-    "authors": ["Michael Stiller", "Ryan Goodwin"],
+    "authors": ["Michael Stiller", "Ryan Goodwin", "Ken Harris"],
     "createDate": "2019-01-14",
-    "lastModifyDate": "2023-07-12"
+    "lastModifyDate": "2023-10-17"
   },
   "links": {
     "manual": [
@@ -44,59 +44,73 @@
         },
         {
           "type": "Color",
-          "name": "Blue B04"
+          "name": "Blue B04",
+          "colors": ["#0000ff"]
         },
         {
           "type": "Color",
-          "name": "Orange B09"
+          "name": "Orange B09",
+          "colors": ["#ff8000"]
         },
         {
           "type": "Color",
-          "name": "Red B01"
+          "name": "Red B01",
+          "colors": ["#ff0000"]
         },
         {
           "type": "Color",
-          "name": "Light Yellow B03"
+          "name": "Light Yellow B03",
+          "colors": ["#ffff99"]
         },
         {
           "type": "Color",
-          "name": "Pink B12"
+          "name": "Pink B12",
+          "colors": ["#ffc0cb"]
         },
         {
           "type": "Color",
-          "name": "Medium Blue B13"
+          "name": "Medium Blue B13",
+          "colors": ["#0000cd"]
         },
         {
           "type": "Color",
-          "name": "Light Red B19"
+          "name": "Light Red B19",
+          "colors": ["#ff7f7f"]
         },
         {
           "type": "Color",
-          "name": "Light Green B08"
+          "name": "Light Green B08",
+          "colors": ["#90ee90"]
         },
         {
           "type": "Color",
-          "name": "Blue B05"
+          "name": "Blue B05",
+          "colors": ["#0000ff"]
         },
         {
           "type": "Color",
-          "name": "Pink B11"
+          "name": "Pink B11",
+          "colors": ["#ffc0cb"]
         },
         {
           "type": "Color",
-          "name": "Light Blue B06"
+          "name": "Light Blue B06",
+          "colors": ["#add8e6"]
         },
         {
           "type": "Color",
-          "name": "Yellow B02"
+          "name": "Yellow B02",
+          "colors": ["#ffff00"]
         },
         {
           "type": "Color",
-          "name": "Primary Red B14"
+          "name": "Primary Red B14",
+          "colors": ["#ff0000"]
         },
         {
           "type": "Color",
-          "name": "Green B07"
+          "name": "Green B07",
+          "colors": ["#00ff00"]
         },
         {
           "type": "Color",

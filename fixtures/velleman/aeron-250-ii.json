@@ -10,7 +10,7 @@
   "comment": "VDP250SC8M2",
   "links": {
     "manual": [
-      "https://www.velleman.eu/downloads/4/vdp250sc8m2gbnlfresd.pdf"
+      "https://cdn.velleman.eu/downloads/4/vdp250sc8m2gbnlfresd.pdf"
     ],
     "productPage": [
       "https://www.velleman.eu/products/view/?id=371050"
@@ -276,7 +276,8 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
       }
     },
     "Tilt": {
@@ -284,7 +285,8 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
       }
     },
     "Prism Rotation": {

@@ -20,13 +20,16 @@ export default {
     name: stringProp().required,
     label: stringProp().required,
   },
+  emits: {
+    input: (value) => true,
+  },
   computed: {
     localValue: {
       get() {
         return this.value;
       },
       set(newValue) {
-        this.$emit(`input`, newValue ? true : null);
+        this.$emit('input', newValue ? true : null);
       },
     },
   },
