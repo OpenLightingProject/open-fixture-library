@@ -14,7 +14,7 @@ const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectNam
 // see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
 const colorNameListPromise = importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
 
-export const version = '1.0.0';
+export const version = '1.0.1';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.

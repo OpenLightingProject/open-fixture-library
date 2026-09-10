@@ -7,7 +7,7 @@ import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js
 // needed for export test
 export const supportedOflVersion = '12.2.1';
 
-export const version = '1.0.0';
+export const version = '1.0.1';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
