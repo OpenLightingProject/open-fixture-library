@@ -24,6 +24,7 @@
     ]
   },
   "physical": {
+    "dimensions": [222, 222, 295],
     "DMXconnector": "3-pin",
     "power": 12,
     "weight": 1.7,
@@ -31,7 +32,7 @@
       "degreesMinMax": [25, 25]
     },
     "bulb": {
-      "type": "LED"
+      "type": "153× 5mm LEDs (51× red, 51× green, 51× blue)"
     }
   },
   "availableChannels": {
