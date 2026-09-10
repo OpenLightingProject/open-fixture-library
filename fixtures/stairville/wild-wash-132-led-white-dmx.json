@@ -1,49 +1,44 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Wild Wash 648 LED White DMX",
-  "shortName": "WildWash648LEDWhite",
-  "comment": "Item number 399662 (not sold anymore)",
+  "name": "Wild Wash 132 LED White DMX",
+  "shortName": "WildWash132LEDWhite",
+  "comment": "Item number 399663",
   "categories": ["Strobe", "Blinder"],
   "meta": {
-    "authors": ["Paul Rogalski"],
-    "createDate": "2024-10-09",
+    "authors": ["Flo Edelmann"],
+    "createDate": "2026-09-10",
     "lastModifyDate": "2026-09-10"
   },
   "links": {
     "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/399664_c_399664_399663_399658_399662_v2_en_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_399664_399663_399658_399662_v3_en_online.pdf"
     ],
     "productPage": [
       "https://www.thomann.de/intl/stairville_wild_wash_132_led_rgb_dmx.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i6100p10_yd59vqpa.mp4"
     ]
   },
   "physical": {
-    "dimensions": [335, 182, 93],
-    "weight": 3.25,
-    "power": 130,
+    "dimensions": [310, 70, 70],
+    "weight": 1.05,
+    "power": 30,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "648× 0.2W cold white LED",
+      "type": "132× 0.2W cold white LED",
       "colorTemperature": 6000
     },
     "lens": {
       "degreesMinMax": [75, 75]
     }
   },
-  "matrix": {
-    "pixelCount": [4, 1, 1],
-    "pixelGroups": {
-      "Master": "all"
-    }
-  },
-  "templateChannels": {
-    "Dimmer $pixelKey": {
+  "availableChannels": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
-    }
-  },
-  "availableChannels": {
+    },
     "Strobe": {
       "defaultValue": 0,
       "capabilities": [
@@ -162,39 +157,6 @@
         }
       ]
     },
-    "Strobe Programs": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "NoFunction",
-          "helpWanted": "This range is missing in the manual. Has it actually no function?"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "Effect",
-          "effectName": "Automatic strobe programs with alternating segments"
-        }
-      ]
-    },
-    "Strobe Program Speed": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction",
-          "helpWanted": "This range is missing in the manual. Has it actually no function?"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
     "Sound Sensitivity": {
       "capabilities": [
         {
@@ -223,7 +185,7 @@
       "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Shutter / Strobe"
       ]
     },
@@ -231,7 +193,7 @@
       "name": "3-channel 1",
       "shortName": "3ch1",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Shutter / Strobe",
         "Flash Duration"
       ]
@@ -240,33 +202,9 @@
       "name": "3-channel 2",
       "shortName": "3ch2",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Shutter / Strobe Advanced",
         "Sound Sensitivity"
-      ]
-    },
-    {
-      "name": "5-channel",
-      "shortName": "5ch",
-      "channels": [
-        "Dimmer Master",
-        "Shutter / Strobe Advanced",
-        "Strobe Programs",
-        "Strobe Program Speed",
-        "Sound Sensitivity"
-      ]
-    },
-    {
-      "name": "7-channel",
-      "shortName": "7ch",
-      "channels": [
-        "Dimmer Master",
-        "Shutter / Strobe",
-        "Flash Duration",
-        "Dimmer 1",
-        "Dimmer 2",
-        "Dimmer 3",
-        "Dimmer 4"
       ]
     }
   ]

@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Wild Wash 132 LED RGB DMX",
-  "shortName": "WildWash132LEDRGB",
-  "comment": "Item number 399664",
+  "name": "Wild Wash 648 LED RGB DMX",
+  "shortName": "WildWash648LEDRGB",
+  "comment": "Item number 399658",
   "categories": ["Color Changer", "Strobe", "Blinder"],
   "meta": {
-    "authors": ["Max Jöhnk"],
-    "createDate": "2024-10-14",
+    "authors": ["Paul Rogalski"],
+    "createDate": "2026-09-10",
     "lastModifyDate": "2026-09-10"
   },
   "links": {
@@ -14,19 +14,19 @@
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_399664_399663_399658_399662_v3_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/intl/stairville_wild_wash_132_led_rgb_dmx.htm"
+      "https://www.thomann.de/intl/stairville_wild_wash_648_led_rgb_dmx.htm"
     ],
     "video": [
-      "https://video2.thomann.de/vidiot/02591c1c/video_i6100p10_yd59vqpa.mp4"
+      "https://video1.thomann.de/vidiot/02591c1c/video_i6100p8_yd59vq0a.mp4"
     ]
   },
   "physical": {
-    "dimensions": [310, 70, 70],
-    "weight": 1.05,
-    "power": 30,
+    "dimensions": [335, 182, 93],
+    "weight": 3.25,
+    "power": 130,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "132× 0.2W RGB LED"
+      "type": "648× 0.2W RGB LED"
     },
     "lens": {
       "degreesMinMax": [75, 75]
