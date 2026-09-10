@@ -2,6 +2,7 @@
   "importPlugins": [
     "ecue",
     "gdtf",
+    "maizedmx",
     "qlcplus_4.12.2"
   ],
   "exportPlugins": [
@@ -63,6 +64,10 @@
     "gdtf": {
       "name": "GDTF 1.0",
       "importPluginVersion": "0.2.0"
+    },
+    "maizedmx": {
+      "name": "MaizeDMX",
+      "importPluginVersion": "0.1.0"
     },
     "millumin": {
       "name": "Millumin",
