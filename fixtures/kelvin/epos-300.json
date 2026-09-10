@@ -19,10 +19,16 @@
     ]
   },
   "physical": {
-    "dimensions": [17, 33, 13],
-    "weight": 7,
+    "dimensions": [136, 140, 265],
+    "weight": 4.7,
     "power": 300,
+    "powerConnectors": {
+      "powerCON": "input only"
+    },
     "DMXconnector": "5-pin",
+    "lens": {
+      "degreesMinMax": [55, 93]
+    },
     "bulb": {
       "type": "LED"
     }
