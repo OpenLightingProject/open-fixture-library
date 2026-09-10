@@ -4,16 +4,16 @@
   "shortName": "SVRevue120RGBWW",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["RAZAKANIRINA"],
+    "authors": ["RAZAKANIRINA", "pade", "Luke Nelson"],
     "createDate": "2019-04-15",
-    "lastModifyDate": "2019-04-15"
+    "lastModifyDate": "2025-08-29"
   },
   "links": {
     "manual": [
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/414200_c_414200_r2_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/gb/stairville_revueled_120_cob_rgb_ww_dmx.htm"
+      "https://www.thomann.de/intl/stairville_revueled_120_cob_rgb_ww_dmx.htm"
     ],
     "video": [
       "https://www.thomann.de/gb/thomanntv_video_stairville_revueled_120_cob_rgb_6191.html"
@@ -68,21 +68,35 @@
     },
     "Strobe": {
       "defaultValue": 0,
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0%",
-        "speedEnd": "100%",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
     },
     "Auto Programs": {
       "defaultValue": 0,
-      "capability": {
-        "type": "Effect",
-        "effectName": "Built-in automatic show programs",
-        "helpWanted": "At which DMX values can a show program be selected and when is no show active?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Built-in automatic show programs",
+          "helpWanted": "What programs are available and at which DMX values?"
+        }
+      ]
     }
   },
   "modes": [

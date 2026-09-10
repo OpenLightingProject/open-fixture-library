@@ -42,7 +42,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
@@ -69,11 +68,11 @@ export default {
        * @public
        */
       defaultData: {
-        blade: ``,
+        blade: '',
         angle: null,
-        angleStart: `0deg`,
-        angleEnd: `360deg`,
-        comment: ``,
+        angleStart: '0deg',
+        angleEnd: '360deg',
+        comment: '',
       },
     };
   },

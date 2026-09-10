@@ -6,7 +6,7 @@
       multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
-      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel."
+      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel. Use 1.5 to indicate a wheel position halfway between slots 1 and 2."
       style="display: inline-block; margin-bottom: 12px;">
       <EditorProportionalPropertySwitcher
         :capability="capability"
@@ -68,7 +68,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -95,17 +94,17 @@ export default {
        * @public
        */
       defaultData: {
-        slotNumber: ``,
+        slotNumber: '',
         slotNumberStart: null,
         slotNumberEnd: null,
-        speedOrAngle: `speed`,
-        speed: ``,
+        speedOrAngle: 'speed',
+        speed: '',
         speedStart: null,
         speedEnd: null,
-        angle: ``,
+        angle: '',
         angleStart: null,
         angleEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },
@@ -116,7 +115,7 @@ export default {
      * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+      const resetProperty = this.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
 
       return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },
