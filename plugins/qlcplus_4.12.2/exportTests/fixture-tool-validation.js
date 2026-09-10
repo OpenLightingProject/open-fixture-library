@@ -70,17 +70,21 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
   }
 
   // call the fixture tool
-  const output = await execFile(fixtureToolPath, ['--validate', '.'], {
-    cwd: path.join(directory, 'resources/fixtures'),
-  }).catch((error) => {
-    if (error.stdout) {
-      return {
-        stdout: error.stdout,
-        stderr: error.stderr,
-      };
+  let output;
+  try {
+    output = await execFile(fixtureToolPath, ['--validate', '.'], {
+      cwd: path.join(directory, 'resources/fixtures'),
+    });
+  }
+  catch (error) {
+    if (!error.stdout) {
+      throw error;
     }
-    throw error;
-  });
+    output = {
+      stdout: error.stdout,
+      stderr: error.stderr,
+    };
+  }
 
   const lastLine = output.stdout.split('\n').findLast((line) => line !== '');
 

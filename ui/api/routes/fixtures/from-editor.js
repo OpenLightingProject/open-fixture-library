@@ -71,64 +71,74 @@ async function getFixtureCreateResult(fixtures) {
     };
 
     for (const property of Object.keys(fixtureProperties)) {
-      switch (property) {
-        case 'physical': {
-          const physical = getPhysical(fixture.physical);
-          if (!isEmptyObject(physical)) {
-            result.fixtures[key].physical = physical;
-          }
-          break;
-        }
-        case 'meta': {
-          const now = new Date().toISOString().replace(/T.*/, '');
-
-          result.fixtures[key].meta = {
-            authors: [fixture.metaAuthor],
-            createDate: now,
-            lastModifyDate: now,
-          };
-          break;
-        }
-        case 'links': {
-          addLinks(result.fixtures[key], fixture.links);
-          break;
-        }
-        case 'availableChannels': {
-          result.fixtures[key].availableChannels = {};
-          for (const channelId of Object.keys(fixture.availableChannels)) {
-            addAvailableChannel(key, fixture.availableChannels, channelId);
-          }
-          break;
-        }
-        default: {
-          if (property === 'rdm' && propertyExistsIn('rdmModelId', fixture)) {
-            result.fixtures[key].rdm = {
-              modelId: fixture.rdmModelId,
-            };
-            if (propertyExistsIn('rdmSoftwareVersion', fixture)) {
-              result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
-            }
-          }
-          else if (property === 'modes') {
-            result.fixtures[key].modes = [];
-            for (const mode of fixture.modes) {
-              addMode(key, mode);
-            }
-          }
-          else if (property === 'wheels') {
-            addWheels(result.fixtures[key], fixture);
-          }
-          else if (propertyExistsIn(property, fixture)) {
-            result.fixtures[key][property] = fixture[property];
-          }
-        }
-      }
+      addFixtureProperty(fixture, key, property);
     }
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
     result.warnings[key] = checkResult.warnings;
     result.errors[key] = checkResult.errors;
+  }
+
+  /**
+   * Adds a single editor fixture property to the resulting OFL fixture.
+   * @param {object} fixture - The editor fixture object.
+   * @param {string} key - The fixture's manufacturer/fixture key.
+   * @param {string} property - The fixture property to add.
+   */
+  function addFixtureProperty(fixture, key, property) {
+    switch (property) {
+      case 'physical': {
+        const physical = getPhysical(fixture.physical);
+        if (!isEmptyObject(physical)) {
+          result.fixtures[key].physical = physical;
+        }
+        return;
+      }
+      case 'meta': {
+        const now = new Date().toISOString().replace(/T.*/, '');
+
+        result.fixtures[key].meta = {
+          authors: [fixture.metaAuthor],
+          createDate: now,
+          lastModifyDate: now,
+        };
+        return;
+      }
+      case 'links': {
+        addLinks(result.fixtures[key], fixture.links);
+        return;
+      }
+      case 'availableChannels': {
+        result.fixtures[key].availableChannels = {};
+        for (const channelId of Object.keys(fixture.availableChannels)) {
+          addAvailableChannel(key, fixture.availableChannels, channelId);
+        }
+        return;
+      }
+      default: {
+        if (property === 'rdm' && propertyExistsIn('rdmModelId', fixture)) {
+          result.fixtures[key].rdm = {
+            modelId: fixture.rdmModelId,
+          };
+          if (propertyExistsIn('rdmSoftwareVersion', fixture)) {
+            result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
+          }
+        }
+        else if (property === 'modes') {
+          result.fixtures[key].modes = [];
+          for (const mode of fixture.modes) {
+            addMode(key, mode);
+          }
+        }
+        else if (property === 'wheels') {
+          addWheels(result.fixtures[key], fixture);
+        }
+        else if (propertyExistsIn(property, fixture)) {
+          result.fixtures[key][property] = fixture[property];
+        }
+      }
+    }
   }
 
   /**
@@ -194,11 +204,11 @@ async function getFixtureCreateResult(fixtures) {
   function getPhysical(from) {
     const physical = {};
 
-    for (const property of Object.keys(physicalProperties)) {
-      if (physicalProperties[property].type === 'object') {
+    for (const [property, propertyDefinition] of Object.entries(physicalProperties)) {
+      if (propertyDefinition.type === 'object') {
         physical[property] = {};
 
-        for (const subProperty of Object.keys(physicalProperties[property].properties)) {
+        for (const subProperty of Object.keys(propertyDefinition.properties)) {
           if (propertyExistsIn(subProperty, from[property])) {
             physical[property][subProperty] = getComboboxInput(subProperty, from[property]);
           }
@@ -235,7 +245,7 @@ async function getFixtureCreateResult(fixtures) {
         urlObject.pathname = 'watch';
         urlObject.search = `?${queryParameterString}`;
 
-        return urlObject.toString();
+        return urlObject.href;
       }
 
       return url;
@@ -349,11 +359,13 @@ async function getFixtureCreateResult(fixtures) {
     if ('fineChannelAliases' in channel) {
       // find all referencing fine channels
       for (const otherChannel of Object.values(availableChannels)) {
-        if ('coarseChannelId' in otherChannel && otherChannel.coarseChannelId === channelId) {
-          const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
-          channel.fineChannelAliases[otherChannel.resolution - 2] = alias;
-          channelKeyMapping[otherChannel.uuid] = alias;
+        if (!('coarseChannelId' in otherChannel && otherChannel.coarseChannelId === channelId)) {
+          continue;
         }
+
+        const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
+        channel.fineChannelAliases[otherChannel.resolution - 2] = alias;
+        channelKeyMapping[otherChannel.uuid] = alias;
       }
     }
 
@@ -379,7 +391,7 @@ async function getFixtureCreateResult(fixtures) {
       while (availableChannelKeys.includes(`${channelKey} ${appendNumber}`)) {
         appendNumber++;
       }
-      channelKey = `${channelKey} ${appendNumber}`;
+      channelKey += ` ${appendNumber}`;
     }
 
     return channelKey;
@@ -465,8 +477,8 @@ function isEmptyObject(object) {
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
 function propertyExistsIn(property, object) {
-  const objectValid = object !== undefined && object !== null;
-  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== '';
+  const isObjectValid = object !== undefined && object !== null;
+  return isObjectValid && object[property] !== undefined && object[property] !== null && object[property] !== '';
 }
 
 /**
@@ -475,7 +487,7 @@ function propertyExistsIn(property, object) {
  * @returns {string} The value from the combobox input, preferring any newly added value.
  */
 function getComboboxInput(property, from) {
-  return (from[property] === '[add-value]' && from[`${property}New`] !== '') ? from[`${property}New`] : from[property];
+  return from[(from[property] === '[add-value]' && from[`${property}New`] !== '') ? `${property}New` : property];
 }
 
 /**

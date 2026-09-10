@@ -57,18 +57,18 @@ export async function exportFixtures(fixtures, options) {
     Tiles: {},
   });
 
-  for (const manufacturer of Object.keys(manufacturers)) {
+  for (const manufacturer of Object.values(manufacturers)) {
     const manufacturerAttributes = {
       _CreationDate: timestamp,
       _ModifiedDate: timestamp,
-      Name: manufacturers[manufacturer].data.name,
-      Comment: manufacturers[manufacturer].data.comment,
-      Web: manufacturers[manufacturer].data.website || '',
+      Name: manufacturer.data.name,
+      Comment: manufacturer.data.comment,
+      Web: manufacturer.data.website || '',
     };
     xmlTiles.element('Manufacturer', manufacturerAttributes);
 
     const xmlManufacturerFixtures = xmlFixtures.element('Manufacturer', manufacturerAttributes);
-    for (const fixture of manufacturers[manufacturer].fixtures) {
+    for (const fixture of manufacturer.fixtures) {
       addFixture(xmlManufacturerFixtures, fixture);
     }
   }

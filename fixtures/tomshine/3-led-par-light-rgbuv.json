@@ -29,11 +29,6 @@
     }
   },
   "availableChannels": {
-    "No Function": {
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
     "Special Functions": {
       "defaultValue": 0,
       "capabilities": [
@@ -41,7 +36,7 @@
           "dmxRange": [0, 10],
           "type": "NoFunction",
           "switchChannels": {
-            "Speed": "No Function"
+            "Speed": null
           }
         },
         {
@@ -49,7 +44,7 @@
           "type": "Effect",
           "effectName": "Static Color",
           "switchChannels": {
-            "Speed": "No Function"
+            "Speed": null
           }
         },
         {
@@ -74,7 +69,7 @@
           "effectPreset": "ColorJump",
           "soundControlled": true,
           "switchChannels": {
-            "Speed": "No Function"
+            "Speed": null
           }
         },
         {

@@ -11,7 +11,7 @@ export async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
 
   const manufacturers = await importJson('../../../../fixtures/manufacturers.json', import.meta.url);
-  if (!(manufacturerKey in manufacturers) || manufacturerKey === '$schema') {
+  if (manufacturerKey === '$schema' || !(manufacturerKey in manufacturers)) {
     return {
       statusCode: 404,
       body: {

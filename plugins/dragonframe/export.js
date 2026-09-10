@@ -1,5 +1,6 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
+import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 // needed for export test
@@ -38,7 +39,8 @@ export async function exportFixtures(fixtures, options) {
   const usedManufacturerData = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/manufacturers.json`,
   };
-  for (const manufacturer of Object.keys(manufacturers).toSorted()) {
+  const manufacturerKeys = Object.keys(manufacturers).toSorted((a, b) => a.localeCompare(b));
+  for (const manufacturer of manufacturerKeys) {
     if (usedManufacturers.has(manufacturer)) {
       usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }
@@ -65,6 +67,7 @@ function getFixtureFile(fixture) {
   jsonData.oflURL = fixture.url;
 
   downgradePhysical(jsonData.physical);
+  replaceNullSwitchChannels(jsonData, fixture);
 
   for (const mode of jsonData.modes) {
     downgradePhysical(mode.physical);

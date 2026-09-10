@@ -47,14 +47,19 @@ async function importFixture(body) {
   }
 
   const plugin = await import(`../../../../plugins/${body.plugin}/import.js`);
-  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(
-    Buffer.from(body.fileContentBase64, 'base64'),
-    body.fileName,
-    body.author,
-  ).catch((parseError) => {
+  let importResult;
+  try {
+    importResult = await plugin.importFixtures(
+      Buffer.from(body.fileContentBase64, 'base64'),
+      body.fileName,
+      body.author,
+    );
+  }
+  catch (parseError) {
     parseError.message = `Parse error (${parseError.message})`;
     throw parseError;
-  });
+  }
+  const { manufacturers, fixtures, warnings } = importResult;
 
   /** @type {FixtureCreateResult} */
   const result = {
@@ -67,7 +72,7 @@ async function importFixture(body) {
   const oflManufacturers = await importJson('../../../../fixtures/manufacturers.json', import.meta.url);
 
   for (const [key, fixture] of Object.entries(result.fixtures)) {
-    const [manufacturerKey, fixtureKey] = key.split('/');
+    const [manufacturerKey, fixtureKey] = key.split('/', 2);
 
     const checkResult = await checkFixture(manufacturerKey, fixtureKey, fixture);
 

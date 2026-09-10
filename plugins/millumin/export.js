@@ -1,5 +1,6 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 export const version = '0.4.0';
@@ -35,6 +36,7 @@ export async function exportFixtures(fixtures, options) {
  */
 function getFixtureFile(fixture) {
   const oflJson = structuredClone(fixture.jsonObject);
+  replaceNullSwitchChannels(oflJson, fixture);
   const milluminJson = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`,
     name: oflJson.name,
@@ -147,7 +149,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
-    if (panTiltMax > Number.NEGATIVE_INFINITY) {
+    if (panTiltMax > -Infinity) {
       return panTiltMax;
     }
 

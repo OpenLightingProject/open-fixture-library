@@ -31,16 +31,16 @@ const channelTypeIcons = {
  * @returns {object} Object containing the props to pass to <OflSvg />
  */
 function getIconProperties(channel) {
+  while (channel instanceof FineChannel) {
+    channel = channel.coarseChannel;
+  }
+
   if (channel instanceof NullChannel) {
     return {
       type: 'fixture',
       name: 'NoFunction',
       title: 'Channel type: NoFunction',
     };
-  }
-
-  if (channel instanceof FineChannel) {
-    return getIconProperties(channel.coarseChannel);
   }
 
   if (channel instanceof SwitchingChannel) {

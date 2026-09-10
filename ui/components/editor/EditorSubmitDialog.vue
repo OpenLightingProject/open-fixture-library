@@ -306,7 +306,7 @@ export default {
         return null;
       }
 
-      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/');
+      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/', 2);
 
       const manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
 
@@ -363,10 +363,7 @@ export default {
         this.state = 'ready';
       }
       catch (error) {
-        let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
-        }
+        const errorMessage = error.response?.data.error ?? error.message;
 
         console.error('There was a problem with the request:', errorMessage);
 
@@ -399,10 +396,7 @@ export default {
         this.$emit('success');
       }
       catch (error) {
-        let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
-        }
+        const errorMessage = error.response?.data.error ?? error.message;
 
         console.error('There was a problem with the request:', errorMessage);
 

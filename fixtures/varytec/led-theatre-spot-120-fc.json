@@ -1,0 +1,237 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theatre Spot 120 FC",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["jensen", "Julian Osorio"],
+    "createDate": "2026-08-01",
+    "lastModifyDate": "2026-08-01"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/543403_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/varytec_led_theater_spot_120_fc.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i11071p8_yd59vq1a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 160, 260],
+    "weight": 5,
+    "power": 135,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "120W COB LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 14],
+          "type": "ColorPreset",
+          "comment": "Cold white"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "ColorPreset",
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "ColorPreset",
+          "comment": "People"
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "ColorPreset",
+          "comment": "Bluish violet"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ColorPreset",
+          "comment": "Reddish violet"
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "ColorPreset",
+          "comment": "Preach blossom"
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "ColorPreset",
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "ColorPreset",
+          "comment": "Light green"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "ColorPreset",
+          "comment": "Bluish green"
+        },
+        {
+          "dmxRange": [240, 254],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 240],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [241, 254],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "off"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Strobe",
+        "Program"
+      ]
+    }
+  ]
+}

@@ -38,7 +38,8 @@ export async function exportFixtures(fixtures, options) {
   const usedManufacturerData = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/manufacturers.json`,
   };
-  for (const manufacturer of Object.keys(manufacturers).toSorted()) {
+  const manufacturerKeys = Object.keys(manufacturers).toSorted((a, b) => a.localeCompare(b));
+  for (const manufacturer of manufacturerKeys) {
     if (usedManufacturers.has(manufacturer)) {
       usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }

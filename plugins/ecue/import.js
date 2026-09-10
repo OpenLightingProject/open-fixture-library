@@ -59,7 +59,8 @@ export async function importFixtures(buffer, filename, authorName) {
       out.manufacturers[manufacturerKey].website = ecueManufacturer.$.Web;
     }
 
-    for (const fixture of (ecueManufacturer.Fixture || [])) {
+    const ecueFixtures = ecueManufacturer.Fixture || [];
+    for (const fixture of ecueFixtures) {
       addFixture(fixture, manufacturerKey);
     }
   }

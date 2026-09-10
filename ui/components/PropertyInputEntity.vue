@@ -150,7 +150,7 @@ export default {
         return getSelectedUnit(this.value, this.enumValues, this.unitNames, this.units);
       },
       set(newUnit) {
-        if (this.enumValues.includes(newUnit) || newUnit === '') {
+        if (newUnit === '' || this.enumValues.includes(newUnit)) {
           this.update(newUnit);
         }
         else if (this.units[newUnit].unitString === '') {
@@ -299,7 +299,7 @@ function getUnitDisplayString(unitString) {
  * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
-  if (enumValues.includes(value) || value === '') {
+  if (value === '' || enumValues.includes(value)) {
     return value;
   }
 

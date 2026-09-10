@@ -1,0 +1,806 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sixbar 1000",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["tux300200", "Julian Vogel", "Flo Edelmann"],
+    "createDate": "2026-07-28",
+    "lastModifyDate": "2026-07-28"
+  },
+  "links": {
+    "manual": [
+      "https://assets.centryngroup.com/dl/files/SIX086__DL__014.pdf",
+      "https://assets.centryngroup.com/dl/files/SIX086__DL__011.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/products/sixbar-1000"
+    ]
+  },
+  "physical": {
+    "dimensions": [900, 206.4, 155],
+    "weight": 7.3,
+    "power": 145,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "12x 12W 6-in-1 RGBAW+UV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1+2": ["1", "2"],
+      "3+4": ["3", "4"],
+      "5+6": ["5", "6"],
+      "7+8": ["7", "8"],
+      "9+10": ["9", "10"],
+      "11+12": ["11", "12"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Program Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 26],
+          "type": "Effect",
+          "effectName": "Dream"
+        },
+        {
+          "dmxRange": [27, 43],
+          "type": "Effect",
+          "effectName": "Meteor"
+        },
+        {
+          "dmxRange": [44, 60],
+          "type": "Effect",
+          "effectName": "Fade"
+        },
+        {
+          "dmxRange": [61, 76],
+          "type": "Effect",
+          "effectName": "Change"
+        },
+        {
+          "dmxRange": [77, 93],
+          "type": "Effect",
+          "effectName": "Flow 1"
+        },
+        {
+          "dmxRange": [94, 110],
+          "type": "Effect",
+          "effectName": "Flow 2"
+        },
+        {
+          "dmxRange": [111, 126],
+          "type": "Effect",
+          "effectName": "Flow 3"
+        },
+        {
+          "dmxRange": [127, 143],
+          "type": "Effect",
+          "effectName": "Flow 4"
+        },
+        {
+          "dmxRange": [144, 160],
+          "type": "Effect",
+          "effectName": "Flow 5"
+        },
+        {
+          "dmxRange": [161, 176],
+          "type": "Effect",
+          "effectName": "Flow 6"
+        },
+        {
+          "dmxRange": [177, 193],
+          "type": "Effect",
+          "effectName": "Flow 7"
+        },
+        {
+          "dmxRange": [194, 210],
+          "type": "Effect",
+          "effectName": "Flow 8"
+        },
+        {
+          "dmxRange": [211, 226],
+          "type": "Effect",
+          "effectName": "Flow 9"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Fade": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "slow",
+        "parameterEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "ColorPreset",
+          "comment": "Red + Amber",
+          "colors": ["#ff0000", "#ffbf00"]
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "ColorPreset",
+          "comment": "Red + UV",
+          "colors": ["#ff0000", "#8800ff"]
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "Green + Amber",
+          "colors": ["#00ff00", "#ffbf00"]
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "Green + UV",
+          "colors": ["#00ff00", "#8800ff"]
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "ColorPreset",
+          "comment": "Blue + Amber",
+          "colors": ["#0000ff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "ColorPreset",
+          "comment": "Blue + UV",
+          "colors": ["#0000ff", "#8800ff"]
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "ColorPreset",
+          "comment": "White + Amber",
+          "colors": ["#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "ColorPreset",
+          "comment": "White + UV",
+          "colors": ["#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "ColorPreset",
+          "comment": "Amber + UV",
+          "colors": ["#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Amber",
+          "colors": ["#ff0000", "#00ff00", "#ffbf00"]
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "ColorPreset",
+          "comment": "Red + Green + UV",
+          "colors": ["#ff0000", "#00ff00", "#8800ff"]
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White",
+          "colors": ["#ff0000", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + Amber",
+          "colors": ["#ff0000", "#0000ff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + UV",
+          "colors": ["#ff0000", "#0000ff", "#8800ff"]
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "ColorPreset",
+          "comment": "Red + White + Amber",
+          "colors": ["#ff0000", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ColorPreset",
+          "comment": "Red + White + UV",
+          "colors": ["#ff0000", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ColorPreset",
+          "comment": "Red + Amber + UV",
+          "colors": ["#ff0000", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + Amber",
+          "colors": ["#00ff00", "#0000ff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + UV",
+          "colors": ["#00ff00", "#0000ff", "#8800ff"]
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "ColorPreset",
+          "comment": "Green + White + Amber",
+          "colors": ["#00ff00", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "ColorPreset",
+          "comment": "Green + White + UV",
+          "colors": ["#00ff00", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "ColorPreset",
+          "comment": "Green + Amber + UV",
+          "colors": ["#00ff00", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "ColorPreset",
+          "comment": "Blue + White + Amber",
+          "colors": ["#0000ff", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "ColorPreset",
+          "comment": "Blue + White + UV",
+          "colors": ["#0000ff", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "ColorPreset",
+          "comment": "Blue + Amber + UV",
+          "colors": ["#0000ff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "ColorPreset",
+          "comment": "White + Amber + UV",
+          "colors": ["#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + Amber",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + UV",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#8800ff"]
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + Amber",
+          "colors": ["#ff0000", "#00ff00", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + UV",
+          "colors": ["#ff0000", "#00ff00", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Amber + UV",
+          "colors": ["#ff0000", "#00ff00", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White + Amber",
+          "colors": ["#ff0000", "#0000ff", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White + UV",
+          "colors": ["#ff0000", "#0000ff", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + Amber + UV",
+          "colors": ["#ff0000", "#0000ff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "ColorPreset",
+          "comment": "Red + White + Amber + UV",
+          "colors": ["#ff0000", "#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White + Amber",
+          "colors": ["#00ff00", "#0000ff", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White + UV",
+          "colors": ["#00ff00", "#0000ff", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + Amber + UV",
+          "colors": ["#00ff00", "#0000ff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "ColorPreset",
+          "comment": "Green + White + Amber + UV",
+          "colors": ["#00ff00", "#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "ColorPreset",
+          "comment": "Blue + White + Amber + UV",
+          "colors": ["#0000ff", "#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + Amber",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + UV",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#8800ff"]
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + Amber + UV",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + Amber + UV",
+          "colors": ["#ff0000", "#00ff00", "#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White + Amber + UV",
+          "colors": ["#ff0000", "#0000ff", "#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White + Amber + UV",
+          "colors": ["#00ff00", "#0000ff", "#ffffff", "#ffbf00", "#8800ff"]
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + Amber + UV",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff", "#ffbf00", "#8800ff"]
+        }
+      ]
+    },
+    "Dimming Curve Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Default to unit setting"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red Master",
+        "UV Master",
+        "Amber Master",
+        "White Master",
+        "Blue Master",
+        "Green Master",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
+        "Dimmer",
+        "Strobe",
+        "Program Macros",
+        "Program Speed",
+        "Program Fade"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Program Macros",
+        "Program Speed",
+        "Program Fade",
+        "Dimming Curve Mode"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "1+2",
+            "3+4",
+            "5+6",
+            "7+8",
+            "9+10",
+            "11+12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "72-channel",
+      "shortName": "72ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "75-channel",
+      "shortName": "75ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Dimmer",
+        "Strobe",
+        "Dimming Curve Mode"
+      ]
+    },
+    {
+      "name": "79-channel",
+      "shortName": "79ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Program Macros",
+        "Program Speed",
+        "Program Fade",
+        "Dimming Curve Mode"
+      ]
+    }
+  ]
+}

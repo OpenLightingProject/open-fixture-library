@@ -110,7 +110,7 @@ function getSvg(name, category = undefined, title) {
   svg = svg.replace('<svg', '<svg role="img"');
 
   if (title) {
-    svg = svg.replace(/(<svg[^>]*)>/, `$1 aria-label="${title}"><title>${title}</title>`);
+    svg = svg.replace(/(<svg[^>]*)>/, (match, svgStart) => `${svgStart} aria-label="${title}"><title>${title}</title>`);
   }
 
   return svg;

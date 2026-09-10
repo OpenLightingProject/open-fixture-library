@@ -57,6 +57,7 @@
   justify-content: center;
   margin-left: -1px;
   font-size: 90%;
+  font-variant-numeric: tabular-nums;
   line-height: 1.4em;
   vertical-align: top;
   text-align: center;
@@ -120,12 +121,12 @@ export default {
     pixelGroups() {
       return this.matrix.pixelGroupKeys.map((groupKey) => {
         const group = this.matrix.jsonObject.pixelGroups[groupKey];
-        const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
 
         if (group === 'all') {
           return [groupKey, 'All pixels'];
         }
 
+        const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
         const constraintAxes = ['x', 'y', 'z'].filter((axis) => axis in group);
 
         const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(

@@ -5,7 +5,7 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 /** @import AbstractChannel from '../../lib/model/AbstractChannel.js' */
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
-export const version = '0.1.0';
+export const version = '0.1.1';
 
 const MAX_KNOBS = 8;
 const MAX_OPZ_FIXTURES = 16;
@@ -68,14 +68,17 @@ function getOpZChannelType(channel, fixtureKey) {
     channel = channel.defaultChannel;
   }
 
-  if (channel instanceof NullChannel || channel instanceof FineChannel) {
+  if (
+    channel instanceof NullChannel
+    || channel instanceof FineChannel
+    || (channel instanceof CoarseChannel && channel.type === 'NoFunction')) {
     return 'off';
   }
 
   const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const opZChannelTypes = {
-    [`${defaultValue}`]: () => channel.isConstant || channel.type === 'Shutter',
+    [String(defaultValue)]: () => channel.isConstant || channel.type === 'Shutter',
     red: () => channel.color === 'Red',
     green: () => channel.color === 'Green',
     blue: () => channel.color === 'Blue',
@@ -102,7 +105,7 @@ function getOpZChannelType(channel, fixtureKey) {
     return channelType;
   }
 
-  return getKnobType(channel, fixtureKey) || `${defaultValue}`;
+  return getKnobType(channel, fixtureKey) || String(defaultValue);
 }
 
 /**

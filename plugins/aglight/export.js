@@ -4,6 +4,7 @@ import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
+import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
@@ -69,6 +70,7 @@ function exportFixture(fixture, manufacturers, namedColors) {
 
   downgradePhysical(jsonData.physical);
   transformMatrixChannels(jsonData, fixture);
+  replaceNullSwitchChannels(jsonData, fixture);
   transformSingleCapabilityToArray(jsonData);
   transformNonNumericValues(jsonData, namedColors);
 
@@ -129,11 +131,13 @@ function transformMatrixChannels(fixtureJson, fixture) {
  */
 function transformSingleCapabilityToArray(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
-    if (channel.capability) {
-      channel.capabilities = [channel.capability];
-      channel.singleCapability = true;
-      delete channel.capability;
+    if (!channel.capability) {
+      continue;
     }
+
+    channel.capabilities = [channel.capability];
+    channel.singleCapability = true;
+    delete channel.capability;
   }
 }
 
