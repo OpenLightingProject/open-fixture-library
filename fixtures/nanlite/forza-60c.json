@@ -1,0 +1,214 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 60c",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["R. OKelly"],
+    "createDate": "2024-02-27",
+    "lastModifyDate": "2024-02-27"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691132637566-173998-1124121241512490-Forza+60C+Manual（NANLITE）V1+20220409+W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-forza-60c?t=1697801879393#/en"
+    ],
+    "other": [
+      "https://cdn-aliyun.nanlite.com/release/1691141511427-746640-1-Forza_60C_DMX_REFERENCE_GUIDE_EN+V1+20220430+W.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3.5mm stereo jack",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1800K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green / Magenta": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "0%",
+          "brightnessEnd": "4%",
+          "comment": "Neutral/No Effect"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "5%",
+          "brightnessEnd": "8%",
+          "comment": "-100 Green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "9%",
+          "brightnessEnd": "47%",
+          "comment": "-99 to -1 Green"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightnessStart": "48%",
+          "brightnessEnd": "57%",
+          "comment": "Neutral/No Effect"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "58%",
+          "brightnessEnd": "96%",
+          "comment": "+1 to +99 Green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "97%",
+          "brightnessEnd": "100%",
+          "comment": "+100 Green"
+        }
+      ]
+    },
+    "Cross Fade": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "CCT to HSI"
+      }
+    },
+    "Hue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "0 to 359 Degrees"
+      }
+    },
+    "Sat": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%",
+        "comment": "0 to Full Saturation"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "speedStart": "0%",
+          "speedEnd": "50%",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "51%",
+          "speedEnd": "100%",
+          "comment": "OFF"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "1.2%",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "StrobeSpeed",
+          "speedStart": "1.6%",
+          "speedEnd": "1.6%",
+          "comment": "Random Fast"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "StrobeSpeed",
+          "speedStart": "2%",
+          "speedEnd": "2%",
+          "comment": "Random Medium"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "StrobeSpeed",
+          "speedStart": "2.4%",
+          "speedEnd": "2.4%",
+          "comment": "Random Slow"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "2.7%",
+          "speedEnd": "100%",
+          "comment": "Variable Strobe(0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & HSI 8bit",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Green / Magenta",
+        "Cross Fade",
+        "Hue",
+        "Sat",
+        "Fan Control",
+        "Strobe",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
