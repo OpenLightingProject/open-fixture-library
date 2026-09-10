@@ -155,8 +155,7 @@
         }
       ]
     },
-    "Strobe 2": {
-      "name": "Strobe",
+    "Shutter / Strobe": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -207,14 +206,13 @@
         "color": "Blue"
       }
     },
-    "Strobe 3": {
-      "name": "Strobe",
+    "Shutter / Strobe Advanced": {
+      "name": "Shutter / Strobe",
       "capabilities": [
         {
           "dmxRange": [0, 5],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "reacts to dimmer CH1"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [6, 10],
@@ -256,10 +254,9 @@
         {
           "dmxRange": [103, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "durationStart": "5s",
-          "durationEnd": "1s",
-          "comment": "Strobe break effect"
+          "durationEnd": "1s"
         },
         {
           "dmxRange": [128, 250],
@@ -271,8 +268,7 @@
         {
           "dmxRange": [251, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "reacts to dimmer CH1"
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -313,7 +309,7 @@
       "shortName": "2ch2",
       "channels": [
         "Dimmer",
-        "Strobe 2"
+        "Shutter / Strobe"
       ]
     },
     {
@@ -321,7 +317,7 @@
       "shortName": "3ch1",
       "channels": [
         "Dimmer",
-        "Strobe 2",
+        "Shutter / Strobe",
         "Strobe Duration"
       ]
     },
@@ -330,7 +326,7 @@
       "shortName": "3ch2",
       "channels": [
         "Dimmer",
-        "Strobe 2",
+        "Shutter / Strobe",
         "Color Macros"
       ]
     },
@@ -348,7 +344,7 @@
       "shortName": "4ch",
       "channels": [
         "Dimmer",
-        "Strobe 3",
+        "Shutter / Strobe Advanced",
         "Color Macros",
         "Sound Sensitivity"
       ]
@@ -358,7 +354,7 @@
       "shortName": "6ch",
       "channels": [
         "Dimmer",
-        "Strobe 3",
+        "Shutter / Strobe Advanced",
         "Red",
         "Green",
         "Blue",
