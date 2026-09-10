@@ -1,3 +1,4 @@
+import { downgradeShutterEffect } from '../../lib/downgrade-burst-shutter-effect.js';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
 import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
@@ -68,6 +69,7 @@ function getFixtureFile(fixture) {
 
   downgradePhysical(jsonData.physical);
   replaceNullSwitchChannels(jsonData, fixture);
+  downgradeShutterEffectCapabilities(jsonData);
 
   for (const mode of jsonData.modes) {
     downgradePhysical(mode.physical);
@@ -88,5 +90,17 @@ function getFixtureFile(fixture) {
 function downgradePhysical(physicalJsonData) {
   if (physicalJsonData) {
     delete physicalJsonData.powerConnectors;
+  }
+}
+
+/**
+ * Replaces shutter effects that are unsupported by AGLight.
+ * @param {object} fixtureJson - The fixture whose capabilities should be processed
+ */
+function downgradeShutterEffectCapabilities(fixtureJson) {
+  for (const channel of Object.values(fixtureJson.availableChannels)) {
+    for (const capability of channel.capabilities) {
+      downgradeShutterEffect(capability);
+    }
   }
 }

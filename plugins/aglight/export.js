@@ -1,5 +1,6 @@
 /* Based on the ofl export plugin */
 
+import { downgradeShutterEffect } from '../../lib/downgrade-burst-shutter-effect.js';
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
@@ -64,9 +65,7 @@ function exportFixture(fixture, manufacturers, namedColors) {
   jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
   jsonData.oflURL = fixture.url;
 
-  if (!jsonData.availableChannels) {
-    jsonData.availableChannels = {};
-  }
+  jsonData.availableChannels ??= {};
 
   downgradePhysical(jsonData.physical);
   transformMatrixChannels(jsonData, fixture);
@@ -142,7 +141,8 @@ function transformSingleCapabilityToArray(fixtureJson) {
 }
 
 /**
- * Replace capability properties' entity strings with unitless numbers, and
+ * Replace capability properties' entity strings with unitless numbers,
+ * Burst shutter effect with Strobe, and
  * ColorIntensity capabilities' color property with its hex value.
  * @param {object} fixtureJson - The fixture whose capabilities should be processed
  * @param {object[]} namedColors - The color names list.
@@ -150,6 +150,8 @@ function transformSingleCapabilityToArray(fixtureJson) {
 function transformNonNumericValues(fixtureJson, namedColors) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
+      downgradeShutterEffect(capability);
+
       for (const [key, value] of Object.entries(capability)) {
         if (key === 'color') {
           processColor(capability, namedColors);
