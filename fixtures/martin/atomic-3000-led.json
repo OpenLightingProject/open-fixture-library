@@ -1,0 +1,1438 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Atomic 3000 LED",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Yestalgia", "Anonymous"],
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-09-10",
+      "comment": "created by Q Light Controller Plus (version 4.12.8 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [425, 240, 245],
+    "weight": 7.8,
+    "power": 740,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 180000
+    }
+  },
+  "wheels": {
+    "Aura color presets (‘color wheel’ effect)": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Open. RGB Color Mixing Enabled"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1 - LEE 790 - Moroccan pink"
+        },
+        {
+          "type": "Color",
+          "name": "Color 2- LEE 157 - Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Color 3 - LEE 332 - Special rose pink"
+        },
+        {
+          "type": "Color",
+          "name": "Color 4 - LEE 328 - Follies pink"
+        },
+        {
+          "type": "Color",
+          "name": "Color 5 - LEE 345 - Fuchsia pink"
+        },
+        {
+          "type": "Color",
+          "name": "Color 6 - LEE 194 - Surprise pink"
+        },
+        {
+          "type": "Color",
+          "name": "Color 7 - LEE 181 - Congo Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 8 - LEE 071 - Tokyo Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 9 - LEE 120 - Deep Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 10 - LEE 079 - Just Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 11 - LEE 132 - Medium Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 12 - LEE 200 - Double CT Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 13 - LEE 161 - Slate Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 14 - LEE 201 - Full CT Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 15 - LEE 202 - Half CT Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 16 - LEE 117 - Steel Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 17 - LEE 353 - Lighter Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 18 - LEE 118 - Light Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Color 19 - LEE 116 - Medium Blue Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 20 - LEE 124 - Dark Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 21 - LEE 139 - Primary Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 22 - LEE 089 - Moss Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 23 - LEE 122 - Fern Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 24 - LEE 738 - JAS Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 25 - LEE 088 - Lime Green"
+        },
+        {
+          "type": "Color",
+          "name": "Color 26 - LEE 100 - Spring Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Color 27 - LEE 104 - Deep Amber"
+        },
+        {
+          "type": "Color",
+          "name": "Color 28 - LEE 179 - Chrome Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Color 29 - LEE 105 - Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Color 30 - LEE 021 - Gold Amber"
+        },
+        {
+          "type": "Color",
+          "name": "Color 31 - LEE 778 - Millennium Gold"
+        },
+        {
+          "type": "Color",
+          "name": "Color 32 - LEE 135 - Deep Golden Amber"
+        },
+        {
+          "type": "Color",
+          "name": "Color 33 - LEE 164 - Flame Red"
+        },
+        {
+          "type": "Color",
+          "name": "Color 34 - Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Color 35 - Medium Lavender"
+        },
+        {
+          "type": "Color",
+          "name": "Color 36 - White"
+        },
+        {
+          "type": "Color",
+          "name": "Aura random colors - Fast"
+        },
+        {
+          "type": "Color",
+          "name": "Aura random colors - Medium"
+        },
+        {
+          "type": "Color",
+          "name": "Aura random colors - Slow"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Beam Flash Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam flash duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "7→ 650 ms"
+      }
+    },
+    "Beam flash rate": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0.29Hz",
+        "speedEnd": "16.67Hz",
+        "comment": "Slow (0.289) → fast (16.67 Hz)"
+      }
+    },
+    "Beam special effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "No effect"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "Effect",
+          "effectName": "Ramp up"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "Effect",
+          "effectName": "Ramp down"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "Effect",
+          "effectName": "Ramp up, down"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "Effect",
+          "effectName": "Random"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Effect",
+          "effectName": "Spikes (flash over low light)"
+        }
+      ]
+    },
+    "Control / settings": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "comment": "Reset entire fixture - 5 sec."
+        },
+        {
+          "dmxRange": [15, 22],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "comment": "Linear dimming curve - 1 sec. (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "comment": "Square law dimming curve - 1 sec. (menu override, factory default setting, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "comment": "Inverse square law dimming curve - 1 sec. (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "comment": "S-curve dimming curve - 1 sec. (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "comment": "Enable video tracking"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Maintenance",
+          "comment": "Disable video tracking"
+        },
+        {
+          "dmxRange": [38, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Maintenance",
+          "comment": "Turn on control panel display - 1 sec."
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Maintenance",
+          "comment": "Turn off control panel display - 1 sec."
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Maintenance",
+          "comment": "Regulated fans speed, fixed light output intensity = full (default setting, menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Maintenance",
+          "comment": "Fixed fan speed = full, regulated light output intensity (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Maintenance",
+          "comment": "Fixed fan speed = medium, regulated light output intensity (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Maintenance",
+          "comment": "Fixed fan speed = low, regulated light output intensity (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Maintenance",
+          "comment": "Fixed fan speed = ultra low, regulated light output intensity (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Maintenance",
+          "comment": "Strobe behavior = LED (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Maintenance",
+          "comment": "Strobe behavior = Xenon (menu override, setting unaffected by power off/on)"
+        },
+        {
+          "dmxRange": [61, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "FX Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Effect",
+          "effectName": "Wave (sine wave)"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Effect",
+          "effectName": "Step (50/50 on/off)"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Effect",
+          "effectName": "Pulse"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "Double strobe"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Effect",
+          "effectName": "Triple strobe"
+        },
+        {
+          "dmxRange": [8, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Up, down, flash"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Up, flash, down, flash"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Random levels"
+        },
+        {
+          "dmxRange": [14, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "House light"
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Aura pulse"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Aura ramp"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "Rainbow wave"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "Rainbow step"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "Rainbow pulse"
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "RGB wave"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "RGB step"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "RGB pulse"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "CMY wave"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "CMY step"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "CMY pulse"
+        },
+        {
+          "dmxRange": [69, 70],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Effect",
+          "effectName": "Mix to white wave"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Effect",
+          "effectName": "Mix to white step"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Effect",
+          "effectName": "Mix to white pulse"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Effect",
+          "effectName": "Random mix wave"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Effect",
+          "effectName": "Random mix step"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Effect",
+          "effectName": "Random mix pulse"
+        },
+        {
+          "dmxRange": [79, 80],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Effect",
+          "effectName": "Random subtle wave"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Effect",
+          "effectName": "Red white blue fade"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Effect",
+          "effectName": "Red white blue snaps"
+        },
+        {
+          "dmxRange": [86, 95],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Effect",
+          "effectName": "Water"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Effect",
+          "effectName": "Ice"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Effect",
+          "effectName": "Hot and cold"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Effect",
+          "effectName": "Warm and fuzzy"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Effect",
+          "effectName": "Silver and gold"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Effect",
+          "effectName": "Gold and silver"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Effect",
+          "effectName": "Circular chase slim"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Effect",
+          "effectName": "Circular chase wide"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Effect",
+          "effectName": "Double circular chase slim"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Effect",
+          "effectName": "Double circular chase wide"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Effect",
+          "effectName": "Vertical scroll"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Effect",
+          "effectName": "Horizontal scroll (L/R)"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Effect",
+          "effectName": "Knight Rider slim"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Effect",
+          "effectName": "Knight Rider wide"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Effect",
+          "effectName": "Knight Rider slim with CW surface"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Effect",
+          "effectName": "4 segments scroll"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Effect",
+          "effectName": "6 segments scroll"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Effect",
+          "effectName": "Police car 1"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Effect",
+          "effectName": "Police car 2"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Effect",
+          "effectName": "Police car 3"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Effect",
+          "effectName": "Full bumps"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Effect",
+          "effectName": "Split bumps CW vertical"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Effect",
+          "effectName": "Split bumps CW horizontal"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Effect",
+          "effectName": "Random split bumps CW vertical"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Effect",
+          "effectName": "Random split bumps CW horizontal"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Effect",
+          "effectName": "Color shaker CW vertical"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Effect",
+          "effectName": "Color shaker CW horizontal"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Effect",
+          "effectName": "Color shaker CW vertical and no black frame"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Effect",
+          "effectName": "Color shaker CW horizontal and no black frame"
+        },
+        {
+          "dmxRange": [139, 143],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Effect",
+          "effectName": "Swimming pool"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Effect",
+          "effectName": "Electric arc"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Effect",
+          "effectName": "Thunderstorm"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Effect",
+          "effectName": "Welding"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Effect",
+          "effectName": "3 Step strobe"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Effect",
+          "effectName": "Tick Tock"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Effect",
+          "effectName": "Aura ramp beam flash"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Effect",
+          "effectName": "Beam ramp aura flash"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Effect",
+          "effectName": "Police Car 4"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Effect",
+          "effectName": "Police Car 5"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Effect",
+          "effectName": "Police Car 6"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Effect",
+          "effectName": "Police Car 7"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Effect",
+          "effectName": "Police Car 8"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Effect",
+          "effectName": "Police Car 9"
+        },
+        {
+          "dmxRange": [167, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "FX Adjustment": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Effect reversed"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "Speed",
+          "comment": "Effect stops",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Effect"
+        }
+      ]
+    },
+    "FX synchronization": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "No sync"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "comment": "Offset shift 10°"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Maintenance",
+          "comment": "Offset shift 20°"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Maintenance",
+          "comment": "Offset shift 30°"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Maintenance",
+          "comment": "Offset shift 40°"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Maintenance",
+          "comment": "Offset shift 50°"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Maintenance",
+          "comment": "Offset shift 60°"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Maintenance",
+          "comment": "Offset shift 70°"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Maintenance",
+          "comment": "Offset shift 80°"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Maintenance",
+          "comment": "Offset shift 90°"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Maintenance",
+          "comment": "Offset shift 100°"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Maintenance",
+          "comment": "Offset shift 110°"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Maintenance",
+          "comment": "Offset shift 120°"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Maintenance",
+          "comment": "Offset shift 130°"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Maintenance",
+          "comment": "Offset shift 140°"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Maintenance",
+          "comment": "Offset shift 150°"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "comment": "Offset shift 160°"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "comment": "Offset shift 170°"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "comment": "Offset shift 180°"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Maintenance",
+          "comment": "Offset shift 190°"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "comment": "Offset shift 200°"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Maintenance",
+          "comment": "Offset shift 210°"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Maintenance",
+          "comment": "Offset shift 220°"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "comment": "Offset shift 230°"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "comment": "Offset shift 240°"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "comment": "Offset shift 250°"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "comment": "Offset shift 260°"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Maintenance",
+          "comment": "Offset shift 270°"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "comment": "Offset shift 280°"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "comment": "Offset shift 290°"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "comment": "Offset shift 300°"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "comment": "Offset shift 310°"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "comment": "Offset shift 320°"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Maintenance",
+          "comment": "Offset shift 330°"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Maintenance",
+          "comment": "Offset shift 340°"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Maintenance",
+          "comment": "Offset shift 350°"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "comment": "Synchronized: all fixtures start FX cycles at same time"
+        },
+        {
+          "dmxRange": [37, 100],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Maintenance",
+          "comment": "Random start"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Maintenance",
+          "comment": "Random duration"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Aura strobe/shutter effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe, slow → fast"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random strobe"
+        }
+      ]
+    },
+    "Aura dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Aura Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Aura Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Aura Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Aura color presets (‘color wheel’ effect)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open. RGB Color Mixing Enabled"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Color 1 - LEE 790 - Moroccan pink"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Color 2- LEE 157 - Pink"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Color 3 - LEE 332 - Special rose pink"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Color 4 - LEE 328 - Follies pink"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Color 5 - LEE 345 - Fuchsia pink"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Color 6 - LEE 194 - Surprise pink"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Color 7 - LEE 181 - Congo Blue"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Color 8 - LEE 071 - Tokyo Blue"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Color 9 - LEE 120 - Deep Blue"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Color 10 - LEE 079 - Just Blue"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Color 11 - LEE 132 - Medium Blue"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Color 12 - LEE 200 - Double CT Blue"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Color 13 - LEE 161 - Slate Blue"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Color 14 - LEE 201 - Full CT Blue"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Color 15 - LEE 202 - Half CT Blue"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Color 16 - LEE 117 - Steel Blue"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Color 17 - LEE 353 - Lighter Blue"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Color 18 - LEE 118 - Light Blue"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "Color 19 - LEE 116 - Medium Blue Green"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "Color 20 - LEE 124 - Dark Green"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "Color 21 - LEE 139 - Primary Green"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "Color 22 - LEE 089 - Moss Green"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "Color 23 - LEE 122 - Fern Green"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "Color 24 - LEE 738 - JAS Green"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "Color 25 - LEE 088 - Lime Green"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "WheelSlot",
+          "slotNumber": 27,
+          "comment": "Color 26 - LEE 100 - Spring Yellow"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "WheelSlot",
+          "slotNumber": 28,
+          "comment": "Color 27 - LEE 104 - Deep Amber"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "WheelSlot",
+          "slotNumber": 29,
+          "comment": "Color 28 - LEE 179 - Chrome Orange"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "WheelSlot",
+          "slotNumber": 30,
+          "comment": "Color 29 - LEE 105 - Orange"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "WheelSlot",
+          "slotNumber": 31,
+          "comment": "Color 30 - LEE 021 - Gold Amber"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "WheelSlot",
+          "slotNumber": 32,
+          "comment": "Color 31 - LEE 778 - Millennium Gold"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "WheelSlot",
+          "slotNumber": 33,
+          "comment": "Color 32 - LEE 135 - Deep Golden Amber"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "WheelSlot",
+          "slotNumber": 34,
+          "comment": "Color 33 - LEE 164 - Flame Red"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "WheelSlot",
+          "slotNumber": 35,
+          "comment": "Color 34 - Magenta"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "WheelSlot",
+          "slotNumber": 36,
+          "comment": "Color 35 - Medium Lavender"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "WheelSlot",
+          "slotNumber": 37,
+          "comment": "Color 36 - White"
+        },
+        {
+          "dmxRange": [191, 214],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "Aura ‘color wheel rotation’ effect -"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "WheelRotation",
+          "speed": "stop",
+          "comment": "Aura ‘color wheel rotation’ effect -(this willwherever the color is at the time)"
+        },
+        {
+          "dmxRange": [220, 243],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Aura ‘color wheel rotation’ effect -"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "WheelSlot",
+          "slotNumber": 41,
+          "comment": "Aura random colors - Fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "WheelSlot",
+          "slotNumber": 42,
+          "comment": "Aura random colors - Medium"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 43,
+          "comment": "Aura random colors - Slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Beam Flash Intensity",
+        "Beam flash duration",
+        "Beam flash rate"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Beam Flash Intensity",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Beam special effects"
+      ]
+    },
+    {
+      "name": "Extended",
+      "channels": [
+        "Beam Flash Intensity",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Beam special effects",
+        "Control / settings",
+        "FX Select",
+        "FX Adjustment",
+        "FX synchronization",
+        "Aura strobe/shutter effect",
+        "Aura dimmer",
+        "Aura Red",
+        "Aura Green",
+        "Aura Blue",
+        "Aura color presets (‘color wheel’ effect)"
+      ]
+    }
+  ]
+}
