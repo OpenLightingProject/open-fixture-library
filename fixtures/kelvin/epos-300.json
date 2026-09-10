@@ -329,44 +329,43 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "type": "Generic",
-          "dmxRange": [0, 0],
-          "comment": "None"
+          "type": "NoFunction",
+          "dmxRange": [0, 0]
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [1, 1],
-          "comment": "Fire"
+          "effectName": "Fire"
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [2, 2],
-          "comment": "CCT chase"
+          "effectName": "CCT chase"
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [3, 3],
-          "comment": "Color chase"
+          "effectName": "Color chase"
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [4, 4],
-          "comment": "Pulse"
+          "effectName": "Pulse"
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [5, 5],
-          "comment": "Strobe"
+          "effectName": "Strobe"
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [6, 6],
-          "comment": "Lightning"
+          "effectName": "Lightning"
         },
         {
-          "type": "Generic",
+          "type": "Effect",
           "dmxRange": [7, 255],
-          "comment": "Dimming"
+          "effectName": "Dimming"
         }
       ]
     },
@@ -374,14 +373,14 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "type": "Generic",
+          "type": "EffectSpeed",
           "dmxRange": [0, 0],
-          "comment": "Play"
+          "speed": "stop"
         },
         {
-          "type": "Generic",
+          "type": "EffectSpeed",
           "dmxRange": [1, 255],
-          "comment": "Stop"
+          "speed": "100%"
         }
       ]
     },
