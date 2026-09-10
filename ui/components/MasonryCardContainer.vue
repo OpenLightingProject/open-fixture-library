@@ -29,34 +29,24 @@
     content: "";
   }
 
-  @supports (grid-template-rows: masonry) {
+  @supports (grid-template-rows: masonry) or (display: grid-lanes) {
     .masonry-card-container {
       display: grid;
+      display: grid-lanes;
       grid-template-rows: masonry;
       grid-template-columns: 1fr 1fr;
       column-gap: 1rem;
 
-      .card {
-        float: none;
-        width: auto;
-        margin-right: 0;
-        margin-left: 0;
+      &::after {
+        content: none;
       }
     }
-  }
 
-  @supports (display: grid-lanes) {
-    .masonry-card-container {
-      display: grid-lanes;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 1rem;
-
-      .card {
-        float: none;
-        width: auto;
-        margin-right: 0;
-        margin-left: 0;
-      }
+    .masonry-card-container .card {
+      float: none;
+      width: auto;
+      margin-right: 0;
+      margin-left: 0;
     }
   }
 }
