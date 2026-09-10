@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EDX-4",
+  "comment": "4-channel DMX dimmer pack, not sold anymore.",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-02",
+    "lastModifyDate": "2024-10-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.yumpu.com/fr/document/view/29436703/4-channel-dmx-dimmer-pack"
+    ],
+    "productPage": [
+      "https://www.recordcase.de/en/eurolite-4-channel-dmx-dimmer-pack-edx-4"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 165, 110],
+    "weight": 3,
+    "power": 3680,
+    "DMXconnector": "3-pin"
+  },
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer Master"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    }
+  ]
+}

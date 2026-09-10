@@ -4,9 +4,9 @@
   "shortName": "StageRightWash7x10W-MH",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann", "martin3000", "sirexeclp"],
+    "authors": ["Felix Edelmann", "martin3000", "sirexeclp", "Ryan Goodwin"],
     "createDate": "2019-03-29",
-    "lastModifyDate": "2022-01-29"
+    "lastModifyDate": "2023-07-12"
   },
   "comment": "This fixture is sold under different brands / names.",
   "links": {
@@ -26,6 +26,9 @@
     "dimensions": [240, 300, 240],
     "weight": 3.8,
     "power": 80,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "7× 10W RGBW LEDs"

@@ -13,6 +13,9 @@
     "manual": [
       "https://www.martin.com/files/files/productdocuments/11_MANUALS/999/UM_MACAura_EN_B.pdf"
     ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-aura"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=PKBiIK7Yr1E",
       "https://www.youtube.com/watch?v=8kL6YO1U70Q"
@@ -628,7 +631,7 @@
           "type": "Effect",
           "effectName": "Idle",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -636,7 +639,7 @@
           "type": "Effect",
           "effectName": "Dimmer sync",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -644,7 +647,7 @@
           "type": "Effect",
           "effectName": "Strobe sync",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -652,7 +655,7 @@
           "type": "Effect",
           "effectName": "Dimmer + strobe sync",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -660,7 +663,7 @@
           "type": "Effect",
           "effectName": "Aura color sync",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -668,7 +671,7 @@
           "type": "Effect",
           "effectName": "Aura all sync",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -676,7 +679,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -724,7 +727,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -772,7 +775,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -788,7 +791,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -812,7 +815,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -820,7 +823,7 @@
           "type": "Effect",
           "effectName": "Color strobe",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -836,7 +839,7 @@
           "type": "Effect",
           "effectName": "Aura color strobe",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -860,7 +863,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -900,7 +903,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -924,7 +927,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         },
         {
@@ -932,15 +935,10 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX1 adjust": "FX1 adjust n/a"
+            "FX1 adjust": null
           }
         }
       ]
-    },
-    "FX1 adjust n/a": {
-      "capability": {
-        "type": "NoFunction"
-      }
     },
     "FX1 adjust Trigger Delay": {
       "capability": {
@@ -989,7 +987,7 @@
           "type": "Effect",
           "effectName": "Idle",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -997,7 +995,7 @@
           "type": "Effect",
           "effectName": "Dimmer sync",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1005,7 +1003,7 @@
           "type": "Effect",
           "effectName": "Strobe sync",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1013,7 +1011,7 @@
           "type": "Effect",
           "effectName": "Dimmer + strobe sync",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1021,7 +1019,7 @@
           "type": "Effect",
           "effectName": "Aura color sync",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1029,7 +1027,7 @@
           "type": "Effect",
           "effectName": "Aura all sync",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1037,7 +1035,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1085,7 +1083,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1133,7 +1131,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1149,7 +1147,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1173,7 +1171,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1181,7 +1179,7 @@
           "type": "Effect",
           "effectName": "Color strobe",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1197,7 +1195,7 @@
           "type": "Effect",
           "effectName": "Aura color strobe",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1221,7 +1219,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1261,7 +1259,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1285,7 +1283,7 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         },
         {
@@ -1293,15 +1291,10 @@
           "type": "NoFunction",
           "comment": "Reserved",
           "switchChannels": {
-            "FX2 adjust": "FX2 adjust n/a"
+            "FX2 adjust": null
           }
         }
       ]
-    },
-    "FX2 adjust n/a": {
-      "capability": {
-        "type": "NoFunction"
-      }
     },
     "FX2 adjust Trigger Delay": {
       "capability": {

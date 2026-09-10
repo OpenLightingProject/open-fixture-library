@@ -4,19 +4,26 @@
   "shortName": "GLPLaser",
   "categories": ["Laser", "Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2018-02-02",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2023-07-12"
   },
   "comment": "The manual leaves gaps between capabilities, which are corrected here.",
   "links": {
-    "manual": ["https://www.glp.de/de/produkte?format=raw&task=download&fid=65"],
-    "video": ["https://www.youtube.com/watch?v=xtjhMXGvLiE"]
+    "manual": [
+      "https://www.glp.de/de/produkte?format=raw&task=download&fid=65"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=xtjhMXGvLiE"
+    ]
   },
   "physical": {
     "dimensions": [340, 145, 370],
     "weight": 7.5,
     "power": 170,
+    "powerConnectors": {
+      "powerCON": "input only"
+    },
     "DMXconnector": "3-pin",
     "lens": {
       "degreesMinMax": [40, 40]

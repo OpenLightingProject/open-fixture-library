@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "40W Beam Spot Light RGBW",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["David Oleniacz", "Ryan Goodwin"],
+    "createDate": "2023-06-24",
+    "lastModifyDate": "2023-06-24"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/Stage-Spotlight-Beam-Light-Package/dp/B07XYYK28H"
+    ],
+    "other": [
+      "https://www.amazon.com/ask/questions/Tx3CE66RTIHOGZL/ref=ask_dp_dpmw_al_hza"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "dimensions": [127, 127, 190],
+    "power": 40,
+    "weight": 1.36
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "SMD Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "helpWanted": "Are the SMD LEDs the ring around the main light source?"
+      }
+    },
+    "SMD Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "SMD Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Effect",
+          "effectName": "Internal Program",
+          "helpWanted": "What are the internal programs? How many are there? What are their DMX values?"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Program Mode",
+        "Program Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue"
+      ]
+    }
+  ]
+}

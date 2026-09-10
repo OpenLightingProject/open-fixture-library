@@ -27,5 +27,3 @@ Locally, running `npm run dev` (after the [initial setup](README.md#local-instal
 ## Deployment
 
 Every time a new pull request is merged into the master branch, the new version is automatically deployed to <https://open-fixture-library.org/> (see the [`server/` directory](../server/)).
-
-Each **pull request** `#xyz` (e.g. [#223](https://github.com/OpenLightingProject/open-fixture-library/pull/223)) is automatically deployed as a review app to `https://open-fixture-library-pr-xyz.herokuapp.com/` on [Heroku](https://www.heroku.com/). It is refreshed with each commit to the feature branch without waiting for any tests to pass.

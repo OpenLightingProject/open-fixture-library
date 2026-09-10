@@ -175,8 +175,8 @@ A capability represents a range of a channel.
         * [.isShaking](#Capability+isShaking) ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
         * [.effectName](#Capability+effectName) ⇒ <code>string</code> \| <code>null</code>
         * [.effectPreset](#Capability+effectPreset) ⇒ <code>string</code> \| <code>null</code>
-        * [.isSoundControlled](#Capability+isSoundControlled) ⇒ <code>boolean</code> \| <code>null</code>
-        * [.randomTiming](#Capability+randomTiming) ⇒ <code>boolean</code> \| <code>null</code>
+        * [.isSoundControlled](#Capability+isSoundControlled) ⇒ <code>boolean</code>
+        * [.randomTiming](#Capability+randomTiming) ⇒ <code>boolean</code>
         * [.blade](#Capability+blade) ⇒ <code>&#x27;Top&#x27;</code> \| <code>&#x27;Right&#x27;</code> \| <code>&#x27;Bottom&#x27;</code> \| <code>&#x27;Left&#x27;</code> \| <code>number</code> \| <code>null</code>
         * [.fogType](#Capability+fogType) ⇒ <code>&#x27;Fog&#x27;</code> \| <code>&#x27;Haze&#x27;</code> \| <code>null</code>
         * [.hold](#Capability+hold) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -201,7 +201,7 @@ A capability represents a range of a channel.
         * [.parameter](#Capability+parameter) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.getDmxRangeWithResolution(desiredResolution)](#Capability+getDmxRangeWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>boolean</code>
-        * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ [<code>Range</code>](#Range)
+        * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ <code>number</code>
         * [.isSlotType(slotType)](#Capability+isSlotType) ⇒ <code>boolean</code>
         * [._getStartEndArray(property)](#Capability+_getStartEndArray) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> ℗
     * _static_
@@ -215,9 +215,9 @@ Create a new Capability instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The capability data from the channel's JSON. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The capability data from the channel's JSON. |
 | resolution | [<code>Resolution</code>](#Resolution) | How fine this capability is declared. |
-| channel | [<code>CoarseChannel</code>](#CoarseChannel) | The channel instance this channel is associated to. |
+| channel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel instance this channel is associated to. |
 
 <a name="Capability+jsonObject"></a>
 
@@ -328,14 +328,14 @@ Use only in `WheelShake` capabilities!
 **Returns**: <code>string</code> \| <code>null</code> - Describes the effect that this capability activates by using a predefined, standard name. Defaults to null.  
 <a name="Capability+isSoundControlled"></a>
 
-### capability.isSoundControlled ⇒ <code>boolean</code> \| <code>null</code>
+### capability.isSoundControlled ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>boolean</code> \| <code>null</code> - Whether this effect is controlled by sound perceived by a microphone. Defaults to false.  
+**Returns**: <code>boolean</code> - Whether this effect is controlled by sound perceived by a microphone. Defaults to false.  
 <a name="Capability+randomTiming"></a>
 
-### capability.randomTiming ⇒ <code>boolean</code> \| <code>null</code>
+### capability.randomTiming ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>boolean</code> \| <code>null</code> - Whether this capability's speed / duration varies by a random offset. Defaults to false.  
+**Returns**: <code>boolean</code> - Whether this capability's speed / duration varies by a random offset. Defaults to false.  
 <a name="Capability+blade"></a>
 
 ### capability.blade ⇒ <code>&#x27;Top&#x27;</code> \| <code>&#x27;Right&#x27;</code> \| <code>&#x27;Bottom&#x27;</code> \| <code>&#x27;Left&#x27;</code> \| <code>number</code> \| <code>null</code>
@@ -468,9 +468,9 @@ Use only in `WheelShake` capabilities!
 
 <a name="Capability+getMenuClickDmxValueWithResolution"></a>
 
-### capability.getMenuClickDmxValueWithResolution(desiredResolution) ⇒ [<code>Range</code>](#Range)
+### capability.getMenuClickDmxValueWithResolution(desiredResolution) ⇒ <code>number</code>
 **Kind**: instance method of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>Range</code>](#Range) - The capability's DMX bounds scaled (down) to the given resolution.  
+**Returns**: <code>number</code> - The DMX value (scaled to the given resolution) to set when this capability is chosen in a lighting software's auto menu, or -1 if the capability should be hidden in the auto menu.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -563,8 +563,8 @@ Create a new CoarseChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The channel's identifier, must be unique in the fixture. |
-| jsonObject | <code>object</code> | The channel data from the fixture's JSON. |
-| fixture | [<code>Fixture</code>](#Fixture) | The fixture instance this channel is associated to. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The channel data from the fixture's JSON. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture instance this channel is associated to. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -902,7 +902,7 @@ Creates a new FineChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The fine channel alias as defined in the coarse channel. |
-| coarseChannel | [<code>CoarseChannel</code>](#CoarseChannel) | The coarse (MSB) channel. |
+| coarseChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The coarse (MSB) channel. |
 
 <a name="FineChannel+coarseChannel"></a>
 
@@ -979,7 +979,7 @@ A physical DMX device.
     * [.mainCategory](#Fixture+mainCategory) ⇒ <code>string</code>
     * [.meta](#Fixture+meta) ⇒ [<code>Meta</code>](#Meta)
     * [.hasComment](#Fixture+hasComment) ⇒ <code>boolean</code>
-    * [.comment](#Fixture+comment) ⇒ <code>boolean</code>
+    * [.comment](#Fixture+comment) ⇒ <code>string</code>
     * [.helpWanted](#Fixture+helpWanted) ⇒ <code>string</code> \| <code>null</code>
     * [.isHelpWanted](#Fixture+isHelpWanted) ⇒ <code>boolean</code>
     * [.isCapabilityHelpWanted](#Fixture+isCapabilityHelpWanted) ⇒ <code>boolean</code>
@@ -1004,6 +1004,7 @@ A physical DMX device.
     * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.nullSwitchingChannelAliases](#Fixture+nullSwitchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
     * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
     * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.allChannels](#Fixture+allChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
@@ -1013,6 +1014,7 @@ A physical DMX device.
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;string&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getNullChannelForSwitchingAlias(alias)](#Fixture+getNullChannelForSwitchingAlias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
@@ -1023,9 +1025,9 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| manufacturer | [<code>Manufacturer</code>](#Manufacturer) | A Manufacturer instance. |
+| manufacturer | [<code>Readonly.&lt;Manufacturer&gt;</code>](#Manufacturer) | A Manufacturer instance. |
 | key | <code>string</code> | The fixture's unique key. Equals to filename without '.json'. |
-| jsonObject | <code>object</code> | The fixture's parsed JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The fixture's parsed JSON data. |
 
 <a name="Fixture+manufacturer"></a>
 
@@ -1084,9 +1086,9 @@ Create a new Fixture instance.
 **Returns**: <code>boolean</code> - Whether a comment is defined for this fixture.  
 <a name="Fixture+comment"></a>
 
-### fixture.comment ⇒ <code>boolean</code>
+### fixture.comment ⇒ <code>string</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>boolean</code> - A comment about the fixture (often a note about a incorrectness in the manual). Defaults to an empty string.  
+**Returns**: <code>string</code> - A comment about the fixture (often a note about an incorrectness in the manual). Defaults to an empty string.  
 <a name="Fixture+helpWanted"></a>
 
 ### fixture.helpWanted ⇒ <code>string</code> \| <code>null</code>
@@ -1220,6 +1222,11 @@ Template channels are used to automatically generate channels.
 ### fixture.nullChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>Array.&lt;string&gt;</code> - All null channels' keys.  
+<a name="Fixture+nullSwitchingChannelAliases"></a>
+
+### fixture.nullSwitchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Array.&lt;string&gt;</code> - Switching channel aliases that switch to null, ordered by appearance.  
 <a name="Fixture+nullChannels"></a>
 
 ### fixture.nullChannels ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
@@ -1282,6 +1289,16 @@ Searches the template channel with the given key. Fine and switching template ch
 | --- | --- | --- |
 | channelKey | <code>string</code> | The template channel's key |
 
+<a name="Fixture+getNullChannelForSwitchingAlias"></a>
+
+### fixture.getNullChannelForSwitchingAlias(alias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>NullChannel</code>](#NullChannel) \| <code>null</code> - The null channel for the alias, or null if it does not switch to null.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| alias | <code>string</code> | The switching channel alias. |
+
 <a name="Fixture+getChannelByKey"></a>
 
 ### fixture.getChannelByKey(key) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
@@ -1316,7 +1333,7 @@ Creates a new Manufacturer instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
-| jsonObject | <code>object</code> | The manufacturer's JSON object. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The manufacturer's JSON object. |
 
 <a name="Manufacturer+name"></a>
 
@@ -1374,7 +1391,7 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The fixture's JSON object containing the matrix information. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The fixture's JSON object containing the matrix information. |
 
 <a name="Matrix+jsonObject"></a>
 
@@ -1510,9 +1527,9 @@ Information about a fixture's author and history.
     * [.createDate](#Meta+createDate) ⇒ <code>Date</code>
     * [.lastModifyDate](#Meta+lastModifyDate) ⇒ <code>Date</code>
     * [.importPlugin](#Meta+importPlugin) ⇒ <code>string</code> \| <code>null</code>
-    * [.importDate](#Meta+importDate) ⇒ <code>string</code> \| <code>null</code>
+    * [.importDate](#Meta+importDate) ⇒ <code>Date</code> \| <code>null</code>
     * [.importComment](#Meta+importComment) ⇒ <code>string</code> \| <code>null</code>
-    * [.hasImportComment](#Meta+hasImportComment) ⇒ <code>string</code> \| <code>null</code>
+    * [.hasImportComment](#Meta+hasImportComment) ⇒ <code>boolean</code>
 
 <a name="new_Meta_new"></a>
 
@@ -1522,7 +1539,7 @@ Creates a new Meta instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | A meta object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A meta object from the fixture's JSON data. |
 
 <a name="Meta+authors"></a>
 
@@ -1546,9 +1563,9 @@ Creates a new Meta instance.
 **Returns**: <code>string</code> \| <code>null</code> - The key of the plugin with which this fixture was imported. Null if it's not imported.  
 <a name="Meta+importDate"></a>
 
-### meta.importDate ⇒ <code>string</code> \| <code>null</code>
+### meta.importDate ⇒ <code>Date</code> \| <code>null</code>
 **Kind**: instance property of [<code>Meta</code>](#Meta)  
-**Returns**: <code>string</code> \| <code>null</code> - When this fixture was imported. Null if it's not imported.  
+**Returns**: <code>Date</code> \| <code>null</code> - When this fixture was imported. Null if it's not imported.  
 <a name="Meta+importComment"></a>
 
 ### meta.importComment ⇒ <code>string</code> \| <code>null</code>
@@ -1556,9 +1573,9 @@ Creates a new Meta instance.
 **Returns**: <code>string</code> \| <code>null</code> - A comment further describing the import process. Null if it's not imported.  
 <a name="Meta+hasImportComment"></a>
 
-### meta.hasImportComment ⇒ <code>string</code> \| <code>null</code>
+### meta.hasImportComment ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Meta</code>](#Meta)  
-**Returns**: <code>string</code> \| <code>null</code> - Whether there is an import comment. Always false if it's not imported.  
+**Returns**: <code>boolean</code> - Whether there is an import comment. Always false if it's not imported.  
 <a name="Mode"></a>
 
 ## Mode
@@ -1591,8 +1608,8 @@ Creates a new Mode instance
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The mode object from the fixture's JSON data. |
-| fixture | [<code>Fixture</code>](#Fixture) | The fixture this mode is associated to. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The mode object from the fixture's JSON data. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this mode is associated to. |
 
 <a name="Mode+jsonObject"></a>
 
@@ -1695,7 +1712,7 @@ Dummy channel used to represent `null` in a mode's channel list.
 **Extends**: [<code>CoarseChannel</code>](#CoarseChannel)  
 
 * [NullChannel](#NullChannel) ⇐ [<code>CoarseChannel</code>](#CoarseChannel)
-    * [new NullChannel(fixture)](#new_NullChannel_new)
+    * [new NullChannel(fixture, number)](#new_NullChannel_new)
     * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>object</code>
     * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#CoarseChannel+name) ⇒ <code>string</code>
@@ -1731,14 +1748,15 @@ Dummy channel used to represent `null` in a mode's channel list.
 
 <a name="new_NullChannel_new"></a>
 
-### new NullChannel(fixture)
+### new NullChannel(fixture, number)
 Creates a new NullChannel instance by creating a Channel object with NoFunction channel data.
-Uses a unique uuid as channel key.
+Uses a numbered, unique key while always displaying the name "No Function".
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| fixture | [<code>Fixture</code>](#Fixture) | The fixture this channel is associated to. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this channel is associated to. |
+| number | <code>number</code> | The channel's number, used to make the key unique. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -1981,12 +1999,13 @@ A fixture's technical data, belonging to the hardware and not the DMX protocol.
     * [.depth](#Physical+depth) ⇒ <code>number</code> \| <code>null</code>
     * [.weight](#Physical+weight) ⇒ <code>number</code> \| <code>null</code>
     * [.power](#Physical+power) ⇒ <code>number</code> \| <code>null</code>
+    * [.powerConnectors](#Physical+powerConnectors) ⇒ <code>Record.&lt;string, string&gt;</code>
     * [.DMXconnector](#Physical+DMXconnector) ⇒ <code>string</code> \| <code>null</code>
-    * [.hasBulb](#Physical+hasBulb) ⇒ <code>boolean</code> \| <code>null</code>
+    * [.hasBulb](#Physical+hasBulb) ⇒ <code>boolean</code>
     * [.bulbType](#Physical+bulbType) ⇒ <code>string</code> \| <code>null</code>
     * [.bulbColorTemperature](#Physical+bulbColorTemperature) ⇒ <code>number</code> \| <code>null</code>
     * [.bulbLumens](#Physical+bulbLumens) ⇒ <code>number</code> \| <code>null</code>
-    * [.hasLens](#Physical+hasLens) ⇒ <code>boolean</code> \| <code>null</code>
+    * [.hasLens](#Physical+hasLens) ⇒ <code>boolean</code>
     * [.lensName](#Physical+lensName) ⇒ <code>string</code> \| <code>null</code>
     * [.lensDegreesMin](#Physical+lensDegreesMin) ⇒ <code>number</code> \| <code>null</code>
     * [.lensDegreesMax](#Physical+lensDegreesMax) ⇒ <code>number</code> \| <code>null</code>
@@ -2002,7 +2021,7 @@ Creates a new Physical instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | A fixture's or mode's physical JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A fixture's or mode's physical JSON data. |
 
 <a name="Physical+jsonObject"></a>
 
@@ -2039,6 +2058,11 @@ Creates a new Physical instance.
 ### physical.power ⇒ <code>number</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
 **Returns**: <code>number</code> \| <code>null</code> - Power consumption of the fixture in watts. Defaults to null.  
+<a name="Physical+powerConnectors"></a>
+
+### physical.powerConnectors ⇒ <code>Record.&lt;string, string&gt;</code>
+**Kind**: instance property of [<code>Physical</code>](#Physical)  
+**Returns**: <code>Record.&lt;string, string&gt;</code> - Power connector information.  
 <a name="Physical+DMXconnector"></a>
 
 ### physical.DMXconnector ⇒ <code>string</code> \| <code>null</code>
@@ -2046,9 +2070,9 @@ Creates a new Physical instance.
 **Returns**: <code>string</code> \| <code>null</code> - The DMX plug to be used to control the fixture, e.g. "3-pin" (XLR). Defaults to null.  
 <a name="Physical+hasBulb"></a>
 
-### physical.hasBulb ⇒ <code>boolean</code> \| <code>null</code>
+### physical.hasBulb ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>boolean</code> \| <code>null</code> - Whether physical data about the light source is available.  
+**Returns**: <code>boolean</code> - Whether physical data about the light source is available.  
 <a name="Physical+bulbType"></a>
 
 ### physical.bulbType ⇒ <code>string</code> \| <code>null</code>
@@ -2066,9 +2090,9 @@ Creates a new Physical instance.
 **Returns**: <code>number</code> \| <code>null</code> - The luminous flux of the bulb in lumens. Defaults to null.  
 <a name="Physical+hasLens"></a>
 
-### physical.hasLens ⇒ <code>boolean</code> \| <code>null</code>
+### physical.hasLens ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>boolean</code> \| <code>null</code> - Whether physical data about the lens is available.  
+**Returns**: <code>boolean</code> - Whether physical data about the lens is available.  
 <a name="Physical+lensName"></a>
 
 ### physical.lensName ⇒ <code>string</code> \| <code>null</code>
@@ -2232,7 +2256,7 @@ Information about a resource.
     * [.imageExtension](#Resource+imageExtension) ⇒ <code>string</code> \| <code>null</code>
     * [.imageMimeType](#Resource+imageMimeType) ⇒ <code>string</code> \| <code>null</code>
     * [.imageData](#Resource+imageData) ⇒ <code>string</code> \| <code>null</code>
-    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf-8&#x27;</code> \| <code>null</code>
     * [.imageDataUrl](#Resource+imageDataUrl) ⇒ <code>string</code> \| <code>null</code>
 
 <a name="new_Resource_new"></a>
@@ -2243,7 +2267,7 @@ Creates a new Resource instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | An embedded resource object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | An embedded resource object from the fixture's JSON data. |
 
 <a name="Resource+name"></a>
 
@@ -2294,12 +2318,12 @@ Creates a new Resource instance.
 
 ### resource.imageData ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>string</code> \| <code>null</code> - The resource image data (base64 or utf8 encoded), or null if there is no image.  
+**Returns**: <code>string</code> \| <code>null</code> - The resource image data (base64 or utf-8 encoded), or null if there is no image.  
 <a name="Resource+imageEncoding"></a>
 
-### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf-8&#x27;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code> - The resource image's data encoding, or null if there is no image.  
+**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf-8&#x27;</code> \| <code>null</code> - The resource image's data encoding, or null if there is no image.  
 <a name="Resource+imageDataUrl"></a>
 
 ### resource.imageDataUrl ⇒ <code>string</code> \| <code>null</code>
@@ -2316,7 +2340,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
 
 * [SwitchingChannel](#SwitchingChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new SwitchingChannel(alias, triggerChannel)](#new_SwitchingChannel_new)
-    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
     * [.fixture](#SwitchingChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
     * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>Record.&lt;string, Array.&lt;Range&gt;&gt;</code>
@@ -2340,13 +2364,13 @@ Creates a new SwitchingChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | alias | <code>string</code> | The unique switching channel alias as defined in the trigger channel's `switchChannels` properties. |
-| triggerChannel | [<code>AbstractChannel</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
+| triggerChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel whose DMX value this channel depends on. |
 
 <a name="SwitchingChannel+triggerChannel"></a>
 
-### switchingChannel.triggerChannel ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+### switchingChannel.triggerChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>AbstractChannel</code>](#AbstractChannel) - The channel whose DMX value this switching channel depends on.  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The channel whose DMX value this switching channel depends on.  
 <a name="SwitchingChannel+fixture"></a>
 
 ### switchingChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -2455,8 +2479,8 @@ Creates new TemplateChannel instance. Also clears cache by setting jsonObject.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The templateChannel's key with the required variables. |
-| jsonObject | <code>object</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
-| fixture | [<code>Fixture</code>](#Fixture) | The Fixture instance. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
+| fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The Fixture instance. |
 
 <a name="TemplateChannel+allTemplateKeys"></a>
 
@@ -2513,8 +2537,8 @@ Information about a fixture's wheel.
     * [.name](#Wheel+name) ⇒ <code>string</code>
     * [.direction](#Wheel+direction) ⇒ <code>&#x27;CW&#x27;</code> \| <code>&#x27;CCW&#x27;</code>
     * [.type](#Wheel+type) ⇒ <code>string</code>
-    * [.slots](#Wheel+slots) ⇒ <code>Array.&lt;object&gt;</code>
-    * [.getSlot(slotNumber)](#Wheel+getSlot) ⇒ <code>object</code>
+    * [.slots](#Wheel+slots) ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot)
+    * [.getSlot(slotNumber)](#Wheel+getSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot)
     * [.getAbsoluteSlotIndex(slotNumber)](#Wheel+getAbsoluteSlotIndex) ⇒ <code>number</code>
     * [.getSlotsOfType(type)](#Wheel+getSlotsOfType) ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot)
 
@@ -2527,7 +2551,7 @@ Creates a new Wheel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | wheelName | <code>string</code> | The wheel's name, like specified in the JSON. |
-| jsonObject | <code>object</code> | A wheel object from the fixture's JSON data. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> | A wheel object from the fixture's JSON data. |
 
 <a name="Wheel+name"></a>
 
@@ -2546,14 +2570,14 @@ Creates a new Wheel instance.
 **Returns**: <code>string</code> - The type of the Wheel, i.e. the most frequent slot type (except for animation gobo wheels; the wheel type is AnimationGobo there).  
 <a name="Wheel+slots"></a>
 
-### wheel.slots ⇒ <code>Array.&lt;object&gt;</code>
+### wheel.slots ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot)
 **Kind**: instance property of [<code>Wheel</code>](#Wheel)  
-**Returns**: <code>Array.&lt;object&gt;</code> - Array of wheel slots.  
+**Returns**: [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot) - Array of wheel slots.  
 <a name="Wheel+getSlot"></a>
 
-### wheel.getSlot(slotNumber) ⇒ <code>object</code>
+### wheel.getSlot(slotNumber) ⇒ [<code>WheelSlot</code>](#WheelSlot)
 **Kind**: instance method of [<code>Wheel</code>](#Wheel)  
-**Returns**: <code>object</code> - The slot object. Can be a split slot object, if a non-integer index is specified.  
+**Returns**: [<code>WheelSlot</code>](#WheelSlot) - The slot object. Can be a split slot object, if a non-integer index is specified.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -2609,10 +2633,10 @@ Creates a new WheelSlot instance.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| jsonObject | <code>object</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
-| wheel | [<code>Wheel</code>](#Wheel) |  | The wheel that this slot belongs to. |
-| floorSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
-| ceilSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
+| jsonObject | <code>Readonly.&lt;object&gt;</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
+| wheel | [<code>Readonly.&lt;Wheel&gt;</code>](#Wheel) |  | The wheel that this slot belongs to. |
+| floorSlot | [<code>Readonly.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
+| ceilSlot | [<code>Readonly.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
 
 <a name="WheelSlot+isSplitSlot"></a>
 
