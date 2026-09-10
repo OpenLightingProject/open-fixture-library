@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "240W 448LED RGBWA Stage Wash Light Bar",
+  "categories": ["Strobe", "Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-08-24",
+    "lastModifyDate": "2026-08-24"
+  },
+  "links": {
+    "productPage": [
+      "https://www.lalucenatzonline.com/products/240w-rgb-white-amber-led-dj-strobe-effect-light-bar-with-zone-control-free-shipping-to-us"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [120, 80, 1045],
+    "weight": 2.65,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [140, 160]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Outer Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Outer Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Outer Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Inner Amber": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Inner White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Master Dimmer",
+        "Shutter / Strobe",
+        "Outer Red",
+        "Outer Green",
+        "Outer Blue",
+        "Inner Amber",
+        "Inner White"
+      ]
+    }
+  ]
+}
