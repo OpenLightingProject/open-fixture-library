@@ -1,0 +1,2588 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Washer Wall Light",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["DJ Dr. J"],
+    "createDate": "2026-08-03",
+    "lastModifyDate": "2026-08-03"
+  },
+  "comment": "224 LED, 60 Watts, 40 Inches",
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0241/9579/2960/files/OK-062-224WL_User_Guide_202404.pdf?v=1712655650"
+    ],
+    "productPage": [
+      "https://oppsk.com/products/224-led-rgb-led-pixel-light-bar"
+    ],
+    "video": [
+      "https://oppsk.com/cdn/shop/videos/c/vp/dcacc99813084b14b7efe0032a71e8c8/dcacc99813084b14b7efe0032a71e8c8.SD-480p-0.9Mbps-33301809.mp4?v=0"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 65, 85],
+    "weight": 2,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Frosted",
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "availableChannels": {
+    "Channel 1 (Dimmer)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Master Dimmer"
+      }
+    },
+    "Channel 2 (Red #1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 3 (Green #1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 4 (Blue #1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 5 (Red #2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 6 (Green #2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 7 (Blue #2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 47 (Red #16)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 48 (Green #16)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 49 (Blue #16)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 50 (Effects)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "CH 2 - CH 49 is valid"
+        },
+        {
+          "dmxRange": [10, 13],
+          "type": "ColorPreset",
+          "comment": "Static Color"
+        },
+        {
+          "dmxRange": [14, 17],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [18, 21],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [22, 25],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [26, 29],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [30, 33],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [34, 37],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [38, 41],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [42, 45],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [46, 49],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [50, 53],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [54, 57],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [58, 61],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [62, 65],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [66, 69],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [70, 73],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [74, 77],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [78, 81],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [86, 89],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [90, 93],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [94, 97],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [98, 101],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [102, 105],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [106, 109],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [110, 113],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [114, 117],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [118, 121],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [122, 125],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [126, 129],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [130, 133],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [134, 137],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [142, 145],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [146, 149],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [150, 153],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [154, 157],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [158, 161],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [162, 165],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [166, 169],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [170, 173],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [174, 177],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [178, 181],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [182, 185],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [186, 189],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [194, 197],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [198, 201],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [202, 205],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [206, 209],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [210, 213],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [214, 217],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [218, 221],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [222, 225],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [226, 229],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [230, 233],
+          "type": "Effect",
+          "effectName": "Auto Mode",
+          "comment": "Run built-in effect 1-54"
+        },
+        {
+          "dmxRange": [234, 237],
+          "type": "Effect",
+          "effectName": "DMX Sound Mode #1"
+        },
+        {
+          "dmxRange": [238, 241],
+          "type": "Effect",
+          "effectName": "DMX Sound Mode #2"
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "Effect",
+          "effectName": "DMX Sound Mode #3"
+        }
+      ]
+    },
+    "Channel 51 (CH 50 First)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "CH 50 is valid"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Pattern effect 1",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Pattern effect 2",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Pattern effect 3",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Pattern effect 4",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Pattern effect 5",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Pattern effect 6",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Pattern effect 7",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Pattern effect 8",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Pattern effect 9",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Pattern effect 10",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Pattern effect 11",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Pattern effect 12",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Pattern effect 13",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Pattern effect 14",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Pattern effect 15",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Pattern effect 16",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Pattern effect 17",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Pattern effect 18",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Pattern effect 19",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Effect",
+          "effectName": "Pattern effect 20",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Effect",
+          "effectName": "Pattern effect 21",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Effect",
+          "effectName": "Pattern effect 22",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Effect",
+          "effectName": "Pattern effect 23",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Pattern effect 24",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        }
+      ]
+    },
+    "Channel 52 (Static color)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Static color 1 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Static color 2 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Static color 3 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Static color 4 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Static color 5 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Static color 6 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Static color 7 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Static color 8 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Static color 9 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Static color 10 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Static color 11 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Static color 12 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Static color 13 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Static color 14 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Static color 15 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Static color 16 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Static color 17 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Static color 18 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Static color 19 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Static color 20 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "ColorPreset",
+          "comment": "Static color 21 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ColorPreset",
+          "comment": "Static color 22 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "ColorPreset",
+          "comment": "Static color 23 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "ColorPreset",
+          "comment": "Static color 24 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Static color 25 (10<=CH5 channel value <=13)"
+        }
+      ]
+    },
+    "Channel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 2": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 3": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 4": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 5": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 6": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 7": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 8": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 9": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Unused 2": {
+      "name": "Unused",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 10": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 11": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 12": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 13": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 14": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 15": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 16": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 17": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 18": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 19": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 20": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 21": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 22": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 23": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 24": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 25": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 26": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 27": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 28": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 29": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 30": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 31": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 32": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 33": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 34": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 35": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 36": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 37": {
+      "name": "Channel",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Channel 53 (Strobe speed)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Channel 1 (Red)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 2 (Green)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 3 (Blue)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 2 (Red)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 3 (Green)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 4 (Blue)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 5 (valid when CH6 < 10)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "CH2 - CH4 valid"
+        },
+        {
+          "dmxRange": [10, 13],
+          "type": "ColorPreset",
+          "comment": "Static color (CH7 selection)"
+        },
+        {
+          "dmxRange": [14, 17],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [18, 21],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [22, 25],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [26, 29],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [30, 33],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [34, 37],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [38, 41],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [42, 45],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [46, 49],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [50, 53],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [54, 57],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [58, 61],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [62, 65],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [66, 69],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [70, 73],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [74, 77],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [78, 81],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [86, 89],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [90, 93],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [94, 97],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [98, 101],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [102, 105],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [106, 109],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [110, 113],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [114, 117],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [118, 121],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [122, 125],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [126, 129],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [130, 133],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [134, 137],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [142, 145],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [146, 149],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [150, 153],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [154, 157],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [158, 161],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [162, 165],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [166, 169],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [170, 173],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [174, 177],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [178, 181],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [182, 185],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [186, 189],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [194, 197],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [198, 201],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [202, 205],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [206, 209],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [210, 213],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [214, 217],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [218, 221],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [222, 225],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [226, 229],
+          "type": "Effect",
+          "effectName": "Internal effect"
+        },
+        {
+          "dmxRange": [230, 233],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "comment": "Run built-in effect 1-54"
+        },
+        {
+          "dmxRange": [234, 237],
+          "type": "Effect",
+          "effectName": "DMX Sound Mode 1"
+        },
+        {
+          "dmxRange": [238, 241],
+          "type": "Effect",
+          "effectName": "DMX Sound Mode 2"
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "Effect",
+          "effectName": "DMX Sound Mode 3"
+        }
+      ]
+    },
+    "Channel 6 (CH5 First)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "CH5 is valid"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "1 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "2 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "3 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "4 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "5 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "6 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "7 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "8 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "9 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "10 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "11 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "12 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "13 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "14 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "15 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "16 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "17 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "18 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Effect",
+          "effectName": "19 LED Segment is on, CH2, CH3, CH4 control color",
+          "comment": "CH7>100, remaining segments are off"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "Effect",
+          "effectName": "Pattern effect 1",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "Effect",
+          "effectName": "Pattern effect 2",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "Effect",
+          "effectName": "Pattern effect 3",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "Effect",
+          "effectName": "Pattern effect 4",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "Effect",
+          "effectName": "Pattern effect 5",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "Effect",
+          "effectName": "Pattern effect 6",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "Effect",
+          "effectName": "Pattern effect 7",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "Effect",
+          "effectName": "Pattern effect 8",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "Effect",
+          "effectName": "Pattern effect 9",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "Effect",
+          "effectName": "Pattern effect 10",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "Effect",
+          "effectName": "Pattern effect 11",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "Effect",
+          "effectName": "Pattern effect 12",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "Effect",
+          "effectName": "Pattern effect 13",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "Effect",
+          "effectName": "Pattern effect 14",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "Effect",
+          "effectName": "Pattern effect 15",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "Effect",
+          "effectName": "Pattern effect 16",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Effect",
+          "effectName": "Pattern effect 17",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "Effect",
+          "effectName": "Pattern effect 18",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "Effect",
+          "effectName": "Pattern effect 19",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "Effect",
+          "effectName": "Pattern effect 20",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "Effect",
+          "effectName": "Pattern effect 21",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "Effect",
+          "effectName": "Pattern effect 22",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [238, 243],
+          "type": "Effect",
+          "effectName": "Pattern effect 23",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "Effect",
+          "effectName": "Pattern effect 24",
+          "comment": "CH2, CH3, CH4 control pattern color"
+        }
+      ]
+    },
+    "Channel 7 (Static color)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Static color 1 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Static color 2 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Static color 3 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Static color 4 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Static color 5 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Static color 6 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Static color 7 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Static color 8 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Static color 9 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Static color 10 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Static color 11 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Static color 12 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Static color 13 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Static color 14 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Static color 15 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Static color 16 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Static color 17 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Static color 18 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Static color 19 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Static color 20 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "ColorPreset",
+          "comment": "Static color 21 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ColorPreset",
+          "comment": "Static color 22 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "ColorPreset",
+          "comment": "Static color 23 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "ColorPreset",
+          "comment": "Static color 24 (10<=CH5 channel value <=13)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Static color 25 (10<=CH5 channel value <=13)"
+        }
+      ]
+    },
+    "Channel 8 (Strobe speed)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Channel 9 (1st LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 1st LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 10 (2nd LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 2nd LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 11 (3rd LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 3rd LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 12 (4th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 4th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 13 (5th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 5th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 14 (6th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 6th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 15 (7th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 7th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 16 (8th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 8th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 17 (9th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 9th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 18 (10h LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 10th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 19 (11th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 11th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 20 (12th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 12th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 21 (13th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 13th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 22 (14th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 14th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 23 (15th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 15th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 24 (16th LED Segment Dimming)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "When CH6<10 and CH5<10, this channel controls brightness of the 16th LED segment, and color is controlled CH2-CH3"
+      }
+    },
+    "Channel 1 (Red #1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 2 (Green #1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 3 (Blue #1)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 4 (Red #2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 5 (Green #2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 6 (Blue #2)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 7 (Red #3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 8 (Green #3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 9 (Blue #3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 10 (Red #4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 11 (Green #4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 12 (Blue #4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 13 (Red #5)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 14 (Green #5)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 15 (Blue #5)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 16 (Red #6)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 17 (Green #6)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 18 (Blue #6)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 19 (Red #7)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 20 (Green #7)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 21 (Blue #7)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 22 (Red #8)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 23 (Green #8)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 24 (Blue #8)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 25 (Red #9)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 26 (Green #9)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 27 (Blue #9)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 28 (Red #10)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 29 (Green #10)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 30 (Blue #10)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 31 (Red #11)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 32 (Green #11)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 33 (Blue #11)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 34 (Red #12)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 35 (Green #12)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 36 (Blue #12)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 37 (Red #13)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 38 (Green #13)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 39 (Blue #13)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 40 (Red #14)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 41 (Green #14)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 42 (Blue #14)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 43 (Red #15)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 44 (Green #15)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 45 (Blue #15)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 46 (Red #16)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 47 (Green #16)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 48 (Blue #16)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 8 (Red #3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 9 (Green #3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 10 (Blue #3)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 11 (Red #4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 12 (Green #4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 13 (Blue #4)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 14 (Red #5)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 15 (Green #5)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 16 (Blue #5)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 17 (Red #6)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 18 (Green #6)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 19 (Blue #6)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 20 (Red #7)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 21 (Green #7)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 22 (Blue #7)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 23 (Red #8)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 24 (Green #8)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 25 (Blue #8)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 26 (Red #9)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 27 (Green #9)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 28 (Blue #9)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 29 (Red #10)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 30 (Green #10)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 31 (Blue #10)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 32 (Red #11)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 33 (Green #11)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 34 (Blue #11)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 35 (Red #12)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 36 (Green #12)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 37 (Blue #12)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 38 (Red #13)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 39 (Green #13)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 40 (Blue #13)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 41 (Red #14)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 42 (Green #14)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 43 (Blue #14)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 44 (Red #15)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Channel 45 (Green #15)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Channel 46 (Blue #15)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Channel 47 (Red #16) 2": {
+      "name": "Channel 47 (Red #16)",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 48 (Green #16) 2": {
+      "name": "Channel 48 (Green #16)",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 49 (Blue #16) 2": {
+      "name": "Channel 49 (Blue #16)",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 2 (Strobe speed)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Channel 3 (Red)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 4 (Green)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 5 (Blue)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 1",
+      "shortName": "3ch",
+      "channels": [
+        "Channel 1 (Red)",
+        "Channel 2 (Green)",
+        "Channel 3 (Blue)"
+      ]
+    },
+    {
+      "name": "DMX 2",
+      "shortName": "5ch",
+      "channels": [
+        "Channel 1 (Dimmer)",
+        "Channel 2 (Strobe speed)",
+        "Channel 3 (Red)",
+        "Channel 4 (Green)",
+        "Channel 5 (Blue)"
+      ]
+    },
+    {
+      "name": "DMX 3",
+      "shortName": "8ch",
+      "channels": [
+        "Channel 1 (Dimmer)",
+        "Channel 2 (Red)",
+        "Channel 3 (Green)",
+        "Channel 4 (Blue)",
+        "Channel 5 (valid when CH6 < 10)",
+        "Channel 6 (CH5 First)",
+        "Channel 7 (Static color)",
+        "Channel 8 (Strobe speed)"
+      ]
+    },
+    {
+      "name": "DMX 4",
+      "shortName": "24ch",
+      "channels": [
+        "Channel 1 (Dimmer)",
+        "Channel 2 (Red)",
+        "Channel 3 (Green)",
+        "Channel 4 (Blue)",
+        "Channel 5 (valid when CH6 < 10)",
+        "Channel 6 (CH5 First)",
+        "Channel 7 (Static color)",
+        "Channel 8 (Strobe speed)",
+        "Channel 9 (1st LED Segment Dimming)",
+        "Channel 10 (2nd LED Segment Dimming)",
+        "Channel 11 (3rd LED Segment Dimming)",
+        "Channel 12 (4th LED Segment Dimming)",
+        "Channel 13 (5th LED Segment Dimming)",
+        "Channel 14 (6th LED Segment Dimming)",
+        "Channel 15 (7th LED Segment Dimming)",
+        "Channel 16 (8th LED Segment Dimming)",
+        "Channel 17 (9th LED Segment Dimming)",
+        "Channel 18 (10h LED Segment Dimming)",
+        "Channel 19 (11th LED Segment Dimming)",
+        "Channel 20 (12th LED Segment Dimming)",
+        "Channel 21 (13th LED Segment Dimming)",
+        "Channel 22 (14th LED Segment Dimming)",
+        "Channel 23 (15th LED Segment Dimming)",
+        "Channel 24 (16th LED Segment Dimming)"
+      ]
+    },
+    {
+      "name": "DMX 5",
+      "shortName": "48ch",
+      "channels": [
+        "Channel 1 (Red #1)",
+        "Channel 2 (Green #1)",
+        "Channel 3 (Blue #1)",
+        "Channel 4 (Red #2)",
+        "Channel 5 (Green #2)",
+        "Channel 6 (Blue #2)",
+        "Channel 7 (Red #3)",
+        "Channel 8 (Green #3)",
+        "Channel 9 (Blue #3)",
+        "Channel 10 (Red #4)",
+        "Channel 11 (Green #4)",
+        "Channel 12 (Blue #4)",
+        "Channel 13 (Red #5)",
+        "Channel 14 (Green #5)",
+        "Channel 15 (Blue #5)",
+        "Channel 16 (Red #6)",
+        "Channel 17 (Green #6)",
+        "Channel 18 (Blue #6)",
+        "Channel 19 (Red #7)",
+        "Channel 20 (Green #7)",
+        "Channel 21 (Blue #7)",
+        "Channel 22 (Red #8)",
+        "Channel 23 (Green #8)",
+        "Channel 24 (Blue #8)",
+        "Channel 25 (Red #9)",
+        "Channel 26 (Green #9)",
+        "Channel 27 (Blue #9)",
+        "Channel 28 (Red #10)",
+        "Channel 29 (Green #10)",
+        "Channel 30 (Blue #10)",
+        "Channel 31 (Red #11)",
+        "Channel 32 (Green #11)",
+        "Channel 33 (Blue #11)",
+        "Channel 34 (Red #12)",
+        "Channel 35 (Green #12)",
+        "Channel 36 (Blue #12)",
+        "Channel 37 (Red #13)",
+        "Channel 38 (Green #13)",
+        "Channel 39 (Blue #13)",
+        "Channel 40 (Red #14)",
+        "Channel 41 (Green #14)",
+        "Channel 42 (Blue #14)",
+        "Channel 43 (Red #15)",
+        "Channel 44 (Green #15)",
+        "Channel 45 (Blue #15)",
+        "Channel 46 (Red #16)",
+        "Channel 47 (Green #16)",
+        "Channel 48 (Blue #16)"
+      ]
+    },
+    {
+      "name": "DMX 6",
+      "shortName": "53ch",
+      "channels": [
+        "Channel 1 (Dimmer)",
+        "Channel 2 (Red #1)",
+        "Channel 3 (Green #1)",
+        "Channel 4 (Blue #1)",
+        "Channel 5 (Red #2)",
+        "Channel 6 (Green #2)",
+        "Channel 7 (Blue #2)",
+        "Channel 8 (Red #3)",
+        "Channel 9 (Green #3)",
+        "Channel 10 (Blue #3)",
+        "Channel 11 (Red #4)",
+        "Channel 12 (Green #4)",
+        "Channel 13 (Blue #4)",
+        "Channel 14 (Red #5)",
+        "Channel 15 (Green #5)",
+        "Channel 16 (Blue #5)",
+        "Channel 17 (Red #6)",
+        "Channel 18 (Green #6)",
+        "Channel 19 (Blue #6)",
+        "Channel 20 (Red #7)",
+        "Channel 21 (Green #7)",
+        "Channel 22 (Blue #7)",
+        "Channel 23 (Red #8)",
+        "Channel 24 (Green #8)",
+        "Channel 25 (Blue #8)",
+        "Channel 26 (Red #9)",
+        "Channel 27 (Green #9)",
+        "Channel 28 (Blue #9)",
+        "Channel 29 (Red #10)",
+        "Channel 30 (Green #10)",
+        "Channel 31 (Blue #10)",
+        "Channel 32 (Red #11)",
+        "Channel 33 (Green #11)",
+        "Channel 34 (Blue #11)",
+        "Channel 35 (Red #12)",
+        "Channel 36 (Green #12)",
+        "Channel 37 (Blue #12)",
+        "Channel 38 (Red #13)",
+        "Channel 39 (Green #13)",
+        "Channel 40 (Blue #13)",
+        "Channel 41 (Red #14)",
+        "Channel 42 (Green #14)",
+        "Channel 43 (Blue #14)",
+        "Channel 44 (Red #15)",
+        "Channel 45 (Green #15)",
+        "Channel 46 (Blue #15)",
+        "Channel 47 (Red #16) 2",
+        "Channel 48 (Green #16) 2",
+        "Channel 49 (Blue #16) 2",
+        "Channel 50 (Effects)",
+        "Channel 51 (CH 50 First)",
+        "Channel 52 (Static color)",
+        "Channel 53 (Strobe speed)"
+      ]
+    }
+  ]
+}
