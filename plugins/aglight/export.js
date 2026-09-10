@@ -4,7 +4,8 @@ import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
 import Entity from '../../lib/model/Entity.js';
 import NullChannel from '../../lib/model/NullChannel.js';
-import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
+import { downgradeShutterEffect } from '../../lib/plugin-downgrade-helpers/downgrade-burst-shutter-effect.js';
+import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 const units = new Set(['K', 'deg', '%', 'ms', 'Hz', 'm^3/min', 'rpm']);
@@ -13,7 +14,7 @@ const excludeKeys = new Set(['comment', 'name', 'helpWanted', 'type', 'effectNam
 // see https://github.com/OpenLightingProject/open-fixture-library/issues/4415
 const colorNameListPromise = importJson('../../node_modules/color-name-list/dist/colornames.json', import.meta.url);
 
-export const version = '1.0.0';
+export const version = '1.0.1';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
@@ -64,9 +65,7 @@ function exportFixture(fixture, manufacturers, namedColors) {
   jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
   jsonData.oflURL = fixture.url;
 
-  if (!jsonData.availableChannels) {
-    jsonData.availableChannels = {};
-  }
+  jsonData.availableChannels ??= {};
 
   downgradePhysical(jsonData.physical);
   transformMatrixChannels(jsonData, fixture);
@@ -142,7 +141,8 @@ function transformSingleCapabilityToArray(fixtureJson) {
 }
 
 /**
- * Replace capability properties' entity strings with unitless numbers, and
+ * Replace capability properties' entity strings with unitless numbers,
+ * Burst shutter effect with Strobe, and
  * ColorIntensity capabilities' color property with its hex value.
  * @param {object} fixtureJson - The fixture whose capabilities should be processed
  * @param {object[]} namedColors - The color names list.
@@ -150,6 +150,8 @@ function transformSingleCapabilityToArray(fixtureJson) {
 function transformNonNumericValues(fixtureJson, namedColors) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
+      downgradeShutterEffect(capability);
+
       for (const [key, value] of Object.entries(capability)) {
         if (key === 'color') {
           processColor(capability, namedColors);
