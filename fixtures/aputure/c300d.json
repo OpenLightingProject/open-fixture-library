@@ -5,8 +5,8 @@
   "categories": ["Dimmer", "Effect"],
   "meta": {
     "authors": ["alexis", "Luke Nelson"],
-    "createDate": "2025-04-21",
-    "lastModifyDate": "2026-07-28"
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10"
   },
   "links": {
     "manual": [
@@ -53,7 +53,7 @@
           "type": "Effect",
           "effectName": "Paparazzi",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         },
         {
@@ -61,7 +61,7 @@
           "type": "Effect",
           "effectName": "Fireworks",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         },
         {
@@ -69,7 +69,7 @@
           "type": "Effect",
           "effectName": "Faulty bulb",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         },
         {
@@ -85,7 +85,7 @@
           "type": "Effect",
           "effectName": "TV",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         },
         {
@@ -93,7 +93,7 @@
           "type": "Effect",
           "effectName": "Pulsing",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         },
         {
@@ -101,7 +101,7 @@
           "type": "Effect",
           "effectName": "Strobe",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         },
         {
@@ -116,7 +116,7 @@
           "dmxRange": [160, 255],
           "type": "NoFunction",
           "switchChannels": {
-            "FX Options": "No Function"
+            "FX Options": null
           }
         }
       ]
@@ -230,11 +230,6 @@
           "type": "NoFunction"
         }
       ]
-    },
-    "No Function": {
-      "capability": {
-        "type": "NoFunction"
-      }
     }
   },
   "modes": [
