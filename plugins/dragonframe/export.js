@@ -99,6 +99,11 @@ function downgradePhysical(physicalJsonData) {
  */
 function downgradeShutterEffectCapabilities(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
+    if (channel.capability) {
+      downgradeShutterEffect(channel.capability);
+      continue;
+    }
+
     for (const capability of channel.capabilities) {
       downgradeShutterEffect(capability);
     }
