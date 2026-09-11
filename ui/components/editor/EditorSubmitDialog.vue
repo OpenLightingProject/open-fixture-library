@@ -295,10 +295,13 @@ export default {
     },
     rawData() {
       const rawData = JSON.stringify(this.requestBody, null, 2);
+      const errorMessage = typeof this.error === 'object' && this.error !== null
+        ? JSON.stringify(this.error, null, 2)
+        : this.error;
 
       if (this.state === 'error') {
         const backticks = '```';
-        return `${backticks}json\n${this.error}\n\n${rawData}\n${backticks}`;
+        return `${backticks}json\n${errorMessage}\n\n${rawData}\n${backticks}`;
       }
 
       return rawData;
