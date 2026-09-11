@@ -156,7 +156,7 @@
         manually submit them to GitHub
       </a>.
 
-      <textarea v-model="rawData" readonly />
+      <pre class="error-container" tabindex="0">{{ rawData }}</pre>
 
       <div class="button-bar right">
         <button type="button" class="button secondary" @click.prevent="onCancel()">Close</button>
@@ -197,6 +197,23 @@
       opacity: 0.7;
     }
   }
+}
+
+.error-container {
+  display: block;
+  height: 15em;
+  min-height: 4em;
+  padding: 1em;
+  overflow: auto;
+  font-family: $system-monospace-font-stack;
+  font-size: 0.8em;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: pre-wrap;
+  cursor: text;
+  user-select: all;
+  background: theme-color(header-background);
+  border-radius: 3px;
 }
 
 .button-bar {
