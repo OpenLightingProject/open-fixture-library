@@ -173,7 +173,7 @@
   list-style: none;
 
   a {
-    display: flex;
+    display: inline-flex;
     flex-flow: row wrap;
     align-items: center;
     text-decoration-line: none;
