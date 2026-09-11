@@ -1,0 +1,359 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PL60C RGB",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["LFPoulain"],
+    "createDate": "2025-10-07",
+    "lastModifyDate": "2025-10-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-10-07",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "dimensions": [320, 240, 65],
+    "weight": 2.3,
+    "power": 60,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 23000
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "comment": "Mode CCT"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Maintenance",
+          "comment": "Mode RGBWW"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 174,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "2500K",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "ColorPreset",
+          "comment": "2600K",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "2700K",
+          "colors": ["#ffaf00"]
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "2800K",
+          "colors": ["#ffb400"]
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "2900K",
+          "colors": ["#ffb900"]
+        },
+        {
+          "dmxRange": [41, 51],
+          "type": "ColorPreset",
+          "comment": "3000K",
+          "colors": ["#ffbe00"]
+        },
+        {
+          "dmxRange": [52, 61],
+          "type": "ColorPreset",
+          "comment": "3200K",
+          "colors": ["#ffc300"]
+        },
+        {
+          "dmxRange": [62, 71],
+          "type": "ColorPreset",
+          "comment": "3400K",
+          "colors": ["#ffc800"]
+        },
+        {
+          "dmxRange": [72, 81],
+          "type": "ColorPreset",
+          "comment": "3600K",
+          "colors": ["#ffcd00"]
+        },
+        {
+          "dmxRange": [82, 91],
+          "type": "ColorPreset",
+          "comment": "3800K",
+          "colors": ["#ffd200"]
+        },
+        {
+          "dmxRange": [92, 102],
+          "type": "ColorPreset",
+          "comment": "4000K",
+          "colors": ["#ffd700"]
+        },
+        {
+          "dmxRange": [103, 112],
+          "type": "ColorPreset",
+          "comment": "4200K",
+          "colors": ["#ffdc00"]
+        },
+        {
+          "dmxRange": [113, 122],
+          "type": "ColorPreset",
+          "comment": "4400K",
+          "colors": ["#ffe100"]
+        },
+        {
+          "dmxRange": [123, 132],
+          "type": "ColorPreset",
+          "comment": "4600K",
+          "colors": ["#ffe600"]
+        },
+        {
+          "dmxRange": [133, 142],
+          "type": "ColorPreset",
+          "comment": "4800K",
+          "colors": ["#ffeb00"]
+        },
+        {
+          "dmxRange": [143, 153],
+          "type": "ColorPreset",
+          "comment": "5000K",
+          "colors": ["#fff000"]
+        },
+        {
+          "dmxRange": [154, 163],
+          "type": "ColorPreset",
+          "comment": "5200K",
+          "colors": ["#fff500"]
+        },
+        {
+          "dmxRange": [164, 173],
+          "type": "ColorPreset",
+          "comment": "5400K",
+          "colors": ["#fffa00"]
+        },
+        {
+          "dmxRange": [174, 183],
+          "type": "ColorPreset",
+          "comment": "5600K (Daylight)",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [184, 193],
+          "type": "ColorPreset",
+          "comment": "5800K",
+          "colors": ["#fffff0"]
+        },
+        {
+          "dmxRange": [194, 204],
+          "type": "ColorPreset",
+          "comment": "6000K",
+          "colors": ["#fffffe"]
+        },
+        {
+          "dmxRange": [205, 214],
+          "type": "ColorPreset",
+          "comment": "6500K",
+          "colors": ["#f0f8ff"]
+        },
+        {
+          "dmxRange": [215, 224],
+          "type": "ColorPreset",
+          "comment": "7000K",
+          "colors": ["#e6f3ff"]
+        },
+        {
+          "dmxRange": [225, 234],
+          "type": "ColorPreset",
+          "comment": "7500K",
+          "colors": ["#dcf0ff"]
+        },
+        {
+          "dmxRange": [235, 244],
+          "type": "ColorPreset",
+          "comment": "8000K",
+          "colors": ["#d2edff"]
+        },
+        {
+          "dmxRange": [245, 254],
+          "type": "ColorPreset",
+          "comment": "9000K",
+          "colors": ["#c8eaff"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "10000K",
+          "colors": ["#bee7ff"]
+        }
+      ]
+    },
+    "Tint (Green-Magenta)": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "Full Green -50",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "ColorPreset",
+          "comment": "Green -40",
+          "colors": ["#1affef"]
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "ColorPreset",
+          "comment": "Green -30",
+          "colors": ["#35ffdf"]
+        },
+        {
+          "dmxRange": [52, 76],
+          "type": "ColorPreset",
+          "comment": "Green -20",
+          "colors": ["#50ffcf"]
+        },
+        {
+          "dmxRange": [77, 102],
+          "type": "ColorPreset",
+          "comment": "Green -10",
+          "colors": ["#6bffbf"]
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ColorPreset",
+          "comment": "Green -5",
+          "colors": ["#85ffaf"]
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Neutral 0",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [129, 153],
+          "type": "ColorPreset",
+          "comment": "Magenta +5",
+          "colors": ["#ffebff"]
+        },
+        {
+          "dmxRange": [154, 178],
+          "type": "ColorPreset",
+          "comment": "Magenta +10",
+          "colors": ["#ffd6ff"]
+        },
+        {
+          "dmxRange": [179, 204],
+          "type": "ColorPreset",
+          "comment": "Magenta +20",
+          "colors": ["#ffc1ff"]
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "ColorPreset",
+          "comment": "Magenta +30",
+          "colors": ["#ffacff"]
+        },
+        {
+          "dmxRange": [230, 254],
+          "type": "ColorPreset",
+          "comment": "Magenta +40",
+          "colors": ["#ff97ff"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "Full Magenta +50",
+          "colors": ["#ff00ff"]
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Mode",
+        "Master Dimmer",
+        "Color Temperature",
+        "Tint (Green-Magenta)"
+      ]
+    },
+    {
+      "name": "RGBCW",
+      "channels": [
+        "Mode",
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Warm White"
+      ]
+    }
+  ]
+}
