@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Orcan 3",
+  "shortName": "Orcan3",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Alex Knight"],
+    "createDate": "2022-01-03",
+    "lastModifyDate": "2022-01-03"
+  },
+  "links": {
+    "manual": [
+      "http://orion-fxlights.com/downloads/ownersman/om_orcan3.pdf?v=1634926529"
+    ],
+    "productPage": [
+      "http://orion-fxlights.com/par_cans/orcan3/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=OsMj45ieD0I"
+    ]
+  },
+  "physical": {
+    "dimensions": [191, 191, 70],
+    "weight": 1.13,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "6 x 10 Watt RGBWA +UV"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "UV Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Light off; 10-255 strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Light Off; Single Color; Color Changing; Fade; Color Pulsing; Sound Activated Color Changing; Sound Activated Color Pulsing; Sound Activated Color Changing with Strobe Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [10, 50],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Light Off; Speed Setting": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Yellow Dimming",
+        "UV Dimming"
+      ]
+    },
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master Dimming",
+        "Light off; 10-255 strobe",
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Yellow Dimming",
+        "UV Dimming"
+      ]
+    },
+    {
+      "name": "10-Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Dimming",
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Yellow Dimming",
+        "UV Dimming",
+        "Light off; 10-255 strobe",
+        "Light Off; Single Color; Color Changing; Fade; Color Pulsing; Sound Activated Color Changing; Sound Activated Color Pulsing; Sound Activated Color Changing with Strobe Effect",
+        "Light Off; Speed Setting"
+      ]
+    }
+  ]
+}
