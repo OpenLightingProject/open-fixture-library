@@ -298,7 +298,7 @@ export default {
 
       if (this.state === 'error') {
         const backticks = '```';
-        return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
+        return `${backticks}json\n${this.error}\n\n${rawData}\n${backticks}`;
       }
 
       return rawData;
