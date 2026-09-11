@@ -267,7 +267,6 @@ export default {
   },
   data() {
     return {
-      isImport: false,
       state: 'closed',
       requestBody: null,
       error: null,
@@ -292,6 +291,9 @@ export default {
         return stateTitlesPlural[this.state];
       }
       return stateTitles[this.state];
+    },
+    isImport() {
+      return this.endpoint.endsWith('/import');
     },
     rawData() {
       const rawData = JSON.stringify(this.requestBody, null, 2);
@@ -377,7 +379,6 @@ export default {
      */
     async validate(requestBody) {
       this.requestBody = requestBody;
-      this.isImport = Boolean(requestBody.plugin);
 
       console.log('validate', structuredClone(this.requestBody));
 
