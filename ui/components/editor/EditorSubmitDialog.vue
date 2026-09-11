@@ -141,7 +141,14 @@
     </div>
 
     <div v-else-if="state === `error`">
-      Unfortunately, there was an error while uploading. Please copy the following data and
+      Unfortunately, there was an error while uploading.
+      <template v-if="isImport">
+        <br>
+        This may be because the uploaded file is too large or in the wrong format, or because
+        the import plugin needs to be improved. You can help with that by sharing the data!
+        <br>
+      </template>
+      Please copy the following data and
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
         target="_blank"
@@ -243,6 +250,7 @@ export default {
   },
   data() {
     return {
+      isImport: false,
       state: 'closed',
       requestBody: null,
       error: null,
@@ -343,12 +351,13 @@ export default {
   },
   methods: {
     /**
-     * Called from fixture editor to open the dialog.
+     * Called from fixture editor and import page to open the dialog.
      * @public
      * @param {object} requestBody - The data to pass to the API endpoint.
      */
     async validate(requestBody) {
       this.requestBody = requestBody;
+      this.isImport = Boolean(requestBody.plugin);
 
       console.log('validate', structuredClone(this.requestBody));
 
