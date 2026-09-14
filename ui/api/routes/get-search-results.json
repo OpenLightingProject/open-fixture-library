@@ -24,19 +24,47 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "channelsMinQuery": {
+                "type": ["integer", "null"],
+                "minimum": 1
+              },
+              "channelsMaxQuery": {
+                "type": ["integer", "null"],
+                "minimum": 1
+              },
+              "channelTypesQuery": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "colorsQuery": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
               "searchQuery",
               "manufacturersQuery",
-              "categoriesQuery"
+              "categoriesQuery",
+              "channelsMinQuery",
+              "channelsMaxQuery",
+              "channelTypesQuery",
+              "colorsQuery"
             ],
             "additionalProperties": false
           },
           "example": {
             "searchQuery": "showtec phantom",
             "manufacturersQuery": [],
-            "categoriesQuery": []
+            "categoriesQuery": [],
+            "channelsMinQuery": null,
+            "channelsMaxQuery": null,
+            "channelTypesQuery": [],
+            "colorsQuery": []
           }
         }
       }

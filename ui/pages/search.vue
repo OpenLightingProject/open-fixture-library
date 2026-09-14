@@ -34,6 +34,47 @@
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
         </select>
+
+        <select v-model="channelTypesQuery" name="channelTypes" multiple>
+          <option
+            :selected="channelTypesQuery.length === 0"
+            value="">Filter by channel type</option>
+
+          <option
+            v-for="channelType of channelTypes"
+            :key="channelType"
+            :selected="channelTypesQuery.includes(channelType)"
+            :value="channelType">{{ channelType }}</option>
+        </select>
+
+        <select v-model="colorsQuery" name="colors" multiple>
+          <option
+            :selected="colorsQuery.length === 0"
+            value="">Filter by color</option>
+
+          <option
+            v-for="color of colors"
+            :key="color"
+            :selected="colorsQuery.includes(color)"
+            :value="color">{{ color }}</option>
+        </select>
+
+        <label class="channel-count-range">
+          Number of channels:
+          <input
+            v-model.number="channelsMinQuery"
+            type="number"
+            min="1"
+            name="channelsMin"
+            placeholder="min">
+          <span aria-hidden="true">–</span>
+          <input
+            v-model.number="channelsMaxQuery"
+            type="number"
+            min="1"
+            name="channelsMax"
+            placeholder="max">
+        </label>
       </ConditionalDetails>
 
       <button :disabled="searchQuery === `` && isBrowser" type="submit" class="primary">Search</button>
@@ -82,10 +123,23 @@
 .search ::v-deep details {
   margin: 1rem 0;
 }
+
+.search ::v-deep .channel-count-range {
+  display: inline-flex;
+  gap: 0.5ex;
+  align-items: center;
+  margin-right: 1ex;
+
+  input[type="number"] {
+    width: 5em;
+  }
+}
 </style>
 
 <script>
 import register from '../../fixtures/register.json';
+import { CHANNEL_TYPES } from '../../lib/model/CoarseChannel.js';
+import { SINGLE_COLORS } from '../../lib/single-colors.js';
 import ConditionalDetails from '../components/ConditionalDetails.vue';
 import LabeledInput from '../components/LabeledInput.vue';
 
@@ -110,9 +164,15 @@ export default {
       searchQuery: '',
       manufacturersQuery: [],
       categoriesQuery: [],
+      channelsMinQuery: null,
+      channelsMaxQuery: null,
+      channelTypesQuery: [],
+      colorsQuery: [],
       detailsInitiallyOpen: null,
       results: [],
       categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, 'en')),
+      channelTypes: CHANNEL_TYPES.toSorted((a, b) => a.localeCompare(b, 'en')),
+      colors: SINGLE_COLORS.toSorted((a, b) => a.localeCompare(b, 'en')),
       loading: false,
       isBrowser: false,
     };
@@ -124,10 +184,19 @@ export default {
     this.searchQuery = sanitizedQuery.search;
     this.manufacturersQuery = sanitizedQuery.manufacturers;
     this.categoriesQuery = sanitizedQuery.categories;
+    this.channelsMinQuery = sanitizedQuery.channelsMin;
+    this.channelsMaxQuery = sanitizedQuery.channelsMax;
+    this.channelTypesQuery = sanitizedQuery.channelTypes;
+    this.colorsQuery = sanitizedQuery.colors;
     this.searchFor = sanitizedQuery.search;
 
     if (this.detailsInitiallyOpen === null) {
-      this.detailsInitiallyOpen = this.manufacturersQuery.length > 0 || this.categoriesQuery.length > 0;
+      this.detailsInitiallyOpen = this.manufacturersQuery.length > 0
+        || this.categoriesQuery.length > 0
+        || this.channelsMinQuery !== null
+        || this.channelsMaxQuery !== null
+        || this.channelTypesQuery.length > 0
+        || this.colorsQuery.length > 0;
     }
 
     try {
@@ -135,6 +204,10 @@ export default {
         searchQuery: sanitizedQuery.search,
         manufacturersQuery: sanitizedQuery.manufacturers,
         categoriesQuery: sanitizedQuery.categories,
+        channelsMinQuery: sanitizedQuery.channelsMin,
+        channelsMaxQuery: sanitizedQuery.channelsMax,
+        channelTypesQuery: sanitizedQuery.channelTypes,
+        colorsQuery: sanitizedQuery.colors,
       });
     }
     catch {
@@ -188,6 +261,10 @@ export default {
           q: this.searchQuery,
           manufacturers: this.manufacturersQuery,
           categories: this.categoriesQuery,
+          channelsMin: toPositiveIntegerOrNull(this.channelsMinQuery),
+          channelsMax: toPositiveIntegerOrNull(this.channelsMaxQuery),
+          channelTypes: this.channelTypesQuery,
+          colors: this.colorsQuery,
         },
       });
     },
@@ -196,25 +273,43 @@ export default {
 
 /**
  * @param {object} query - The raw query returned by Vue Router
- * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ * @returns {object} Object with properties "search" (string), "manufacturers", "categories", "channelTypes"
+ * and "colors" (arrays of strings), and "channelsMin" / "channelsMax" (positive integers or null).
  */
 function getSanitizedQuery(query) {
   const searchQuery = (query.q || '').trim();
 
-  let manufacturersQuery = query.manufacturers || [];
-  if (typeof manufacturersQuery === 'string') {
-    manufacturersQuery = [manufacturersQuery];
-  }
-
-  let categoriesQuery = query.categories || [];
-  if (typeof categoriesQuery === 'string') {
-    categoriesQuery = [categoriesQuery];
-  }
-
   return {
     search: searchQuery,
-    manufacturers: manufacturersQuery,
-    categories: categoriesQuery,
+    manufacturers: toArray(query.manufacturers),
+    categories: toArray(query.categories),
+    channelsMin: toPositiveIntegerOrNull(query.channelsMin),
+    channelsMax: toPositiveIntegerOrNull(query.channelsMax),
+    channelTypes: toArray(query.channelTypes),
+    colors: toArray(query.colors),
   };
+}
+
+/**
+ * Vue Router returns a single string if a query parameter is only given once, and an array of
+ * strings if it's given multiple times (or omits the property completely if it's not given at all).
+ * @param {string | string[] | undefined} queryValue - The raw value of a multi-value query parameter.
+ * @returns {string[]} The query parameter's value, always as an array.
+ */
+function toArray(queryValue) {
+  if (queryValue === undefined) {
+    return [];
+  }
+
+  return typeof queryValue === 'string' ? [queryValue] : queryValue;
+}
+
+/**
+ * @param {string | number | undefined} queryValue - The raw value of a query parameter.
+ * @returns {number | null} The query parameter's value as a positive integer, or null if it isn't one.
+ */
+function toPositiveIntegerOrNull(queryValue) {
+  const number = Number.parseInt(queryValue, 10);
+  return Number.isSafeInteger(number) && number > 0 ? number : null;
 }
 </script>
