@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theater Spot 250 MZ 3200K",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Stefan Krüger"],
+    "createDate": "2026-09-14",
+    "lastModifyDate": "2026-09-14"
+  },
+  "comment": "Colour rendering index: > 95\nRefresh rate LED: 10 kHz\nPower input and output: Power Twist\nMotorized Zoom\ntemperature-controlled fan",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/444937_c_444937_v4_r2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomannmusic.com/en-de/varytec_led_theater_spot_250_mz_3200k.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i7283p8_yd59vq3a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [310, 450, 435],
+    "weight": 10.2,
+    "power": 250,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "250W COB LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [15, 52]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 110],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz",
+          "comment": "Speed is not documented."
+        },
+        {
+          "dmxRange": [111, 245],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz",
+          "comment": "Speed is not documented."
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Beam Angle": {
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "15deg",
+        "angleEnd": "52deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe effect",
+        "Beam Angle"
+      ]
+    }
+  ]
+}
