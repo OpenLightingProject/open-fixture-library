@@ -7,7 +7,7 @@
     "createDate": "2026-09-14",
     "lastModifyDate": "2026-09-14"
   },
-  "comment": "Colour rendering index: > 95\nRefresh rate LED: 10 kHz\nPower input and output: Power Twist\nMotorized Zoom\ntemperature-controlled fan",
+  "comment": "Colour rendering index: > 95\nRefresh rate LED: 10 kHz\nPower input and output: Power Twist\nMotorized Zoom\ntemperature-controlled fan\nLight output 12730 Lux (2 m, 15° beam angle)",
   "links": {
     "manual": [
       "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/444937_c_444937_v4_r2_en_online.pdf"
@@ -50,17 +50,17 @@
           "dmxRange": [1, 110],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "30Hz",
-          "comment": "Speed is not documented."
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": ""
         },
         {
           "dmxRange": [111, 245],
           "type": "ShutterStrobe",
           "shutterEffect": "Burst",
-          "speedStart": "1Hz",
-          "speedEnd": "30Hz",
-          "comment": "Speed is not documented."
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": ""
         },
         {
           "dmxRange": [246, 255],
