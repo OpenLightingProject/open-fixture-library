@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "test",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Stefan Krüger"],
+    "createDate": "2026-09-15",
+    "lastModifyDate": "2026-09-15"
+  },
+  "links": {
+    "video": [
+      "https://s-light.eu"
+    ]
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 110],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [111, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3Ch",
+      "channels": [
+        "Strobe"
+      ]
+    }
+  ]
+}
