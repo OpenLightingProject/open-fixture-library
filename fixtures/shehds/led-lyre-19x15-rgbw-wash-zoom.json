@@ -1,0 +1,309 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Lyre 19x15 RGBW wash zoom",
+  "shortName": "Led lyre 19x15",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["Simzinho"],
+    "createDate": "2025-09-23",
+    "lastModifyDate": "2025-09-23"
+  },
+  "links": {
+    "manual": [
+      "https://fr.shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam?currency=EUR&variant=46565650989230&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping&stkn=842760278142&gad_source=1&gad_campaignid=22889533902&gbraid=0AAAAApArDtx9nWl84LbBXRyN3QrkaI_tB&gclid=CjwKCAjwisnGBhAXEiwA0zEOR-R74qo29Whnr2ZMllDkHWm9XpSSWqZZJPlvXe1WWUYycaQtXJLGKBoCfw8QAvD_BwE"
+    ],
+    "productPage": [
+      "https://fr.shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam?currency=EUR&variant=46565650989230&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping&stkn=842760278142&gad_source=1&gad_campaignid=22889533902&gbraid=0AAAAApArDtx9nWl84LbBXRyN3QrkaI_tB&gclid=CjwKCAjwisnGBhAXEiwA0zEOR-R74qo29Whnr2ZMllDkHWm9XpSSWqZZJPlvXe1WWUYycaQtXJLGKBoCfw8QAvD_BwE"
+    ],
+    "video": [
+      "https://fr.shehds.com/products/led-moving-head-19x15w-rgbw-wash-zoom-stage-lights-professional-dj-bar-led-stage-machine-dmx512-led-zoom-beam?currency=EUR&variant=46565650989230&utm_source=google&utm_medium=cpc&utm_campaign=Google%20Shopping&stkn=842760278142&gad_source=1&gad_campaignid=22889533902&gbraid=0AAAAApArDtx9nWl84LbBXRyN3QrkaI_tB&gclid=CjwKCAjwisnGBhAXEiwA0zEOR-R74qo29Whnr2ZMllDkHWm9XpSSWqZZJPlvXe1WWUYycaQtXJLGKBoCfw8QAvD_BwE"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 400, 210],
+    "weight": 7.95,
+    "power": 285,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 19x15 rgbw"
+    },
+    "lens": {
+      "degreesMinMax": [15, 55]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/tilt time speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Red 1 dimmer": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1 dimmer": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1 Dimmer": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1 dimmer": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2 dimmer": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2 dimmer": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2 Dimmer": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2 dimmer": {
+      "defaultValue": 16,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3 dimmer": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3 dimmer": {
+      "defaultValue": 18,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3 dimmer": {
+      "defaultValue": 19,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3 dimmer": {
+      "defaultValue": 20,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program": {
+      "defaultValue": 21,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Effect",
+          "effectName": "Programme jump",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [146, 159],
+          "type": "Effect",
+          "effectName": "Programme gradient",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "100%",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [160, 172],
+          "type": "Effect",
+          "effectName": "Programme pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "100%",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [173, 200],
+          "type": "Effect",
+          "effectName": "Auto mode 1",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "100%",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [201, 230],
+          "type": "Effect",
+          "effectName": "Auto mode 2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "100%",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Auto mode 3",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "100%",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Program speed adjustment": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Activation ch21 and optio": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "EffectParameter",
+          "parameter": 21,
+          "comment": "Activation ch 21"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "EffectParameter",
+          "parameter": "100%",
+          "comment": "Self prop 1"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "EffectParameter",
+          "parameter": "100%",
+          "comment": "Self prop 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Rest": {
+      "defaultValue": 24,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Rest"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24 CH",
+      "shortName": "24 Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/tilt time speed",
+        "Zoom",
+        "Dimmer",
+        "Strobe",
+        "Red 1 dimmer",
+        "Green 1 dimmer",
+        "Blue 1 Dimmer",
+        "White 1 dimmer",
+        "Red 2 dimmer",
+        "Green 2 dimmer",
+        "Blue 2 Dimmer",
+        "White 2 dimmer",
+        "Red 3 dimmer",
+        "Green 3 dimmer",
+        "Blue 3 dimmer",
+        "White 3 dimmer",
+        "Program",
+        "Program speed adjustment",
+        "Activation ch21 and optio",
+        "Rest"
+      ]
+    }
+  ]
+}
