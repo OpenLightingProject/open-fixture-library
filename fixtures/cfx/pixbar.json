@@ -1,0 +1,1107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixbar",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["fx", "Jack Giles"],
+    "createDate": "2025-12-04",
+    "lastModifyDate": "2025-12-04",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-12-04",
+      "comment": "created by Q Light Controller Plus (version 4.10.5b)"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Speed"
+        }
+      ]
+    },
+    "Ch2-4 control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Effect",
+          "effectName": "Ch2-4 CVontrolcolor of whole unit"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Effect",
+          "effectName": "Pattern 1"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Effect",
+          "effectName": "Pattern 2"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Effect",
+          "effectName": "Pattern 3"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "Effect",
+          "effectName": "Pattern 4"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "Effect",
+          "effectName": "Pattern 5"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "Effect",
+          "effectName": "Pattern 6"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "Effect",
+          "effectName": "Pattern 7"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "Effect",
+          "effectName": "Pattern 8"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "Effect",
+          "effectName": "Pattern 9"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "Effect",
+          "effectName": "Pattern 10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "Effect",
+          "effectName": "Pattern 11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "Effect",
+          "effectName": "Pattern 12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Effect",
+          "effectName": "Pattern 13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Effect",
+          "effectName": "Pattern 14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Effect",
+          "effectName": "Pattern 15"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Effect",
+          "effectName": "Pattern 16"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Effect",
+          "effectName": "Pattern 17"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Effect",
+          "effectName": "Pattern 18"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Effect",
+          "effectName": "Pattern 19"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Effect",
+          "effectName": "Pattern 20"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Effect",
+          "effectName": "Pattern 21"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Effect",
+          "effectName": "Pattern 22"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Effect",
+          "effectName": "Pattern 23"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Effect",
+          "effectName": "Pattern 24"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Effect",
+          "effectName": "Pattern 25"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Effect",
+          "effectName": "Pattern 26"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Effect",
+          "effectName": "Pattern 27"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Effect",
+          "effectName": "Pattern 28"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Effect",
+          "effectName": "Pattern 29"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Effect",
+          "effectName": "Pattern 30"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Effect",
+          "effectName": "Pattern 31"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Effect",
+          "effectName": "Pattern 32"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Effect",
+          "effectName": "Pattern 33"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Effect",
+          "effectName": "Pattern 34"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Effect",
+          "effectName": "Pattern 35"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Effect",
+          "effectName": "Pattern 36"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Effect",
+          "effectName": "Pattern 37"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Effect",
+          "effectName": "Pattern IEC  1"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Effect",
+          "effectName": "Pattern IEC  2"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Effect",
+          "effectName": "Pattern IEC  3"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Effect",
+          "effectName": "Pattern IEC  4"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Effect",
+          "effectName": "Pattern IEC  5"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Effect",
+          "effectName": "Pattern IEC  6"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Effect",
+          "effectName": "Pattern IEC  7"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Effect",
+          "effectName": "Pattern IEC  8"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Effect",
+          "effectName": "Pattern IEC  9"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Effect",
+          "effectName": "Pattern IEC  10"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Effect",
+          "effectName": "Pattern IEC  11"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Pattern IEC  12"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Effect",
+          "effectName": "Pattern IEC  13"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Effect",
+          "effectName": "Pattern IEC  14"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Effect",
+          "effectName": "Pattern IEC  15"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Effect",
+          "effectName": "Pattern IEC  16"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Effect",
+          "effectName": "Pattern IEC  17"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Effect",
+          "effectName": "Pattern IEC  18"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Effect",
+          "effectName": "Pattern IEC  19"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Effect",
+          "effectName": "Auto FX (Loop 1-IEC19)"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "RGB Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "FX Speed"
+      }
+    },
+    "Patt1-25. Ch6 as patt b/ground": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Patt1-25 etc"
+      }
+    },
+    "R1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe 2(Ch37)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Slow/Fast"
+        }
+      ]
+    },
+    "RGB FX Channels(Ch 38)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Effect",
+          "effectName": "Ch1-37 Control single segment"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Effect",
+          "effectName": "Pattern 1(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Effect",
+          "effectName": "Pattern 2(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Effect",
+          "effectName": "Pattern 3(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "Effect",
+          "effectName": "Pattern 4(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "Effect",
+          "effectName": "Pattern 5(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "Effect",
+          "effectName": "Pattern 6(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "Effect",
+          "effectName": "Pattern 7(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "Effect",
+          "effectName": "Pattern 8(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "Effect",
+          "effectName": "Pattern 9(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "Effect",
+          "effectName": "Pattern 10(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "Effect",
+          "effectName": "Pattern 11(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "Effect",
+          "effectName": "Pattern 12(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Effect",
+          "effectName": "Pattern 13(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Effect",
+          "effectName": "Pattern 14(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Effect",
+          "effectName": "Pattern 15(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Effect",
+          "effectName": "Pattern 16(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Effect",
+          "effectName": "Pattern 17(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Effect",
+          "effectName": "Pattern 18(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Effect",
+          "effectName": "Pattern 19(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Effect",
+          "effectName": "Pattern 20(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Effect",
+          "effectName": "Pattern 21(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Effect",
+          "effectName": "Pattern 22(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Effect",
+          "effectName": "Pattern 23(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Effect",
+          "effectName": "Pattern 24(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Effect",
+          "effectName": "Pattern 25(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Effect",
+          "effectName": "Pattern 26(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Effect",
+          "effectName": "Pattern 27(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Effect",
+          "effectName": "Pattern 28(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Effect",
+          "effectName": "Pattern 29(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Effect",
+          "effectName": "Pattern 30(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Effect",
+          "effectName": "Pattern 31(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Effect",
+          "effectName": "Pattern 32(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Effect",
+          "effectName": "Pattern 33(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Effect",
+          "effectName": "Pattern 34(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Effect",
+          "effectName": "Pattern 35(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Effect",
+          "effectName": "Pattern 36(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Effect",
+          "effectName": "Pattern 37(CH1-3 Control Pattern Color)"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 1(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 2(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 3(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 4(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 5(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 6(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 7(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 8(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 9(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 10(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 11(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 12(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 13(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 14(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 15(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 16(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 17(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 18(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Effect",
+          "effectName": "Pattern 38-56 19(InbuiltFX Color)"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Effect",
+          "effectName": "Auto FX(Loop running Patterns 1-56)"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "RGB Program Speed (Ch 39)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "RGB Effect Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pattern 1-25 (Ch 40)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Patt 1-25 CH38 as pattern b/g color selector"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Ch2-4 control",
+        "RGB Program Speed",
+        "Patt1-25. Ch6 as patt b/ground"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "R1",
+        "G1",
+        "B1",
+        "R2",
+        "G2",
+        "B2",
+        "R3",
+        "G3",
+        "B3",
+        "R4",
+        "G4",
+        "B4",
+        "R5",
+        "G5",
+        "B5",
+        "R6",
+        "G6",
+        "B6",
+        "R7",
+        "G7",
+        "B7",
+        "R8",
+        "G8",
+        "B8",
+        "R9",
+        "G9",
+        "B9",
+        "R10",
+        "G10",
+        "B10",
+        "R11",
+        "G11",
+        "B11",
+        "R12",
+        "G12",
+        "B12"
+      ]
+    },
+    {
+      "name": "40-channel",
+      "shortName": "40ch",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "R1",
+        "G1",
+        "B1",
+        "R2",
+        "G2",
+        "B2",
+        "R3",
+        "G3",
+        "B3",
+        "R4",
+        "G4",
+        "B4",
+        "R5",
+        "G5",
+        "B5",
+        "R6",
+        "G6",
+        "B6",
+        "R7",
+        "G7",
+        "B7",
+        "R8",
+        "G8",
+        "B8",
+        "R9",
+        "G9",
+        "B9",
+        "R10",
+        "G10",
+        "B10",
+        "R11",
+        "G11",
+        "B11",
+        "R12",
+        "G12",
+        "B12",
+        "Strobe 2(Ch37)",
+        "RGB FX Channels(Ch 38)",
+        "RGB Program Speed (Ch 39)",
+        "Pattern 1-25 (Ch 40)"
+      ]
+    }
+  ]
+}
