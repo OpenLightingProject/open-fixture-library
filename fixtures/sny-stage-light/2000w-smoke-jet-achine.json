@@ -1,0 +1,185 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2000W Smoke Jet achine",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["carlos"],
+    "createDate": "2025-10-13",
+    "lastModifyDate": "2025-10-13"
+  },
+  "comment": "co2 simulator",
+  "links": {
+    "manual": [
+      "https://sny-stage.com/"
+    ],
+    "productPage": [
+      "https://sny-stage.com/"
+    ],
+    "video": [
+      "https://sny-stage.com/product.asp?BigClassID=11&SmallClassID=&page=2"
+    ]
+  },
+  "physical": {
+    "dimensions": [430, 350, 350],
+    "weight": 15,
+    "power": 2000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fumo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Colore Anello Interno": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "default",
+          "colorTemperatureEnd": "default"
+        }
+      ]
+    },
+    "Velocità cambio colore an interno": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobo Anello interno": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "1000Hz"
+      }
+    },
+    "Rosso anello interno": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde anello interno": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blu anello interno": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Giallo anello interno": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Bianco anello interno": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colore Anello Esterno": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Velocità camb. color. anel. est.": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobo anello esterno": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "1000Hz"
+      }
+    },
+    "Rosso anel. esterno": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Verde anel. esterno": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Blu anel. esterno": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Giallo anel. esterno": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Bianco anel. esterno": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17 channels",
+      "channels": [
+        "Fumo",
+        "Colore Anello Interno",
+        "Velocità cambio colore an interno",
+        "Strobo Anello interno",
+        "Rosso anello interno",
+        "Verde anello interno",
+        "Blu anello interno",
+        "Giallo anello interno",
+        "Bianco anello interno",
+        "Colore Anello Esterno",
+        "Velocità camb. color. anel. est.",
+        "Strobo anello esterno",
+        "Rosso anel. esterno",
+        "Verde anel. esterno",
+        "Blu anel. esterno",
+        "Giallo anel. esterno",
+        "Bianco anel. esterno"
+      ]
+    }
+  ]
+}
