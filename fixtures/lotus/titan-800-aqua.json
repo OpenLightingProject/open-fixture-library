@@ -1,0 +1,387 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Titan 800 Aqua",
+  "shortName": "Titan 800 Aqua",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Lotus"],
+    "createDate": "2026-09-04",
+    "lastModifyDate": "2026-09-04"
+  },
+  "comment": "Standart-21",
+  "links": {
+    "manual": [
+      "https://lotuseu.com/titan-800-aqua/"
+    ]
+  },
+  "physical": {
+    "power": 500
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 195],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 23],
+          "type": "ColorPreset",
+          "comment": "C1",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [24, 37],
+          "type": "ColorPreset",
+          "comment": "C2",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [38, 51],
+          "type": "ColorPreset",
+          "comment": "C3",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [52, 65],
+          "type": "ColorPreset",
+          "comment": "C4",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [66, 79],
+          "type": "ColorPreset",
+          "comment": "C5",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [80, 93],
+          "type": "ColorPreset",
+          "comment": "C6",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [94, 107],
+          "type": "ColorPreset",
+          "comment": "C7",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [108, 121],
+          "type": "ColorPreset",
+          "comment": "C8",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [122, 135],
+          "type": "ColorPreset",
+          "comment": "C9",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [136, 149],
+          "type": "ColorPreset",
+          "comment": "C10",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [150, 163],
+          "type": "ColorPreset",
+          "comment": "C11",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [164, 177],
+          "type": "ColorPreset",
+          "comment": "C12",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [178, 191],
+          "type": "ColorPreset",
+          "comment": "C13",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [192, 205],
+          "type": "ColorPreset",
+          "comment": "C14",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [206, 219],
+          "type": "ColorPreset",
+          "comment": "C15",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [220, 233],
+          "type": "ColorPreset",
+          "comment": "C16",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [234, 247],
+          "type": "ColorPreset",
+          "comment": "C17",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "C18",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [4, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Intensity",
+          "comment": "Dimmer Curved 1"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Intensity",
+          "comment": "Dimmer Curved 2"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Intensity",
+          "comment": "Dimmer Curved 3"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Intensity",
+          "comment": "Dimmer Curved 4"
+        }
+      ]
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "RESET"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angle": "narrow",
+        "comment": "Zoom"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capabilities": [
+        {
+          "dmxRange": [0, 155],
+          "type": "Rotation",
+          "speed": "stop",
+          "comment": "0-60 Zoom"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Rotation",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Rotation",
+          "speed": "fast CW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard-21",
+      "shortName": "Titan800 Aqua",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Color Macros",
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Intensity",
+        "Reserved",
+        "Zoom",
+        "Zoom 2"
+      ]
+    }
+  ]
+}
