@@ -1,0 +1,503 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DELTA LED 100W BEAM RING 100W",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["rihnd", "RiHn"],
+    "createDate": "2026-04-15",
+    "lastModifyDate": "2026-04-15",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-04-15",
+      "comment": "created by Q Light Controller Plus (version 4.14.3)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "wheels": {
+    "Colour Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Open / White"
+        },
+        {
+          "type": "Color",
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "name": "Brown"
+        },
+        {
+          "type": "Color",
+          "name": "Purple"
+        },
+        {
+          "type": "Color",
+          "name": "Cyan"
+        },
+        {
+          "type": "Color",
+          "name": "Colour wheel reverse (slow → fast)"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Pan position (0-540°)"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Tilt position (0-270°)"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Pan/Tilt speed"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer (0-100%)"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
+    },
+    "Colour Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open / White"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Brown"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [160, 207],
+          "type": "WheelRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Colour wheel rotate"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Colour wheel reverse"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open / Blank (round)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Gobo 10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Gobo 11"
+        },
+        {
+          "dmxRange": [120, 187],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Gobo pattern reversal"
+        },
+        {
+          "dmxRange": [188, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Gobo rotate"
+        }
+      ]
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Prism",
+          "comment": "Prism opening (18-prism)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "Prism rotate 360° (slow → fast)"
+        }
+      ]
+    },
+    "Colorful": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "Effect",
+          "effectName": "Colorful closed"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "Effect",
+          "effectName": "Colorful open"
+        }
+      ]
+    },
+    "Auto / Sound": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Effect",
+          "effectName": "Manual (other channels work)"
+        },
+        {
+          "dmxRange": [60, 75],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [76, 90],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [106, 120],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [121, 135],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [136, 159],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [176, 190],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [191, 205],
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [206, 220],
+          "type": "Effect",
+          "effectName": "Sound 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [221, 235],
+          "type": "Effect",
+          "effectName": "Sound 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Sound 6",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset / Calibration": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "X axis rotation (calibration)"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "Y axis rotation (calibration)"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Maintenance",
+          "comment": "XY axis rotation (calibration)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Automatic reset after 3s"
+        }
+      ]
+    },
+    "Strip / Ring Lights": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "Strip off"
+        },
+        {
+          "dmxRange": [5, 14],
+          "type": "Effect",
+          "effectName": "Strip red"
+        },
+        {
+          "dmxRange": [15, 24],
+          "type": "Effect",
+          "effectName": "Strip green"
+        },
+        {
+          "dmxRange": [25, 34],
+          "type": "Effect",
+          "effectName": "Strip blue"
+        },
+        {
+          "dmxRange": [35, 44],
+          "type": "Effect",
+          "effectName": "Strip yellow"
+        },
+        {
+          "dmxRange": [45, 54],
+          "type": "Effect",
+          "effectName": "Strip purple"
+        },
+        {
+          "dmxRange": [55, 64],
+          "type": "Effect",
+          "effectName": "Strip cyan"
+        },
+        {
+          "dmxRange": [65, 74],
+          "type": "Effect",
+          "effectName": "Strip full light"
+        },
+        {
+          "dmxRange": [75, 255],
+          "type": "Effect",
+          "effectName": "Strip effect selection"
+        }
+      ]
+    },
+    "Strip Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Strip effect speed (fast → slow; higher = slower)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX2 15-channel",
+      "shortName": "DMX2 15ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Colour Wheel",
+        "Gobo",
+        "Prism",
+        "Colorful",
+        "Auto / Sound",
+        "Reset / Calibration",
+        "Strip / Ring Lights",
+        "Strip Effect Speed"
+      ]
+    }
+  ]
+}
