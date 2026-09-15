@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Beam 275W 10R",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Idk"],
+    "createDate": "2026-06-28",
+    "lastModifyDate": "2026-06-28"
+  },
+  "links": {
+    "productPage": [
+      "https://shehds.com/products/beam-275w-moving-head-lighting-14-gobos-professional-stage-performance-lights?variant=42966339747893"
+    ]
+  },
+  "availableChannels": {
+    "Beam": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "PrismRotation"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16",
+      "channels": [
+        "Beam"
+      ]
+    }
+  ]
+}
