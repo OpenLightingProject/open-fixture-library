@@ -1,0 +1,287 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MH-110 Wash 7x10 LED",
+  "shortName": "MH-110",
+  "categories": ["Dimmer", "Strobe", "Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Allaine Smithie"],
+    "createDate": "2025-08-03",
+    "lastModifyDate": "2025-08-03"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/325877_c_325877_v2_r2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomannmusic.ch/stairville_mh_110_wash_led_moving_head.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7IAMciq-lLY"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 148, 310],
+    "weight": 4.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "NoFunction",
+          "comment": "off - no white"
+        },
+        {
+          "dmxRange": [36, 55],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3400K",
+          "colorTemperatureEnd": "3403K"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4200K",
+          "colorTemperatureEnd": "4203K"
+        },
+        {
+          "dmxRange": [96, 115],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4900K",
+          "colorTemperatureEnd": "4902K"
+        },
+        {
+          "dmxRange": [116, 135],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [136, 175],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6500K",
+          "colorTemperatureEnd": "6503K"
+        },
+        {
+          "dmxRange": [176, 195],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7200K",
+          "colorTemperatureEnd": "7202K"
+        },
+        {
+          "dmxRange": [196, 215],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [216, 235],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8500K",
+          "colorTemperatureEnd": "8500K"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "10000K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ColorPreset",
+          "comment": "28 Color Presets"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 3 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "14ch",
+      "channels": [
+        "Pan 4",
+        "Pan 4 fine",
+        "Tilt 3",
+        "Tilt 3 fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Reserved",
+        "Strobe",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
