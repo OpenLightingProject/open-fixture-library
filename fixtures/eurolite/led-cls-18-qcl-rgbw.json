@@ -1,0 +1,546 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED CLS-18  QCL RGBW",
+  "shortName": "LED CLS-18  QCL RGBW 18x8W 12°",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Glowstage/ Tobia Falletta"],
+    "createDate": "2025-12-04",
+    "lastModifyDate": "2025-12-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51913889-Anleitung-90182-1.4000-eurolite-led-cls-18-qcl-rgbw-18x8w-12-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51913889-eurolite-led-cls-18-qcl-rgbw-18x8w-12.html"
+    ]
+  },
+  "physical": {
+    "weight": 5,
+    "power": 114,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 8 W QCL"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Sound Control / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "1Hz",
+          "speedEnd": "50Hz"
+        }
+      ]
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Channel 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Red & Green in Mix"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Green & Blue in Mix"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue & White in Mix"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "White & Red in Mix"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Green & White in Mix"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Red & Blue in Mix"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "GRB"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "RGW"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Preset 2"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Preset 3"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Preset 4"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Effect",
+          "effectName": "Preset 5"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Effect",
+          "effectName": "Preset 6"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Effect",
+          "effectName": "Preset 7"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Effect",
+          "effectName": "4 color sound control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "15 color sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Dimmer/Speed/Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 169],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [170, 229],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "SoundSensitivity",
+          "comment": "depending on the setting of channel 1"
+        }
+      ]
+    },
+    "Flash": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 229],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red 1 2": {
+      "name": "Red 1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Green 1 2": {
+      "name": "Green 1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Blue 1 2": {
+      "name": "Blue 1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "White 1 2": {
+      "name": "White 1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red 2 2": {
+      "name": "Red 2",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Green 2 2": {
+      "name": "Green 2",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Blue 2 2": {
+      "name": "Blue 2",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "White 2 2": {
+      "name": "White 2",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red 3 2": {
+      "name": "Red 3",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Green 3 2": {
+      "name": "Green 3",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Blue 3 2": {
+      "name": "Blue 3",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "White 3 2": {
+      "name": "White 3",
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Sound Control / Strobe"
+      ]
+    },
+    {
+      "name": "12 Channel",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3"
+      ]
+    },
+    {
+      "name": "15 Channel",
+      "channels": [
+        "Channel 1",
+        "Dimmer/Speed/Sensitivity",
+        "Flash",
+        "Red 1 2",
+        "Green 1 2",
+        "Blue 1 2",
+        "White 1 2",
+        "Red 2 2",
+        "Green 2 2",
+        "Blue 2 2",
+        "White 2 2",
+        "Red 3 2",
+        "Green 3 2",
+        "Blue 3 2",
+        "White 3 2"
+      ]
+    }
+  ]
+}
