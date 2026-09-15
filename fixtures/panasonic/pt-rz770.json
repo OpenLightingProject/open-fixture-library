@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PT-RZ770",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["tmob"],
+    "createDate": "2026-02-17",
+    "lastModifyDate": "2026-02-17"
+  },
+  "comment": "Projektor",
+  "links": {
+    "manual": [
+      "https://pna-b2b-storage-mkt.s3.amazonaws.com/production/207570_rz770_rz660_manual_en.pdf"
+    ],
+    "productPage": [
+      "https://www.projektoren-datenbank.com/pro/panasonicptrz770.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Input": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Shutter 2": {
+      "name": "Shutter",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Eingang": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens Function Select": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens Control": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Power": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Light Output": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Enable/Disable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fade In": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fade Out": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Custom Masking": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Geometry": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "None": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Shutter 2",
+        "Eingang",
+        "Lens Function Select",
+        "Lens Control",
+        "Power",
+        "Light Output",
+        "Enable/Disable",
+        "Fade In",
+        "Fade Out",
+        "Custom Masking",
+        "Geometry",
+        "None"
+      ]
+    }
+  ]
+}
