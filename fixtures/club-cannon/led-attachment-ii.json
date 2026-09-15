@@ -1,0 +1,218 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Attachment II",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Alex"],
+    "createDate": "2025-06-13",
+    "lastModifyDate": "2025-06-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.clubcannon.com/wp-content/uploads/Manuals/LED_Attachment-II-Manual-V1.0-SEPT2023.pdf"
+    ],
+    "productPage": [
+      "https://www.clubcannon.com/product/led-attachment-ii/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4Hi1AoRf0m4"
+    ]
+  },
+  "physical": {
+    "dimensions": [196.85, 177.8, 98.43],
+    "weight": 2.72,
+    "power": 90,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 10]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [13, 25],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [26, 38],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [39, 51],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [52, 64],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [65, 77],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [78, 90],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [91, 103],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ff5500"]
+        },
+        {
+          "dmxRange": [104, 116],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#aa00ff"]
+        },
+        {
+          "dmxRange": [117, 129],
+          "type": "ColorPreset",
+          "comment": "CTO",
+          "colors": ["#ffccaa"]
+        },
+        {
+          "dmxRange": [130, 150],
+          "type": "ColorPreset",
+          "comment": "UV+Red",
+          "colors": ["#ff0088"]
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Fade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "instant",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Color Jump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "durationStart": "long",
+          "durationEnd": "short",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Simple",
+      "channels": [
+        "Intensity",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "Basic",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Raw",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Extended",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Macros",
+        "Strobe"
+      ]
+    }
+  ]
+}
