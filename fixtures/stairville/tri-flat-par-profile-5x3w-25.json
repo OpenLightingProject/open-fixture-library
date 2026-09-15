@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tri Flat PAR Profile 5x3W 25°",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["LN"],
+    "createDate": "2026-06-19",
+    "lastModifyDate": "2026-06-19"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_309298_414495_v6_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/stairville_tri_flat_par_profile_5x3w_25.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i2204p8_yd59vq4a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [164, 164, 105],
+    "weight": 2.1,
+    "power": 18,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 27],
+          "type": "Generic",
+          "comment": "show1"
+        },
+        {
+          "dmxRange": [28, 55],
+          "type": "Generic",
+          "comment": "Show 2"
+        },
+        {
+          "dmxRange": [56, 83],
+          "type": "Generic",
+          "comment": "Show 3"
+        },
+        {
+          "dmxRange": [84, 111],
+          "type": "Generic",
+          "comment": "Show 4"
+        },
+        {
+          "dmxRange": [112, 139],
+          "type": "Generic",
+          "comment": "Show 5"
+        },
+        {
+          "dmxRange": [140, 167],
+          "type": "Generic",
+          "comment": "Show 6"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "Generic",
+          "comment": "Show 7"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "Generic",
+          "comment": "Show 8"
+        },
+        {
+          "dmxRange": [224, 251],
+          "type": "Generic",
+          "comment": "Show 9"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "Sound control"
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "3 channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
