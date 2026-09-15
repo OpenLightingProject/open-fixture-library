@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01082",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Ondrej Rafaj"],
+    "createDate": "2025-08-30",
+    "lastModifyDate": "2025-08-30"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/led-par-can-b262-36w-36led-rgb-par-light-uking/?srsltid=AfmBOoqbj4F_9dYxkvj1q1uU_DpTp-FUJl9z8bHdCru9PQHprgmXopoc"
+    ]
+  },
+  "physical": {
+    "weight": 0.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BASIC",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
