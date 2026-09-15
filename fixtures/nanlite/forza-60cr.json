@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 60cr",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["nanlite"],
+    "createDate": "2026-01-05",
+    "lastModifyDate": "2026-01-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.nanlite.com.tr/uploads/files/DMX_REFERENCE_GUIDE/Forza_60C_DMX_REFERENCE_GUIDE_EN%20V1%2020220430%20W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com.tr/uploads/files/DMX_REFERENCE_GUIDE/Forza_60C_DMX_REFERENCE_GUIDE_EN%20V1%2020220430%20W.pdf"
+    ],
+    "video": [
+      "https://www.nanlite.com.tr/uploads/files/DMX_REFERENCE_GUIDE/Forza_60C_DMX_REFERENCE_GUIDE_EN%20V1%2020220430%20W.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Green/Magenta": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Crossfade": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "HUE": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "SAT": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "DIMMER": {
+      "fineChannelAliases": ["DIMMER fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT 2": {
+      "name": "CCT",
+      "fineChannelAliases": ["CCT 2 fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1800K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green/Magenta 2": {
+      "name": "Green/Magenta",
+      "fineChannelAliases": ["Green/Magenta 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CROSSFADE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "HUE 2": {
+      "name": "HUE",
+      "fineChannelAliases": ["HUE 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "SAT 2": {
+      "name": "SAT",
+      "fineChannelAliases": ["SAT 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & HSI 16bit",
+      "channels": [
+        "DIMMER",
+        "DIMMER fine",
+        "CCT 2",
+        "CCT 2 fine",
+        "Green/Magenta 2",
+        "Green/Magenta 2 fine",
+        "CROSSFADE",
+        "HUE 2",
+        "HUE 2 fine",
+        "SAT 2",
+        "SAT 2 fine"
+      ]
+    }
+  ]
+}
