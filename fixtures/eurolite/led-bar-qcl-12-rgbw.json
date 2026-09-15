@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED BAR QCL 12 RGBW",
+  "shortName": "QCL12",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["marc"],
+    "createDate": "2025-09-10",
+    "lastModifyDate": "2025-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.moltbe.com"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "25",
+      "degreesMinMax": [25, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "8000K"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Intensity"
+      ]
+    }
+  ]
+}
