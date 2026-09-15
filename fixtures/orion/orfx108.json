@@ -1,0 +1,288 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ORFX108",
+  "categories": ["Laser", "Blinder", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-18",
+    "lastModifyDate": "2026-01-18"
+  },
+  "links": {
+    "manual": [
+      "https://orion-fxlights.com/images/products/ownersman/om_orfx108.pdf"
+    ],
+    "productPage": [
+      "https://orion-fxlights.com/led-effects/product/774248/orfx108"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 304, 245],
+    "weight": 5.1,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Control Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Blackout"
+        },
+        {
+          "dmxRange": [10, 39],
+          "type": "Effect",
+          "effectName": "Autoplay 1 (6 colors LED auto)"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "Effect",
+          "effectName": "Autoplay 2 (White LED auto)"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "Effect",
+          "effectName": "Autoplay 3 (Laser auto)"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "Effect",
+          "effectName": "Autoplay 4 (Mixing auto)"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "Effect",
+          "effectName": "Sound Control 1 (6 colors LED sound)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "Effect",
+          "effectName": "Sound control 2 (White LED sound)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "Effect",
+          "effectName": "Sound control 3 (Laser sound)"
+        },
+        {
+          "dmxRange": [220, 249],
+          "type": "Effect",
+          "effectName": "Sound control 4 (Mixing sound)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "DMX Mode"
+        }
+      ]
+    },
+    "RGBWAUV Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [10, 198],
+          "type": "Effect",
+          "effectName": "Color Presets (increments of 3)"
+        },
+        {
+          "dmxRange": [199, 225],
+          "type": "Effect",
+          "effectName": "Color chase 1"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Effect",
+          "effectName": "Color chase 2 (single or multiple)"
+        }
+      ]
+    },
+    "Autoplay LED color chase speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "For control mode 10-129(?)"
+      }
+    },
+    "LED strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 198],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [199, 255],
+          "type": "Effect",
+          "effectName": "LED strobe by sound",
+          "soundControlled": true
+        }
+      ]
+    },
+    "White strobe LED": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 134],
+          "type": "Effect",
+          "effectName": "White LED output position"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "Effect",
+          "effectName": "White LED chase"
+        }
+      ]
+    },
+    "White LED Strobe and Chase speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Laser control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorPreset",
+          "comment": "Red and Green"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorPreset",
+          "comment": "Red and Green flicker"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "comment": "Red and Green flicker"
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "ColorPreset",
+          "comment": "Red, Green syncronous flicker"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Red, green alternative flicker"
+        }
+      ]
+    },
+    "Laser strobe control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 244],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Laser strobe by sound",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Motor control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [9, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Laser pattern control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Laser pattern choose"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Control Mode",
+        "RGBWAUV Control",
+        "Autoplay LED color chase speed",
+        "LED strobe",
+        "White strobe LED",
+        "White LED Strobe and Chase speed",
+        "Laser control",
+        "Laser strobe control",
+        "Motor control",
+        "Laser pattern control"
+      ]
+    }
+  ]
+}
