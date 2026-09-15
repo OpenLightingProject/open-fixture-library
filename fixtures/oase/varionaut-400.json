@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Varionaut 400",
+  "shortName": "VN400",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["SmartCity Group s.r.o."],
+    "createDate": "2026-08-08",
+    "lastModifyDate": "2026-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.scribd.com/document/786868230/DOK-PRD-DB-33256-Varionaut-400-DMX-02-001-SEN-AQU-V1"
+    ],
+    "productPage": [
+      "https://www.oase.com/en/fountain-technology/varionaut-400-dmx02-us"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=x8KKiDDGgnQ"
+    ]
+  },
+  "rdm": {
+    "modelId": 504,
+    "softwareVersion": "EC2-MAXI-XL-V0220190702"
+  },
+  "physical": {
+    "dimensions": [630, 268, 213],
+    "weight": 14.59,
+    "power": 730,
+    "DMXconnector": "5-pin XLR IP65"
+  },
+  "availableChannels": {
+    "No function": {
+      "defaultValue": 80,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "Maintenance",
+          "comment": "Power Off"
+        },
+        {
+          "dmxRange": [80, 90],
+          "type": "Maintenance",
+          "comment": "Power On"
+        },
+        {
+          "dmxRange": [91, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "Standard",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "No function",
+        "Dimmer"
+      ]
+    }
+  ]
+}
