@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Bolt Blinder",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Joe"],
+    "createDate": "2026-06-01",
+    "lastModifyDate": "2026-06-01"
+  },
+  "links": {
+    "other": [
+      "https://www.simplysoundandlighting.co.uk/products/thor-bolt-blinder-200w-led-blinder-cw-ww?variant=49834763780416"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Colour": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Warm White 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cold White 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cold White 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX512",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Colour",
+        "Speed",
+        "Warm White 1",
+        "Cold White 1",
+        "Warm White 2",
+        "Cold White 2"
+      ]
+    }
+  ]
+}
