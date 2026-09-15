@@ -1,0 +1,214 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FRESNEL 400 RGBALC",
+  "shortName": "FR 400 RGBALC",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Aleksey Melentyev"],
+    "createDate": "2025-12-02",
+    "lastModifyDate": "2025-12-02"
+  },
+  "links": {
+    "manual": [
+      "https://prstage.pro/wp-content/uploads/2025/02/PRstage_Fresnel_400_RGBALC_rus.pdf"
+    ],
+    "productPage": [
+      "https://prstage.pro/prstage-fresnel-led-400w-rgblac/"
+    ]
+  },
+  "rdm": {
+    "modelId": 8201
+  },
+  "physical": {
+    "dimensions": [340, 220, 320],
+    "weight": 10.2,
+    "power": 450,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 3200,
+      "lumens": 8400
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [15, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "15deg",
+        "angleEnd": "50deg"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Lime 2": {
+      "name": "Lime",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "Generic",
+        "comment": "Macro Rate"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom Reset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 - 6CH",
+      "channels": [
+        "Dimmer",
+        "CTO",
+        "Color Wheel",
+        "Color Presets",
+        "Color Macros",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "2 - 9CH",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "3 - 16CH",
+      "channels": [
+        "Dimmer 2",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan",
+        "Lime 2",
+        "CTO",
+        "Color Wheel",
+        "Color Presets",
+        "Color Macros",
+        "Color Macros 2",
+        "Shutter / Strobe",
+        "Zoom",
+        "Zoom 2"
+      ]
+    }
+  ]
+}
