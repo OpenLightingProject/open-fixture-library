@@ -1,0 +1,221 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Balón led",
+  "shortName": "SPL 201",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Luzzi"],
+    "createDate": "2025-11-07",
+    "lastModifyDate": "2025-11-07"
+  },
+  "links": {
+    "productPage": [
+      "https://www.sanyilights.com/product-detail/50.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [0.3, 0.5, 50],
+    "weight": 5,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Altura": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Generic",
+        "comment": "Altura"
+      }
+    },
+    "Altura (Fino)": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Generic",
+        "comment": "Altura (Fino)"
+      }
+    },
+    "Velocidad": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "stop",
+        "comment": "Velocidad"
+      }
+    },
+    "Dimmer general": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer gral"
+      }
+    },
+    "Haz Rojo": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Haz Verde": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Haz Verde"
+      }
+    },
+    "Haz Azúl": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Haz Azúl"
+      }
+    },
+    "Haz Blanco": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Haz Blanco"
+      }
+    },
+    "Efecto Hqz": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Velocidad efecto Haz": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Velocidad efecto Haz"
+      }
+    },
+    "Reset": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Reset 2": {
+      "name": "Reset",
+      "defaultValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "SIN FUNCON"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "Generic",
+          "comment": "RESET"
+        }
+      ]
+    },
+    "Aro LED rojo": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "ARO LED ROJO"
+      }
+    },
+    "Aro LED  verde": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "ARO LED VERDE"
+      }
+    },
+    "Aro LED  Azul": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "ARO LED AZUL"
+      }
+    },
+    "EFECTO ARO LED": {
+      "defaultValue": 16,
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "StrobeSpeed",
+          "speedStart": "stop",
+          "speedEnd": "fast",
+          "comment": "STROBO"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "FADE ARO",
+          "speed": "slow",
+          "parameter": "long",
+          "comment": "FADE ARO LED"
+        }
+      ]
+    },
+    "EFECTO ARO": {
+      "defaultValue": 17,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Efecto aros Led",
+        "comment": "Efecto aro"
+      }
+    },
+    "Velocidad efecto Aro Led": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long",
+        "comment": "VELOCIDAD EFECTO ARO LED"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "18 canales",
+      "channels": [
+        "Altura",
+        "Altura (Fino)",
+        "Velocidad",
+        "Dimmer general",
+        "Haz Rojo",
+        "Haz Verde",
+        "Haz Azúl",
+        "Haz Blanco",
+        "Efecto Hqz",
+        "Velocidad efecto Haz",
+        "Reset",
+        "Reset 2",
+        "Aro LED rojo",
+        "Aro LED  verde",
+        "Aro LED  Azul",
+        "EFECTO ARO LED",
+        "EFECTO ARO",
+        "Velocidad efecto Aro Led"
+      ]
+    }
+  ]
+}
