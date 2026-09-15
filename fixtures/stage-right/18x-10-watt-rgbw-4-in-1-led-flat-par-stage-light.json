@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18x 10-Watt RGBW 4-in-1 LED Flat Par Stage Light",
+  "shortName": "Stage Right - 18x10 RGBW Parcan",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Lashan @ Artifact"],
+    "createDate": "2025-08-21",
+    "lastModifyDate": "2025-08-21"
+  },
+  "links": {
+    "manual": [
+      "https://shopperplusca.s3.amazonaws.com/system/redactor_assets/documents/105947/625865_Manual_200327.pdf"
+    ],
+    "productPage": [
+      "https://www.monoprice.com/product?p_id=625865"
+    ],
+    "other": [
+      "https://downloads.monoprice.com/files/specsheets/625865_Technical%20Specs_241218.pdf",
+      "https://downloads.monoprice.com/files/manuals/625865_SalesSheet_241210.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [101, 180],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [181, 255],
+          "type": "Effect",
+          "effectName": "Color Pulse",
+          "comment": "Manufacturer manual: Macro Color Pulse Mode"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter",
+        "Color Macros",
+        "Macro Speed"
+      ]
+    }
+  ]
+}
