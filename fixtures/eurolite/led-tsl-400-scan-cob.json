@@ -1,0 +1,317 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TSL-400 Scan COB",
+  "shortName": "TSL-400",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Wouter Jolink"],
+    "createDate": "2026-03-13",
+    "lastModifyDate": "2026-03-13"
+  },
+  "comment": "High performance LED scanner with rotating gobos\nEquipped with a 60 W COB LED",
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51786160-Manual-56298-1.0000-eurolite-led-tsl-400-scan-cob-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51786160-eurolite-led-tsl-400-scan-cob.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=PgxxE4PEsUA&si=HT5lSLpeRKp3jd4T"
+    ]
+  },
+  "physical": {
+    "dimensions": [550, 310, 295],
+    "weight": 6.3,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED",
+      "lumens": 14000
+    },
+    "lens": {
+      "degreesMinMax": [14, 14]
+    }
+  },
+  "wheels": {
+    "Colour-wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#f0c807"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#fc0fc0"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#add8e6"]
+        },
+        {
+          "type": "Color",
+          "name": "RED",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Rose",
+          "colors": ["#ff1d8d"]
+        }
+      ]
+    },
+    "Rotating gobo-wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "pyramid"
+        },
+        {
+          "type": "Gobo",
+          "name": "2"
+        },
+        {
+          "type": "Gobo",
+          "name": "3"
+        },
+        {
+          "type": "Gobo",
+          "name": "4"
+        },
+        {
+          "type": "Gobo",
+          "name": "5"
+        },
+        {
+          "type": "Gobo",
+          "name": "6"
+        },
+        {
+          "type": "Gobo",
+          "name": "7"
+        }
+      ]
+    },
+    "How to \"perminatly\" delete this channel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Horizontal movement Pan": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "178deg",
+        "comment": "PAN-movement:\twithin 175°"
+      }
+    },
+    "Vertical movement (TILT)": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "80deg",
+        "comment": "within 80°"
+      }
+    },
+    "Colour-wheel": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        }
+      ]
+    },
+    "Rotating gobo-wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        }
+      ]
+    },
+    "How to \"perminatly\" delete this channel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 253,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "open"
+        },
+        {
+          "dmxRange": [1, 251],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe-effect with increasing speed"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "NoFunction",
+          "comment": "No function"
+        }
+      ]
+    },
+    "Dimmer intensity": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Gradual adjustment of the dimmer intensity from 0 to 100 %"
+      }
+    },
+    "Gobo rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "no rotation"
+        },
+        {
+          "dmxRange": [4, 127],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Backwards gobo rotation with increasing speed"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Forwards gobo rotation with increasing speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Main",
+      "shortName": "default",
+      "channels": [
+        "Horizontal movement Pan",
+        "Vertical movement (TILT)",
+        "Colour-wheel",
+        "Rotating gobo-wheel",
+        "Gobo rotation",
+        "Strobe",
+        "Dimmer intensity"
+      ]
+    }
+  ]
+}
