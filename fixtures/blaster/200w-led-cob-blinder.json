@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W LED COB Blinder",
+  "shortName": "COB Blinder",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Joe"],
+    "createDate": "2026-05-30",
+    "lastModifyDate": "2026-05-30"
+  },
+  "links": {
+    "manual": [
+      "https://manuals.plus/blaster/mj-3200-200w-led-cob-blinder-manual#google_vignette"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED COB"
+    }
+  },
+  "availableChannels": {
+    "1# Warm White Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "1# Cold White Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "2# Warm White Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "2# Cold White Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "1# Warm White Dimmer",
+        "1# Cold White Dimmer",
+        "2# Warm White Dimmer",
+        "2# Cold White Dimmer"
+      ]
+    }
+  ]
+}
