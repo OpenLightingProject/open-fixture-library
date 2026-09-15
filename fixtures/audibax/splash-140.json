@@ -1,0 +1,165 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "splash 140",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Galin"],
+    "createDate": "2026-08-12",
+    "lastModifyDate": "2026-08-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com/search?q=audibax+pro+splash+140&sca_esv=b4f7fa5c2ef07e05&sxsrf=APpeQntprLCB9QsPptfSTRP97vIvsVVcRw%3A1786491384782&ei=-LF7aqWsL9rLi-gP4pnS-AQ&ved=0ahUKEwiliImD35mWAxXa5QIHHeKMFE8Q4dUDCBA&uact=5&oq=audibax+pro+splash+140&gs_lp=Egxnd3Mtd2l6LXNlcnAiFmF1ZGliYXggcHJvIHNwbGFzaCAxNDBI7x5Q3RhYtx1wAngAkAEAmAFloAGAAqoBAzIuMbgBA8gBAPgBAZgCAKACAJgDAIgGAZIHAKAHgQGyBwC4BwDCBwDIBwCACAE&sclient=gws-wiz-serp"
+    ],
+    "productPage": [
+      "https://www.google.com/search?q=audibax+pro+splash+140&sca_esv=b4f7fa5c2ef07e05&sxsrf=APpeQntprLCB9QsPptfSTRP97vIvsVVcRw%3A1786491384782&ei=-LF7aqWsL9rLi-gP4pnS-AQ&ved=0ahUKEwiliImD35mWAxXa5QIHHeKMFE8Q4dUDCBA&uact=5&oq=audibax+pro+splash+140&gs_lp=Egxnd3Mtd2l6LXNlcnAiFmF1ZGliYXggcHJvIHNwbGFzaCAxNDBI7x5Q3RhYtx1wAngAkAEAmAFloAGAAqoBAzIuMbgBA8gBAPgBAZgCAKACAJgDAIgGAZIHAKAHgQGyBwC4BwDCBwDIBwCACAE&sclient=gws-wiz-serp"
+    ],
+    "video": [
+      "https://www.google.com/search?q=audibax+pro+splash+140&sca_esv=b4f7fa5c2ef07e05&sxsrf=APpeQntprLCB9QsPptfSTRP97vIvsVVcRw%3A1786491384782&ei=-LF7aqWsL9rLi-gP4pnS-AQ&ved=0ahUKEwiliImD35mWAxXa5QIHHeKMFE8Q4dUDCBA&uact=5&oq=audibax+pro+splash+140&gs_lp=Egxnd3Mtd2l6LXNlcnAiFmF1ZGliYXggcHJvIHNwbGFzaCAxNDBI7x5Q3RhYtx1wAngAkAEAmAFloAGAAqoBAzIuMbgBA8gBAPgBAZgCAKACAJgDAIgGAZIHAKAHgQGyBwC4BwDCBwDIBwCACAE&sclient=gws-wiz-serp"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Red dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cyan dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Lime dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Master Dimmer RGBC": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Lime Master Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber Master Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Auto Mode"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speed": "0Hz"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "Cyan dimmer"
+      ]
+    },
+    {
+      "name": "13ch",
+      "channels": [
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "Cyan dimmer",
+        "Lime dimmer",
+        "Amber dimmer",
+        "Master Dimmer RGBC",
+        "Lime Master Dimmer",
+        "Amber Master Dimmer",
+        "Auto Mode",
+        "Speed",
+        "Strobe",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
