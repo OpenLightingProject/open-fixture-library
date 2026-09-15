@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Golden Strobe MK2",
+  "shortName": "Golden Strobe",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["yves"],
+    "createDate": "2025-07-03",
+    "lastModifyDate": "2025-07-03"
+  },
+  "links": {
+    "productPage": [
+      "https://jb-systems.eu/fr/fl-1800-d-geni-dmx-strobe"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=6GEMZ1EggQM"
+    ]
+  },
+  "physical": {
+    "power": 1800,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "XOP 15"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "2Hz",
+        "speedEnd": "12Hz"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "1",
+      "channels": [
+        "Strobe",
+        "Intensity"
+      ]
+    }
+  ]
+}
