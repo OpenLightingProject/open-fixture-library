@@ -1,0 +1,407 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "100W/200W Moving Head w/Ring",
+  "shortName": "ETS Beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["SAI"],
+    "createDate": "2026-01-14",
+    "lastModifyDate": "2026-01-14"
+  },
+  "links": {
+    "productPage": [
+      "https://yuerlighting.com/"
+    ]
+  },
+  "physical": {
+    "dimensions": [130, 130, 200],
+    "weight": 3.3,
+    "power": 250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 200
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 79],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [80, 139],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 6
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Circular White"
+        },
+        {
+          "dmxRange": [6, 71],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [72, 143],
+          "type": "WheelShake",
+          "slotNumberStart": 11,
+          "slotNumberEnd": 0,
+          "shakeSpeedStart": "fast",
+          "shakeSpeedEnd": "slow"
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Generic",
+          "comment": "Prism Off"
+        },
+        {
+          "dmxRange": [100, 127],
+          "type": "Generic",
+          "comment": "Prism open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "Effect",
+          "effectName": "Colourful",
+          "parameter": "off",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "Effect",
+          "effectName": "colourful Open",
+          "parameter": "high",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Generic",
+          "comment": "1-11 Channels Valid"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Generic",
+          "comment": "Auto 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Generic",
+          "comment": "Auto 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Generic",
+          "comment": "Auto 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Generic",
+          "comment": "Auto 4"
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Maintence": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Generic",
+          "comment": "Pan decetion"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic",
+          "comment": "Tilt decetion"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Generic",
+          "comment": "Tilt/Pan Auto decetion"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Wait 3 Secs lamp Reset"
+        }
+      ]
+    },
+    "Effect Light Strip": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "Light Strip off",
+          "speed": "stop",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [5, 74],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [75, 248],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "EffectParameter",
+          "parameter": "100%",
+          "comment": "Rand Effect"
+        }
+      ]
+    },
+    "Effect speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Channel",
+      "shortName": "15 CHL",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Effect Speed",
+        "Program",
+        "Maintence",
+        "Effect Light Strip",
+        "Effect speed"
+      ]
+    }
+  ]
+}
