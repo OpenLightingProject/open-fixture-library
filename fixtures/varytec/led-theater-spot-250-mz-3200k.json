@@ -23,6 +23,9 @@
     "dimensions": [310, 450, 435],
     "weight": 10.2,
     "power": 250,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "250W COB LED",
@@ -32,9 +35,6 @@
     "lens": {
       "name": "Fresnel",
       "degreesMinMax": [15, 52]
-    },
-    "powerConnectors": {
-      "powerCON": "input and output"
     }
   },
   "availableChannels": {
@@ -82,7 +82,11 @@
   "modes": [
     {
       "name": "3ch",
-      "channels": ["Dimmer", "Strobe effect", "Beam Angle"]
+      "channels": [
+        "Dimmer",
+        "Strobe effect",
+        "Beam Angle"
+      ]
     }
   ]
 }
