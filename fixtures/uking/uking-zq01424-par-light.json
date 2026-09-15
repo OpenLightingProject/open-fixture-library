@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "UKING ZQ01424 PAR LIGHT",
+  "shortName": "ZQ01424",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["giomas"],
+    "createDate": "2026-01-19",
+    "lastModifyDate": "2026-01-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ01424-14PCS-4-in-1-Par-Light.pdf?v=1891928209192303125"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/par-light-stage-light-4-in-1-rgbw-14-leds-stage-effect-light-dmx512-with-remote-control?variant=43855334113391"
+    ],
+    "video": [
+      "https://www.youtube.com/shorts/YOohVtcGp94"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "1000Hz"
+      }
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channel",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Effect Duration",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
