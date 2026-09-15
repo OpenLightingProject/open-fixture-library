@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Projecteur Zoom LED Par 64 RGBWA",
+  "shortName": "Par 64 Zoom RGBWA",
+  "categories": ["Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Dans l'ombre des projecteurs"],
+    "createDate": "2026-03-09",
+    "lastModifyDate": "2026-03-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.etec-professional.de/LED-Lights-Moving-Heads/PAR/PAR-64/ETEC-LED-PAR-64-18x15W-RGBWA-zoom-spotlight::1414.html?language=en"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 270, 200],
+    "weight": 2.3,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Rouge": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Rouge",
+        "colors": ["#ff0000"]
+      }
+    },
+    "Vert": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Vert",
+        "colors": ["#008020"]
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "10deg",
+        "angleEnd": "60deg"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channels",
+      "shortName": "6ch",
+      "channels": [
+        "Red 3",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Zoom"
+      ]
+    }
+  ]
+}
