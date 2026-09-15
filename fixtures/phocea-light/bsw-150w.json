@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BSW 150w",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["scouap"],
+    "createDate": "2026-05-15",
+    "lastModifyDate": "2026-05-15"
+  },
+  "links": {
+    "productPage": [
+      "https://www.phocealight.fr"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Pan2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Tilt2": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "XY speed": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Store": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Gob rot": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "simpletheatre",
+      "channels": [
+        "Pan",
+        "Pan2",
+        "Tilt",
+        "Tilt2",
+        "XY speed",
+        "Dimmer",
+        "Store",
+        "Color Presets",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gob rot",
+        "Frost",
+        "Prism",
+        "Prism Rotation",
+        "Focus",
+        "Zoom",
+        "Reset"
+      ]
+    }
+  ]
+}
