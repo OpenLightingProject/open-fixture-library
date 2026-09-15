@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Berat Light",
+  "shortName": "Eclips PL WASH",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Berat LİGHT"],
+    "createDate": "2026-09-15",
+    "lastModifyDate": "2026-09-15"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "PLWSH2018004"
+  },
+  "physical": {
+    "dimensions": [1, 1, 1],
+    "power": 80
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Deklanşör / Flaş": {
+      "fineChannelAliases": ["Deklanşör / Flaş fine"],
+      "constant": true,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Pan/Tilt Hızı": {
+      "fineChannelAliases": ["Pan/Tilt Hızı fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "rdmPersonalityIndex": 255,
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Deklanşör / Flaş",
+        "Deklanşör / Flaş fine",
+        "Pan/Tilt Hızı",
+        "Pan/Tilt Hızı fine"
+      ]
+    }
+  ]
+}
