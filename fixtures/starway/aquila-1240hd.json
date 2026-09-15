@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Aquila 1240HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Sonny"],
+    "createDate": "2026-03-11",
+    "lastModifyDate": "2026-03-11"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/STARWAY/270695_AQUILA1240HD/270695_AQUILA1240HD_FR.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1020, 100, 300],
+    "weight": 14,
+    "power": 550,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED RGBW"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 35]
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Bloc 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Bloc 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 70],
+          "type": "Effect",
+          "effectName": "Effet Statique"
+        },
+        {
+          "dmxRange": [71, 190],
+          "type": "Effect",
+          "effectName": "Effet Dynamique"
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "Effect",
+          "effectName": "Effet Couleur Dynamique"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Background",
+        "colorsStart": ["#ff0000"],
+        "colorsEnd": ["#ffffff"]
+      }
+    },
+    "Color Presets 2": {
+      "name": "Color Presets",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Front",
+        "colorsStart": ["#ff0000"],
+        "colorsEnd": ["#ffffff"]
+      }
+    },
+    "Color Presets 3": {
+      "name": "Color Presets",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "20ch",
+      "shortName": "20ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Zoom Bloc 1",
+        "Zoom Bloc 2",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Macros",
+        "Effect Speed",
+        "No function",
+        "Color Presets",
+        "Color Presets 2",
+        "Color Presets 3",
+        "No function 2"
+      ]
+    }
+  ]
+}
