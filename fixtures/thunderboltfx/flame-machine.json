@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flame Machine",
+  "shortName": "flame-machine",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["MA"],
+    "createDate": "2025-12-01",
+    "lastModifyDate": "2025-12-01"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thunderboltfx.co.uk/product-page/2-jet-dmx-flame-machine-2-4m-height-tfx201"
+    ]
+  },
+  "availableChannels": {
+    "Safety": {
+      "constant": true,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Flame": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Safety",
+        "Flame"
+      ]
+    }
+  ]
+}
