@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vulkan 1200",
+  "shortName": "Vulkan1200",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Christian"],
+    "createDate": "2025-10-03",
+    "lastModifyDate": "2025-10-03"
+  },
+  "comment": "vertical",
+  "links": {
+    "manual": [
+      "https://algam-akeneo-prod.s3.eu-west-3.amazonaws.com/public/products/4/5/0/d/450d20ccd38a23f298d004ced227770f3818c13d_VULKAN1200___USERMANUAL___2024_09___WEB.pdf"
+    ],
+    "productPage": [
+      "https://algam-lighting.com/fr/machines-a-fumee/1322-vulkan-1200-3700166372696.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=J1bZHKQ083c"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 220, 255],
+    "weight": 4.7,
+    "power": 1200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Red dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "strobe off"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "60Hz",
+          "comment": "from slow to fast"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Manual fog CH2 to CH5 active"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "Effect",
+          "effectName": "Color changer"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "sound mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "basic",
+      "shortName": "STD",
+      "channels": [
+        "Fog Output",
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "Strobe Speed",
+        "Mode",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
