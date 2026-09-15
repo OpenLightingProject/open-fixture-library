@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200W COB LED Zoom PAR",
+  "shortName": "COB Zoom Par",
+  "categories": ["Blinder", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["AW"],
+    "createDate": "2026-02-10",
+    "lastModifyDate": "2026-02-10"
+  },
+  "comment": "3500-4500k",
+  "links": {
+    "manual": [
+      "https://drive.google.com/drive/folders/1BbI2563fWMJ6rE6IHc748rO4oXxPPaUX?usp=sharing"
+    ],
+    "productPage": [
+      "https://shehds.com/products/two-tone-led-200w-cob-zoom-par-warm-cool-white-lighting-led-par-light-stage-disco-party-light-dmx-512-professional-dj-equipment"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=x7dy8LpXunk&list=TLGGt_gRmHguxDMxMDAyMjAyNg"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 220, 375],
+    "weight": 5.7,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3500
+    }
+  },
+  "availableChannels": {
+    "Total Dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cool White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "duration": "short"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Auto": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Auto Run Mode"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Total Dimming",
+        "Cool White",
+        "Warm White",
+        "Strobe",
+        "Focus",
+        "Auto",
+        "Speed"
+      ]
+    },
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Cool White",
+        "Warm White",
+        "Focus"
+      ]
+    },
+    {
+      "name": "Auto",
+      "shortName": "AT0",
+      "channels": [
+        "Auto"
+      ]
+    },
+    {
+      "name": "Speed",
+      "shortName": "SP",
+      "channels": [
+        "Speed"
+      ]
+    },
+    {
+      "name": "Sound",
+      "shortName": "SD",
+      "channels": [
+        "Sound"
+      ]
+    },
+    {
+      "name": "Cool White",
+      "shortName": "CW",
+      "channels": [
+        "Cool White"
+      ]
+    },
+    {
+      "name": "Warm White",
+      "shortName": "WW",
+      "channels": [
+        "Warm White"
+      ]
+    },
+    {
+      "name": "Focus",
+      "shortName": "F",
+      "channels": [
+        "Focus"
+      ]
+    },
+    {
+      "name": "Strobe",
+      "shortName": "St",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Temperature",
+      "shortName": "tEnP",
+      "channels": [
+        "Total Dimming"
+      ]
+    }
+  ]
+}
