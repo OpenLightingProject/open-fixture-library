@@ -1,0 +1,158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ01528 110W RGBWA+UV WIRELESS PAR LIGHT",
+  "shortName": "Uking Uplights",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Koxicain"],
+    "createDate": "2026-07-22",
+    "lastModifyDate": "2026-07-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ01528ZQ01529-6PCS-Battery-PAR-LIGHT.pdf?v=252868476401297622"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/wireless-built-in-battery-remote-control-wifi-par-light-wash-light-6pcs-18w-rgbwauv-six-in-one-par-light-with-charge-progress-bar-for-wedding-stage-performance-light-up-house-dyeing-light"
+    ]
+  },
+  "physical": {
+    "weight": 3,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ColorPreset",
+          "comment": "Shut Light"
+        },
+        {
+          "dmxRange": [9, 50],
+          "type": "ColorPreset",
+          "comment": "Static Color Mixing Modes 32 Types"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ColorPreset",
+          "comment": "Jump Mode"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "ColorPreset",
+          "comment": "Mutagenesis Mode"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ColorPreset",
+          "comment": "Gradientient Mode"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "ColorPreset",
+          "comment": "Sound Mode 1"
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "ColorPreset",
+          "comment": "Sound Mode 2"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ColorPreset",
+          "comment": "Sound Mode 3"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed & Color Selection（9CH&10CH）"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe",
+        "Color Presets",
+        "Program Speed"
+      ]
+    }
+  ]
+}
