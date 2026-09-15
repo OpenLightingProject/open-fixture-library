@@ -1,0 +1,339 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 7C-7 Silent Slim Spot",
+  "shortName": "LED 7C",
+  "categories": ["Blinder", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Allaine Smithie"],
+    "createDate": "2025-08-03",
+    "lastModifyDate": "2025-08-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.recordcase.de/en/Eurolite-LED-7C-7-Silent-Slim-Spot-User-Manual-DE-EN"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=tbf4f3Hc1M4"
+    ]
+  },
+  "physical": {
+    "dimensions": [110, 220, 255],
+    "weight": 2.4,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Coldwhite"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Warmwhite"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Dark-Orange"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Green-Yellow"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Salmon"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Light-Green"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Faded-Yellow"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "Light-Blue"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Dark-Blue"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        }
+      ]
+    },
+    "Reserved": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Generic",
+          "comment": "Color-Fade slow->fast"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Generic",
+          "comment": "Color-Change slow->fast"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Generic",
+          "comment": "Color-Fade sound-input"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Generic",
+          "comment": "Color-Change sound-input"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2700K",
+          "colorTemperatureEnd": "2700K"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4300K",
+          "colorTemperatureEnd": "4300K"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8000K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Presets",
+        "Reserved",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Warm White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Warm White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "12ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Warm White",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Reserved",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
