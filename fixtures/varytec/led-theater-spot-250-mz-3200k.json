@@ -7,7 +7,7 @@
     "createDate": "2026-09-14",
     "lastModifyDate": "2026-09-14"
   },
-  "comment": "Colour rendering index: > 95\nRefresh rate LED: 10 kHz\nPower input and output: Power Twist\nMotorized Zoom\ntemperature-controlled fan\nLight output 12730 Lux (2 m, 15° beam angle)",
+  "comment": "Colour rendering index: > 95\nRefresh rate LED: 10 kHz\nMotorized Zoom\ntemperature-controlled fan",
   "links": {
     "manual": [
       "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/444937_c_444937_v4_r2_en_online.pdf"
@@ -26,11 +26,15 @@
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "250W COB LED",
-      "colorTemperature": 3200
+      "colorTemperature": 3200,
+      "lumens": 2773
     },
     "lens": {
       "name": "Fresnel",
       "degreesMinMax": [15, 52]
+    },
+    "powerConnectors": {
+      "powerCON": "input and output"
     }
   },
   "availableChannels": {
@@ -78,11 +82,7 @@
   "modes": [
     {
       "name": "3ch",
-      "channels": [
-        "Dimmer",
-        "Strobe effect",
-        "Beam Angle"
-      ]
+      "channels": ["Dimmer", "Strobe effect", "Beam Angle"]
     }
   ]
 }
