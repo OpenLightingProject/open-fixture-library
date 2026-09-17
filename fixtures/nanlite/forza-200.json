@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 200",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-06-29",
+    "lastModifyDate": "2023-06-29"
+  },
+  "links": {
+    "manual": [
+      "http://en.nanlite.com/uploads/files/USER%20MANUAL/Forza%20200%20USER%20MANUAL%20(NANLITE).pdf"
+    ],
+    "productPage": [
+      "https://en.nanlite.com/products/detail/Forza-200"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=eqFPK4RlwNA"
+    ]
+  },
+  "physical": {
+    "dimensions": [315, 210, 115],
+    "weight": 1.8,
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode Daylight": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets the device to Daylight Mode"
+      }
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Daylight",
+      "channels": [
+        "Dimmer",
+        "Mode Daylight",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3"
+      ]
+    }
+  ]
+}

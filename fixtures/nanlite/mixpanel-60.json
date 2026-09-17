@@ -1,0 +1,731 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MixPanel 60",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-10-04",
+    "lastModifyDate": "2023-10-04"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691133334604-407425-1124121241512490-MixPanel+60%EF%BC%8FMixPanel+150Manual%EF%BC%88NANLITE%EF%BC%89B+V6+20230304+W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-mixpanel-60-150?t=1696462851202#/en/MixPanel-60/150"
+    ]
+  },
+  "physical": {
+    "dimensions": [426, 370, 82],
+    "weight": 3.3,
+    "power": 64,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "G/M 8bit": {
+      "name": "G/M",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "-50%"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-49%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…49%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "+50%"
+        }
+      ]
+    },
+    "G/M 16bit": {
+      "name": "G/M",
+      "fineChannelAliases": ["G/M 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "-50%"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-49%…-1%"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…49%"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "+50%"
+        }
+      ]
+    },
+    "Lighting Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Generic",
+          "comment": "Silent"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "Generic",
+          "comment": "Normal"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "Boost"
+        }
+      ]
+    },
+    "CCT Source Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Generic",
+          "comment": "Fixture Menu"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "Generic",
+          "comment": "Soft"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Generic",
+          "comment": "Hard"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strobe"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Cross Fade": {
+      "fineChannelAliases": ["Cross Fade fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Mode Gel": {
+      "name": "Mode",
+      "defaultValue": 160,
+      "highlightValue": 160,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to GEL Mode"
+      }
+    },
+    "Gel CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
+    },
+    "Gel No.": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "Double CTB",
+          "colors": ["#2c35ff"]
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "ColorPreset",
+          "comment": "Full CTB",
+          "colors": ["#6a81ff"]
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "ColorPreset",
+          "comment": "1/2 CTB",
+          "colors": ["#a3b7ff"]
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "ColorPreset",
+          "comment": "1/4 CTB",
+          "colors": ["#cdd6ff"]
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "ColorPreset",
+          "comment": "1/8 CTB",
+          "colors": ["#ebf0ff"]
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "ColorPreset",
+          "comment": "Double CTO",
+          "colors": ["#ff7a21"]
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "ColorPreset",
+          "comment": "Full CTO",
+          "colors": ["#ffad49"]
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "ColorPreset",
+          "comment": "1/2 CTO",
+          "colors": ["#ffd585"]
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "ColorPreset",
+          "comment": "1/4 CTO",
+          "colors": ["#ffebbf"]
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "ColorPreset",
+          "comment": "1/8 CTO",
+          "colors": ["#fff5d8"]
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "ColorPreset",
+          "comment": "Blue 15",
+          "colors": ["#000080"]
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "ColorPreset",
+          "comment": "Blue 30",
+          "colors": ["#0000a0"]
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "ColorPreset",
+          "comment": "Blue 60",
+          "colors": ["#0000c0"]
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "ColorPreset",
+          "comment": "Blue 90",
+          "colors": ["#0000f0"]
+        },
+        {
+          "dmxRange": [84, 88],
+          "type": "ColorPreset",
+          "comment": "Cyan 07",
+          "colors": ["#006060"]
+        },
+        {
+          "dmxRange": [89, 95],
+          "type": "ColorPreset",
+          "comment": "Cyan 15",
+          "colors": ["#008080"]
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "ColorPreset",
+          "comment": "Cyan 30",
+          "colors": ["#00a0a0"]
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "ColorPreset",
+          "comment": "Cyan 60",
+          "colors": ["#00c0c0"]
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "ColorPreset",
+          "comment": "Cyan 90",
+          "colors": ["#00a0a0"]
+        },
+        {
+          "dmxRange": [114, 119],
+          "type": "ColorPreset",
+          "comment": "Green 15",
+          "colors": ["#008000"]
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "ColorPreset",
+          "comment": "Green 30",
+          "colors": ["#00a000"]
+        },
+        {
+          "dmxRange": [126, 131],
+          "type": "ColorPreset",
+          "comment": "Green 60",
+          "colors": ["#00c000"]
+        },
+        {
+          "dmxRange": [132, 137],
+          "type": "ColorPreset",
+          "comment": "Green 90",
+          "colors": ["#00f000"]
+        },
+        {
+          "dmxRange": [138, 143],
+          "type": "ColorPreset",
+          "comment": "Yellow 15",
+          "colors": ["#808000"]
+        },
+        {
+          "dmxRange": [144, 149],
+          "type": "ColorPreset",
+          "comment": "Yellow 30",
+          "colors": ["#a0a000"]
+        },
+        {
+          "dmxRange": [150, 155],
+          "type": "ColorPreset",
+          "comment": "Yellow 60",
+          "colors": ["#c0c000"]
+        },
+        {
+          "dmxRange": [156, 161],
+          "type": "ColorPreset",
+          "comment": "Yellow 90",
+          "colors": ["#f0f000"]
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "ColorPreset",
+          "comment": "Red 15",
+          "colors": ["#800000"]
+        },
+        {
+          "dmxRange": [168, 173],
+          "type": "ColorPreset",
+          "comment": "Red 30",
+          "colors": ["#a00000"]
+        },
+        {
+          "dmxRange": [174, 179],
+          "type": "ColorPreset",
+          "comment": "Red 60",
+          "colors": ["#c00000"]
+        },
+        {
+          "dmxRange": [180, 185],
+          "type": "ColorPreset",
+          "comment": "Red 90",
+          "colors": ["#f00000"]
+        },
+        {
+          "dmxRange": [186, 191],
+          "type": "ColorPreset",
+          "comment": "Magenta 15",
+          "colors": ["#800080"]
+        },
+        {
+          "dmxRange": [192, 197],
+          "type": "ColorPreset",
+          "comment": "Magenta 30",
+          "colors": ["#a000a0"]
+        },
+        {
+          "dmxRange": [198, 203],
+          "type": "ColorPreset",
+          "comment": "Magenta 60",
+          "colors": ["#c000c0"]
+        },
+        {
+          "dmxRange": [204, 209],
+          "type": "ColorPreset",
+          "comment": "Magenta 90",
+          "colors": ["#f000f0"]
+        },
+        {
+          "dmxRange": [210, 215],
+          "type": "ColorPreset",
+          "comment": "Pink 15",
+          "colors": ["#e97a7a"]
+        },
+        {
+          "dmxRange": [216, 221],
+          "type": "ColorPreset",
+          "comment": "Pink 30",
+          "colors": ["#ed9595"]
+        },
+        {
+          "dmxRange": [222, 227],
+          "type": "ColorPreset",
+          "comment": "Pink 60",
+          "colors": ["#f0a3a3"]
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "ColorPreset",
+          "comment": "Pink 90",
+          "colors": ["#f4bbbb"]
+        },
+        {
+          "dmxRange": [234, 239],
+          "type": "ColorPreset",
+          "comment": "Lavender 15",
+          "colors": ["#de4bf4"]
+        },
+        {
+          "dmxRange": [240, 245],
+          "type": "ColorPreset",
+          "comment": "Lavender 30",
+          "colors": ["#e368f6"]
+        },
+        {
+          "dmxRange": [246, 251],
+          "type": "ColorPreset",
+          "comment": "Lavender 60",
+          "colors": ["#e880f7"]
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "Lavender 90",
+          "colors": ["#ec98f9"]
+        }
+      ]
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Cross Fade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT & RGBW 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Cross Fade",
+        "Cross Fade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "CCT & HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Cross Fade",
+        "Hue",
+        "Saturation",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT & HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Cross Fade",
+        "Cross Fade fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Lighting Mode",
+        "CCT Source Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Lighting Mode",
+        "CCT Source Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "HSI 8bit",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1"
+      ]
+    },
+    {
+      "name": "HSI 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "RGBW 8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Lighting Mode",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "Ultimate DMX 8bit - Gel",
+      "channels": [
+        "Dimmer",
+        "Mode Gel",
+        "Gel CCT",
+        "Gel No.",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "Lighting Mode"
+      ]
+    }
+  ]
+}
