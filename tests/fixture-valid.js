@@ -604,6 +604,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         if (arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
+            if (channelKey === null) {
+              continue;
+            }
+
             usedChannelKeys.add(channelKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(channelKey) === null) {

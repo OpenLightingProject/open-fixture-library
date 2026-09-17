@@ -188,11 +188,7 @@ export default {
   },
   computed: {
     channelKey() {
-      if (this.channel instanceof NullChannel) {
-        return 'null';
-      }
-
-      if (this.channel.key !== this.channel.name) {
+      if (this.channel.key !== this.channel.name && !(this.channel instanceof NullChannel)) {
         return this.channel.key;
       }
 

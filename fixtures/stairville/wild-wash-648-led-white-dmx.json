@@ -2,19 +2,19 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Wild Wash 648 LED White DMX",
   "shortName": "WildWash648LEDWhite",
-  "comment": "The fixture isn't sold anymore.",
+  "comment": "Item number 399662 (not sold anymore)",
   "categories": ["Strobe", "Blinder"],
   "meta": {
     "authors": ["Paul Rogalski"],
     "createDate": "2024-10-09",
-    "lastModifyDate": "2024-11-23"
+    "lastModifyDate": "2026-09-10"
   },
   "links": {
     "manual": [
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/399664_c_399664_399663_399658_399662_v2_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/intl/stairville_wild_wash_132_led_rgb_dmx.htm"
+      "https://www.thomannmusic.com/stairville_wild_wash_648_led_white_dmx.htm"
     ]
   },
   "physical": {
@@ -23,7 +23,8 @@
     "power": 130,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "648x 0.2 W LED"
+      "type": "648× 0.2W cold white LED",
+      "colorTemperature": 6000
     },
     "lens": {
       "degreesMinMax": [75, 75]
@@ -87,7 +88,7 @@
         }
       ]
     },
-    "Strobe Flash Duration": {
+    "Flash Duration": {
       "defaultValue": 0,
       "capability": {
         "type": "StrobeDuration",
@@ -232,7 +233,7 @@
       "channels": [
         "Dimmer Master",
         "Shutter / Strobe",
-        "Strobe Flash Duration"
+        "Flash Duration"
       ]
     },
     {
@@ -261,7 +262,7 @@
       "channels": [
         "Dimmer Master",
         "Shutter / Strobe",
-        "Strobe Flash Duration",
+        "Flash Duration",
         "Dimmer 1",
         "Dimmer 2",
         "Dimmer 3",

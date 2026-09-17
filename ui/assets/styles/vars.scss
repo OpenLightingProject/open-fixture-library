@@ -1,6 +1,16 @@
 @use "sass:color";
 
 $font-stack: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Helvetica", "Arial", sans-serif;
+$system-monospace-font-stack:
+  ui-monospace,
+  "SF Mono",
+  "Cascadia Code",
+  "Source Code Pro",
+  "Menlo",
+  "Consolas",
+  "Droid Sans Mono",
+  "DejaVu Sans Mono",
+  monospace;
 
 // 2014 Material Design color palettes
 // from https://material.io/design/color/#tools-for-picking-colors

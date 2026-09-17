@@ -71,10 +71,6 @@ time {
   font-variant-numeric: tabular-nums;
 }
 
-.clearfix {
-  clear: both;
-}
-
 label {
   max-width: 100%;
 }
@@ -192,22 +188,6 @@ input[type="number"] {
     border-color: red;
     box-shadow: 0 0 4px rgba(255, 0, 0, 40%);
   }
-}
-
-textarea[readonly] {
-  width: 100%;
-  height: 15em;
-  padding: 1em;
-  overflow: auto;
-  font-family: $font-stack;
-  font-size: 0.9em;
-  font-weight: 400;
-  line-height: 1.3;
-  color: theme-color(text-primary);
-  white-space: pre-wrap;
-  resize: none;
-  background: theme-color(header-background);
-  border: none;
 }
 
 .error-message {
@@ -676,25 +656,6 @@ a.card,
 
 .big-button > h2 {
   font-size: 1.2rem;
-}
-
-// display mode cards in a 2-col layout
-@media (min-width: $tablet) {
-  .fixture-mode {
-    width: calc(50% - 0.5rem);
-
-    &:nth-child(odd) {
-      float: left;
-      clear: left;
-      margin-right: 0.5rem;
-    }
-
-    &:nth-child(even) {
-      float: right;
-      clear: right;
-      margin-left: 0.5rem;
-    }
-  }
 }
 
 @media (max-width: $phone) {

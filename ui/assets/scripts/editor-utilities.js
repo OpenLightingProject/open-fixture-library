@@ -1,3 +1,4 @@
+import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
 export const constants = {
@@ -12,6 +13,43 @@ export const constants = {
  */
 export function getEmptyFormState() {
   return {};
+}
+
+/**
+ * Opens all `<details>` ancestors of currently invalid fields in the given container (so they
+ * become visible), then scrolls to and focuses the first invalid field.
+ * @param {Document|Element} [container] - The DOM element to search within; defaults to the whole page.
+ */
+export function scrollToFirstInvalidField(container = document) {
+  const invalidFields = [...container.querySelectorAll('.vf-invalid')];
+
+  if (invalidFields.length === 0) {
+    return;
+  }
+
+  for (let index = 0; index < invalidFields.length; index++) {
+    const enclosingDetails = invalidFields[index].closest('details:not([open])');
+
+    if (enclosingDetails) {
+      enclosingDetails.open = true;
+
+      // current field could be enclosed another time, so repeat
+      index--;
+    }
+  }
+
+  const firstField = invalidFields[0];
+  const firstFieldInput = firstField.parentElement.querySelector('input, select, textarea') ?? firstField;
+  const scrollContainer = firstField.closest('.dialog') ?? window;
+  scrollIntoView(firstField, {
+    time: 300,
+    align: {
+      top: 0,
+      left: 0,
+      topOffset: 100,
+    },
+    isScrollable: (target) => target === scrollContainer,
+  }, () => firstFieldInput.focus());
 }
 
 /**

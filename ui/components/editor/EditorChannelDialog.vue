@@ -319,6 +319,7 @@ import {
   getSanitizedChannel,
   isCapabilityChanged,
   isChannelChanged,
+  scrollToFirstInvalidField,
 } from '../../assets/scripts/editor-utilities.js';
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -682,30 +683,7 @@ export default {
       }
 
       if (this.formstate.$invalid) {
-        const invalidFields = document.querySelectorAll('#channel-dialog .vf-field-invalid');
-
-        for (let index = 0; index < invalidFields.length; index++) {
-          const enclosingDetails = invalidFields[index].closest('details:not([open])');
-
-          if (enclosingDetails) {
-            enclosingDetails.open = true;
-
-            // current field could be enclosed another time, so repeat
-            index--;
-          }
-        }
-
-        const scrollContainer = invalidFields[0].closest('.dialog');
-        scrollIntoView(invalidFields[0], {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: (target) => target === scrollContainer,
-        }, () => invalidFields[0].focus());
-
+        scrollToFirstInvalidField(this.$el);
         return;
       }
 
