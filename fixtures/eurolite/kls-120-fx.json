@@ -1,0 +1,284 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KLS-120 FX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Bertram Beierlein"],
+    "createDate": "2021-12-11",
+    "lastModifyDate": "2021-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.12.4a)"
+    }
+  },
+  "physical": {
+    "dimensions": [625, 224, 155],
+    "weight": 4.2,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [18, 18]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Zunehmende Helligkeit 0 – 100%"
+      }
+    },
+    "Strobe-Effekt PAR-Spot": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Keine Funktion"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Strobe mit zunehmender Geschwindigkeit 0 – 100%"
+        }
+      ]
+    },
+    "PAR-Spot 1 Rot": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "PAR-Spot 1 Grün": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "PAR-Spot 1 Blau": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "PAR-Spot 1 Weiß": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "PAR-Spot 2 Rot": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "PAR-Spot 2 Grün": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "PAR-Spot 2 Blau": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "PAR-Spot 2 Weiß": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe-Effekt Derby": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Keine Funktion"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Strobe mit zunehmender Geschwindigkeit 0 – 100%"
+        }
+      ]
+    },
+    "Derby 1 Rot": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Derby 1 Grün": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Derby 1 Blau": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Derby 1 Weiß": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Derby 2 Rot": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Derby 2 Grün": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Derby 2 Blau": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Derby 2 Weiß": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Derby Motor / Geschwindigkeit": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "comment": "Keine Funktion",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Speed",
+          "comment": "Motorgeschwindigkeit 1 (langsam)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Speed",
+          "comment": "Motorgeschwindigkeit 2 (mittel)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "Speed",
+          "comment": "Motorgeschwindigkeit 3 (schnell)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Automatikbetrieb / Musiksteuerung": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Keine Funktion"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Effect",
+          "effectName": "Automatisches Programm 1 mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "Effect",
+          "effectName": "Automatisches Programm 2 mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "Effect",
+          "effectName": "Automatisches Programm 3 mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "Effect",
+          "effectName": "Musikgesteuertes Programm 1 mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Effect",
+          "effectName": "Musikgesteuertes Programm 2 mit zunehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectName": "Musikgesteuertes Programm 3 mit zunehmender Geschwindigkeit"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "21-channel",
+      "shortName": "21ch",
+      "channels": [
+        "Dimmer",
+        "Strobe-Effekt PAR-Spot",
+        "PAR-Spot 1 Rot",
+        "PAR-Spot 1 Grün",
+        "PAR-Spot 1 Blau",
+        "PAR-Spot 1 Weiß",
+        "PAR-Spot 2 Rot",
+        "PAR-Spot 2 Grün",
+        "PAR-Spot 2 Blau",
+        "PAR-Spot 2 Weiß",
+        "Strobe-Effekt Derby",
+        "Derby 1 Rot",
+        "Derby 1 Grün",
+        "Derby 1 Blau",
+        "Derby 1 Weiß",
+        "Derby 2 Rot",
+        "Derby 2 Grün",
+        "Derby 2 Blau",
+        "Derby 2 Weiß",
+        "Derby Motor / Geschwindigkeit",
+        "Automatikbetrieb / Musiksteuerung"
+      ]
+    }
+  ]
+}
