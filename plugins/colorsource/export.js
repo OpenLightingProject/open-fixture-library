@@ -3,6 +3,8 @@ import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import { scaleDmxValue } from '../../lib/scale-dmx-values.js';
+/** @import Fixture from '../../lib/model/Fixture.js' */
+/** @import Mode from '../../lib/model/Mode.js' */
 
 export const version = '0.1.0';
 
@@ -231,7 +233,7 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.fadeWithIntensity = channel.type === 'Single Color' && hasIntensity;
 
     const fineChannel16bit = channel.fineChannels[0];
-    const fineChannelIndex = fineChannel16bit ? mode.getChannelIndex(fineChannel16bit.key, 'default') : -1;
+    const fineChannelIndex = fineChannel16bit ? mode.getChannelIndex(fineChannel16bit.key, 'defaultOnly') : -1;
     if (fineChannelIndex !== -1) {
       channelJson.fine = fineChannelIndex;
       channelJson.size = 16;
@@ -314,21 +316,17 @@ function getColorSourceChannelType(channel) {
     return CHANNEL_TYPE_POSITION;
   }
 
-  if (['Multi-Color', 'Color Temperature'].includes(channel.type)) {
-    return CHANNEL_TYPE_MULTI_COLOR;
-  }
-
-  return CHANNEL_TYPE_BEAM;
+  return ['Multi-Color', 'Color Temperature'].includes(channel.type)
+    ? CHANNEL_TYPE_MULTI_COLOR
+    : CHANNEL_TYPE_BEAM;
 
   /**
    * @returns {boolean} Whether the channel is pan, tilt or pan/tilt speed.
    */
   function isTypePosition() {
-    if (['Pan', 'Tilt'].includes(channel.type)) {
-      return true;
-    }
-
-    return (channel.capabilities || []).some((capability) => capability.type === 'PanTiltSpeed');
+    return channel.type === 'Pan'
+      || channel.type === 'Tilt'
+      || (channel.capabilities ?? []).some((capability) => capability.type === 'PanTiltSpeed');
   }
 }
 

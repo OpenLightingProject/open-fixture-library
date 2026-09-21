@@ -224,25 +224,30 @@ export default {
       for (let index = 0; index < presetCapabilities.length; index++) {
         const capability = presetCapabilities[index];
 
-        if (!capability.isStep) {
-          const splittedCapabilities = getSplittedCapabilities(capability);
-          presetCapabilities.splice(index, 1, ...splittedCapabilities);
+        if (capability.isStep) {
+          continue;
         }
+
+        const splittedCapabilities = getSplittedCapabilities(capability);
+        presetCapabilities.splice(index, 1, ...splittedCapabilities);
       }
 
       // merge adjacent stepped caps
       for (let index = 0; index < presetCapabilities.length; index++) {
-        const capability = presetCapabilities[index];
-
-        if (index + 1 < presetCapabilities.length) {
-          const nextCapability = presetCapabilities[index + 1];
-          const mergedCapability = getMergedCapability(capability, nextCapability);
-
-          if (mergedCapability) {
-            presetCapabilities.splice(index, 2, mergedCapability);
-            index--; // maybe the merged capability can be merged another time
-          }
+        if (index + 1 >= presetCapabilities.length) {
+          continue;
         }
+
+        const capability = presetCapabilities[index];
+        const nextCapability = presetCapabilities[index + 1];
+        const mergedCapability = getMergedCapability(capability, nextCapability);
+
+        if (!mergedCapability) {
+          continue;
+        }
+
+        presetCapabilities.splice(index, 2, mergedCapability);
+        index--; // maybe the merged capability can be merged another time
       }
 
       for (const capability of presetCapabilities) {
@@ -327,10 +332,9 @@ export default {
           (capabilityJson) => new Capability(capabilityJson, capability._resolution, capability._channel),
         );
 
-        if (capability.slotNumber) {
-          return [startCapability, centerCapability, endCapability];
-        }
-        return [startCapability, endCapability];
+        return capability.slotNumber
+          ? [startCapability, centerCapability, endCapability]
+          : [startCapability, endCapability];
       }
 
       /**
@@ -909,15 +913,12 @@ function getRotationSpeedXmlCapability(capability) {
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
 function arraysEqual(array1, array2) {
-  if (array1 === array2) {
-    return true;
-  }
-
-  if (!Array.isArray(array1) || !Array.isArray(array2)) {
-    return false;
-  }
-
-  return array1.length === array2.length && array1.every(
-    (item, index) => item === array2[index],
+  return array1 === array2 || (
+    Array.isArray(array1)
+    && Array.isArray(array2)
+    && array1.length === array2.length
+    && array1.every(
+      (item, index) => item === array2[index],
+    )
   );
 }

@@ -105,23 +105,20 @@ export default {
   },
   computed: {
     title() {
-      if (this.state === 'loading') {
-        return 'Sending your message…';
+      switch (this.state) {
+        case 'loading': {
+          return 'Sending your message…';
+        }
+        case 'success': {
+          return 'Message sent';
+        }
+        case 'error': {
+          return 'Failed to send message';
+        }
+        default: {
+          return this.type === 'plugin' ? 'Improve plugin' : 'Improve fixture';
+        }
       }
-
-      if (this.state === 'success') {
-        return 'Message sent';
-      }
-
-      if (this.state === 'error') {
-        return 'Failed to send message';
-      }
-
-      if (this.type === 'plugin') {
-        return 'Improve plugin';
-      }
-
-      return 'Improve fixture';
     },
     location() {
       if (this.type === 'capability') {
@@ -133,15 +130,17 @@ export default {
       return null;
     },
     fixture() {
-      if (this.type === 'fixture') {
-        return this.modelValue;
+      switch (this.type) {
+        case 'fixture': {
+          return this.modelValue;
+        }
+        case 'capability': {
+          return this.modelValue._channel.fixture;
+        }
+        default: {
+          return null;
+        }
       }
-
-      if (this.type === 'capability') {
-        return this.modelValue._channel.fixture;
-      }
-
-      return null;
     },
     sendObject() {
       const sendObject = {

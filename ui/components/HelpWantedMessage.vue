@@ -108,27 +108,31 @@ export default {
     },
 
     fixture() {
-      if (this.type === 'fixture') {
-        return this.context;
+      switch (this.type) {
+        case 'fixture': {
+          return this.context;
+        }
+        case 'capability': {
+          return this.context._channel.fixture;
+        }
+        default: {
+          return null;
+        }
       }
-
-      if (this.type === 'capability') {
-        return this.context._channel.fixture;
-      }
-
-      return null;
     },
 
     title() {
-      if (this.type === 'fixture') {
-        return 'You can help to improve this fixture definition!';
+      switch (this.type) {
+        case 'fixture': {
+          return 'You can help to improve this fixture definition!';
+        }
+        case 'plugin': {
+          return 'You can help to improve this plugin!';
+        }
+        default: {
+          return null;
+        }
       }
-
-      if (this.type === 'plugin') {
-        return 'You can help to improve this plugin!';
-      }
-
-      return null;
     },
 
     description() {
