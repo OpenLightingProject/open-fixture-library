@@ -182,14 +182,16 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push('meta.lastModifyDate is earlier than meta.createDate.');
     }
 
-    if (meta.importPlugin) {
-      const pluginData = plugins.data[meta.importPlugin];
-      const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
-      const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+    if (!meta.importPlugin) {
+      return;
+    }
 
-      if (!(isImportPlugin || isOutdatedImportPlugin)) {
-        result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
-      }
+    const pluginData = plugins.data[meta.importPlugin];
+    const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
+    const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+
+    if (!(isImportPlugin || isOutdatedImportPlugin)) {
+      result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
     }
   }
 

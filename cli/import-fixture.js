@@ -71,9 +71,11 @@ catch (error) {
 async function checkCliArguments() {
   const plugins = await importJson('../plugins/plugins.json', import.meta.url);
 
-  if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.plugin) || !cliArguments['author-name']) {
-    const importPlugins = plugins.importPlugins.join(', ');
-    console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${importPlugins}`);
-    process.exit(1);
+  if (cliArguments._.length === 1 && plugins.importPlugins.includes(cliArguments.plugin) && cliArguments['author-name']) {
+    return;
   }
+
+  const importPlugins = plugins.importPlugins.join(', ');
+  console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${importPlugins}`);
+  process.exit(1);
 }

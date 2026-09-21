@@ -124,14 +124,16 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const hasModePhysical = firstPhysicalMode !== undefined;
   const hasGlobalPhysical = 'Physical' in qlcPlusFixture;
 
-  if (hasGlobalPhysical || (hasModePhysical && !allModesHavePhysical)) {
-    fixture.physical = getOflPhysical((hasGlobalPhysical ? qlcPlusFixture : firstPhysicalMode).Physical[0]);
+  if (!hasGlobalPhysical && (!hasModePhysical || allModesHavePhysical)) {
+    return;
+  }
 
-    if (qlcPlusFixture.Type[0] === 'LED Bar (Pixels)') {
-      fixture.physical.matrixPixels = {
-        spacing: [0, 0, 0],
-      };
-    }
+  fixture.physical = getOflPhysical((hasGlobalPhysical ? qlcPlusFixture : firstPhysicalMode).Physical[0]);
+
+  if (qlcPlusFixture.Type[0] === 'LED Bar (Pixels)') {
+    fixture.physical.matrixPixels = {
+      spacing: [0, 0, 0],
+    };
   }
 }
 
@@ -1048,10 +1050,12 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
   }
 
   const fixtureUsesHeads = qlcPlusFixture.Mode.some((mode) => 'Head' in mode);
-  if (!fixtureUsesHeads) {
-    delete fixture.matrix;
-    delete fixture.templateChannels;
+  if (fixtureUsesHeads) {
+    return;
   }
+
+  delete fixture.matrix;
+  delete fixture.templateChannels;
 }
 
 /**

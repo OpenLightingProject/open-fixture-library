@@ -335,10 +335,12 @@ export default {
     async focusEndField() {
       await this.$nextTick();
 
-      if (this.hasStartEnd) {
-        const focusField = this.propertyDataStart === '' ? this.$refs.startField : this.$refs.endField;
-        focusField.focus();
+      if (!this.hasStartEnd) {
+        return;
       }
+
+      const focusField = this.propertyDataStart === '' ? this.$refs.startField : this.$refs.endField;
+      focusField.focus();
     },
     onUnitSelected(newUnit) {
       if (!this.propertyDataStart.endsWith(newUnit)) {

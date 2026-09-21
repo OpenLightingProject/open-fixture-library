@@ -292,12 +292,14 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
   }
 
   const goboResource = await exportHelpers.getGoboResource(capability);
-  if (goboResource) {
-    xmlCapability.attribute('Res', goboResource);
+  if (!goboResource) {
+    return;
+  }
 
-    if (goboResource.startsWith('ofl/')) {
-      customGobos[goboResource] = capability.wheelSlot[0].resource;
-    }
+  xmlCapability.attribute('Res', goboResource);
+
+  if (goboResource.startsWith('ofl/')) {
+    customGobos[goboResource] = capability.wheelSlot[0].resource;
   }
 }
 
