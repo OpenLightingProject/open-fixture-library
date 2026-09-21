@@ -1332,11 +1332,7 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
  * @returns {string} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
-  if (typeof error === 'string') {
-    return `${description} ${error}`;
-  }
-
-  return `${description} ${inspect(error, false, null)}`;
+  return typeof error === 'string' ? `${description} ${error}` : `${description} ${inspect(error, false, null)}`;
 }
 
 /**

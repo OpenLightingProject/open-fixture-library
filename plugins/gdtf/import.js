@@ -136,11 +136,7 @@ export async function importFixtures(buffer, filename, authorName) {
       return LongName;
     }
 
-    if (includeDescription) {
-      return Description;
-    }
-
-    return undefined;
+    return includeDescription ? Description : undefined;
   }
 
   /**
@@ -658,10 +654,9 @@ export async function importFixtures(buffer, filename, authorName) {
         if (physicalFrom === 0 && physicalTo === 1) {
           return { channelFunction, physicalFrom, physicalTo, lowEndNames: closedNames, highEndNames: openNames };
         }
-        if (physicalFrom === 1 && physicalTo === 0) {
-          return { channelFunction, physicalFrom, physicalTo, lowEndNames: openNames, highEndNames: closedNames };
-        }
-        return null;
+        return physicalFrom === 1 && physicalTo === 0
+          ? { channelFunction, physicalFrom, physicalTo, lowEndNames: openNames, highEndNames: closedNames }
+          : null;
       }
 
       /**
@@ -761,11 +756,7 @@ export async function importFixtures(buffer, filename, authorName) {
        * @returns {unknown} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...parameters) {
-        if (hook) {
-          return hook(...parameters);
-        }
-
-        return null;
+        return hook ? hook(...parameters) : null;
       }
 
       /**
@@ -778,11 +769,9 @@ export async function importFixtures(buffer, filename, authorName) {
           return null;
         }
 
-        if (typeof capabilityTypeData.oflProperty === 'function') {
-          return capabilityTypeData.oflProperty(gdtfCapability);
-        }
-
-        return capabilityTypeData.oflProperty;
+        return typeof capabilityTypeData.oflProperty === 'function'
+          ? capabilityTypeData.oflProperty(gdtfCapability)
+          : capabilityTypeData.oflProperty;
       }
 
       /**
@@ -837,11 +826,7 @@ export async function importFixtures(buffer, filename, authorName) {
         return 3;
       }
 
-      if (hasNonNoneAttribute(gdtfChannel, 'Fine')) {
-        return 2;
-      }
-
-      return 1;
+      return hasNonNoneAttribute(gdtfChannel, 'Fine') ? 2 : 1;
     }
 
     /**
@@ -1160,11 +1145,9 @@ export async function importFixtures(buffer, filename, authorName) {
         return Number.parseInt(channel.dmxValueResolution, 10) * 8;
       }
 
-      if ('fineChannelAliases' in channel) {
-        return channel.fineChannelAliases.length + 1;
-      }
-
-      return CoarseChannel.RESOLUTION_8BIT;
+      return 'fineChannelAliases' in channel
+        ? channel.fineChannelAliases.length + 1
+        : CoarseChannel.RESOLUTION_8BIT;
     }
   }
 }

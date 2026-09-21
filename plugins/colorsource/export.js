@@ -314,11 +314,9 @@ function getColorSourceChannelType(channel) {
     return CHANNEL_TYPE_POSITION;
   }
 
-  if (['Multi-Color', 'Color Temperature'].includes(channel.type)) {
-    return CHANNEL_TYPE_MULTI_COLOR;
-  }
-
-  return CHANNEL_TYPE_BEAM;
+  return ['Multi-Color', 'Color Temperature'].includes(channel.type)
+    ? CHANNEL_TYPE_MULTI_COLOR
+    : CHANNEL_TYPE_BEAM;
 
   /**
    * @returns {boolean} Whether the channel is pan, tilt or pan/tilt speed.

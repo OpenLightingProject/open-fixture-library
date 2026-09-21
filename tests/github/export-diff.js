@@ -92,11 +92,7 @@ async function getDiffTasks(changedComponents) {
       }
 
       const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
-      if (currentPluginCompare !== 0) {
-        return currentPluginCompare;
-      }
-
-      return a.comparePluginKey.localeCompare(b.comparePluginKey);
+      return currentPluginCompare === 0 ? a.comparePluginKey.localeCompare(b.comparePluginKey) : currentPluginCompare;
     });
 
   /**
@@ -277,9 +273,5 @@ function getEmoji(changeFlags) {
     return '🆚';
   }
 
-  if (changeFlags.hasAdded) {
-    return '🆕';
-  }
-
-  return '❌';
+  return changeFlags.hasAdded ? '🆕' : '❌';
 }

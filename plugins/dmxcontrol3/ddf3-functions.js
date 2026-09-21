@@ -332,10 +332,9 @@ export default {
           (capabilityJson) => new Capability(capabilityJson, capability._resolution, capability._channel),
         );
 
-        if (capability.slotNumber) {
-          return [startCapability, centerCapability, endCapability];
-        }
-        return [startCapability, endCapability];
+        return capability.slotNumber
+          ? [startCapability, centerCapability, endCapability]
+          : [startCapability, endCapability];
       }
 
       /**

@@ -102,10 +102,7 @@ function isLineInDiffHunk(patch, lineNumber) {
 function sortByManufacturerAndFixture(fixtures) {
   return fixtures.toSorted(([manufacturerA, fixtureA], [manufacturerB, fixtureB]) => {
     const manufacturerCompare = manufacturerA.localeCompare(manufacturerB);
-    if (manufacturerCompare !== 0) {
-      return manufacturerCompare;
-    }
-    return fixtureA.localeCompare(fixtureB);
+    return manufacturerCompare === 0 ? fixtureA.localeCompare(fixtureB) : manufacturerCompare;
   });
 }
 

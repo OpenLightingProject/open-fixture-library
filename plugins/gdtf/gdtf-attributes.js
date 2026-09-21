@@ -20,11 +20,9 @@ export const gdtfUnits = {
     return `${value}kg`;
   },
   Time(value, otherValue) {
-    if (physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)) {
-      return `${value * 1000}ms`;
-    }
-
-    return `${value}s`;
+    return physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)
+      ? `${value * 1000}ms`
+      : `${value}s`;
   },
   Temperature(value) {
     return `${value}K`;
@@ -68,11 +66,9 @@ export const gdtfUnits = {
   AngularSpeed(value, otherValue) {
     // values are in deg/s
 
-    if (value === 0 && otherValue === null) {
-      return 'stop';
-    }
-
-    return `${value / 360 * 60}rpm`;
+    return value === 0 && otherValue === null
+      ? 'stop'
+      : `${value / 360 * 60}rpm`;
   },
   AngularAcc(value) {
     return `${value}deg/s2`;

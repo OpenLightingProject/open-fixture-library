@@ -245,11 +245,7 @@ export default {
       }
 
       const nextNonEmptyCapability = this.capabilities[this.insertIndex + 1];
-      if (nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && this.end + 1 === nextNonEmptyCapability.dmxRange[0]) {
-        return 1;
-      }
-
-      return 0;
+      return this.end + 1 === nextNonEmptyCapability?.dmxRange?.[0] ? 1 : 0;
     },
 
     /**
@@ -293,11 +289,9 @@ export default {
         return 'Capability width must be greater than zero.';
       }
 
-      if (this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0) {
-        return 'Please only enter whole numbers.';
-      }
-
-      return null;
+      return this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0
+        ? 'Please only enter whole numbers.'
+        : null;
     },
 
     /**
@@ -323,11 +317,9 @@ export default {
 
         return capabilityEnd >= this.wizard.start && capabilityStart <= this.end;
       });
-      if (collisionDetected) {
-        return 'Generated capabilities must not overlap with existing ones.';
-      }
-
-      return null;
+      return collisionDetected
+        ? 'Generated capabilities must not overlap with existing ones.'
+        : null;
     },
   },
   mounted() {

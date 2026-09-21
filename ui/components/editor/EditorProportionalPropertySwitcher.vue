@@ -227,11 +227,7 @@ export default {
       return ref.replace('definitions.json#/entities/', '');
     },
     entitySchema() {
-      if (this.entity === '') {
-        return null;
-      }
-
-      return entitiesSchema[this.entity];
+      return this.entity === '' ? null : entitiesSchema[this.entity];
     },
     propertyDataStepped: {
       get() {

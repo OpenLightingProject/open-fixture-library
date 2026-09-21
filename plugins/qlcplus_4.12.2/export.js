@@ -488,11 +488,7 @@ function getPanTiltMax(panOrTilt, channels) {
 
   if (panTiltMax === -Infinity) {
     const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
-    if (hasContinuousCapability) {
-      return 9999;
-    }
-
-    return 0;
+    return hasContinuousCapability ? 9999 : 0;
   }
 
   return Math.round(panTiltMax);
@@ -533,11 +529,9 @@ function addHeads(xmlMode, mode) {
     }
 
     if (channel.pixelKey !== null) {
-      if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
-        return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
-      }
-
-      return channel.pixelKey === pixelKey;
+      return mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)
+        ? mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey)
+        : channel.pixelKey === pixelKey;
     }
 
     return false;

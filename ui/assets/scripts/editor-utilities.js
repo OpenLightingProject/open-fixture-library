@@ -261,11 +261,7 @@ export function colorsHexStringToArray(hexString) {
     (hex) => hex.match(/^#[\da-f]{6}$/),
   );
 
-  if (hexArray.length === 0) {
-    return null;
-  }
-
-  return hexArray;
+  return hexArray.length === 0 ? null : hexArray;
 }
 
 /**
