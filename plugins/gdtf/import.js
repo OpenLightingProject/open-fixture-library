@@ -674,19 +674,14 @@ export async function importFixtures(buffer, filename, authorName) {
         const lastName = gdtfCapabilities.at(-1).$.Name;
         const middleHasName = gdtfCapabilities.slice(1, -1).some((capability) => capability.$.Name !== '');
 
-        if (
-          middleHasName
-          || (firstName !== '' && !target.lowEndNames.has(firstName))
-          || (lastName !== '' && !target.highEndNames.has(lastName))
-        ) {
-          return false;
-        }
-
-        return gdtfCapabilities.every((capability) =>
-          capability._channelFunction === target.channelFunction
-          && capability._physicalFrom === target.physicalFrom
-          && capability._physicalTo === target.physicalTo,
-        );
+        return !middleHasName
+          && (firstName === '' || target.lowEndNames.has(firstName))
+          && (lastName === '' || target.highEndNames.has(lastName))
+          && gdtfCapabilities.every((capability) =>
+            capability._channelFunction === target.channelFunction
+            && capability._physicalFrom === target.physicalFrom
+            && capability._physicalTo === target.physicalTo,
+          );
       }
 
       /**

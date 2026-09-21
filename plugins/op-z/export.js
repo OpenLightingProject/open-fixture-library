@@ -101,11 +101,7 @@ function getOpZChannelType(channel, fixtureKey) {
   const channelType = Object.keys(opZChannelTypes).find(
     (type) => opZChannelTypes[type](),
   );
-  if (channelType) {
-    return channelType;
-  }
-
-  return getKnobType(channel, fixtureKey) || String(defaultValue);
+  return channelType ?? getKnobType(channel, fixtureKey) ?? String(defaultValue);
 }
 
 /**

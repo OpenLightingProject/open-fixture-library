@@ -241,11 +241,11 @@ export function isChannelChanged(channel) {
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(capability) {
-  if (capability.dmxRange !== null || capability.type !== '') {
-    return true;
-  }
-
-  return Object.values(capability.typeData).some((value) => value !== '' && value !== null);
+  return capability.dmxRange !== null
+    || capability.type !== ''
+    || Object.values(capability.typeData).some(
+      (value) => value !== '' && value !== null,
+    );
 }
 
 /**

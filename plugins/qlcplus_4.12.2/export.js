@@ -568,11 +568,9 @@ function getFixtureType(fixture) {
    * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */
   function isBeamBar() {
-    if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
-      return true;
-    }
-
-    return fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
+    return !fixture.physical
+      || !fixture.physical.matrixPixelsSpacing
+      || fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
   }
 }
 

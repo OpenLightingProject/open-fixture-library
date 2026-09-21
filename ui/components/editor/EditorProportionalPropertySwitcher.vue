@@ -223,11 +223,8 @@ export default {
       }
 
       const propertySchema = capabilitySchema.properties[this.propertyName];
-      if (!propertySchema) {
-        return '';
-      }
-
-      return (propertySchema.$ref || '').replace('definitions.json#/entities/', '');
+      const ref = propertySchema?.$ref ?? '';
+      return ref.replace('definitions.json#/entities/', '');
     },
     entitySchema() {
       if (this.entity === '') {

@@ -324,11 +324,9 @@ function getColorSourceChannelType(channel) {
    * @returns {boolean} Whether the channel is pan, tilt or pan/tilt speed.
    */
   function isTypePosition() {
-    if (['Pan', 'Tilt'].includes(channel.type)) {
-      return true;
-    }
-
-    return (channel.capabilities || []).some((capability) => capability.type === 'PanTiltSpeed');
+    return channel.type === 'Pan'
+      || channel.type === 'Tilt'
+      || (channel.capabilities ?? []).some((capability) => capability.type === 'PanTiltSpeed');
   }
 }
 

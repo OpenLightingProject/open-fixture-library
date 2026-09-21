@@ -914,15 +914,12 @@ function getRotationSpeedXmlCapability(capability) {
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
 function arraysEqual(array1, array2) {
-  if (array1 === array2) {
-    return true;
-  }
-
-  if (!Array.isArray(array1) || !Array.isArray(array2)) {
-    return false;
-  }
-
-  return array1.length === array2.length && array1.every(
-    (item, index) => item === array2[index],
+  return array1 === array2 || (
+    Array.isArray(array1)
+    && Array.isArray(array2)
+    && array1.length === array2.length
+    && array1.every(
+      (item, index) => item === array2[index],
+    )
   );
 }

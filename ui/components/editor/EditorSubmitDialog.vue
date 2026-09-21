@@ -309,27 +309,15 @@ export default {
       return rawData;
     },
     hasPreview() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.errors).some(
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).some(
         (errors) => errors.length === 0,
       );
     },
     hasValidationErrors() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.errors).flat().length > 0;
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).flat().length > 0;
     },
     hasValidationWarnings() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
     },
     previewFixture() {
       if (this.previewFixtureKey === null) {

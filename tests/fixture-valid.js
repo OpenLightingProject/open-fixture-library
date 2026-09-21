@@ -1221,11 +1221,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         (capability) => capability.type.startsWith('Fog'),
       );
 
-      if (fogCapabilities.length === 0) {
-        return false;
-      }
-
-      return fogCapabilities.some((capability) => capability.fogType === fogType) || fogCapabilities.every((capability) => capability.fogType === null);
+      return fogCapabilities.length > 0 && (
+        fogCapabilities.some((capability) => capability.fogType === fogType)
+        || fogCapabilities.every((capability) => capability.fogType === null)
+      );
     }
 
     /**
@@ -1346,13 +1345,10 @@ function getErrorString(description, error) {
  * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
  */
 function arraysEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-
-  if (a == null || b == null || a.length !== b.length) {
-    return false;
-  }
-
-  return a.every((value, index) => value === b[index]);
+  return (a === b) || (
+    a != null
+    && b != null
+    && a.length === b.length
+    && a.every((value, index) => value === b[index])
+  );
 }

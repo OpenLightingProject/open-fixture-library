@@ -253,11 +253,12 @@ const channelPresets = {
       const channel = capability._channel;
       const matrix = channel.fixture.matrix;
 
-      if (matrix === null || !channelPresets.IntensityDimmer.isApplicable(capability)) {
-        return false;
-      }
-
-      return channel.pixelKey === null || matrix.pixelGroups[channel.pixelKey] === matrix.pixelKeys;
+      return matrix !== null
+        && channelPresets.IntensityDimmer.isApplicable(capability)
+        && (
+          channel.pixelKey === null
+          || matrix.pixelGroups[channel.pixelKey] === matrix.pixelKeys
+        );
     },
     importCapability: () => ({ type: 'Intensity' }),
   },

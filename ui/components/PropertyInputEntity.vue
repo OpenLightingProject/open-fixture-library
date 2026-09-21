@@ -212,11 +212,8 @@ export default {
 
       const otherFieldSelectedUnit = getSelectedUnit(this.associatedEntity, this.enumValues, this.unitNames, this.units);
 
-      if (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues)) {
-        return true;
-      }
-
-      return this.selectedUnit === otherFieldSelectedUnit;
+      return (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues))
+        || this.selectedUnit === otherFieldSelectedUnit;
     },
   },
   mounted() {
