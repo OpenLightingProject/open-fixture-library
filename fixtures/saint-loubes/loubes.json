@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LOUBES",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["LOUBES"],
+    "createDate": "2026-09-21",
+    "lastModifyDate": "2026-09-21"
+  },
+  "links": {
+    "manual": [
+      "https://yonneenscene.fr/produit/projecteur-a-led-dna-18x8-w-rvb-blanc/"
+    ],
+    "productPage": [
+      "https://yonneenscene.fr/produit/projecteur-a-led-dna-18x8-w-rvb-blanc/"
+    ],
+    "video": [
+      "https://yonneenscene.fr/produit/projecteur-a-led-dna-18x8-w-rvb-blanc/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LOUBES",
+      "shortName": "LOUBES",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
