@@ -142,17 +142,19 @@ async function getDiffTasks(changedComponents) {
     for (const addedPlugin of addedPlugins) {
       const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, import.meta.url);
 
-      if (pluginData.previousVersions) {
-        const previousVersions = Object.keys(pluginData.previousVersions);
-        const lastVersion = previousVersions.at(-1);
+      if (!pluginData.previousVersions) {
+        continue;
+      }
 
-        if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks.push(...usableTestFixtures.map((manufacturerFixture) => ({
-            manufacturerFixture,
-            currentPluginKey: addedPlugin,
-            comparePluginKey: lastVersion,
-          })));
-        }
+      const previousVersions = Object.keys(pluginData.previousVersions);
+      const lastVersion = previousVersions.at(-1);
+
+      if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
+        tasks.push(...usableTestFixtures.map((manufacturerFixture) => ({
+          manufacturerFixture,
+          currentPluginKey: addedPlugin,
+          comparePluginKey: lastVersion,
+        })));
       }
     }
 

@@ -224,25 +224,30 @@ export default {
       for (let index = 0; index < presetCapabilities.length; index++) {
         const capability = presetCapabilities[index];
 
-        if (!capability.isStep) {
-          const splittedCapabilities = getSplittedCapabilities(capability);
-          presetCapabilities.splice(index, 1, ...splittedCapabilities);
+        if (capability.isStep) {
+          continue;
         }
+
+        const splittedCapabilities = getSplittedCapabilities(capability);
+        presetCapabilities.splice(index, 1, ...splittedCapabilities);
       }
 
       // merge adjacent stepped caps
       for (let index = 0; index < presetCapabilities.length; index++) {
-        const capability = presetCapabilities[index];
-
-        if (index + 1 < presetCapabilities.length) {
-          const nextCapability = presetCapabilities[index + 1];
-          const mergedCapability = getMergedCapability(capability, nextCapability);
-
-          if (mergedCapability) {
-            presetCapabilities.splice(index, 2, mergedCapability);
-            index--; // maybe the merged capability can be merged another time
-          }
+        if (index + 1 >= presetCapabilities.length) {
+          continue;
         }
+
+        const capability = presetCapabilities[index];
+        const nextCapability = presetCapabilities[index + 1];
+        const mergedCapability = getMergedCapability(capability, nextCapability);
+
+        if (!mergedCapability) {
+          continue;
+        }
+
+        presetCapabilities.splice(index, 2, mergedCapability);
+        index--; // maybe the merged capability can be merged another time
       }
 
       for (const capability of presetCapabilities) {

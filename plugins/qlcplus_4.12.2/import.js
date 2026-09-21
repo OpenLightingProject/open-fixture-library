@@ -1039,10 +1039,12 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
       }
     }
 
-    if (channel.fineChannelAliases.length === 0) {
-      delete channel.fineChannelAliases;
-      delete channel.dmxValueResolution;
+    if (channel.fineChannelAliases.length > 0) {
+      continue;
     }
+
+    delete channel.fineChannelAliases;
+    delete channel.dmxValueResolution;
   }
 
   const fixtureUsesHeads = qlcPlusFixture.Mode.some((mode) => 'Head' in mode);

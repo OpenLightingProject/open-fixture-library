@@ -30,12 +30,14 @@ export function scrollToFirstInvalidField(container = document) {
   for (let index = 0; index < invalidFields.length; index++) {
     const enclosingDetails = invalidFields[index].closest('details:not([open])');
 
-    if (enclosingDetails) {
-      enclosingDetails.open = true;
-
-      // current field could be enclosed another time, so repeat
-      index--;
+    if (!enclosingDetails) {
+      continue;
     }
+
+    enclosingDetails.open = true;
+
+    // current field could be enclosed another time, so repeat
+    index--;
   }
 
   const firstField = invalidFields[0];

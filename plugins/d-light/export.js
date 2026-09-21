@@ -125,18 +125,20 @@ function addAttribute(xml, mode, attribute, channels) {
 
     channel = getUsableChannel(channel);
 
-    if (channel instanceof CoarseChannel) {
-      const capabilities = channel.capabilities;
+    if (!(channel instanceof CoarseChannel)) {
+      continue;
+    }
 
-      const xmlCapabilities = xmlChannel.element({
-        Definitions: {
-          '@index': capabilities.length,
-        },
-      });
+    const capabilities = channel.capabilities;
 
-      for (const capability of capabilities) {
-        addCapability(capability, xmlCapabilities);
-      }
+    const xmlCapabilities = xmlChannel.element({
+      Definitions: {
+        '@index': capabilities.length,
+      },
+    });
+
+    for (const capability of capabilities) {
+      addCapability(capability, xmlCapabilities);
     }
   }
 }

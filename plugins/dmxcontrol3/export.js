@@ -148,12 +148,12 @@ function addFunctions(xml, mode) {
         (key) => ddf3Functions[key].isCapSuitable(capability),
       );
 
-      if (properFunction) {
-        if (!Object.keys(functionToCapabilities).includes(properFunction)) {
-          functionToCapabilities[properFunction] = [];
-        }
-        functionToCapabilities[properFunction].push(capability);
+      if (!properFunction) {
+        continue;
       }
+
+      functionToCapabilities[properFunction] ??= [];
+      functionToCapabilities[properFunction].push(capability);
     }
 
     const xmlFunctions = [];
@@ -275,15 +275,17 @@ function addProcedures(xml, mode) {
       value: capability.dmxRange.start,
     });
 
-    if (capability.hold) {
-      xmlProcedure.element('hold', {
-        value: capability.hold.baseUnitEntity.number * 1000,
-      });
-
-      xmlProcedure.element('restore', {
-        dmxchannel: channelIndex,
-      });
+    if (!capability.hold) {
+      continue;
     }
+
+    xmlProcedure.element('hold', {
+      value: capability.hold.baseUnitEntity.number * 1000,
+    });
+
+    xmlProcedure.element('restore', {
+      dmxchannel: channelIndex,
+    });
   }
 }
 
