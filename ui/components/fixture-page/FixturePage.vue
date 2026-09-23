@@ -48,7 +48,7 @@
               target="_blank"
               rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
-              {{ link.name }}
+              <span class="link-name">{{ link.name }}</span>
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
@@ -101,14 +101,13 @@
 
     </section>
 
-    <section class="fixture-modes">
+    <MasonryCardContainer>
       <FixturePageMode
         v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
         @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
-      <div class="clearfix" />
-    </section>
+    </MasonryCardContainer>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
       <h2><OflSvg name="alert" /> This fixture is big!</h2>
@@ -161,7 +160,9 @@
   }
 
   & a {
-    display: inline-block;
+    display: inline-flex;
+    gap: 0.5ex;
+    align-items: center;
     margin-top: 4px;
   }
 }
@@ -171,10 +172,25 @@
   margin: 0;
   list-style: none;
 
+  a {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-decoration-line: none;
+  }
+
+  .link-name {
+    margin-right: 1ex;
+    margin-left: 0.5ex;
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+  }
+
   .hostname {
-    padding-left: 1ex;
+    min-width: 0;
     font-size: 0.9em;
     color: theme-color(text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .link-other {
@@ -205,6 +221,7 @@ import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysic
 import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
+import MasonryCardContainer from '../../components/MasonryCardContainer.vue';
 
 const VIDEOS_TO_EMBED = 2;
 
@@ -218,6 +235,7 @@ export default {
     FixturePageWheel,
     HelpWantedMessage,
     LabeledValue,
+    MasonryCardContainer,
   },
   props: {
     fixture: instanceOfProp(Fixture).required,
@@ -245,11 +263,7 @@ export default {
     modes() {
       const modes = this.fixture.modes;
 
-      if (!this.modesLimited) {
-        return modes;
-      }
-
-      return modes.slice(0, this.modeNumberLoadLimit);
+      return this.modesLimited ? modes.slice(0, this.modeNumberLoadLimit) : modes;
     },
 
     /**

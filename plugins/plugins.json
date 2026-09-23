@@ -20,8 +20,10 @@
   "data": {
     "aglight": {
       "name": "AGLight",
-      "exportPluginVersion": "1.0.0",
-      "exportTests": []
+      "exportPluginVersion": "1.0.2",
+      "exportTests": [
+        "json-schema-conformity"
+      ]
     },
     "color-chief": {
       "name": "Eurolite Color Chief 2.0",
@@ -49,7 +51,7 @@
     },
     "dragonframe": {
       "name": "Dragonframe",
-      "exportPluginVersion": "1.0.0",
+      "exportPluginVersion": "1.0.1",
       "exportTests": [
         "json-schema-conformity"
       ]
@@ -73,12 +75,12 @@
     },
     "ofl": {
       "name": "Open Fixture Library JSON",
-      "exportPluginVersion": "12.5.1",
+      "exportPluginVersion": "12.6.0",
       "exportTests": []
     },
     "op-z": {
       "name": "OP-Z",
-      "exportPluginVersion": "0.1.0",
+      "exportPluginVersion": "0.1.1",
       "exportTests": []
     },
     "qlcplus": {

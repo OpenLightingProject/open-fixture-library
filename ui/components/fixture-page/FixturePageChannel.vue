@@ -188,15 +188,9 @@ export default {
   },
   computed: {
     channelKey() {
-      if (this.channel instanceof NullChannel) {
-        return 'null';
-      }
-
-      if (this.channel.key !== this.channel.name) {
-        return this.channel.key;
-      }
-
-      return '';
+      return this.channel.key !== this.channel.name && !(this.channel instanceof NullChannel)
+        ? this.channel.key
+        : '';
     },
     resolutionInMode() {
       return this.channel.getResolutionInMode(this.mode);

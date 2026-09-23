@@ -46,20 +46,12 @@ Vue.use(VueForm, {
       return !/\bmode\b/i.test(value);
     },
     'no-fine-channel-name'(value) {
-      if (/\bfine\b|\d+[\s_-]*bit/i.test(value)) {
-        return false;
-      }
-
-      return !/\bLSB\b|\bMSB\b/.test(value);
+      return !/\bfine\b|\d+[\s_-]*bit/i.test(value) && !/\bLSB\b|\bMSB\b/.test(value);
     },
     'entity-complete'(value, attributeValue, vnode) {
       const component = vnode.componentInstance;
 
-      if (component.hasNumber) {
-        return component.selectedNumber !== '' && component.selectedNumber !== null;
-      }
-
-      return true;
+      return !component.hasNumber || (component.selectedNumber !== '' && component.selectedNumber !== null);
     },
     'entities-have-same-units'(value, attributeValue, vnode) {
       return vnode.componentInstance.hasSameUnit;

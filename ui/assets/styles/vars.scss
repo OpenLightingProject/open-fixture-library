@@ -1,6 +1,16 @@
 @use "sass:color";
 
 $font-stack: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Helvetica", "Arial", sans-serif;
+$system-monospace-font-stack:
+  ui-monospace,
+  "SF Mono",
+  "Cascadia Code",
+  "Source Code Pro",
+  "Menlo",
+  "Consolas",
+  "Droid Sans Mono",
+  "DejaVu Sans Mono",
+  monospace;
 
 // 2014 Material Design color palettes
 // from https://material.io/design/color/#tools-for-picking-colors
@@ -96,7 +106,8 @@ $themes: (
     icon-inactive: $icon-inactive-dark,
 
     link: $blue-700,
-    link-hover: $blue-300,
+    link-visited: $blue-800,
+    link-active: $orange-500,
 
     form-field-background: #ffffff,
     form-field-border: #cfd6e6,
@@ -145,7 +156,8 @@ $themes: (
     icon-inactive: $icon-inactive-light,
 
     link: $blue-300,
-    link-hover: $blue-700,
+    link-visited: $blue-100,
+    link-active: $orange-800,
 
     form-field-background: #000000,
     form-field-border: #555555,

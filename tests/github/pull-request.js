@@ -28,6 +28,7 @@ let prData;
  * @property {number} line - 1-indexed line number in the new version of the file.
  * @property {'LEFT' | 'RIGHT'} [side] - Diff side. Defaults to 'RIGHT' if omitted.
  * @property {string} body - The comment body. May contain a `suggestion` code block.
+ * @property {boolean} isIncludedInDiffHunk - Whether the comment's line is in a diff hunk.
  */
 
 /**
@@ -347,8 +348,10 @@ export async function updateReview(test) {
     body: `${marker}\n${test.body}`,
     event: 'REQUEST_CHANGES',
     comments: test.comments.map((comment) => ({
-      ...comment,
+      path: comment.path,
+      line: comment.line,
       side: comment.side || 'RIGHT',
+      body: comment.body,
     })),
   });
 }

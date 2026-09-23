@@ -13,6 +13,7 @@ import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
+import fixtureJsonObjectFormatRule from './lib/internal-eslint-rules/fixture-json-object-format.js';
 import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
 
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
@@ -464,6 +465,7 @@ export default defineConfig([
       ofl: {
         rules: {
           'fixture-json-array-format': fixtureJsonArrayFormatRule,
+          'fixture-json-object-format': fixtureJsonObjectFormatRule,
         },
       },
     },
@@ -477,6 +479,7 @@ export default defineConfig([
       'jsonc/array-bracket-spacing': 'off',
 
       'ofl/fixture-json-array-format': 'error',
+      'ofl/fixture-json-object-format': 'error',
     },
   },
   {
