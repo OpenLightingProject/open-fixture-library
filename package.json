@@ -81,7 +81,7 @@
     "disparity": "^3.2.0",
     "eslint": "~10.11.0",
     "eslint-plugin-import-x": "~4.17.1",
-    "eslint-plugin-jsdoc": "~64.0.1",
+    "eslint-plugin-jsdoc": "~64.5.4",
     "eslint-plugin-jsonc": "~3.4.2",
     "eslint-plugin-promise": "~7.3.0",
     "eslint-plugin-sonarjs": "~4.2.1",
@@ -119,8 +119,9 @@
   ],
   "license": "MIT",
   "allowScripts": {
-    "core-js@3.37.1": true,
+    "core-js@3.50.0": true,
     "nuxt@2.18.1": true,
+    "@parcel/watcher@2.6.0": true,
     "unrs-resolver@1.12.2": true
   }
 }
