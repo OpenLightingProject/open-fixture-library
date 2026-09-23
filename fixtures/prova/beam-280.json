@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "beam 280",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["sameer"],
+    "createDate": "2026-09-12",
+    "lastModifyDate": "2026-09-12"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=z6Wr2fl6Xfc"
+    ]
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0.5
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CH 1",
+      "channels": [
+        "Color Wheel"
+      ]
+    }
+  ]
+}
