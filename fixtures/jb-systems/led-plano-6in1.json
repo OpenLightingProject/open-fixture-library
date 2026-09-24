@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Plano 6in1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Dj Bill"],
+    "createDate": "2022-10-06",
+    "lastModifyDate": "2022-10-06"
+  },
+  "links": {
+    "manual": [
+      "https://jb-systems.eu/nl/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1504175243.pdf"
+    ],
+    "productPage": [
+      "https://jb-systems.eu/nl/led-plano-6in1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=UDwAyGrxXZQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 130, 230],
+    "weight": 2.83,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 37],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "duration": "1ms",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [38, 67],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [68, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 247],
+          "type": "Effect",
+          "effectName": "Color fade"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "low"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9CH Modus",
+      "channels": [
+        "Master Dimmer",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
