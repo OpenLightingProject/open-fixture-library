@@ -39,7 +39,7 @@
     "test:built-files-committed": "node tests/built-files-committed.js"
   },
   "dependencies": {
-    "@heise/embetty-server": "^2.0.3",
+    "@embetty/server": "^3.2.12",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
@@ -104,12 +104,6 @@
     "widdershins": "^4.0.1"
   },
   "overrides": {
-    "@heise/embetty-server@^2.0.3": {
-      "request@2.88.2": {
-        "form-data": "2.5.6",
-        "qs": "^6.16.0"
-      }
-    },
     "broken-link-checker@^0.7.8": {
       "useragent@2.3.0": {
         "tmp": "^0.2.7"
