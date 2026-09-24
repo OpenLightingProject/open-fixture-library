@@ -1,0 +1,194 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TriBar 400 IR",
+  "categories": ["Pixel Bar", "Effect", "Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["TOP"],
+    "createDate": "2026-01-22",
+    "lastModifyDate": "2026-01-22"
+  },
+  "links": {
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLTRIBAR400IR/CLTRIBAR400IR_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [144, 161],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [162, 179],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [180, 197],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [198, 215],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [216, 233],
+          "type": "Effect",
+          "effectName": "Programs"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "comment": "Mic Sens controlled via CH2 if effect is active"
+        }
+      ]
+    },
+    "Various": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Only when CH1 is set to a program"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Program",
+        "Various",
+        "Strobe",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3"
+      ]
+    }
+  ]
+}
