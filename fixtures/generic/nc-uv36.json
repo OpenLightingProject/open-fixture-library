@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "NC-UV36",
+  "shortName": "NC-UV36",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Frode Slatlem Okkenhaug"],
+    "createDate": "2025-07-10",
+    "lastModifyDate": "2025-07-10"
+  },
+  "comment": "36W UV PAR-lampe",
+  "links": {
+    "other": [
+      "http://localhost/"
+    ]
+  },
+  "physical": {
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "UV LED"
+    }
+  },
+  "availableChannels": {
+    "Total dimming": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "UV dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "A",
+      "channels": [
+        "Total dimming",
+        "UV dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "D",
+      "channels": [
+        "Total dimming",
+        "Strobe",
+        "UV dimming"
+      ]
+    }
+  ]
+}
