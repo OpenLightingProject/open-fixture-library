@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBW 56 Par LED",
+  "shortName": "8ch LED RGBW",
+  "categories": ["Color Changer", "Dimmer", "Other"],
+  "meta": {
+    "authors": ["Moritz"],
+    "createDate": "2024-11-14",
+    "lastModifyDate": "2024-11-14"
+  },
+  "comment": "A simple 12x1w LED light",
+  "links": {
+    "manual": [
+      "https://www.lixada.com/lighting-flashlights-leds-354/"
+    ]
+  },
+  "physical": {
+    "dimensions": [120, 120, 90],
+    "weight": 0.36,
+    "power": 13,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Dimming (CH5-CH8)": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Control CH5-8"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Adjustable (Control CH1) From Slow to Fast"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Speed Control by CH4"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Speed Control by CH4"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "ColorJump + Fade Out",
+          "comment": "Speed Control by CH4"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "CH3"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Lixada RGBW LED NO movinghead V1",
+      "shortName": "8ch RGBW Color",
+      "channels": [
+        "Master Dimming (CH5-CH8)",
+        "Speed",
+        "Effects",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
