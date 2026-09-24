@@ -1,0 +1,728 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rogue R2X Wash VW",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Randy Meyer"],
+    "createDate": "2025-08-08",
+    "lastModifyDate": "2025-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2020/01/Rogue_R2X_Wash_VW_UM_Rev3.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/rogue-r2x-wash-vw/"
+    ],
+    "other": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2020/01/Rogue_R2X_Wash_VW_DMX_Chart_Rev1.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [25, 64],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe, fast to slow"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [70, 84],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Fast on, slow off"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Slow on, fast off"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [110, 124],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Random strobe"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [130, 144],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Random fast on, slow off"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Random slow on, fast off"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [170, 184],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Pulse strobe"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [190, 204],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Random pulse strobe"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Fade on and off"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Generic",
+          "comment": "On"
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Pulse strobe"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "On"
+        }
+      ]
+    },
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Cool White": {
+      "fineChannelAliases": ["Cool White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 19],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [20, 40],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "ColorTemperature",
+          "colorTemperature": "3800K"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "ColorTemperature",
+          "colorTemperature": "4600K"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [141, 160],
+          "type": "ColorTemperature",
+          "colorTemperature": "5200K"
+        },
+        {
+          "dmxRange": [161, 180],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [181, 200],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "ColorTemperature",
+          "colorTemperature": "5800K"
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Zone Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3, 4, 5"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Zone 2, 3, 4, 5"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Zone 3, 4, 5"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Zone 4, 5"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Zone 5"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "NoFunction",
+          "comment": "Zone"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Zone 1"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Zone 1, 2"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3, 4"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3, 4, 5"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Zone 1"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Zone 2"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Zone 3"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Zone 4"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Zone 5"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "Zone 1, 2"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "Zone 2, 3"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Zone 3, 4"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Zone 4, 5"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Zone 1, 5"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "Zone 2, 3, 4"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "Zone 3, 4, 5"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "Zone 1, 4, 5"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 5"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3, 4"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "Zone 2, 3, 4, 5"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Zone 1, 3, 4, 5"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 4, 5"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3, 5"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Zone 1, 2, 3, 4, 5"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Generic",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Generic",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Generic",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Generic",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Generic",
+          "comment": "Program 16"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Generic",
+          "comment": "Program 17"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Generic",
+          "comment": "Program 18"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Generic",
+          "comment": "Program 19"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Generic",
+          "comment": "Program 20"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Generic",
+          "comment": "Program 21"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Generic",
+          "comment": "Program 22"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Generic",
+          "comment": "Program 23"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Generic",
+          "comment": "Program 24"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Generic",
+          "comment": "Program 25"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Generic",
+          "comment": "Program 26"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Generic",
+          "comment": "Program 27"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Generic",
+          "comment": "Program 28"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Generic",
+          "comment": "Program 29"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Generic",
+          "comment": "Program 30"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Generic",
+          "comment": "Program 31"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Generic",
+          "comment": "Program 32"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "Generic",
+          "comment": "Program 33"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "Generic",
+          "comment": "Program 34"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "Generic",
+          "comment": "Program 35"
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "Generic",
+          "comment": "Program 36"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "Generic",
+          "comment": "Program 37"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "Generic",
+          "comment": "Program 38"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "Generic",
+          "comment": "Program 39"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "Generic",
+          "comment": "Program 40"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Generic",
+          "comment": "Program 41"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Generic",
+          "comment": "Program 42"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Generic",
+          "comment": "Program 43"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "Generic",
+          "comment": "Program 44"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Generic",
+          "comment": "Program 45"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Generic",
+          "comment": "Program 46"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Generic",
+          "comment": "Program 47"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Program 48"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17 Channel",
+      "shortName": "17ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Warm White",
+        "Warm White fine",
+        "Cool White",
+        "Cool White fine",
+        "Color Temperature",
+        "Zone Selection",
+        "Program",
+        "Auto Speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
