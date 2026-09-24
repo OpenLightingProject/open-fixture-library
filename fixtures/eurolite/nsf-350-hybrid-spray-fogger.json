@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "NSF-350 Hybrid Spray Fogger",
+  "shortName": "NSF-350",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["Ole"],
+    "createDate": "2024-04-21",
+    "lastModifyDate": "2024-04-21"
+  },
+  "links": {
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51701977-eurolite-nsf-350-led-hybrid-spray-fogger.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [410, 635, 205],
+    "weight": 7.9,
+    "power": 1500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Fog": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "strong"
+        }
+      ]
+    },
+    "Red": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Change Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "instant"
+        }
+      ]
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "brightnessStart": "1%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Fog",
+        "Red",
+        "Green",
+        "Blue",
+        "No function",
+        "Color Change Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
