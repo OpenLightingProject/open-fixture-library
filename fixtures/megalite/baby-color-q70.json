@@ -1,0 +1,268 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Baby Color Q70",
+  "shortName": "BabyColorQ70",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-07-12",
+    "lastModifyDate": "2023-07-12",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-09-29",
+      "comment": "GDTF v1.2 fixture type ID: 8835C210-E9C2-11E4-BB62-2AA6C0D2DCD6"
+    }
+  },
+  "comment": "Baby Color Q70 from Mega-Lite is a bright color changing fixture that’s ultra compact in size. Equipped with 7 10-watt LEDs and less than a 5″ square body, the output of the Baby Color Q70 contends with the output of larger fixtures. The RGBW quad-chip LEDs produce a wide range of colors, including pastel shades. And, they also makes the face of the LEDs appears uniform in color. The fixture has a 20° beam angle and comes with a diffuser that increases the beam angle to 25°. The Baby Color Q70 is controllable via DMX 512 and has strobe, macro and dimmer effects. It also has control options audio trigger and master slave. The Baby Color Q70 has a double mounting yoke so it can to be set upon the floor or hang from a structure. It has a digital display designed for ease of use. And, it is equipped with power con in and out and 3-pin XLR connection inputs and outputs.",
+  "availableChannels": {
+    "R": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 196],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
+          "comment": "S > F - Strobe"
+        },
+        {
+          "dmxRange": [197, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
+          "comment": "Random S > F - Strobe"
+        }
+      ]
+    },
+    "Color Macro1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction",
+          "comment": "No Func - Custom"
+        },
+        {
+          "dmxRange": [2, 19],
+          "type": "Maintenance",
+          "parameterStart": 0.1,
+          "parameterEnd": 10,
+          "comment": "Col Fade S > F - Custom"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Maintenance",
+          "parameterStart": 0.1,
+          "parameterEnd": 10,
+          "comment": "Col Snap S > F - Custom"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Maintenance",
+          "parameterStart": 0.1,
+          "parameterEnd": 10,
+          "comment": "Random S > F - Custom"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow - Color"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "comment": "Purple - Color"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "comment": "Aqua - Color"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "comment": "Orange - Color"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "ColorPreset",
+          "comment": "Red Pulse - Color"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "ColorPreset",
+          "comment": "Green Pulse - Color"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "ColorPreset",
+          "comment": "Blue Pulse - Color"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "ColorPreset",
+          "comment": "Yellow Pulse - Color"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ColorPreset",
+          "comment": "Aqua Pulse - Color"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "ColorPreset",
+          "comment": "White Pulse - Color"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "White LED Full - Color"
+        }
+      ]
+    },
+    "Dim": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode1 3 Channels",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "Mode2 4 Channels",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White"
+      ]
+    },
+    {
+      "name": "Mode3 7 Channels",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Sh1",
+        "Color Macro1",
+        "Dim"
+      ]
+    }
+  ]
+}
