@@ -103,6 +103,32 @@
     "vue-eslint-parser": "~10.4.1",
     "widdershins": "^4.0.1"
   },
+  "overrides": {
+    "@heise/embetty-server@^2.0.3": {
+      "request@2.88.2": {
+        "form-data": "2.5.6",
+        "qs": "^6.16.0"
+      }
+    },
+    "broken-link-checker@^0.7.8": {
+      "useragent@2.3.0": {
+        "tmp": "^0.2.7"
+      }
+    },
+    "nuxt@~2.18.1": {
+      "external-editor@3.1.0": {
+        "tmp": "^0.2.7"
+      },
+      "source-map-resolve@0.5.3": {
+        "decode-uri-component": "^0.5.0"
+      }
+    },
+    "widdershins@^4.0.1": {
+      "httpsnippet@1.25.0": {
+        "form-data": "3.0.5"
+      }
+    }
+  },
   "homepage": "https://open-fixture-library.org/",
   "repository": {
     "type": "git",
