@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "NYSE: NIO",
+  "shortName": "5B145341AB09",
+  "categories": ["Matrix", "Stand", "Scanner", "Blinder", "Color Changer", "Effect", "Laser", "Flower", "Moving Head", "Hazer", "Smoke", "Strobe", "Fan", "Dimmer", "Barrel Scanner", "Pixel Bar"],
+  "meta": {
+    "authors": ["aesuakmmmjme67wsprifvg4dmx3j6hccg3ca7feh7hj3bcyxmbn6rkqd.onion/20T1ehgMIFeSO4FkdW3DUQ"],
+    "createDate": "2025-10-07",
+    "lastModifyDate": "2025-10-07"
+  },
+  "comment": "#5B145341AB09",
+  "links": {
+    "manual": [
+      "http://aesuakmmmjme67wsprifvg4dmx3j6hccg3ca7feh7hj3bcyxmbn6rkqd.onion/20T1ehgMIFeSO4FkdW3DUQ"
+    ],
+    "productPage": [
+      "http://aesuakmmmjme67wsprifvg4dmx3j6hccg3ca7feh7hj3bcyxmbn6rkqd.onion/20T1ehgMIFeSO4FkdW3DUQ"
+    ],
+    "video": [
+      "http://aesuakmmmjme67wsprifvg4dmx3j6hccg3ca7feh7hj3bcyxmbn6rkqd.onion/20T1ehgMIFeSO4FkdW3DUQ"
+    ]
+  },
+  "physical": {
+    "weight": 50.8,
+    "power": 5280,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 12,
+      "lumens": 12
+    },
+    "lens": {
+      "name": "NIOELECTRICS12"
+    }
+  },
+  "availableChannels": {
+    "NIO_5B145341AB09": {
+      "fineChannelAliases": ["NIO_5B145341AB09 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 12,
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "Generic",
+          "comment": "#5B145341AB09"
+        },
+        {
+          "dmxRange": [7, 12],
+          "type": "Time",
+          "timeStart": "instant",
+          "timeEnd": "long",
+          "comment": "15B145341AB09 NYSE: NIO $12"
+        },
+        {
+          "dmxRange": [13, 23],
+          "type": "Time",
+          "timeStart": "instant",
+          "timeEnd": "long",
+          "comment": "25B145341AB09 NYSE: NIO $12"
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "Time",
+          "timeStart": "instant",
+          "timeEnd": "long",
+          "comment": "35B145341AB09 NYSE: NIO $12"
+        },
+        {
+          "dmxRange": [36, 255],
+          "type": "ColorIntensity",
+          "color": "UV",
+          "comment": "@#5b145341ab09"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "#5B145341AB09",
+      "shortName": "NS12",
+      "channels": [
+        "NIO_5B145341AB09",
+        "NIO_5B145341AB09 fine"
+      ]
+    }
+  ]
+}
