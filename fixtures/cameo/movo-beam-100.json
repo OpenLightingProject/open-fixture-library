@@ -1,0 +1,375 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Movo Beam 100",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Mátyus Zsolt"],
+    "createDate": "2022-04-26",
+    "lastModifyDate": "2022-04-26"
+  },
+  "comment": "15Ch mode",
+  "links": {
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/moving-heads/11093/movo-beam-100#detail-downloads"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 126],
+          "type": "PanContinuous",
+          "speed": "fast CW",
+          "comment": "Forward pan rotation"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "PanContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "PanContinuous",
+          "speed": "fast CCW"
+        }
+      ]
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 126],
+          "type": "TiltContinuous",
+          "speed": "fast CW"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "TiltContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "TiltContinuous",
+          "speed": "fast CCW"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "strobe open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 32],
+          "type": "Generic",
+          "comment": "Blackout while Moving on (Hold 3s)"
+        },
+        {
+          "dmxRange": [33, 59],
+          "type": "Generic",
+          "comment": "Blackout while Moving off (Hold 5s)"
+        },
+        {
+          "dmxRange": [60, 86],
+          "type": "Generic",
+          "comment": "Invert Pan on (Hold 3s)"
+        },
+        {
+          "dmxRange": [87, 113],
+          "type": "Generic",
+          "comment": "Invert Pan off (Hold 5s)"
+        },
+        {
+          "dmxRange": [114, 140],
+          "type": "Generic",
+          "comment": "Invert Tilt on (Hold 3s)"
+        },
+        {
+          "dmxRange": [141, 167],
+          "type": "Generic",
+          "comment": "Invert Tilt off (Hold 5s)"
+        },
+        {
+          "dmxRange": [168, 194],
+          "type": "Generic",
+          "comment": "Silent Fan on (Hold 3s)"
+        },
+        {
+          "dmxRange": [195, 221],
+          "type": "Generic",
+          "comment": "Silent Fan off (Hold 5s)"
+        },
+        {
+          "dmxRange": [222, 255],
+          "type": "Generic",
+          "comment": "Reset All Functions (Hold 3s)"
+        }
+      ]
+    },
+    "Color Ring Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "Generic",
+          "comment": "Colour Macro 1 (Colour Jump)"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "Generic",
+          "comment": "Colour Macro 2 (Red 1 Step)"
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "Generic",
+          "comment": "Colour Macro 3 (Green 1 Step)"
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "Generic",
+          "comment": "Colour Macro 4 (Blue 1 Step)"
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "Generic",
+          "comment": "Colour Macro 5 (Yellow 1 Step)"
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "Generic",
+          "comment": "Colour Macro 6 (Cyan 1 Step)"
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "Generic",
+          "comment": "Colour Macro 7 (Magenta 1 Step)"
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "Generic",
+          "comment": "Colour Macro 8 (2step Magenta Yellow)"
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "Generic",
+          "comment": "Colour Macro 9 (2step Red Green)"
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "Generic",
+          "comment": "Colour Macro 10 (2step Red Blue)"
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "Generic",
+          "comment": "Colour Macro 11 (2step Blue Yellow)"
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "Generic",
+          "comment": "Colour Macro 12 (2step Green Blue)"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "Generic",
+          "comment": "Colour Macro 13 (2step Magenta Blue)"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "Generic",
+          "comment": "Colour Macro 14 (2step Green Yellow)"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "Generic",
+          "comment": "Colour Macro 15 (2step Cyan Magenta)"
+        },
+        {
+          "dmxRange": [126, 133],
+          "type": "Generic",
+          "comment": "Colour Macro 16 (2step Cyan Red)"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color ring macro speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15Ch",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Pan 4",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Tilt 3",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Settings",
+        "Color Ring Macro",
+        "Color ring macro speed"
+      ]
+    }
+  ]
+}
