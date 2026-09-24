@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2",
+  "categories": ["Dimmer", "Color Changer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-05",
+    "lastModifyDate": "2023-06-05"
+  },
+  "links": {
+    "manual": [
+      "https://astera-led.com/ru/downloads/"
+    ],
+    "productPage": [
+      "https://astera-led.com/ru/products/titan/"
+    ]
+  },
+  "physical": {
+    "dimensions": [43, 1035, 1035],
+    "weight": 1.35,
+    "power": 72,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1750K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green-Magenta Point": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Generic",
+          "comment": "-96.1% --> 100%"
+        }
+      ]
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "speed": "0%"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "WheelSlotRotation",
+          "speed": "0%"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "0% --> 100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "0% --> 100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "0° --> 360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "0% --> 100%"
+      }
+    },
+    "Green-Magenta Point 2": {
+      "name": "Green-Magenta Point",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Generic",
+          "comment": "-96.1% --> 100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "94: D CCT GM CRO RGB S (PIXEL = 1; STROBE = ON)",
+      "shortName": "94",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 2",
+        "Effects",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
