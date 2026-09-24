@@ -1,0 +1,183 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MASTER 7X40 WASH",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["SeanGlobage"],
+    "createDate": "2025-02-28",
+    "lastModifyDate": "2025-02-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.professionalsoundlight.it/media/wysiwyg/MANUALI-2023/2023_H0017_master_MANUALE_U_USO_WEB_.pdf"
+    ],
+    "productPage": [
+      "https://www.professionalsoundlight.it/teste-mobili/master-7x40-wash-zoom.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Y5pxJnZXnQY&ab_channel=GuangzhouBetterLightingCo.%2CLtd."
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "slow"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "270deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "TILTFINE": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "POSITIONMSPEED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "270deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Positionmspeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmercurve": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Colorrgb1": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Colorrgb1 2": {
+      "name": "Colorrgb1",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colorrgb2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colorrbg3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colorrgb5": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Colormixer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Scroller": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fixtureglobalreset": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17 ch",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Positionmspeed",
+        "Shutter",
+        "Dimmer",
+        "Dimmercurve",
+        "Zoom",
+        "Colorrgb1 2",
+        "Colorrgb2",
+        "Colorrbg3",
+        "Colorrgb5",
+        "Color1",
+        "Colormixer",
+        "Scroller",
+        "Fixtureglobalreset"
+      ]
+    }
+  ]
+}
