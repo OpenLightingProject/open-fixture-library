@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PowerPAR AX-9",
+  "shortName": "AX-9",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["Nils"],
+    "createDate": "2026-02-17",
+    "lastModifyDate": "2026-02-17"
+  },
+  "links": {
+    "manual": [
+      "https://astera-led.com/wp-content/uploads/AX9_PowerPar_Manual_EN_DE_IT_ES_FR_PT.pdf"
+    ],
+    "productPage": [
+      "https://astera-led.com/products/ax9-powerpar/downloads/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=iCcMt36CD44"
+    ]
+  },
+  "physical": {
+    "dimensions": [222, 256, 175],
+    "weight": 5.66,
+    "power": 70,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED (Titan LED Engine), PAR",
+      "colorTemperature": 20000,
+      "lumens": 3214
+    },
+    "lens": {
+      "name": "Standard optic (Titan LED Engine)",
+      "degreesMinMax": [13, 32]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Intensity Emulated White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DIM RGBAWS",
+      "shortName": "DMX 13",
+      "channels": [
+        "Dimmer",
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity Amber",
+        "Intensity Emulated White",
+        "Strobe"
+      ]
+    }
+  ]
+}
