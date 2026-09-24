@@ -1,24 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LS 600D Pro",
+  "name": "LS 300D II",
   "categories": ["Dimmer", "Effect"],
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2022-09-24",
-    "lastModifyDate": "2022-09-24"
+    "createDate": "2023-03-24",
+    "lastModifyDate": "2023-03-24"
   },
   "links": {
     "manual": [
-      "https://aputure.com/wp-content/uploads/2022/06/LS-600d-Pro-DMX-Profile-Specification-V1.0-.pdf"
+      "https://cdn.shopify.com/s/files/1/1343/1935/files/LS-C300d-II_Product_Manual_EN.pdf?v=1602339092"
     ],
     "productPage": [
-      "https://aputure.com/products/ls-600d-pro/"
+      "https://shop.aputure.com/pages/ls-300d-ii"
     ]
   },
   "physical": {
-    "dimensions": [308, 156, 150],
-    "weight": 4.6,
-    "power": 600,
+    "dimensions": [298, 216, 345],
+    "weight": 11.4,
+    "power": 350,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
