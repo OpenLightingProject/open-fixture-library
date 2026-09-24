@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "H600",
+  "shortName": "H600",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Christian"],
+    "createDate": "2025-10-04",
+    "lastModifyDate": "2025-10-04"
+  },
+  "links": {
+    "manual": [
+      "https://algam-akeneo-prod.s3.eu-west-3.amazonaws.com/public/products/8/3/0/6/830690ab305295c764695fe352ca17b6c91b42eb_H600___USERMANUAL___2024_10__WEB.pdf"
+    ],
+    "productPage": [
+      "https://www.algam-webstore.fr/algam-lighting-h600-machine-a-brouillard-600w-583549.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 240, 185],
+    "weight": 3.7,
+    "power": 600,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off",
+          "comment": "Fog off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "weak",
+          "fogOutputEnd": "strong"
+        }
+      ]
+    },
+    "Fan speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "shortName": "2ch",
+      "channels": [
+        "Fog",
+        "Fan speed"
+      ]
+    }
+  ]
+}
