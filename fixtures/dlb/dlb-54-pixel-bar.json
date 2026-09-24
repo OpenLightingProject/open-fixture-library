@@ -1,0 +1,143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DLB_54_Pixel_Bar",
+  "shortName": "54_Pixel_Bar",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["DLB_Jimmy"],
+    "createDate": "2026-02-06",
+    "lastModifyDate": "2026-02-25",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-08-11",
+      "comment": "GDTF v1.2 fixture type ID: E7BFF1B3-B5DC-42F7-83ED-A1749B227C0B"
+    }
+  },
+  "comment": "Kinetic Bar\nDLB-E6-11083(6 meters)\n54 PIXels on two sides\n108 pcs 0.2W RGB 3in1 LED",
+  "rdm": {
+    "modelId": 0
+  },
+  "wheels": {
+    "Virtual Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Wheel Slot 1",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Z": {
+      "fineChannelAliases": ["Z fine"],
+      "capability": {
+        "type": "Unknown (XYZ_Z)",
+        "physicalStart": "0m",
+        "physicalEnd": "1m"
+      }
+    },
+    "Pos MSpeed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Fixture Global Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        }
+      ]
+    },
+    "Dim": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BAR_54_Pixel_RGB_168ch",
+      "channels": [
+        "Z",
+        "Z fine",
+        "Pos MSpeed",
+        "Fixture Global Reset",
+        "Dim",
+        "Strobe1",
+        "R",
+        "G",
+        "B"
+      ]
+    }
+  ]
+}
