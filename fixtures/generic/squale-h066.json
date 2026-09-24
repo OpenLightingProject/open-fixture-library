@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Squale H066",
+  "shortName": "H066",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-03-23",
+    "lastModifyDate": "2026-03-23"
+  },
+  "comment": "Old Moving Head",
+  "links": {
+    "productPage": [
+      "https://fr.audiofanzine.com/lyre/squale/H066/"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 600, 400],
+    "weight": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD250",
+      "colorTemperature": 6000
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "580deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "300deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "5deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "5deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "49%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Prism Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelSlotRotation"
+      }
+    },
+    "Focus": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "shortName": "H066",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan 2",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Dimmer",
+        "Prism",
+        "Prism Rotation",
+        "Focus"
+      ]
+    }
+  ]
+}
