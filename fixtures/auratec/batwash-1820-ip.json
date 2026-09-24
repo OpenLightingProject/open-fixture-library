@@ -1,0 +1,319 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BatWash 1820 IP",
+  "shortName": "BatWash 1820 IP",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Marvin M. (Auratec)"],
+    "createDate": "2025-04-01",
+    "lastModifyDate": "2025-04-01"
+  },
+  "links": {
+    "productPage": [
+      "https://auratec.sumupstore.com/product/auratec-batwash-1820-ip"
+    ]
+  },
+  "physical": {
+    "power": 360,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [10, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "2000K"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorTemperature",
+          "colorTemperature": "2000K"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorTemperature",
+          "colorTemperature": "2200K"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorTemperature",
+          "colorTemperature": "2400K"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorTemperature",
+          "colorTemperature": "2600K"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorTemperature",
+          "colorTemperature": "2800K"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorTemperature",
+          "colorTemperature": "3600K"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorTemperature",
+          "colorTemperature": "44000K"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorTemperature",
+          "colorTemperature": "4800K"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorTemperature",
+          "colorTemperature": "5200K"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorTemperature",
+          "colorTemperature": "6400K"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "ColorTemperature",
+          "colorTemperature": "6800K"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "ColorTemperature",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "ColorTemperature",
+          "colorTemperature": "7600K"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "ColorTemperature",
+          "colorTemperature": "8400K"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ColorTemperature",
+          "colorTemperature": "8800K"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "ColorTemperature",
+          "colorTemperature": "9200K"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "ColorTemperature",
+          "colorTemperature": "9600K"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "ColorTemperature",
+          "colorTemperature": "10000K"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "0Hz",
+          "duration": "0ms"
+        }
+      ]
+    },
+    "Program Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "closed"
+        },
+        {
+          "dmxRange": [10, 50],
+          "type": "Generic",
+          "comment": "static color mixing"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Generic",
+          "comment": "jump mode"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "gradient mode"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "mutation pattern"
+        },
+        {
+          "dmxRange": [201, 215],
+          "type": "Generic",
+          "comment": "color changing voice control"
+        },
+        {
+          "dmxRange": [216, 230],
+          "type": "Generic",
+          "comment": "strobe voice control"
+        },
+        {
+          "dmxRange": [231, 245],
+          "type": "Generic",
+          "comment": "mutant voice control"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "breathing voice control"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Color Temperature",
+        "Program Duration",
+        "Program Speed"
+      ]
+    }
+  ]
+}
