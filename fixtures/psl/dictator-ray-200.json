@@ -1,0 +1,757 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dictator Ray 200",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Mattia Monzo", "Mamoz"],
+    "createDate": "2026-08-28",
+    "lastModifyDate": "2026-08-28",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-08-28",
+      "comment": "created by Q Light Controller Plus (version 5.2.2)"
+    }
+  },
+  "physical": {
+    "weight": 19.5,
+    "power": 230,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Discharge"
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [0, 4]
+    }
+  },
+  "availableChannels": {
+    "Colore": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Bianco"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "comment": "Bianco + Rosso"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "comment": "Rosso"
+        },
+        {
+          "dmxRange": [13, 17],
+          "type": "ColorPreset",
+          "comment": "Rosso + Arancio"
+        },
+        {
+          "dmxRange": [18, 21],
+          "type": "ColorPreset",
+          "comment": "Arancio"
+        },
+        {
+          "dmxRange": [22, 25],
+          "type": "ColorPreset",
+          "comment": "Arancio + Ciano"
+        },
+        {
+          "dmxRange": [26, 29],
+          "type": "ColorPreset",
+          "comment": "Ciano"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Ciano + Verde"
+        },
+        {
+          "dmxRange": [35, 38],
+          "type": "ColorPreset",
+          "comment": "Verde"
+        },
+        {
+          "dmxRange": [39, 42],
+          "type": "ColorPreset",
+          "comment": "Verde + Verde chiaro"
+        },
+        {
+          "dmxRange": [43, 46],
+          "type": "ColorPreset",
+          "comment": "Verde chiaro"
+        },
+        {
+          "dmxRange": [47, 51],
+          "type": "ColorPreset",
+          "comment": "Verde chiaro + Lavanda"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "Lavanda"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "Lavanda + Rosa"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "Rosa"
+        },
+        {
+          "dmxRange": [64, 68],
+          "type": "ColorPreset",
+          "comment": "Rosa + Giallo"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "comment": "Giallo"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "comment": "Giallo + Viola"
+        },
+        {
+          "dmxRange": [77, 81],
+          "type": "ColorPreset",
+          "comment": "Viola"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "ColorPreset",
+          "comment": "Viola + Blu-verde"
+        },
+        {
+          "dmxRange": [86, 89],
+          "type": "ColorPreset",
+          "comment": "Blu-verde"
+        },
+        {
+          "dmxRange": [90, 93],
+          "type": "ColorPreset",
+          "comment": "Blu-verde + CTO260"
+        },
+        {
+          "dmxRange": [94, 98],
+          "type": "ColorPreset",
+          "comment": "CTO260"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "ColorPreset",
+          "comment": "CTO260 + CTO190"
+        },
+        {
+          "dmxRange": [103, 106],
+          "type": "ColorPreset",
+          "comment": "CTO190"
+        },
+        {
+          "dmxRange": [107, 110],
+          "type": "ColorPreset",
+          "comment": "CTO190 + CTB8000"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "CTB8000"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "ColorPreset",
+          "comment": "CTB8000 + Blue"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ColorPreset",
+          "comment": "Blue + Bianco"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "Rotazione ruota colore, da lenta a veloce"
+        }
+      ]
+    },
+    "Strobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Chiuso",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [2, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [8, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobo, da lento a veloce",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [72, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobo, da lento a veloce",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [136, 160],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse (apertura veloce)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [161, 166],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [167, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Pulse (chiusura veloce)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Aperto fisso",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Effetto 2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Effetto 2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Strobo random, lento",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Strobo random, medio",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Strobo random, veloce",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Aperto fisso",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer da chiuso ad aperto"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Gobo pieno (aperto)"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Gobo 10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Gobo 11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Gobo 12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Gobo 13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Gobo 14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo 15"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Gobo 16"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Gobo 17"
+        },
+        {
+          "dmxRange": [72, 113],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Rotazione ruota gobo, da lenta a veloce"
+        },
+        {
+          "dmxRange": [114, 117],
+          "type": "WheelSlotRotation",
+          "speed": "stop",
+          "comment": "rotazione"
+        },
+        {
+          "dmxRange": [118, 159],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "Rotazione ruota gobo, da lenta a veloce"
+        },
+        {
+          "dmxRange": [160, 166],
+          "type": "WheelShake",
+          "slotNumber": 22,
+          "comment": "Gobo 2, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [167, 172],
+          "type": "WheelShake",
+          "slotNumber": 23,
+          "comment": "Gobo 3, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [173, 179],
+          "type": "WheelShake",
+          "slotNumber": 24,
+          "comment": "Gobo 4, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [180, 185],
+          "type": "WheelShake",
+          "slotNumber": 25,
+          "comment": "Gobo 5, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [186, 191],
+          "type": "WheelShake",
+          "slotNumber": 26,
+          "comment": "Gobo 6, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "WheelShake",
+          "slotNumber": 27,
+          "comment": "Gobo 7, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [199, 204],
+          "type": "WheelShake",
+          "slotNumber": 28,
+          "comment": "Gobo 8, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [205, 211],
+          "type": "WheelShake",
+          "slotNumber": 29,
+          "comment": "Gobo 9, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [212, 217],
+          "type": "WheelShake",
+          "slotNumber": 30,
+          "comment": "Gobo 10, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [218, 223],
+          "type": "WheelShake",
+          "slotNumber": 31,
+          "comment": "Gobo 11, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [224, 230],
+          "type": "WheelShake",
+          "slotNumber": 32,
+          "comment": "Gobo 12, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [231, 236],
+          "type": "WheelShake",
+          "slotNumber": 33,
+          "comment": "Gobo 13, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [237, 243],
+          "type": "WheelShake",
+          "slotNumber": 34,
+          "comment": "Gobo 14, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "WheelShake",
+          "slotNumber": 35,
+          "comment": "Gobo 15, shake da lento a veloce"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelShake",
+          "slotNumber": 36,
+          "comment": "Gobo 16, shake da lento a veloce"
+        }
+      ]
+    },
+    "Prisma": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Prisma disinserito"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "Prisma a 8 facce inserito"
+        }
+      ]
+    },
+    "Rotazione Prisma": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Rotazione antioraria, da lenta a veloce"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Prism",
+          "comment": "Rotazione antioraria, da lenta a veloce"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Prism",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Prism",
+          "comment": "Rotazione oraria, da lenta a veloce"
+        }
+      ]
+    },
+    "Velocità Effetto": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Controllo velocità effetto",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Inserimento graduale filtro frost"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Pan 0° - 540°"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg",
+        "comment": "Tilt 0° - 270°"
+      }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Selezione macro"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "comment": "Nessuna funzione"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "comment": "Reset colore, gobo, fuoco"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "comment": "Reset Pan/Tilt"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Reset completo"
+        }
+      ]
+    },
+    "Controllo Lampada": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "comment": "Libero"
+        },
+        {
+          "dmxRange": [26, 100],
+          "type": "Maintenance",
+          "comment": "Spegnimento lampada"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Accensione lampada"
+        }
+      ]
+    },
+    "Velocità Spostamento": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "comment": "Velocità massima",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [1, 250],
+          "type": "Speed",
+          "comment": "Controllo velocità, da lenta a veloce",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Speed",
+          "comment": "Veloce",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "17 Canali",
+      "channels": [
+        "Colore",
+        "Strobo",
+        "Dimmer",
+        "Gobo",
+        "Prisma",
+        "Rotazione Prisma",
+        "Velocità Effetto",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Macro",
+        "Reset",
+        "Controllo Lampada",
+        "Velocità Spostamento"
+      ]
+    }
+  ]
+}
