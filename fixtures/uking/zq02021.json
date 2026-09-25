@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02021",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["RAY BASELEY"],
+    "createDate": "2026-09-05",
+    "lastModifyDate": "2026-09-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/products/100w-led-beam-gobo-moving-head-stage-light-dazzling-effect-dmx?srsltid=AfmBOopDZHjOGdQK6sR43VPHAFTGgblD1rVpr2b6bN5WIwriGusDFXFr"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/100w-led-beam-gobo-moving-head-stage-light-dazzling-effect-dmx?srsltid=AfmBOopDZHjOGdQK6sR43VPHAFTGgblD1rVpr2b6bN5WIwriGusDFXFr"
+    ],
+    "video": [
+      "https://www.uking-online.com/products/100w-led-beam-gobo-moving-head-stage-light-dazzling-effect-dmx?srsltid=AfmBOopDZHjOGdQK6sR43VPHAFTGgblD1rVpr2b6bN5WIwriGusDFXFr"
+    ]
+  },
+  "availableChannels": {
+    "X AXIS": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "X AXIS FIN": {
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y AXIS": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Y AXIS FIN": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "X/Y PEED FROM FAST TO SLOW": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "COLOR PLATE": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "PATTERN PLATE": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "PRISM": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "SELF DRIVING FORCE": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "RESET - LAMP BODY": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CHANNEL 12",
+      "channels": [
+        "X AXIS",
+        "X AXIS FIN",
+        "Y AXIS",
+        "Y AXIS FIN",
+        "X/Y PEED FROM FAST TO SLOW",
+        "DIMMER",
+        "STROBE",
+        "COLOR PLATE",
+        "PATTERN PLATE",
+        "PRISM",
+        "SELF DRIVING FORCE",
+        "RESET - LAMP BODY"
+      ]
+    }
+  ]
+}
