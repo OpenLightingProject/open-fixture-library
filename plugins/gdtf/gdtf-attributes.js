@@ -836,7 +836,11 @@ const gdtfAttributes = {
     },
   },
   'HSB_Brightness': undefined, // Controls the fixture's color attribute regarding the brightness.
-  'HSB_Hue': undefined, // Controls the fixture's color attribute regarding the hue.
+  'HSB_Hue': {
+    // Controls the fixture's color attribute regarding the hue.
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'HSB_Quality': undefined, // Controls the fixture's color attribute regarding the quality.
   'HSB_Saturation': undefined, // Controls the fixture's color attribute regarding the saturation.
   'IntensityMSpeed': {
@@ -917,8 +921,16 @@ const gdtfAttributes = {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  'MediaContent': undefined, // Selects the content slot of in the selected media folder (e.g. of a media server). (since GDTF v1.0)
-  'MediaFolder': undefined, // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
+  'MediaContent(n)': {
+    // Selects the content slot in the selected media folder (e.g. of a media server). (since GDTF v1.0)
+    oflType: 'Generic',
+    oflProperty: null,
+  },
+  'MediaFolder(n)': {
+    // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'NoFeature': {
     // Ranges without a functionality.
     oflType: 'NoFunction',
@@ -1168,6 +1180,11 @@ const gdtfAttributes = {
   'VideoScale(n)_X': undefined, // Scales the media content or video object along the x-axis. (since GDTF v1.0)
   'VideoScale(n)_Y': undefined, // Scales the media content or video object along the y-axis. (since GDTF v1.0)
   'VideoScale(n)_Z': undefined, // Scales the media content or video object along the z-axis. (since GDTF v1.0)
+  'VideoSoundVolume(n)': {
+    // Adjusts sound volume. (since GDTF v1.0)
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'WavelengthCorrection': undefined, // Settings for WaveLength corrections of colors. (since GDTF v1.0)
   'WhiteCount': undefined, // Controls if White LED is proportionally added to RGB. (since GDTF v1.0)
   'XYZ_X': undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
