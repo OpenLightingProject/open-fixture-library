@@ -1,0 +1,342 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SOLAR Impulse",
+  "shortName": "SOLAR",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Carlos Cebrian Ruiz"],
+    "createDate": "2026-05-20",
+    "lastModifyDate": "2026-05-20"
+  },
+  "links": {
+    "productPage": [
+      "https://en.acmelighting.com/cms/old/productdetailold?cat_id=194&id=2637"
+    ]
+  },
+  "physical": {
+    "dimensions": [458, 836, 352],
+    "weight": 44.6,
+    "power": 1370,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500,
+      "lumens": 35000
+    },
+    "lens": {
+      "degreesMinMax": [5, 50]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Animation"
+      }
+    },
+    "Iris": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism",
+        "speedStart": "fast CW",
+        "speedEnd": "slow CW"
+      }
+    },
+    "CRI": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "CRI"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high",
+        "comment": "LIGHT"
+      }
+    },
+    "Frost 2": {
+      "name": "Frost",
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high",
+        "comment": "HEAVY"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blade Insertion": {
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "DW1"
+      }
+    },
+    "Blade Insertion 2": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "DW 2"
+      }
+    },
+    "Blade Insertion 3": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Top",
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "UP 1"
+      }
+    },
+    "Blade Insertion 4": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Top",
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "UP 2"
+      }
+    },
+    "Blade Insertion 5": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Left",
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "LF 1"
+      }
+    },
+    "Blade Insertion 6": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Left",
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "LF 2"
+      }
+    },
+    "Blade Insertion 7": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Right",
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "RG 1"
+      }
+    },
+    "Blade Insertion 8": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Right",
+        "insertionStart": "out",
+        "insertionEnd": "in",
+        "comment": "RG 1"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Blade Insertion 9": {
+      "name": "Blade Insertion",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 0,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Simple 34ch",
+      "shortName": "34ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Macros",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Reserved",
+        "Iris",
+        "Prism",
+        "Prism Rotation",
+        "CRI",
+        "Frost",
+        "Frost 2",
+        "Zoom",
+        "Focus",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Blade Insertion 9",
+        "Blade Insertion",
+        "Blade Insertion 2",
+        "Blade Insertion 3",
+        "Blade Insertion 4",
+        "Blade Insertion 5",
+        "Blade Insertion 6",
+        "Blade Insertion 7",
+        "Blade Insertion 8",
+        "Reserved 2"
+      ]
+    },
+    {
+      "name": "Reduced 29ch",
+      "shortName": "29ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Macros",
+        "Iris",
+        "CRI",
+        "Frost",
+        "Frost 2",
+        "Zoom",
+        "Focus",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Blade Insertion",
+        "Blade Insertion 2",
+        "Blade Insertion 3",
+        "Blade Insertion 4",
+        "Blade Insertion 5",
+        "Blade Insertion 6",
+        "Blade Insertion 7",
+        "Blade Insertion 8",
+        "Blade Insertion 9",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
