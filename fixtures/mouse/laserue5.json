@@ -1,0 +1,295 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LaserUE5",
+  "shortName": "DMX",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["MOUSE"],
+    "createDate": "2026-05-20",
+    "lastModifyDate": "2026-05-20"
+  },
+  "links": {
+    "other": [
+      "https://google.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Beam Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Fog Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan Flip": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 255,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt Flip": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rotation": {
+      "fineChannelAliases": ["Rotation fine"],
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic",
+        "comment": "Rotation"
+      }
+    },
+    "Rotation Flip": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 17],
+          "type": "Effect",
+          "effectName": "Beam",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [18, 29],
+          "type": "NoFunction",
+          "comment": "Unused"
+        },
+        {
+          "dmxRange": [30, 38],
+          "type": "Effect",
+          "effectName": "Beam+Solid",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [39, 255],
+          "type": "NoFunction",
+          "comment": "Unused"
+        }
+      ]
+    },
+    "Transition Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Loop": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "ON"
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast reverse",
+        "speedEnd": "fast"
+      }
+    },
+    "Beam Flicker": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Beam Thickness": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Thickness"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Fog Mix": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0..1 A.B"
+      }
+    },
+    "Fog Flicker": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Fog A Divide": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0..2"
+      }
+    },
+    "Fog A Speed X": {
+      "defaultValue": 127,
+      "constant": true,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast reverse",
+        "speedEnd": "fast"
+      }
+    },
+    "Fog A Speed Y": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast reverse",
+        "speedEnd": "fast"
+      }
+    },
+    "Fog B Divide": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0..2"
+      }
+    },
+    "Fog B Speed X": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast reverse",
+        "speedEnd": "fast"
+      }
+    },
+    "Fog B Speed Y": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast reverse",
+        "speedEnd": "fast"
+      }
+    },
+    "Unused": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LaserUE5",
+      "shortName": "DMX",
+      "channels": [
+        "Beam Dimmer",
+        "Fog Dimmer",
+        "Pan",
+        "Pan 2",
+        "Pan Flip",
+        "Tilt",
+        "Tilt fine",
+        "Tilt Flip",
+        "Rotation",
+        "Rotation fine",
+        "Rotation Flip",
+        "Red",
+        "Green",
+        "Blue",
+        "Pattern",
+        "Transition Speed",
+        "Loop",
+        "Speed",
+        "Beam Flicker",
+        "Beam Thickness",
+        "Shutter",
+        "Fog Mix",
+        "Fog Flicker",
+        "Fog A Divide",
+        "Fog A Speed X",
+        "Fog A Speed Y",
+        "Fog B Divide",
+        "Fog B Speed X",
+        "Fog B Speed Y",
+        "Unused"
+      ]
+    }
+  ]
+}
