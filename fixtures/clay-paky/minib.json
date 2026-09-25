@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MiniB",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-08-23",
+    "lastModifyDate": "2026-08-23"
+  },
+  "links": {
+    "manual": [
+      "https://service.claypaky.it/servlet/checkDocumentsFile?Id=3082"
+    ],
+    "productPage": [
+      "https://service.claypaky.it/servlet/checkDocumentsFile?Id=2945"
+    ],
+    "video": [
+      "https://www.claypaky.it/products/mini-b/#videos"
+    ]
+  },
+  "availableChannels": {
+    "1red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "2green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "3blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "4white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "5CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "CTO"
+      }
+    },
+    "6Macrocolor": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Macrocolor"
+      }
+    },
+    "7Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "RampUpDown",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "8Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "9Dimmerfine": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "10Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "4deg",
+        "angleEnd": "55deg"
+      }
+    },
+    "11Panfine": {
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "fast CW"
+      }
+    },
+    "12Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "4deg",
+        "angleEnd": "55deg"
+      }
+    },
+    "13Tiltfine": {
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "fast CW"
+      }
+    },
+    "14Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "15Colorcrossfade": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "16Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "17Reset": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "BasicRGBW",
+      "channels": [
+        "1red",
+        "2green",
+        "3blue",
+        "4white",
+        "5CTO",
+        "6Macrocolor",
+        "7Strobe",
+        "8Dimmer",
+        "9Dimmerfine",
+        "10Pan",
+        "11Panfine",
+        "12Tilt",
+        "13Tiltfine",
+        "14Zoom",
+        "15Colorcrossfade",
+        "16Function",
+        "17Reset"
+      ]
+    }
+  ]
+}
