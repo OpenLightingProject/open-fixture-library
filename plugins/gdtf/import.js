@@ -536,8 +536,9 @@ export async function importFixtures(buffer, filename, authorName) {
 
         return gdtfLogicalChannel.ChannelFunction.flatMap((gdtfChannelFunction) => {
           if (!gdtfChannelFunction.ChannelSet) {
-            // add an empty <ChannelSet />
-            gdtfChannelFunction.ChannelSet = [{ $: {} }];
+            // add an empty <ChannelSet /> spanning the whole <ChannelFunction>
+            // (GDTF: a function's range starts at its own DMXFrom; sets are optional)
+            gdtfChannelFunction.ChannelSet = [{ $: { DMXFrom: gdtfChannelFunction.$.DMXFrom } }];
           }
 
           // save GDTF attribute for later
@@ -564,8 +565,9 @@ export async function importFixtures(buffer, filename, authorName) {
 
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom, 0);
 
-            const physicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, 0);
-            const physicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, 1);
+            // GDTF: a set's physical range defaults to its channel function's (which defaults to 0…1)
+            const physicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, parseFloatWithFallback(gdtfChannelFunction.$.PhysicalFrom, 0));
+            const physicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, parseFloatWithFallback(gdtfChannelFunction.$.PhysicalTo, 1));
 
             gdtfChannelSet._physicalFrom = physicalFrom;
             gdtfChannelSet._physicalTo = physicalTo;
