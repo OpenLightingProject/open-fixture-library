@@ -1,0 +1,461 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-36II Wash Moving Head",
+  "shortName": "BT-36II",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Quirin Siegmund"],
+    "createDate": "2026-08-31",
+    "lastModifyDate": "2026-08-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/541025/Briteq-Bt-36Ii.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [266, 276, 302],
+    "weight": 9,
+    "power": 108,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGB"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "wheels": {
+    "Color/Chase/Fade": {
+      "slots": [
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Special Function": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Enable Blackout while Pan/Tilt Movement"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Disable Blackout while Pan/Tilt Movement"
+        },
+        {
+          "dmxRange": [90, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset Fixture"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Stand Alone Mode"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan/Tilt Movement Macro": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 35],
+          "type": "Effect",
+          "effectName": "Macro 1",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [36, 55],
+          "type": "Effect",
+          "effectName": "Macro 2",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "Effect",
+          "effectName": "Macro 3",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "Effect",
+          "effectName": "Macro 4",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [96, 115],
+          "type": "Effect",
+          "effectName": "Macro 5",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [116, 135],
+          "type": "Effect",
+          "effectName": "Macro 6",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [136, 155],
+          "type": "Effect",
+          "effectName": "Macro 7",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [156, 175],
+          "type": "Effect",
+          "effectName": "Macro 8",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [176, 195],
+          "type": "Effect",
+          "effectName": "Macro 9",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [196, 215],
+          "type": "Effect",
+          "effectName": "Macro 10",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [216, 235],
+          "type": "Effect",
+          "effectName": "Macro 11",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Macro 12",
+          "comment": "Macro 12"
+        }
+      ]
+    },
+    "Movement Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color/Chase/Fade": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 32,
+          "comment": "Colors 1-32"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 16,
+          "comment": "Color Chases 1-16"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 16,
+          "comment": "Color Fades 1-16"
+        }
+      ]
+    },
+    "Chase/Fade Speed": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Special Function"
+      ]
+    },
+    {
+      "name": "15ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Pan/Tilt Movement Macro",
+        "Movement Speed",
+        "Special Function",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color/Chase/Fade",
+        "Chase/Fade Speed"
+      ]
+    }
+  ]
+}
