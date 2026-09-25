@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "quadzoom 610",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Max"],
+    "createDate": "2026-09-25",
+    "lastModifyDate": "2026-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/stairville/remus-quadzoom-610/mode-d-emploi"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/stairville_remus_quadzoom_610.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=AKcM8p36AgM&themeRefresh=1"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
