@@ -1,0 +1,288 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Flood Inst QCL 24x10W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Codex (from manufacturer manual", "ID 345855 V3)", "Becherhopper"],
+    "createDate": "2026-09-07",
+    "lastModifyDate": "2026-09-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-09-07",
+      "comment": "created by QLC+ fixture definition (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [427, 190, 196],
+    "weight": 12.5,
+    "power": 248,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset ColourHue."
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset ColourSaturation."
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open / no strobe"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe, 0 to 20 Hz (slow to fast)"
+        }
+      ]
+    },
+    "Stage colour macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 90],
+          "type": "ColorPreset",
+          "comment": "Fixed colour macro; channel 7=0 holds the colour"
+        },
+        {
+          "dmxRange": [91, 190],
+          "type": "ColorPreset",
+          "comment": "Colour-transition macro; speed controlled by channel 7"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "ColorPreset",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorPreset",
+          "comment": "White presets 1 to 11"
+        }
+      ]
+    },
+    "Stage speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Macro fade-in / transition speed; depends on channel 6",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Auto show": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 109],
+          "type": "Effect",
+          "effectName": "Preprogrammed automatic show 1 to 10"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Auto show speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed when automatic show is active",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Effect",
+          "effectName": "Linear / dimmer off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Dimmer speed 1"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Dimmer speed 2"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "Dimmer speed 3"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Dimmer speed 4"
+        }
+      ]
+    },
+    "ID selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "All IDs"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "ID 1 to ID 66"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Arc.1 (3-channel RGB)",
+      "shortName": "Arc.1 (3ch RGB)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "HSV (3-channel)",
+      "shortName": "HSV (3ch)",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Ar1.d (4-channel RGB + Dimmer)",
+      "shortName": "Ar1.d (4ch RGB + Dimmer)",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Arc.2 (4-channel RGBW)",
+      "shortName": "Arc.2 (4ch RGBW)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Ar2.d (5-channel RGBW + Dimmer)",
+      "shortName": "Ar2.d (5ch RGBW + Dimmer)",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Ar2.s (6-channel RGBW + Dimmer + Strobe)",
+      "shortName": "Ar2.s (6ch RGBW + Dimmer + Strobe)",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "STAGE (11-channel)",
+      "shortName": "STAGE (11ch)",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Stage colour macro",
+        "Stage speed",
+        "Auto show",
+        "Auto show speed",
+        "Dimmer curve",
+        "ID selection"
+      ]
+    }
+  ]
+}
