@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED floodlight 252",
+  "shortName": "LED floodlight 252",
+  "categories": ["Effect", "Dimmer"],
+  "meta": {
+    "authors": ["Szabolcs"],
+    "createDate": "2026-06-05",
+    "lastModifyDate": "2026-06-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/products/Eurolite-Led-Floodlight-252-Rgb-4185323.html"
+    ],
+    "productPage": [
+      "https://www.recordcase.de/en/eurolite-fld-252?campaignCode=CSS_HU&affiliateCode=CSS&mtm_source=google&mtm_medium=cpc&mtm_campaign=&mtm_cid=11290558926&mtm_kwd=&mtm_content=0050104674&utm_source=googleCSS&utm_medium=cpc&utm_campaign={campaignname}&utm_content={adgroupname}&gad_source=1&gad_campaignid=11290558926&gbraid=0AAAAAC8sUtb_5khjG3ExHe2oP508tAOEz&gclid=Cj0KCQjw54nRBhDCARIsAMcY_SCw_3WXdR9widkRud1Ysx_VPFqrTSBNwHFz4L8gfvDrNAcfoZmuO6caArc9EALw_wcB"
+    ],
+    "video": [
+      "https://www.google.com/search?q=eurolite+led+floodlight+252+rgb&sca_esv=5e57de7343b8f434&udm=7&biw=1536&bih=730&sxsrf=ANbL-n4ZS2T-TDjAFhHCsB_5KbKN5SawoQ%3A1780681814844&ei=Vgwjaq-dM4qK7NYPsq7V2Q0&ved=0ahUKEwivoKDY1PCUAxUKBdsEHTJXNdsQ4dUDCBA&uact=5&oq=eurolite+led+floodlight+252+rgb&gs_lp=EhZnd3Mtd2l6LW1vZGVsZXNzLXZpZGVvIh9ldXJvbGl0ZSBsZWQgZmxvb2RsaWdodCAyNTIgcmdiMgQQIxgnMgYQABgWGB4yBRAAGO8FMgUQABjvBTIFEAAY7wUyBRAAGO8FMgUQABjvBUiXBlCvA1ivA3ABeACQAQCYAVmgAVmqAQExuAEDyAEA-AEBmAICoAJswgIEEAAYHpgDAIgGAZIHAzEuMaAH9QWyBwMwLjG4B2bCBwUyLTEuMcgHDIAIAQ&sclient=gws-wiz-modeless-video#fpstate=ive&vld=cid:e44fc969,vid:C3BUTxJIGb4,st:0"
+    ]
+  },
+  "physical": {
+    "dimensions": [45.5, 24, 12.5],
+    "weight": 4,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4",
+      "shortName": "4",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
