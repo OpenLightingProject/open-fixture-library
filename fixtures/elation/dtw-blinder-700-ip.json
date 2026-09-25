@@ -1,0 +1,1122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DTW BLINDER 700 IP",
+  "shortName": "DTW700",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Darrin Bruce"],
+    "createDate": "2023-03-08",
+    "lastModifyDate": "2025-09-03",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-09-07",
+      "comment": "GDTF v1.2 fixture type ID: F7DE1AE1-CD9D-44EA-BF28-D2B86FDA81B7"
+    }
+  },
+  "comment": "The IP65 rated DTW Blinder 700 IP™ features (4) high powered 175W 2-in-1 Warm White/Amber COB LEDs, a wide 67° beam angle, full color temperature range control plus independent Dim-to-Warm channel control (1,800K - 3,200K), easily attachable 15° narrow beam filters (included), pixel control, manual adjustable pan focus, variable dimming curve modes, strobe effects, flicker free operation for TV and Film, RDM (Remote Device Management), IP rated DMX and power in/out connections, LCD menu display with 4 touch button control panel, integrated yoke and side mounting brackets, and a multi-voltage universal auto switching power supply (100-250v).",
+  "rdm": {
+    "modelId": 38
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [
+          "Extend B1",
+          "Extend B2",
+          "Extend B3",
+          "Extend B4"
+        ]
+      ]
+    ]
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min Dimmer"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max Dimmer"
+        }
+      ]
+    },
+    "CW": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "comment": "CW Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Cold White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "comment": "CW Max"
+        }
+      ]
+    },
+    "WW": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "comment": "WW Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "comment": "WW Max"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Blinder Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Blinder Max"
+        }
+      ]
+    },
+    "Sh1": {
+      "highlightValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe Min"
+        },
+        {
+          "dmxRange": [65, 94],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe Max"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe Pulse Min"
+        },
+        {
+          "dmxRange": [129, 158],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Strobe Pulse Max"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Random Strobe Min"
+        },
+        {
+          "dmxRange": [193, 222],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Random Strobe Max"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 3 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min Dimmer"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max Dimmer"
+        }
+      ]
+    },
+    "Dim Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Tungsten"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Stage 2"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "0ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "100ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "200ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "300ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "400ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "500ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "600ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "700ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "800ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "900ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1500ms Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "3s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "4s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "5s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "6s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "7s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "8s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "9s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "10s Dimmer Delay Time"
+        },
+        {
+          "dmxRange": [142, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Default"
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "idle"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "fan silent"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "fan auto (default)"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Fan high"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Standard Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Inverted Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Snake Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Snake Inverted Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Snake Rotated Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [41, 100],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "900Hz"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1000Hz"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1100Hz"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1200Hz (default)"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1300Hz"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1400Hz"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1500Hz"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2500Hz"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "4000Hz"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "5000Hz"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "10000Hz"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "15000Hz"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "20000Hz"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "25000Hz"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle Hz"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Square"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Inverse Square"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "S-Curve (default)"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dim to warm ON"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dim to warm OFF"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle"
+        }
+      ]
+    },
+    "CW 2": {
+      "name": "CW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "WW 2": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Ctrl1 2": {
+      "name": "Ctrl1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Fan silent"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Fan auto (default)"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Fan high"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Standard Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Inverted Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Snake Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Snake Inverted Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Snake Rotated Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [41, 100],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle Cell Order(hold 3s)"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "900Hz"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1000Hz"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1100Hz"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1200Hz (default)"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1300Hz"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1400Hz"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "1500Hz"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "2500Hz"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "4000Hz"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "5000Hz"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "10000Hz"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "15000Hz"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "20000Hz"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "25000Hz"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle Hz"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Linear"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Square"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Inverse Square"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "S-Curve (default)"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dim to warm ON"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dim to warm OFF"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Idle"
+        }
+      ]
+    },
+    "CW 3": {
+      "name": "CW",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "comment": "CW Blinder Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Cold White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "comment": "CW Blinder Max"
+        }
+      ]
+    },
+    "WW 3": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "comment": " WW Blinder Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "comment": " WW Blinder Max"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "CW $pixelKey": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "comment": "CW Blinder Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Cold White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Cold White",
+          "comment": "CW Blinder Max"
+        }
+      ]
+    },
+    "WW $pixelKey": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "comment": "WW Blinder Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Warm White",
+          "comment": "WW Blinder Max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "01CH  ",
+      "channels": [
+        "Dim"
+      ]
+    },
+    {
+      "name": "2CH ",
+      "channels": [
+        "CW",
+        "WW"
+      ]
+    },
+    {
+      "name": "4Cell  ",
+      "channels": [
+        "Dim 2"
+      ]
+    },
+    {
+      "name": "Standard",
+      "channels": [
+        "Sh1",
+        "Dim 3",
+        "Dim 3 fine",
+        "Dim Mode",
+        "Ctrl1",
+        "CW 2",
+        "WW 2"
+      ]
+    },
+    {
+      "name": "Extended  ",
+      "channels": [
+        "Sh1",
+        "Dim 3",
+        "Dim 3 fine",
+        "Dim Mode",
+        "Ctrl1 2",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            "CW $pixelKey",
+            "WW $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4WA",
+      "channels": [
+        "CW 3",
+        "WW 3"
+      ]
+    },
+    {
+      "name": "Basic",
+      "channels": [
+        "Dim 3",
+        "Dim 3 fine",
+        "CW",
+        "WW"
+      ]
+    }
+  ]
+}
