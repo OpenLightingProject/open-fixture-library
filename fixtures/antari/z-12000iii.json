@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z-12000III",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Alien"],
+    "createDate": "2026-08-10",
+    "lastModifyDate": "2026-08-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.antari.com/usermanual/Z/Z-1200III/Z-1200III.pdf"
+    ],
+    "productPage": [
+      "https://antari.com/products/z-1200iii/"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 326, 458],
+    "weight": 11,
+    "power": 1200,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutputStart": "1%",
+          "fogOutputEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Fog Output"
+      ]
+    }
+  ]
+}
