@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Visibox",
+  "shortName": "Visibox",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Darrel O'Pry"],
+    "createDate": "2026-01-01",
+    "lastModifyDate": "2026-01-01",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-09-25",
+      "comment": "GDTF v1.2 fixture type ID: 0D4E1B91-87B9-4F7E-B8D6-526827CA6F19"
+    }
+  },
+  "comment": "Visibox Media Server: Visibox performance video — single-layer, cue-centric media server. Content behavior (loops, fades, effects, geometry) is authored in Visibox; the console selects, triggers, and monitors it.",
+  "availableChannels": {
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, -1],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        }
+      ]
+    },
+    "Media Folder1": {
+      "capability": {
+        "type": "Unknown (MediaFolder1)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "NoFeature": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Media Content1": {
+      "capability": {
+        "type": "Unknown (MediaContent1)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "NoFeature 2": {
+      "name": "NoFeature",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0cd",
+        "brightnessEnd": "1cd"
+      }
+    },
+    "Volume1": {
+      "fineChannelAliases": ["Volume1 fine"],
+      "capability": {
+        "type": "Unknown (VideoSoundVolume1)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "H": {
+      "fineChannelAliases": ["H fine"],
+      "capability": {
+        "type": "Unknown (HSB_Hue)",
+        "physicalStart": "0deg",
+        "physicalEnd": "1deg"
+      }
+    },
+    "NoFeature 3": {
+      "name": "NoFeature",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Visibox v1",
+      "channels": [
+        "Function",
+        "Media Folder1",
+        "NoFeature",
+        "Media Content1",
+        "NoFeature 2",
+        "Dim",
+        "Dim fine",
+        "Volume1",
+        "Volume1 fine",
+        "H",
+        "H fine",
+        "NoFeature 3"
+      ]
+    }
+  ]
+}
