@@ -1,0 +1,165 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Meteor IX",
+  "categories": ["Flower", "Color Changer", "Laser", "Strobe"],
+  "meta": {
+    "authors": ["Sidirico"],
+    "createDate": "2026-09-26",
+    "lastModifyDate": "2026-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.fr/products/Power-Lighting-Meteor-Ix-13461745.html"
+    ],
+    "productPage": [
+      "https://www.energyson.fr/meteor-ix.html"
+    ],
+    "video": [
+      "https://www.facebook.com/sonolightsystems/videos/power-lighting-meteor-ix-jeux-de-lumi%C3%A8re-4-en-1-wash-flower-strobe-laser/658894437862491/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "WASH P-Dimmer": {
+      "highlightValue": "100%",
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "WASH P-STROBE": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "stop",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "WASH P-Color1 Rouge": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color 1"
+      }
+    },
+    "WASH P-Color 2 Vert": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color 2"
+      }
+    },
+    "WASH P-Color 3 Bleu": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "WASH P-SHOW": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "BLack Out"
+        },
+        {
+          "dmxRange": [8, 37],
+          "type": "Effect",
+          "effectName": "Show 01"
+        },
+        {
+          "dmxRange": [38, 67],
+          "type": "Effect",
+          "effectName": "Show 02"
+        },
+        {
+          "dmxRange": [68, 97],
+          "type": "Effect",
+          "effectName": "Show 03"
+        },
+        {
+          "dmxRange": [98, 127],
+          "type": "Effect",
+          "effectName": "Show 04"
+        },
+        {
+          "dmxRange": [128, 157],
+          "type": "Effect",
+          "effectName": "Show 05"
+        },
+        {
+          "dmxRange": [158, 187],
+          "type": "Effect",
+          "effectName": "Show 06"
+        },
+        {
+          "dmxRange": [188, 217],
+          "type": "Effect",
+          "effectName": "Show 07"
+        },
+        {
+          "dmxRange": [218, 247],
+          "type": "Effect",
+          "effectName": "Show 08"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Aleatoir show 1 - 8"
+        }
+      ]
+    },
+    "WASH P-Show Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "STROBE F-Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE F-Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "WASH",
+      "channels": [
+        "WASH P-Dimmer",
+        "WASH P-STROBE",
+        "WASH P-Color1 Rouge",
+        "WASH P-Color 2 Vert",
+        "WASH P-Color 3 Bleu",
+        "WASH P-SHOW",
+        "WASH P-Show Speed",
+        "STROBE F-Dimmer",
+        "STROBE F-Strobe"
+      ]
+    }
+  ]
+}
