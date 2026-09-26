@@ -8,7 +8,7 @@ Please keep being friendly and don't troll. See our [Code of Conduct](CODE_OF_CO
 
 ## AI Policy
 
-We welcome the use of AI agents in this repository; however, contributions **must** be backed by a human. See our [AI Contribution Policy](../AI_POLICY.md) for more information.
+We welcome the thoughtful use of AI tools in this repository; however, contributions **must** be backed by a human. Please read the ["Human Voice" AI contribution policy](https://ai-policy.dev/policies/human-voice/) at [`../AI_POLICY.md`](../AI_POLICY.md).
 
 ## Issues
 
