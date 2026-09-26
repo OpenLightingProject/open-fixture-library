@@ -229,22 +229,14 @@ export default {
       return (this.editorFixtures && Object.keys(this.editorFixtures.fixtures).length === 1) || this.fixtureKey;
     },
     title() {
-      if (this.isSingle) {
-        return 'Download as…';
-      }
-
-      return `Download all ${this.fixtureCount} fixtures`;
+      return this.isSingle ? 'Download as…' : `Download all ${this.fixtureCount} fixtures`;
     },
     baseLink() {
       if (this.editorFixtures) {
         return '/download-editor';
       }
 
-      if (this.isSingle) {
-        return `/${this.fixtureKey}`;
-      }
-
-      return '/download';
+      return this.isSingle ? `/${this.fixtureKey}` : '/download';
     },
   },
   methods: {

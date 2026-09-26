@@ -149,11 +149,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
-    if (panTiltMax > -Infinity) {
-      return panTiltMax;
-    }
-
-    return null;
+    return panTiltMax > -Infinity ? panTiltMax : null;
   });
 
   const focus = {
@@ -183,10 +179,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   delete jsonPhysical.powerConnectors;
 
   // don't return empty objects
-  if (Object.keys(jsonPhysical).length > 0) {
-    return jsonPhysical;
-  }
-  return null;
+  return Object.keys(jsonPhysical).length > 0 ? jsonPhysical : null;
 }
 
 /**

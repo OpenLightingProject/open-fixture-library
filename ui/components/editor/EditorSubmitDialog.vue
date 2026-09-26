@@ -277,20 +277,15 @@ export default {
   },
   computed: {
     fixtureKeys() {
-      if (this.fixtureCreateResult === null) {
-        return [];
-      }
-
-      return Object.keys(this.fixtureCreateResult.fixtures);
+      return this.fixtureCreateResult === null ? [] : Object.keys(this.fixtureCreateResult.fixtures);
     },
     isPlural() {
       return this.fixtureKeys.length > 1;
     },
     title() {
-      if (this.state in stateTitlesPlural && this.isPlural) {
-        return stateTitlesPlural[this.state];
-      }
-      return stateTitles[this.state];
+      return this.state in stateTitlesPlural && this.isPlural
+        ? stateTitlesPlural[this.state]
+        : stateTitles[this.state];
     },
     isImport() {
       return this.endpoint.endsWith('/import');
@@ -309,27 +304,15 @@ export default {
       return rawData;
     },
     hasPreview() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.errors).some(
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).some(
         (errors) => errors.length === 0,
       );
     },
     hasValidationErrors() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.errors).flat().length > 0;
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).flat().length > 0;
     },
     hasValidationWarnings() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
     },
     previewFixture() {
       if (this.previewFixtureKey === null) {

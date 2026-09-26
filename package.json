@@ -39,7 +39,7 @@
     "test:built-files-committed": "node tests/built-files-committed.js"
   },
   "dependencies": {
-    "@heise/embetty-server": "^2.0.3",
+    "@embetty/server": "^3.2.12",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/robots": "^2.5.0",
     "@nuxtjs/sitemap": "^2.4.0",
@@ -57,7 +57,7 @@
     "node-env-file": "^0.1.8",
     "nuxt": "~2.18.1",
     "nuxt-helmet": "^3.0.0",
-    "openapi-backend": "^5.20.1",
+    "openapi-backend": "^5.21.1",
     "sanitize-filename": "^1.6.4",
     "sass": "^1.104.1",
     "sass-loader": "^10.5.2",
@@ -79,13 +79,13 @@
     "broken-link-checker": "^0.7.8",
     "dir-compare": "^5.0.0",
     "disparity": "^3.2.0",
-    "eslint": "~10.10.0",
+    "eslint": "~10.11.0",
     "eslint-plugin-import-x": "~4.17.1",
-    "eslint-plugin-jsdoc": "~64.0.1",
+    "eslint-plugin-jsdoc": "~64.5.4",
     "eslint-plugin-jsonc": "~3.4.2",
     "eslint-plugin-promise": "~7.3.0",
-    "eslint-plugin-sonarjs": "~4.2.0",
-    "eslint-plugin-unicorn": "~74.0.0",
+    "eslint-plugin-sonarjs": "~4.2.1",
+    "eslint-plugin-unicorn": "~76.0.0",
     "eslint-plugin-vue": "~10.11.0",
     "eslint-plugin-vuejs-accessibility": "~2.6.0",
     "globals": "^17.12.0",
@@ -99,9 +99,29 @@
     "stylelint-config-standard-scss": "~17.0.0",
     "stylelint-order": "~8.1.1",
     "terminate": "^2.8.0",
-    "vitest": "^5.0.0",
+    "vitest": "^5.0.1",
     "vue-eslint-parser": "~10.4.1",
     "widdershins": "^4.0.1"
+  },
+  "overrides": {
+    "broken-link-checker@^0.7.8": {
+      "useragent@2.3.0": {
+        "tmp": "^0.2.7"
+      }
+    },
+    "nuxt@~2.18.1": {
+      "external-editor@3.1.0": {
+        "tmp": "^0.2.7"
+      },
+      "source-map-resolve@0.5.3": {
+        "decode-uri-component": "^0.5.0"
+      }
+    },
+    "widdershins@^4.0.1": {
+      "httpsnippet@1.25.0": {
+        "form-data": "3.0.5"
+      }
+    }
   },
   "homepage": "https://open-fixture-library.org/",
   "repository": {
@@ -119,8 +139,9 @@
   ],
   "license": "MIT",
   "allowScripts": {
-    "core-js@3.37.1": true,
+    "core-js@3.50.0": true,
     "nuxt@2.18.1": true,
+    "@parcel/watcher@2.6.0": true,
     "unrs-resolver@1.12.2": true
   }
 }

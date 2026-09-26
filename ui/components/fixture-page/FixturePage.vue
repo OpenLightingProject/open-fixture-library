@@ -263,11 +263,7 @@ export default {
     modes() {
       const modes = this.fixture.modes;
 
-      if (!this.modesLimited) {
-        return modes;
-      }
-
-      return modes.slice(0, this.modeNumberLoadLimit);
+      return this.modesLimited ? modes.slice(0, this.modeNumberLoadLimit) : modes;
     },
 
     /**
