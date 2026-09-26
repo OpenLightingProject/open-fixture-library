@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Visibox",
+  "shortName": "Visibox",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Darrel O'Pry"],
+    "createDate": "2026-09-25",
+    "lastModifyDate": "2026-09-25",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-09-25",
+      "comment": "GDTF v1.2 fixture type ID: 0D4E1B91-87B9-4F7E-B8D6-526827CA6F19"
+    }
+  },
+  "comment": "Software media server for live performance video (single-layer, cue-centric). Content behavior (loops, fades, effects, geometry) is authored in Visibox; the console selects, triggers, and monitors it. Functions fire once on entering their range and re-arm through Idle, so program cues as \"function value, then back to 0\".",
+  "links": {
+    "productPage": [
+      "https://spaceage.tv/"
+    ]
+  },
+  "availableChannels": {
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Idle (re-arms the Function channel)"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Maintenance",
+          "comment": "Play"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Maintenance",
+          "comment": "Pause"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Maintenance",
+          "comment": "Resume"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Maintenance",
+          "comment": "Next clip"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Maintenance",
+          "comment": "Previous clip"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Maintenance",
+          "comment": "Next song"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Maintenance",
+          "comment": "Previous song"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Maintenance",
+          "comment": "Stop all clips"
+        },
+        {
+          "dmxRange": [72, 239],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Panic (reload all outputs)"
+        }
+      ]
+    },
+    "Song Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "No song selected"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Song 1…255 (show order)"
+        }
+      ]
+    },
+    "Song Select low byte (reserved)": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Ignored; held for a future 16-bit song select"
+      }
+    },
+    "Clip Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Stop all clips"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Clip 1…255 of the selected song"
+        }
+      ]
+    },
+    "Clip Select low byte (reserved)": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Ignored; held for a future 16-bit clip select"
+      }
+    },
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "comment": "0 = blackout (playback continues)"
+      }
+    },
+    "Volume": {
+      "fineChannelAliases": ["Volume fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Generic",
+        "comment": "Master audio level"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "Colour rotation 0…360°, 0 = unmodified"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Keeps the footprint stable"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Visibox v1",
+      "channels": [
+        "Function",
+        "Song Select",
+        "Song Select low byte (reserved)",
+        "Clip Select",
+        "Clip Select low byte (reserved)",
+        "Intensity",
+        "Intensity fine",
+        "Volume",
+        "Volume fine",
+        "Hue",
+        "Hue fine",
+        "Reserved"
+      ]
+    }
+  ]
+}
