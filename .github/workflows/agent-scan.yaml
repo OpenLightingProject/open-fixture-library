@@ -25,3 +25,6 @@ jobs:
           scan-issues: true
           trusted-author-associations: "owner,member"
           mode: labels
+          label-community-flagged: "suspected-bot"
+          label-mixed: "suspected-bot"
+          label-automation: "suspected-bot"
