@@ -20,11 +20,9 @@ export const gdtfUnits = {
     return `${value}kg`;
   },
   Time(value, otherValue) {
-    if (physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)) {
-      return `${value * 1000}ms`;
-    }
-
-    return `${value}s`;
+    return physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)
+      ? `${value * 1000}ms`
+      : `${value}s`;
   },
   Temperature(value) {
     return `${value}K`;
@@ -68,11 +66,9 @@ export const gdtfUnits = {
   AngularSpeed(value, otherValue) {
     // values are in deg/s
 
-    if (value === 0 && otherValue === null) {
-      return 'stop';
-    }
-
-    return `${value / 360 * 60}rpm`;
+    return value === 0 && otherValue === null
+      ? 'stop'
+      : `${value / 360 * 60}rpm`;
   },
   AngularAcc(value) {
     return `${value}deg/s2`;
@@ -222,15 +218,17 @@ const gdtfAttributes = {
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       const gdtfSlotIndex = Number.parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
 
-      if ('Wheel' in gdtfCapability._channelFunction.$) {
-        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
-        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
+      if (!('Wheel' in gdtfCapability._channelFunction.$)) {
+        return;
+      }
 
-        if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
-          // clear comment
-          gdtfCapability.$.Name = '';
-        }
+      const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+      const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
+      const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
+
+      if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
+        // clear comment
+        gdtfCapability.$.Name = '';
       }
     },
   },
@@ -427,20 +425,24 @@ const gdtfAttributes = {
       // sometimes a workaround to add color information is used: reference a virtual color wheel
 
       const index = Number.parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
-      if ('Wheel' in gdtfCapability._channelFunction.$) {
-        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
-        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[index];
+      if (!('Wheel' in gdtfCapability._channelFunction.$)) {
+        return;
+      }
 
-        if (gdtfSlot) {
-          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
-            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
-          }
+      const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+      const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
+      const gdtfSlot = gdtfWheel.Slot[index];
 
-          if (gdtfSlot.$.Color) {
-            capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
-          }
-        }
+      if (!gdtfSlot) {
+        return;
+      }
+
+      if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
+        gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
+      }
+
+      if (gdtfSlot.$.Color) {
+        capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
       }
     },
   },

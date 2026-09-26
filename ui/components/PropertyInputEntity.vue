@@ -212,11 +212,8 @@ export default {
 
       const otherFieldSelectedUnit = getSelectedUnit(this.associatedEntity, this.enumValues, this.unitNames, this.units);
 
-      if (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues)) {
-        return true;
-      }
-
-      return this.selectedUnit === otherFieldSelectedUnit;
+      return (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues))
+        || this.selectedUnit === otherFieldSelectedUnit;
     },
   },
   mounted() {
@@ -284,11 +281,7 @@ function parseUnitFromPattern(pattern) {
  * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
-  if (unitString === '') {
-    return 'number';
-  }
-
-  return unitString.replace('^2', '²').replace('^3', '³');
+  return unitString === '' ? 'number' : unitString.replace('^2', '²').replace('^3', '³');
 }
 
 /**

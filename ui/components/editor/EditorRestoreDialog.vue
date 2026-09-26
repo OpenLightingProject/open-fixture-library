@@ -56,10 +56,9 @@ export default {
   },
   computed: {
     restoredDate() {
-      if (this.modelValue === undefined) {
-        return undefined;
-      }
-      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
+      return this.modelValue === undefined
+        ? undefined
+        : (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
     },
   },
   methods: {

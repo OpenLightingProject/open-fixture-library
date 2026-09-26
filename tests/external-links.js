@@ -148,10 +148,7 @@ async function testExternalLink(url) {
 
   const resultHEAD = await getResult('HEAD');
 
-  if (resultHEAD.failed) {
-    return getResult('GET');
-  }
-  return resultHEAD;
+  return resultHEAD.failed ? getResult('GET') : resultHEAD;
 
   /**
    * @param {string} method - The HTTP requests method, e.g. GET or HEAD.

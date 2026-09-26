@@ -182,14 +182,16 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push('meta.lastModifyDate is earlier than meta.createDate.');
     }
 
-    if (meta.importPlugin) {
-      const pluginData = plugins.data[meta.importPlugin];
-      const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
-      const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+    if (!meta.importPlugin) {
+      return;
+    }
 
-      if (!(isImportPlugin || isOutdatedImportPlugin)) {
-        result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
-      }
+    const pluginData = plugins.data[meta.importPlugin];
+    const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
+    const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+
+    if (!(isImportPlugin || isOutdatedImportPlugin)) {
+      result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
     }
   }
 
@@ -836,17 +838,19 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       // "6ch" / "8-Channel" / "9 channels" mode names
       for (const nameProperty of ['name', 'shortName']) {
         const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
-        if (match !== null) {
-          const intendedLength = Number.parseInt(match[1], 10);
+        if (!match) {
+          continue;
+        }
 
-          if (mode.channels.length !== intendedLength) {
-            result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
-          }
+        const intendedLength = Number.parseInt(match[1], 10);
 
-          const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
-            result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
-          }
+        if (mode.channels.length !== intendedLength) {
+          result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
+        }
+
+        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+        if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
+          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
     }
@@ -1217,11 +1221,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         (capability) => capability.type.startsWith('Fog'),
       );
 
-      if (fogCapabilities.length === 0) {
-        return false;
-      }
-
-      return fogCapabilities.some((capability) => capability.fogType === fogType) || fogCapabilities.every((capability) => capability.fogType === null);
+      return fogCapabilities.length > 0 && (
+        fogCapabilities.some((capability) => capability.fogType === fogType)
+        || fogCapabilities.every((capability) => capability.fogType === null)
+      );
     }
 
     /**
@@ -1329,11 +1332,7 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
  * @returns {string} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
-  if (typeof error === 'string') {
-    return `${description} ${error}`;
-  }
-
-  return `${description} ${inspect(error, false, null)}`;
+  return typeof error === 'string' ? `${description} ${error}` : `${description} ${inspect(error, false, null)}`;
 }
 
 /**
@@ -1342,13 +1341,10 @@ function getErrorString(description, error) {
  * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
  */
 function arraysEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-
-  if (a == null || b == null || a.length !== b.length) {
-    return false;
-  }
-
-  return a.every((value, index) => value === b[index]);
+  return (a === b) || (
+    a != null
+    && b != null
+    && a.length === b.length
+    && a.every((value, index) => value === b[index])
+  );
 }

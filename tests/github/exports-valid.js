@@ -67,11 +67,7 @@ try {
       }
 
       const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
-      if (pluginCompare !== 0) {
-        return pluginCompare;
-      }
-
-      return a.testKey.localeCompare(b.testKey);
+      return pluginCompare === 0 ? a.testKey.localeCompare(b.testKey) : pluginCompare;
     });
 
   if (tasks.length === 0) {

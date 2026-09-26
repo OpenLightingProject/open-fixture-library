@@ -398,19 +398,20 @@ export default {
       return modeName;
     },
     title() {
-      if (this.channel.editMode === 'add-existing') {
-        return `Add channel to mode ${this.currentModeDisplayName}`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          return `Add channel to mode ${this.currentModeDisplayName}`;
+        }
+        case 'create': {
+          return 'Create new channel';
+        }
+        case 'edit-duplicate': {
+          return 'Edit channel duplicate';
+        }
+        default: {
+          return 'Edit channel';
+        }
       }
-
-      if (this.channel.editMode === 'create') {
-        return 'Create new channel';
-      }
-
-      if (this.channel.editMode === 'edit-duplicate') {
-        return 'Edit channel duplicate';
-      }
-
-      return 'Edit channel';
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(
@@ -418,16 +419,18 @@ export default {
       );
     },
     submitButtonTitle() {
-      if (this.channel.editMode === 'add-existing') {
-        const count = this.selectedChannelUuids.length;
-        return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          const count = this.selectedChannelUuids.length;
+          return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+        }
+        case 'create': {
+          return 'Create channel';
+        }
+        default: {
+          return 'Save changes';
+        }
       }
-
-      if (this.channel.editMode === 'create') {
-        return 'Create channel';
-      }
-
-      return 'Save changes';
     },
   },
   watch: {

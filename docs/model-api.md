@@ -67,9 +67,9 @@ Currently used to create matrix channels.</p>
 <dt><a href="#Resolution">Resolution</a> : <code>number</code></dt>
 <dd><p>1 for 8bit, 2 for 16bit, ...</p>
 </dd>
-<dt><a href="#TriggerCapability">TriggerCapability</a> : <code>object</code></dt>
-<dd></dd>
 <dt><a href="#SwitchingChannelBehavior">SwitchingChannelBehavior</a> : <code>&#x27;keyOnly&#x27;</code> | <code>&#x27;defaultOnly&#x27;</code> | <code>&#x27;switchedOnly&#x27;</code> | <code>&#x27;all&#x27;</code></dt>
+<dd></dd>
+<dt><a href="#TriggerCapability">TriggerCapability</a> : <code>object</code></dt>
 <dd></dd>
 </dl>
 
@@ -2704,6 +2704,10 @@ Creates a new WheelSlot instance.
 1 for 8bit, 2 for 16bit, ...
 
 **Kind**: global typedef  
+<a name="SwitchingChannelBehavior"></a>
+
+## SwitchingChannelBehavior : <code>&#x27;keyOnly&#x27;</code> \| <code>&#x27;defaultOnly&#x27;</code> \| <code>&#x27;switchedOnly&#x27;</code> \| <code>&#x27;all&#x27;</code>
+**Kind**: global typedef  
 <a name="TriggerCapability"></a>
 
 ## TriggerCapability : <code>object</code>
@@ -2715,7 +2719,3 @@ Creates a new WheelSlot instance.
 | dmxRange | [<code>Range</code>](#Range) | The DMX range that triggers the switching channel. |
 | switchTo | <code>string</code> | The channel to switch to in the given DMX range. |
 
-<a name="SwitchingChannelBehavior"></a>
-
-## SwitchingChannelBehavior : <code>&#x27;keyOnly&#x27;</code> \| <code>&#x27;defaultOnly&#x27;</code> \| <code>&#x27;switchedOnly&#x27;</code> \| <code>&#x27;all&#x27;</code>
-**Kind**: global typedef  

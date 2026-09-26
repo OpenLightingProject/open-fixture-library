@@ -110,11 +110,7 @@ export default {
 
       const manufacturerKey = this.fixture.manufacturerKey;
 
-      if (manufacturerKey === '') {
-        return '';
-      }
-
-      return this.manufacturers[manufacturerKey].name;
+      return manufacturerKey === '' ? '' : this.manufacturers[manufacturerKey].name;
     },
     fixtureNameIsWithoutManufacturer() {
       const manufacturerName = this.manufacturerName.trim().toLowerCase();

@@ -1,6 +1,6 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
-import replaceNullSwitchChannels from '../../lib/replace-null-switch-channels.js';
+import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 export const version = '0.4.0';
@@ -149,11 +149,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
-    if (panTiltMax > -Infinity) {
-      return panTiltMax;
-    }
-
-    return null;
+    return panTiltMax > -Infinity ? panTiltMax : null;
   });
 
   const focus = {
@@ -183,10 +179,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   delete jsonPhysical.powerConnectors;
 
   // don't return empty objects
-  if (Object.keys(jsonPhysical).length > 0) {
-    return jsonPhysical;
-  }
-  return null;
+  return Object.keys(jsonPhysical).length > 0 ? jsonPhysical : null;
 }
 
 /**

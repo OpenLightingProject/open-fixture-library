@@ -120,10 +120,6 @@ export default {
  * @returns {[number, number] | null} Range array with the inputs or null if both inputs were null.
  */
 function getRange(start, end) {
-  if (start === null && end === null) {
-    return null;
-  }
-
-  return [start, end];
+  return start === null && end === null ? null : [start, end];
 }
 </script>

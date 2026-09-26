@@ -279,7 +279,7 @@ export default {
   },
   computed: {
     fixtureEditor() {
-      const vueForm = this.$parent;
+      const vueForm = this.$parent.$parent;
       return vueForm.$parent;
     },
     channelListNotEmpty() {

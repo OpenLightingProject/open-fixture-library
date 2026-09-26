@@ -223,18 +223,11 @@ export default {
       }
 
       const propertySchema = capabilitySchema.properties[this.propertyName];
-      if (!propertySchema) {
-        return '';
-      }
-
-      return (propertySchema.$ref || '').replace('definitions.json#/entities/', '');
+      const ref = propertySchema?.$ref ?? '';
+      return ref.replace('definitions.json#/entities/', '');
     },
     entitySchema() {
-      if (this.entity === '') {
-        return null;
-      }
-
-      return entitiesSchema[this.entity];
+      return this.entity === '' ? null : entitiesSchema[this.entity];
     },
     propertyDataStepped: {
       get() {
@@ -335,10 +328,12 @@ export default {
     async focusEndField() {
       await this.$nextTick();
 
-      if (this.hasStartEnd) {
-        const focusField = this.propertyDataStart === '' ? this.$refs.startField : this.$refs.endField;
-        focusField.focus();
+      if (!this.hasStartEnd) {
+        return;
       }
+
+      const focusField = this.propertyDataStart === '' ? this.$refs.startField : this.$refs.endField;
+      focusField.focus();
     },
     onUnitSelected(newUnit) {
       if (!this.propertyDataStart.endsWith(newUnit)) {

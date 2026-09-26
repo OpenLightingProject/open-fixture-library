@@ -125,18 +125,20 @@ function addAttribute(xml, mode, attribute, channels) {
 
     channel = getUsableChannel(channel);
 
-    if (channel instanceof CoarseChannel) {
-      const capabilities = channel.capabilities;
+    if (!(channel instanceof CoarseChannel)) {
+      continue;
+    }
 
-      const xmlCapabilities = xmlChannel.element({
-        Definitions: {
-          '@index': capabilities.length,
-        },
-      });
+    const capabilities = channel.capabilities;
 
-      for (const capability of capabilities) {
-        addCapability(capability, xmlCapabilities);
-      }
+    const xmlCapabilities = xmlChannel.element({
+      Definitions: {
+        '@index': capabilities.length,
+      },
+    });
+
+    for (const capability of capabilities) {
+      addCapability(capability, xmlCapabilities);
     }
   }
 }
@@ -210,11 +212,9 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
  * @returns {number} The DMX value this channel should be set to as default.
  */
 function getDefaultValue(channel) {
-  if (channel instanceof FineChannel) {
-    return channel.defaultValue;
-  }
-
-  return channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
+  return channel instanceof FineChannel
+    ? channel.defaultValue
+    : channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 }
 
 /**
@@ -222,11 +222,7 @@ function getDefaultValue(channel) {
  * @returns {CoarseChannel | FineChannel} Switching channels resolved to their default channel.
  */
 function getUsableChannel(channel) {
-  if (channel instanceof SwitchingChannel) {
-    return channel.defaultChannel;
-  }
-
-  return channel;
+  return channel instanceof SwitchingChannel ? channel.defaultChannel : channel;
 }
 
 /**
@@ -265,10 +261,7 @@ function getChannelsByAttribute(channels) {
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {
-      if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
-        return 'FINE';
-      }
-      return 'EXTRA';
+      return channel.resolution === CoarseChannel.RESOLUTION_16BIT ? 'FINE' : 'EXTRA';
     }
 
     const oflToDLightMap = {
