@@ -1,0 +1,953 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tour-Flash Pro",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["DerHoffmann"],
+    "createDate": "2025-01-24",
+    "lastModifyDate": "2025-01-24",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-01-24",
+      "comment": "created by Q Light Controller Plus (version 4.14.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [584, 294, 189],
+    "weight": 13.5,
+    "power": 1100,
+    "DMXconnector": "3-pin IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 30]
+    },
+    "matrixPixels": {
+      "spacing": [0, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      2,
+      6,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "fineChannelAliases": ["Master dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe"
+      }
+    },
+    "Strobe 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Lightning Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Duration (14 ms - 650 ms)",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityRedFine."
+      }
+    },
+    "Green fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityGreenFine."
+      }
+    },
+    "Blue fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityBlueFine."
+      }
+    },
+    "White fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset IntensityWhiteFine."
+      }
+    },
+    "Color macro & White": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "Intensity",
+          "comment": "Red 100% / Green Up / Blue 0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "Intensity",
+          "comment": "Red Down / Green 100% / Blue 0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "Intensity",
+          "comment": "Red 0% / Green 100% / Blue Up"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "Intensity",
+          "comment": "Red 0% / Green Down / Blue 100%"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "Intensity",
+          "comment": "Red Up / Green 0% / Blue 100%"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "Intensity",
+          "comment": "Red 100% / Green 0% / Blue Down"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "Intensity",
+          "comment": "Red 100% / Green Up / Blue Up"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "Intensity",
+          "comment": "Red Down / Green Down / Blue 100%"
+        },
+        {
+          "dmxRange": [171, 195],
+          "type": "Intensity",
+          "comment": "All Led at Full Output"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Intensity",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Intensity",
+          "comment": "3000K"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Intensity",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Intensity",
+          "comment": "3500K"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Intensity",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Intensity",
+          "comment": "4200K"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Intensity",
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Intensity",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Intensity",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Intensity",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Intensity",
+          "comment": "7200K"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Intensity",
+          "comment": "8000K"
+        }
+      ]
+    },
+    "Auto Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 30],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "Effect",
+          "effectName": "Auto 8"
+        },
+        {
+          "dmxRange": [171, 190],
+          "type": "Effect",
+          "effectName": "Auto 9"
+        },
+        {
+          "dmxRange": [191, 225],
+          "type": "Effect",
+          "effectName": "Auto 10"
+        }
+      ]
+    },
+    "Auto Speed Adjustment": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed Adjustment",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Speed",
+          "comment": "Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Speed",
+          "comment": "Dim1",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Speed",
+          "comment": "Dim2",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Speed",
+          "comment": "Dim3",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Speed",
+          "comment": "Dim4",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Halogen Effect": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Halogen Effect (On/Off)"
+      }
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "Intensity",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "Intensity",
+          "comment": "3000K"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "Intensity",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "Intensity",
+          "comment": "3500K"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "Intensity",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "Intensity",
+          "comment": "4200K"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "Intensity",
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "Intensity",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [171, 190],
+          "type": "Intensity",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [191, 210],
+          "type": "Intensity",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [211, 230],
+          "type": "Intensity",
+          "comment": "7200K"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Intensity",
+          "comment": "8000K"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Master dimmer",
+        "Halogen Effect",
+        "Strobe 1",
+        "Duration",
+        "Strobe 2"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master dimmer",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Strobe 1",
+        "Duration",
+        "Strobe 2"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Master dimmer",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "CCT",
+        "Strobe 1",
+        "Duration",
+        "Strobe 2",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "17-channel",
+      "shortName": "17ch",
+      "channels": [
+        "Master dimmer",
+        "Master dimmer fine",
+        "Red 1",
+        "Red fine",
+        "Green 1",
+        "Green fine",
+        "Blue 1",
+        "Blue fine",
+        "White 1",
+        "White fine",
+        "Color macro & White",
+        "Strobe 1",
+        "Duration",
+        "Strobe 2",
+        "Auto Mode",
+        "Auto Speed Adjustment",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "40-channel",
+      "shortName": "40ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe 1",
+        "Duration",
+        "Strobe 2",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12"
+      ]
+    },
+    {
+      "name": "52-channel",
+      "shortName": "52ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe 1",
+        "Duration",
+        "Strobe 2",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "White 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "White 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "White 7",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "White 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "White 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "White 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "White 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12",
+        "White 12"
+      ]
+    }
+  ]
+}
