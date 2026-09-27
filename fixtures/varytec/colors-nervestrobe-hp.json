@@ -1,0 +1,1106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colors NerveStrobe HP",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Erick Hoffmann", "DerHoffmann"],
+    "createDate": "2025-01-24",
+    "lastModifyDate": "2025-01-24",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-01-24",
+      "comment": "created by Q Light Controller Plus (version 4.14.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [446, 248, 100],
+    "weight": 5.5,
+    "power": 250,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    },
+    "matrixPixels": {
+      "spacing": [0, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      6,
+      2,
+      1
+    ]
+  },
+  "availableChannels": {
+    "White Bar Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White Bar Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LEDs On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LEDs Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Impulse, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Randomly increasing brightness, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Randomly decreasing brightness, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Strobe effect, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Burst strobe, 5 s to 1 s",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "increasing speed, from"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LEDs On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Wash Colour macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "LEDs Off"
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow"
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "ColorPreset",
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "comment": "Warm white"
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "comment": "Cold White"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "ColorPreset",
+          "comment": "Colour change"
+        },
+        {
+          "dmxRange": [128, 192],
+          "type": "ColorPreset",
+          "comment": "Colour change from colour 1 to colour 12, speed increasing"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorPreset",
+          "comment": "Gradual colour change from colour 1 to colour 12, speed increasing"
+        }
+      ]
+    },
+    "White Bar Constant strobe pulse": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse",
+        "comment": "Strobe impulse duration, increasing from 7 ms to 650 ms",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Wash Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer patterns": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 25],
+          "type": "Intensity",
+          "comment": "Pattern 1"
+        },
+        {
+          "dmxRange": [26, 40],
+          "type": "Intensity",
+          "comment": "Pattern 2"
+        },
+        {
+          "dmxRange": [41, 55],
+          "type": "Intensity",
+          "comment": "Pattern 3"
+        },
+        {
+          "dmxRange": [56, 70],
+          "type": "Intensity",
+          "comment": "Pattern 4"
+        },
+        {
+          "dmxRange": [71, 85],
+          "type": "Intensity",
+          "comment": "Pattern 5"
+        },
+        {
+          "dmxRange": [86, 100],
+          "type": "Intensity",
+          "comment": "Pattern 6"
+        },
+        {
+          "dmxRange": [101, 115],
+          "type": "Intensity",
+          "comment": "Pattern 7"
+        },
+        {
+          "dmxRange": [116, 130],
+          "type": "Intensity",
+          "comment": "Pattern 8"
+        },
+        {
+          "dmxRange": [131, 145],
+          "type": "Intensity",
+          "comment": "Pattern 9"
+        },
+        {
+          "dmxRange": [146, 160],
+          "type": "Intensity",
+          "comment": "Pattern 10"
+        },
+        {
+          "dmxRange": [161, 175],
+          "type": "Intensity",
+          "comment": "Pattern 11"
+        },
+        {
+          "dmxRange": [176, 190],
+          "type": "Intensity",
+          "comment": "Pattern 12"
+        },
+        {
+          "dmxRange": [191, 205],
+          "type": "Intensity",
+          "comment": "Pattern 13"
+        },
+        {
+          "dmxRange": [206, 220],
+          "type": "Intensity",
+          "comment": "Pattern 14"
+        },
+        {
+          "dmxRange": [221, 235],
+          "type": "Intensity",
+          "comment": "Pattern 15"
+        },
+        {
+          "dmxRange": [236, 250],
+          "type": "Intensity",
+          "comment": "Pattern 16"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Wash Running Speed Dimmer Patterns": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Change, increasing speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Wash Dimmer Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Dimmer Segment 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Wash Red Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Red Segment 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Green Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Green Segment 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Blue Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash Blue Segment 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash White Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash White Segment 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LEDs On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LEDs Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Impulses, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Randomly increasing brightness, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Randomly decreasing brightness, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Strobe effect, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Burst strobe, 5 s to 1 s",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe effect, increasing speed, from"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LEDs On",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Wash Red Segment 1-6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Green Segment 1-6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Blue Segment 1-6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash White Segment 1-6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Wash Red Segment 7-12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Wash Green Segment 7-12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Wash Blue Segment 7-12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Wash White Segment 7-12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "White Bar Dimmer",
+        "White Bar Strobe",
+        "Wash Colour macros"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "White Bar Dimmer",
+        "White Bar Strobe",
+        "Wash Dimmer",
+        "Wash Colour macros",
+        "Wash Dimmer patterns",
+        "Wash Running Speed Dimmer Patterns"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "White Bar Dimmer",
+        "White Bar Strobe",
+        "White Bar Constant strobe pulse",
+        "Wash Dimmer",
+        "Wash Strobe",
+        "Wash Red Segment 1",
+        "Wash Green Segment 1",
+        "Wash Blue Segment 1",
+        "Wash White Segment 1",
+        "Wash Colour macros",
+        "Wash Dimmer patterns",
+        "Wash Running Speed Dimmer Patterns"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "White Bar Dimmer",
+        "White Bar Strobe",
+        "White Bar Constant strobe pulse",
+        "Wash Dimmer",
+        "Wash Strobe",
+        "Wash Red Segment 1-6",
+        "Wash Green Segment 1-6",
+        "Wash Blue Segment 1-6",
+        "Wash White Segment 1-6",
+        "Wash Red Segment 7-12",
+        "Wash Green Segment 7-12",
+        "Wash Blue Segment 7-12",
+        "Wash White Segment 7-12",
+        "Wash Colour macros",
+        "Wash Dimmer patterns",
+        "Wash Running Speed Dimmer Patterns"
+      ]
+    },
+    {
+      "name": "56-channel",
+      "shortName": "56ch",
+      "channels": [
+        "White Bar Dimmer",
+        "White Bar Strobe",
+        "White Bar Constant strobe pulse",
+        "Wash Dimmer",
+        "Wash Strobe",
+        "Wash Colour macros",
+        "Wash Dimmer patterns",
+        "Wash Running Speed Dimmer Patterns",
+        "Wash Red Segment 1",
+        "Wash Green Segment 1",
+        "Wash Blue Segment 1",
+        "Wash White Segment 1",
+        "Wash Red Segment 2",
+        "Wash Green Segment 2",
+        "Wash Blue Segment 2",
+        "Wash White Segment 2",
+        "Wash Red Segment 3",
+        "Wash Green Segment 3",
+        "Wash Blue Segment 3",
+        "Wash White Segment 3",
+        "Wash Red Segment 4",
+        "Wash Green Segment 4",
+        "Wash Blue Segment 4",
+        "Wash White Segment 4",
+        "Wash Red Segment 5",
+        "Wash Green Segment 5",
+        "Wash Blue Segment 5",
+        "Wash White Segment 5",
+        "Wash Red Segment 6",
+        "Wash Green Segment 6",
+        "Wash Blue Segment 6",
+        "Wash White Segment 6",
+        "Wash Red Segment 7",
+        "Wash Green Segment 7",
+        "Wash Blue Segment 7",
+        "Wash White Segment 7",
+        "Wash Red Segment 8",
+        "Wash Green Segment 8",
+        "Wash Blue Segment 8",
+        "Wash White Segment 8",
+        "Wash Red Segment 9",
+        "Wash Green Segment 9",
+        "Wash Blue Segment 9",
+        "Wash White Segment 9",
+        "Wash Red Segment 10",
+        "Wash Green Segment 10",
+        "Wash Blue Segment 10",
+        "Wash White Segment 10",
+        "Wash Red Segment 11",
+        "Wash Green Segment 11",
+        "Wash Blue Segment 11",
+        "Wash White Segment 11",
+        "Wash Red Segment 12",
+        "Wash Green Segment 12",
+        "Wash Blue Segment 12",
+        "Wash White Segment 12"
+      ]
+    },
+    {
+      "name": "68-channel",
+      "shortName": "68ch",
+      "channels": [
+        "White Bar Dimmer",
+        "White Bar Strobe",
+        "White Bar Constant strobe pulse",
+        "Wash Dimmer",
+        "Wash Strobe",
+        "Wash Colour macros",
+        "Wash Dimmer patterns",
+        "Wash Running Speed Dimmer Patterns",
+        "Wash Dimmer Segment 1",
+        "Wash Red Segment 1",
+        "Wash Green Segment 1",
+        "Wash Blue Segment 1",
+        "Wash White Segment 1",
+        "Wash Dimmer Segment 2",
+        "Wash Red Segment 2",
+        "Wash Green Segment 2",
+        "Wash Blue Segment 2",
+        "Wash White Segment 2",
+        "Wash Dimmer Segment 3",
+        "Wash Red Segment 3",
+        "Wash Green Segment 3",
+        "Wash Blue Segment 3",
+        "Wash White Segment 3",
+        "Wash Dimmer Segment 4",
+        "Wash Red Segment 4",
+        "Wash Green Segment 4",
+        "Wash Blue Segment 4",
+        "Wash White Segment 4",
+        "Wash Dimmer Segment 5",
+        "Wash Red Segment 5",
+        "Wash Green Segment 5",
+        "Wash Blue Segment 5",
+        "Wash White Segment 5",
+        "Wash Dimmer Segment 6",
+        "Wash Red Segment 6",
+        "Wash Green Segment 6",
+        "Wash Blue Segment 6",
+        "Wash White Segment 6",
+        "Wash Dimmer Segment 7",
+        "Wash Red Segment 7",
+        "Wash Green Segment 7",
+        "Wash Blue Segment 7",
+        "Wash White Segment 7",
+        "Wash Dimmer Segment 8",
+        "Wash Red Segment 8",
+        "Wash Green Segment 8",
+        "Wash Blue Segment 8",
+        "Wash White Segment 8",
+        "Wash Dimmer Segment 9",
+        "Wash Red Segment 9",
+        "Wash Green Segment 9",
+        "Wash Blue Segment 9",
+        "Wash White Segment 9",
+        "Wash Dimmer Segment 10",
+        "Wash Red Segment 10",
+        "Wash Green Segment 10",
+        "Wash Blue Segment 10",
+        "Wash White Segment 10",
+        "Wash Dimmer Segment 11",
+        "Wash Red Segment 11",
+        "Wash Green Segment 11",
+        "Wash Blue Segment 11",
+        "Wash White Segment 11",
+        "Wash Dimmer Segment 12",
+        "Wash Red Segment 12",
+        "Wash Green Segment 12",
+        "Wash Blue Segment 12",
+        "Wash White Segment 12"
+      ]
+    }
+  ]
+}
