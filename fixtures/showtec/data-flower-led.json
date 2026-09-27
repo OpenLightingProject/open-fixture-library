@@ -1,0 +1,534 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Data Flower LED",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Niels Ott"],
+    "createDate": "2025-09-22",
+    "lastModifyDate": "2025-09-22",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-09-22",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "dimensions": [200, 260, 310],
+    "weight": 4,
+    "power": 117,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Open/White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Red/Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue/Pink",
+          "colors": ["#0000ff", "#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink/Yellow",
+          "colors": ["#ff00ff", "#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow/Green",
+          "colors": ["#ffff00", "#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green/Orange",
+          "colors": ["#00ff00", "#ff6600"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff6600"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange/Cyan",
+          "colors": ["#ff6600", "#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan/UV",
+          "colors": ["#00ffff", "#6a00cc"]
+        },
+        {
+          "type": "Color",
+          "name": "UV",
+          "colors": ["#6a00cc"]
+        },
+        {
+          "type": "Color",
+          "name": "White 3200K",
+          "colors": ["#ffe2aa"]
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": []
+    },
+    "Mirror Dish": {
+      "slots": [
+        {
+          "type": "Prism",
+          "name": "Fixed position"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 35,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Output blackout",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open/White"
+        },
+        {
+          "dmxRange": [16, 22],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [23, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Red/Blue"
+        },
+        {
+          "dmxRange": [30, 36],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [37, 43],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Blue/Pink"
+        },
+        {
+          "dmxRange": [44, 50],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [51, 57],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Pink/Yellow"
+        },
+        {
+          "dmxRange": [58, 64],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [65, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Yellow/Green"
+        },
+        {
+          "dmxRange": [72, 78],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [79, 85],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Green/Orange"
+        },
+        {
+          "dmxRange": [86, 92],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [93, 99],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Orange/Cyan"
+        },
+        {
+          "dmxRange": [100, 106],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [107, 113],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Cyan/UV"
+        },
+        {
+          "dmxRange": [114, 120],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [121, 127],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "White 3200K"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "slotNumber": 18,
+          "shakeSpeedStart": "fast CW",
+          "shakeSpeedEnd": "slow CW",
+          "comment": "CW, fast to slow"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "slotNumber": 19,
+          "shakeSpeedStart": "slow CCW",
+          "shakeSpeedEnd": "fast CCW",
+          "comment": "CCW, slow to fast"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 130,
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [18, 27],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "comment": "Bubbles"
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "comment": "Star"
+        },
+        {
+          "dmxRange": [38, 47],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "comment": "Fan"
+        },
+        {
+          "dmxRange": [48, 57],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "comment": "Four Circles"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "comment": "Three Bars"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "comment": "Wicked Brain"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "comment": "Angry Arrows"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "WheelShake",
+          "slotNumber": 9,
+          "comment": "Growing Circles"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "WheelShake",
+          "slotNumber": 10,
+          "comment": "Arrow Dance"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "WheelShake",
+          "slotNumber": 11,
+          "comment": "Gordian Knot"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "WheelShake",
+          "slotNumber": 12,
+          "comment": "Abstract Flower"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "slotNumber": 13,
+          "shakeSpeedStart": "fast CCW",
+          "shakeSpeedEnd": "slow CCW",
+          "comment": "CCW, fast to slow"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "slotNumber": 14,
+          "shakeSpeedStart": "slow CW",
+          "shakeSpeedEnd": "fast CW",
+          "comment": "CW, slow to fast"
+        }
+      ]
+    },
+    "Mirror Dish": {
+      "defaultValue": 200,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "comment": "Fixed position"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "slotNumber": 2,
+          "shakeSpeedStart": "fast CW",
+          "shakeSpeedEnd": "slow CW",
+          "comment": "CW, fast to slow"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow CCW",
+          "shakeSpeedEnd": "fast CCW",
+          "comment": "CCW, slow to fast"
+        }
+      ]
+    },
+    "Show": {
+      "defaultValue": 15,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "(Manual)"
+        },
+        {
+          "dmxRange": [1, 12],
+          "type": "Effect",
+          "effectName": "Output blackout"
+        },
+        {
+          "dmxRange": [13, 39],
+          "type": "Effect",
+          "effectName": "Show 0 (all)"
+        },
+        {
+          "dmxRange": [40, 66],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [67, 93],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [94, 120],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [121, 147],
+          "type": "Effect",
+          "effectName": "Show 4"
+        },
+        {
+          "dmxRange": [148, 174],
+          "type": "Effect",
+          "effectName": "Show 5"
+        },
+        {
+          "dmxRange": [175, 201],
+          "type": "Effect",
+          "effectName": "Show 6"
+        },
+        {
+          "dmxRange": [202, 228],
+          "type": "Effect",
+          "effectName": "Show 7"
+        },
+        {
+          "dmxRange": [229, 255],
+          "type": "Effect",
+          "effectName": "Show 8"
+        }
+      ]
+    },
+    "Show Speed": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Master Dimmer",
+        "Mirror Dish",
+        "Gobo Wheel",
+        "Color Wheel",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Mirror Dish",
+        "Show",
+        "Show Speed"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Show",
+        "Show Speed"
+      ]
+    }
+  ]
+}
