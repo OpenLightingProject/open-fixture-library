@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "movinghead(varytec realbeam rgbw 7)",
+  "shortName": "movinghead",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["http://localhost:8000"],
+    "createDate": "2026-09-27",
+    "lastModifyDate": "2026-09-27"
+  },
+  "comment": "http://localhost:8000",
+  "links": {
+    "manual": [
+      "http://localhost:8000"
+    ],
+    "productPage": [
+      "http://localhost:8000"
+    ],
+    "video": [
+      "http://localhost:8000"
+    ]
+  },
+  "rdm": {
+    "modelId": "invalid",
+    "softwareVersion": "http://localhost:8000"
+  },
+  "physical": {
+    "dimensions": [8, 8, 8],
+    "weight": 8,
+    "power": 8,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "http://localhost:8000",
+      "colorTemperature": 8,
+      "lumens": 8
+    },
+    "lens": {
+      "name": "http://localhost:8000",
+      "degreesMinMax": [5, 10]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dimmer"
+      }
+    },
+    "UselessMacros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "MicroPan": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "MicroTilt": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "UselessFunctions": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "http://localhost:8000",
+      "shortName": "http://localhost:8000",
+      "rdmPersonalityIndex": "invalid",
+      "channels": [
+        "Dimmer",
+        "UselessMacros",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Pan",
+        "MicroPan",
+        "Tilt",
+        "MicroTilt",
+        "UselessFunctions"
+      ]
+    }
+  ]
+}
