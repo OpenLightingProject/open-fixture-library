@@ -1,0 +1,214 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT_USB Transmitter",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Geroldi"],
+    "createDate": "2025-03-06",
+    "lastModifyDate": "2025-03-06"
+  },
+  "links": {
+    "other": [
+      "https://masterprogram.it"
+    ]
+  },
+  "wheels": {
+    "Gobo": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Screen Mode": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "App Screen"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Generic",
+          "comment": "Instant"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Generic",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Generic",
+          "comment": "Flash Bulb"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Shimmer"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random STrobe"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Generic",
+          "comment": "Random Hold A"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Generic",
+          "comment": "Random Hold B"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Generic",
+          "comment": "Stats (fps)"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Generic",
+          "comment": "Gobo Fade"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Generic",
+          "comment": "Gobo Pulse"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Generic",
+          "comment": "Gobo Pulse Random"
+        },
+        {
+          "dmxRange": [13, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Animation Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Led Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Generic",
+          "comment": "Led Mode"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Led Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Video": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Vibrate": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Palette ID": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Push Notification": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo 2": {
+      "name": "Gobo",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CN DMX by Artnet",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Screen Mode",
+        "Animation Speed",
+        "Led Mode",
+        "Led Speed",
+        "Video",
+        "Gobo 2",
+        "Vibrate",
+        "Palette ID",
+        "Push Notification"
+      ]
+    }
+  ]
+}
