@@ -1,0 +1,929 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "POWERPIXEL8-RGB",
+  "shortName": "PP18",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["ilpado"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2024-07-10",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-05-05",
+      "comment": "GDTF v1.2 fixture type ID: E1C51F01-0C4B-412F-9A71-B47ED17B27CB"
+    }
+  },
+  "rdm": {
+    "modelId": 3
+  },
+  "availableChannels": {
+    "Dim": {
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 190,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 189],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Sound strobe",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Min strobe"
+        },
+        {
+          "dmxRange": [202, 246],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Max strobe"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Effect",
+          "effectName": "Sound control (min)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [6, 23],
+          "type": "Effect",
+          "effectName": "",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [24, -1],
+          "type": "Effect",
+          "effectName": "Sound control (max)",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [0, 34],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Min strobe"
+        },
+        {
+          "dmxRange": [36, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Max strobe"
+        }
+      ]
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 16777215],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [16777216, 4294967294],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [4294967295, 4294967295],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        }
+      ]
+    },
+    "Color Macro1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Color mix",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2",
+            "7_Beam_ColorAdd_R": "R 2",
+            "7_Beam_ColorAdd_G": "G 2",
+            "7_Beam_ColorAdd_B": "B 2"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "White",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Color 1",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Color 2",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Color 3",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Color 4",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Color 5",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Color 6",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Color 7",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Color 8",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "CFade",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Meteor",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Fade",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Change",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Flow 1",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Flow 2",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Flow 3",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Flow 4",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Flow 5",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Flow 6",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Flow 7",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2"
+          }
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Flow 8",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2",
+            "7_Beam_ColorAdd_R": "R 2"
+          }
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Flow 9",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7",
+            "7_Base_Pixel8_Shutter1": "Sh1 2",
+            "7_Beam_ColorAdd_R": "R 2"
+          }
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Sound mode",
+          "switchChannels": {
+            "7_Base_Pixel8_Dimmer": "Dim 7"
+          }
+        }
+      ]
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [0, 0],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Min speed"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Max speed"
+        },
+        {
+          "dmxRange": [0, 0],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Low"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "High"
+        }
+      ]
+    },
+    "Sh1 2": {
+      "name": "Sh1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Min strobe"
+        },
+        {
+          "dmxRange": [2, 254],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Max strobe "
+        }
+      ]
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [0, 35],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [36, 71],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [72, 107],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [108, 143],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [144, 179],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [180, 215],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [216, 251],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "Black"
+        }
+      ]
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [0, 35],
+          "type": "ColorPreset",
+          "comment": "Black"
+        },
+        {
+          "dmxRange": [36, 71],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [72, 107],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [108, 143],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [144, 179],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [180, 215],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [216, 251],
+          "type": "ColorPreset",
+          "comment": "Magenra"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "White"
+        }
+      ]
+    },
+    "B 2": {
+      "name": "B",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3Ch",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "4Ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Dim 2"
+      ]
+    },
+    {
+      "name": "5Ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Dim 3",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "24Ch - pixel",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "32Ch - pixel",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Dim 5"
+      ]
+    },
+    {
+      "name": "6Ch - Pixel",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "12Ch - Pixel",
+      "channels": [
+        "R",
+        "G",
+        "B"
+      ]
+    },
+    {
+      "name": "27Ch",
+      "channels": [
+        "Color Macro1",
+        "7_Base_Pixel8_Dimmer",
+        "7_Base_Pixel8_Shutter1",
+        "7_Beam_ColorAdd_R",
+        "7_Beam_ColorAdd_G",
+        "7_Beam_ColorAdd_B"
+      ]
+    }
+  ]
+}
