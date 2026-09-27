@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Arena Haze IP65",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["anonym"],
+    "createDate": "2025-06-06",
+    "lastModifyDate": "2025-06-06"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "Fan": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fog Output": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2 Channels",
+      "channels": [
+        "Fan",
+        "Fog Output"
+      ]
+    }
+  ]
+}
