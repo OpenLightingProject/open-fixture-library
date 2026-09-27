@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MPX-405",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Benjamin Burkhardt"],
+    "createDate": "2026-02-15",
+    "lastModifyDate": "2026-02-15",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-02-15",
+      "comment": "created by Q Light Controller Plus (version 5.2.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [200, 65, 180],
+    "weight": 2,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "CH1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CH2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CH3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CH4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Separate / 4-channel",
+      "shortName": "Separate / 4ch",
+      "channels": [
+        "CH1",
+        "CH2",
+        "CH3",
+        "CH4"
+      ]
+    },
+    {
+      "name": "Parallel / 1-channel",
+      "shortName": "Parallel / 1ch",
+      "channels": [
+        "CH1"
+      ]
+    }
+  ]
+}
