@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3X30W COB  RETRO  BLINDER",
+  "shortName": "ZQ01671",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["ted"],
+    "createDate": "2026-07-22",
+    "lastModifyDate": "2026-07-22"
+  },
+  "links": {
+    "other": [
+      "https://de.aliexpress.com/item/1005009918560849.html"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "FX": {
+      "fineChannelAliases": ["FX fine"],
+      "capability": {
+        "type": "Effect",
+        "effectName": "fx"
+      }
+    },
+    "FXspeed": {
+      "fineChannelAliases": ["FXspeed fine"],
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Int-1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Int-2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Int-3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "FX",
+        "FXspeed",
+        "Red",
+        "Blue",
+        "Green",
+        "Int-1",
+        "Int-2",
+        "Int-3"
+      ]
+    }
+  ]
+}
