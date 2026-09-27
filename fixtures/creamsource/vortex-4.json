@@ -1,0 +1,7396 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vortex 4",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Keith Chan", "Jun"],
+    "createDate": "2026-01-30",
+    "lastModifyDate": "2026-01-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-01-30",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "power": 324,
+    "DMXconnector": "5-pin IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Master Level": {
+      "fineChannelAliases": ["Master Level fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Crossfade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Crossfade fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "2200K"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Intensity",
+          "comment": "2250K"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Intensity",
+          "comment": "2300K"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Intensity",
+          "comment": "2351K"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Intensity",
+          "comment": "2401K"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Intensity",
+          "comment": "2451K"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Intensity",
+          "comment": "2501K"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Intensity",
+          "comment": "2551K"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Intensity",
+          "comment": "2602K"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Intensity",
+          "comment": "2652K"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Intensity",
+          "comment": "2702K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Intensity",
+          "comment": "2752K"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Intensity",
+          "comment": "2802K"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Intensity",
+          "comment": "2853K"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Intensity",
+          "comment": "2903K"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Intensity",
+          "comment": "2953K"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Intensity",
+          "comment": "3003K"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Intensity",
+          "comment": "3053K"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Intensity",
+          "comment": "3104K"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Intensity",
+          "comment": "3154K"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Intensity",
+          "comment": "3204K"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Intensity",
+          "comment": "3254K"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Intensity",
+          "comment": "3304K"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Intensity",
+          "comment": "3355K"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Intensity",
+          "comment": "3405K"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Intensity",
+          "comment": "3455K"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Intensity",
+          "comment": "3505K"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Intensity",
+          "comment": "3555K"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Intensity",
+          "comment": "3605K"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Intensity",
+          "comment": "3656K"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Intensity",
+          "comment": "3706K"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Intensity",
+          "comment": "3756K"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Intensity",
+          "comment": "3806K"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Intensity",
+          "comment": "3856K"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Intensity",
+          "comment": "3907K"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Intensity",
+          "comment": "3957K"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Intensity",
+          "comment": "4007K"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Intensity",
+          "comment": "4057K"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Intensity",
+          "comment": "4107K"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Intensity",
+          "comment": "4158K"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Intensity",
+          "comment": "4208K"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Intensity",
+          "comment": "4258K"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Intensity",
+          "comment": "4308K"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Intensity",
+          "comment": "4358K"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Intensity",
+          "comment": "4409K"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Intensity",
+          "comment": "4459K"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Intensity",
+          "comment": "4509K"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Intensity",
+          "comment": "4559K"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Intensity",
+          "comment": "4609K"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Intensity",
+          "comment": "4660K"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Intensity",
+          "comment": "4710K"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Intensity",
+          "comment": "4760K"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Intensity",
+          "comment": "4810K"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Intensity",
+          "comment": "4860K"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Intensity",
+          "comment": "4911K"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Intensity",
+          "comment": "4961K"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Intensity",
+          "comment": "5011K"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Intensity",
+          "comment": "5061K"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Intensity",
+          "comment": "5111K"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Intensity",
+          "comment": "5162K"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Intensity",
+          "comment": "5212K"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Intensity",
+          "comment": "5262K"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Intensity",
+          "comment": "5312K"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Intensity",
+          "comment": "5362K"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Intensity",
+          "comment": "5413K"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Intensity",
+          "comment": "5463K"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Intensity",
+          "comment": "5513K"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Intensity",
+          "comment": "5563K"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Intensity",
+          "comment": "5613K"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Intensity",
+          "comment": "5664K"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Intensity",
+          "comment": "5714K"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Intensity",
+          "comment": "5764K"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Intensity",
+          "comment": "5814K"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Intensity",
+          "comment": "5864K"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Intensity",
+          "comment": "5915K"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Intensity",
+          "comment": "5965K"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Intensity",
+          "comment": "6015K"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Intensity",
+          "comment": "6065K"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Intensity",
+          "comment": "6115K"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Intensity",
+          "comment": "6165K"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Intensity",
+          "comment": "6216K"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Intensity",
+          "comment": "6266K"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Intensity",
+          "comment": "6316K"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Intensity",
+          "comment": "6366K"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Intensity",
+          "comment": "6416K"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Intensity",
+          "comment": "6467K"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Intensity",
+          "comment": "6517K"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Intensity",
+          "comment": "6567K"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Intensity",
+          "comment": "6617K"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Intensity",
+          "comment": "6667K"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Intensity",
+          "comment": "6718K"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Intensity",
+          "comment": "6768K"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Intensity",
+          "comment": "6818K"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Intensity",
+          "comment": "6868K"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Intensity",
+          "comment": "6918K"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Intensity",
+          "comment": "6969K"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Intensity",
+          "comment": "7019K"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Intensity",
+          "comment": "7069K"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Intensity",
+          "comment": "7119K"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Intensity",
+          "comment": "7169K"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Intensity",
+          "comment": "7220K"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Intensity",
+          "comment": "7270K"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Intensity",
+          "comment": "7320K"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Intensity",
+          "comment": "7370K"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Intensity",
+          "comment": "7420K"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Intensity",
+          "comment": "7471K"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Intensity",
+          "comment": "7521K"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Intensity",
+          "comment": "7571K"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Intensity",
+          "comment": "7621K"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Intensity",
+          "comment": "7671K"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Intensity",
+          "comment": "7722K"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Intensity",
+          "comment": "7772K"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Intensity",
+          "comment": "7822K"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Intensity",
+          "comment": "7872K"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Intensity",
+          "comment": "7922K"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Intensity",
+          "comment": "7973K"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Intensity",
+          "comment": "8023K"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Intensity",
+          "comment": "8073K"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Intensity",
+          "comment": "8123K"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Intensity",
+          "comment": "8173K"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Intensity",
+          "comment": "8224K"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Intensity",
+          "comment": "8274K"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Intensity",
+          "comment": "8324K"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Intensity",
+          "comment": "8374K"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Intensity",
+          "comment": "8424K"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Intensity",
+          "comment": "8475K"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Intensity",
+          "comment": "8525K"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Intensity",
+          "comment": "8575K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "8625K"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Intensity",
+          "comment": "8675K"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Intensity",
+          "comment": "8725K"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Intensity",
+          "comment": "8776K"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Intensity",
+          "comment": "8826K"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Intensity",
+          "comment": "8876K"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Intensity",
+          "comment": "8926K"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Intensity",
+          "comment": "8976K"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Intensity",
+          "comment": "9027K"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Intensity",
+          "comment": "9077K"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Intensity",
+          "comment": "9127K"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Intensity",
+          "comment": "9177K"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Intensity",
+          "comment": "9227K"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Intensity",
+          "comment": "9278K"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Intensity",
+          "comment": "9328K"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Intensity",
+          "comment": "9378K"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Intensity",
+          "comment": "9428K"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Intensity",
+          "comment": "9478K"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Intensity",
+          "comment": "9529K"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Intensity",
+          "comment": "9579K"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Intensity",
+          "comment": "9629K"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Intensity",
+          "comment": "9679K"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Intensity",
+          "comment": "9729K"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Intensity",
+          "comment": "9780K"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Intensity",
+          "comment": "9830K"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Intensity",
+          "comment": "9880K"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Intensity",
+          "comment": "9930K"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Intensity",
+          "comment": "9980K"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Intensity",
+          "comment": "10031K"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Intensity",
+          "comment": "10081K"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Intensity",
+          "comment": "10131K"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Intensity",
+          "comment": "10181K"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Intensity",
+          "comment": "10231K"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Intensity",
+          "comment": "10282K"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Intensity",
+          "comment": "10332K"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Intensity",
+          "comment": "10382K"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Intensity",
+          "comment": "10432K"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Intensity",
+          "comment": "10482K"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Intensity",
+          "comment": "10533K"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Intensity",
+          "comment": "10583K"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Intensity",
+          "comment": "10633K"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Intensity",
+          "comment": "10683K"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Intensity",
+          "comment": "10733K"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Intensity",
+          "comment": "10784K"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Intensity",
+          "comment": "10834K"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Intensity",
+          "comment": "10884K"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "Intensity",
+          "comment": "10934K"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "Intensity",
+          "comment": "10984K"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Intensity",
+          "comment": "11034K"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "Intensity",
+          "comment": "11085K"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "Intensity",
+          "comment": "11135K"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Intensity",
+          "comment": "11185K"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Intensity",
+          "comment": "11235K"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Intensity",
+          "comment": "11285K"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Intensity",
+          "comment": "11336K"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Intensity",
+          "comment": "11386K"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Intensity",
+          "comment": "11436K"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Intensity",
+          "comment": "11486K"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Intensity",
+          "comment": "11536K"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Intensity",
+          "comment": "11587K"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "Intensity",
+          "comment": "11637K"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Intensity",
+          "comment": "11687K"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Intensity",
+          "comment": "11737K"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Intensity",
+          "comment": "11787K"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Intensity",
+          "comment": "11838K"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "Intensity",
+          "comment": "11888K"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Intensity",
+          "comment": "11938K"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "Intensity",
+          "comment": "11988K"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "Intensity",
+          "comment": "12038K"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "Intensity",
+          "comment": "12089K"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "Intensity",
+          "comment": "12139K"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Intensity",
+          "comment": "12189K"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "Intensity",
+          "comment": "12239K"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Intensity",
+          "comment": "12289K"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "Intensity",
+          "comment": "12340K"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "Intensity",
+          "comment": "12390K"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Intensity",
+          "comment": "12440K"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "Intensity",
+          "comment": "12490K"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "Intensity",
+          "comment": "12540K"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Intensity",
+          "comment": "12591K"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "Intensity",
+          "comment": "12641K"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "Intensity",
+          "comment": "12691K"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Intensity",
+          "comment": "12741K"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Intensity",
+          "comment": "12791K"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Intensity",
+          "comment": "12842K"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Intensity",
+          "comment": "12892K"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Intensity",
+          "comment": "12942K"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Intensity",
+          "comment": "12992K"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Intensity",
+          "comment": "13042K"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Intensity",
+          "comment": "13093K"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Intensity",
+          "comment": "13143K"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Intensity",
+          "comment": "13193K"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Intensity",
+          "comment": "13243K"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Intensity",
+          "comment": "13293K"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Intensity",
+          "comment": "13344K"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Intensity",
+          "comment": "13394K"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Intensity",
+          "comment": "13444K"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Intensity",
+          "comment": "13494K"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Intensity",
+          "comment": "13544K"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Intensity",
+          "comment": "13594K"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Intensity",
+          "comment": "13645K"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Intensity",
+          "comment": "13695K"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Intensity",
+          "comment": "13745K"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Intensity",
+          "comment": "13795K"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Intensity",
+          "comment": "13845K"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Intensity",
+          "comment": "13896K"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Intensity",
+          "comment": "13946K"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Intensity",
+          "comment": "13996K"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Intensity",
+          "comment": "14046K"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Intensity",
+          "comment": "14096K"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Intensity",
+          "comment": "14147K"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Intensity",
+          "comment": "14197K"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Intensity",
+          "comment": "14247K"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Intensity",
+          "comment": "14297K"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Intensity",
+          "comment": "14347K"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Intensity",
+          "comment": "14398K"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Intensity",
+          "comment": "14448K"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Intensity",
+          "comment": "14498K"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Intensity",
+          "comment": "14548K"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Intensity",
+          "comment": "14598K"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Intensity",
+          "comment": "14649K"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Intensity",
+          "comment": "14699K"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Intensity",
+          "comment": "14749K"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Intensity",
+          "comment": "14799K"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Intensity",
+          "comment": "14849K"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Intensity",
+          "comment": "14900K"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Intensity",
+          "comment": "14950K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "comment": "15000K"
+        }
+      ]
+    },
+    "Green/Magenta": {
+      "fineChannelAliases": ["Green/Magenta fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "-100 to -1 Green"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "+1 to +100 Green"
+        }
+      ]
+    },
+    "X": {
+      "fineChannelAliases": ["X fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Y": {
+      "fineChannelAliases": ["Y fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Intensity",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Intensity",
+          "comment": "Strobe Effect"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Intensity",
+          "comment": "Random Effect"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Intensity",
+          "comment": "Flash Frames Effect"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Intensity",
+          "comment": "Dual Level Effect"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Intensity",
+          "comment": "Sync Flash Effect"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Intensity",
+          "comment": "Colour Cycle Effect"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Intensity",
+          "comment": "Candle & Fire Effect"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Intensity",
+          "comment": "Emergency Lights Effect"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Intensity",
+          "comment": "Television Effect"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Intensity",
+          "comment": "Paparazzi Effect"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Intensity",
+          "comment": "Party Effect"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Intensity",
+          "comment": "Pulse Effect"
+        },
+        {
+          "dmxRange": [140, 249],
+          "type": "Intensity",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "comment": "Calibrate Sync"
+        }
+      ]
+    },
+    "Effect Mode 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Mode 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Mode 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Mode 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Mode 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Fan Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "comment": "Auto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Speed",
+          "comment": "Quiet",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Speed",
+          "comment": "Medium",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Speed",
+          "comment": "High",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [150, 249],
+          "type": "Speed",
+          "comment": "Reserved",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Speed",
+          "comment": "Pause",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Control Channel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "No Changes"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "DMX Smoothing Mode - Smooth"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "DMX Smoothing Mode - Super Smooth"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "No Changes"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "comment": "Dimming Curve - Linear (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "comment": "Dimming Curve - Exponential (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "comment": "Dimming Curve - Logarithmic (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "comment": "Dimming Curve - S Curve (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "comment": "High Speed Mode - Off (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "comment": "High Speed Mode - On (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "Blackout on Startup - Off (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "comment": "Blackout on Startup - On (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "comment": "Calibrated RGBW - Off (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "Calibrated RGBW - On (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "comment": "CRMX Unlink (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "comment": "CRMX Disable (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "CRMX Enable (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "comment": "CRMX BLE Disable (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "comment": "CRMX BLE Enable (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Maintenance",
+          "comment": "DMX Forwarding - Off (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Maintenance",
+          "comment": "DMX Forwarding - On (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Maintenance",
+          "comment": "Master Mode - Off (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Maintenance",
+          "comment": "Master Mode - On (Snap to this range for 3 seconds, then snap to 0 )"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Maintenance",
+          "comment": "Refresh FramSync (Snap to this range for 3 seconds, then snap to 0 )"
+        }
+      ]
+    },
+    "Pixel Orientation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Vertical Stripes"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Horizontal Stripes"
+        },
+        {
+          "dmxRange": [40, 255],
+          "type": "Effect",
+          "effectName": "Reserved"
+        }
+      ]
+    },
+    "Gel Library": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "LEE Color Filters"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "LEE Cosmetic"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "LEE 600 Series"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "LEE 700 Series"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "LEE Color Correction"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Rosco Cinelux"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Rosco CalColor"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Rosco Storaro Selection"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Rosco Color Correction"
+        },
+        {
+          "dmxRange": [90, 255],
+          "type": "Effect",
+          "effectName": "Reserved"
+        }
+      ]
+    },
+    "Gel Swatch": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "0-100%"
+      }
+    },
+    "Gel Source": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "3200K Source"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "5600K Source"
+        }
+      ]
+    },
+    "Bump Red/Cyan": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Red"
+        }
+      ]
+    },
+    "Bump Green/Magenta": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorPreset",
+          "comment": "100% to 0% Magenta"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Green"
+        }
+      ]
+    },
+    "Bump Blue/Yellow": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorPreset",
+          "comment": "100% to 0% Yellow"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Blue"
+        }
+      ]
+    },
+    "Bump Saturation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorPreset",
+          "comment": "-100% to 0% Saturation"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Saturation"
+        }
+      ]
+    },
+    "Bump Red/Cyan fine": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Red"
+        }
+      ]
+    },
+    "Bump Green/Magenta fine": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorPreset",
+          "comment": "100% to 0% Magenta"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Green"
+        }
+      ]
+    },
+    "Bump Blue/Yellow fine": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorPreset",
+          "comment": "100% to 0% Yellow"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Blue"
+        }
+      ]
+    },
+    "Bump Saturation fine": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorPreset",
+          "comment": "-100% to 0% Saturation"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorPreset",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorPreset",
+          "comment": "0% to 100% Saturation"
+        }
+      ]
+    },
+    "Master Level 2": {
+      "fineChannelAliases": ["Master Level 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "fineChannelAliases": ["Red 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "fineChannelAliases": ["Green 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "fineChannelAliases": ["Blue 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "fineChannelAliases": ["White 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue 2": {
+      "fineChannelAliases": ["Hue 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation 2": {
+      "fineChannelAliases": ["Saturation 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Crossfade 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Crossfade"
+      }
+    },
+    "Crossfade 2 fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "CCT 2": {
+      "fineChannelAliases": ["CCT 2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "2200K"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Intensity",
+          "comment": "2250K"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Intensity",
+          "comment": "2300K"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Intensity",
+          "comment": "2351K"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Intensity",
+          "comment": "2401K"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Intensity",
+          "comment": "2451K"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Intensity",
+          "comment": "2501K"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Intensity",
+          "comment": "2551K"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Intensity",
+          "comment": "2602K"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Intensity",
+          "comment": "2652K"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Intensity",
+          "comment": "2702K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Intensity",
+          "comment": "2752K"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Intensity",
+          "comment": "2802K"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Intensity",
+          "comment": "2853K"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Intensity",
+          "comment": "2903K"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Intensity",
+          "comment": "2953K"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Intensity",
+          "comment": "3003K"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Intensity",
+          "comment": "3053K"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Intensity",
+          "comment": "3104K"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Intensity",
+          "comment": "3154K"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Intensity",
+          "comment": "3204K"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Intensity",
+          "comment": "3254K"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Intensity",
+          "comment": "3304K"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Intensity",
+          "comment": "3355K"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Intensity",
+          "comment": "3405K"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Intensity",
+          "comment": "3455K"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Intensity",
+          "comment": "3505K"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Intensity",
+          "comment": "3555K"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Intensity",
+          "comment": "3605K"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Intensity",
+          "comment": "3656K"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Intensity",
+          "comment": "3706K"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Intensity",
+          "comment": "3756K"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Intensity",
+          "comment": "3806K"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Intensity",
+          "comment": "3856K"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Intensity",
+          "comment": "3907K"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Intensity",
+          "comment": "3957K"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Intensity",
+          "comment": "4007K"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Intensity",
+          "comment": "4057K"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Intensity",
+          "comment": "4107K"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Intensity",
+          "comment": "4158K"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Intensity",
+          "comment": "4208K"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Intensity",
+          "comment": "4258K"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Intensity",
+          "comment": "4308K"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Intensity",
+          "comment": "4358K"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Intensity",
+          "comment": "4409K"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Intensity",
+          "comment": "4459K"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Intensity",
+          "comment": "4509K"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Intensity",
+          "comment": "4559K"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Intensity",
+          "comment": "4609K"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Intensity",
+          "comment": "4660K"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Intensity",
+          "comment": "4710K"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Intensity",
+          "comment": "4760K"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Intensity",
+          "comment": "4810K"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Intensity",
+          "comment": "4860K"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Intensity",
+          "comment": "4911K"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Intensity",
+          "comment": "4961K"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Intensity",
+          "comment": "5011K"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Intensity",
+          "comment": "5061K"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Intensity",
+          "comment": "5111K"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Intensity",
+          "comment": "5162K"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Intensity",
+          "comment": "5212K"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Intensity",
+          "comment": "5262K"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Intensity",
+          "comment": "5312K"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Intensity",
+          "comment": "5362K"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Intensity",
+          "comment": "5413K"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Intensity",
+          "comment": "5463K"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Intensity",
+          "comment": "5513K"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Intensity",
+          "comment": "5563K"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Intensity",
+          "comment": "5613K"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Intensity",
+          "comment": "5664K"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Intensity",
+          "comment": "5714K"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Intensity",
+          "comment": "5764K"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Intensity",
+          "comment": "5814K"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Intensity",
+          "comment": "5864K"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Intensity",
+          "comment": "5915K"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Intensity",
+          "comment": "5965K"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Intensity",
+          "comment": "6015K"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Intensity",
+          "comment": "6065K"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Intensity",
+          "comment": "6115K"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Intensity",
+          "comment": "6165K"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Intensity",
+          "comment": "6216K"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Intensity",
+          "comment": "6266K"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Intensity",
+          "comment": "6316K"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Intensity",
+          "comment": "6366K"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Intensity",
+          "comment": "6416K"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Intensity",
+          "comment": "6467K"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Intensity",
+          "comment": "6517K"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Intensity",
+          "comment": "6567K"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Intensity",
+          "comment": "6617K"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Intensity",
+          "comment": "6667K"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Intensity",
+          "comment": "6718K"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Intensity",
+          "comment": "6768K"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Intensity",
+          "comment": "6818K"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Intensity",
+          "comment": "6868K"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Intensity",
+          "comment": "6918K"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Intensity",
+          "comment": "6969K"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Intensity",
+          "comment": "7019K"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Intensity",
+          "comment": "7069K"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Intensity",
+          "comment": "7119K"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Intensity",
+          "comment": "7169K"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Intensity",
+          "comment": "7220K"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Intensity",
+          "comment": "7270K"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Intensity",
+          "comment": "7320K"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Intensity",
+          "comment": "7370K"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Intensity",
+          "comment": "7420K"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Intensity",
+          "comment": "7471K"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Intensity",
+          "comment": "7521K"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Intensity",
+          "comment": "7571K"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Intensity",
+          "comment": "7621K"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Intensity",
+          "comment": "7671K"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Intensity",
+          "comment": "7722K"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Intensity",
+          "comment": "7772K"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Intensity",
+          "comment": "7822K"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Intensity",
+          "comment": "7872K"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Intensity",
+          "comment": "7922K"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Intensity",
+          "comment": "7973K"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Intensity",
+          "comment": "8023K"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Intensity",
+          "comment": "8073K"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Intensity",
+          "comment": "8123K"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Intensity",
+          "comment": "8173K"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Intensity",
+          "comment": "8224K"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Intensity",
+          "comment": "8274K"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Intensity",
+          "comment": "8324K"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Intensity",
+          "comment": "8374K"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Intensity",
+          "comment": "8424K"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Intensity",
+          "comment": "8475K"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Intensity",
+          "comment": "8525K"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Intensity",
+          "comment": "8575K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "8625K"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Intensity",
+          "comment": "8675K"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Intensity",
+          "comment": "8725K"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Intensity",
+          "comment": "8776K"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Intensity",
+          "comment": "8826K"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Intensity",
+          "comment": "8876K"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Intensity",
+          "comment": "8926K"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Intensity",
+          "comment": "8976K"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Intensity",
+          "comment": "9027K"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Intensity",
+          "comment": "9077K"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Intensity",
+          "comment": "9127K"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Intensity",
+          "comment": "9177K"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Intensity",
+          "comment": "9227K"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Intensity",
+          "comment": "9278K"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Intensity",
+          "comment": "9328K"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Intensity",
+          "comment": "9378K"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Intensity",
+          "comment": "9428K"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Intensity",
+          "comment": "9478K"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Intensity",
+          "comment": "9529K"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Intensity",
+          "comment": "9579K"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Intensity",
+          "comment": "9629K"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Intensity",
+          "comment": "9679K"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Intensity",
+          "comment": "9729K"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Intensity",
+          "comment": "9780K"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Intensity",
+          "comment": "9830K"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Intensity",
+          "comment": "9880K"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Intensity",
+          "comment": "9930K"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Intensity",
+          "comment": "9980K"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Intensity",
+          "comment": "10031K"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Intensity",
+          "comment": "10081K"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Intensity",
+          "comment": "10131K"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Intensity",
+          "comment": "10181K"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Intensity",
+          "comment": "10231K"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Intensity",
+          "comment": "10282K"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Intensity",
+          "comment": "10332K"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Intensity",
+          "comment": "10382K"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Intensity",
+          "comment": "10432K"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Intensity",
+          "comment": "10482K"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Intensity",
+          "comment": "10533K"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Intensity",
+          "comment": "10583K"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Intensity",
+          "comment": "10633K"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Intensity",
+          "comment": "10683K"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Intensity",
+          "comment": "10733K"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Intensity",
+          "comment": "10784K"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Intensity",
+          "comment": "10834K"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Intensity",
+          "comment": "10884K"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "Intensity",
+          "comment": "10934K"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "Intensity",
+          "comment": "10984K"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Intensity",
+          "comment": "11034K"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "Intensity",
+          "comment": "11085K"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "Intensity",
+          "comment": "11135K"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Intensity",
+          "comment": "11185K"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Intensity",
+          "comment": "11235K"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Intensity",
+          "comment": "11285K"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Intensity",
+          "comment": "11336K"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Intensity",
+          "comment": "11386K"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Intensity",
+          "comment": "11436K"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Intensity",
+          "comment": "11486K"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Intensity",
+          "comment": "11536K"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Intensity",
+          "comment": "11587K"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "Intensity",
+          "comment": "11637K"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Intensity",
+          "comment": "11687K"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Intensity",
+          "comment": "11737K"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Intensity",
+          "comment": "11787K"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Intensity",
+          "comment": "11838K"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "Intensity",
+          "comment": "11888K"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Intensity",
+          "comment": "11938K"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "Intensity",
+          "comment": "11988K"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "Intensity",
+          "comment": "12038K"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "Intensity",
+          "comment": "12089K"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "Intensity",
+          "comment": "12139K"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Intensity",
+          "comment": "12189K"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "Intensity",
+          "comment": "12239K"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Intensity",
+          "comment": "12289K"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "Intensity",
+          "comment": "12340K"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "Intensity",
+          "comment": "12390K"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Intensity",
+          "comment": "12440K"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "Intensity",
+          "comment": "12490K"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "Intensity",
+          "comment": "12540K"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Intensity",
+          "comment": "12591K"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "Intensity",
+          "comment": "12641K"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "Intensity",
+          "comment": "12691K"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Intensity",
+          "comment": "12741K"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Intensity",
+          "comment": "12791K"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Intensity",
+          "comment": "12842K"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Intensity",
+          "comment": "12892K"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Intensity",
+          "comment": "12942K"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Intensity",
+          "comment": "12992K"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Intensity",
+          "comment": "13042K"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Intensity",
+          "comment": "13093K"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Intensity",
+          "comment": "13143K"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Intensity",
+          "comment": "13193K"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Intensity",
+          "comment": "13243K"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Intensity",
+          "comment": "13293K"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Intensity",
+          "comment": "13344K"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Intensity",
+          "comment": "13394K"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Intensity",
+          "comment": "13444K"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Intensity",
+          "comment": "13494K"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Intensity",
+          "comment": "13544K"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Intensity",
+          "comment": "13594K"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Intensity",
+          "comment": "13645K"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Intensity",
+          "comment": "13695K"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Intensity",
+          "comment": "13745K"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Intensity",
+          "comment": "13795K"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Intensity",
+          "comment": "13845K"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Intensity",
+          "comment": "13896K"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Intensity",
+          "comment": "13946K"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Intensity",
+          "comment": "13996K"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Intensity",
+          "comment": "14046K"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Intensity",
+          "comment": "14096K"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Intensity",
+          "comment": "14147K"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Intensity",
+          "comment": "14197K"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Intensity",
+          "comment": "14247K"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Intensity",
+          "comment": "14297K"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Intensity",
+          "comment": "14347K"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Intensity",
+          "comment": "14398K"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Intensity",
+          "comment": "14448K"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Intensity",
+          "comment": "14498K"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Intensity",
+          "comment": "14548K"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Intensity",
+          "comment": "14598K"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Intensity",
+          "comment": "14649K"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Intensity",
+          "comment": "14699K"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Intensity",
+          "comment": "14749K"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Intensity",
+          "comment": "14799K"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Intensity",
+          "comment": "14849K"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Intensity",
+          "comment": "14900K"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Intensity",
+          "comment": "14950K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "comment": "15000K"
+        }
+      ]
+    },
+    "Green/Magenta 2": {
+      "fineChannelAliases": ["Green/Magenta 2 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "-100 to -1 Green"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "+1 to +100 Green"
+        }
+      ]
+    },
+    "X 2": {
+      "fineChannelAliases": ["X 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Y 2": {
+      "fineChannelAliases": ["Y 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Master Level 3": {
+      "fineChannelAliases": ["Master Level 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 3": {
+      "fineChannelAliases": ["Red 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "fineChannelAliases": ["Green 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "fineChannelAliases": ["Blue 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "fineChannelAliases": ["White 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue 3": {
+      "fineChannelAliases": ["Hue 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation 3": {
+      "fineChannelAliases": ["Saturation 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Crossfade 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Crossfade"
+      }
+    },
+    "Crossfade 3 fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "CCT 3": {
+      "fineChannelAliases": ["CCT 3 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "2200K"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Intensity",
+          "comment": "2250K"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Intensity",
+          "comment": "2300K"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Intensity",
+          "comment": "2351K"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Intensity",
+          "comment": "2401K"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Intensity",
+          "comment": "2451K"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Intensity",
+          "comment": "2501K"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Intensity",
+          "comment": "2551K"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Intensity",
+          "comment": "2602K"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Intensity",
+          "comment": "2652K"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Intensity",
+          "comment": "2702K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Intensity",
+          "comment": "2752K"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Intensity",
+          "comment": "2802K"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Intensity",
+          "comment": "2853K"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Intensity",
+          "comment": "2903K"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Intensity",
+          "comment": "2953K"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Intensity",
+          "comment": "3003K"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Intensity",
+          "comment": "3053K"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Intensity",
+          "comment": "3104K"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Intensity",
+          "comment": "3154K"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Intensity",
+          "comment": "3204K"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Intensity",
+          "comment": "3254K"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Intensity",
+          "comment": "3304K"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Intensity",
+          "comment": "3355K"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Intensity",
+          "comment": "3405K"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Intensity",
+          "comment": "3455K"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Intensity",
+          "comment": "3505K"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Intensity",
+          "comment": "3555K"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Intensity",
+          "comment": "3605K"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Intensity",
+          "comment": "3656K"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Intensity",
+          "comment": "3706K"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Intensity",
+          "comment": "3756K"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Intensity",
+          "comment": "3806K"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Intensity",
+          "comment": "3856K"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Intensity",
+          "comment": "3907K"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Intensity",
+          "comment": "3957K"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Intensity",
+          "comment": "4007K"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Intensity",
+          "comment": "4057K"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Intensity",
+          "comment": "4107K"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Intensity",
+          "comment": "4158K"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Intensity",
+          "comment": "4208K"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Intensity",
+          "comment": "4258K"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Intensity",
+          "comment": "4308K"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Intensity",
+          "comment": "4358K"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Intensity",
+          "comment": "4409K"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Intensity",
+          "comment": "4459K"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Intensity",
+          "comment": "4509K"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Intensity",
+          "comment": "4559K"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Intensity",
+          "comment": "4609K"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Intensity",
+          "comment": "4660K"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Intensity",
+          "comment": "4710K"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Intensity",
+          "comment": "4760K"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Intensity",
+          "comment": "4810K"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Intensity",
+          "comment": "4860K"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Intensity",
+          "comment": "4911K"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Intensity",
+          "comment": "4961K"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Intensity",
+          "comment": "5011K"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Intensity",
+          "comment": "5061K"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Intensity",
+          "comment": "5111K"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Intensity",
+          "comment": "5162K"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Intensity",
+          "comment": "5212K"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Intensity",
+          "comment": "5262K"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Intensity",
+          "comment": "5312K"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Intensity",
+          "comment": "5362K"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Intensity",
+          "comment": "5413K"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Intensity",
+          "comment": "5463K"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Intensity",
+          "comment": "5513K"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Intensity",
+          "comment": "5563K"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Intensity",
+          "comment": "5613K"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Intensity",
+          "comment": "5664K"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Intensity",
+          "comment": "5714K"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Intensity",
+          "comment": "5764K"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Intensity",
+          "comment": "5814K"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Intensity",
+          "comment": "5864K"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Intensity",
+          "comment": "5915K"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Intensity",
+          "comment": "5965K"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Intensity",
+          "comment": "6015K"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Intensity",
+          "comment": "6065K"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Intensity",
+          "comment": "6115K"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Intensity",
+          "comment": "6165K"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Intensity",
+          "comment": "6216K"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Intensity",
+          "comment": "6266K"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Intensity",
+          "comment": "6316K"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Intensity",
+          "comment": "6366K"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Intensity",
+          "comment": "6416K"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Intensity",
+          "comment": "6467K"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Intensity",
+          "comment": "6517K"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Intensity",
+          "comment": "6567K"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Intensity",
+          "comment": "6617K"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Intensity",
+          "comment": "6667K"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Intensity",
+          "comment": "6718K"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Intensity",
+          "comment": "6768K"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Intensity",
+          "comment": "6818K"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Intensity",
+          "comment": "6868K"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Intensity",
+          "comment": "6918K"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Intensity",
+          "comment": "6969K"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Intensity",
+          "comment": "7019K"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Intensity",
+          "comment": "7069K"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Intensity",
+          "comment": "7119K"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Intensity",
+          "comment": "7169K"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Intensity",
+          "comment": "7220K"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Intensity",
+          "comment": "7270K"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Intensity",
+          "comment": "7320K"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Intensity",
+          "comment": "7370K"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Intensity",
+          "comment": "7420K"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Intensity",
+          "comment": "7471K"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Intensity",
+          "comment": "7521K"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Intensity",
+          "comment": "7571K"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Intensity",
+          "comment": "7621K"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Intensity",
+          "comment": "7671K"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Intensity",
+          "comment": "7722K"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Intensity",
+          "comment": "7772K"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Intensity",
+          "comment": "7822K"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Intensity",
+          "comment": "7872K"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Intensity",
+          "comment": "7922K"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Intensity",
+          "comment": "7973K"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Intensity",
+          "comment": "8023K"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Intensity",
+          "comment": "8073K"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Intensity",
+          "comment": "8123K"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Intensity",
+          "comment": "8173K"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Intensity",
+          "comment": "8224K"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Intensity",
+          "comment": "8274K"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Intensity",
+          "comment": "8324K"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Intensity",
+          "comment": "8374K"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Intensity",
+          "comment": "8424K"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Intensity",
+          "comment": "8475K"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Intensity",
+          "comment": "8525K"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Intensity",
+          "comment": "8575K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "8625K"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Intensity",
+          "comment": "8675K"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Intensity",
+          "comment": "8725K"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Intensity",
+          "comment": "8776K"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Intensity",
+          "comment": "8826K"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Intensity",
+          "comment": "8876K"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Intensity",
+          "comment": "8926K"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Intensity",
+          "comment": "8976K"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Intensity",
+          "comment": "9027K"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Intensity",
+          "comment": "9077K"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Intensity",
+          "comment": "9127K"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Intensity",
+          "comment": "9177K"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Intensity",
+          "comment": "9227K"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Intensity",
+          "comment": "9278K"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Intensity",
+          "comment": "9328K"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Intensity",
+          "comment": "9378K"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Intensity",
+          "comment": "9428K"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Intensity",
+          "comment": "9478K"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Intensity",
+          "comment": "9529K"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Intensity",
+          "comment": "9579K"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Intensity",
+          "comment": "9629K"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Intensity",
+          "comment": "9679K"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Intensity",
+          "comment": "9729K"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Intensity",
+          "comment": "9780K"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Intensity",
+          "comment": "9830K"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Intensity",
+          "comment": "9880K"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Intensity",
+          "comment": "9930K"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Intensity",
+          "comment": "9980K"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Intensity",
+          "comment": "10031K"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Intensity",
+          "comment": "10081K"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Intensity",
+          "comment": "10131K"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Intensity",
+          "comment": "10181K"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Intensity",
+          "comment": "10231K"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Intensity",
+          "comment": "10282K"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Intensity",
+          "comment": "10332K"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Intensity",
+          "comment": "10382K"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Intensity",
+          "comment": "10432K"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Intensity",
+          "comment": "10482K"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Intensity",
+          "comment": "10533K"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Intensity",
+          "comment": "10583K"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Intensity",
+          "comment": "10633K"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Intensity",
+          "comment": "10683K"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Intensity",
+          "comment": "10733K"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Intensity",
+          "comment": "10784K"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Intensity",
+          "comment": "10834K"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Intensity",
+          "comment": "10884K"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "Intensity",
+          "comment": "10934K"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "Intensity",
+          "comment": "10984K"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Intensity",
+          "comment": "11034K"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "Intensity",
+          "comment": "11085K"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "Intensity",
+          "comment": "11135K"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Intensity",
+          "comment": "11185K"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Intensity",
+          "comment": "11235K"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Intensity",
+          "comment": "11285K"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Intensity",
+          "comment": "11336K"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Intensity",
+          "comment": "11386K"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Intensity",
+          "comment": "11436K"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Intensity",
+          "comment": "11486K"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Intensity",
+          "comment": "11536K"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Intensity",
+          "comment": "11587K"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "Intensity",
+          "comment": "11637K"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Intensity",
+          "comment": "11687K"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Intensity",
+          "comment": "11737K"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Intensity",
+          "comment": "11787K"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Intensity",
+          "comment": "11838K"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "Intensity",
+          "comment": "11888K"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Intensity",
+          "comment": "11938K"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "Intensity",
+          "comment": "11988K"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "Intensity",
+          "comment": "12038K"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "Intensity",
+          "comment": "12089K"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "Intensity",
+          "comment": "12139K"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Intensity",
+          "comment": "12189K"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "Intensity",
+          "comment": "12239K"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Intensity",
+          "comment": "12289K"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "Intensity",
+          "comment": "12340K"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "Intensity",
+          "comment": "12390K"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Intensity",
+          "comment": "12440K"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "Intensity",
+          "comment": "12490K"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "Intensity",
+          "comment": "12540K"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Intensity",
+          "comment": "12591K"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "Intensity",
+          "comment": "12641K"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "Intensity",
+          "comment": "12691K"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Intensity",
+          "comment": "12741K"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Intensity",
+          "comment": "12791K"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Intensity",
+          "comment": "12842K"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Intensity",
+          "comment": "12892K"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Intensity",
+          "comment": "12942K"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Intensity",
+          "comment": "12992K"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Intensity",
+          "comment": "13042K"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Intensity",
+          "comment": "13093K"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Intensity",
+          "comment": "13143K"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Intensity",
+          "comment": "13193K"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Intensity",
+          "comment": "13243K"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Intensity",
+          "comment": "13293K"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Intensity",
+          "comment": "13344K"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Intensity",
+          "comment": "13394K"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Intensity",
+          "comment": "13444K"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Intensity",
+          "comment": "13494K"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Intensity",
+          "comment": "13544K"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Intensity",
+          "comment": "13594K"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Intensity",
+          "comment": "13645K"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Intensity",
+          "comment": "13695K"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Intensity",
+          "comment": "13745K"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Intensity",
+          "comment": "13795K"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Intensity",
+          "comment": "13845K"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Intensity",
+          "comment": "13896K"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Intensity",
+          "comment": "13946K"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Intensity",
+          "comment": "13996K"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Intensity",
+          "comment": "14046K"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Intensity",
+          "comment": "14096K"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Intensity",
+          "comment": "14147K"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Intensity",
+          "comment": "14197K"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Intensity",
+          "comment": "14247K"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Intensity",
+          "comment": "14297K"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Intensity",
+          "comment": "14347K"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Intensity",
+          "comment": "14398K"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Intensity",
+          "comment": "14448K"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Intensity",
+          "comment": "14498K"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Intensity",
+          "comment": "14548K"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Intensity",
+          "comment": "14598K"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Intensity",
+          "comment": "14649K"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Intensity",
+          "comment": "14699K"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Intensity",
+          "comment": "14749K"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Intensity",
+          "comment": "14799K"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Intensity",
+          "comment": "14849K"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Intensity",
+          "comment": "14900K"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Intensity",
+          "comment": "14950K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "comment": "15000K"
+        }
+      ]
+    },
+    "Green/Magenta 3": {
+      "fineChannelAliases": ["Green/Magenta 3 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "-100 to -1 Green"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "+1 to +100 Green"
+        }
+      ]
+    },
+    "X 3": {
+      "fineChannelAliases": ["X 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Y 3": {
+      "fineChannelAliases": ["Y 3 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Master Level 4": {
+      "fineChannelAliases": ["Master Level 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 4": {
+      "fineChannelAliases": ["Red 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 4": {
+      "fineChannelAliases": ["Green 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 4": {
+      "fineChannelAliases": ["Blue 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 4": {
+      "fineChannelAliases": ["White 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue 4": {
+      "fineChannelAliases": ["Hue 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation 4": {
+      "fineChannelAliases": ["Saturation 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Crossfade 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Crossfade"
+      }
+    },
+    "Crossfade 4 fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "CCT 4": {
+      "fineChannelAliases": ["CCT 4 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "2200K"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Intensity",
+          "comment": "2250K"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Intensity",
+          "comment": "2300K"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Intensity",
+          "comment": "2351K"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Intensity",
+          "comment": "2401K"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Intensity",
+          "comment": "2451K"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Intensity",
+          "comment": "2501K"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Intensity",
+          "comment": "2551K"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Intensity",
+          "comment": "2602K"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Intensity",
+          "comment": "2652K"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Intensity",
+          "comment": "2702K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Intensity",
+          "comment": "2752K"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Intensity",
+          "comment": "2802K"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Intensity",
+          "comment": "2853K"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Intensity",
+          "comment": "2903K"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Intensity",
+          "comment": "2953K"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Intensity",
+          "comment": "3003K"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Intensity",
+          "comment": "3053K"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Intensity",
+          "comment": "3104K"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Intensity",
+          "comment": "3154K"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Intensity",
+          "comment": "3204K"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Intensity",
+          "comment": "3254K"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Intensity",
+          "comment": "3304K"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Intensity",
+          "comment": "3355K"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Intensity",
+          "comment": "3405K"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Intensity",
+          "comment": "3455K"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Intensity",
+          "comment": "3505K"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Intensity",
+          "comment": "3555K"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Intensity",
+          "comment": "3605K"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Intensity",
+          "comment": "3656K"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Intensity",
+          "comment": "3706K"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Intensity",
+          "comment": "3756K"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Intensity",
+          "comment": "3806K"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Intensity",
+          "comment": "3856K"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Intensity",
+          "comment": "3907K"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Intensity",
+          "comment": "3957K"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Intensity",
+          "comment": "4007K"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Intensity",
+          "comment": "4057K"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Intensity",
+          "comment": "4107K"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Intensity",
+          "comment": "4158K"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Intensity",
+          "comment": "4208K"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Intensity",
+          "comment": "4258K"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Intensity",
+          "comment": "4308K"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Intensity",
+          "comment": "4358K"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Intensity",
+          "comment": "4409K"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Intensity",
+          "comment": "4459K"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Intensity",
+          "comment": "4509K"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Intensity",
+          "comment": "4559K"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Intensity",
+          "comment": "4609K"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Intensity",
+          "comment": "4660K"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Intensity",
+          "comment": "4710K"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Intensity",
+          "comment": "4760K"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Intensity",
+          "comment": "4810K"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Intensity",
+          "comment": "4860K"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Intensity",
+          "comment": "4911K"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Intensity",
+          "comment": "4961K"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Intensity",
+          "comment": "5011K"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Intensity",
+          "comment": "5061K"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Intensity",
+          "comment": "5111K"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Intensity",
+          "comment": "5162K"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Intensity",
+          "comment": "5212K"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Intensity",
+          "comment": "5262K"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Intensity",
+          "comment": "5312K"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Intensity",
+          "comment": "5362K"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Intensity",
+          "comment": "5413K"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Intensity",
+          "comment": "5463K"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Intensity",
+          "comment": "5513K"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Intensity",
+          "comment": "5563K"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Intensity",
+          "comment": "5613K"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Intensity",
+          "comment": "5664K"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Intensity",
+          "comment": "5714K"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Intensity",
+          "comment": "5764K"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Intensity",
+          "comment": "5814K"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Intensity",
+          "comment": "5864K"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Intensity",
+          "comment": "5915K"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Intensity",
+          "comment": "5965K"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Intensity",
+          "comment": "6015K"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Intensity",
+          "comment": "6065K"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Intensity",
+          "comment": "6115K"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Intensity",
+          "comment": "6165K"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Intensity",
+          "comment": "6216K"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Intensity",
+          "comment": "6266K"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Intensity",
+          "comment": "6316K"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Intensity",
+          "comment": "6366K"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Intensity",
+          "comment": "6416K"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Intensity",
+          "comment": "6467K"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Intensity",
+          "comment": "6517K"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Intensity",
+          "comment": "6567K"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Intensity",
+          "comment": "6617K"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Intensity",
+          "comment": "6667K"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Intensity",
+          "comment": "6718K"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Intensity",
+          "comment": "6768K"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Intensity",
+          "comment": "6818K"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Intensity",
+          "comment": "6868K"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Intensity",
+          "comment": "6918K"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Intensity",
+          "comment": "6969K"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Intensity",
+          "comment": "7019K"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Intensity",
+          "comment": "7069K"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Intensity",
+          "comment": "7119K"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Intensity",
+          "comment": "7169K"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Intensity",
+          "comment": "7220K"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Intensity",
+          "comment": "7270K"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Intensity",
+          "comment": "7320K"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Intensity",
+          "comment": "7370K"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Intensity",
+          "comment": "7420K"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Intensity",
+          "comment": "7471K"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Intensity",
+          "comment": "7521K"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Intensity",
+          "comment": "7571K"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Intensity",
+          "comment": "7621K"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Intensity",
+          "comment": "7671K"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Intensity",
+          "comment": "7722K"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Intensity",
+          "comment": "7772K"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Intensity",
+          "comment": "7822K"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Intensity",
+          "comment": "7872K"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Intensity",
+          "comment": "7922K"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Intensity",
+          "comment": "7973K"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Intensity",
+          "comment": "8023K"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Intensity",
+          "comment": "8073K"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Intensity",
+          "comment": "8123K"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Intensity",
+          "comment": "8173K"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Intensity",
+          "comment": "8224K"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Intensity",
+          "comment": "8274K"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Intensity",
+          "comment": "8324K"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Intensity",
+          "comment": "8374K"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Intensity",
+          "comment": "8424K"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Intensity",
+          "comment": "8475K"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Intensity",
+          "comment": "8525K"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Intensity",
+          "comment": "8575K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "8625K"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Intensity",
+          "comment": "8675K"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Intensity",
+          "comment": "8725K"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Intensity",
+          "comment": "8776K"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Intensity",
+          "comment": "8826K"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Intensity",
+          "comment": "8876K"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Intensity",
+          "comment": "8926K"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Intensity",
+          "comment": "8976K"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Intensity",
+          "comment": "9027K"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Intensity",
+          "comment": "9077K"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Intensity",
+          "comment": "9127K"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Intensity",
+          "comment": "9177K"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Intensity",
+          "comment": "9227K"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Intensity",
+          "comment": "9278K"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Intensity",
+          "comment": "9328K"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Intensity",
+          "comment": "9378K"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Intensity",
+          "comment": "9428K"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Intensity",
+          "comment": "9478K"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Intensity",
+          "comment": "9529K"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Intensity",
+          "comment": "9579K"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Intensity",
+          "comment": "9629K"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Intensity",
+          "comment": "9679K"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Intensity",
+          "comment": "9729K"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Intensity",
+          "comment": "9780K"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Intensity",
+          "comment": "9830K"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Intensity",
+          "comment": "9880K"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Intensity",
+          "comment": "9930K"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Intensity",
+          "comment": "9980K"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Intensity",
+          "comment": "10031K"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Intensity",
+          "comment": "10081K"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Intensity",
+          "comment": "10131K"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Intensity",
+          "comment": "10181K"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Intensity",
+          "comment": "10231K"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Intensity",
+          "comment": "10282K"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Intensity",
+          "comment": "10332K"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Intensity",
+          "comment": "10382K"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Intensity",
+          "comment": "10432K"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Intensity",
+          "comment": "10482K"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Intensity",
+          "comment": "10533K"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Intensity",
+          "comment": "10583K"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Intensity",
+          "comment": "10633K"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Intensity",
+          "comment": "10683K"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Intensity",
+          "comment": "10733K"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Intensity",
+          "comment": "10784K"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Intensity",
+          "comment": "10834K"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Intensity",
+          "comment": "10884K"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "Intensity",
+          "comment": "10934K"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "Intensity",
+          "comment": "10984K"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Intensity",
+          "comment": "11034K"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "Intensity",
+          "comment": "11085K"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "Intensity",
+          "comment": "11135K"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Intensity",
+          "comment": "11185K"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Intensity",
+          "comment": "11235K"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Intensity",
+          "comment": "11285K"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Intensity",
+          "comment": "11336K"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Intensity",
+          "comment": "11386K"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Intensity",
+          "comment": "11436K"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Intensity",
+          "comment": "11486K"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Intensity",
+          "comment": "11536K"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Intensity",
+          "comment": "11587K"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "Intensity",
+          "comment": "11637K"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Intensity",
+          "comment": "11687K"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Intensity",
+          "comment": "11737K"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Intensity",
+          "comment": "11787K"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Intensity",
+          "comment": "11838K"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "Intensity",
+          "comment": "11888K"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Intensity",
+          "comment": "11938K"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "Intensity",
+          "comment": "11988K"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "Intensity",
+          "comment": "12038K"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "Intensity",
+          "comment": "12089K"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "Intensity",
+          "comment": "12139K"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Intensity",
+          "comment": "12189K"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "Intensity",
+          "comment": "12239K"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Intensity",
+          "comment": "12289K"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "Intensity",
+          "comment": "12340K"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "Intensity",
+          "comment": "12390K"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Intensity",
+          "comment": "12440K"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "Intensity",
+          "comment": "12490K"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "Intensity",
+          "comment": "12540K"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Intensity",
+          "comment": "12591K"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "Intensity",
+          "comment": "12641K"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "Intensity",
+          "comment": "12691K"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Intensity",
+          "comment": "12741K"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Intensity",
+          "comment": "12791K"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Intensity",
+          "comment": "12842K"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Intensity",
+          "comment": "12892K"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Intensity",
+          "comment": "12942K"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Intensity",
+          "comment": "12992K"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Intensity",
+          "comment": "13042K"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Intensity",
+          "comment": "13093K"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Intensity",
+          "comment": "13143K"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Intensity",
+          "comment": "13193K"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Intensity",
+          "comment": "13243K"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Intensity",
+          "comment": "13293K"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Intensity",
+          "comment": "13344K"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Intensity",
+          "comment": "13394K"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Intensity",
+          "comment": "13444K"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Intensity",
+          "comment": "13494K"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Intensity",
+          "comment": "13544K"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Intensity",
+          "comment": "13594K"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Intensity",
+          "comment": "13645K"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Intensity",
+          "comment": "13695K"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Intensity",
+          "comment": "13745K"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Intensity",
+          "comment": "13795K"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Intensity",
+          "comment": "13845K"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Intensity",
+          "comment": "13896K"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Intensity",
+          "comment": "13946K"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Intensity",
+          "comment": "13996K"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Intensity",
+          "comment": "14046K"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Intensity",
+          "comment": "14096K"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Intensity",
+          "comment": "14147K"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Intensity",
+          "comment": "14197K"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Intensity",
+          "comment": "14247K"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Intensity",
+          "comment": "14297K"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Intensity",
+          "comment": "14347K"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Intensity",
+          "comment": "14398K"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Intensity",
+          "comment": "14448K"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Intensity",
+          "comment": "14498K"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Intensity",
+          "comment": "14548K"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Intensity",
+          "comment": "14598K"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Intensity",
+          "comment": "14649K"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Intensity",
+          "comment": "14699K"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Intensity",
+          "comment": "14749K"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Intensity",
+          "comment": "14799K"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Intensity",
+          "comment": "14849K"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Intensity",
+          "comment": "14900K"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Intensity",
+          "comment": "14950K"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "comment": "15000K"
+        }
+      ]
+    },
+    "Green/Magenta 4": {
+      "fineChannelAliases": ["Green/Magenta 4 fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 133],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "-100 to -1 Green"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "+1 to +100 Green"
+        }
+      ]
+    },
+    "X 4": {
+      "fineChannelAliases": ["X 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Y 4": {
+      "fineChannelAliases": ["Y 4 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "01: CCT-RGBW 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "02: CCT 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "03: CCT-HSI 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Hue",
+        "Saturation",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "04: RGBW 8bit",
+      "channels": [
+        "Master Level",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "05: HSI 8bit",
+      "channels": [
+        "Master Level",
+        "Hue",
+        "Saturation",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "06: CCT-RGBW 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "07: CCT 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "08: CCT-HSI 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "09: RGBW 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "10: HSI 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "11: XY 8bit",
+      "channels": [
+        "Master Level",
+        "X",
+        "Y",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "12: CCT-XY 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "X",
+        "Y",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "13: XY 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "14: CCT-XY 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "15: CCT-HSI +FX 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Hue",
+        "Saturation",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "16: CCT-RGBW +FX 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "17: CCT-XY +FX 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "X",
+        "Y",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "18: CCT-HSI +FX 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "19: CCT-RGBW +FX 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "20: CCT-XY +FX 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "21: GEL 8bit",
+      "channels": [
+        "Master Level",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "22: CCT-GEL 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "23: CCT-GEL +FX 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "24: GEL 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "25: CCT-GEL 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "26: CCT-GEL +FX 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Effect Mode",
+        "Effect Mode 1",
+        "Effect Mode 2",
+        "Effect Mode 3",
+        "Effect Mode 4",
+        "Effect Mode 5",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "27: GEL +BMP 8bit",
+      "channels": [
+        "Master Level",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Bump Red/Cyan",
+        "Bump Green/Magenta",
+        "Bump Blue/Yellow",
+        "Bump Saturation",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "28: CCT-GEL +BMP 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Bump Red/Cyan",
+        "Bump Green/Magenta",
+        "Bump Blue/Yellow",
+        "Bump Saturation",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "29: GEL +BMP 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Bump Red/Cyan",
+        "Bump Red/Cyan fine",
+        "Bump Green/Magenta",
+        "Bump Green/Magenta fine",
+        "Bump Blue/Yellow",
+        "Bump Blue/Yellow fine",
+        "Bump Saturation",
+        "Bump Saturation fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "30: CCT-GEL +BMP 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Gel Library",
+        "Gel Swatch",
+        "Gel Source",
+        "Bump Red/Cyan",
+        "Bump Red/Cyan fine",
+        "Bump Green/Magenta",
+        "Bump Green/Magenta fine",
+        "Bump Blue/Yellow",
+        "Bump Blue/Yellow fine",
+        "Bump Saturation",
+        "Bump Saturation fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "31: FLEX",
+      "channels": []
+    },
+    {
+      "name": "32: ZONE CCT-RGBW 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Level 2",
+        "CCT 2",
+        "Green/Magenta 2",
+        "Crossfade 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Master Level 3",
+        "CCT 3",
+        "Green/Magenta 3",
+        "Crossfade 3",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Master Level 4",
+        "CCT 4",
+        "Green/Magenta 4",
+        "Crossfade 4",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "33: ZONE HSI 8bit",
+      "channels": [
+        "Master Level",
+        "Hue",
+        "Saturation",
+        "Master Level 2",
+        "Hue 2",
+        "Saturation 2",
+        "Master Level 3",
+        "Hue 3",
+        "Saturation 3",
+        "Master Level 4",
+        "Hue 4",
+        "Saturation 4",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "34: ZONE XY 8bit",
+      "channels": [
+        "Master Level",
+        "X",
+        "Y",
+        "Master Level 2",
+        "X 2",
+        "Y 2",
+        "Master Level 3",
+        "X 3",
+        "Y 3",
+        "Master Level 4",
+        "X 4",
+        "Y 4",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "35: ZONE CCT-RGBW 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "CCT 2",
+        "CCT 2 fine",
+        "Green/Magenta 2",
+        "Green/Magenta 2 fine",
+        "Crossfade 2",
+        "Crossfade 2 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Master Level 3",
+        "Master Level 3 fine",
+        "CCT 3",
+        "CCT 3 fine",
+        "Green/Magenta 3",
+        "Green/Magenta 3 fine",
+        "Crossfade 3",
+        "Crossfade 3 fine",
+        "Red 3",
+        "Red 3 fine",
+        "Green 3",
+        "Green 3 fine",
+        "Blue 3",
+        "Blue 3 fine",
+        "White 3",
+        "White 3 fine",
+        "Master Level 4",
+        "Master Level 4 fine",
+        "CCT 4",
+        "CCT 4 fine",
+        "Green/Magenta 4",
+        "Green/Magenta 4 fine",
+        "Crossfade 4",
+        "Crossfade 4 fine",
+        "Red 4",
+        "Red 4 fine",
+        "Green 4",
+        "Green 4 fine",
+        "Blue 4",
+        "Blue 4 fine",
+        "White 4",
+        "White 4 fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "36: ZONE HSI 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "Hue 2",
+        "Hue 2 fine",
+        "Saturation 2",
+        "Saturation 2 fine",
+        "Master Level 3",
+        "Master Level 3 fine",
+        "Hue 3",
+        "Hue 3 fine",
+        "Saturation 3",
+        "Saturation 3 fine",
+        "Master Level 4",
+        "Master Level 4 fine",
+        "Hue 4",
+        "Hue 4 fine",
+        "Saturation 4",
+        "Saturation 4 fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "37: ZONE XY 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "X 2",
+        "X 2 fine",
+        "Y 2",
+        "Y 2 fine",
+        "Master Level 3",
+        "Master Level 3 fine",
+        "X 3",
+        "X 3 fine",
+        "Y 3",
+        "Y 3 fine",
+        "Master Level 4",
+        "Master Level 4 fine",
+        "X 4",
+        "X 4 fine",
+        "Y 4",
+        "Y 4 fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "38: SPLIT ZONE CCT-RGBW 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Level 2",
+        "CCT 2",
+        "Green/Magenta 2",
+        "Crossfade 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "39: SPLIT ZONE HSI 8bit",
+      "channels": [
+        "Master Level",
+        "Hue",
+        "Saturation",
+        "Master Level 2",
+        "Hue 2",
+        "Saturation 2",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "40: SPLIT ZONE XY 8bit",
+      "channels": [
+        "Master Level",
+        "X",
+        "Y",
+        "Master Level 2",
+        "X 2",
+        "Y 2",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "41: SPLIT ZONE CCT-RGBW 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "CCT 2",
+        "CCT 2 fine",
+        "Green/Magenta 2",
+        "Green/Magenta 2 fine",
+        "Crossfade 2",
+        "Crossfade 2 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "42: SPLIT ZONE HSI 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "Hue 2",
+        "Hue 2 fine",
+        "Saturation 2",
+        "Saturation 2 fine",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "43: SPLIT ZONE XY 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "X 2",
+        "X 2 fine",
+        "Y 2",
+        "Y 2 fine",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "44: BARS ZONE CCT-RGBW 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Level 2",
+        "CCT 2",
+        "Green/Magenta 2",
+        "Crossfade 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "45: BARS ZONE HSI 8bit",
+      "channels": [
+        "Master Level",
+        "Hue",
+        "Saturation",
+        "Master Level 2",
+        "Hue 2",
+        "Saturation 2",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "46: BARS ZONE XY 8bit",
+      "channels": [
+        "Master Level",
+        "X",
+        "Y",
+        "Master Level 2",
+        "X 2",
+        "Y 2",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "47: BARS ZONE CCT-RGBW 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "CCT 2",
+        "CCT 2 fine",
+        "Green/Magenta 2",
+        "Green/Magenta 2 fine",
+        "Crossfade 2",
+        "Crossfade 2 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "48: BARS ZONE HSI 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "Hue 2",
+        "Hue 2 fine",
+        "Saturation 2",
+        "Saturation 2 fine",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "49: BARS ZONE XY 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "X 2",
+        "X 2 fine",
+        "Y 2",
+        "Y 2 fine",
+        "Fan Mode",
+        "Control Channel",
+        "Pixel Orientation"
+      ]
+    },
+    {
+      "name": "50: GRID ZONE CCT-RGBW 8bit",
+      "channels": [
+        "Master Level",
+        "CCT",
+        "Green/Magenta",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Level 2",
+        "CCT 2",
+        "Green/Magenta 2",
+        "Crossfade 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Master Level 3",
+        "CCT 3",
+        "Green/Magenta 3",
+        "Crossfade 3",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Master Level 4",
+        "CCT 4",
+        "Green/Magenta 4",
+        "Crossfade 4",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "51: GRID ZONE HSI 8bit",
+      "channels": [
+        "Master Level",
+        "Hue",
+        "Saturation",
+        "Master Level 2",
+        "Hue 2",
+        "Saturation 2",
+        "Master Level 3",
+        "Hue 3",
+        "Saturation 3",
+        "Master Level 4",
+        "Hue 4",
+        "Saturation 4",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "52: GRID ZONE XY 8bit",
+      "channels": [
+        "Master Level",
+        "X",
+        "Y",
+        "Master Level 2",
+        "X 2",
+        "Y 2",
+        "Master Level 3",
+        "X 3",
+        "Y 3",
+        "Master Level 4",
+        "X 4",
+        "Y 4",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "53: GRID ZONE CCT-RGBW 16bit",
+      "channels": [
+        "Master Level 4",
+        "Master Level 4 fine",
+        "CCT 4",
+        "CCT 4 fine",
+        "Green/Magenta 4",
+        "Green/Magenta 4 fine",
+        "Crossfade 4",
+        "Crossfade 4 fine",
+        "Red 4",
+        "Red 4 fine",
+        "Green 4",
+        "Green 4 fine",
+        "Blue 4",
+        "Blue 4 fine",
+        "White 4",
+        "White 4 fine",
+        "Master Level 3",
+        "Master Level 3 fine",
+        "CCT 3",
+        "CCT 3 fine",
+        "Green/Magenta 3",
+        "Green/Magenta 3 fine",
+        "Crossfade 3",
+        "Crossfade 3 fine",
+        "Red 3",
+        "Red 3 fine",
+        "Green 3",
+        "Green 3 fine",
+        "Blue 3",
+        "Blue 3 fine",
+        "White 3",
+        "White 3 fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "CCT 2",
+        "CCT 2 fine",
+        "Green/Magenta 2",
+        "Green/Magenta 2 fine",
+        "Crossfade 2",
+        "Crossfade 2 fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "White 2",
+        "White 2 fine",
+        "Master Level",
+        "Master Level fine",
+        "CCT",
+        "CCT fine",
+        "Green/Magenta",
+        "Green/Magenta fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "54: GRID ZONE HSI 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "Hue 2",
+        "Hue 2 fine",
+        "Saturation 2",
+        "Saturation 2 fine",
+        "Master Level 3",
+        "Master Level 3 fine",
+        "Hue 3",
+        "Hue 3 fine",
+        "Saturation 3",
+        "Saturation 3 fine",
+        "Master Level 4",
+        "Master Level 4 fine",
+        "Hue 4",
+        "Hue 4 fine",
+        "Saturation 4",
+        "Saturation 4 fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    },
+    {
+      "name": "55: GRID ZONE XY 16bit",
+      "channels": [
+        "Master Level",
+        "Master Level fine",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine",
+        "Master Level 2",
+        "Master Level 2 fine",
+        "X 2",
+        "X 2 fine",
+        "Y 2",
+        "Y 2 fine",
+        "Master Level 3",
+        "Master Level 3 fine",
+        "X 3",
+        "X 3 fine",
+        "Y 3",
+        "Y 3 fine",
+        "Master Level 4",
+        "Master Level 4 fine",
+        "X 4",
+        "X 4 fine",
+        "Y 4",
+        "Y 4 fine",
+        "Fan Mode",
+        "Control Channel"
+      ]
+    }
+  ]
+}
