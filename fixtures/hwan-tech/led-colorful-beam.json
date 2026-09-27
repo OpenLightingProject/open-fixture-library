@@ -1,0 +1,217 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Colorful Beam",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["BLVD", "Zoream"],
+    "createDate": "2025-09-29",
+    "lastModifyDate": "2025-09-29",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-09-29",
+      "comment": "created by Q Light Controller Plus (version 4.13.0)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "CH1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Effect",
+          "effectName": "Close the light"
+        },
+        {
+          "dmxRange": [9, 134],
+          "type": "Effect",
+          "effectName": "Linear Adjust RGBW DARK-BRIGHT"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "Effect",
+          "effectName": "Strobe, Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Combine CH2/3/4/5 to adjust RGBW"
+        }
+      ]
+    },
+    "CH2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Red off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Red Dark-Bright"
+        }
+      ]
+    },
+    "CH3": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Green Off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Green Dark-Light"
+        }
+      ]
+    },
+    "CH4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Blue OFF"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "BLUE DARK-LIGHT"
+        }
+      ]
+    },
+    "CH5": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "White off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "comment": "White Dark-Light"
+        }
+      ]
+    },
+    "CH6": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "1-5CH Work"
+        },
+        {
+          "dmxRange": [3, 31],
+          "type": "Effect",
+          "effectName": "4 colour jump"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Red 3 Colour Jump"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Green 3 Colour Jump"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Blue 3 Colour Jump"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "White 3 Colour Jump"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "RGBW Pulse"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "B/W ....GR Closed"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "R/G ...... BW Closed"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "RGB ...... GW closed"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "B/G .... RW Closed"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Alternate RGBW"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "RGBW Jump"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "CH1",
+        "CH2",
+        "CH3",
+        "CH4",
+        "CH5",
+        "CH6"
+      ]
+    }
+  ]
+}
