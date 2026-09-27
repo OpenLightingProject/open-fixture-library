@@ -1,0 +1,272 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "4in1 8 Partition LED Strobe Light 60W",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["dB-Train1", "Strobe"],
+    "createDate": "2025-08-05",
+    "lastModifyDate": "2025-08-05",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-08-05",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [250, 130, 70],
+    "weight": 0.7,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe RGB": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "FX RGB": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "No FX"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Effect",
+          "effectName": "Static (CH4 color)"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Effect",
+          "effectName": "Pulsing (CH4 color)"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Effect",
+          "effectName": "Flash falling (CH4 color)"
+        },
+        {
+          "dmxRange": [31, 229],
+          "type": "Effect",
+          "effectName": "Cycle FX"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound FX",
+          "soundControlled": true
+        }
+      ]
+    },
+    "FX RGB Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "FX RGB Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ColorPreset",
+          "comment": "Color SEQ"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "White"
+        }
+      ]
+    },
+    "Strobe W": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "FX W": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "No FX"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Effect",
+          "effectName": "Manual (CH8 remote)"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Effect",
+          "effectName": "Pulsing"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Effect",
+          "effectName": "Flash falling"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Effect",
+          "effectName": "Segment L"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Effect",
+          "effectName": "Segment R"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Effect",
+          "effectName": "Segment PingPong"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "Effect",
+          "effectName": "Flash from C"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Effect",
+          "effectName": "Tail PingPong"
+        }
+      ]
+    },
+    "FX W Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Intensity",
+        "Strobe RGB",
+        "FX RGB",
+        "FX RGB Speed",
+        "FX RGB Color",
+        "Strobe W",
+        "FX W",
+        "FX W Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
