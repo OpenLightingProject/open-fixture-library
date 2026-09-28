@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Skybar v3",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["NickFR"],
+    "createDate": "2026-09-16",
+    "lastModifyDate": "2026-09-16"
+  },
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/69/69546_skybarv3usermanualfinal.pdf"
+    ],
+    "productPage": [
+      "https://www.sonovente.com/boomtonedj-skybar-v3-p69546.html"
+    ],
+    "video": [
+      "https://www.sonovente.com/boomtonedj-skybar-v3-p69546.html#video"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 60, 60],
+    "weight": 2.3,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "SMD 5050 RGB 3in1"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "53 Channels",
+      "shortName": "53Ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Blue",
+        "Green"
+      ]
+    }
+  ]
+}
