@@ -1,0 +1,314 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "150W 6-Arm LED Moving Head Party Light",
+  "shortName": "6-Arm Moving Head",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Bill Haberkam"],
+    "createDate": "2026-09-11",
+    "lastModifyDate": "2026-09-11"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0729/5136/5770/files/YS-084-CK6_User_Guide.pdf?v=1782568687"
+    ],
+    "productPage": [
+      "https://yeesiteelec.com/products/moving-head-light-party-6-arm-led-150w"
+    ]
+  },
+  "physical": {
+    "dimensions": [12.59, 12.59, 9.44],
+    "weight": 3.25,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Horizontal rotation": {
+      "capability": {
+        "type": "Rotation",
+        "comment": "0-540 degrees"
+      }
+    },
+    "Horizontal rotation speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Fast to Slow"
+      }
+    },
+    "Disco ball light rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelRotation",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Forward and reverse from slow to fast"
+        }
+      ]
+    },
+    "Arm 1 Rotation Angle": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "comment": "0-180 degrees"
+      }
+    },
+    "Arm 2 Rotation Angle": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Arm 3 Rotation Angle": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Arm 4 Rotation Angle": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Arm 5 Rotation Angle": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "6deg"
+      }
+    },
+    "Arm 6 Rotation Angle": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Total Dimming": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Disco ball light Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Disco ball light Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Disco ball light Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Disco ball light White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "All beam Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "All beam Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "All beam Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "All beam White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red starry light": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green starry light": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White light strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Amber light strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Ring Light": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [22, 30],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [31, 39],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [40, 48],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [49, 57],
+          "type": "ColorIntensity",
+          "color": "Indigo"
+        },
+        {
+          "dmxRange": [58, 66],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [67, 75],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Effect",
+          "effectName": "31 Ring effects"
+        }
+      ]
+    },
+    "Ring Light speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Built-in programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Reset in 3 Seconds"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "26 Channel",
+      "shortName": "26 Channel",
+      "channels": [
+        "Horizontal rotation",
+        "Horizontal rotation speed",
+        "Disco ball light rotation",
+        "Arm 1 Rotation Angle",
+        "Arm 2 Rotation Angle",
+        "Arm 3 Rotation Angle",
+        "Arm 4 Rotation Angle",
+        "Arm 5 Rotation Angle",
+        "Arm 6 Rotation Angle",
+        "Total Dimming",
+        "Strobe mode",
+        "Disco ball light Red",
+        "Disco ball light Green",
+        "Disco ball light Blue",
+        "Disco ball light White",
+        "All beam Red",
+        "All beam Green",
+        "All beam Blue",
+        "All beam White",
+        "Red starry light",
+        "Green starry light",
+        "White light strobe",
+        "Amber light strobe",
+        "Ring Light",
+        "Ring Light speed",
+        "Built-in programs"
+      ]
+    }
+  ]
+}
