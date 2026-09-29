@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Amaran F22c",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SuperMichel"],
+    "createDate": "2026-02-23",
+    "lastModifyDate": "2026-02-23"
+  },
+  "comment": "Profile for Mode 1: CCT & RGB 8-bit (10 channels)",
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2022/05/amaran-F22c-Product-Manual-EN.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/amaran-f22c/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=9WnxnPeQ4eU&si=IuKBrlH5eXHZa1fZ"
+    ]
+  },
+  "physical": {
+    "dimensions": [600, 600, 5],
+    "weight": 0.8,
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "Tint": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Generic",
+        "comment": "Tint Green Magenta"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Crossfade CCT to RGB"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 - 10 Ch",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Tint",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Reserved",
+        "Reserved 2",
+        "Strobe"
+      ]
+    }
+  ]
+}
