@@ -23,10 +23,12 @@
     "dimensions": [242, 176, 346],
     "weight": 5.4,
     "power": 65,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "5-pin XLR IP65",
     "bulb": {
-      "type": "LED",
-      "lumens": 780
+      "type": "1× 60W RGBW LED"
     },
     "lens": {
       "name": "Zoom",
