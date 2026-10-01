@@ -1,38 +1,38 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "COLORado 1 Solo",
-  "shortName": "Solo 1",
+  "name": "COLORado 3 Solo",
+  "shortName": "Solo 3",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Da Graca Neves Eric", "Ken Harris"],
-    "createDate": "2022-04-19",
+    "authors": ["Flo Edelmann"],
+    "createDate": "2026-10-01",
     "lastModifyDate": "2026-10-01"
   },
   "links": {
     "productPage": [
-      "https://chauvetprofessional.com/product/colorado-1-solo/"
+      "https://chauvetprofessional.com/product/colorado-3-solo/"
     ],
     "manual": [
-      "https://chauvetprofessional.com/wp-content/uploads/2018/01/COLORado_1_Solo_UM_Rev8.pdf"
+      "https://chauvetprofessional.com/wp-content/uploads/2018/01/COLORado_3_Solo_UM_Rev6.pdf"
     ],
     "video": [
       "https://www.youtube.com/watch?v=0hqRufKRupk"
     ]
   },
   "physical": {
-    "dimensions": [242, 176, 346],
-    "weight": 5.4,
-    "power": 65,
+    "dimensions": [314, 413, 250],
+    "weight": 9,
+    "power": 187,
     "powerConnectors": {
       "powerCON": "input and output"
     },
-    "DMXconnector": "5-pin XLR IP65",
+    "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "1× 60W RGBW LED"
+      "type": "3× 60W RGBW LEDs"
     },
     "lens": {
       "name": "Zoom",
-      "degreesMinMax": [4, 40]
+      "degreesMinMax": [4, 34]
     }
   },
   "availableChannels": {
@@ -561,7 +561,7 @@
       "capability": {
         "type": "Zoom",
         "angleStart": "4deg",
-        "angleEnd": "40deg"
+        "angleEnd": "34deg"
       }
     },
     "Zoom Control": {
