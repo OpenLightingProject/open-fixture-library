@@ -6,7 +6,7 @@ import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-va
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
 import { followXmlNodeReference, getRgbColorFromGdtfColor } from './gdtf-helpers.js';
 
-export const version = '0.2.1';
+export const version = '0.2.2';
 
 /**
  * @typedef {object} Relation
