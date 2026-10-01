@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FLEXstand FX ILS",
+  "shortName": "FLEXstand-FX-ILS",
+  "categories": ["Color Changer", "Matrix"],
+  "meta": {
+    "authors": ["Doralitze"],
+    "createDate": "2026-09-27",
+    "lastModifyDate": "2026-09-27"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/628197_flexstand_fx_ils_um_rev4.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [550, 2400, 547],
+    "weight": 60,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 5000Hz"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "94 Channel",
+      "shortName": "94ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
