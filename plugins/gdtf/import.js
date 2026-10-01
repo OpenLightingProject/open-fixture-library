@@ -536,10 +536,14 @@ export async function importFixtures(buffer, filename, authorName) {
 
         return gdtfLogicalChannel.ChannelFunction.flatMap((gdtfChannelFunction) => {
           if (!gdtfChannelFunction.ChannelSet) {
-            // add an empty <ChannelSet /> spanning the whole <ChannelFunction>
-            // (GDTF: a function's range starts at its own DMXFrom; sets are optional)
-            gdtfChannelFunction.ChannelSet = [{ $: { DMXFrom: gdtfChannelFunction.$.DMXFrom } }];
+            // add an empty <ChannelSet />
+            gdtfChannelFunction.ChannelSet = [{ $: {} }];
           }
+
+          // GDTF: a channel set's DMX start and physical range default to its
+          // channel function's (and a function's physical range defaults to 0…1)
+          const channelFunctionPhysicalFrom = parseFloatWithFallback(gdtfChannelFunction.$.PhysicalFrom, 0);
+          const channelFunctionPhysicalTo = parseFloatWithFallback(gdtfChannelFunction.$.PhysicalTo, 1);
 
           // save GDTF attribute for later
           gdtfChannelFunction._attribute = followXmlNodeReference(
@@ -563,17 +567,20 @@ export async function importFixtures(buffer, filename, authorName) {
               gdtfChannelSet.$.Name = '';
             }
 
+            if (!('DMXFrom' in gdtfChannelSet.$)) {
+              gdtfChannelSet.$.DMXFrom = gdtfChannelFunction.$.DMXFrom;
+            }
+
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom, 0);
 
-            // GDTF: a set's physical range defaults to its channel function's (which defaults to 0…1)
-            const physicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, parseFloatWithFallback(gdtfChannelFunction.$.PhysicalFrom, 0));
-            const physicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, parseFloatWithFallback(gdtfChannelFunction.$.PhysicalTo, 1));
+            const channelSetPhysicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, channelFunctionPhysicalFrom);
+            const channelSetPhysicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, channelFunctionPhysicalTo);
 
-            gdtfChannelSet._physicalFrom = physicalFrom;
-            gdtfChannelSet._physicalTo = physicalTo;
+            gdtfChannelSet._physicalFrom = channelSetPhysicalFrom;
+            gdtfChannelSet._physicalTo = channelSetPhysicalTo;
 
-            minPhysicalValue = Math.min(minPhysicalValue, physicalFrom, physicalTo);
-            maxPhysicalValue = Math.max(maxPhysicalValue, physicalFrom, physicalTo);
+            minPhysicalValue = Math.min(minPhysicalValue, channelSetPhysicalFrom, channelSetPhysicalTo);
+            maxPhysicalValue = Math.max(maxPhysicalValue, channelSetPhysicalFrom, channelSetPhysicalTo);
 
             return gdtfChannelSet;
           });
