@@ -835,14 +835,22 @@ const gdtfAttributes = {
       capability.fogType = 'Haze';
     },
   },
-  'HSB_Brightness': undefined, // Controls the fixture's color attribute regarding the brightness.
+  'HSB_Brightness': {
+    // Controls the fixture's color attribute regarding the brightness.
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'HSB_Hue': {
     // Controls the fixture's color attribute regarding the hue.
     oflType: 'Generic',
     oflProperty: null,
   },
   'HSB_Quality': undefined, // Controls the fixture's color attribute regarding the quality.
-  'HSB_Saturation': undefined, // Controls the fixture's color attribute regarding the saturation.
+  'HSB_Saturation': {
+    // Controls the fixture's color attribute regarding the saturation.
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'IntensityMSpeed': {
     // Movement speed of the fixture's intensity.
     oflType: 'Speed',
