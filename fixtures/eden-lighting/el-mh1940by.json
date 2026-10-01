@@ -1,0 +1,769 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EL-MH1940BY",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Klochok"],
+    "createDate": "2026-09-19",
+    "lastModifyDate": "2026-09-19"
+  },
+  "links": {
+    "productPage": [
+      "https://edenlighting.ru/products/rotating-head/el-mh1940by?ysclid=mu89d2jrxx115371138"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red",
+        "colors": ["#ff0000"]
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorTemperature",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [16, 35],
+          "type": "ColorTemperature",
+          "comment": "R 100 G UP B0"
+        },
+        {
+          "dmxRange": [36, 55],
+          "type": "ColorTemperature",
+          "comment": "R DOWN G 100 B 0"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "ColorTemperature",
+          "comment": "R 0 G 100 B UP"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "ColorTemperature",
+          "comment": "R 0 G DOWN B 100"
+        },
+        {
+          "dmxRange": [96, 115],
+          "type": "ColorTemperature",
+          "comment": "R UP G 0 B 100"
+        },
+        {
+          "dmxRange": [116, 135],
+          "type": "ColorTemperature",
+          "comment": "R UP G 0 B 100"
+        },
+        {
+          "dmxRange": [136, 155],
+          "type": "ColorTemperature",
+          "comment": "R 100 G UP B UP"
+        },
+        {
+          "dmxRange": [156, 175],
+          "type": "ColorTemperature",
+          "comment": "R DOWN G DOWN B 100"
+        },
+        {
+          "dmxRange": [176, 195],
+          "type": "ColorTemperature",
+          "comment": "R 100 G 100 B 100 W 100"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "ColorTemperature",
+          "comment": "2800K"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorTemperature",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorTemperature",
+          "comment": "3500K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorTemperature",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorTemperature",
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorTemperature",
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorTemperature",
+          "comment": "5500K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorTemperature",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorTemperature",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorTemperature",
+          "comment": "7000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorTemperature",
+          "comment": "7500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorTemperature",
+          "comment": "8000K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "NO FUNCTION"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "MACRO COLOR 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "MACRO COLOR 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "MACRO COLOR 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "MACRO COLOR 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "MACRO COLOR 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "MACRO COLOR 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "MACRO COLOR 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "MACRO COLOR 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "MACRO COLOR 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "MACRO COLOR 10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "MACRO COLOR 11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "MACRO COLOR 12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "MACRO COLOR 13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "MACRO COLOR 14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "MACRO COLOR 15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "MACRO COLOR 16"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "MACRO COLOR 17"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "MACRO COLOR 18"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "MACRO COLOR 19"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "MACRO COLOR 20"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "MACRO COLOR 21"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "MACRO COLOR 22"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "MACRO COLOR 23"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "MACRO COLOR 24"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "MACRO COLOR 25"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "NO FUNCTION"
+        },
+        {
+          "dmxRange": [4, 203],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "SYNCHRONOUS STROBE SPEED FROM SLOW TO FAST (1HZ-25HZ)"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "StrobeDuration",
+          "comment": "RANDOM STROBE"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "comment": "DIMMER"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "PanContinuous",
+        "comment": "PAN"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "TiltContinuous",
+        "comment": "TILT"
+      }
+    },
+    "Dimming Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "MODE 1"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "MODE 2"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "MODE 3"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Generic",
+          "comment": "MODE 4"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction",
+          "comment": "NO FUNCTION"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "RESET WITHIN 5S"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angle": "narrow"
+      }
+    },
+    "Lens rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 155],
+          "type": "Rotation",
+          "comment": "0-60"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Rotation",
+          "comment": "CLOCKWISE INFINITE ROTATION"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Rotation",
+          "comment": "COUNTERCLOCKWISE INFINITE ROTATION"
+        }
+      ]
+    },
+    "Pattern rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "NO FUNCTION"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 1"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 2"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 3"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 4"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 5"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 6"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 7"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 8"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 9"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 10"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 11"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 12"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 13"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 14"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 15"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 16"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 17"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 18"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 19"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 20"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 21"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 22"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 23"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 24"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 25"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 26"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 27"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 28"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 29"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Generic",
+          "comment": "MONOCHROME DYNAMIC PATTERN 30"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 1"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN  2"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 3"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 4"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 5"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 6"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 7"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 8"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 9"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 10"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 11"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 12"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 13"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Generic",
+          "comment": "MIXED COLOR DYNAMIC PATTERN 14"
+        }
+      ]
+    },
+    "Pattern efect speed (with 22ch)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 132],
+          "type": "Generic",
+          "comment": "CLOCKWISE, FROM FAST TO SLOW"
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "Generic",
+          "comment": "COUNTERCLOCKWISE, FROM FAST TO SLOW"
+        }
+      ]
+    },
+    "Pattern fade": {
+      "capability": {
+        "type": "Generic",
+        "comment": "PATTERN EFFECT FADE"
+      }
+    },
+    "Pattern Backgroung R": {
+      "capability": {
+        "type": "Generic",
+        "comment": "PATTERN EFFECT R"
+      }
+    },
+    "Pattern Backgroung G": {
+      "capability": {
+        "type": "Generic",
+        "comment": "PATTERN EFFECT G"
+      }
+    },
+    "Pattern Backgroung B": {
+      "capability": {
+        "type": "Generic",
+        "comment": "PATTERN EFFECT B"
+      }
+    },
+    "Pattern Backgroung W": {
+      "capability": {
+        "type": "Generic",
+        "comment": "PATTERN EFFECT W"
+      }
+    },
+    "Pattern dimming": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pattern 0-100 dimming"
+      }
+    },
+    "Background dimming": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background 0-100 dimming"
+      }
+    },
+    "Pattern change": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pattern change control"
+      }
+    },
+    "Pattern movement": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pattern movement (with 22ch)"
+      }
+    },
+    "Prospects strobe": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Prospects strobe"
+      }
+    },
+    "Background strobe": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background strobe"
+      }
+    },
+    "Background pattern selection": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Background selection"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "EL-MH1940BY(35 CH)",
+      "shortName": "EL-MH1940BY(35 CH)",
+      "channels": [
+        "Red 2",
+        "Red 2 fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Temperature",
+        "Color Macros",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Dimming Mode",
+        "Reset",
+        "Zoom",
+        "Lens rotation",
+        "Pattern rotation",
+        "Pattern efect speed (with 22ch)",
+        "Pattern fade",
+        "Pattern Backgroung R",
+        "Pattern Backgroung G",
+        "Pattern Backgroung B",
+        "Pattern Backgroung W",
+        "Pattern dimming",
+        "Background dimming",
+        "Pattern change",
+        "Pattern movement",
+        "Prospects strobe",
+        "Background strobe",
+        "Background pattern selection"
+      ]
+    }
+  ]
+}
