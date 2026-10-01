@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HL-x180 RGBW",
+  "shortName": "HL-x180 RGBW",
+  "categories": ["Blinder", "Other"],
+  "meta": {
+    "authors": ["Maggie S"],
+    "createDate": "2026-09-18",
+    "lastModifyDate": "2026-09-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.manuals.co.uk/stairville/hl-x180/manual"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macro": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Sound Control": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macro",
+        "Strobe",
+        "Sound Control",
+        "Master Dimmer"
+      ]
+    }
+  ]
+}
