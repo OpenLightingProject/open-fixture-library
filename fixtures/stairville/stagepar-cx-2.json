@@ -4,8 +4,8 @@
   "categories": ["Color Changer", "Dimmer", "Effect"],
   "meta": {
     "authors": ["alucula"],
-    "createDate": "2023-06-21",
-    "lastModifyDate": "2023-06-21"
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
   },
   "links": {
     "manual": [
@@ -13,8 +13,27 @@
     ]
   },
   "physical": {
+    "dimensions": [305, 380, 215],
+    "weight": 4.4,
+    "power": 107,
+    "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Outer"],
+        ["Inner"]
+      ]
+    ],
+    "pixelGroups": {
+      "Outer Ring": ["Outer"],
+      "Inner Ring": ["Inner"]
     }
   },
   "availableChannels": {
@@ -28,17 +47,18 @@
         "type": "Intensity"
       }
     },
-    "NewSource": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Generic",
+          "type": "NoFunction",
           "comment": "Colouring"
         },
         {
           "dmxRange": [1, 10],
-          "type": "Generic",
-          "comment": "Sound Control"
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true
         },
         {
           "dmxRange": [11, 255],
@@ -80,23 +100,98 @@
       }
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "3 Channel",
+      "shortName": "3ch",
       "channels": [
         "Color Macros",
         "Dimmer",
-        "NewSource"
+        "Strobe"
       ]
     },
     {
       "name": "5 channel",
+      "shortName": "5ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "Amber",
         "White"
+      ]
+    },
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8 channel",
+      "shortName": "8ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Outer Ring"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Inner Ring"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
