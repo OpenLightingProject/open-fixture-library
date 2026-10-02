@@ -4,9 +4,9 @@
   "shortName": "StairvilleMHx30Spot",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Voyo"],
+    "authors": ["Voyo", "Ryan Goodwin"],
     "createDate": "2019-07-22",
-    "lastModifyDate": "2019-12-22"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -23,6 +23,9 @@
     "dimensions": [280, 374, 150],
     "weight": 5.8,
     "power": 94,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "30W white LED",

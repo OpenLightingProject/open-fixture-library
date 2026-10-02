@@ -4,9 +4,9 @@
   "shortName": "MDGtheONE",
   "categories": ["Hazer", "Smoke"],
   "meta": {
-    "authors": ["Flo Edelmann"],
+    "authors": ["Flo Edelmann", "Ryan Goodwin"],
     "createDate": "2017-10-13",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2023-07-12"
   },
   "comment": "Fog output: 85m³ per minute in Fog mode, at full pressure",
   "links": {
@@ -27,6 +27,9 @@
     "dimensions": [250, 610, 300],
     "weight": 23,
     "power": 1480,
+    "powerConnectors": {
+      "IEC C19": "input only"
+    },
     "DMXconnector": "5-pin"
   },
   "availableChannels": {

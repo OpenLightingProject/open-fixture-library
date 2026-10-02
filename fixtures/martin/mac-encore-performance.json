@@ -4,9 +4,9 @@
   "shortName": "MartinEncorePerf",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2019-01-16",
-    "lastModifyDate": "2019-01-16"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
@@ -25,6 +25,9 @@
     "dimensions": [480, 740, 452],
     "weight": 31,
     "power": 585,
+    "powerConnectors": {
+      "powerCON TRUE1": "input only"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "White LED"

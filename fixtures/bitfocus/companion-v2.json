@@ -1,0 +1,737 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Companion v2.0",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Ryan Goodwin"],
+    "createDate": "2023-05-06",
+    "lastModifyDate": "2023-05-06"
+  },
+  "comment": "Fixture to control Companion software via Artnet/DMX",
+  "links": {
+    "manual": [
+      "https://user.bitfocus.io/docs/companion"
+    ],
+    "productPage": [
+      "https://bitfocus.io/companion"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jjbxzVrAG4M"
+    ]
+  },
+  "physical": {
+    "dimensions": [0, 0, 0]
+  },
+  "availableChannels": {
+    "Page": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "No Page"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "comment": "Page 1"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Maintenance",
+          "comment": "Page 2"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Maintenance",
+          "comment": "Page 3"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Maintenance",
+          "comment": "Page 4"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Maintenance",
+          "comment": "Page 5"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Maintenance",
+          "comment": "Page 6"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Maintenance",
+          "comment": "Page 7"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Maintenance",
+          "comment": "Page 8"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Maintenance",
+          "comment": "Page 9"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Maintenance",
+          "comment": "Page 10"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Maintenance",
+          "comment": "Page 11"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Maintenance",
+          "comment": "Page 12"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Maintenance",
+          "comment": "Page 13"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Maintenance",
+          "comment": "Page 14"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Maintenance",
+          "comment": "Page 15"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "comment": "Page 16"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "comment": "Page 17"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "comment": "Page 18"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Maintenance",
+          "comment": "Page 19"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "comment": "Page 20"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Maintenance",
+          "comment": "Page 21"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Maintenance",
+          "comment": "Page 22"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "comment": "Page 23"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "comment": "Page 24"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "comment": "Page 25"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "comment": "Page 26"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Maintenance",
+          "comment": "Page 27"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "comment": "Page 28"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "comment": "Page 29"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "comment": "Page 30"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "comment": "Page 31"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "comment": "Page 32"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Maintenance",
+          "comment": "Page 33"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Maintenance",
+          "comment": "Page 34"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Maintenance",
+          "comment": "Page 35"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "comment": "Page 36"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Maintenance",
+          "comment": "Page 37"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Maintenance",
+          "comment": "Page 38"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Maintenance",
+          "comment": "Page 39"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Maintenance",
+          "comment": "Page 40"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Maintenance",
+          "comment": "Page 41"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Maintenance",
+          "comment": "Page 42"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Maintenance",
+          "comment": "Page 43"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Maintenance",
+          "comment": "Page 44"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Maintenance",
+          "comment": "Page 45"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Maintenance",
+          "comment": "Page 46"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Maintenance",
+          "comment": "Page 47"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Maintenance",
+          "comment": "Page 48"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Maintenance",
+          "comment": "Page 49"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Maintenance",
+          "comment": "Page 50"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Maintenance",
+          "comment": "Page 51"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Maintenance",
+          "comment": "Page 52"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Maintenance",
+          "comment": "Page 53"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Maintenance",
+          "comment": "Page 54"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Maintenance",
+          "comment": "Page 55"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Maintenance",
+          "comment": "Page 56"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Maintenance",
+          "comment": "Page 57"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Maintenance",
+          "comment": "Page 58"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Maintenance",
+          "comment": "Page 59"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Maintenance",
+          "comment": "Page 60"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Maintenance",
+          "comment": "Page 61"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Maintenance",
+          "comment": "Page 62"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Maintenance",
+          "comment": "Page 63"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Maintenance",
+          "comment": "Page 64"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Maintenance",
+          "comment": "Page 65"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Maintenance",
+          "comment": "Page 66"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Maintenance",
+          "comment": "Page 67"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Maintenance",
+          "comment": "Page 68"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Maintenance",
+          "comment": "Page 69"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Maintenance",
+          "comment": "Page 70"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Maintenance",
+          "comment": "Page 71"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Maintenance",
+          "comment": "Page 72"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Maintenance",
+          "comment": "Page 73"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Maintenance",
+          "comment": "Page 74"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Maintenance",
+          "comment": "Page 75"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Maintenance",
+          "comment": "Page 76"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Maintenance",
+          "comment": "Page 77"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Maintenance",
+          "comment": "Page 78"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Maintenance",
+          "comment": "Page 79"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Maintenance",
+          "comment": "Page 80"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Maintenance",
+          "comment": "Page 81"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Maintenance",
+          "comment": "Page 82"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Maintenance",
+          "comment": "Page 83"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Maintenance",
+          "comment": "Page 84"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Maintenance",
+          "comment": "Page 85"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Maintenance",
+          "comment": "Page 86"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Maintenance",
+          "comment": "Page 87"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Maintenance",
+          "comment": "Page 88"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Maintenance",
+          "comment": "Page 89"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Maintenance",
+          "comment": "Page 90"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Maintenance",
+          "comment": "Page 91"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Maintenance",
+          "comment": "Page 92"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Maintenance",
+          "comment": "Page 93"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Maintenance",
+          "comment": "Page 94"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Maintenance",
+          "comment": "Page 95"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Maintenance",
+          "comment": "Page 96"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Maintenance",
+          "comment": "Page 97"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Maintenance",
+          "comment": "Page 98"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Maintenance",
+          "comment": "Page 99"
+        },
+        {
+          "dmxRange": [100, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Bank": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "No Bank"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Maintenance",
+          "comment": "Bank 1"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Maintenance",
+          "comment": "Bank 2"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Maintenance",
+          "comment": "Bank 3"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Maintenance",
+          "comment": "Bank 4"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Maintenance",
+          "comment": "Bank 5"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Maintenance",
+          "comment": "Bank 6"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Maintenance",
+          "comment": "Bank 7"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Maintenance",
+          "comment": "Bank 8"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Maintenance",
+          "comment": "Bank 9"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Maintenance",
+          "comment": "Bank 10"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Maintenance",
+          "comment": "Bank 11"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Maintenance",
+          "comment": "Bank 12"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Maintenance",
+          "comment": "Bank 13"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Maintenance",
+          "comment": "Bank 14"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Maintenance",
+          "comment": "Bank 15"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "comment": "Bank 16"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "comment": "Bank 17"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "comment": "Bank 18"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Maintenance",
+          "comment": "Bank 19"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Maintenance",
+          "comment": "Bank 20"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Maintenance",
+          "comment": "Bank 21"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Maintenance",
+          "comment": "Bank 22"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "comment": "Bank 23"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "comment": "Bank 24"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "comment": "Bank 25"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "comment": "Bank 26"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Maintenance",
+          "comment": "Bank 27"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "comment": "Bank 28"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "comment": "Bank 29"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "comment": "Bank 30"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "comment": "Bank 31"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "comment": "Bank 32"
+        },
+        {
+          "dmxRange": [33, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Button": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "No Button"
+        },
+        {
+          "dmxRange": [11, 128],
+          "type": "Maintenance",
+          "comment": "Button Down"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Maintenance",
+          "comment": "Button Up"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "00",
+      "channels": [
+        "Page",
+        "Bank",
+        "Button"
+      ]
+    }
+  ]
+}

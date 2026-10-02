@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Blinder 2 COB",
+  "categories": ["Blinder", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Eric Bessot", "Luke Nelson"],
+    "createDate": "2023-05-07",
+    "lastModifyDate": "2023-05-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.woodbrass.com/images/woodbrass/SHOWTEC+LED+BLINDER+2+50W.PDF"
+    ]
+  },
+  "physical": {
+    "dimensions": [138, 393, 185],
+    "weight": 4.14,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [35, 35]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [["L", "R"]]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer Master"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer L",
+        "Dimmer R"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer L",
+        "Dimmer R",
+        "Dimmer Master"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer L",
+        "Dimmer R",
+        "Strobe",
+        "Dimmer Master"
+      ]
+    }
+  ]
+}

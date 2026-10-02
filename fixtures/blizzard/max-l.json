@@ -1,0 +1,382 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAX L",
+  "categories": ["Strobe", "Color Changer", "Blinder"],
+  "meta": {
+    "authors": ["grayplex"],
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://firebasestorage.googleapis.com/v0/b/dealerportal-2fb18.appspot.com/o/products%2F1981%2Fdownloads%2Fmax-l_manual_rev_a.pdf?alt=media&token=9f969c34-9d03-4800-a2d3-c5d6610f0ef4"
+    ],
+    "productPage": [
+      "https://www.blizzardpro.com/products/max-l"
+    ],
+    "video": [
+      "https://vimeo.com/533562186?fl=pl&fe=cm"
+    ]
+  },
+  "physical": {
+    "dimensions": [348, 115.5, 75],
+    "weight": 1.2,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "132x 0.2W SMD 5050 RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [80, 80]
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [6, 13],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [14, 21],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [22, 29],
+          "type": "ColorPreset",
+          "comment": "Yellow Warm",
+          "colors": ["#fceea7"]
+        },
+        {
+          "dmxRange": [30, 37],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [46, 53],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#40e0d0"]
+        },
+        {
+          "dmxRange": [54, 61],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [62, 69],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [70, 77],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#bf94e4"]
+        },
+        {
+          "dmxRange": [78, 85],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#a17188"]
+        },
+        {
+          "dmxRange": [86, 93],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [94, 101],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#fc0fc0"]
+        },
+        {
+          "dmxRange": [102, 109],
+          "type": "ColorPreset",
+          "comment": "Warm White",
+          "colors": ["#efebd8"]
+        },
+        {
+          "dmxRange": [110, 117],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [118, 125],
+          "type": "ColorPreset",
+          "comment": "Cool White",
+          "colors": ["#e3e4ed"]
+        },
+        {
+          "dmxRange": [126, 128],
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [129, 192],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "510ms"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe Advanced": {
+      "name": "Shutter / Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel 1",
+      "shortName": "2ch1",
+      "channels": [
+        "Dimmer",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "2-channel 2",
+      "shortName": "2ch2",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "shortName": "3ch1",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Strobe Duration"
+      ]
+    },
+    {
+      "name": "3-channel 2",
+      "shortName": "3ch2",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3-channel 3",
+      "shortName": "3ch3",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe Advanced",
+        "Color Macros",
+        "Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe Advanced",
+        "Red",
+        "Green",
+        "Blue",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}

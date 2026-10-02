@@ -63,6 +63,8 @@ A fixture's `shortName` must be unique amongst all fixtures.
 
 The `physical` section describes properties not directly used in the DMX protocol, but often in lighting control software to display a preview of the fixtures in action.
 
+The `lastModifyDate` should *NOT* be updated when updating fixture data that is not related to the fixtures capabilities or attributes. This includes things such as changing an author's names, updating links, or updating the order of channel modes.
+
 
 ### Modes
 
@@ -70,7 +72,7 @@ A fixture can have multiple *modes* (also sometimes called *personalities*) like
 
 A mode can contain the `physical` property to override specific physical data of the fixture. E.g. one mode could set the `power` value different than the fixture default.
 
-A mode's `shortName` must be unique amongst all modes of the respective fixture.
+A mode's `shortName` must be unique amongst all modes of the respective fixture. The `shortname` should be similar to what is displayed on the device's LCD/LED displays if that information is known (e.g. from the manual). If not known, the standard `1ch` format should be followed.
 
 
 ### Channels
@@ -192,7 +194,7 @@ A *switching channel* is a channel whose functionality depends on the value of a
 
 E.g. in a given mode, the first channel could be used to select auto-programs and channel 2 could be either "Microphone Sensitivity" (if channel 1 is set to *Sound control*) or "Program Speed" (if channel 1 is set to anything else).
 
-To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
+To define switching channels, add a `switchChannels` object to all capabilities of the dependency channel (the "Auto-Programs" channel in the example above). This object defines which *switching channel alias* is set to which *available channel key* if this capability is active. A value of `null` can be used to switch to an unused channel. The switching channel alias is then used in the mode just like a regular channel. Note that a channel which defines switching channels needs an explicit `defaultValue` to make sure that the switching channel default is also well-defined.
 
 See the [Futurelight PRO Slim PAR-7 HCL fixture](../fixtures/futurelight/pro-slim-par-7-hcl.json) for a simple application example.
 
@@ -297,7 +299,7 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
     {
       "insert": "matrixChannels", // static value for matrix channels
       "repeatFor": "eachPixelXYZ", // see below
-      "channelOrder": "perPixel", // or "perChannel"
+      "channelOrder": "perPixel", // see below
       "templateChannels": [
         "Red $pixelKey",
         "Green $pixelKey",
@@ -317,6 +319,24 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
 * `"eachPixelGroup"`: Gets computed into an array of all pixel group keys, ordered by appearance in the JSON file.
   - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
 
+`channelOrder` defines how the channels are ordered. Possible values are:
+
+* `"perPixel"`: For the above [matrix structure](#matrix-structure) example, this results in
+  ```json
+  [
+    "Red Inner ring", "Green Inner ring", "Blue Inner ring",
+    "Red Middle ring", "Green Middle ring", "Blue Middle ring",
+    "Red Outer ring", "Green Outer ring", "Blue Outer ring"
+  ]
+  ```
+* `"perChannel"`: For the above [matrix structure](#matrix-structure) example, this results in
+  ```json
+  [
+    "Red Inner ring", "Red Middle ring", "Red Outer ring",
+    "Green Inner ring", "Green Middle ring", "Green Outer ring",
+    "Blue Inner ring", "Blue Middle ring", "Blue Outer ring"
+  ]
+  ```
 
 ### Wheels
 

@@ -4,16 +4,17 @@
   "shortName": "CLAS400",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "Ryan Goodwin"],
     "createDate": "2019-02-08",
-    "lastModifyDate": "2019-02-08"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "manual": [
       "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLAS400/CLAS400_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
     ],
     "productPage": [
-      "https://xkit.me/categories/cameo-auro-spot-400-led-moving-head-clas400/"
+      "https://www.adamhall.com/shop/tt-en/archiv/2075/auro-spot-400",
+      "https://www.simplysoundandlighting.co.uk/products/cameo-auroa-spot-400-led-moving-head"
     ],
     "video": [
       "https://www.youtube.com/watch?v=dgaex6QQBOI&t=141"
@@ -23,6 +24,9 @@
     "dimensions": [405, 565, 285],
     "weight": 15.6,
     "power": 290,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "180W white LED",

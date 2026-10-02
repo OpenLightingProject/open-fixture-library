@@ -1,0 +1,384 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS-2 DMX-Scanner",
+  "shortName": "TS-2",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["oxim", "Luke Nelson"],
+    "createDate": "2023-04-20",
+    "lastModifyDate": "2023-04-20"
+  },
+  "links": {
+    "productPage": [
+      "https://www.steinigke.fr/en/mpn51785765-eurolite-ts-2-scan.html"
+    ],
+    "manual": [
+      "https://www.steinigke.fr/download/51785765-Manual-9543-1.400-eurolite-ts-2-scan-de_en_es_fr.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=w5T1t7J5q_o"
+    ]
+  },
+  "physical": {
+    "dimensions": [195, 290, 295],
+    "weight": 4,
+    "power": 115,
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff0080"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Green",
+          "colors": ["#00ff80"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Yellow",
+          "colors": ["#ffff80"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red and Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow and Green",
+          "colors": ["#ffff00", "#00ff00"]
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 8"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 9"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 10"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 11"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 12"
+        },
+        {
+          "type": "Closed"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "130deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [18, 35],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [36, 53],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [54, 71],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [72, 89],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [90, 107],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [108, 125],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [126, 143],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [144, 161],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [162, 179],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [180, 197],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [198, 215],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [216, 233],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [234, 251],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "helpWanted": "Is this a bi-colour slot or halfway between two?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "helpWanted": "Is this a bi-colour slot or halfway between two?"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [7, 13],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [14, 20],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [21, 27],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [42, 48],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [49, 55],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [56, 62],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [63, 69],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [70, 76],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [77, 83],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [84, 90],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [91, 112],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [128, 238],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 1,
+          "comment": "Strobe-effect with increasing speed"
+        },
+        {
+          "dmxRange": [239, 255],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        }
+      ]
+    },
+    "Lamp": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Lamp"
+      ]
+    }
+  ]
+}

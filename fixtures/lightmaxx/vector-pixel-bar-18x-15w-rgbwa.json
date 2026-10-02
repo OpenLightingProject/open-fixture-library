@@ -44,7 +44,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Function": {
@@ -54,7 +55,7 @@
           "dmxRange": [0, 17],
           "type": "NoFunction",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Running Effects / Color Running Effect Direction": null
           }
         },
         {
@@ -87,7 +88,7 @@
           "effectName": "Color",
           "helpWanted": "What does this capability do?",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Running Effects / Color Running Effect Direction": null
           }
         },
         {
@@ -95,7 +96,7 @@
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Running Effects / Color Running Effect Direction": null
           }
         },
         {
@@ -103,7 +104,7 @@
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Running Effects / Color Running Effect Direction": null
           }
         },
         {
@@ -112,7 +113,7 @@
           "effectName": "Running effects 1…50",
           "helpWanted": "Which running effect is active at which DMX values?",
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Running Effects / Color Running Effect Direction": null
           }
         },
         {
@@ -121,7 +122,7 @@
           "effectName": "Sound to light",
           "soundControlled": true,
           "switchChannels": {
-            "Running Effects / Color Running Effect Direction": "Unused"
+            "Running Effects / Color Running Effect Direction": null
           }
         }
       ]
@@ -398,11 +399,6 @@
           "comment": "right running"
         }
       ]
-    },
-    "Unused": {
-      "capability": {
-        "type": "NoFunction"
-      }
     },
     "Function Speed": {
       "capability": {
