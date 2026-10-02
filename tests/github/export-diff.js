@@ -87,18 +87,12 @@ async function getDiffTasks(changedComponents) {
     })
     .toSorted((a, b) => {
       const manufacturerFixtureCompare = a.manufacturerFixture.localeCompare(b.manufacturerFixture);
-      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
-      const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
-
       if (manufacturerFixtureCompare !== 0) {
         return manufacturerFixtureCompare;
       }
 
-      if (currentPluginCompare !== 0) {
-        return currentPluginCompare;
-      }
-
-      return comparePluginCompare;
+      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
+      return currentPluginCompare === 0 ? a.comparePluginKey.localeCompare(b.comparePluginKey) : currentPluginCompare;
     });
 
   /**
@@ -144,17 +138,19 @@ async function getDiffTasks(changedComponents) {
     for (const addedPlugin of addedPlugins) {
       const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, import.meta.url);
 
-      if (pluginData.previousVersions) {
-        const previousVersions = Object.keys(pluginData.previousVersions);
-        const lastVersion = previousVersions.at(-1);
+      if (!pluginData.previousVersions) {
+        continue;
+      }
 
-        if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks.push(...usableTestFixtures.map((manufacturerFixture) => ({
-            manufacturerFixture,
-            currentPluginKey: addedPlugin,
-            comparePluginKey: lastVersion,
-          })));
-        }
+      const previousVersions = Object.keys(pluginData.previousVersions);
+      const lastVersion = previousVersions.at(-1);
+
+      if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
+        tasks.push(...usableTestFixtures.map((manufacturerFixture) => ({
+          manufacturerFixture,
+          currentPluginKey: addedPlugin,
+          comparePluginKey: lastVersion,
+        })));
       }
     }
 
@@ -219,13 +215,13 @@ async function performTask(task) {
       );
     }
 
-    for (const file of Object.keys(output.changedFiles)) {
+    for (const [file, value] of Object.entries(output.changedFiles)) {
       lines.push(
         '<details>',
         `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
         '',
         '```diff',
-        output.changedFiles[file],
+        value,
         '```',
         '</details>',
       );
@@ -277,9 +273,5 @@ function getEmoji(changeFlags) {
     return '🆚';
   }
 
-  if (changeFlags.hasAdded) {
-    return '🆕';
-  }
-
-  return '❌';
+  return changeFlags.hasAdded ? '🆕' : '❌';
 }

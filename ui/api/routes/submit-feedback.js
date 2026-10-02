@@ -30,7 +30,7 @@ export async function createFeedbackIssue({ request }) {
     title = `Feedback for fixture \`${context}\``;
     labels.push('component-fixture');
 
-    const [manufacturerKey, fixtureKey] = context.split('/');
+    const [manufacturerKey, fixtureKey] = context.split('/', 2);
     const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
 
     issueContentData.Manufacturer = fixture.manufacturer.name;

@@ -266,7 +266,7 @@ async function addCapability(xmlChannel, capability, customGobos) {
     if (preset.res1 !== null) {
       xmlCapability.attribute('Res1', preset.res1);
 
-      if (`${preset.res1}`.startsWith('ofl/')) {
+      if (String(preset.res1).startsWith('ofl/')) {
         customGobos[preset.res1] = capability.wheelSlot[0].resource;
       }
     }
@@ -292,12 +292,14 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
   }
 
   const goboResource = await exportHelpers.getGoboResource(capability);
-  if (goboResource) {
-    xmlCapability.attribute('Res', goboResource);
+  if (!goboResource) {
+    return;
+  }
 
-    if (goboResource.startsWith('ofl/')) {
-      customGobos[goboResource] = capability.wheelSlot[0].resource;
-    }
+  xmlCapability.attribute('Res', goboResource);
+
+  if (goboResource.startsWith('ofl/')) {
+    customGobos[goboResource] = capability.wheelSlot[0].resource;
   }
 }
 
@@ -309,11 +311,11 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
 function addCapabilityAliases(xmlCapability, capability) {
   const fixture = capability._channel.fixture;
 
-  let aliasAdded = false;
-  for (const alias of Object.keys(capability.switchChannels)) {
+  let isAliasAdded = false;
+  for (const [alias, switchedChannelKey] of Object.entries(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(capability.switchChannels[alias]);
+    const switchedChannel = fixture.getChannelByKey(switchedChannelKey);
 
     if (defaultChannel === switchedChannel) {
       continue;
@@ -324,7 +326,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     );
 
     for (const mode of modesContainingSwitchingChannel) {
-      aliasAdded = true;
+      isAliasAdded = true;
       xmlCapability.element({
         Alias: {
           '@Mode': mode.name,
@@ -335,7 +337,7 @@ function addCapabilityAliases(xmlCapability, capability) {
     }
   }
 
-  return aliasAdded;
+  return isAliasAdded;
 }
 
 /**
@@ -355,9 +357,7 @@ function addMode(xml, mode, createPhysical) {
   }
 
   for (const [index, channel] of mode.channels.entries()) {
-    const uniqueName = channel instanceof SwitchingChannel
-      ? channel.defaultChannel.uniqueName
-      : channel.uniqueName;
+    const uniqueName = (channel instanceof SwitchingChannel ? channel.defaultChannel : channel).uniqueName;
 
     xmlMode.element({
       Channel: {
@@ -382,7 +382,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
   const panMax = getPanTiltMax('Pan', mode?.channels ?? fixture.coarseChannels);
   const tiltMax = getPanTiltMax('Tilt', mode?.channels ?? fixture.coarseChannels);
 
-  if (Object.keys(physical.jsonObject).length === 0 && panMax === 0 && tiltMax === 0) {
+  if (panMax === 0 && tiltMax === 0 && Object.keys(physical.jsonObject).length === 0) {
     // empty physical data
     return;
   }
@@ -486,13 +486,9 @@ function getPanTiltMax(panOrTilt, channels) {
   const maxAngle = Math.max(...panTiltCapabilities.map((capability) => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
-  if (panTiltMax === Number.NEGATIVE_INFINITY) {
+  if (panTiltMax === -Infinity) {
     const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
-    if (hasContinuousCapability) {
-      return 9999;
-    }
-
-    return 0;
+    return hasContinuousCapability ? 9999 : 0;
   }
 
   return Math.round(panTiltMax);
@@ -533,11 +529,9 @@ function addHeads(xmlMode, mode) {
     }
 
     if (channel.pixelKey !== null) {
-      if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
-        return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
-      }
-
-      return channel.pixelKey === pixelKey;
+      return mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)
+        ? mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey)
+        : channel.pixelKey === pixelKey;
     }
 
     return false;
@@ -568,11 +562,9 @@ function getFixtureType(fixture) {
    * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */
   function isBeamBar() {
-    if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
-      return true;
-    }
-
-    return fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
+    return !fixture.physical
+      || !fixture.physical.matrixPixelsSpacing
+      || fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
   }
 }
 
@@ -597,8 +589,8 @@ function getChannelType(type) {
     Nothing: ['NoFunction'],
   };
 
-  for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {
-    if (qlcplusChannelTypes[qlcplusType].includes(type)) {
+  for (const [qlcplusType, oflTypes] of Object.entries(qlcplusChannelTypes)) {
+    if (oflTypes.includes(type)) {
       return qlcplusType;
     }
   }

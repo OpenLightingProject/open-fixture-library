@@ -319,6 +319,7 @@ import {
   getSanitizedChannel,
   isCapabilityChanged,
   isChannelChanged,
+  scrollToFirstInvalidField,
 } from '../../assets/scripts/editor-utilities.js';
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -397,19 +398,20 @@ export default {
       return modeName;
     },
     title() {
-      if (this.channel.editMode === 'add-existing') {
-        return `Add channel to mode ${this.currentModeDisplayName}`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          return `Add channel to mode ${this.currentModeDisplayName}`;
+        }
+        case 'create': {
+          return 'Create new channel';
+        }
+        case 'edit-duplicate': {
+          return 'Edit channel duplicate';
+        }
+        default: {
+          return 'Edit channel';
+        }
       }
-
-      if (this.channel.editMode === 'create') {
-        return 'Create new channel';
-      }
-
-      if (this.channel.editMode === 'edit-duplicate') {
-        return 'Edit channel duplicate';
-      }
-
-      return 'Edit channel';
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(
@@ -417,25 +419,29 @@ export default {
       );
     },
     submitButtonTitle() {
-      if (this.channel.editMode === 'add-existing') {
-        const count = this.selectedChannelUuids.length;
-        return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          const count = this.selectedChannelUuids.length;
+          return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+        }
+        case 'create': {
+          return 'Create channel';
+        }
+        default: {
+          return 'Save changes';
+        }
       }
-
-      if (this.channel.editMode === 'create') {
-        return 'Create channel';
-      }
-
-      return 'Save changes';
     },
   },
   watch: {
     channel: {
       handler() {
-        if (isChannelChanged(this.channel)) {
-          this.$emit('channel-changed');
-          this.channelChanged = true;
+        if (!isChannelChanged(this.channel)) {
+          return;
         }
+
+        this.$emit('channel-changed');
+        this.channelChanged = true;
       },
       deep: true,
     },
@@ -578,8 +584,8 @@ export default {
     },
 
     copyPropertiesFromChannel(channel) {
-      for (const property of Object.keys(channel)) {
-        this.channel[property] = structuredClone(channel[property]);
+      for (const [property, value] of Object.entries(channel)) {
+        this.channel[property] = structuredClone(value);
       }
     },
 
@@ -600,7 +606,7 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged || channelName === '') {
+      if (channelName === '' || this.areCapabilitiesChanged) {
         return;
       }
 
@@ -680,30 +686,7 @@ export default {
       }
 
       if (this.formstate.$invalid) {
-        const invalidFields = document.querySelectorAll('#channel-dialog .vf-field-invalid');
-
-        for (let index = 0; index < invalidFields.length; index++) {
-          const enclosingDetails = invalidFields[index].closest('details:not([open])');
-
-          if (enclosingDetails) {
-            enclosingDetails.open = true;
-
-            // current field could be enclosed another time, so repeat
-            index--;
-          }
-        }
-
-        const scrollContainer = invalidFields[0].closest('.dialog');
-        scrollIntoView(invalidFields[0], {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: (target) => target === scrollContainer,
-        }, () => invalidFields[0].focus());
-
+        scrollToFirstInvalidField(this.$el);
         return;
       }
 
@@ -737,8 +720,7 @@ export default {
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
       if (previousResolution > this.channel.resolution) {
-        for (const channelId of Object.keys(this.fixture.availableChannels)) {
-          const channel = this.fixture.availableChannels[channelId];
+        for (const [channelId, channel] of Object.entries(this.fixture.availableChannels)) {
           if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
             this.$emit('remove-channel', channelId);
           }

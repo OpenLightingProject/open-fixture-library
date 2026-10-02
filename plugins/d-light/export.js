@@ -69,8 +69,8 @@ function exportFixtureMode(fixture, mode, options) {
 
   // channels are grouped by their channel type which is called AttributesDefinition in D::Light
   const channelsByAttribute = getChannelsByAttribute(mode.channels);
-  for (const attribute of Object.keys(channelsByAttribute)) {
-    addAttribute(xml, mode, attribute, channelsByAttribute[attribute]);
+  for (const [attribute, value] of Object.entries(channelsByAttribute)) {
+    addAttribute(xml, mode, attribute, value);
   }
 
   return {
@@ -125,18 +125,20 @@ function addAttribute(xml, mode, attribute, channels) {
 
     channel = getUsableChannel(channel);
 
-    if (channel instanceof CoarseChannel) {
-      const capabilities = channel.capabilities;
+    if (!(channel instanceof CoarseChannel)) {
+      continue;
+    }
 
-      const xmlCapabilities = xmlChannel.element({
-        Definitions: {
-          '@index': capabilities.length,
-        },
-      });
+    const capabilities = channel.capabilities;
 
-      for (const capability of capabilities) {
-        addCapability(capability, xmlCapabilities);
-      }
+    const xmlCapabilities = xmlChannel.element({
+      Definitions: {
+        '@index': capabilities.length,
+      },
+    });
+
+    for (const capability of capabilities) {
+      addCapability(capability, xmlCapabilities);
     }
   }
 }
@@ -185,7 +187,7 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
 
   if (channel instanceof FineChannel) {
     // for fine channels, this is simply the coarse channel's index
-    return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
+    return String(mode.getChannelIndex(channel.coarseChannel.key) + 1);
   }
 
   if (attribute === 'FOCUS') {
@@ -210,11 +212,9 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
  * @returns {number} The DMX value this channel should be set to as default.
  */
 function getDefaultValue(channel) {
-  if (channel instanceof FineChannel) {
-    return channel.defaultValue;
-  }
-
-  return channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
+  return channel instanceof FineChannel
+    ? channel.defaultValue
+    : channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 }
 
 /**
@@ -222,11 +222,7 @@ function getDefaultValue(channel) {
  * @returns {CoarseChannel | FineChannel} Switching channels resolved to their default channel.
  */
 function getUsableChannel(channel) {
-  if (channel instanceof SwitchingChannel) {
-    return channel.defaultChannel;
-  }
-
-  return channel;
+  return channel instanceof SwitchingChannel ? channel.defaultChannel : channel;
 }
 
 /**
@@ -265,10 +261,7 @@ function getChannelsByAttribute(channels) {
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {
-      if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
-        return 'FINE';
-      }
-      return 'EXTRA';
+      return channel.resolution === CoarseChannel.RESOLUTION_16BIT ? 'FINE' : 'EXTRA';
     }
 
     const oflToDLightMap = {
@@ -281,8 +274,8 @@ function getChannelsByAttribute(channels) {
       EXTRA: ['NoFunction'],
     };
 
-    for (const attribute of Object.keys(oflToDLightMap)) {
-      if (oflToDLightMap[attribute].includes(channel.type)) {
+    for (const [attribute, types] of Object.entries(oflToDLightMap)) {
+      if (types.includes(channel.type)) {
         return attribute;
       }
     }
