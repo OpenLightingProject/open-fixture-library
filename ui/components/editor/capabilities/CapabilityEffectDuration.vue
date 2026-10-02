@@ -30,7 +30,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -53,7 +52,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate an effect, only controls the duration of running effects.`,
+      hint: 'Doesn\'t activate an effect, only controls the duration of running effects.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +60,9 @@ export default {
        */
       defaultData: {
         duration: null,
-        durationStart: `short`,
-        durationEnd: `long`,
-        comment: ``,
+        durationStart: 'short',
+        durationEnd: 'long',
+        comment: '',
       },
     };
   },

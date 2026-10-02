@@ -3,6 +3,7 @@
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
   margin: 0 4px 4px 0;
+  text-decoration: none;
   background: theme-color(hover-background);
   border-radius: 5000px; // see https://stackoverflow.com/a/18795153/451391
 
@@ -53,17 +54,17 @@ export default {
   emits: {
     click: () => true,
     focus: () => true,
-    blur: event => true,
+    blur: (event) => true,
   },
   render(createElement) {
     const classes = {
       'category-badge': true,
-      selected: this.selected,
+      'selected': this.selected,
     };
     const children = [
-      createElement(`OflSvg`, {
+      createElement('OflSvg', {
         props: {
-          type: `fixture`,
+          type: 'fixture',
           name: this.category,
         },
       }),
@@ -72,27 +73,27 @@ export default {
 
     if (this.selectable) {
       // <NuxtLink> is not cancellable, so we render a default <a> instead
-      return createElement(`a`, {
+      return createElement('a', {
         class: classes,
         attrs: {
           href: `#${encodeURIComponent(this.category)}`,
         },
         on: {
-          click: $event => {
-            this.$emit(`click`);
+          click: ($event) => {
+            this.$emit('click');
             $event.preventDefault();
           },
           focus: () => {
-            this.$emit(`focus`);
+            this.$emit('focus');
           },
-          blur: $event => {
-            this.$emit(`blur`, $event);
+          blur: ($event) => {
+            this.$emit('blur', $event);
           },
         },
       }, children);
     }
 
-    return createElement(`NuxtLink`, {
+    return createElement('NuxtLink', {
       class: classes,
       props: {
         to: `/categories/${encodeURIComponent(this.category)}`,

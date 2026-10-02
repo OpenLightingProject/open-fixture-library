@@ -1,8 +1,7 @@
 import createPullRequest from '../../../../lib/create-github-pr.js';
-
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
-/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @import { Context as OpenApiBackendContext } from 'openapi-backend' */
+/** @import { ApiResponse } from '../../index.js' */
+/** @import { FixtureCreateResult } from '../../../../lib/types.js' */
 
 /**
  * @typedef {object} RequestBody
@@ -14,7 +13,7 @@ import createPullRequest from '../../../../lib/create-github-pr.js';
 /**
  * Creates a GitHub pull request with the given fixture data.
  * Includes warnings, errors, GitHub username and GitHub comment in the PR description.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
 export async function submitFixtures({ request }) {

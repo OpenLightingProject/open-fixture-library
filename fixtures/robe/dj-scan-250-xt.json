@@ -10,7 +10,7 @@
   },
   "links": {
     "manual": [
-      "https://www.robe.cz/api/support-files/download/downloads/user_manuals/User%20manual%20DJ%20Scan%20250%20XT.pdf"
+      "https://www.robe.cz/res/downloads/user_manuals/User%20manual%20DJ%20Scan%20250%20XT.pdf"
     ],
     "productPage": [
       "https://www.robe.cz/scan-250-xt"
@@ -155,7 +155,8 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
       }
     },
     "Tilt": {
@@ -163,7 +164,8 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
       }
     },
     "Color Wheel": {
