@@ -4,8 +4,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Luke Nelson"],
-    "createDate": "2026-07-28",
-    "lastModifyDate": "2026-07-28",
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2022-12-28",
@@ -72,15 +72,17 @@
           "dmxRange": [0, 15],
           "type": "NoFunction",
           "switchChannels": {
-            "NoFunction / Strobe effect": "Strobe effect"
+            "Strobe effect / NoFunction": "Strobe effect",
+            "Effects / NoFunction": "Effects"
           }
         },
         {
           "dmxRange": [16, 255],
           "type": "Effect",
-          "effectName": "One of 41 preprogrammed automatic shows (macros), channels 6 and 7 without function",
+          "effectName": "One of 42 preprogrammed automatic shows (macros)",
           "switchChannels": {
-            "NoFunction / Strobe effect": "NoFunction"
+            "Strobe effect / NoFunction": null,
+            "Effects / NoFunction": null
           }
         }
       ]
@@ -98,85 +100,85 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe effect, increasing speed"
+          "speedEnd": "fast"
         }
       ]
     },
-    "Mode selection": {
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "12 colors"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "4 colors"
+        }
+      ]
+    },
+    "Effects": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Effect",
-          "effectName": "Constant color, the hue is set by channels 1 to 4"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [32, 63],
           "type": "Effect",
-          "effectName": "Fade-out effect, speed controlled by channel 6, channels 1 to 5 without function"
+          "effectPreset": "ColorFade",
+          "comment": "fade-out"
         },
         {
           "dmxRange": [64, 95],
           "type": "Effect",
-          "effectName": "Fade-in effect, speed controlled by channel 6, channels 1 to 5 without function"
+          "effectPreset": "ColorFade",
+          "comment": "fade-in"
         },
         {
           "dmxRange": [96, 127],
           "type": "Effect",
-          "effectName": "Fade-in-out effect, speed controlled by channel 6, channels 1 to 5 without function"
+          "effectPreset": "ColorFade",
+          "comment": "fade-in-out"
         },
         {
           "dmxRange": [128, 159],
           "type": "Effect",
-          "effectName": "Auto-mix effect, speed controlled by channel 6, channels 1 to 5 without function"
+          "effectPreset": "ColorFade",
+          "comment": "auto-mix"
         },
         {
           "dmxRange": [160, 191],
           "type": "Effect",
-          "effectName": "Chase (4 colors), speed controlled by channel 6, channels 1 to 5 without function"
+          "effectPreset": "ColorJump",
+          "comment": "4-color chase"
         },
         {
           "dmxRange": [192, 223],
           "type": "Effect",
-          "effectName": "Chase (12 colors), speed controlled by channel 6, channels 1 to 5 without function"
+          "effectPreset": "ColorJump",
+          "comment": "12-color chase"
         },
         {
           "dmxRange": [224, 255],
           "type": "Effect",
           "effectName": "Sound control",
           "soundControlled": true
-        }
-      ]
-    },
-    "Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Mode Selection - 6 Channels": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 63],
-          "type": "Effect",
-          "effectName": "Constant color, the hue is set by channels 2 to 5"
-        },
-        {
-          "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Automatic color change with 7 colors, channels 2 to 5 without function"
-        },
-        {
-          "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "Automatic color change with 12 colors, channels 2 to 5 without function"
-        },
-        {
-          "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "Automatic color change with 4 colors, channels 2 to 5 without function"
         }
       ]
     },
@@ -206,10 +208,10 @@
         }
       ]
     },
-    "NoFunction": {
+    "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "NoFunction"
+        "type": "Intensity"
       }
     }
   },
@@ -217,13 +219,18 @@
     {
       "name": "4-channel",
       "shortName": "4ch",
-      "channels": ["Red", "Green", "Blue", "White"]
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
     },
     {
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Mode Selection - 6 Channels",
+        "Programs",
         "Red",
         "Green",
         "Blue",
@@ -240,8 +247,8 @@
         "Blue",
         "White",
         "Fixed color pattern",
-        "NoFunction / Strobe effect",
-        "Mode selection",
+        "Strobe effect / NoFunction",
+        "Effects / NoFunction",
         "Dimmer"
       ]
     }
