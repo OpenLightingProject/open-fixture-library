@@ -1,41 +1,40 @@
 import { inspect } from 'util';
-
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
-/** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
-/** @typedef {import('../lib/model/Capability.js').default} Capability */
-/** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
 import FineChannel from '../lib/model/FineChannel.js';
 import Fixture from '../lib/model/Fixture.js';
-/** @typedef {import('../lib/model/Matrix.js').default} Matrix */
-/** @typedef {import('../lib/model/Meta.js').default} Meta */
 import NullChannel from '../lib/model/NullChannel.js';
-/** @typedef {import('../lib/model/Physical.js').default} Physical */
-/** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
 import { getResourceFromString, manufacturerFromRepository } from '../lib/model.js';
-/** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 import { schemaDefinitions } from '../lib/schema-properties.js';
+/** @import AbstractChannel from '../lib/model/AbstractChannel.js' */
+/** @import Capability from '../lib/model/Capability.js' */
+/** @import CoarseChannel from '../lib/model/CoarseChannel.js' */
+/** @import Matrix from '../lib/model/Matrix.js' */
+/** @import Meta from '../lib/model/Meta.js' */
+/** @import Physical from '../lib/model/Physical.js' */
+/** @import TemplateChannel from '../lib/model/TemplateChannel.js' */
+/** @import Wheel from '../lib/model/Wheel.js' */
 
-let initialized = false;
+let isInitialized = false;
 let register;
 let plugins;
 
 /**
  * Checks that a given fixture JSON object is valid.
- * @param {string} manufacturerKey The manufacturer key.
- * @param {string} fixtureKey The fixture key.
- * @param {object | null} fixtureJson The fixture JSON object.
- * @param {UniqueValues | null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
+ * @param {string} manufacturerKey - The manufacturer key.
+ * @param {string} fixtureKey - The fixture key.
+ * @param {object | null} fixtureJson - The fixture JSON object.
+ * @param {UniqueValues | null} [uniqueValues=null] - Values that have to be unique are checked and all new occurrences are appended.
  * @returns {Promise<ResultData>} A Promise that resolves to the result object containing errors and warnings, if any.
  */
 export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
-  if (!initialized) {
-    register = await importJson(`../fixtures/register.json`, import.meta.url);
-    plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+  if (!isInitialized) {
+    register = await importJson('../fixtures/register.json', import.meta.url);
+    plugins = await importJson('../plugins/plugins.json', import.meta.url);
 
-    initialized = true;
+    isInitialized = true;
   }
 
   /**
@@ -49,6 +48,24 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     errors: [],
     warnings: [],
   };
+
+  if (!('$schema' in fixtureJson)) {
+    result.errors.push(getErrorString('File does not contain \'$schema\' property.'));
+    return result;
+  }
+
+  if (fixtureJson.$schema.endsWith('/fixture-redirect.json')) {
+    await checkFixtureRedirect();
+    return result;
+  }
+
+  const schemaValidate = await getAjvValidator('fixture');
+  const schemaValid = schemaValidate(fixtureJson);
+  if (!schemaValid) {
+    const errorMessages = getAjvErrorMessages(schemaValidate.errors, 'fixture');
+    result.errors.push(...errorMessages.map((message) => getErrorString('File does not match schema:', message)));
+    return result;
+  }
 
   /** @type {Fixture} */
   let fixture;
@@ -68,25 +85,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   const modeNames = new Set();
   /** @type {Set<string>} */
   const modeShortNames = new Set();
-
-  if (!(`$schema` in fixtureJson)) {
-    result.errors.push(getErrorString(`File does not contain '$schema' property.`));
-    return result;
-  }
-
-  if (fixtureJson.$schema.endsWith(`/fixture-redirect.json`)) {
-    await checkFixtureRedirect();
-    return result;
-  }
-
-
-  const schemaValidate = await getAjvValidator(`fixture`);
-  const schemaValid = schemaValidate(fixtureJson);
-  if (!schemaValid) {
-    const errorMessages = getAjvErrorMessages(schemaValidate.errors, `fixture`);
-    result.errors.push(...errorMessages.map(message => getErrorString(`File does not match schema:`, message)));
-    return result;
-  }
 
   try {
     const manufacturer = await manufacturerFromRepository(manufacturerKey);
@@ -112,26 +110,24 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkRdm();
   }
   catch (error) {
-    result.errors.push(getErrorString(`File could not be imported into model.`, error));
+    result.errors.push(getErrorString('File could not be imported into model.', error));
   }
 
   return result;
-
-
 
   /**
    * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
    */
   async function checkFixtureRedirect() {
-    const redirectSchemaValidate = await getAjvValidator(`fixture-redirect`);
+    const redirectSchemaValidate = await getAjvValidator('fixture-redirect');
     const redirectSchemaValid = redirectSchemaValidate(fixtureJson);
 
     if (!redirectSchemaValid) {
-      result.errors.push(getErrorString(`File does not match schema.`, redirectSchemaValidate.errors));
+      result.errors.push(getErrorString('File does not match schema.', redirectSchemaValidate.errors));
     }
 
-    if (!(fixtureJson.redirectTo in register.filesystem) || `redirectTo` in register.filesystem[fixtureJson.redirectTo]) {
-      result.errors.push(`'redirectTo' is not a valid fixture.`);
+    if (!(fixtureJson.redirectTo in register.filesystem) || 'redirectTo' in register.filesystem[fixtureJson.redirectTo]) {
+      result.errors.push('\'redirectTo\' is not a valid fixture.');
     }
 
     result.name = `${manufacturerKey}/${fixtureKey}.json (redirect)`;
@@ -179,21 +175,23 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Check that a fixture's meta block is valid.
-   * @param {Meta} meta The fixture's Meta object.
+   * @param {Meta} meta - The fixture's Meta object.
    */
   function checkMeta(meta) {
     if (meta.lastModifyDate < meta.createDate) {
-      result.errors.push(`meta.lastModifyDate is earlier than meta.createDate.`);
+      result.errors.push('meta.lastModifyDate is earlier than meta.createDate.');
     }
 
-    if (meta.importPlugin) {
-      const pluginData = plugins.data[meta.importPlugin];
-      const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
-      const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+    if (!meta.importPlugin) {
+      return;
+    }
 
-      if (!(isImportPlugin || isOutdatedImportPlugin)) {
-        result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
-      }
+    const pluginData = plugins.data[meta.importPlugin];
+    const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
+    const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+
+    if (!(isImportPlugin || isOutdatedImportPlugin)) {
+      result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
     }
   }
 
@@ -214,19 +212,21 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     for (const [url, linkTypes] of Object.entries(linkTypesPerUrl)) {
-      if (linkTypes.length > 1) {
-        const linkTypesList = linkTypes.join(`, `);
-        result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
+      if (linkTypes.length <= 1) {
+        continue;
       }
+
+      const linkTypesList = linkTypes.join(', ');
+      result.errors.push(`URL '${url}' is used in multiple link types: ${linkTypesList}.`);
     }
   }
 
   /**
    * Checks if the given Physical object is valid.
-   * @param {Physical | null} physical A fixture's or a mode's physical data.
-   * @param {string} [modeDescription=''] Optional information in error messages about current mode.
+   * @param {Physical | null} physical - A fixture's or a mode's physical data.
+   * @param {string} [modeDescription=''] - Optional information in error messages about current mode.
    */
-  function checkPhysical(physical, modeDescription = ``) {
+  function checkPhysical(physical, modeDescription = '') {
     if (physical === null) {
       return;
     }
@@ -236,8 +236,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     if (physical.dimensions !== null && physical.DMXconnector !== null) {
-      const hasSmallDimensions = physical.dimensions.some(dimension => dimension < 30);
-      const dimensionsString = physical.dimensions.join(`×`);
+      const hasSmallDimensions = physical.dimensions.some((dimension) => dimension < 30);
+      const dimensionsString = physical.dimensions.join('×');
 
       if (hasSmallDimensions) {
         result.errors.push(`physical.dimensions${modeDescription} are too small (${dimensionsString}mm) for a fixture with a ${physical.DMXconnector} DMX connector. Did you accidentally enter the dimensions in centimeters instead of millimeters?`);
@@ -245,7 +245,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     if (physical.hasMatrixPixels && fixture.matrix === null) {
-      result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
+      result.errors.push('physical.matrixPixels is set but fixture.matrix is missing.');
     }
     else if (physical.matrixPixelsSpacing !== null) {
       checkPhysicalMatrixPixelsSpacing(physical.matrixPixelsSpacing);
@@ -254,10 +254,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Checks if the given physical.matrixPixels.spacing array is valid.
-   * @param {number[]} matrixPixelsSpacing The physical.matrixPixels.spacing array to check.
+   * @param {number[]} matrixPixelsSpacing - The physical.matrixPixels.spacing array to check.
    */
   function checkPhysicalMatrixPixelsSpacing(matrixPixelsSpacing) {
-    for (const [index, axis] of [`X`, `Y`, `Z`].entries()) {
+    for (const [index, axis] of ['X', 'Y', 'Z'].entries()) {
       if (matrixPixelsSpacing[index] !== 0 && !fixture.matrix.definedAxes.includes(axis)) {
         result.errors.push(`physical.matrixPixels.spacing is nonzero for ${axis} axis, but no pixels are defined in that axis.`);
       }
@@ -266,7 +266,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Checks if the given Matrix object is valid.
-   * @param {Matrix | null} matrix A fixture's matrix data.
+   * @param {Matrix | null} matrix - A fixture's matrix data.
    */
   function checkMatrix(matrix) {
     if (matrix === null) {
@@ -274,20 +274,20 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     if (matrix.definedAxes.length === 0) {
-      result.errors.push(`Matrix may not consist of only a single pixel.`);
+      result.errors.push('Matrix may not consist of only a single pixel.');
       return;
     }
 
     const variesInAxisLength = matrix.pixelKeyStructure.some(
-      rows => rows.length !== matrix.pixelCountY || rows.some(
-        columns => columns.length !== matrix.pixelCountX,
+      (rows) => rows.length !== matrix.pixelCountY || rows.some(
+        (columns) => columns.length !== matrix.pixelCountX,
       ),
     );
     if (variesInAxisLength) {
-      result.errors.push(`Matrix must not vary in axis length.`);
+      result.errors.push('Matrix must not vary in axis length.');
     }
 
-    if (`pixelGroups` in matrix.jsonObject) {
+    if ('pixelGroups' in matrix.jsonObject) {
       checkPixelGroups();
     }
 
@@ -309,7 +309,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           result.errors.push(`pixelGroup '${pixelGroupKey}' does not contain any pixelKeys. Please relax the pixel key constraints.`);
         }
 
-        for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
+        const groupPixelKeys = matrix.pixelGroups[pixelGroupKey];
+        for (const pixelKey of groupPixelKeys) {
           if (!matrix.pixelKeys.includes(pixelKey)) {
             result.errors.push(`pixelGroup '${pixelGroupKey}' references unknown pixelKey '${pixelKey}'.`);
           }
@@ -324,7 +325,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Checks if the fixture's wheels are correct.
-   * @param {Wheel[]} wheels The fixture's Wheel instances.
+   * @param {Wheel[]} wheels - The fixture's Wheel instances.
    */
   async function checkWheels(wheels) {
     for (const wheel of wheels) {
@@ -336,14 +337,14 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       const foundAnimationGoboEndSlots = [];
 
       await Promise.all(wheel.slots.map(async (slot, index) => {
-        if (slot.type === `AnimationGoboStart`) {
+        if (slot.type === 'AnimationGoboStart') {
           expectedAnimationGoboEndSlots.push(index + 1);
         }
-        else if (slot.type === `AnimationGoboEnd`) {
+        else if (slot.type === 'AnimationGoboEnd') {
           foundAnimationGoboEndSlots.push(index);
         }
 
-        if (typeof slot.resource === `string`) {
+        if (typeof slot.resource === 'string') {
           try {
             await getResourceFromString(slot.resource);
           }
@@ -372,18 +373,18 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Check if the templateChannel is defined correctly. Does not check the channel data itself.
-   * @param {TemplateChannel} templateChannel The templateChannel to examine.
+   * @param {TemplateChannel} templateChannel - The templateChannel to examine.
    */
   function checkTemplateChannel(templateChannel) {
-    checkTemplateVariables(templateChannel.name, [`$pixelKey`]);
+    checkTemplateVariables(templateChannel.name, ['$pixelKey']);
 
     for (const templateKey of templateChannel.allTemplateKeys) {
-      checkTemplateVariables(templateKey, [`$pixelKey`]);
+      checkTemplateVariables(templateKey, ['$pixelKey']);
 
       const possibleMatrixChannelKeys = templateChannel.possibleMatrixChannelKeys.get(templateKey);
 
       const templateChannelUsed = fixture.allChannelKeys.some(
-        channelKey => possibleMatrixChannelKeys.includes(channelKey),
+        (channelKey) => possibleMatrixChannelKeys.includes(channelKey),
       );
       if (!templateChannelUsed) {
         result.warnings.push(`Template channel '${templateKey}' is never used.`);
@@ -405,22 +406,24 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkChannels() {
     for (const channel of fixture.coarseChannels) {
-      if (!(channel instanceof NullChannel)) {
-        // forbid coexistence of channels 'Red' and 'red'
-        checkUniqueness(
-          definedChannelKeys,
-          channel.key,
-          result,
-          `Channel key '${channel.key}' is already defined (maybe in another letter case).`,
-        );
-        checkChannel(channel);
+      if ((channel instanceof NullChannel)) {
+        continue;
       }
+
+      // forbid coexistence of channels 'Red' and 'red'
+      checkUniqueness(
+        definedChannelKeys,
+        channel.key,
+        result,
+        `Channel key '${channel.key}' is already defined (maybe in another letter case).`,
+      );
+      checkChannel(channel);
     }
   }
 
   /**
    * Check that an available or template channel is valid.
-   * @param {CoarseChannel} channel The channel to test.
+   * @param {CoarseChannel} channel - The channel to test.
    */
   function checkChannel(channel) {
     checkTemplateVariables(channel.key, []);
@@ -431,7 +434,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
     checkTemplateVariables(channel.name, []);
 
-    if (channel.type === `Unknown`) {
+    if (channel.type === 'Unknown') {
       result.errors.push(`Channel '${channel.key}' has an unknown type.`);
     }
 
@@ -462,7 +465,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkChannelDmxValues();
     checkCapabilities();
 
-
     /**
      * Check that DMX values used in the channel are correct.
      */
@@ -484,16 +486,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      * Check that the channel's capabilities are valid.
      */
     function checkCapabilities() {
-      let dmxRangesInvalid = false;
+      let hasInvalidDmxRange = false;
 
       if (
-        channel.capabilities.length === 1 &&
-        channel.capabilities[0].type === `ShutterStrobe` &&
-        fixture.mainCategory !== `Strobe`
+        channel.capabilities.length === 1
+        && channel.capabilities[0].type === 'ShutterStrobe'
+        && fixture.mainCategory !== 'Strobe'
+        && !channel.capabilities[0].helpWanted?.startsWith('At which DMX values is strobe disabled? When is the lamp constantly on/off?')
       ) {
-        const message = `Channel '${channel.key}' only has a single ShutterStrobe capability and the fixture is not a Strobe, so it is not clear when strobe is disabled.`;
-        const hasHelpWanted = Boolean(channel.capabilities[0].helpWanted?.startsWith(`At which DMX values is strobe disabled? When is the lamp constantly on/off?`));
-        result[hasHelpWanted ? `warnings` : `errors`].push(message);
+        result.errors.push(`Channel '${channel.key}' only has a single ShutterStrobe capability and the fixture is not a Strobe, so it is not clear when strobe is disabled.`);
       }
 
       for (let index = 0; index < channel.capabilities.length; index++) {
@@ -501,8 +502,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
-        if (!dmxRangesInvalid) {
-          dmxRangesInvalid = !checkDmxRange(index);
+        if (!hasInvalidDmxRange) {
+          hasInvalidDmxRange = !checkDmxRange(index);
         }
 
         // Use JSON dmxRange rather than rawDmxRange, because that one might throw unhelpful errors
@@ -513,7 +514,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
       /**
        * Check that a capability's range is valid.
-       * @param {number} capabilityNumber The number of the capability in the channel, starting with 0.
+       * @param {number} capabilityNumber - The number of the capability in the channel, starting with 0.
        * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capabilityNumber) {
@@ -526,7 +527,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           && checkRangeValid()
           && checkRangesAdjacent()
           && checkLastCapabilityRangeEnd();
-
 
         /**
          * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
@@ -598,14 +598,18 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
       /**
        * Check that a capability is valid (except its DMX range).
-       * @param {Capability} capability The capability to check.
-       * @param {string} errorPrefix An identifier for the capability to use in errors and warnings.
+       * @param {Capability} capability - The capability to check.
+       * @param {string} errorPrefix - An identifier for the capability to use in errors and warnings.
        */
       function checkCapability(capability, errorPrefix) {
         const switchingChannelAliases = Object.keys(capability.switchChannels);
         if (arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
+            if (channelKey === null) {
+              continue;
+            }
+
             usedChannelKeys.add(channelKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(channelKey) === null) {
@@ -635,7 +639,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           capabilityTypeChecks[capability.type]();
         }
 
-
         /**
          * Check all used start/end entities in the capability.
          */
@@ -650,7 +653,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               result.errors.push(`${errorPrefix} uses different units for ${property}.`);
             }
 
-            if (property === `speed` && startEntity.number * endEntity.number < 0) {
+            if (property === 'speed' && startEntity.number * endEntity.number < 0) {
               result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Split it into several capabilities instead.`);
             }
 
@@ -664,18 +667,20 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for ShutterStrobe capabilities.
          */
         function checkShutterStrobeCapability() {
-          if ([`Closed`, `Open`].includes(capability.shutterEffect)) {
-            if (capability.isSoundControlled) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
-            }
+          if (!['Closed', 'Open'].includes(capability.shutterEffect)) {
+            return;
+          }
 
-            if (capability.speed !== null || capability.duration !== null) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
-            }
+          if (capability.isSoundControlled) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
+          }
 
-            if (capability.randomTiming) {
-              result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
-            }
+          if (capability.speed !== null || capability.duration !== null) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
+          }
+
+          if (capability.randomTiming) {
+            result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
           }
         }
 
@@ -683,8 +688,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for StrobeSpeed capabilities.
          */
         function checkStrobeSpeedCapability() {
-          const otherCapabilityHasShutterStrobe = channel.capabilities.some(otherCapability => otherCapability.type === `ShutterStrobe`);
-          const hasOtherStrobeChannel = fixture.coarseChannels.some(otherChannel => otherChannel !== channel && otherChannel.type === `Strobe`);
+          const otherCapabilityHasShutterStrobe = channel.capabilities.some((otherCapability) => otherCapability.type === 'ShutterStrobe');
+          const hasOtherStrobeChannel = fixture.coarseChannels.some((otherChannel) => otherChannel !== channel && otherChannel.type === 'Strobe');
           if (otherCapabilityHasShutterStrobe && !hasOtherStrobeChannel) {
             result.errors.push(`${errorPrefix}: StrobeSpeed can't be used in the same channel as ShutterStrobe. Should this rather be a ShutterStrobe capability with shutterEffect "Strobe"?`);
           }
@@ -698,7 +703,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
           checkReferencedWheels();
 
-          if (capability.slotNumber !== null && shouldCheckSlotNumbers) {
+          if (shouldCheckSlotNumbers && capability.slotNumber !== null) {
             checkSlotNumbers();
           }
 
@@ -706,7 +711,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
            * Check that referenced wheels exist in the fixture.
            */
           function checkReferencedWheels() {
-            if (`wheel` in capability.jsonObject) {
+            if ('wheel' in capability.jsonObject) {
               const wheelNames = [capability.jsonObject.wheel].flat();
 
               for (const wheelName of wheelNames) {
@@ -721,7 +726,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               }
 
               if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
-                result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
+                result.errors.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
               }
             }
             else if (capability.wheels.includes(null)) {
@@ -743,23 +748,22 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
               usedWheelSlots.add(`${capability.wheels[0].name} (slot ${index})`);
             }
 
-            if (max - min > 1) {
-              result.warnings.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
+            if (max - min > 1 && !capability.helpWanted?.endsWith('can be selected at which DMX values?')) {
+              result.errors.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
             }
 
             const minSlotNumber = 1;
             const maxSlotNumber = capability.wheels[0].slots.length;
 
-            const isInRangeExclusive = (number, start, end) => number > start && number < end;
-            const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
-
             if (capability.slotNumber[0].equals(capability.slotNumber[1])) {
+              const isInRangeExclusive = (number, start, end) => number > start && number < end;
               if (!isInRangeExclusive(capability.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber + 1)) {
                 result.errors.push(`${errorPrefix} references wheel slot ${capability.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber + 1} (exclusive).`);
               }
               return;
             }
 
+            const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
             if (!isInRangeInclusive(capability.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber)) {
               result.errors.push(`${errorPrefix} starts at wheel slot ${capability.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber} (inclusive).`);
             }
@@ -773,9 +777,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
-          const usesPercentageAngle = capability.angle[0].unit === `%`;
-          if (usesPercentageAngle) {
-            result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
+          const isPercentageAngle = capability.angle[0].unit === '%';
+          if (isPercentageAngle && capability.helpWanted !== 'Can you provide exact angles?') {
+            result.errors.push(`${errorPrefix} defines an imprecise percentaged angle. Please try to find the value in degrees.`);
           }
         }
 
@@ -797,7 +801,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Check that a mode is valid.
-   * @param {Mode} mode The mode to check.
+   * @param {Mode} mode - The mode to check.
    */
   function checkMode(mode) {
     checkUniqueness(
@@ -818,7 +822,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
     for (const rawReference of mode.jsonObject.channels) {
-      if (rawReference !== null && typeof rawReference !== `string`) {
+      if (rawReference !== null && typeof rawReference !== 'string') {
         checkChannelInsertBlock(rawReference);
       }
     }
@@ -827,52 +831,53 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       checkModeChannelKey(channelIndex);
     }
 
-
     /**
      * Check that mode names comply with the channel count.
      */
     function checkModeName() {
       // "6ch" / "8-Channel" / "9 channels" mode names
-      for (const nameProperty of [`name`, `shortName`]) {
+      for (const nameProperty of ['name', 'shortName']) {
         const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
-        if (match !== null) {
-          const intendedLength = Number.parseInt(match[1], 10);
+        if (!match) {
+          continue;
+        }
 
-          if (mode.channels.length !== intendedLength) {
-            result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
-          }
+        const intendedLength = Number.parseInt(match[1], 10);
 
-          const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
-            result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
-          }
+        if (mode.channels.length !== intendedLength) {
+          result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
+        }
+
+        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+        if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
+          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
     }
 
     /**
      * Checks if the given complex channel insert block is valid.
-     * @param {object} insertBlock The raw JSON data of the insert block.
+     * @param {object} insertBlock - The raw JSON data of the insert block.
      */
     function checkChannelInsertBlock(insertBlock) {
-      if (insertBlock.insert === `matrixChannels`) {
+      if (insertBlock.insert === 'matrixChannels') {
         checkMatrixInsertBlock(insertBlock);
       }
       // open for future extensions (invalid values are prohibited by the schema)
 
       /**
        * Checks the given matrix channel insert.
-       * @param {object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
-       * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
-       * @param {'eachPixel' | 'eachPixelGroup' | string[]} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
-       * @param {'perPixel' | 'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-       * @param {(string | null)[]} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+       * @param {object} matrixInsertBlock - The matrix channel reference specified in the mode's json channel list.
+       * @param {'matrixChannels'} matrixInsertBlock.insert - Indicates that this is a matrix insert.
+       * @param {'eachPixel' | 'eachPixelGroup' | string[]} matrixInsertBlock.repeatFor - The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+       * @param {'perPixel' | 'perChannel'} matrixInsertBlock.channelOrder - Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
+       * @param {(string | null)[]} matrixInsertBlock.templateChannels - The template channel keys (and aliases) or null channels to be repeated.
        */
       function checkMatrixInsertBlock(matrixInsertBlock) {
         checkMatrixInsertBlockRepeatFor();
 
         for (const templateKey of matrixInsertBlock.templateChannels) {
-          const templateChannelExists = fixture.templateChannels.some(channel => channel.allTemplateKeys.includes(templateKey));
+          const templateChannelExists = fixture.templateChannels.some((channel) => channel.allTemplateKeys.includes(templateKey));
           if (!templateChannelExists) {
             result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
           }
@@ -882,7 +887,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Checks the used pixel (group) keys for existence and duplicates. Also respects pixel keys included in a pixel group.
          */
         function checkMatrixInsertBlockRepeatFor() {
-          if (typeof matrixInsertBlock.repeatFor === `string`) {
+          if (typeof matrixInsertBlock.repeatFor === 'string') {
             // no custom pixel key list, keywords are already tested by schema
             return;
           }
@@ -898,7 +903,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     /**
      * Check that a channel reference in a mode is valid.
-     * @param {number} channelIndex The mode's channel index.
+     * @param {number} channelIndex - The mode's channel index.
      */
     function checkModeChannelKey(channelIndex) {
       const channelKey = mode.channelKeys[channelIndex];
@@ -916,7 +921,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       }
 
       // if earliest occurrence (including switching channels) is not this one
-      if (mode.getChannelIndex(channel.key, `all`) < channelIndex) {
+      if (mode.getChannelIndex(channel.key, 'all') < channelIndex) {
         result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
       }
 
@@ -956,7 +961,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         /**
          * Check all switched channels in the switching channels against another channel
          * for duplicate channel usage (either directly or in another switching channel).
-         * @param {AbstractChannel} otherChannel The channel that should be checked against.
+         * @param {AbstractChannel} otherChannel - The channel that should be checked against.
          */
         function checkSwitchingChannelReferenceDuplicate(otherChannel) {
           if (channel.switchToChannels.includes(otherChannel)) {
@@ -973,7 +978,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
             for (const switchToChannelKey of channel.switchToChannelKeys) {
               const overlap = channel.triggerRanges[switchToChannelKey].some(
                 // `?? []` because otherChannel.switchToChannelKeys may not include switchToChannelKey
-                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey] ?? []),
+                (range) => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey] ?? []),
               );
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -983,7 +988,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           else {
             // fail if one of this channel's switchToChannels appears anywhere
             const firstDuplicate = channel.switchToChannels.find(
-              switchToChannel => otherChannel.usesChannelKey(switchToChannel.key, `all`),
+              (switchToChannel) => otherChannel.usesChannelKey(switchToChannel.key, 'all'),
             );
             if (firstDuplicate !== undefined) {
               result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -994,7 +999,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
       /**
        * Check that all coarser channels of the given fine channel are present in the current mode.
-       * @param {FineChannel} fineChannel The fine channel to check.
+       * @param {FineChannel} fineChannel - The fine channel to check.
        */
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
@@ -1003,7 +1008,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         ), coarseChannel.key];
 
         const notInMode = coarserChannelKeys.filter(
-          coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1,
+          (coarseChannelKey) => mode.getChannelIndex(coarseChannelKey) === -1,
         );
 
         if (notInMode.length > 0) {
@@ -1018,8 +1023,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkUnusedChannels() {
     const unused = [...definedChannelKeys].filter(
-      channelKey => !usedChannelKeys.has(channelKey),
-    ).join(`, `);
+      (channelKey) => !usedChannelKeys.has(channelKey),
+    ).join(', ');
 
     if (unused.length > 0) {
       result.warnings.push(`Unused channel(s): ${unused}`);
@@ -1031,8 +1036,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkUnusedWheels() {
     const unusedWheels = fixture.wheels.filter(
-      wheel => !usedWheels.has(wheel.name),
-    ).map(wheel => wheel.name).join(`, `);
+      (wheel) => !usedWheels.has(wheel.name),
+    ).map((wheel) => wheel.name).join(', ');
 
     if (unusedWheels.length > 0) {
       result.warnings.push(`Unused wheel(s): ${unusedWheels}`);
@@ -1047,7 +1052,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     for (const wheelName of usedWheels) {
       const wheel = fixture.getWheelByName(wheelName);
 
-      if (wheel.type !== `AnimationGobo`) {
+      if (wheel.type !== 'AnimationGobo') {
         slotsOfUsedWheels.push(...(wheel.slots.map(
           (slot, slotIndex) => `${wheelName} (slot ${slotIndex + 1})`,
         )));
@@ -1055,8 +1060,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
 
     const unusedWheelSlots = slotsOfUsedWheels.filter(
-      slot => !usedWheelSlots.has(slot),
-    ).join(`, `);
+      (slot) => !usedWheelSlots.has(slot),
+    ).join(', ');
 
     if (unusedWheelSlots.length > 0) {
       result.warnings.push(`Unused wheel slot(s): ${unusedWheelSlots}`);
@@ -1068,66 +1073,66 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    */
   function checkCategories() {
     const mutuallyExclusiveGroups = [
-      [`Moving Head`, `Scanner`, `Barrel Scanner`],
-      [`Pixel Bar`, `Flower`],
-      [`Pixel Bar`, `Stand`],
+      ['Moving Head', 'Scanner', 'Barrel Scanner'],
+      ['Pixel Bar', 'Flower'],
+      ['Pixel Bar', 'Stand'],
     ];
 
-    const fixtureIsColorChanger = isColorChanger();
-    const fixtureHasBothPanTiltChannels = hasPanTiltChannels(true);
-    const fixtureHasPanOrTiltChannels = hasPanTiltChannels(false);
-    const isFogTypeFog = isFogType(`Fog`);
-    const isFogTypeHaze = isFogType(`Haze`);
-    const fixtureIsNotMatrix = isNotMatrix();
-    const fixtureIsPixelBar = isPixelBar();
-    const fixtureIsNotPixelBar = isNotPixelBar();
+    const isFixtureColorChanger = isColorChanger();
+    const hasBothPanTiltChannels = hasPanTiltChannels(true);
+    const hasPanOrTiltChannels = hasPanTiltChannels(false);
+    const isFogTypeFog = isFogType('Fog');
+    const isFogTypeHaze = isFogType('Haze');
+    const isFixtureNotMatrix = isNotMatrix();
+    const isFixturePixelBar = isPixelBar();
+    const isFixtureNotPixelBar = isNotPixelBar();
 
     const categories = {
       'Color Changer': {
-        isSuggested: fixtureIsColorChanger,
-        isInvalid: !fixtureIsColorChanger,
-        suggestedPhrase: `there are ColorPreset or ColorIntensity capabilities or Color wheel slots`,
-        invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`,
+        isSuggested: isFixtureColorChanger,
+        isInvalid: !isFixtureColorChanger,
+        suggestedPhrase: 'there are ColorPreset or ColorIntensity capabilities or Color wheel slots',
+        invalidPhrase: 'there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots',
       },
       'Moving Head': {
-        isSuggested: fixtureHasBothPanTiltChannels,
-        isInvalid: !fixtureHasBothPanTiltChannels,
-        suggestedPhrase: `there are pan and tilt channels`,
-        invalidPhrase: `there are not both pan and tilt channels`,
+        isSuggested: hasBothPanTiltChannels,
+        isInvalid: !hasBothPanTiltChannels,
+        suggestedPhrase: 'there are pan and tilt channels',
+        invalidPhrase: 'there are not both pan and tilt channels',
       },
       'Scanner': {
-        isSuggested: fixtureHasBothPanTiltChannels,
-        isInvalid: !fixtureHasPanOrTiltChannels,
-        suggestedPhrase: `there are pan and tilt channels`,
-        invalidPhrase: `there are no pan or tilt channels`,
+        isSuggested: hasBothPanTiltChannels,
+        isInvalid: !hasPanOrTiltChannels,
+        suggestedPhrase: 'there are pan and tilt channels',
+        invalidPhrase: 'there are no pan or tilt channels',
       },
       'Barrel Scanner': {
-        isSuggested: fixtureHasBothPanTiltChannels,
-        isInvalid: !fixtureHasPanOrTiltChannels,
-        suggestedPhrase: `there are pan and tilt channels`,
-        invalidPhrase: `there are no pan or tilt channels`,
+        isSuggested: hasBothPanTiltChannels,
+        isInvalid: !hasPanOrTiltChannels,
+        suggestedPhrase: 'there are pan and tilt channels',
+        invalidPhrase: 'there are no pan or tilt channels',
       },
       'Smoke': {
         isSuggested: isFogTypeFog,
         isInvalid: !isFogTypeFog,
-        suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Fog'`,
-        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Fog'`,
+        suggestedPhrase: 'there are Fog/FogType capabilities with no fogType or fogType \'Fog\'',
+        invalidPhrase: 'there are no Fog/FogType capabilities or none has fogType \'Fog\'',
       },
       'Hazer': {
         isSuggested: isFogTypeHaze,
         isInvalid: !isFogTypeHaze,
-        suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Haze'`,
-        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Haze'`,
+        suggestedPhrase: 'there are Fog/FogType capabilities with no fogType or fogType \'Haze\'',
+        invalidPhrase: 'there are no Fog/FogType capabilities or none has fogType \'Haze\'',
       },
       'Matrix': {
-        isInvalid: fixtureIsNotMatrix,
-        invalidPhrase: `fixture does not define a matrix`,
+        isInvalid: isFixtureNotMatrix,
+        invalidPhrase: 'fixture does not define a matrix',
       },
       'Pixel Bar': {
-        isSuggested: fixtureIsPixelBar,
-        isInvalid: fixtureIsNotPixelBar,
-        suggestedPhrase: `matrix pixels are horizontally aligned`,
-        invalidPhrase: `no horizontally aligned matrix is defined`,
+        isSuggested: isFixturePixelBar,
+        isInvalid: isFixtureNotPixelBar,
+        suggestedPhrase: 'matrix pixels are horizontally aligned',
+        invalidPhrase: 'no horizontally aligned matrix is defined',
       },
     };
 
@@ -1136,8 +1141,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
       // don't suggest this category if another mutually exclusive category is used
       const exclusiveGroups = mutuallyExclusiveGroups.filter(
-        group => group.includes(categoryName) && group.some(
-          category => category !== categoryName && fixture.categories.includes(category),
+        (group) => group.includes(categoryName) && group.some(
+          (category) => category !== categoryName && fixture.categories.includes(category),
         ),
       );
 
@@ -1150,11 +1155,11 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         result.errors.push(`Category '${categoryName}' invalid since ${categoryProperties.invalidPhrase}.`);
       }
       else if (exclusiveGroups.length > 0) {
-        result.errors.push(...exclusiveGroups.map(group => {
+        result.errors.push(...exclusiveGroups.map((group) => {
           const usedCategories = group
-            .filter(category => fixture.categories.includes(category))
-            .map(category => `'${category}'`)
-            .join(`, `);
+            .filter((category) => fixture.categories.includes(category))
+            .map((category) => `'${category}'`)
+            .join(', ');
           return `Categories ${usedCategories} can't be used together.`;
         }));
       }
@@ -1164,46 +1169,62 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
      * @returns {boolean} Whether the 'Color Changer' category is suggested.
      */
     function isColorChanger() {
-      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
-        wheel => wheel.slots.some(slot => slot.type === `Color`),
+      return (
+        hasCapabilityOfType('ColorPreset')
+        || hasMultipleColorIntensityCapabilities()
+        || fixture.wheels.some(
+          (wheel) => wheel.slots.some((slot) => slot.type === 'Color'),
+        )
       );
     }
 
     /**
-     * @param {boolean} [both=false] Whether there need to be both Pan and Tilt channels.
-     * @returns {boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'both') a Tilt(Continuous) channel.
+     * @returns {boolean} Whether the fixture has multiple ColorIntensity capabilities (excluding UV, Cold White, and Warm White).
      */
-    function hasPanTiltChannels(both = false) {
-      const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
-      const hasTilt = hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`);
-      return both ? (hasPan && hasTilt) : (hasPan || hasTilt);
+    function hasMultipleColorIntensityCapabilities() {
+      return fixture.capabilities.filter(
+        (capability) =>
+          capability.type === 'ColorIntensity'
+          && capability.color !== 'UV'
+          && capability.color !== 'Cold White'
+          && capability.color !== 'Warm White',
+      ).length >= 2;
     }
 
     /**
-     * @param {string} type What capability type to search for.
-     * @param {number} [minimum=1] How many occurrences are needed to succeed.
+     * @param {boolean} [areBothRequired=false] - Whether there need to be both Pan and Tilt channels.
+     * @returns {boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'areBothRequired') a Tilt(Continuous) channel.
+     */
+    function hasPanTiltChannels(areBothRequired = false) {
+      const hasPan = hasCapabilityOfType('Pan') || hasCapabilityOfType('PanContinuous');
+      const hasTilt = hasCapabilityOfType('Tilt') || hasCapabilityOfType('TiltContinuous');
+      return areBothRequired ? (hasPan && hasTilt) : (hasPan || hasTilt);
+    }
+
+    /**
+     * @param {string} type - What capability type to search for.
+     * @param {number} [minimum=1] - How many occurrences are needed to succeed.
      * @returns {boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
      */
     function hasCapabilityOfType(type, minimum = 1) {
       return fixture.capabilities.filter(
-        capability => capability.type === type,
+        (capability) => capability.type === type,
       ).length >= minimum;
     }
 
     /**
-     * @param {string} fogType The fog type to search for.
+     * @param {string} fogType - The fog type to search for.
      * @returns {boolean} Whether the fixture has the given fog type.
      */
     function isFogType(fogType) {
       const fogCapabilities = fixture.capabilities.filter(
-        capability => capability.type.startsWith(`Fog`),
+        (capability) => capability.type.startsWith('Fog'),
       );
 
-      if (fogCapabilities.length === 0) {
-        return false;
-      }
-
-      return fogCapabilities.some(capability => capability.fogType === fogType) || fogCapabilities.every(capability => capability.fogType === null);
+      return fogCapabilities.length > 0 && (
+        fogCapabilities.some((capability) => capability.fogType === fogType)
+        || fogCapabilities.every((capability) => capability.fogType === null)
+      );
     }
 
     /**
@@ -1239,7 +1260,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    * Checks if everything regarding this fixture's RDM data is correct.
    */
   function checkRdm() {
-    if (fixture.rdm === null || uniqueValues === null) {
+    if (uniqueValues === null || fixture.rdm === null) {
       return;
     }
 
@@ -1249,7 +1270,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     }
     checkUniqueness(
       uniqueValues.fixRdmIdsInMan[manufacturerKey],
-      `${fixture.rdm.modelId}`,
+      String(fixture.rdm.modelId),
       result,
       `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manufacturerKey}.`,
     );
@@ -1263,7 +1284,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       if (mode.rdmPersonalityIndex !== null) {
         checkUniqueness(
           rdmPersonalityIndices,
-          `${mode.rdmPersonalityIndex}`,
+          String(mode.rdmPersonalityIndex),
           result,
           `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`,
         );
@@ -1273,8 +1294,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
   /**
    * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
-   * @param {string} string The string to be checked.
-   * @param {string[]} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
+   * @param {string} string - The string to be checked.
+   * @param {string[]} allowedVariables - Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
    */
   function checkTemplateVariables(string, allowedVariables) {
     const usedVariables = string.match(/\$\w+/g) || [];
@@ -1293,10 +1314,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
 /**
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
- * @param {Set<string>} set The Set in which all unique values are stored.
- * @param {string} value The string value to examine.
- * @param {ResultData} result The object to add the error message to (if any).
- * @param {string} messageIfNotUnique If the value is not unique, add this message to errors.
+ * @param {Set<string>} set - The Set in which all unique values are stored.
+ * @param {string} value - The string value to examine.
+ * @param {ResultData} result - The object to add the error message to (if any).
+ * @param {string} messageIfNotUnique - If the value is not unique, add this message to errors.
  */
 export function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
@@ -1305,33 +1326,25 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
   set.add(value.toLowerCase());
 }
 
-
 /**
- * @param {string} description The error message.
- * @param {any} error An error object to append to the message.
+ * @param {string} description - The error message.
+ * @param {unknown} error - An error object to append to the message.
  * @returns {string} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
-  if (typeof error === `string`) {
-    return `${description} ${error}`;
-  }
-
-  return `${description} ${inspect(error, false, null)}`;
+  return typeof error === 'string' ? `${description} ${error}` : `${description} ${inspect(error, false, null)}`;
 }
 
 /**
- * @param {Array | null} a An array.
- * @param {Array | null} b Another array.
+ * @param {Array | null} a - An array.
+ * @param {Array | null} b - Another array.
  * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
  */
 function arraysEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-
-  if (a == null || b == null || a.length !== b.length) {
-    return false;
-  }
-
-  return a.every((value, index) => value === b[index]);
+  return (a === b) || (
+    a != null
+    && b != null
+    && a.length === b.length
+    && a.every((value, index) => value === b[index])
+  );
 }

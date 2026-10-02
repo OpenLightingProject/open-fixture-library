@@ -58,7 +58,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -85,16 +84,16 @@ export default {
        * @public
        */
       defaultData: {
-        slotNumber: ``,
+        slotNumber: '',
         slotNumberStart: null,
         slotNumberEnd: null,
-        shakeSpeed: ``,
+        shakeSpeed: '',
         shakeSpeedStart: null,
         shakeSpeedEnd: null,
-        shakeAngle: ``,
+        shakeAngle: '',
         shakeAngleStart: null,
         shakeAngleEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

@@ -16,7 +16,7 @@ The easiest way to help: Head over to the online [Fixture Editor](https://open-f
 
 There are also [other ways you can help without coding](docs/CONTRIBUTING.md#how-you-can-help).
 
-**🙏 Help wanted!** There are [a lot of pull requests](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture+sort%3Aupdated-desc) for new fixtures that are not yet reviewed and merged. Reviewing them (and maybe fixing smaller issues) helps get this number down and the number of fixtures in OFL up! See the [step-by-step instructions for fixture reviews](docs/CONTRIBUTING.md#fixtures).
+**🙏 Help wanted!** There are [a lot of pull requests](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture+sort%3Aupdated-desc) for new fixtures that are not yet reviewed and merged. Reviewing them (and maybe fixing smaller issues) helps get this number down and the number of fixtures in OFL up! See the [step-by-step instructions for fixture reviews](docs/CONTRIBUTING.md#fixtures). New contributors are welcome to help review fixtures and improve documentation.
 
 
 ## Contribute code

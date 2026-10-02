@@ -48,7 +48,7 @@
               target="_blank"
               rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
-              {{ link.name }}
+              <span class="link-name">{{ link.name }}</span>
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
@@ -101,14 +101,13 @@
 
     </section>
 
-    <section class="fixture-modes">
+    <MasonryCardContainer>
       <FixturePageMode
         v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
         @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
-      <div class="clearfix" />
-    </section>
+    </MasonryCardContainer>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
       <h2><OflSvg name="alert" /> This fixture is big!</h2>
@@ -161,7 +160,9 @@
   }
 
   & a {
-    display: inline-block;
+    display: inline-flex;
+    gap: 0.5ex;
+    align-items: center;
     margin-top: 4px;
   }
 }
@@ -171,10 +172,25 @@
   margin: 0;
   list-style: none;
 
+  a {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-decoration-line: none;
+  }
+
+  .link-name {
+    margin-right: 1ex;
+    margin-left: 0.5ex;
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+  }
+
   .hostname {
-    padding-left: 1ex;
+    min-width: 0;
     font-size: 0.9em;
     color: theme-color(text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .link-other {
@@ -195,12 +211,9 @@
 import { EmbettyVideo } from 'embetty-vue';
 import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
-
 import Fixture from '../../../lib/model/Fixture.js';
 import { linksProperties } from '../../../lib/schema-properties.js';
-
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
@@ -208,6 +221,7 @@ import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysic
 import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
+import MasonryCardContainer from '../../components/MasonryCardContainer.vue';
 
 const VIDEOS_TO_EMBED = 2;
 
@@ -221,13 +235,14 @@ export default {
     FixturePageWheel,
     HelpWantedMessage,
     LabeledValue,
+    MasonryCardContainer,
   },
   props: {
     fixture: instanceOfProp(Fixture).required,
     loadAllModes: booleanProp().withDefault(false),
   },
   emits: {
-    'help-wanted-clicked': payload => true,
+    'help-wanted-clicked': (payload) => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
@@ -248,18 +263,14 @@ export default {
     modes() {
       const modes = this.fixture.modes;
 
-      if (!this.modesLimited) {
-        return modes;
-      }
-
-      return modes.slice(0, this.modeNumberLoadLimit);
+      return this.modesLimited ? modes.slice(0, this.modeNumberLoadLimit) : modes;
     },
 
     /**
      * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
-      const videoUrls = this.fixture.getLinksOfType(`video`);
+      const videoUrls = this.fixture.getLinksOfType('video');
       const embettableVideoData = [];
 
       for (const url of videoUrls) {
@@ -283,9 +294,9 @@ export default {
         let linkDisplayNumber = 1;
         let linksOfType = this.fixture.getLinksOfType(linkType);
 
-        if (linkType === `video`) {
+        if (linkType === 'video') {
           linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url),
+            (url) => this.videos.every((video) => video.url !== url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -294,7 +305,7 @@ export default {
           let name = this.linkTypeNames[linkType];
           const title = `${name} at ${url}`;
 
-          if (linkType === `other`) {
+          if (linkType === 'other') {
             name = url;
           }
           else if (linkDisplayNumber > 1) {
@@ -322,12 +333,11 @@ export default {
   },
 };
 
-
 const supportedVideoFormats = {
 
   native: {
     regex: /\.(?:mp4|avi)$/,
-    displayType: url => getHostname(url),
+    displayType: (url) => getHostname(url),
     videoId: (url, match) => url,
     startAt: (url, match) => 0,
   },
@@ -338,7 +348,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
-    displayType: url => `YouTube`,
+    displayType: (url) => 'YouTube',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -351,7 +361,7 @@ const supportedVideoFormats = {
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
-    displayType: url => `Vimeo`,
+    displayType: (url) => 'Vimeo',
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
   },
@@ -362,16 +372,15 @@ const supportedVideoFormats = {
      * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
      */
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
-    displayType: url => `Facebook`,
+    displayType: (url) => 'Facebook',
     videoId: (url, match) => match[1],
     startAt: (url, match) => 0,
   },
 
 };
 
-
 /**
- * @param {string} url The video URL.
+ * @param {string} url - The video URL.
  * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
@@ -396,7 +405,7 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {string} url The URL to extract the hostname from.
+ * @param {string} url - The URL to extract the hostname from.
  * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {

@@ -49,9 +49,9 @@
 
     <table class="capabilities-table">
       <colgroup>
-        <col style="width: 5.8ex;">
+        <col style="width: 6ch;">
         <col style="width: 1ex;">
-        <col style="width: 5.8ex;">
+        <col style="width: 6ch;">
         <col>
       </colgroup>
       <thead><tr>
@@ -103,6 +103,13 @@ th {
   vertical-align: top;
 }
 
+.capability-dmx-range-start,
+.capability-dmx-range-separator,
+.capability-dmx-range-end {
+  font-size: 0.9em;
+  line-height: 2rem; // keep the baseline aligned with the capability type
+}
+
 .capability-dmx-range-start {
   padding-right: 2px;
   text-align: right;
@@ -135,21 +142,20 @@ import { numberProp, objectProp } from 'vue-ts-types';
 import {
   getEmptyCapability,
   isCapabilityChanged,
-} from "../../assets/scripts/editor-utilities.js";
-
+} from '../../assets/scripts/editor-utilities.js';
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 /**
- * @param {object} capabilityTypeData The generated capability's type data.
- * @param {number} index The index of the generated capability.
+ * @param {object} capabilityTypeData - The generated capability's type data.
+ * @param {number} index - The index of the generated capability.
  */
 function replaceHashWithIndex(capabilityTypeData, index) {
-  if (`effectName` in capabilityTypeData) {
-    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, index + 1);
+  if ('effectName' in capabilityTypeData) {
+    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, () => String(index + 1));
   }
-  if (`comment` in capabilityTypeData) {
-    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, index + 1);
+  if ('comment' in capabilityTypeData) {
+    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, () => String(index + 1));
   }
 }
 
@@ -164,7 +170,7 @@ export default {
     wizard: objectProp().required,
   },
   emits: {
-    close: insertIndex => true,
+    close: (insertIndex) => true,
   },
   computed: {
     capabilities() {
@@ -200,8 +206,8 @@ export default {
 
       const previousCapability = this.capabilities[this.insertIndex - 1];
       if (
-        (!previousCapability && this.wizard.start > 0) ||
-        (previousCapability && previousCapability.dmxRange !== null && this.wizard.start > previousCapability.dmxRange[1] + 1)
+        (!previousCapability && this.wizard.start > 0)
+        || (previousCapability && previousCapability.dmxRange !== null && this.wizard.start > previousCapability.dmxRange[1] + 1)
       ) {
         // empty capability filling the gap before generated capabilities
         capabilities.push(getEmptyCapability());
@@ -239,11 +245,7 @@ export default {
       }
 
       const nextNonEmptyCapability = this.capabilities[this.insertIndex + 1];
-      if (nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && this.end + 1 === nextNonEmptyCapability.dmxRange[0]) {
-        return 1;
-      }
-
-      return 0;
+      return this.end + 1 === nextNonEmptyCapability?.dmxRange?.[0] ? 1 : 0;
     },
 
     /**
@@ -259,18 +261,18 @@ export default {
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
-        capability => getCapabilityWithSource(capability, `inherited`),
+        (capability) => getCapabilityWithSource(capability, 'inherited'),
       );
 
       const computedCapabilites = this.computedCapabilites.map(
-        capability => getCapabilityWithSource(capability, `computed`),
+        (capability) => getCapabilityWithSource(capability, 'computed'),
       );
 
       // insert all computed capabilities at insertIndex
       inheritedCapabilities.splice(this.insertIndex, this.removeCount, ...computedCapabilites);
 
       return inheritedCapabilities.filter(
-        capability => capability.dmxRange !== null,
+        (capability) => capability.dmxRange !== null,
       );
     },
 
@@ -280,18 +282,16 @@ export default {
      */
     validationError() {
       if (this.wizard.start < 0) {
-        return `Capabilities must not start below DMX value 0.`;
+        return 'Capabilities must not start below DMX value 0.';
       }
 
       if (this.wizard.width <= 0) {
-        return `Capability width must be greater than zero.`;
+        return 'Capability width must be greater than zero.';
       }
 
-      if (this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0) {
-        return `Please do only enter whole number values.`;
-      }
-
-      return null;
+      return this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0
+        ? 'Please only enter whole numbers.'
+        : null;
     },
 
     /**
@@ -306,7 +306,7 @@ export default {
         return `Capabilities must not end above DMX value ${this.dmxMax}.`;
       }
 
-      const collisionDetected = this.capabilities.some(capability => {
+      const collisionDetected = this.capabilities.some((capability) => {
         if (capability.dmxRange === null) {
           return false;
         }
@@ -317,11 +317,9 @@ export default {
 
         return capabilityEnd >= this.wizard.start && capabilityStart <= this.end;
       });
-      if (collisionDetected) {
-        return `Generated capabilities must not overlap with existing ones.`;
-      }
-
-      return null;
+      return collisionDetected
+        ? 'Generated capabilities must not overlap with existing ones.'
+        : null;
     },
   },
   mounted() {
@@ -361,7 +359,7 @@ export default {
 
       // close other capabilities if they are not empty
       for (const capability of this.capabilities) {
-        if (capability.type !== ``) {
+        if (capability.type !== '') {
           capability.open = false;
         }
       }
@@ -369,14 +367,14 @@ export default {
       // insert all computed capabilities at insertIndex
       this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilites);
 
-      this.$emit(`close`, this.insertIndex);
+      this.$emit('close', this.insertIndex);
     },
   },
 };
 
 /**
- * @param {object} capability The "full" capability object.
- * @param {string} source The source of the capability (inherited or computed).
+ * @param {object} capability - The "full" capability object.
+ * @param {string} source - The source of the capability (inherited or computed).
  * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {

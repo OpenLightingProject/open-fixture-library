@@ -309,7 +309,6 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
-
 import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
@@ -320,8 +319,8 @@ import {
   getSanitizedChannel,
   isCapabilityChanged,
   isChannelChanged,
+  scrollToFirstInvalidField,
 } from '../../assets/scripts/editor-utilities.js';
-
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputBoolean from '../PropertyInputBoolean.vue';
@@ -348,7 +347,7 @@ export default {
   },
   emits: {
     'channel-changed': () => true,
-    'remove-channel': channelId => true,
+    'remove-channel': (channelId) => true,
     'reset-channel': () => true,
   },
   data() {
@@ -368,16 +367,16 @@ export default {
     },
     currentMode() {
       const uuid = this.channel.modeId;
-      const modeIndex = this.fixture.modes.findIndex(mode => mode.uuid === uuid);
+      const modeIndex = this.fixture.modes.findIndex((mode) => mode.uuid === uuid);
       return this.fixture.modes[modeIndex];
     },
     currentModeUnchosenChannelUuids() {
       return Object.keys(this.fixture.availableChannels).filter(
-        channelUuid => !this.currentMode.channels.includes(channelUuid),
+        (channelUuid) => !this.currentMode.channels.includes(channelUuid),
       );
     },
     currentModeUnchosenChannels() {
-      return this.currentModeUnchosenChannelUuids.map(channelUuid => ({
+      return this.currentModeUnchosenChannelUuids.map((channelUuid) => ({
         inputId: `unchosen-channel-${channelUuid}`,
         uuid: channelUuid,
         name: this.getChannelName(channelUuid),
@@ -386,7 +385,7 @@ export default {
       }));
     },
     selectedChannelUuidsString() {
-      return this.selectedChannelUuids.join(`,`);
+      return this.selectedChannelUuids.join(',');
     },
     currentModeDisplayName() {
       let modeName = `#${this.fixture.modes.indexOf(this.currentMode) + 1}`;
@@ -399,52 +398,57 @@ export default {
       return modeName;
     },
     title() {
-      if (this.channel.editMode === `add-existing`) {
-        return `Add channel to mode ${this.currentModeDisplayName}`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          return `Add channel to mode ${this.currentModeDisplayName}`;
+        }
+        case 'create': {
+          return 'Create new channel';
+        }
+        case 'edit-duplicate': {
+          return 'Edit channel duplicate';
+        }
+        default: {
+          return 'Edit channel';
+        }
       }
-
-      if (this.channel.editMode === `create`) {
-        return `Create new channel`;
-      }
-
-      if (this.channel.editMode === `edit-duplicate`) {
-        return `Edit channel duplicate`;
-      }
-
-      return `Edit channel`;
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(
-        capability => isCapabilityChanged(capability),
+        (capability) => isCapabilityChanged(capability),
       );
     },
     submitButtonTitle() {
-      if (this.channel.editMode === `add-existing`) {
-        const count = this.selectedChannelUuids.length;
-        return count <= 1 ? `Add channel` : `Add ${count} channels`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          const count = this.selectedChannelUuids.length;
+          return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+        }
+        case 'create': {
+          return 'Create channel';
+        }
+        default: {
+          return 'Save changes';
+        }
       }
-
-      if (this.channel.editMode === `create`) {
-        return `Create channel`;
-      }
-
-      return `Save changes`;
     },
   },
   watch: {
     channel: {
       handler() {
-        if (isChannelChanged(this.channel)) {
-          this.$emit(`channel-changed`);
-          this.channelChanged = true;
+        if (!isChannelChanged(this.channel)) {
+          return;
         }
+
+        this.$emit('channel-changed');
+        this.channelChanged = true;
       },
       deep: true,
     },
   },
   methods: {
     setEditModeCreate() {
-      this.channel.editMode = `create`;
+      this.channel.editMode = 'create';
       this.channel.uuid = uuidv4();
     },
 
@@ -479,28 +483,28 @@ export default {
 
     deselectChannel(channelUuid) {
       const deselectedChannel = this.fixture.availableChannels[channelUuid];
-      const isFineChannel = `coarseChannelId` in deselectedChannel;
+      const isFineChannel = 'coarseChannelId' in deselectedChannel;
 
       // Deselect the channel
-      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => uuid !== channelUuid);
+      this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => uuid !== channelUuid);
 
       if (isFineChannel) {
         // Deselect all finer channels
-        this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+        this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
           const channel = this.fixture.availableChannels[uuid];
           return (
-            !(`coarseChannelId` in channel) ||
-            channel.coarseChannelId !== deselectedChannel.coarseChannelId ||
-            channel.resolution < deselectedChannel.resolution
+            !('coarseChannelId' in channel)
+            || channel.coarseChannelId !== deselectedChannel.coarseChannelId
+            || channel.resolution < deselectedChannel.resolution
           );
         });
         return;
       }
 
       // Deselect all fine channels belonging to this coarse channel
-      this.selectedChannelUuids = this.selectedChannelUuids.filter(uuid => {
+      this.selectedChannelUuids = this.selectedChannelUuids.filter((uuid) => {
         const channel = this.fixture.availableChannels[uuid];
-        return !(`coarseChannelId` in channel) || channel.coarseChannelId !== channelUuid;
+        return !('coarseChannelId' in channel) || channel.coarseChannelId !== channelUuid;
       });
     },
 
@@ -510,7 +514,7 @@ export default {
       }
 
       const selectedChannel = this.fixture.availableChannels[channelUuid];
-      const isFineChannel = `coarseChannelId` in selectedChannel;
+      const isFineChannel = 'coarseChannelId' in selectedChannel;
 
       if (!isFineChannel) {
         this.selectedChannelUuids.push(channelUuid);
@@ -528,11 +532,11 @@ export default {
       for (const uuid of this.currentModeUnchosenChannelUuids) {
         const channel = this.fixture.availableChannels[uuid];
         if (
-          `coarseChannelId` in channel &&
-          channel.coarseChannelId === coarseChannelId &&
-          channel.resolution < currentResolution &&
-          !this.isChannelSelected(uuid) &&
-          !this.modeHasChannel(uuid)
+          'coarseChannelId' in channel
+          && channel.coarseChannelId === coarseChannelId
+          && channel.resolution < currentResolution
+          && !this.isChannelSelected(uuid)
+          && !this.modeHasChannel(uuid)
         ) {
           this.selectedChannelUuids.push(uuid);
         }
@@ -547,7 +551,7 @@ export default {
         this.toggleChannelSelection(channelUuid);
       }
 
-      if (this.selectedChannelUuids.some(uuid => uuid !== channelUuid)) {
+      if (this.selectedChannelUuids.some((uuid) => uuid !== channelUuid)) {
         // another channel is already selected, do not submit on double-click
         return;
       }
@@ -563,14 +567,14 @@ export default {
         return;
       }
 
-      if (this.channel.editMode === `add-existing` && this.currentModeUnchosenChannels.length === 0) {
-        this.channel.editMode = `create`;
+      if (this.channel.editMode === 'add-existing' && this.currentModeUnchosenChannels.length === 0) {
+        this.channel.editMode = 'create';
       }
-      else if (this.channel.editMode === `add-existing`) {
-        this.channel.uuid = ``;
+      else if (this.channel.editMode === 'add-existing') {
+        this.channel.uuid = '';
         this.selectedChannelUuids = [];
       }
-      else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
+      else if (this.channel.editMode === 'edit-all' || this.channel.editMode === 'edit-duplicate') {
         this.copyPropertiesFromChannel(this.fixture.availableChannels[this.channel.uuid]);
       }
 
@@ -580,18 +584,18 @@ export default {
     },
 
     copyPropertiesFromChannel(channel) {
-      for (const property of Object.keys(channel)) {
-        this.channel[property] = structuredClone(channel[property]);
+      for (const [property, value] of Object.entries(channel)) {
+        this.channel[property] = structuredClone(value);
       }
     },
 
     async onChannelDialogClose() {
-      if (this.channel.editMode === ``) {
+      if (this.channel.editMode === '') {
         // saving did already manage everything
         return;
       }
 
-      if (this.channelChanged && !window.confirm(`Do you want to lose the entered channel data?`)) {
+      if (this.channelChanged && !window.confirm('Do you want to lose the entered channel data?')) {
         await this.$nextTick();
         this.restored = true;
         this.$refs.channelDialog.show();
@@ -602,17 +606,17 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged || channelName === ``) {
+      if (channelName === '' || this.areCapabilitiesChanged) {
         return;
       }
 
       const capability = this.channel.capabilities[0];
 
       const matchingColor = this.singleColors.find(
-        color => channelName.toLowerCase().includes(color.toLowerCase()),
+        (color) => channelName.toLowerCase().includes(color.toLowerCase()),
       );
       if (matchingColor) {
-        capability.type = `ColorIntensity`;
+        capability.type = 'ColorIntensity';
         capability.typeData.color = matchingColor;
         return;
       }
@@ -644,7 +648,7 @@ export default {
       };
 
       const matchingType = Object.keys(capabilityTypeSuggestions).find(
-        type => capabilityTypeSuggestions[type].test(channelName),
+        (type) => capabilityTypeSuggestions[type].test(channelName),
       );
 
       if (matchingType) {
@@ -682,30 +686,7 @@ export default {
       }
 
       if (this.formstate.$invalid) {
-        const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
-
-        for (let index = 0; index < invalidFields.length; index++) {
-          const enclosingDetails = invalidFields[index].closest(`details:not([open])`);
-
-          if (enclosingDetails) {
-            enclosingDetails.open = true;
-
-            // current field could be enclosed another time, so repeat
-            index--;
-          }
-        }
-
-        const scrollContainer = invalidFields[0].closest(`.dialog`);
-        scrollIntoView(invalidFields[0], {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: target => target === scrollContainer,
-        }, () => invalidFields[0].focus());
-
+        scrollToFirstInvalidField(this.$el);
         return;
       }
 
@@ -739,10 +720,9 @@ export default {
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
       if (previousResolution > this.channel.resolution) {
-        for (const channelId of Object.keys(this.fixture.availableChannels)) {
-          const channel = this.fixture.availableChannels[channelId];
+        for (const [channelId, channel] of Object.entries(this.fixture.availableChannels)) {
           if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
-            this.$emit(`remove-channel`, channelId);
+            this.$emit('remove-channel', channelId);
           }
         }
       }
@@ -761,7 +741,7 @@ export default {
 
       const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
-      this.currentMode.channels = this.currentMode.channels.map(key => {
+      this.currentMode.channels = this.currentMode.channels.map((key) => {
         if (key === oldChannelKey) {
           return newChannelKey;
         }
@@ -789,9 +769,9 @@ export default {
     },
 
     /**
-     * @param {object} coarseChannel The channel object of the coarse channel.
-     * @param {number} offset At which resolution should be started.
-     * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
+     * @param {object} coarseChannel - The channel object of the coarse channel.
+     * @param {number} offset - At which resolution should be started.
+     * @param {boolean} [addToMode] - If true, the fine channel is pushed to the current mode's channels.
      * @returns {string[]} Array of added fine channel UUIDs (at the index of their resolution).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
@@ -811,14 +791,14 @@ export default {
     },
 
     async resetChannelForm() {
-      this.$emit(`reset-channel`);
+      this.$emit('reset-channel');
 
       await this.$nextTick();
       this.formstate._reset(); // resets validation status
     },
 
     /**
-     * @param {boolean} show Whether to show or hide the Capability Wizard.
+     * @param {boolean} show - Whether to show or hide the Capability Wizard.
      */
     setWizardVisibility(show) {
       this.channel.wizard.show = show;
@@ -833,7 +813,7 @@ export default {
 
       await this.$nextTick();
       const firstNewCapability = this.$refs.capabilities[insertIndex];
-      const scrollContainer = firstNewCapability.$el.closest(`.dialog`);
+      const scrollContainer = firstNewCapability.$el.closest('.dialog');
 
       scrollIntoView(firstNewCapability.$el, {
         time: 0,
@@ -842,18 +822,18 @@ export default {
           left: 0,
           topOffset: 100,
         },
-        isScrollable: target => target === scrollContainer,
+        isScrollable: (target) => target === scrollContainer,
       }, () => firstNewCapability.focus());
     },
 
     openDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = true;
       }
     },
 
     closeDetails() {
-      for (const details of this.$el.querySelectorAll(`details`)) {
+      for (const details of this.$el.querySelectorAll('details')) {
         details.open = false;
       }
     },
