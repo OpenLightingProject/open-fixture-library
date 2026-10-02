@@ -78,7 +78,7 @@ router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, ne
     Object.keys(register.filesystem).filter(
       (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
     ).map((fixture) => {
-      const [manufacturer, key] = fixture.split('/');
+      const [manufacturer, key] = fixture.split('/', 2);
       return fixtureFromRepository(manufacturer, key);
     }),
   );
@@ -100,7 +100,7 @@ router.post(/^\/download-editor\.(?<format>[a-z0-9_.-]+)$/, async (request, resp
 
   const outObject = request.body;
   const fixtures = await Promise.all(Object.entries(outObject.fixtures).map(async ([key, jsonObject]) => {
-    const [manufacturerKey, fixtureKey] = key.split('/');
+    const [manufacturerKey, fixtureKey] = key.split('/', 2);
 
     const manufacturer = new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey]);
     await embedResourcesIntoFixtureJson(jsonObject);

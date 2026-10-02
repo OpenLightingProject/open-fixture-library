@@ -150,7 +150,7 @@ export default {
         return getSelectedUnit(this.value, this.enumValues, this.unitNames, this.units);
       },
       set(newUnit) {
-        if (this.enumValues.includes(newUnit) || newUnit === '') {
+        if (newUnit === '' || this.enumValues.includes(newUnit)) {
           this.update(newUnit);
         }
         else if (this.units[newUnit].unitString === '') {
@@ -212,11 +212,8 @@ export default {
 
       const otherFieldSelectedUnit = getSelectedUnit(this.associatedEntity, this.enumValues, this.unitNames, this.units);
 
-      if (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues)) {
-        return true;
-      }
-
-      return this.selectedUnit === otherFieldSelectedUnit;
+      return (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues))
+        || this.selectedUnit === otherFieldSelectedUnit;
     },
   },
   mounted() {
@@ -284,11 +281,7 @@ function parseUnitFromPattern(pattern) {
  * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
-  if (unitString === '') {
-    return 'number';
-  }
-
-  return unitString.replace('^2', '²').replace('^3', '³');
+  return unitString === '' ? 'number' : unitString.replace('^2', '²').replace('^3', '³');
 }
 
 /**
@@ -299,7 +292,7 @@ function getUnitDisplayString(unitString) {
  * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
-  if (enumValues.includes(value) || value === '') {
+  if (value === '' || enumValues.includes(value)) {
     return value;
   }
 

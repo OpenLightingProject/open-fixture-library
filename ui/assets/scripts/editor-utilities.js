@@ -1,3 +1,4 @@
+import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
 export const constants = {
@@ -12,6 +13,45 @@ export const constants = {
  */
 export function getEmptyFormState() {
   return {};
+}
+
+/**
+ * Opens all `<details>` ancestors of currently invalid fields in the given container (so they
+ * become visible), then scrolls to and focuses the first invalid field.
+ * @param {Document|Element} [container] - The DOM element to search within; defaults to the whole page.
+ */
+export function scrollToFirstInvalidField(container = document) {
+  const invalidFields = [...container.querySelectorAll('.vf-invalid')];
+
+  if (invalidFields.length === 0) {
+    return;
+  }
+
+  for (let index = 0; index < invalidFields.length; index++) {
+    const enclosingDetails = invalidFields[index].closest('details:not([open])');
+
+    if (!enclosingDetails) {
+      continue;
+    }
+
+    enclosingDetails.open = true;
+
+    // current field could be enclosed another time, so repeat
+    index--;
+  }
+
+  const firstField = invalidFields[0];
+  const firstFieldInput = firstField.parentElement.querySelector('input, select, textarea') ?? firstField;
+  const scrollContainer = firstField.closest('.dialog') ?? window;
+  scrollIntoView(firstField, {
+    time: 300,
+    align: {
+      top: 0,
+      left: 0,
+      topOffset: 100,
+    },
+    isScrollable: (target) => target === scrollContainer,
+  }, () => firstFieldInput.focus());
 }
 
 /**
@@ -166,25 +206,33 @@ export function getEmptyWheelSlot() {
  */
 export function isChannelChanged(channel) {
   return Object.keys(channel).some((property) => {
-    if (['uuid', 'editMode', 'modeId', 'wizard'].includes(property)) {
-      return false;
+    switch (property) {
+      case 'uuid':
+      case 'editMode':
+      case 'modeId':
+      case 'wizard': {
+        return false;
+      }
+      case 'defaultValue':
+      case 'highlightValue':
+      case 'invert':
+      case 'constant':
+      case 'crossfade': {
+        return channel[property] !== null;
+      }
+      case 'resolution':
+      case 'dmxValueResolution': {
+        return channel[property] !== constants.RESOLUTION_8BIT;
+      }
+      case 'capabilities': {
+        return channel.capabilities.some(
+          (capability) => isCapabilityChanged(capability),
+        );
+      }
+      default: {
+        return channel[property] !== '';
+      }
     }
-
-    if (['defaultValue', 'highlightValue', 'invert', 'constant', 'crossfade'].includes(property)) {
-      return channel[property] !== null;
-    }
-
-    if (property === 'resolution' || property === 'dmxValueResolution') {
-      return channel[property] !== constants.RESOLUTION_8BIT;
-    }
-
-    if (property === 'capabilities') {
-      return channel.capabilities.some(
-        (capability) => isCapabilityChanged(capability),
-      );
-    }
-
-    return channel[property] !== '';
   });
 }
 
@@ -193,15 +241,11 @@ export function isChannelChanged(channel) {
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(capability) {
-  if (capability.dmxRange !== null) {
-    return true;
-  }
-
-  if (capability.type !== '') {
-    return true;
-  }
-
-  return Object.values(capability.typeData).some((value) => value !== '' && value !== null);
+  return capability.dmxRange !== null
+    || capability.type !== ''
+    || Object.values(capability.typeData).some(
+      (value) => value !== '' && value !== null,
+    );
 }
 
 /**
@@ -217,11 +261,7 @@ export function colorsHexStringToArray(hexString) {
     (hex) => hex.match(/^#[\da-f]{6}$/),
   );
 
-  if (hexArray.length === 0) {
-    return null;
-  }
-
-  return hexArray;
+  return hexArray.length === 0 ? null : hexArray;
 }
 
 /**

@@ -39,7 +39,7 @@ module.exports = {
     },
     {
       name: 'embetty',
-      script: './node_modules/@heise/embetty-server/bin/embetty-start',
+      script: './node_modules/@embetty/server/bin/embetty-start',
       cwd: '/home/flo/open-fixture-library',
       // eslint-disable-next-line camelcase -- required by PM2
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z',

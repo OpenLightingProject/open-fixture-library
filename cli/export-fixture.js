@@ -96,8 +96,10 @@ async function checkCliArguments(cliArguments) {
 
   const plugins = await importJson('../plugins/plugins.json', import.meta.url);
 
-  if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-    console.error(styleText('red', '[Error]'), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(', '));
-    process.exit(1);
+  if (plugins.exportPlugins.includes(cliArguments.plugin)) {
+    return;
   }
+
+  console.error(styleText('red', '[Error]'), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(', '));
+  process.exit(1);
 }

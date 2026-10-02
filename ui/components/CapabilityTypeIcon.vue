@@ -11,7 +11,7 @@ export default {
     const capability = context.props.capability;
     const wheelSlot = capability.wheelSlot;
 
-    if (capability.type !== 'WheelShake' && wheelSlot !== null && wheelSlot[0] === wheelSlot[1]) {
+    if (wheelSlot !== null && capability.type !== 'WheelShake' && wheelSlot[0] === wheelSlot[1]) {
       const resource = wheelSlot[0].resource;
 
       if (resource && resource.hasImage) {

@@ -49,9 +49,9 @@
 
     <table class="capabilities-table">
       <colgroup>
-        <col style="width: 5.8ex;">
+        <col style="width: 6ch;">
         <col style="width: 1ex;">
-        <col style="width: 5.8ex;">
+        <col style="width: 6ch;">
         <col>
       </colgroup>
       <thead><tr>
@@ -103,6 +103,13 @@ th {
   vertical-align: top;
 }
 
+.capability-dmx-range-start,
+.capability-dmx-range-separator,
+.capability-dmx-range-end {
+  font-size: 0.9em;
+  line-height: 2rem; // keep the baseline aligned with the capability type
+}
+
 .capability-dmx-range-start {
   padding-right: 2px;
   text-align: right;
@@ -145,10 +152,10 @@ import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
  */
 function replaceHashWithIndex(capabilityTypeData, index) {
   if ('effectName' in capabilityTypeData) {
-    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, index + 1);
+    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, () => String(index + 1));
   }
   if ('comment' in capabilityTypeData) {
-    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, index + 1);
+    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, () => String(index + 1));
   }
 }
 
@@ -238,11 +245,7 @@ export default {
       }
 
       const nextNonEmptyCapability = this.capabilities[this.insertIndex + 1];
-      if (nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && this.end + 1 === nextNonEmptyCapability.dmxRange[0]) {
-        return 1;
-      }
-
-      return 0;
+      return this.end + 1 === nextNonEmptyCapability?.dmxRange?.[0] ? 1 : 0;
     },
 
     /**
@@ -286,11 +289,9 @@ export default {
         return 'Capability width must be greater than zero.';
       }
 
-      if (this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0) {
-        return 'Please only enter whole numbers.';
-      }
-
-      return null;
+      return this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0
+        ? 'Please only enter whole numbers.'
+        : null;
     },
 
     /**
@@ -316,11 +317,9 @@ export default {
 
         return capabilityEnd >= this.wizard.start && capabilityStart <= this.end;
       });
-      if (collisionDetected) {
-        return 'Generated capabilities must not overlap with existing ones.';
-      }
-
-      return null;
+      return collisionDetected
+        ? 'Generated capabilities must not overlap with existing ones.'
+        : null;
     },
   },
   mounted() {
