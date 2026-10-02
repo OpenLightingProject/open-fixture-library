@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Flash 30 LED stroboscope",
   "shortName": "Flash 30 LED",
-  "categories": ["Other"],
+  "categories": ["Strobe", "Blinder"],
   "meta": {
     "authors": ["Sijmen"],
     "createDate": "2023-04-10",
-    "lastModifyDate": "2023-04-10",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2026-02-23",
@@ -14,85 +14,59 @@
     }
   },
   "comment": "Ayra Flash 30 LED stroboscope",
+  "links": {
+    "manual": [
+      "https://www.bax-shop.nl/downloads/products/9000-0031-9698/ayra_flash_30_60_manual_eng.pdf"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/led-stroboscoop/ayra-flash-30-led-stroboscoop"
+    ]
+  },
+  "physical": {
+    "dimensions": [235, 205, 190],
+    "weight": 2.1,
+    "power": 18.4,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "60x 5050 SMD LED"
+    }
+  },
   "availableChannels": {
-    "Dim": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
       }
     },
-    "StrobeM Strobe": {
+    "Strobe": {
       "capabilities": [
         {
-          "dmxRange": [0, 0],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "0%"
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
-          "dmxRange": [1, 63],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1
+          "dmxRange": [8, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "dmxRange": [64, 64],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "25%"
-        },
-        {
-          "dmxRange": [65, 127],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1
-        },
-        {
-          "dmxRange": [128, 128],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "50%"
-        },
-        {
-          "dmxRange": [129, 191],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1
-        },
-        {
-          "dmxRange": [192, 192],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "75%"
-        },
-        {
-          "dmxRange": [193, 254],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Unknown (StrobeModeStrobe)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "100%"
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "2 Channel",
-      "channels": [
-        "Dim",
-        "StrobeM Strobe"
-      ]
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": ["Dimmer", "Strobe"]
     }
   ]
 }
