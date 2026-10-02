@@ -1,13 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "ZQ-B136 - 7 x 10W Mini LED Moving Head",
-  "shortName": "ZQ-B136",
+  "name": "ZQ-B136",
   "categories": ["Color Changer", "Moving Head"],
   "meta": {
-    "authors": ["DC", "Ken Harris"],
-    "createDate": "2026-07-28",
-    "lastModifyDate": "2026-07-28"
+    "authors": ["DC", "Ken Harris", "Luke Nelson"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
   },
+  "comment": "7 x 10W Mini LED Moving Head",
   "links": {
     "manual": [
       "https://www.uking-online.com/wp-content/uploads/2020/04/B136.pdf"
@@ -71,8 +71,8 @@
         },
         {
           "dmxRange": [240, 255],
-          "type": "Intensity",
-          "comment": "Open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -101,13 +101,29 @@
       }
     },
     "Color Presets": {
-      "capability": {
-        "type": "ColorPreset"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Color controlled by Red/Green/Blue/White channels"
+        },
+        {
+          "dmxRange": [8, 231],
+          "type": "ColorPreset",
+          "helpWanted": "Which color can be selected at which DMX value?"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Color jump"
+        }
+      ]
     },
     "Program Speed": {
       "capability": {
-        "type": "ColorPreset"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Auto": {
@@ -137,7 +153,7 @@
   },
   "modes": [
     {
-      "name": "14 Channel",
+      "name": "14-channel",
       "shortName": "14ch",
       "channels": [
         "Pan",
@@ -157,7 +173,7 @@
       ]
     },
     {
-      "name": "9 Channel",
+      "name": "9-channel",
       "shortName": "9ch",
       "channels": [
         "Pan",
