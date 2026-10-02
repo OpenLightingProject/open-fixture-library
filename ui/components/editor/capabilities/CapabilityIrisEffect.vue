@@ -41,7 +41,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -64,18 +63,18 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.`,
+      hint: 'This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
       defaultData: {
-        effectName: ``,
-        speed: ``,
+        effectName: '',
+        speed: '',
         speedStart: null,
         speedEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

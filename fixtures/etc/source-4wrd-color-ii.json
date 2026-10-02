@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Source 4WRD Color II",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Randy Hall"],
+    "createDate": "2024-03-05",
+    "lastModifyDate": "2024-03-05"
+  },
+  "comment": "Retrofit for Source 4 fixtures; also can be paired with custom Source 4 Par(nel) fixtures",
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/Products/Entertainment-Fixtures/S4WRD-C-II/Documentation.aspx#manuals"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Entertainment-Fixtures/S4WRD-C-II/Features.aspx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=olWwFKsCU-o"
+    ]
+  },
+  "rdm": {
+    "modelId": 2051
+  },
+  "physical": {
+    "dimensions": [178, 142, 160],
+    "weight": 1.69,
+    "power": 150,
+    "DMXconnector": "RJ45",
+    "bulb": {
+      "type": "LED",
+      "lumens": 6000
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "33Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    }
+  ]
+}
