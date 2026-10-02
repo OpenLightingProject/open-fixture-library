@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hurricane 1600",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["GM"],
+    "createDate": "2024-09-25",
+    "lastModifyDate": "2024-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/Hurricane_1600_UM_Rev2_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/hurricane-1600/"
+    ]
+  },
+  "physical": {
+    "dimensions": [348, 312, 253],
+    "weight": 6,
+    "power": 1580,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutputStart": "0%",
+          "fogOutputEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Fog Output"
+      ]
+    }
+  ]
+}

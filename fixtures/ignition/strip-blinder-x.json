@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Strip Blinder X",
+  "categories": ["Blinder", "Pixel Bar"],
+  "meta": {
+    "authors": ["pitchbent"],
+    "createDate": "2026-01-28",
+    "lastModifyDate": "2026-01-28"
+  },
+  "comment": "10x 75W Halogen",
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/319794_c_319794_de_online.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jWxoSHw4zek"
+    ]
+  },
+  "physical": {
+    "dimensions": [140, 78, 1000],
+    "weight": 5.4,
+    "power": 750,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Halogen"
+    }
+  },
+  "matrix": {
+    "pixelCount": [10, 1, 1],
+    "pixelGroups": {
+      "All": "all",
+      "Left": ["1", "2", "3", "4", "5"],
+      "Right": ["6", "7", "8", "9", "10"],
+      "Group 1": ["1", "2"],
+      "Group 2": ["3", "4"],
+      "Group 3": ["5", "6"],
+      "Group 4": ["7", "8"],
+      "Group 5": ["9", "10"]
+    }
+  },
+  "templateChannels": {
+    "Intensity $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Intensity All"
+      ]
+    },
+    {
+      "name": "2-channel Left Right",
+      "shortName": "2ch",
+      "channels": [
+        "Intensity Left",
+        "Intensity Right"
+      ]
+    },
+    {
+      "name": "5-channel 5-Group",
+      "shortName": "5ch",
+      "channels": [
+        "Intensity Group 1",
+        "Intensity Group 2",
+        "Intensity Group 3",
+        "Intensity Group 4",
+        "Intensity Group 5"
+      ]
+    },
+    {
+      "name": "10-channel Single",
+      "shortName": "10ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

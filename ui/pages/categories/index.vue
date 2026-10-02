@@ -22,8 +22,8 @@ import register from '../../../fixtures/register.json';
 export default {
   data() {
     return {
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)).map(
-        category => ({
+      categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, 'en')).map(
+        (category) => ({
           name: category,
           fixtureCount: register.categories[category].length,
         }),
@@ -31,13 +31,13 @@ export default {
     };
   },
   head() {
-    const title = `Categories`;
+    const title = 'Categories';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],

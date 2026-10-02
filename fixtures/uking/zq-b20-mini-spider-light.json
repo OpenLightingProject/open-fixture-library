@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "ZQ-B20 Mini Spider Light",
   "shortName": "ZQ-B20-MiniSpider",
-  "categories": ["Effect"],
+  "categories": ["Effect", "Color Changer"],
   "meta": {
     "authors": ["Ryan Goodwin"],
     "createDate": "2023-04-24",
-    "lastModifyDate": "2023-04-24"
+    "lastModifyDate": "2023-07-12"
   },
   "links": {
     "productPage": [
@@ -16,13 +16,16 @@
       "https://www.youtube.com/watch?v=4KL1MdtnQ34"
     ],
     "manual": [
-      "https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B20.pdf"
+      "https://web.archive.org/web/20240603043146/https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B20.pdf"
     ]
   },
   "physical": {
     "dimensions": [280, 150, 130],
     "weight": 1.99,
     "power": 80,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"

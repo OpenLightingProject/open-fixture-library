@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Blinder 4",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Leon Dietrich"],
+    "createDate": "2026-02-02",
+    "lastModifyDate": "2026-02-02"
+  },
+  "links": {
+    "productPage": [
+      "https://www.musicstore.com/en_OT/EUR/lightmaXX-LED-Blinder-4/art-LIG0016527-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=QpehbQvLv7c&pp=ygUXbGlnaHRtYXh4IGxlZCBibGluZGVyIDQ%3D"
+    ]
+  },
+  "physical": {
+    "dimensions": [195, 315, 315],
+    "weight": 4.5,
+    "power": 210,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "3"],
+        ["2", "4"]
+      ]
+    ]
+  },
+  "templateChannels": {
+    "Intensity $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "Effect",
+          "effectName": "on-off-iterate",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [71, 140],
+          "type": "Effect",
+          "effectName": "fade-iterate",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [141, 200],
+          "type": "Effect",
+          "effectName": "fade rotated",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "on-off rotated",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Effect",
+        "No function",
+        "Intensity 1",
+        "Intensity 2",
+        "Intensity 3",
+        "Intensity 4"
+      ]
+    }
+  ]
+}

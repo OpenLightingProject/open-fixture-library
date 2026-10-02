@@ -8,6 +8,7 @@ npm-debug.log
 .DS_Store
 *.sublime-*
 .vscode/
+.idea/
 
 # Docker
 Dockerfile
@@ -19,6 +20,7 @@ fixtures/register.json
 
 # Temporary files
 tmp/
+.eslintcache
 
 # secret files
 server/ofl-secrets.json

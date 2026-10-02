@@ -20,8 +20,10 @@
   "data": {
     "aglight": {
       "name": "AGLight",
-      "exportPluginVersion": "1.0.0",
-      "exportTests": []
+      "exportPluginVersion": "1.0.2",
+      "exportTests": [
+        "json-schema-conformity"
+      ]
     },
     "color-chief": {
       "name": "Eurolite Color Chief 2.0",
@@ -42,14 +44,14 @@
     },
     "dmxcontrol3": {
       "name": "DMXControl 3 (DDF3)",
-      "exportPluginVersion": "0.1.1",
+      "exportPluginVersion": "0.1.2",
       "exportTests": [
         "channel-numbers"
       ]
     },
     "dragonframe": {
       "name": "Dragonframe",
-      "exportPluginVersion": "1.0.0",
+      "exportPluginVersion": "1.0.1",
       "exportTests": [
         "json-schema-conformity"
       ]
@@ -62,7 +64,7 @@
     },
     "gdtf": {
       "name": "GDTF 1.0",
-      "importPluginVersion": "0.2.0"
+      "importPluginVersion": "0.2.2"
     },
     "millumin": {
       "name": "Millumin",
@@ -73,12 +75,12 @@
     },
     "ofl": {
       "name": "Open Fixture Library JSON",
-      "exportPluginVersion": "12.3.0",
+      "exportPluginVersion": "12.6.0",
       "exportTests": []
     },
     "op-z": {
       "name": "OP-Z",
-      "exportPluginVersion": "0.1.0",
+      "exportPluginVersion": "0.1.1",
       "exportTests": []
     },
     "qlcplus": {
@@ -103,8 +105,8 @@
     },
     "qlcplus_4.12.2": {
       "name": "QLC+ 4.12.2",
-      "importPluginVersion": "1.1.0",
-      "exportPluginVersion": "1.3.0",
+      "importPluginVersion": "1.1.2",
+      "exportPluginVersion": "1.3.2",
       "exportTests": [
         "fixture-tool-validation",
         "xsd-schema-conformity"
