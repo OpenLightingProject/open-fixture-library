@@ -2,64 +2,48 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "JTube X1",
   "shortName": "JTube X1",
-  "categories": ["Other"],
+  "categories": ["Color Changer", "Other"],
   "meta": {
     "authors": ["DJ-Sven"],
     "createDate": "2025-03-31",
-    "lastModifyDate": "2025-03-31",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2025-10-01",
       "comment": "GDTF v1.2 fixture type ID: 3D5396EB-E3C2-41AC-B2BD-B41C4D535D35"
     }
   },
+  "links": {
+    "manual": ["https://beta.b2b.proel.com/image/data/sagitter/SG_JTUBEX1_A4_rel_011024.pdf"],
+    "productPage": ["https://beta.b2b.proel.com/index.php?route=product/product&product_id=26560"],
+    "video": ["https://www.youtube.com/watch?v=jUBrtmAWpXQ"]
+  },
+  "physical": {
+    "dimensions": [1060, 44, 44],
+    "weight": 1.2,
+    "power": 70,
+    "bulb": {
+      "type": "320× 0.5W RGB+Amber+Mint LED"
+    },
+    "lens": {
+      "degreesMinMax": [115, 135]
+    }
+  },
   "comment": "Sagitter J Tube X1 - created by www.dj-sven.de\n3 CH Mode, 5 CH Mode, 48 CH Mode, 80 CH Mode tested with GrandMA3\n2 CH Mode, 12 CH Mode, 87 CH Mode - work in progress",
   "availableChannels": {
-    "Dim": {
-      "dmxValueResolution": "32bit",
-      "highlightValue": 4294967295,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "closed"
-        },
-        {
-          "dmxRange": [1, 4294967294],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1
-        },
-        {
-          "dmxRange": [4294967295, 4294967295],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "open"
-        }
-      ]
-    },
     "H": {
       "capability": {
-        "type": "Unknown (HSB_Hue)",
-        "physicalStart": "0deg",
-        "physicalEnd": "1deg"
+        "type": "Generic"
       }
     },
     "S": {
       "capability": {
-        "type": "Unknown (HSB_Saturation)",
-        "physicalStart": "0%",
-        "physicalEnd": "100%"
+        "type": "Generic"
       }
     },
     "B": {
       "capability": {
-        "type": "Unknown (HSB_Brightness)",
-        "physicalStart": "0%",
-        "physicalEnd": "100%"
+        "type": "Intensity"
       }
     },
     "R": {
@@ -2326,7 +2310,8 @@
   },
   "modes": [
     {
-      "name": "3 CH Mode",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "H",
         "S",
@@ -2334,7 +2319,8 @@
       ]
     },
     {
-      "name": "5 CH Mode",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "R",
         "G",
@@ -2344,7 +2330,8 @@
       ]
     },
     {
-      "name": "48 CH Mode",
+      "name": "48-channel",
+      "shortName": "48ch",
       "channels": [
         "R 2",
         "G 2",
@@ -2397,7 +2384,8 @@
       ]
     },
     {
-      "name": "80 CH Mode",
+      "name": "80-channel",
+      "shortName": "80ch",
       "channels": [
         "R",
         "G",
