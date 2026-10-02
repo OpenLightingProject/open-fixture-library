@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Freedom Par Quad 4",
+  "name": "Freedom Par Quad-4",
   "shortName": "Freedom Par Quad 4",
-  "categories": ["Other"],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Maarten Verhasselt "],
+    "authors": ["Maarten Verhasselt"],
     "createDate": "2023-06-27",
-    "lastModifyDate": "2026-02-25",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2026-02-25",
@@ -14,266 +14,48 @@
     }
   },
   "comment": "The Freedom™ Par Quad-4 is a wireless, battery-operated, quad-color LED Par. It can be used as an \nuplight on the floor or suspended overhead. It has a compact design so it works with TRUSST® and an \nadjustable kickstand for easy floor placement. The RGBA LEDs allow for infinite color mixing. The built-in \nwireless D-Fi™ transmitter and receiver allow wireless Master/Slave control of unlimited Freedom™ Par \nQuad-4s. The Freedom™ Par Quad-4 can also be controlled by a D-Fi™-compatible controller, the \nCHAUVET® FlareCON™ Air, or the included IRC-6 remote control",
-  "wheels": {
-    "Colour Macro": {
-      "slots": [
-        {
-          "type": "Color",
-          "name": "R:100% G:0-100% B:0",
-          "colors": ["#e47702"]
-        },
-        {
-          "type": "Color",
-          "name": "R:100%-0 G:100% B:0",
-          "colors": ["#77e401"]
-        },
-        {
-          "type": "Color",
-          "name": "R:0 G:100% B:0-100%",
-          "colors": ["#04e477"]
-        },
-        {
-          "type": "Color",
-          "name": "R:0 G:100%-0 B:100%",
-          "colors": ["#0077e4"]
-        },
-        {
-          "type": "Color",
-          "name": "R:0-100% G:0 B:100%",
-          "colors": ["#7701e4"]
-        },
-        {
-          "type": "Color",
-          "name": "R:100% G:0 B:0-100%",
-          "colors": ["#e40477"]
-        },
-        {
-          "type": "Color",
-          "name": "R:100% G:0-100% B:0-100%",
-          "colors": ["#e47777"]
-        },
-        {
-          "type": "Color",
-          "name": "R:100%-0 G:100%-0 B:100%",
-          "colors": ["#7777e4"]
-        },
-        {
-          "type": "Color",
-          "name": "RGBA: 100%",
-          "colors": ["#e4e4e4"]
-        }
-      ]
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/Freedom_Par_Quad-4_UM_Rev1_EN_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/freedom-par-quad-4"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=63bVUwLV3kA"
+    ]
+  },
+  "physical": {
+    "dimensions": [138, 145, 184],
+    "weight": 2.8,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4× 5W RGBA LED"
     },
-    "Foreground & Background Colors": {
-      "slots": [
-        {
-          "type": "Color",
-          "name": "Red",
-          "colors": ["#d81900"]
-        },
-        {
-          "type": "Color",
-          "name": "Green",
-          "colors": ["#008300"]
-        },
-        {
-          "type": "Color",
-          "name": "Blue",
-          "colors": ["#0d1f9e"]
-        },
-        {
-          "type": "Color",
-          "name": "Amber",
-          "colors": ["#ac5c00"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Green",
-          "colors": ["#8a6f00"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Blue",
-          "colors": ["#c62b93"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Amber",
-          "colors": ["#c04b00"]
-        },
-        {
-          "type": "Color",
-          "name": "Green + Blue",
-          "colors": ["#7ff7f0"]
-        },
-        {
-          "type": "Color",
-          "name": "Green + Amber",
-          "colors": ["#bbf800"]
-        },
-        {
-          "type": "Color",
-          "name": "Blue + Amber",
-          "colors": ["#cb3166"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Green + Blue",
-          "colors": ["#806d73"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Green + Amber",
-          "colors": ["#94683e"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Blue + Amber",
-          "colors": ["#b637b4"]
-        },
-        {
-          "type": "Color",
-          "name": "Green + Blue + Amber",
-          "colors": ["#687288"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + green + Blue + Amber",
-          "colors": ["#9a6172"]
-        },
-        {
-          "type": "Color",
-          "name": "Off",
-          "colors": ["#fffcf8"]
-        }
-      ]
-    },
-    "Color Macros": {
-      "slots": [
-        {
-          "type": "Color",
-          "name": "Color Macro 1",
-          "colors": ["#db0000"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 2",
-          "colors": ["#d7f100"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 3",
-          "colors": ["#008865"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 4",
-          "colors": ["#002f9f"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 5",
-          "colors": ["#a146cb"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 6",
-          "colors": ["#d31e5e"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 7",
-          "colors": ["#906480"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 8",
-          "colors": ["#5e64d8"]
-        },
-        {
-          "type": "Color",
-          "name": "Color Macro 9",
-          "colors": ["#806d73"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 1",
-          "colors": ["#b85200"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 2",
-          "colors": ["#b55249"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 3",
-          "colors": ["#a15e65"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 4",
-          "colors": ["#9c5e7b"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 5",
-          "colors": ["#896973"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 6",
-          "colors": ["#8c6587"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 7",
-          "colors": ["#9b5c8d"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 8",
-          "colors": ["#7c6a90"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 9",
-          "colors": ["#7f6c79"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 10",
-          "colors": ["#796d86"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 11",
-          "colors": ["#6969b9"]
-        }
-      ]
+    "lens": {
+      "degreesMinMax": [15, 29]
     }
   },
   "availableChannels": {
-    "Dim": {
+    "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "type": "Intensity"
       }
     },
-    "R": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "G": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "B": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -285,86 +67,282 @@
         "color": "Amber"
       }
     },
-    "Color Macro1": {
+    "Color Macros and Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue … Magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red … White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White … Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "RGBA",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "Color temperature 1",
+          "helpWanted": "What Kelvin values (and resulting colors) do Color temperatures 1–11 have?"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "Color temperature 2"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "Color temperature 3"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "Color temperature 4"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "Color temperature 5"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "Color temperature 6"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "Color temperature 7"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "Color temperature 8"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "Color temperature 9"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "Color temperature 10"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Color temperature 11"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto/Sound Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Auto Speed / Sound Sensitivity": "Auto Speed"
+          }
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Auto program 1",
+          "switchChannels": {
+            "Auto Speed / Sound Sensitivity": "Auto Speed"
+          }
+        },
+        {
+          "dmxRange": [61, 120],
+          "type": "Effect",
+          "effectName": "Auto program 2",
+          "switchChannels": {
+            "Auto Speed / Sound Sensitivity": "Auto Speed"
+          }
+        },
+        {
+          "dmxRange": [121, 180],
+          "type": "Effect",
+          "effectName": "Auto program 3",
+          "switchChannels": {
+            "Auto Speed / Sound Sensitivity": "Auto Speed"
+          }
+        },
+        {
+          "dmxRange": [181, 240],
+          "type": "Effect",
+          "effectName": "Auto program 4",
+          "switchChannels": {
+            "Auto Speed / Sound Sensitivity": "Auto Speed"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound-active mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Auto Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Auto Speed": {
       "capability": {
-        "type": "ColorPreset"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
-    "StrobeM Strobe": {
+    "Sound Sensitivity": {
       "capability": {
-        "type": "Unknown (StrobeModeStrobe)",
-        "physicalStart": 0,
-        "physicalEnd": 1
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
       }
     },
-    "Auto/sound programs": {
-      "capability": {
-        "type": "Unknown (Auto/sounds programs)",
-        "physicalStart": 0,
-        "physicalEnd": 1
-      }
-    },
-    "Ctrl1": {
-      "capability": {
-        "type": "Maintenance",
-        "parameterStart": 0,
-        "parameterEnd": 1
-      }
-    },
-    "Dim Mode": {
+    "Dimmer Mode": {
       "capabilities": [
         {
           "dmxRange": [0, 51],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Manually"
+          "comment": "Dimmer mode manually set in menu"
         },
         {
           "dmxRange": [52, 101],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Off"
+          "comment": "Dimmer mode off"
         },
         {
           "dmxRange": [102, 152],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Mode 1"
+          "comment": "Dimmer mode 1 (fast)"
         },
         {
           "dmxRange": [153, 203],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Mode 2"
+          "comment": "Dimmer mode 2 (medium)"
         },
         {
           "dmxRange": [204, 255],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Mode 3"
+          "comment": "Dimmer mode 3 (slow)"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "10 ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
-        "Dim",
-        "R",
-        "G",
-        "B",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
         "Amber",
-        "Color Macro1",
-        "StrobeM Strobe",
-        "Auto/sound programs",
-        "Ctrl1",
-        "Dim Mode"
+        "Color Macros and Color Temperature",
+        "Strobe",
+        "Auto/Sound Programs",
+        "Auto Speed / Sound Sensitivity",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
       ]
     }
   ]
