@@ -1,0 +1,256 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Stage Par RGB WW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Luke Nelson"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-12-28",
+      "comment": "created by Q Light Controller Plus (version 4.12.4a)"
+    }
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/gb/stairville_mini_stage_par_7x4w_rgb_ww.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i6194p10_yd59vqpa.mp4",
+      "https://www.youtube.com/watch?v=wm-QSmre8Iw"
+    ],
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/406532_c_406531_406532_r4_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [195, 140, 230],
+    "weight": 1.9,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Fixed color pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe effect / NoFunction": "Strobe effect",
+            "Effects / NoFunction": "Effects"
+          }
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "One of 42 preprogrammed automatic shows (macros)",
+          "switchChannels": {
+            "Strobe effect / NoFunction": null,
+            "Effects / NoFunction": null
+          }
+        }
+      ]
+    },
+    "Strobe effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "12 colors"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "4 colors"
+        }
+      ]
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "fade-out"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "fade-in"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "fade-in-out"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "auto-mix"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "4-color chase"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "12-color chase"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effects speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectName": "Random speed"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Programs",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Effects speed"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fixed color pattern",
+        "Strobe effect / NoFunction",
+        "Effects / NoFunction",
+        "Dimmer"
+      ]
+    }
+  ]
+}
