@@ -4,9 +4,9 @@
   "shortName": "CLB5 6P",
   "categories": ["Stand", "Color Changer"],
   "meta": {
-    "authors": ["Subjekt_91"],
-    "createDate": "2023-11-26",
-    "lastModifyDate": "2023-11-26"
+    "authors": ["Subjekt_91", "Luke Nelson"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
   },
   "links": {
     "manual": [
@@ -28,31 +28,43 @@
       "type": "14× 4W RGBWW LEDs"
     }
   },
-  "availableChannels": {
-    "Red Master": {
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Spot 1", "Spot 2", "Spot 3", "Spot 4", "Spot 5", "Spot 6"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green Master": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue Master": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Warm White Master": {
+    "Warm White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Warm White"
       }
-    },
+    }
+  },
+  "availableChannels": {
     "Dimmer": {
       "capability": {
         "type": "Intensity"
@@ -61,7 +73,7 @@
     "Preprogrammed automatic show": {
       "capability": {
         "type": "NoFunction",
-        "comment": "Preprogrammed automatic show 1-38 and Sound-controled"
+        "comment": "Preprogrammed automatic show 1-38 and sound-controlled"
       }
     },
     "Function depending on setting of channel 6": {
@@ -76,151 +88,6 @@
         "type": "StrobeSpeed",
         "speedStart": "0Hz",
         "speedEnd": "20Hz"
-      }
-    },
-    "Red Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Red Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Red Spot 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 3": {
-      "constant": true,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Red Spot 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Red Spot 5": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 5": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 5": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 5": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Red Spot 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 6": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
       }
     }
   },
@@ -256,7 +123,7 @@
         "Green Master",
         "Blue Master",
         "Warm White Master",
-        "Automatic show",
+        "Preprogrammed automatic show",
         "Function depending on setting of channel 6",
         "Strobe"
       ]
@@ -265,30 +132,17 @@
       "name": "24 Channel",
       "shortName": "24ch",
       "channels": [
-        "Red Spot 1",
-        "Green Spot 1",
-        "Blue Spot 1",
-        "Warm White Spot 1",
-        "Red Spot 2",
-        "Green Spot 2",
-        "Blue Spot 2",
-        "Warm White Spot 2",
-        "Red Spot 3",
-        "Green Spot 3",
-        "Blue Spot 3",
-        "Warm White Spot 3",
-        "Red Spot 4",
-        "Green Spot 4",
-        "Blue Spot 4",
-        "Warm White Spot 4",
-        "Red Spot 5",
-        "Green Spot 5",
-        "Blue Spot 5",
-        "Warm White Spot 5",
-        "Red Spot 6",
-        "Green Spot 6",
-        "Blue Spot 6",
-        "Warm White Spot 6"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Spot 1", "Spot 2", "Spot 3", "Spot 4", "Spot 5", "Spot 6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -296,30 +150,17 @@
       "shortName": "26ch",
       "channels": [
         "Dimmer",
-        "Red Spot 1",
-        "Green Spot 1",
-        "Blue Spot 1",
-        "Warm White Spot 1",
-        "Red Spot 2",
-        "Green Spot 2",
-        "Blue Spot 2",
-        "Warm White Spot 2",
-        "Red Spot 3",
-        "Green Spot 3",
-        "Blue Spot 3",
-        "Warm White Spot 3",
-        "Red Spot 4",
-        "Green Spot 4",
-        "Blue Spot 4",
-        "Warm White Spot 4",
-        "Red Spot 5",
-        "Green Spot 5",
-        "Blue Spot 5",
-        "Warm White Spot 5",
-        "Red Spot 6",
-        "Green Spot 6",
-        "Blue Spot 6",
-        "Warm White Spot 6",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Spot 1", "Spot 2", "Spot 3", "Spot 4", "Spot 5", "Spot 6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        },
         "Strobe"
       ]
     }
