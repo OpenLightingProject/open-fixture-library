@@ -34,38 +34,38 @@
     }
   },
   "availableChannels": {
-    "H": {
+    "Hue": {
       "capability": {
         "type": "Generic",
         "helpWanted": "Which DMX values correspond to which colors?"
       }
     },
-    "S": {
+    "Saturation": {
       "capability": {
         "type": "Generic"
       }
     },
-    "Dim": {
+    "Dimmer": {
       "highlightValue": 255,
       "capability": {
         "type": "Intensity"
       }
     },
-    "R": {
+    "Red": {
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "G": {
+    "Green": {
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "B": {
+    "Blue": {
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
@@ -79,7 +79,7 @@
         "color": "White"
       }
     },
-    "Sh1": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -96,7 +96,7 @@
         }
       ]
     },
-    "Color Macro1": {
+    "Color Macros": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -171,7 +171,7 @@
         }
       ]
     },
-    "FX1": {
+    "Effects": {
       "capabilities": [
         {
           "dmxRange": [0, 51],
@@ -204,14 +204,14 @@
         }
       ]
     },
-    "FX1 Rate": {
+    "Effect Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
     },
-    "Dim Mode": {
+    "Dimmer Mode": {
       "capabilities": [
         {
           "dmxRange": [0, 51],
@@ -246,18 +246,18 @@
       "name": "3-channel HSV",
       "shortName": "3ch HSV",
       "channels": [
-        "H",
-        "S",
-        "Dim"
+        "Hue",
+        "Saturation",
+        "Dimmer"
       ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "R",
-        "G",
-        "B",
+        "Red",
+        "Green",
+        "Blue",
         "White"
       ]
     },
@@ -265,28 +265,28 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Dim",
-        "R",
-        "G",
-        "B",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
         "White",
-        "Sh1"
+        "Strobe"
       ]
     },
     {
       "name": "10-channel",
       "shortName": "10ch",
       "channels": [
-        "Dim",
-        "R",
-        "G",
-        "B",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
         "White",
-        "Sh1",
-        "Color Macro1",
-        "FX1",
-        "FX1 Rate",
-        "Dim Mode"
+        "Strobe",
+        "Color Macros",
+        "Effects",
+        "Effect Speed",
+        "Dimmer Mode"
       ]
     }
   ]
