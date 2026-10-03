@@ -13,7 +13,6 @@
       "comment": "GDTF v1.2 fixture type ID: DADDED13-23E3-47F3-B422-98DA37DA308E"
     }
   },
-  "comment": "The pixel engine must be enabled through the Function channel (DMX 103-105).",
   "links": {
     "manual": [
       "https://web.archive.org/web/20240518140303/https://e-assist.tech/servlet/checkDocumentsFile?Id=2330",
@@ -560,7 +559,7 @@
         {
           "dmxRange": [103, 105],
           "type": "Maintenance",
-          "comment": "Pixel mapping enable"
+          "comment": "Pixel engine must be enabled through this Function parameter (DMX 103-105)"
         },
         {
           "dmxRange": [106, 255],
