@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "SharBar",
   "shortName": "SharBar",
-  "categories": ["Moving Head", "Color Changer", "Effect"],
+  "categories": ["Moving Head", "Color Changer", "Effect", "Pixel Bar"],
   "meta": {
     "authors": ["remyzik"],
     "createDate": "2026-10-03",
@@ -15,7 +15,7 @@
   },
   "links": {
     "manual": [
-      "https://motion-sales.de/downloads/artikelpdfs/24158-CLAYPAKY_SharBar_manual_ENG.pdf",
+      "https://web.archive.org/web/20240518140303/https://e-assist.tech/servlet/checkDocumentsFile?Id=2330",
       "https://motion-sales.de/downloads/artikelpdfs/24158-CLAYPAKY_SharBar_DMX_charts.pdf"
     ],
     "productPage": [
@@ -38,10 +38,45 @@
       "degreesMinMax": [2, 12]
     }
   },
+  "matrix": {
+    "pixelCount": [6, 1, 1]
+  },
+  "templateChannels": {
+    "Pan $pixelKey": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-30deg",
+        "angleEnd": "30deg"
+      }
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "availableChannels": {
     "Red": {
       "fineChannelAliases": ["Red fine"],
-      "highlightValue": 65535,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
@@ -49,7 +84,6 @@
     },
     "Green": {
       "fineChannelAliases": ["Green fine"],
-      "highlightValue": 65535,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
@@ -57,7 +91,6 @@
     },
     "Blue": {
       "fineChannelAliases": ["Blue fine"],
-      "highlightValue": 65535,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -65,13 +98,12 @@
     },
     "White": {
       "fineChannelAliases": ["White fine"],
-      "highlightValue": 65535,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "CTO": {
+    "Color Temperature": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -499,7 +531,6 @@
     },
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
-      "highlightValue": 65535,
       "capability": {
         "type": "Intensity"
       }
@@ -517,48 +548,6 @@
         "type": "Tilt",
         "angleStart": "-120deg",
         "angleEnd": "120deg"
-      }
-    },
-    "Pan 1": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-30deg",
-        "angleEnd": "30deg"
-      }
-    },
-    "Pan 2": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-30deg",
-        "angleEnd": "30deg"
-      }
-    },
-    "Pan 3": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-30deg",
-        "angleEnd": "30deg"
-      }
-    },
-    "Pan 4": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-30deg",
-        "angleEnd": "30deg"
-      }
-    },
-    "Pan 5": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-30deg",
-        "angleEnd": "30deg"
-      }
-    },
-    "Pan 6": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-30deg",
-        "angleEnd": "30deg"
       }
     },
     "Function": {
@@ -800,179 +789,12 @@
         "parameterStart": "0%",
         "parameterEnd": "100%"
       }
-    },
-    "Red 1": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 1": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 1": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White 1": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Red 2": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 2": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 2": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White 2": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Red 3": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 3": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 3": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White 3": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Red 4": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 4": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 4": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White 4": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Red 5": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 5": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 5": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White 5": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Red 6": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 6": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 6": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White 6": {
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     }
   },
   "modes": [
     {
       "name": "Standard - 24 ch",
+      "shortName": "24ch",
       "channels": [
         "Red",
         "Red fine",
@@ -982,7 +804,7 @@
         "Blue fine",
         "White",
         "White fine",
-        "CTO",
+        "Color Temperature",
         "Color Macro",
         "Strobe",
         "Dimmer",
@@ -990,18 +812,19 @@
         "Zoom",
         "Tilt",
         "Tilt fine",
-        "Pan 1",
-        "Pan 2",
-        "Pan 3",
-        "Pan 4",
-        "Pan 5",
-        "Pan 6",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": ["Pan $pixelKey"]
+        },
         "Function",
         "Reset"
       ]
     },
     {
       "name": "Shape - 30 ch",
+      "shortName": "30ch",
       "channels": [
         "Red",
         "Red fine",
@@ -1011,7 +834,7 @@
         "Blue fine",
         "White",
         "White fine",
-        "CTO",
+        "Color Temperature",
         "Color Macro",
         "Strobe",
         "Dimmer",
@@ -1019,12 +842,12 @@
         "Zoom",
         "Tilt",
         "Tilt fine",
-        "Pan 1",
-        "Pan 2",
-        "Pan 3",
-        "Pan 4",
-        "Pan 5",
-        "Pan 6",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": ["Pan $pixelKey"]
+        },
         "Function",
         "Reset",
         "Pixel Macro",
@@ -1037,6 +860,7 @@
     },
     {
       "name": "Standard + Pixel RGBW - 48 ch",
+      "shortName": "48ch",
       "channels": [
         "Red",
         "Red fine",
@@ -1046,7 +870,7 @@
         "Blue fine",
         "White",
         "White fine",
-        "CTO",
+        "Color Temperature",
         "Color Macro",
         "Strobe",
         "Dimmer",
@@ -1054,42 +878,30 @@
         "Zoom",
         "Tilt",
         "Tilt fine",
-        "Pan 1",
-        "Pan 2",
-        "Pan 3",
-        "Pan 4",
-        "Pan 5",
-        "Pan 6",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": ["Pan $pixelKey"]
+        },
         "Function",
         "Reset",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "White 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "White 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "White 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4",
-        "White 4",
-        "Red 5",
-        "Green 5",
-        "Blue 5",
-        "White 5",
-        "Red 6",
-        "Green 6",
-        "Blue 6",
-        "White 6"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "Shape + Pixel RGBW - 54 ch",
+      "shortName": "54ch",
       "channels": [
         "Red",
         "Red fine",
@@ -1099,7 +911,7 @@
         "Blue fine",
         "White",
         "White fine",
-        "CTO",
+        "Color Temperature",
         "Color Macro",
         "Strobe",
         "Dimmer",
@@ -1107,12 +919,12 @@
         "Zoom",
         "Tilt",
         "Tilt fine",
-        "Pan 1",
-        "Pan 2",
-        "Pan 3",
-        "Pan 4",
-        "Pan 5",
-        "Pan 6",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": ["Pan $pixelKey"]
+        },
         "Function",
         "Reset",
         "Pixel Macro",
@@ -1121,30 +933,17 @@
         "Mirror Macro",
         "Mirror Macro Speed",
         "Mirror Macro Offset",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "White 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "White 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "White 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4",
-        "White 4",
-        "Red 5",
-        "Green 5",
-        "Blue 5",
-        "White 5",
-        "Red 6",
-        "Green 6",
-        "Blue 6",
-        "White 6"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
