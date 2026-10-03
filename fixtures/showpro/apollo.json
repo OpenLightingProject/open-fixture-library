@@ -47,34 +47,29 @@
       }
     },
     "Dimmer": {
-      "highlightValue": 255,
       "capability": {
         "type": "Intensity"
       }
     },
     "Red": {
-      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
-      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -92,8 +87,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "30Hz",
-          "randomTiming": true
+          "speedEnd": "30Hz"
         }
       ]
     },
