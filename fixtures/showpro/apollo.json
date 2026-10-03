@@ -37,12 +37,13 @@
     "Hue": {
       "capability": {
         "type": "Generic",
-        "helpWanted": "Which DMX values correspond to which colors?"
+        "comment": "0° to 360°"
       }
     },
     "Saturation": {
       "capability": {
-        "type": "Generic"
+        "type": "Generic",
+        "comment": "0% to 100%"
       }
     },
     "Dimmer": {
