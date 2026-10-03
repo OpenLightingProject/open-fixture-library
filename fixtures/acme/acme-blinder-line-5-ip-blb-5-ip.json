@@ -1,607 +1,363 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "ACME BLINDER LINE 5 IP ( BLB 5 IP )",
-  "shortName": "(BLB 5 IP)",
-  "categories": ["Other"],
+  "name": "Blinder Line 5 IP",
+  "shortName": "BLB 5 IP",
+  "categories": ["Blinder", "Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["andreas"],
     "createDate": "2021-07-05",
-    "lastModifyDate": "2024-11-07",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2025-07-16",
       "comment": "GDTF v1.2 fixture type ID: 11DFDC9D-3C02-4A47-8303-1339D62C96FD"
     }
   },
-  "comment": "BLINDER LINE 5 IP (BLB 5 IP): ACME BLINDER LINE 5 IP (BLB 5 IP)5*150W",
+  "comment": "RGBWA LED blinder bar with five individually controllable 150W pixels, DMX-controllable frost (Smart Glass), and built-in color macros.",
   "rdm": {
     "modelId": 4977
   },
-  "wheels": {
-    "Wheel color": {
-      "slots": [
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Color",
-          "name": "Color 1",
-          "colors": ["#894d00"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 2",
-          "colors": ["#813800"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 3",
-          "colors": ["#810c2f"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 4",
-          "colors": ["#7d2f80"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 5",
-          "colors": ["#b8004b"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 6",
-          "colors": ["#48327f"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 7",
-          "colors": ["#0084f2"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 8",
-          "colors": ["#005cde"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 9",
-          "colors": ["#0000e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 10",
-          "colors": ["#0043e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 11",
-          "colors": ["#0048e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 12",
-          "colors": ["#0058e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 13",
-          "colors": ["#005ee4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 14",
-          "colors": ["#0069e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 15",
-          "colors": ["#0075e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 16",
-          "colors": ["#009be4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 17",
-          "colors": ["#03abe4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 18",
-          "colors": ["#07b8e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 19",
-          "colors": ["#05e4e4"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 20",
-          "colors": ["#00e400"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 21",
-          "colors": ["#1fe403"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 22",
-          "colors": ["#35e402"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 23",
-          "colors": ["#4be400"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 24",
-          "colors": ["#61e400"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 25",
-          "colors": ["#99df00"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 26",
-          "colors": ["#bbe600"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 27",
-          "colors": ["#cbdc00"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 28",
-          "colors": ["#e4b803"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 29",
-          "colors": ["#e4a203"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 30",
-          "colors": ["#e48d04"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 31",
-          "colors": ["#e46100"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 32",
-          "colors": ["#e44b02"]
-        },
-        {
-          "type": "Color",
-          "name": "Color 33",
-          "colors": ["#e40100"]
-        }
-      ]
+  "links": {
+    "manual": [
+      "https://en.acmelighting.com/upload/other/20260121/681269db976c749123f6bd2b39914f54.pdf"
+    ],
+    "productPage": [
+      "https://en.acmelighting.com/item/BLINDER-LINE-5-IP"
+    ],
+    "video": [
+      "https://vimeo.com/903972295"
+    ]
+  },
+  "physical": {
+    "dimensions": [500, 160.3, 103.3],
+    "weight": 7.7,
+    "power": 350,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "5× 150W RGBAW LED",
+      "lumens": 10500
+    },
+    "lens": {
+      "degreesMinMax": [23, 55]
     }
   },
+  "matrix": {
+    "pixelCount": [5, 1, 1]
+  },
   "availableChannels": {
-    "Function": {
+    "Special Function": {
       "capabilities": [
         {
-          "dmxRange": [0, 5],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Null"
-        },
-        {
-          "dmxRange": [6, 7],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Wireless: On"
-        },
-        {
-          "dmxRange": [8, 9],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Wireless: Off"
-        },
-        {
-          "dmxRange": [10, 29],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Null"
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
         },
         {
           "dmxRange": [30, 39],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Curve: Linear"
+          "hold": "3s",
+          "comment": "Dimmer curve: Linear"
         },
         {
           "dmxRange": [40, 49],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": " Square Law"
+          "hold": "3s",
+          "comment": "Dimmer curve: Square law"
         },
         {
           "dmxRange": [50, 59],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": " Inv SQ Law"
+          "hold": "3s",
+          "comment": "Dimmer curve: Inverse square law"
         },
         {
-          "dmxRange": [60, -1],
+          "dmxRange": [60, 69],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "S Curve"
+          "hold": "3s",
+          "comment": "Dimmer curve: S-curve"
         },
         {
-          "dmxRange": [0, 99],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1
+          "dmxRange": [70, 99],
+          "type": "NoFunction"
         },
         {
           "dmxRange": [100, 109],
-          "type": "Unknown (LEDZoneMode)",
-          "physical": 0,
-          "comment": "Setting Enable"
-        },
-        {
-          "dmxRange": [110, -1],
-          "type": "Unknown (LEDZoneMode)",
-          "physical": 0,
-          "comment": "Setting Disable"
-        },
-        {
-          "dmxRange": [0, 122],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1
+          "hold": "3s",
+          "comment": "LED frequency setting: Enable"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency setting: Disable"
+        },
+        {
+          "dmxRange": [120, 122],
+          "type": "NoFunction"
         },
         {
           "dmxRange": [123, 123],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "900Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 900Hz"
         },
         {
           "dmxRange": [124, 124],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "1000Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 1000Hz"
         },
         {
           "dmxRange": [125, 125],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "1100Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 1100Hz"
         },
         {
           "dmxRange": [126, 126],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "1200Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 1200Hz"
         },
         {
           "dmxRange": [127, 127],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "1300Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 1300Hz"
         },
         {
           "dmxRange": [128, 128],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "1400Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 1400Hz"
         },
         {
           "dmxRange": [129, 129],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "1500Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 1500Hz"
         },
         {
           "dmxRange": [130, 130],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "2500Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 2500Hz"
         },
         {
           "dmxRange": [131, 131],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "4000Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 4000Hz"
         },
         {
           "dmxRange": [132, 132],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "5000Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 5000Hz"
         },
         {
           "dmxRange": [133, 133],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "6000Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 6000Hz"
         },
         {
           "dmxRange": [134, 134],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "10Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 10kHz"
         },
         {
           "dmxRange": [135, 135],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "15Hz"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 15kHz"
         },
         {
           "dmxRange": [136, 136],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "20Hz"
-        },
-        {
-          "dmxRange": [137, -1],
-          "type": "Unknown (LEDFrequency)",
-          "physical": "0Hz",
-          "comment": "25Hz"
-        },
-        {
-          "dmxRange": [0, 179],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1
+          "hold": "3s",
+          "comment": "LED frequency: 20kHz"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "LED frequency: 25kHz"
+        },
+        {
+          "dmxRange": [138, 179],
+          "type": "NoFunction"
         },
         {
           "dmxRange": [180, 189],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Speed: Fast"
+          "hold": "3s",
+          "comment": "Dimmer speed: Fast"
         },
         {
           "dmxRange": [190, 199],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Speed: Smooth"
+          "hold": "3s",
+          "comment": "Dimmer speed: Smooth"
         },
         {
           "dmxRange": [200, 209],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Speed: Tungsten"
+          "hold": "3s",
+          "comment": "Dimmer speed: Tungsten"
         },
         {
           "dmxRange": [210, 219],
-          "type": "Unknown (Dummy)",
-          "physical": 0,
-          "comment": "Invert Pixel: No"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Invert pixel: No"
         },
         {
           "dmxRange": [220, 229],
-          "type": "Unknown (Dummy)",
-          "physical": 0,
-          "comment": "Invert Pixel: Yes"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Invert pixel: Yes"
         },
         {
           "dmxRange": [230, 230],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Start Mode: High"
+          "hold": "3s",
+          "comment": "Dimming start mode: High"
         },
         {
-          "dmxRange": [231, -1],
+          "dmxRange": [231, 231],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Start Mode: Low"
+          "hold": "3s",
+          "comment": "Dimming start mode: Low"
         },
         {
-          "dmxRange": [0, 255],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1
+          "dmxRange": [232, 255],
+          "type": "NoFunction"
         }
       ]
     },
-    "Frost1": {
+    "Frost": {
       "capabilities": [
         {
-          "dmxRange": [0, -1],
-          "type": "Unknown (Open)",
-          "physicalStart": 0,
-          "physicalEnd": 1
+          "dmxRange": [0, 42],
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [0, -1],
+          "dmxRange": [43, 85],
           "type": "Frost",
-          "frostIntensityStart": 0,
-          "frostIntensityEnd": 1
+          "frostIntensity": "low",
+          "comment": "Frost 1"
         },
         {
-          "dmxRange": [0, -1],
+          "dmxRange": [86, 127],
           "type": "Frost",
-          "frostIntensityStart": 0,
-          "frostIntensityEnd": 1
+          "frostIntensity": "high",
+          "comment": "Frost 2"
         },
         {
-          "dmxRange": [0, 255],
-          "type": "Unknown (Frost 0--100%)",
-          "physicalStart": 0,
-          "physicalEnd": 1
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensityStart": "0%",
+          "frostIntensityEnd": "100%"
         }
       ]
     },
-    "Sh1": {
-      "highlightValue": 255,
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "ShutterStrobe",
-          "helpWanted": "What does physical value 0…1 mean?",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
-          "dmxRange": [16, 16],
+          "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "min Strobe"
-        },
-        {
-          "dmxRange": [17, 130],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [131, 131],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "max Strobe"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 139],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open 2"
+          "shutterEffect": "Open"
         },
         {
-          "dmxRange": [140, 140],
+          "dmxRange": [140, 181],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "min Pulse Open"
-        },
-        {
-          "dmxRange": [141, 180],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [181, 181],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "max Pulse Open"
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Fast open, slow close"
         },
         {
           "dmxRange": [182, 189],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open 3"
+          "shutterEffect": "Open"
         },
         {
-          "dmxRange": [190, 190],
+          "dmxRange": [190, 231],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "min Pulse Close"
-        },
-        {
-          "dmxRange": [191, 230],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz"
-        },
-        {
-          "dmxRange": [231, 231],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "max Pulse Close"
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow open, fast close"
         },
         {
           "dmxRange": [232, 239],
           "type": "ShutterStrobe",
-          "helpWanted": "What does physical value 0…1 mean?",
-          "comment": "Open 4"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [240, 247],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "randomTiming": true,
-          "comment": "Strobe Ran"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [248, 255],
           "type": "ShutterStrobe",
-          "helpWanted": "What does physical value 0…1 mean?",
-          "comment": "Open 5"
+          "shutterEffect": "Open"
         }
       ]
     },
-    "Dim": {
-      "fineChannelAliases": ["Dim fine"],
-      "highlightValue": 65535,
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
-      }
-    },
-    "Dim 2": {
-      "name": "Dim",
-      "dmxValueResolution": "32bit",
-      "highlightValue": 4294967295,
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
       }
     },
     "White": {
-      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "R": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "G": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "B": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -613,332 +369,348 @@
         "color": "Amber"
       }
     },
-    "White 2": {
-      "name": "White",
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
+    "CCT": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "2500K"
+        }
+      ]
     },
-    "CTO": {
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": 0,
-        "colorTemperatureEnd": 1
-      }
-    },
-    "C1": {
-      "highlightValue": 0,
+    "Color Macro": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 1
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 16],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 2
+          "type": "ColorPreset",
+          "comment": "LEE 790 Moroccan Pink"
         },
         {
           "dmxRange": [17, 23],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 3
+          "type": "ColorPreset",
+          "comment": "LEE 157 Pink"
         },
         {
           "dmxRange": [24, 30],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 4
+          "type": "ColorPreset",
+          "comment": "LEE 332 Special Rose Pink"
         },
         {
           "dmxRange": [31, 37],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 5
+          "type": "ColorPreset",
+          "comment": "LEE 328 Follies Pink"
         },
         {
           "dmxRange": [38, 44],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 6
+          "type": "ColorPreset",
+          "comment": "LEE 345 Fuchsia Pink"
         },
         {
           "dmxRange": [45, 51],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 7
+          "type": "ColorPreset",
+          "comment": "LEE 194 Surprise Pink"
         },
         {
           "dmxRange": [52, 58],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 8
+          "type": "ColorPreset",
+          "comment": "LEE 181 Congo Blue"
         },
         {
           "dmxRange": [59, 65],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 9
+          "type": "ColorPreset",
+          "comment": "LEE 071 Tokyo Blue"
         },
         {
           "dmxRange": [66, 72],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 10
+          "type": "ColorPreset",
+          "comment": "LEE 120 Deep Blue"
         },
         {
           "dmxRange": [73, 79],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 11
+          "type": "ColorPreset",
+          "comment": "LEE 079 Just Blue"
         },
         {
           "dmxRange": [80, 86],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 12
+          "type": "ColorPreset",
+          "comment": "LEE 132 Medium Blue"
         },
         {
           "dmxRange": [87, 93],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 13
+          "type": "ColorPreset",
+          "comment": "LEE 200 Double CT Blue"
         },
         {
           "dmxRange": [94, 100],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 14
+          "type": "ColorPreset",
+          "comment": "LEE 161 State Blue"
         },
         {
           "dmxRange": [101, 107],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 15
+          "type": "ColorPreset",
+          "comment": "LEE 201 Full CT Blue"
         },
         {
           "dmxRange": [108, 114],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 16
+          "type": "ColorPreset",
+          "comment": "LEE 202 Half CT Blue"
         },
         {
           "dmxRange": [115, 121],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 17
+          "type": "ColorPreset",
+          "comment": "LEE 117 Steel Blue"
         },
         {
           "dmxRange": [122, 128],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 18
+          "type": "ColorPreset",
+          "comment": "LEE 353 Lighter Blue"
         },
         {
           "dmxRange": [129, 135],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 19
+          "type": "ColorPreset",
+          "comment": "LEE 118 Light Blue"
         },
         {
           "dmxRange": [136, 142],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 20
+          "type": "ColorPreset",
+          "comment": "LEE 116 Medium Blue Green"
         },
         {
           "dmxRange": [143, 149],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 21
+          "type": "ColorPreset",
+          "comment": "LEE 124 Dark Green"
         },
         {
           "dmxRange": [150, 156],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 22
+          "type": "ColorPreset",
+          "comment": "LEE 139 Primary Green"
         },
         {
           "dmxRange": [157, 163],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 23
+          "type": "ColorPreset",
+          "comment": "LEE 089 Moss Green"
         },
         {
           "dmxRange": [164, 170],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 24
+          "type": "ColorPreset",
+          "comment": "LEE 122 Fern Green"
         },
         {
           "dmxRange": [171, 177],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 25
+          "type": "ColorPreset",
+          "comment": "LEE 738 JAS Green"
         },
         {
           "dmxRange": [178, 184],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 26
+          "type": "ColorPreset",
+          "comment": "LEE 088 Lime Green"
         },
         {
           "dmxRange": [185, 191],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 27
+          "type": "ColorPreset",
+          "comment": "LEE 100 Spring Yellow"
         },
         {
           "dmxRange": [192, 198],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 28,
-          "comment": "Color 31"
+          "type": "ColorPreset",
+          "comment": "LEE 104 Deep Amber"
         },
         {
           "dmxRange": [199, 205],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 29,
-          "comment": "Color 27"
+          "type": "ColorPreset",
+          "comment": "LEE 179 Chrome Orange"
         },
         {
           "dmxRange": [206, 212],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 30,
-          "comment": "Color 30"
+          "type": "ColorPreset",
+          "comment": "LEE 105 Orange"
         },
         {
           "dmxRange": [213, 219],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 31,
-          "comment": "Color 32"
+          "type": "ColorPreset",
+          "comment": "LEE 021 Gold Amber"
         },
         {
           "dmxRange": [220, 226],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 32,
-          "comment": "Color 28"
+          "type": "ColorPreset",
+          "comment": "LEE 778 Millennium Gold"
         },
         {
           "dmxRange": [227, 233],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 33,
-          "comment": "Color 29"
+          "type": "ColorPreset",
+          "comment": "LEE 135 Deep Gold Amber"
         },
         {
           "dmxRange": [234, 255],
-          "type": "WheelSlot",
-          "wheel": "Wheel color",
-          "slotNumber": 34
+          "type": "ColorPreset",
+          "comment": "LEE 164 Flame Red"
         }
       ]
     },
-    "Color Macro1": {
-      "highlightValue": 0,
+    "Macro Effect Select": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "ColorPreset",
-          "comment": "Open"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 40],
-          "type": "ColorPreset",
-          "comment": "Macro1 "
+          "type": "Effect",
+          "effectName": "Built-in effect 1"
         },
         {
           "dmxRange": [41, 65],
-          "type": "ColorPreset",
-          "comment": "Macro2"
+          "type": "Effect",
+          "effectName": "Built-in effect 2"
         },
         {
           "dmxRange": [66, 90],
-          "type": "ColorPreset",
-          "comment": "Macro3"
+          "type": "Effect",
+          "effectName": "Built-in effect 3"
         },
         {
           "dmxRange": [91, 115],
-          "type": "ColorPreset",
-          "comment": "Macro4"
+          "type": "Effect",
+          "effectName": "Built-in effect 4"
         },
         {
           "dmxRange": [116, 140],
-          "type": "ColorPreset",
-          "comment": "Macro5"
+          "type": "Effect",
+          "effectName": "Built-in effect 5"
         },
         {
           "dmxRange": [141, 165],
-          "type": "ColorPreset",
-          "comment": "Macro6"
+          "type": "Effect",
+          "effectName": "Built-in effect 6"
         },
         {
           "dmxRange": [166, 190],
-          "type": "ColorPreset",
-          "comment": "Macro7"
+          "type": "Effect",
+          "effectName": "Built-in effect 7"
         },
         {
           "dmxRange": [191, 215],
-          "type": "ColorPreset",
-          "comment": "Macro8"
+          "type": "Effect",
+          "effectName": "Built-in effect 8"
         },
         {
           "dmxRange": [216, 240],
-          "type": "ColorPreset",
-          "comment": "Macro9"
+          "type": "Effect",
+          "effectName": "Built-in effect 9"
         },
         {
           "dmxRange": [241, 255],
-          "type": "ColorPreset",
-          "comment": "Macro10"
+          "type": "Effect",
+          "effectName": "Built-in effect 10"
         }
       ]
     },
-    "Color Macro1 Rate": {
+    "Macro Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Without fade"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "With fade"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "White $pixelKey": {
       "capability": {
-        "type": "Unknown (ColorMacro1Rate)",
-        "physicalStart": 0,
-        "physicalEnd": 1
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
       }
     }
   },
   "modes": [
     {
-      "name": "Mode 2 30DMX",
+      "name": "14-channel",
+      "shortName": "14ch",
       "channels": [
+        "Special Function",
+        "Frost",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
         "White",
-        "R",
-        "G",
-        "B",
-        "Amber"
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "CCT",
+        "Color Macro",
+        "Macro Effect Select",
+        "Macro Effect Speed"
       ]
     },
     {
-      "name": "Mode 1 14DMX",
+      "name": "30-channel",
+      "shortName": "30ch",
       "channels": [
-        "Function",
-        "Frost1",
-        "Sh1",
-        "Dim",
-        "Dim fine",
-        "White 2",
-        "R",
-        "G",
-        "B",
-        "Amber",
-        "CTO",
-        "C1",
-        "Color Macro1",
-        "Color Macro1 Rate"
+        "Special Function",
+        "Frost",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "White $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
       ]
     }
   ]
