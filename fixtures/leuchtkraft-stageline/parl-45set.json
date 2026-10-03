@@ -4,7 +4,7 @@
   "shortName": "45SET",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Sam782"],
+    "authors": ["Sam782", "Luke Nelson"],
     "createDate": "2026-10-03",
     "lastModifyDate": "2026-10-03",
     "importPlugin": {
@@ -34,6 +34,35 @@
     },
     "lens": {
       "degreesMinMax": [15, 15]
+    }
+  },
+  "matrix": {
+    "pixelCount": [4, 1, 1]
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
     }
   },
   "availableChannels": {
@@ -152,102 +181,6 @@
           "speedEnd": "fast"
         }
       ]
-    },
-    "Red 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Green 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Blue 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Red 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Green 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Blue 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Red 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Green 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Blue 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Red 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Green 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Blue 4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
-      }
     }
   },
   "modes": [
@@ -258,18 +191,16 @@
         "Playmode",
         "Dim",
         "Strobe",
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
