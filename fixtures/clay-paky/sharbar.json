@@ -4,7 +4,7 @@
   "shortName": "SharBar",
   "categories": ["Moving Head", "Color Changer", "Effect", "Pixel Bar"],
   "meta": {
-    "authors": ["remyzik"],
+    "authors": ["remyzik", "Luke Nelson"],
     "createDate": "2026-10-03",
     "lastModifyDate": "2026-10-03",
     "importPlugin": {
@@ -13,6 +13,7 @@
       "comment": "GDTF v1.2 fixture type ID: DADDED13-23E3-47F3-B422-98DA37DA308E"
     }
   },
+  "comment": "The pixel engine must be enabled through the Function channel (DMX 103-105).",
   "links": {
     "manual": [
       "https://web.archive.org/web/20240518140303/https://e-assist.tech/servlet/checkDocumentsFile?Id=2330",
