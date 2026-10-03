@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Ovation H-605FC",
   "shortName": "OvationH605FC",
-  "categories": ["Other"],
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
   "meta": {
     "authors": ["anonyme"],
     "createDate": "2025-08-25",
-    "lastModifyDate": "2025-08-25",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2026-01-21",
@@ -14,12 +14,36 @@
     }
   },
   "comment": "Ovation H-605FC takes full advantage of LED technology, utilizing the Ovation standard RGBA-Lime color palette to enable the fixture to replicate nearly any color with tremendous color rendering, as well as nearly any color temperature of white. Superior convection cooling provides excellent output in a compact package. Ideal for theatrical and house of worship applications, setup and control is now easier than ever with the addition of W-DMX, RDM, adjustable PWM and an easy to navigate OLED full text display.",
+  "links": {
+    "manual": [
+      "https://chauvetprofessional.com/wp-content/uploads/2015/01/Ovation_H-605FC_UM_Rev8.pdf"
+    ],
+    "productPage": [
+      "https://chauvetprofessional.com/product/ovation-h-605fc/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=upzf28UfRKk"
+    ]
+  },
+  "physical": {
+    "dimensions": [333, 240, 339],
+    "weight": 8.9,
+    "power": 145,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "60× 3W LED (12× red, 12× green, 12× blue, 12× amber, 12× lime)",
+      "lumens": 5446
+    },
+    "lens": {
+      "degreesMinMax": [26, 68]
+    }
+  },
   "rdm": {
     "modelId": 1307,
     "softwareVersion": "0x0"
   },
   "wheels": {
-    "VIRTUAL COLOR WHEEL": {
+    "Virtual Color Wheel": {
       "slots": [
         {
           "type": "Open"
@@ -186,163 +210,61 @@
     "Dim": {
       "fineChannelAliases": ["Dim fine"],
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "R": {
       "fineChannelAliases": ["R fine"],
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "G": {
       "fineChannelAliases": ["G fine"],
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "B": {
       "fineChannelAliases": ["B fine"],
       "highlightValue": 65535,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Amber": {
       "fineChannelAliases": ["Amber fine"],
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Amber",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Amber",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Amber",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Lime": {
       "fineChannelAliases": ["Lime fine"],
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Lime",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 65534],
-          "type": "ColorIntensity",
-          "color": "Lime",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [65535, 65535],
-          "type": "ColorIntensity",
-          "color": "Lime",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
     },
     "Sh1": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open - Shutter Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "0.1Hz",
-          "speedEnd": "27Hz",
-          "comment": "Strobe S > F - Strobe"
+          "speedStart": "0Hz",
+          "speedEnd": "27Hz"
         }
       ]
     },
@@ -351,233 +273,200 @@
         {
           "dmxRange": [0, 5],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 1,
-          "comment": "Open - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 1
         },
         {
           "dmxRange": [6, 13],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 2,
-          "comment": "Medium Yellow - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 2
         },
         {
           "dmxRange": [14, 21],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 3,
-          "comment": "Light Yellow - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 3
         },
         {
           "dmxRange": [22, 28],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 4,
-          "comment": "Amber Yellow - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 4
         },
         {
           "dmxRange": [29, 35],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 5,
-          "comment": "Very Light Amber - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 5
         },
         {
           "dmxRange": [36, 43],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 6,
-          "comment": "Light Amber - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 6
         },
         {
           "dmxRange": [44, 51],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 7,
-          "comment": "Medium Amber - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 7
         },
         {
           "dmxRange": [52, 59],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 8,
-          "comment": "Dark Amber - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 8
         },
         {
           "dmxRange": [60, 67],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 9,
-          "comment": "Light Red - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 9
         },
         {
           "dmxRange": [68, 75],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 10,
-          "comment": "Medium Red - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 10
         },
         {
           "dmxRange": [76, 83],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 11,
-          "comment": "Pink - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 11
         },
         {
           "dmxRange": [84, 91],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 12,
-          "comment": "Medium Pink - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 12
         },
         {
           "dmxRange": [92, 99],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 13,
-          "comment": "Dark Pink - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 13
         },
         {
           "dmxRange": [100, 107],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 14,
-          "comment": "Medium Red Amber - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 14
         },
         {
           "dmxRange": [108, 115],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 15,
-          "comment": "Dark Red Amber - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 15
         },
         {
           "dmxRange": [116, 121],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 16,
-          "comment": "Magenta - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 16
         },
         {
           "dmxRange": [122, 130],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 17,
-          "comment": "Dark Magenta - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 17
         },
         {
           "dmxRange": [131, 138],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 18,
-          "comment": "Light Lavender - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 18
         },
         {
           "dmxRange": [139, 146],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 19,
-          "comment": "Light Blue - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 19
         },
         {
           "dmxRange": [147, 154],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 20,
-          "comment": "Very Light Blue - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 20
         },
         {
           "dmxRange": [155, 162],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 21,
-          "comment": "Light Blue 2 - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 21
         },
         {
           "dmxRange": [163, 170],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 22,
-          "comment": "Blue - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 22
         },
         {
           "dmxRange": [171, 178],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 23,
-          "comment": "Medium Blue - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 23
         },
         {
           "dmxRange": [179, 186],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 24,
-          "comment": "Dark Blue - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 24
         },
         {
           "dmxRange": [187, 194],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 25,
-          "comment": "Indigo - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 25
         },
         {
           "dmxRange": [195, 202],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 26,
-          "comment": "Very Dark Blue - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 26
         },
         {
           "dmxRange": [203, 210],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 27,
-          "comment": "Very Dark Blue 2 - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 27
         },
         {
           "dmxRange": [211, 218],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 28,
-          "comment": "Yellow Green - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 28
         },
         {
           "dmxRange": [219, 226],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 29,
-          "comment": "Green - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 29
         },
         {
           "dmxRange": [227, 234],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 30,
-          "comment": "Turquoise - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 30
         },
         {
           "dmxRange": [235, 242],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 31,
-          "comment": "Aqua - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 31
         },
         {
           "dmxRange": [243, 250],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 32,
-          "comment": "Blue Green - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 32
         },
         {
           "dmxRange": [251, 255],
           "type": "WheelSlot",
-          "wheel": "VIRTUAL COLOR WHEEL",
-          "slotNumber": 1,
-          "comment": "Open - Color"
+          "wheel": "Virtual Color Wheel",
+          "slotNumber": 1
         }
       ]
     },
@@ -585,80 +474,56 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "No Func - Custom"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 25],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "2800K - CTC"
+          "colorTemperature": "2800K"
         },
         {
           "dmxRange": [26, 50],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "3200K - CTC"
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [51, 75],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "3500K - CTC"
+          "colorTemperature": "3500K"
         },
         {
           "dmxRange": [76, 100],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "4000K - CTC"
+          "colorTemperature": "4000K"
         },
         {
           "dmxRange": [101, 125],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "4500K - CTC"
+          "colorTemperature": "4500K"
         },
         {
           "dmxRange": [126, 150],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "5000K - CTC"
+          "colorTemperature": "5000K"
         },
         {
           "dmxRange": [151, 175],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "5600K - CTC"
+          "colorTemperature": "5600K"
         },
         {
           "dmxRange": [176, 200],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "6000K - CTC"
+          "colorTemperature": "6000K"
         },
         {
           "dmxRange": [201, 225],
           "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "6500K - CTC"
+          "colorTemperature": "6500K"
         },
         {
           "dmxRange": [226, 255],
-          "type": "ColorTemperature",
-          "colorTemperatureStart": 0,
-          "colorTemperatureEnd": 1,
-          "comment": "No Func - Custom"
+          "type": "NoFunction"
         }
       ]
     },
@@ -666,423 +531,212 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "No Function - Custom"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [8, 15],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer Reset - Reset"
+          "hold": "3s",
+          "comment": "Dimmer reset"
         },
         {
           "dmxRange": [16, 23],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Red Shift On - Custom"
+          "hold": "3s",
+          "comment": "Red shift on"
         },
         {
           "dmxRange": [24, 31],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Red Shift Off - Custom"
+          "hold": "3s",
+          "comment": "Red shift off"
         },
         {
           "dmxRange": [32, 39],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer: S-Curve - Custom"
+          "hold": "3s",
+          "comment": "Dimmer curve: S-Curve"
         },
         {
           "dmxRange": [40, 47],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer: Linear - Custom"
+          "hold": "3s",
+          "comment": "Dimmer curve: Linear"
         },
         {
           "dmxRange": [48, 55],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer: Sqaure - Custom"
+          "hold": "3s",
+          "comment": "Dimmer curve: Square"
         },
         {
           "dmxRange": [56, 63],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer: Inverse Square - Custom"
+          "hold": "3s",
+          "comment": "Dimmer curve: Inverse Square"
         },
         {
           "dmxRange": [64, 71],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer Mode: Off - Custom"
+          "hold": "3s",
+          "comment": "Dimmer mode: Off"
         },
         {
           "dmxRange": [72, 79],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer Mode: 1 - Custom"
+          "hold": "3s",
+          "comment": "Dimmer mode 1"
         },
         {
           "dmxRange": [80, 87],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer Mode: 2 - Custom"
+          "hold": "3s",
+          "comment": "Dimmer mode 2"
         },
         {
           "dmxRange": [88, 95],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dimmer Mode: 3 - Custom"
+          "hold": "3s",
+          "comment": "Dimmer mode 3"
         },
         {
           "dmxRange": [96, 103],
-          "type": "Speed",
-          "speedStart": 0,
-          "speedEnd": 1,
-          "comment": "X-Fade Speed: Off - Speed"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade speed: Off"
         },
         {
           "dmxRange": [104, 111],
-          "type": "Speed",
-          "speed": 10,
-          "comment": "X-Fade Speed: 1 (Fastest) - Speed"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade speed 1 (fastest)"
         },
         {
           "dmxRange": [112, 119],
-          "type": "Speed",
-          "speedStart": 0,
-          "speedEnd": 1,
-          "comment": "X-Fade Speed: 2 - Speed"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade speed 2"
         },
         {
           "dmxRange": [120, 127],
-          "type": "Speed",
-          "speedStart": 0,
-          "speedEnd": 1,
-          "comment": "X-Fade Speed: 3 - Speed"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade speed 3"
         },
         {
           "dmxRange": [128, 135],
-          "type": "Speed",
-          "speedStart": 0,
-          "speedEnd": 1,
-          "comment": "X-Fade Speed: 4 - Speed"
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X-Fade speed 4 (slowest)"
         },
         {
           "dmxRange": [136, 255],
-          "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "No Function - Custom"
+          "type": "NoFunction",
+          "comment": "Reserved for future use"
         }
       ]
     },
     "Dim 2": {
       "name": "Dim",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "R 2": {
       "name": "R",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "G 2": {
       "name": "G",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "B 2": {
       "name": "B",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Amber 2": {
       "name": "Amber",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Amber",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Amber",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Amber",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     },
     "Lime 2": {
       "name": "Lime",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Lime",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Lime",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Lime",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
     },
     "FX1": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Effect",
-          "effectName": "No Func - Custom",
-          "speedStart": 0,
-          "speedEnd": 1
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 60],
           "type": "Effect",
-          "effectName": "Auto Program 1 - Macro",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto program 1"
         },
         {
           "dmxRange": [61, 110],
           "type": "Effect",
-          "effectName": "Auto Program 2 - Macro",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto program 2"
         },
         {
           "dmxRange": [111, 160],
           "type": "Effect",
-          "effectName": "Auto Program 3 - Macro",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto program 3"
         },
         {
           "dmxRange": [161, 210],
           "type": "Effect",
-          "effectName": "Auto Program 4 - Macro",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto program 4"
         },
         {
           "dmxRange": [211, 255],
           "type": "Effect",
-          "effectName": "Auto Program 5 - Macro",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto program 5"
         }
       ]
     },
     "FX1 Rate": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "EffectSpeed",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "EffectSpeed",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "EffectSpeed",
-          "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
-    "H": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Unknown (HSB_Hue)",
-          "physicalStart": "0deg",
-          "physicalEnd": "1deg",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Unknown (HSB_Hue)",
-          "physicalStart": "0deg",
-          "physicalEnd": "1deg",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Unknown (HSB_Hue)",
-          "physicalStart": "0deg",
-          "physicalEnd": "1deg",
-          "comment": "Max"
-        }
-      ]
+    "Hue": {
+      "capability": {
+        "type": "Generic"
+      }
     },
-    "S": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Unknown (HSB_Saturation)",
-          "physicalStart": "0%",
-          "physicalEnd": "100%",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Unknown (HSB_Saturation)",
-          "physicalStart": "0%",
-          "physicalEnd": "100%",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Unknown (HSB_Saturation)",
-          "physicalStart": "0%",
-          "physicalEnd": "100%",
-          "comment": "Max"
-        }
-      ]
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
     },
-    "B 3": {
-      "name": "B",
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Unknown (HSB_Quality)",
-          "physicalStart": "0%",
-          "physicalEnd": "100%",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Unknown (HSB_Quality)",
-          "physicalStart": "0%",
-          "physicalEnd": "100%",
-          "comment": "Min > Max"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Unknown (HSB_Quality)",
-          "physicalStart": "0%",
-          "physicalEnd": "100%",
-          "comment": "Max"
-        }
-      ]
+    "Value": {
+      "capability": {
+        "type": "Intensity"
+      }
     }
   },
   "modes": [
     {
-      "name": "15Ch Mode",
+      "name": "16-channel",
+      "shortName": "16ch",
       "rdmPersonalityIndex": 1,
       "channels": [
         "Dim",
@@ -1104,7 +758,8 @@
       ]
     },
     {
-      "name": "13Ch Mode",
+      "name": "13-channel",
+      "shortName": "13ch",
       "rdmPersonalityIndex": 2,
       "channels": [
         "Dim",
@@ -1123,7 +778,8 @@
       ]
     },
     {
-      "name": "12Ch Mode",
+      "name": "12-channel",
+      "shortName": "12ch",
       "rdmPersonalityIndex": 3,
       "channels": [
         "Dim 2",
@@ -1141,7 +797,8 @@
       ]
     },
     {
-      "name": "10Ch Mode",
+      "name": "10-channel",
+      "shortName": "10ch",
       "rdmPersonalityIndex": 4,
       "channels": [
         "Dim",
@@ -1157,7 +814,8 @@
       ]
     },
     {
-      "name": "7Ch Mode",
+      "name": "7-channel",
+      "shortName": "7ch",
       "rdmPersonalityIndex": 5,
       "channels": [
         "Dim 2",
@@ -1170,7 +828,8 @@
       ]
     },
     {
-      "name": "5Ch Mode",
+      "name": "5-channel",
+      "shortName": "5ch",
       "rdmPersonalityIndex": 6,
       "channels": [
         "R 2",
@@ -1181,7 +840,8 @@
       ]
     },
     {
-      "name": "3Ch Mode",
+      "name": "3-channel",
+      "shortName": "3ch",
       "rdmPersonalityIndex": 7,
       "channels": [
         "Dim 2",
@@ -1191,11 +851,12 @@
     },
     {
       "name": "HSV",
+      "shortName": "HSV",
       "rdmPersonalityIndex": 8,
       "channels": [
-        "H",
-        "S",
-        "B 3"
+        "Hue",
+        "Saturation",
+        "Value"
       ]
     }
   ]
