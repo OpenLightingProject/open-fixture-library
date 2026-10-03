@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Apollo",
   "shortName": "Apollo",
-  "categories": ["Other"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["kleber"],
     "createDate": "2023-09-08",
-    "lastModifyDate": "2025-02-11",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2025-02-11",
@@ -14,176 +14,81 @@
     }
   },
   "comment": "4x12w Outdoor rated Battery powered W-DMX LED uplight",
+  "links": {
+    "manual": ["https://www.showtech.com.au/webdata/LEDSET009/downloads/manual/LEDSET009%20-%20Apollo%20Manual.pdf"],
+    "productPage": ["https://www.showtech.com.au/product/led-apollo-6-units-inc-charging-case/"]
+  },
+  "physical": {
+    "dimensions": [138, 138, 202],
+    "weight": 3.68,
+    "power": 44,
+    "bulb": {
+      "type": "4× 12W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [11, 11]
+    }
+  },
   "availableChannels": {
     "H": {
       "capability": {
-        "type": "Unknown (HSB_Hue)",
-        "physicalStart": "0deg",
-        "physicalEnd": "1deg"
+        "type": "Generic",
+        "helpWanted": "Which DMX values correspond to which colors?"
       }
     },
     "S": {
       "capability": {
-        "type": "Unknown (HSB_Saturation)",
-        "physicalStart": "0%",
-        "physicalEnd": "100%"
+        "type": "Generic"
       }
     },
     "Dim": {
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Closed"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Open"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "R": {
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Red"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
     "G": {
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Green"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
     },
     "B": {
       "highlightValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Max"
-        }
-      ]
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ColorIntensity",
-          "color": "White",
-          "comment": "Min"
-        },
-        {
-          "dmxRange": [1, 254],
-          "type": "ColorIntensity",
-          "color": "White"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorIntensity",
-          "color": "White",
-          "comment": "Max"
-        }
-      ]
-    },
-    "Dim 2": {
-      "name": "Dim",
-      "dmxValueResolution": "32bit",
-      "highlightValue": 4278190080,
-      "capabilities": [
-        {
-          "dmxRange": [0, 16777215],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Closed"
-        },
-        {
-          "dmxRange": [16777216, 4278190079],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1
-        },
-        {
-          "dmxRange": [4278190080, 4294967295],
-          "type": "Intensity",
-          "brightnessStart": 0,
-          "brightnessEnd": 1,
-          "comment": "Open"
-        }
-      ]
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Sh1": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
           "type": "ShutterStrobe",
-          "helpWanted": "What does physical value 0…1 mean?",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "1Hz",
-          "randomTiming": true,
-          "comment": "Strobe"
+          "speedEnd": "30Hz",
+          "randomTiming": true
         }
       ]
     },
@@ -191,17 +96,18 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "ColorPreset",
-          "comment": "No Function"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 170],
           "type": "ColorPreset",
-          "comment": "RGB Macro"
+          "comment": "RGB Macro",
+          "helpWanted": "Which colors are selectable with which DMX values?"
         },
         {
           "dmxRange": [171, 200],
           "type": "ColorPreset",
+          "colors": ["#ffffff"],
           "comment": "All LEDs full"
         },
         {
@@ -265,53 +171,40 @@
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "Effect",
-          "effectName": "No Function",
-          "speedStart": 0,
-          "speedEnd": 1
+          "type": "NoFunction"
         },
         {
           "dmxRange": [52, 101],
           "type": "Effect",
-          "effectName": "Auto Program 1",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto Program 1"
         },
         {
           "dmxRange": [102, 152],
           "type": "Effect",
-          "effectName": "Auto Program 2",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto Program 2"
         },
         {
           "dmxRange": [153, 203],
           "type": "Effect",
-          "effectName": "Auto Program 3",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto Program 3"
         },
         {
           "dmxRange": [204, 254],
           "type": "Effect",
-          "effectName": "Auto Program 4",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto Program 4"
         },
         {
           "dmxRange": [255, 255],
           "type": "Effect",
-          "effectName": "Auto Program 5",
-          "speedStart": 0,
-          "speedEnd": 1
+          "effectName": "Auto Program 5"
         }
       ]
     },
     "FX1 Rate": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "0Hz",
-        "speedEnd": "1Hz"
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Dim Mode": {
@@ -319,44 +212,35 @@
         {
           "dmxRange": [0, 51],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
           "comment": "Set from Menu"
         },
         {
           "dmxRange": [52, 101],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dim Curve Off"
+          "comment": "Dimmer Curve Off"
         },
         {
           "dmxRange": [102, 152],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dim Curve 1"
+          "comment": "Dimmer Curve 1 (fast)"
         },
         {
           "dmxRange": [153, 203],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dim Curve 2"
+          "comment": "Dimmer Curve 2 (medium)"
         },
         {
           "dmxRange": [204, 255],
           "type": "Maintenance",
-          "parameterStart": 0,
-          "parameterEnd": 1,
-          "comment": "Dim Curve 3"
+          "comment": "Dimmer Curve 3 (slow)"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "3 Channel",
+      "name": "3-channel HSV",
+      "shortName": "3ch HSV",
       "channels": [
         "H",
         "S",
@@ -364,7 +248,8 @@
       ]
     },
     {
-      "name": "4 Channel Mode",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "R",
         "G",
@@ -373,7 +258,8 @@
       ]
     },
     {
-      "name": "6 Channel Mode",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Dim",
         "R",
@@ -384,7 +270,8 @@
       ]
     },
     {
-      "name": "10 Channel Mode",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Dim",
         "R",
