@@ -159,7 +159,7 @@
         }
       ]
     },
-    "Dim": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity",
         "brightnessStart": "off",
@@ -189,7 +189,7 @@
       "shortName": "15ch",
       "channels": [
         "Playmode",
-        "Dim",
+        "Dimmer",
         "Strobe",
         {
           "insert": "matrixChannels",
