@@ -2,15 +2,32 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "PARL-45SET",
   "shortName": "45SET",
-  "categories": ["Other"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["Sam782"],
     "createDate": "2021-07-05",
-    "lastModifyDate": "2025-06-24",
+    "lastModifyDate": "2026-10-03",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2025-07-02",
       "comment": "GDTF v1.2 fixture type ID: 8D491353-F9AB-485F-B957-169044B5E86E"
+    }
+  },
+  "links": {
+    "manual": ["https://www.img-stageline.com/media/FLE/PARL45SET.pdf"],
+    "productPage": ["https://web.archive.org/web/20190826090858/https://www.img-stageline.de/produkte/licht/scheinwerfer/led-scheinwerfer/parl-45set/"],
+    "video": ["https://www.youtube.com/watch?v=V6O7EJV1ba4"]
+  },
+  "physical": {
+    "dimensions": [900, 240, 50],
+    "weight": 8.7,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12× 9W RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
     }
   },
   "availableChannels": {
@@ -18,265 +35,235 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Manual"
+          "type": "NoFunction",
+          "comment": "Manual color control"
         },
         {
           "dmxRange": [10, 29],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 1"
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
           "dmxRange": [30, 49],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 2"
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
           "dmxRange": [50, 69],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 3"
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
           "dmxRange": [70, 89],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 4"
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
           "dmxRange": [90, 109],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 5"
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
           "dmxRange": [110, 129],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 6"
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
           "dmxRange": [130, 149],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 7"
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
           "dmxRange": [150, 169],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 8"
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
           "dmxRange": [170, 189],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 9"
+          "type": "Effect",
+          "effectName": "Program 9"
         },
         {
           "dmxRange": [190, 209],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 10"
+          "type": "Effect",
+          "effectName": "Program 10"
         },
         {
           "dmxRange": [210, 229],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 11"
+          "type": "Effect",
+          "effectName": "Program 11"
         },
         {
           "dmxRange": [230, 249],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Prog 12"
+          "type": "Effect",
+          "effectName": "Program 12"
         },
         {
           "dmxRange": [250, 251],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Music Control 1"
+          "type": "Effect",
+          "effectName": "Sound program SP00",
+          "soundControlled": true
         },
         {
           "dmxRange": [252, 252],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Music Control 2"
+          "type": "Effect",
+          "effectName": "Sound program SP01",
+          "soundControlled": true
         },
         {
           "dmxRange": [253, 253],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Music Control 3"
+          "type": "Effect",
+          "effectName": "Sound program SP02",
+          "soundControlled": true
         },
         {
           "dmxRange": [254, 255],
-          "type": "Unknown (Playmode)",
-          "physicalStart": 0,
-          "physicalEnd": 1,
-          "comment": "Music Control 4"
+          "type": "Effect",
+          "effectName": "Sound program SP03",
+          "soundControlled": true
         }
       ]
     },
     "Dim": {
       "capability": {
         "type": "Intensity",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "Strobe1": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0Hz",
-        "speedEnd": "1Hz"
-      }
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
-    "R": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
-      }
-    },
-    "G": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
-      }
-    },
-    "B": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
-      }
-    },
-    "R 2": {
-      "name": "R",
+    "Red 1": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "G 2": {
-      "name": "G",
+    "Green 1": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "B 2": {
-      "name": "B",
+    "Blue 1": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "R 3": {
-      "name": "R",
+    "Red 2": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "G 3": {
-      "name": "G",
+    "Green 2": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "B 3": {
-      "name": "B",
+    "Blue 2": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "R 4": {
-      "name": "R",
+    "Red 3": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "G 4": {
-      "name": "G",
+    "Green 3": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "B 4": {
-      "name": "B",
+    "Blue 3": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightnessStart": 0,
-        "brightnessEnd": 1
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Red 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue 4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },
   "modes": [
     {
-      "name": "15ch",
+      "name": "15-channel",
+      "shortName": "15ch",
       "channels": [
         "Playmode",
         "Dim",
-        "Strobe1",
-        "R",
-        "G",
-        "B",
-        "R 2",
-        "G 2",
-        "B 2",
-        "R 3",
-        "G 3",
-        "B 3",
-        "R 4",
-        "G 4",
-        "B 4"
+        "Strobe",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4"
       ]
     }
   ]
