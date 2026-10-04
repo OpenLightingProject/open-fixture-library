@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "China LED PAR RGB7CH",
+  "shortName": "LED PAR",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Simvh"],
+    "createDate": "2023-06-22",
+    "lastModifyDate": "2024-10-09",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-10-04",
+      "comment": "GDTF v1.2 fixture type ID: 2F85506A-33B6-47F0-A3BD-AA9C3BFE60E5"
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "StrobeM Strobe": {
+      "capability": {
+        "type": "Unknown (StrobeModeStrobe)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Color Macro1": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Mix MSpeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard mode",
+      "channels": [
+        "Dim",
+        "R",
+        "G",
+        "B",
+        "StrobeM Strobe",
+        "Color Macro1",
+        "Color Mix MSpeed"
+      ]
+    }
+  ]
+}
