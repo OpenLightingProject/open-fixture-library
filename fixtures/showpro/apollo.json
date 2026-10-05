@@ -1,0 +1,288 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Apollo",
+  "shortName": "Apollo",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["kleber", "Luke Nelson"],
+    "createDate": "2026-10-03",
+    "lastModifyDate": "2026-10-03",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-02-11",
+      "comment": "GDTF v1.2 fixture type ID: 7E7AE967-A417-424A-A30A-2410F169252C"
+    }
+  },
+  "comment": "4x12w Outdoor rated Battery powered W-DMX LED uplight",
+  "links": {
+    "manual": [
+      "https://www.showtech.com.au/webdata/LEDSET009/downloads/manual/LEDSET009%20-%20Apollo%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.showtech.com.au/product/led-apollo-6-units-inc-charging-case/"
+    ]
+  },
+  "physical": {
+    "dimensions": [138, 138, 202],
+    "weight": 3.68,
+    "power": 44,
+    "bulb": {
+      "type": "4× 12W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [11, 11]
+    }
+  },
+  "availableChannels": {
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0° to 360°"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "0% to 100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 170],
+          "type": "ColorPreset",
+          "comment": "RGB Macro",
+          "helpWanted": "Which colors are selectable with which DMX values?"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "All LEDs full"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 1"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 2"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 3"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 4"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 5"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 6"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 7"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 8"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 9"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 10"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "White Balance Preset 11"
+        }
+      ]
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [204, 254],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "comment": "Set from Menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve Off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 1 (fast)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 2 (medium)"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 3 (slow)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel HSV",
+      "shortName": "3ch HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Macros",
+        "Effects",
+        "Effect Speed",
+        "Dimmer Mode"
+      ]
+    }
+  ]
+}
