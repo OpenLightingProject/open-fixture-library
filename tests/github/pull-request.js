@@ -18,8 +18,8 @@ const RESERVED_COMMENT_BYTES = 2144; // reserve space for comment/issue body hea
 /** @type {Octokit} */
 let githubClient;
 
-let repoOwner;
-let repoName;
+let repositoryOwner;
+let repositoryName;
 let prData;
 
 /**
@@ -50,16 +50,16 @@ export async function checkEnv() {
 export async function init() {
   await checkEnv();
 
-  repoOwner = process.env.GITHUB_REPOSITORY.split('/', 1)[0];
-  repoName = process.env.GITHUB_REPOSITORY.split('/', 2)[1];
+  repositoryOwner = process.env.GITHUB_REPOSITORY.split('/', 1)[0];
+  repositoryName = process.env.GITHUB_REPOSITORY.split('/', 2)[1];
 
   githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
   const pr = await githubClient.rest.pulls.get({
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     pull_number: process.env.GITHUB_PR_NUMBER,
   });
@@ -76,8 +76,8 @@ export async function init() {
 export async function fetchChangedComponents() {
   // fetch all changed files
   const files = await githubClient.paginate(githubClient.rest.pulls.listFiles, {
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     pull_number: process.env.GITHUB_PR_NUMBER,
     // eslint-disable-next-line camelcase -- required by GitHub API
@@ -208,8 +208,8 @@ export async function updateComment(test) {
   const message = lines.join('\n');
 
   const comments = await githubClient.paginate(githubClient.rest.issues.listComments, {
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     issue_number: process.env.GITHUB_PR_NUMBER,
     // eslint-disable-next-line camelcase -- required by GitHub API
@@ -235,8 +235,8 @@ export async function updateComment(test) {
     console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
 
     return githubClient.rest.issues.deleteComment({
-      owner: repoOwner,
-      repo: repoName,
+      owner: repositoryOwner,
+      repo: repositoryName,
       // eslint-disable-next-line camelcase -- required by GitHub API
       comment_id: comment.id,
     });
@@ -245,8 +245,8 @@ export async function updateComment(test) {
   if (!isEqualFound && test.lines.length > 0) {
     console.log(`Creating test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
     promises.push(githubClient.rest.issues.createComment({
-      owner: repoOwner,
-      repo: repoName,
+      owner: repositoryOwner,
+      repo: repositoryName,
       // eslint-disable-next-line camelcase -- required by GitHub API
       issue_number: process.env.GITHUB_PR_NUMBER,
       body: message,
@@ -339,8 +339,8 @@ export async function updateReview(test) {
 
   console.log(`Creating review at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER} with ${test.comments.length} inline comment(s).`);
   return githubClient.rest.pulls.createReview({
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     pull_number: process.env.GITHUB_PR_NUMBER,
     // eslint-disable-next-line camelcase -- required by GitHub API
@@ -362,8 +362,8 @@ export async function updateReview(test) {
  */
 async function fetchExistingReviews() {
   return githubClient.paginate(githubClient.rest.pulls.listReviews, {
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     pull_number: process.env.GITHUB_PR_NUMBER,
     // eslint-disable-next-line camelcase -- required by GitHub API
@@ -377,8 +377,8 @@ async function fetchExistingReviews() {
  */
 async function fetchExistingReviewComments() {
   return githubClient.paginate(githubClient.rest.pulls.listReviewComments, {
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     pull_number: process.env.GITHUB_PR_NUMBER,
     // eslint-disable-next-line camelcase -- required by GitHub API
@@ -416,8 +416,8 @@ async function cleanupPriorReviews(marker) {
     .map((review) => {
       console.log(`Dismissing old review ${review.id} at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return githubClient.rest.pulls.dismissReview({
-        owner: repoOwner,
-        repo: repoName,
+        owner: repositoryOwner,
+        repo: repositoryName,
         // eslint-disable-next-line camelcase -- required by GitHub API
         pull_number: process.env.GITHUB_PR_NUMBER,
         // eslint-disable-next-line camelcase -- required by GitHub API
@@ -433,8 +433,8 @@ async function cleanupPriorReviews(marker) {
     .map((comment) => {
       console.log(`Deleting old review comment ${comment.id} (from marked review) at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       return githubClient.rest.pulls.deleteReviewComment({
-        owner: repoOwner,
-        repo: repoName,
+        owner: repositoryOwner,
+        repo: repositoryName,
         // eslint-disable-next-line camelcase -- required by GitHub API
         comment_id: comment.id,
       });
@@ -451,8 +451,8 @@ async function cleanupPriorReviews(marker) {
  */
 export async function getFileContent(filePath, ref) {
   const { data } = await githubClient.rest.repos.getContent({
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     path: filePath,
     ref,
   });
@@ -472,8 +472,8 @@ export async function getFileContent(filePath, ref) {
  */
 export async function getFilePatch(filePath) {
   const files = await githubClient.paginate(githubClient.rest.pulls.listFiles, {
-    owner: repoOwner,
-    repo: repoName,
+    owner: repositoryOwner,
+    repo: repositoryName,
     // eslint-disable-next-line camelcase -- required by GitHub API
     pull_number: process.env.GITHUB_PR_NUMBER,
     // eslint-disable-next-line camelcase -- required by GitHub API
