@@ -97,7 +97,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   }
 
   // clip to integers in range 0…255
-  [r, g, b] = [r, g, b].map((c) => Math.floor(Math.min(255, Math.max(0, c || 0))));
+  [r, g, b] = [r, g, b].map((c) => Math.floor(Math.min(255, Math.max(0, c))));
 
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 

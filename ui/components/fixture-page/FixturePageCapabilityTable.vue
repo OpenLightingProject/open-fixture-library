@@ -160,6 +160,7 @@ export default {
         const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
         const switchChannels = [];
 
+        // eslint-disable-next-line unicorn/prefer-default-parameters -- switchToChannelKey can be null
         for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
           const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
 
