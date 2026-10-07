@@ -1203,13 +1203,12 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     /**
      * @param {string} type - What capability type to search for.
-     * @param {number} [minimum=1] - How many occurrences are needed to succeed.
-     * @returns {boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
+     * @returns {boolean} Whether the given capability type occurs at least once in the fixture.
      */
-    function hasCapabilityOfType(type, minimum = 1) {
-      return fixture.capabilities.filter(
+    function hasCapabilityOfType(type) {
+      return fixture.capabilities.some(
         (capability) => capability.type === type,
-      ).length >= minimum;
+      );
     }
 
     /**

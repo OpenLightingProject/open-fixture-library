@@ -180,6 +180,7 @@ const unicornRules = {
       cats: { categories: true },
     },
   }],
+  'unicorn/no-asterisk-prefix-in-documentation-comments': 'off', // incompatible with eslint-plugin-jsdoc
   'unicorn/no-computed-property-existence-check': 'off', // dynamic `key in obj` checks are fine and widely used
   'unicorn/no-null': 'off',
   'unicorn/no-process-exit': 'off',
