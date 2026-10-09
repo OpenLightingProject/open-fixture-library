@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F3200A LASER SHOW",
+  "shortName": "LASER SHOW",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["nikita"],
+    "createDate": "2026-10-06",
+    "lastModifyDate": "2026-10-06"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/about/plugins/millumin"
+    ]
+  },
+  "availableChannels": {
+    "Haze": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 99],
+          "type": "Fog",
+          "fogType": "Haze"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Паттерн 1 вкл/выкл",
+      "shortName": "вкл/выкл",
+      "channels": [
+        "Haze"
+      ]
+    }
+  ]
+}
