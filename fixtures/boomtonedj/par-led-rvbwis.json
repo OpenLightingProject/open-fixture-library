@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par led RVBWIS",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["martinm"],
+    "createDate": "2026-05-16",
+    "lastModifyDate": "2026-05-16"
+  },
+  "links": {
+    "productPage": [
+      "https://www.sonovente.com/boomtonedj-ledpar-7x10w-5in1-p61225.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "1Hz",
+        "speedEnd": "255Hz",
+        "randomTiming": true
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
