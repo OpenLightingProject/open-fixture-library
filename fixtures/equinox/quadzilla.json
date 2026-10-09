@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Quadzilla",
+  "shortName": "quadzilla",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Joshua Fawcett"],
+    "createDate": "2026-05-13",
+    "lastModifyDate": "2026-05-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolight.co.uk/product_manual/Quadzilla_Manual.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [935, 155, 195],
+    "weight": 6.7,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "DMX Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "Maintenance",
+          "comment": "Activates DMX Control"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Pattern Selector": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "1 to 37"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch DMX",
+      "shortName": "6ch",
+      "channels": [
+        "DMX Control",
+        "Red",
+        "Green",
+        "Blue",
+        "Pattern Selector",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
