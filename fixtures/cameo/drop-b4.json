@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Drop B4",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["tux300200"],
+    "createDate": "2026-07-24",
+    "lastModifyDate": "2026-07-24"
+  },
+  "links": {
+    "manual": [
+      "https://portal.adamhall.com/en/downloadcenter/products?brand=productBrand_CAMEO&series=series_DROP&article=CLDROPB4"
+    ]
+  },
+  "availableChannels": {
+    "Test": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "DMX Delay": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 2,
+        "comment": "0.0s -> 2.0s"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channels",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "DMX Delay"
+      ]
+    }
+  ]
+}
