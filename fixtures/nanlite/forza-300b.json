@@ -1,0 +1,261 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Forza 300B",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-06-27",
+    "lastModifyDate": "2023-06-27"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1691141257334-410298-1124121241519342-Forza+300B+DMX+REFERENCE+GUIDE+V1+20201114+W.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlite.com/product-forza-300-300b-500-500b-ii"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=d3fZaJ5SWco"
+    ]
+  },
+  "physical": {
+    "dimensions": [890, 85, 540],
+    "weight": 6.1,
+    "power": 160,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Fan on"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Mode CCT": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "Mode Effect": {
+      "defaultValue": 64,
+      "highlightValue": 64,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Effect Mode"
+      }
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved5": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved6": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved7": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Generic",
+          "comment": "CCT LOOP"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Generic",
+          "comment": "INT LOOP"
+        },
+        {
+          "dmxRange": [37, 54],
+          "type": "Generic",
+          "comment": "FLASH"
+        },
+        {
+          "dmxRange": [55, 72],
+          "type": "Generic",
+          "comment": "PULSE"
+        },
+        {
+          "dmxRange": [73, 91],
+          "type": "Generic",
+          "comment": "STORM"
+        },
+        {
+          "dmxRange": [92, 109],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Generic",
+          "comment": "PAPARAZZI"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Generic",
+          "comment": "CANDLE/FIRE"
+        },
+        {
+          "dmxRange": [146, 163],
+          "type": "Generic",
+          "comment": "BAD BULB"
+        },
+        {
+          "dmxRange": [164, 182],
+          "type": "Generic",
+          "comment": "FIREWORK"
+        },
+        {
+          "dmxRange": [183, 200],
+          "type": "Generic",
+          "comment": "EXPLOSION"
+        },
+        {
+          "dmxRange": [201, 218],
+          "type": "Generic",
+          "comment": "WELDING"
+        },
+        {
+          "dmxRange": [219, 255],
+          "type": "Generic",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Param1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param4": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param5": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param6": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param7": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - CCT",
+      "shortName": "Ultimate CCT",
+      "channels": [
+        "Dimmer",
+        "Mode CCT",
+        "CCT",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4",
+        "Reserved5",
+        "Reserved6",
+        "Reserved7",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - EFFECT",
+      "shortName": "Ultimate EFFECT",
+      "channels": [
+        "Dimmer",
+        "Mode Effect",
+        "Effect Mode",
+        "Param1",
+        "Param2",
+        "Param3",
+        "Param4",
+        "Param5",
+        "Param6",
+        "Param7",
+        "Fan Control"
+      ]
+    }
+  ]
+}

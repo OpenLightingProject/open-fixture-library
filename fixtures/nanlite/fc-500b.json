@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FC-500B",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2025-04-19",
+    "lastModifyDate": "2025-04-19"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1700807419543-373528-1124121241512490-FC-500B+Manual%EF%BC%88NANLITE%EF%BC%89C+V3+20231021+W.pdf"
+    ],
+    "productPage": [
+      "https://nanliteus.com/nanlite-fc-500b-bi-color-led-spotlight"
+    ]
+  },
+  "physical": {
+    "dimensions": [149, 373, 246],
+    "weight": 3.16,
+    "power": 520,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "SMART"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "FULL SPEED"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "LOW SPEED"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "OFF"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Generic",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strob"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+        }
+      ]
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit Reduced",
+      "channels": [
+        "Dimmer",
+        "CCT"
+      ]
+    },
+    {
+      "name": "CCT 8bit Full",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT 16bit Reduced",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine"
+      ]
+    },
+    {
+      "name": "CCT 16bit Full",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    }
+  ]
+}
