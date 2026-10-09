@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARLED50-COB",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2026-04-07",
+    "lastModifyDate": "2026-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://ibizashop.eu/nl/index.php?controller=attachment&id_attachment=147"
+    ],
+    "productPage": [
+      "https://ibizashop.eu/nl/jeux-de-lumiere/373-PARLED50-COB-5420047134585.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Zk2eijgMR_U"
+    ]
+  },
+  "physical": {
+    "dimensions": [190, 190, 150],
+    "weight": 1,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBWA COB LED 5-in-1 50W"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Shutter",
+        "Reserved"
+      ]
+    }
+  ]
+}
