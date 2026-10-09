@@ -1,0 +1,381 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CromoWash100",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Cristian Deluxe"],
+    "createDate": "2026-09-26",
+    "lastModifyDate": "2026-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1012850/Prolights-Cromowash100.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [296, 344, 184],
+    "weight": 6.5,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "37× 3W RGB LED",
+      "lumens": 2800
+    },
+    "lens": {
+      "degreesMinMax": [6, 6]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color/White Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ColorPreset",
+          "comment": "Full power",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red to yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow to green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green to cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan to blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue to magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta to red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red to white",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White to blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "White (RGB 100%)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "White 1",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "White 2",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "White 3",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "White 4",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "White 5",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "White 6",
+          "colorTemperature": "5900K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "White 7",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "White 8",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "White 9",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "White 10",
+          "colorTemperature": "8500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "White 11",
+          "colorTemperature": "10000K"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Maintenance",
+          "comment": "Pan/tilt blackout on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Maintenance",
+          "comment": "Pan/tilt blackout off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Maintenance",
+          "comment": "Fan auto"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Maintenance",
+          "comment": "Fan slow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Maintenance",
+          "comment": "Fan normal"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Maintenance",
+          "comment": "Fan fast"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Auto 1",
+          "comment": "Activated after 3 seconds"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Auto 2",
+          "comment": "Activated after 3 seconds"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Test",
+          "comment": "Activated after 3 seconds"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Custom",
+          "comment": "Activated after 3 seconds"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true,
+          "helpWanted": "The manual labels both 180-189 and 190-199 \"Sound 1\". Is this range Sound 2?"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [220, 235],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Maintenance",
+          "comment": "Dimmer curve 0"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Maintenance",
+          "comment": "Dimmer curve 1"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Maintenance",
+          "comment": "Dimmer curve 2"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Maintenance",
+          "comment": "Dimmer curve 3"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer curve 4"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "Color/White Macro",
+        "Dimmer",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "Advanced",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "Color/White Macro",
+        "Dimmer",
+        "Strobe",
+        "Control"
+      ]
+    }
+  ]
+}
