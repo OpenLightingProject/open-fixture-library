@@ -1,0 +1,207 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3 in 1 MultiEffects DJ Light",
+  "shortName": "Derby",
+  "categories": ["Effect", "Color Changer", "Flower", "Strobe", "Other"],
+  "meta": {
+    "authors": ["DJ Dr. J"],
+    "createDate": "2026-08-07",
+    "lastModifyDate": "2026-08-07"
+  },
+  "comment": "LED derby with strobe and UV blacklight",
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=YxVh7aDCuvk"
+    ]
+  },
+  "physical": {
+    "dimensions": [201, 157, 137],
+    "weight": 1.6,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Multi",
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "availableChannels": {
+    "Channel 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Channel 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset",
+          "comment": "White"
+        }
+      ]
+    },
+    "Channel 3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 44],
+          "type": "ColorPreset",
+          "comment": "Red, Amber, Purple Static Beams"
+        },
+        {
+          "dmxRange": [45, 79],
+          "type": "ColorPreset",
+          "comment": "Orange, Yellow, White Static Beams"
+        },
+        {
+          "dmxRange": [80, 114],
+          "type": "ColorPreset",
+          "comment": "Blue, Green, Pink Static Beams"
+        },
+        {
+          "dmxRange": [115, 149],
+          "type": "ColorPreset",
+          "comment": "6 Colors Combination Static Beams"
+        },
+        {
+          "dmxRange": [150, 184],
+          "type": "ColorPreset",
+          "comment": "6 Colors Combination Static Beams"
+        },
+        {
+          "dmxRange": [185, 219],
+          "type": "ColorPreset",
+          "comment": "6 Colors Combination Static Beams"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorPreset",
+          "comment": "9 Colors Combination Static Beams"
+        }
+      ]
+    },
+    "Channel 4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 36],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [37, 73],
+          "type": "Generic",
+          "comment": "Only CH1 works when CH1-3 are on"
+        },
+        {
+          "dmxRange": [74, 110],
+          "type": "Generic",
+          "comment": "Only CH2 works when CH1-3 are on"
+        },
+        {
+          "dmxRange": [111, 147],
+          "type": "Generic",
+          "comment": "Only CH3 works when CH1-3 are on"
+        },
+        {
+          "dmxRange": [148, 184],
+          "type": "Generic",
+          "comment": "Only CH2 works when CH1-3 are on"
+        },
+        {
+          "dmxRange": [185, 221],
+          "type": "Generic",
+          "comment": "Both CH1 and CH3 work when CH1-3 are on"
+        },
+        {
+          "dmxRange": [222, 255],
+          "type": "Generic",
+          "comment": "Both CH2 and CH3 work when CH1-3 are on"
+        }
+      ]
+    },
+    "Channel 5": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Channel 6": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Rotating speed for CH3"
+        }
+      ]
+    },
+    "Channel 7": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 200],
+          "type": "Effect",
+          "effectName": "Auto Mode"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectName": "Sound Activate Mode With Color Background",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound Activate Mode Without Color Background",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Channel 1",
+        "Channel 2",
+        "Channel 3",
+        "Channel 4",
+        "Channel 5",
+        "Channel 6",
+        "Channel 7"
+      ]
+    }
+  ]
+}
