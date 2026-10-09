@@ -1,0 +1,352 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-X4",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Vin"],
+    "createDate": "2026-05-26",
+    "lastModifyDate": "2026-05-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.handleidi.ng/eurolite/led-tmh-x4/handleiding"
+    ]
+  },
+  "physical": {
+    "lens": {
+      "degreesMinMax": [1, 25]
+    }
+  },
+  "availableChannels": {
+    "Horizontal movement (PAN)": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "PAN-movement with 16 B": {
+      "fineChannelAliases": ["PAN-movement with 16 B fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Vertical movement (TILT)": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "TILT-movement with 16-B": {
+      "fineChannelAliases": ["TILT-movement with 16-B fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [1, 212],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [213, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "no function"
+        }
+      ]
+    },
+    "Dimmer intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Strobe effect with increasing speed"
+        },
+        {
+          "dmxRange": [96, 176],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true,
+          "comment": "random strobe effect"
+        },
+        {
+          "dmxRange": [177, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Preset colors and color macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color macros speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Function control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Generic",
+          "comment": "Channels 1 to 12"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Generic",
+          "comment": "Preset colors and color macros"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Generic",
+          "comment": "Internal program 1"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Generic",
+          "comment": "Internal program 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Generic",
+          "comment": "Music control"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "Horizontal movement (PAN)",
+        "PAN-movement with 16 B",
+        "Vertical movement (TILT)",
+        "TILT-movement with 16-B",
+        "Pan/Tilt Speed",
+        "Dimmer intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Preset colors and color macros",
+        "Color macros speed",
+        "Function control",
+        "Reset"
+      ]
+    },
+    {
+      "name": "24ch",
+      "channels": [
+        "Horizontal movement (PAN)",
+        "PAN-movement with 16 B",
+        "Vertical movement (TILT)",
+        "TILT-movement with 16-B",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Dimmer intensity",
+        "Strobe",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Preset colors and color macros",
+        "Color macros speed",
+        "Function control",
+        "Reset"
+      ]
+    }
+  ]
+}
