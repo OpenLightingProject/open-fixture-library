@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LPC010N",
+  "shortName": "PAR",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["novy"],
+    "createDate": "2026-06-15",
+    "lastModifyDate": "2026-06-15"
+  },
+  "comment": "RGBW High CRI PAR Light",
+  "links": {
+    "productPage": [
+      "https://betopperdj.com/it/products/betopper-54x4w-rgbw-4-in-1-high-cri-par-light"
+    ]
+  },
+  "physical": {
+    "dimensions": [241, 260, 104],
+    "weight": 2,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Duration": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "ColorPreset",
+          "comment": "9 High CRI colors",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Color output"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Jump change"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Colors fade"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectName": "Pulse transform"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Effect Duration 2": {
+      "name": "Effect Duration",
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Reserve"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: Linear"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: Square Law"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: Inverse Square Law"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: S-Curve"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "comment": "Fan mode: Auto"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "comment": "Fan mode: Studio"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "NoFunction",
+          "comment": "Reserve"
+        },
+        {
+          "dmxRange": [81, 255],
+          "type": "EffectSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "CH7 Effect speed 0-100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe Speed",
+        "Effect Duration",
+        "Effect Duration 2"
+      ]
+    }
+  ]
+}
