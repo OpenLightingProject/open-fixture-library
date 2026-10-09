@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RAGE 1500LED",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Istvan Kozma"],
+    "createDate": "2026-07-12",
+    "lastModifyDate": "2026-07-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/product/rage-1500led-smoke-machine-with-timer-controller/"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/wp-content/uploads/2026/04/160.712_160.715_160.718-Rage-LED-Series-V2.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/embed/AD6cI7cIT9Y"
+    ]
+  },
+  "physical": {
+    "dimensions": [450, 255, 285],
+    "weight": 5.6,
+    "power": 1500,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED 6x9W High Power 3-in-1 (RGB)"
+    }
+  },
+  "availableChannels": {
+    "Smoke": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Master": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Program": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Generic",
+        "comment": "Auto program from slow to fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channels",
+      "channels": [
+        "Smoke",
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Auto Program"
+      ]
+    }
+  ]
+}
