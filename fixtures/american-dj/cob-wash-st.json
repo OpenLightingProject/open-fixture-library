@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "cob wash ST",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["clem"],
+    "createDate": "2026-08-23",
+    "lastModifyDate": "2026-08-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/cob-cannon-wash-st"
+    ],
+    "productPage": [
+      "https://www.adj.eu/cob-cannon-wash-st"
+    ],
+    "video": [
+      "https://www.adj.eu/cob-cannon-wash-st"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "normal",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
