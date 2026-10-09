@@ -1,0 +1,708 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PJ-RZ21K",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Mikkel Peter Larsen"],
+    "createDate": "2026-04-20",
+    "lastModifyDate": "2026-04-20"
+  },
+  "links": {
+    "manual": [
+      "https://pna-b2b-storage-mkt.s3.amazonaws.com/production/253746_rz21k_manual_en.pdf"
+    ],
+    "productPage": [
+      "https://eu.connect.panasonic.com/gb/en/projectors/pt-rz21k"
+    ]
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": 64,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
+    },
+    "Input Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "RGB1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "RGB2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "DVI-D"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "HDMI"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "SDI1"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "SDI2"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "P IN P, USER1"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "P IN P, USER2"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "P IN P, USER3"
+        },
+        {
+          "dmxRange": [152, 255],
+          "type": "NoFunction",
+          "comment": "P IN P, USER3"
+        }
+      ]
+    },
+    "Lens Function Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Generic",
+          "comment": "LENS H SHIFT"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Generic",
+          "comment": "LENS V SHIFT"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Generic",
+          "comment": "LENS FOCUS"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "LENS ZOOM"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "Move to home position"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 1"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 2"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 3"
+        },
+        {
+          "dmxRange": [144, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lens Control": {
+      "defaultValue": 100,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(-) High speed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(-) Low speed"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(-) Fine adjustment"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Operation STOP"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "(+) Fine adjustment"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(-) Low speed"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(-) High speed"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Execute command action"
+        }
+      ]
+    },
+    "Lens Position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Move to Home Position"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 1"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 2"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 3"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 4"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 5"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 6"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 7"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 8"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 9"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Generic",
+          "comment": "Load LENS MEMORY 10"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Power": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Standby"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Power on"
+        }
+      ]
+    },
+    "Light Output": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Enable/Disable": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Disable"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Enable"
+        }
+      ]
+    },
+    "Fade-In": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Time",
+          "time": "instant"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Time",
+          "time": "0.5s"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Time",
+          "time": "1.5s"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Time",
+          "time": "2s"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Time",
+          "time": "2.5s"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Time",
+          "time": "3s"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Time",
+          "time": "3.5s"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Time",
+          "time": "4s"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Time",
+          "time": "5s"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Time",
+          "time": "7s"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Time",
+          "time": "10s"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Fade-Out": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Time",
+          "time": "instant"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Time",
+          "time": "0.5s"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Time",
+          "time": "1.5s"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Time",
+          "time": "2s"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Time",
+          "time": "2.5s"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Time",
+          "time": "3s"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Time",
+          "time": "3.5s"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Time",
+          "time": "4s"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Time",
+          "time": "5s"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Time",
+          "time": "7s"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Time",
+          "time": "10s"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Custom Masking": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "PC-1"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "PC-2"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "PC-3"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Geometry": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Generic",
+          "comment": "Keystone"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Generic",
+          "comment": "Curved Correction"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Generic",
+          "comment": "PC-1"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "PC-2"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "PC-3"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "Corner/Pincushion"
+        },
+        {
+          "dmxRange": [112, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "None": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Lens H Shift": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Lens V Shift": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Lens Focus": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Lens Zoom": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Lens Focus Coarse": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic",
+          "comment": "Coarse"
+        }
+      ]
+    },
+    "Lens Focus Fine2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic",
+          "comment": "Fine"
+        }
+      ]
+    },
+    "Lens Zoom Coarse": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic",
+          "comment": "Coarse"
+        }
+      ]
+    },
+    "Lens Zoom Fine2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Generic",
+          "comment": "Fine"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Shutter",
+        "Input Select",
+        "Lens Function Select",
+        "Lens Control",
+        "Power",
+        "Light Output",
+        "Enable/Disable",
+        "Fade-In",
+        "Fade-Out",
+        "Custom Masking",
+        "Geometry",
+        "None"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "Light Output",
+        "Input Select",
+        "Lens Position",
+        "Lens H Shift",
+        "Lens V Shift",
+        "Lens Focus",
+        "Lens Zoom",
+        "Power",
+        "Geometry",
+        "Custom Masking",
+        "Enable/Disable",
+        "None"
+      ]
+    },
+    {
+      "name": "3",
+      "channels": [
+        "Light Output",
+        "Input Select",
+        "Lens Position",
+        "Lens H Shift",
+        "Lens V Shift",
+        "Lens Focus Coarse",
+        "Lens Focus Fine2",
+        "Lens Zoom Coarse",
+        "Lens Zoom Fine2",
+        "Shutter",
+        "Enable/Disable",
+        "None"
+      ]
+    },
+    {
+      "name": "USER",
+      "channels": [
+        "Light Output",
+        "Input Select",
+        "Lens Position",
+        "Lens H Shift",
+        "Lens V Shift",
+        "Lens Focus",
+        "Lens Zoom",
+        "Power",
+        "Geometry",
+        "Custom Masking",
+        "Enable/Disable",
+        "None"
+      ]
+    }
+  ]
+}
