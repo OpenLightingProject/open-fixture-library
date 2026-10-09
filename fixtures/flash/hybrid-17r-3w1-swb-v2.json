@@ -1,0 +1,1992 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HYBRID 17R 3W1 SWB v2",
+  "shortName": "HYBRID 17R",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["michał"],
+    "createDate": "2025-08-11",
+    "lastModifyDate": "2025-08-11",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-07-02",
+      "comment": "GDTF v1.2 fixture type ID: F7ABE03C-75DF-4317-BBA0-D6FDEB2E0A5C"
+    }
+  },
+  "comment": "F7100563\n",
+  "wheels": {
+    "Color wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 8",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 9",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 10",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 11",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 12",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 13",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Gobo static": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 5",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 7",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 8",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 9",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 10",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 11",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 12",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 13",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 14",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Gobo roto": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 5",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 7",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 8",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 9",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Effect": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Gobo 5",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Prism1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Prism 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Prism 2",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Prism2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Prism2",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    },
+    "Color wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Color 1",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 2",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 3",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 4",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 5",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 6",
+          "colors": ["#e4e4e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Color 7",
+          "colors": ["#e4e4e4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "P": {
+      "fineChannelAliases": ["P fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Home"
+        },
+        {
+          "dmxRange": [32769, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Home"
+        },
+        {
+          "dmxRange": [32769, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "Pos MSpeed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [30, 50],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Full power"
+        },
+        {
+          "dmxRange": [51, 59],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [60, 80],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Half power"
+        },
+        {
+          "dmxRange": [81, 99],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Lamp off"
+        },
+        {
+          "dmxRange": [106, 199],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [206, 239],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Reset"
+        }
+      ]
+    },
+    "C1": {
+      "fineChannelAliases": ["C1 fine"],
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3071],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.090909
+        },
+        {
+          "dmxRange": [3072, 5887],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 2.090909,
+          "slotNumberEnd": 2.181818,
+          "comment": "Wheel Slot 2"
+        },
+        {
+          "dmxRange": [5888, 8959],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 3.181818,
+          "slotNumberEnd": 3.272727,
+          "comment": "Wheel Slot 3"
+        },
+        {
+          "dmxRange": [8960, 12031],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 4.272727,
+          "slotNumberEnd": 4.363636,
+          "comment": "Wheel Slot 4"
+        },
+        {
+          "dmxRange": [12032, 14847],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 5.363636,
+          "slotNumberEnd": 5.4545449999999995,
+          "comment": "Wheel Slot 5"
+        },
+        {
+          "dmxRange": [14848, 17919],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 6.4545449999999995,
+          "slotNumberEnd": 6.5454550000000005,
+          "comment": "Wheel Slot 6"
+        },
+        {
+          "dmxRange": [17920, 20735],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 7.5454550000000005,
+          "slotNumberEnd": 7.636364,
+          "comment": "Wheel Slot 7"
+        },
+        {
+          "dmxRange": [20736, 23807],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 8.636364,
+          "slotNumberEnd": 8.727273,
+          "comment": "Wheel Slot 8"
+        },
+        {
+          "dmxRange": [23808, 26879],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 9.727273,
+          "slotNumberEnd": 9.818182,
+          "comment": "Wheel Slot 9"
+        },
+        {
+          "dmxRange": [26880, 29695],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 10.818182,
+          "slotNumberEnd": 10.909091,
+          "comment": "Wheel Slot 10"
+        },
+        {
+          "dmxRange": [29696, 32767],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 11.909091,
+          "slotNumberEnd": 12,
+          "comment": "Wheel Slot 11"
+        },
+        {
+          "dmxRange": [32768, 33279],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [33280, 34304],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 1"
+        },
+        {
+          "dmxRange": [34305, 34559],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [34560, 35328],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [35329, 35583],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [35584, 36608],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [36609, 36863],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [36864, 37632],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [37633, 37887],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [37888, 38912],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [38913, 39167],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [39168, 40192],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [40193, 40447],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [40448, 41216],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [41217, 41471],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [41472, 42496],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 8"
+        },
+        {
+          "dmxRange": [42497, 42751],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [42752, 43776],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 9"
+        },
+        {
+          "dmxRange": [43777, 44031],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [44032, 45056],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 10"
+        },
+        {
+          "dmxRange": [45057, 45311],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [45312, 46080],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 11"
+        },
+        {
+          "dmxRange": [46081, 46335],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [46336, 47360],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 12"
+        },
+        {
+          "dmxRange": [47361, 47615],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [47616, 48384],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 13"
+        },
+        {
+          "dmxRange": [48385, 48639],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [48640, 56575],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin <"
+        },
+        {
+          "dmxRange": [56576, 57599],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Stop spin"
+        },
+        {
+          "dmxRange": [57600, 65535],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin >"
+        }
+      ]
+    },
+    "G1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 0.5,
+          "slotNumberEnd": 1.5
+        },
+        {
+          "dmxRange": [4, 9],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 1.5,
+          "slotNumberEnd": 2.5
+        },
+        {
+          "dmxRange": [10, 15],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 2.5,
+          "slotNumberEnd": 3.5
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 3.5,
+          "slotNumberEnd": 4.5
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 4.5,
+          "slotNumberEnd": 5.5
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 5.5,
+          "slotNumberEnd": 6.5
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 6.5,
+          "slotNumberEnd": 7.5
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 7.5,
+          "slotNumberEnd": 8.5
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 8.5,
+          "slotNumberEnd": 9.5
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 9.5,
+          "slotNumberEnd": 10.5
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 10.5,
+          "slotNumberEnd": 11.5
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumberStart": 11.5,
+          "slotNumberEnd": 12.5
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "WheelSlot",
+          "wheel": "Gobo static",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 2,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 3,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 4,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 5,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 6,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 7,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 8,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 9,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 10,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 11,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 12,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 13,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [184, 199],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 14,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "WheelShake",
+          "wheel": "Gobo static",
+          "slotNumber": 15,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [202, 227],
+          "type": "WheelRotation",
+          "wheel": "Gobo static",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin <"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "WheelRotation",
+          "wheel": "Gobo static",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "WheelRotation",
+          "wheel": "Gobo static",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin >"
+        }
+      ]
+    },
+    "G2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "WheelSlot",
+          "wheel": "Gobo roto",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [41, 48],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 2,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [49, 56],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 3,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [57, 64],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 4,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [65, 72],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 5,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [73, 80],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 6,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [81, 88],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 7,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [89, 96],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 8,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [97, 104],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 9,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [105, 112],
+          "type": "WheelShake",
+          "wheel": "Gobo roto",
+          "slotNumber": 10,
+          "shakeSpeedStart": "0Hz",
+          "shakeSpeedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [113, 119],
+          "type": "WheelRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [120, 185],
+          "type": "WheelRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin <"
+        },
+        {
+          "dmxRange": [186, 189],
+          "type": "WheelRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "WheelRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin >"
+        }
+      ]
+    },
+    "G2 <>": {
+      "fineChannelAliases": ["G2 <> fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32638],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32639, 32639],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [32640, 32767],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 48640],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot <"
+        },
+        {
+          "dmxRange": [48641, 48895],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [48896, 49152],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot ><"
+        },
+        {
+          "dmxRange": [49153, 49407],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [49408, 65535],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot >"
+        }
+      ]
+    },
+    "Prism1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Prism",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Prism",
+          "comment": "Prism 1"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Prism",
+          "comment": "Prism 2"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Prism",
+          "comment": "Prism 1+2"
+        }
+      ]
+    },
+    "Prism1 Pos": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PrismRotation",
+          "angleStart": "0rpm",
+          "angleEnd": "0.16666666666666669rpm",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 126],
+          "type": "PrismRotation",
+          "angleStart": "0rpm",
+          "angleEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "PrismRotation",
+          "angleStart": "0rpm",
+          "angleEnd": "0.16666666666666669rpm",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "PrismRotation",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot <"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "PrismRotation",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot ><"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "PrismRotation",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot >"
+        }
+      ]
+    },
+    "Prism2 Pos": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "PrismRotation",
+          "angleStart": "0rpm",
+          "angleEnd": "0.16666666666666669rpm"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "PrismRotation",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot <"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "PrismRotation",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "PrismRotation",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot >"
+        }
+      ]
+    },
+    "Frost1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Frost",
+          "frostIntensityStart": 0,
+          "frostIntensityEnd": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensityStart": 0,
+          "frostIntensityEnd": 1,
+          "comment": "Frost"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Focus1": {
+      "fineChannelAliases": ["Focus1 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Focus",
+          "distanceStart": 0,
+          "distanceEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Focus",
+          "distanceStart": 0,
+          "distanceEnd": 1
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Focus",
+          "distanceStart": 0,
+          "distanceEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "Dummy": {
+      "capability": {
+        "type": "Unknown (Dummy)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Sh1": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [5, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [109, 206],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [214, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "randomTiming": true,
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "P 2": {
+      "name": "P",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Home"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "T 2": {
+      "name": "T",
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Home"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        }
+      ]
+    },
+    "C1 2": {
+      "name": "C1",
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.090909
+        },
+        {
+          "dmxRange": [12, 22],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 2.090909,
+          "slotNumberEnd": 2.181818,
+          "comment": "Wheel Slot 2"
+        },
+        {
+          "dmxRange": [23, 34],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 3.181818,
+          "slotNumberEnd": 3.272727,
+          "comment": "Wheel Slot 3"
+        },
+        {
+          "dmxRange": [35, 46],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 4.272727,
+          "slotNumberEnd": 4.363636,
+          "comment": "Wheel Slot 4"
+        },
+        {
+          "dmxRange": [47, 57],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 5.363636,
+          "slotNumberEnd": 5.4545449999999995,
+          "comment": "Wheel Slot 5"
+        },
+        {
+          "dmxRange": [58, 69],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 6.4545449999999995,
+          "slotNumberEnd": 6.5454550000000005,
+          "comment": "Wheel Slot 6"
+        },
+        {
+          "dmxRange": [70, 80],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 7.5454550000000005,
+          "slotNumberEnd": 7.636364,
+          "comment": "Wheel Slot 7"
+        },
+        {
+          "dmxRange": [81, 92],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 8.636364,
+          "slotNumberEnd": 8.727273,
+          "comment": "Wheel Slot 8"
+        },
+        {
+          "dmxRange": [93, 104],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 9.727273,
+          "slotNumberEnd": 9.818182,
+          "comment": "Wheel Slot 9"
+        },
+        {
+          "dmxRange": [105, 115],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 10.818182,
+          "slotNumberEnd": 10.909091,
+          "comment": "Wheel Slot 10"
+        },
+        {
+          "dmxRange": [116, 127],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumberStart": 11.909091,
+          "slotNumberEnd": 12,
+          "comment": "Wheel Slot 11"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "WheelSlot",
+          "wheel": "Color wheel",
+          "slotNumber": 0
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 1"
+        },
+        {
+          "dmxRange": [135, 138],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [139, 143],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [148, 152],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [153, 157],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [158, 161],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [162, 166],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 8"
+        },
+        {
+          "dmxRange": [167, 171],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 9"
+        },
+        {
+          "dmxRange": [172, 176],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 10"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 11"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 12"
+        },
+        {
+          "dmxRange": [186, 189],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Color 13"
+        },
+        {
+          "dmxRange": [190, 220],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin <"
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Stop spin"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "WheelRotation",
+          "wheel": "Color wheel",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Spin >"
+        }
+      ]
+    },
+    "G2 <> 2": {
+      "name": "G2 <>",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 126],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot <"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot ><"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo roto",
+          "speedStart": "0rpm",
+          "speedEnd": "0.16666666666666669rpm",
+          "comment": "Rot >"
+        }
+      ]
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Focus1 2": {
+      "name": "Focus1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Focus",
+          "distanceStart": 0,
+          "distanceEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Focus",
+          "distanceStart": 0,
+          "distanceEnd": 1
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Focus",
+          "distanceStart": 0,
+          "distanceEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24ch",
+      "channels": [
+        "P",
+        "P fine",
+        "T",
+        "T fine",
+        "Pos MSpeed",
+        "Ctrl1",
+        "C1",
+        "C1 fine",
+        "G1",
+        "G2",
+        "G2 <>",
+        "G2 <> fine",
+        "Prism1",
+        "Prism1 Pos",
+        "Prism2 Pos",
+        "Frost1",
+        "Zoom",
+        "Zoom fine",
+        "Focus1",
+        "Focus1 fine",
+        "Dummy",
+        "Sh1",
+        "Dim",
+        "Dim fine"
+      ]
+    },
+    {
+      "name": "16ch",
+      "channels": [
+        "P 2",
+        "T 2",
+        "Pos MSpeed",
+        "Ctrl1",
+        "C1 2",
+        "G1",
+        "G2",
+        "G2 <> 2",
+        "Prism1",
+        "Prism1 Pos",
+        "Prism2 Pos",
+        "Frost1",
+        "Zoom 2",
+        "Focus1 2",
+        "Sh1",
+        "Dim 2"
+      ]
+    }
+  ]
+}
