@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBWSpot",
+  "shortName": "RGBWSpot",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Chris"],
+    "createDate": "2026-04-20",
+    "lastModifyDate": "2026-04-20"
+  },
+  "links": {
+    "productPage": [
+      "http://www.lantiss.ulaval.ca"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 100, 100],
+    "weight": 1,
+    "power": 12,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "pinspot",
+      "degreesMinMax": [1, 1]
+    }
+  },
+  "availableChannels": {
+    "Obturateur / Stroboscope": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "10Hz",
+        "speedEnd": "60Hz"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blanc": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Préréglages de couleurs": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Obturateur / Stroboscope",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc",
+        "Préréglages de couleurs"
+      ]
+    }
+  ]
+}
