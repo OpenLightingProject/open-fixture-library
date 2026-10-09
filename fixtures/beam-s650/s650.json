@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "S650",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Beam S650 SVT"],
+    "createDate": "2026-08-27",
+    "lastModifyDate": "2026-08-27"
+  },
+  "links": {
+    "manual": [
+      "https://svt.com.vn/san-pham/den-beam-s650-svt-anh-sang-sac-viet/"
+    ]
+  },
+  "physical": {
+    "dimensions": [530, 310, 240],
+    "weight": 12,
+    "power": 650,
+    "DMXconnector": "16"
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Prism 2": {
+      "name": "Prism",
+      "fineChannelAliases": ["Prism 2 fine"],
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation 2": {
+      "name": "Prism Rotation",
+      "fineChannelAliases": ["Prism Rotation 2 fine"],
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Prism 3": {
+      "name": "Prism",
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation 3": {
+      "name": "Prism Rotation",
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "S650",
+      "channels": [
+        "Color Wheel",
+        "Shutter",
+        "Dimmer",
+        "Gobo Wheel",
+        "Prism",
+        "Prism Rotation",
+        "Prism 3",
+        "Prism Rotation 3",
+        "Color Wheel Rotation",
+        "Focus",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
