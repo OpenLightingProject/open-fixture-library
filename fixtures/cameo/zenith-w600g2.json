@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Zenith W600G2",
+  "shortName": "W600 G2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Guillaume VIDAL"],
+    "createDate": "2026-07-15",
+    "lastModifyDate": "2026-07-15"
+  },
+  "links": {
+    "manual": [
+      "https://portal.adamhall.com/api/downloadcenter/article/download/d7aca163-177d-42d7-a88b-95db81871fa8"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3CH DIMMER",
+      "shortName": "3CH",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Frost"
+      ]
+    },
+    {
+      "name": "4CH RGB",
+      "shortName": "RGB",
+      "channels": [
+        "RED",
+        "Green",
+        "Blue",
+        "Frost"
+      ]
+    },
+    {
+      "name": "7CH Direct",
+      "shortName": "7ch Direct",
+      "channels": [
+        "RED",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Cyan",
+        "Frost"
+      ]
+    }
+  ]
+}
