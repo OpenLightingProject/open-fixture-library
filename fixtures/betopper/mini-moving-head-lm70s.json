@@ -1,101 +1,269 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "MINI MOVING HEAD LM70S",
-  "shortName": "BETOPPERMINI",
-  "categories": ["Moving Head"],
+  "name": "Mini Moving Head LM70S",
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["MARK ALLEMANG"],
+    "authors": ["MARK ALLEMANG", "James Fry"],
     "createDate": "2024-01-13",
-    "lastModifyDate": "2024-01-13"
+    "lastModifyDate": "2026-10-09"
   },
+  "comment": "7x 8W RGBW wash. Written from the Betopper 'Mini Moving Head User Manual', models LM70 and LM70S (also printed TLM70SK, TLM70SP), REV 1.00, pp. 3 to 5. The whole head is one colour. Dimmer and strobe share one channel; it defaults to 'light on' so the colour channels set brightness. Pan and tilt travel are set in the fixture's menu (p. 2 to 3): PA54, PA36, or PA18 for 540, 360, or 180 degrees of pan; Ti27, Ti18, or Ti09 for 180, 90, or 45 degrees of tilt, as printed, although the codes suggest 270, 180, and 90. The angles here are for PA54 and Ti27, measured on a head on 2026-10-07: 540 degrees of pan and 180 of tilt. Checked on a head on 2026-10-09: 14-channel dimmer 0 to 7 is light off (the manual says 'No Effect'); speed 0 is fast and 255 slow; auto programmes start at 8; reset fires once on entering 150 to 200 in both modes, then the head returns to the position it is sent (the manual gives 150 to 255 for 14-channel mode, but 201 and 255 do nothing); 9-channel master 8 dims and 241 to 255 is light on. Checked again on 2026-10-09, every boundary between kinds of behaviour: the 9-channel master behaves exactly as the 14-channel dimmer/strobe (off 0 to 7, dimming 8 to 134, strobe slow to fast 135 to 239, on 240 to 255), so one channel serves both modes, though the manual prints 136 to 240 and 241 to 255 for 9-channel mode; reset fires at 150, 175, and 200 in both modes. The colour macro channel is not the manual's 17 presets but a smooth colour sweep from 8 to 231, filmed at 0.1 s per value; its ranges and colours here are approximate, read from the video. Auto 1 to 8 move the head, change colour, and strobe white; the sound programmes wait for sound, and each trigger changes colour and starts a move.",
   "links": {
     "manual": [
-      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/BETOPPER_Moving_Head_Stage_Led_Light_LM70_LM70S_Standard_User_Manual.pdf?v=1630045250"
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/BETOPPER_Moving_Head_Stage_Led_Light_LM70_LM70S_Standard_User_Manual.pdf"
     ],
     "productPage": [
       "https://betopperdj.com/products/betopper-7x8w-rgbw-moving-head-wash-lights-lm70s"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=h09KgTLMyGg"
+      "https://www.youtube.com/watch?v=lpFxo8kybdE",
+      "https://www.youtube.com/watch?v=a1uHqBU6CS0"
     ]
   },
-  "rdm": {
-    "modelId": 1
-  },
   "physical": {
+    "dimensions": [175, 235, 175],
+    "weight": 2.7,
+    "power": 100,
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7x 8W RGBW LED"
     }
   },
   "availableChannels": {
-    "X AXIS": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "360deg"
+        "angleEnd": "540deg"
       }
     },
-    "Y AXIS": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "1deg",
-        "angleEnd": "1360deg"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
-    "Master control": {
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer / Strobe": {
+      "defaultValue": 255,
       "capabilities": [
         {
-          "dmxRange": [0, 8],
-          "type": "NoFunction"
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Light off"
         },
         {
-          "dmxRange": [9, 135],
+          "dmxRange": [8, 134],
           "type": "Intensity"
         },
         {
-          "dmxRange": [136, 240],
-          "type": "StrobeSpeed",
-          "speedStart": "2Hz",
-          "speedEnd": "100Hz",
-          "comment": "estimate"
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "dmxRange": [241, 255],
-          "type": "Generic",
-          "comment": "manual says power on off"
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Light on"
         }
       ]
     },
-    "Red Intensity": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green Intensity": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue Intensity": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White Intensity": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Motor Speed": {
+    "Colour Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Red, green, blue, and white channels set the colour"
+        },
+        {
+          "dmxRange": [8, 31],
+          "type": "ColorPreset",
+          "colorsStart": ["#80ff00"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Yellow-green through yellow and orange to red"
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Magenta through violet to blue"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Blue to cyan"
+        },
+        {
+          "dmxRange": [128, 150],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#e0ffe0"],
+          "comment": "Green, paling"
+        },
+        {
+          "dmxRange": [151, 195],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Near white"
+        },
+        {
+          "dmxRange": [196, 231],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#8000ff"],
+          "comment": "White through lavender to violet"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Colour jump",
+          "comment": "Instant jumps between colours, at the Colour Speed channel's rate"
+        }
+      ]
+    },
+    "Colour Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "comment": "About one colour jump every 2 to 3 s at 0, about 3 a second at 255"
       }
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [38, 53],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [54, 67],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Auto 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Sound 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Sound 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Sound 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Sound 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Sound 8",
+          "soundControlled": true
+        }
+      ]
     },
     "Reset": {
       "capabilities": [
@@ -105,8 +273,8 @@
         },
         {
           "dmxRange": [150, 200],
-          "type": "Generic",
-          "comment": "manual says reset"
+          "type": "Maintenance",
+          "comment": "Reset"
         },
         {
           "dmxRange": [201, 255],
@@ -117,23 +285,38 @@
   },
   "modes": [
     {
-      "name": "NINE CHANNEL",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
-        "X AXIS",
-        "Y AXIS",
-        "Master control",
-        "Red Intensity",
-        "Green Intensity",
-        "Blue Intensity",
-        "White Intensity",
-        "Motor Speed",
+        "Pan",
+        "Tilt",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed",
         "Reset"
       ]
     },
     {
-      "name": "FOURTEEN CHANNEL",
+      "name": "14-channel",
+      "shortName": "14ch",
       "channels": [
-        "X AXIS"
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Colour Macros",
+        "Colour Speed",
+        "Auto Programs",
+        "Reset"
       ]
     }
   ]
