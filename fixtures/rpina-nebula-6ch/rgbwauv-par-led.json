@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBWAUV PAR LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["RPINA"],
+    "createDate": "2026-06-26",
+    "lastModifyDate": "2026-06-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.youtube.com/"
+    ]
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Wheel Velocity": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6CH",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10CH",
+      "shortName": "10CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Master Dimmer",
+        "Shutter / Strobe",
+        "Color Wheel",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
