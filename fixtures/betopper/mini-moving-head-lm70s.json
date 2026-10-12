@@ -152,17 +152,15 @@
         {
           "dmxRange": [232, 255],
           "type": "Effect",
-          "effectName": "Colour jump",
-          "comment": "Instant jumps between colours, at the Colour Speed channel's rate"
+          "effectPreset": "ColorJump"
         }
       ]
     },
     "Colour Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "About one colour jump every 2 to 3 s at 0, about 3 a second at 255"
+        "speedStart": "0.4Hz",
+        "speedEnd": "3Hz"
       }
     },
     "Auto Programs": {
