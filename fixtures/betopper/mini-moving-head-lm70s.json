@@ -23,9 +23,12 @@
     "dimensions": [175, 235, 175],
     "weight": 2.7,
     "power": 100,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7x 8W RGBW LED"
+      "type": "7× 8W RGBW LED"
     }
   },
   "availableChannels": {
