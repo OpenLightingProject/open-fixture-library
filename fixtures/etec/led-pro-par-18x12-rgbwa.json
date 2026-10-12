@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PRO PAR 18x12 RGBWA",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Michael Weidner"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
+  },
+  "links": {
+    "productPage": [
+      "https://www.etec-professional.de/product_info.php?products_id=289018&language=en"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Strobe Speed",
+        "Color Macros"
+      ]
+    }
+  ]
+}
