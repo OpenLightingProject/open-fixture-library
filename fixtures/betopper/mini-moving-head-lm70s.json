@@ -7,7 +7,6 @@
     "createDate": "2024-01-13",
     "lastModifyDate": "2026-10-09"
   },
-  "comment": "7x 8W RGBW wash. Written from the Betopper 'Mini Moving Head User Manual', models LM70 and LM70S (also printed TLM70SK, TLM70SP), REV 1.00, pp. 3 to 5. The whole head is one colour. Dimmer and strobe share one channel; it defaults to 'light on' so the colour channels set brightness. Pan and tilt travel are set in the fixture's menu (p. 2 to 3): PA54, PA36, or PA18 for 540, 360, or 180 degrees of pan; Ti27, Ti18, or Ti09 for 180, 90, or 45 degrees of tilt, as printed, although the codes suggest 270, 180, and 90. The angles here are for PA54 and Ti27, measured on a head on 2026-10-07: 540 degrees of pan and 180 of tilt. Checked on a head on 2026-10-09: 14-channel dimmer 0 to 7 is light off (the manual says 'No Effect'); speed 0 is fast and 255 slow; auto programmes start at 8; reset fires once on entering 150 to 200 in both modes, then the head returns to the position it is sent (the manual gives 150 to 255 for 14-channel mode, but 201 and 255 do nothing); 9-channel master 8 dims and 241 to 255 is light on. Checked again on 2026-10-09, every boundary between kinds of behaviour: the 9-channel master behaves exactly as the 14-channel dimmer/strobe (off 0 to 7, dimming 8 to 134, strobe slow to fast 135 to 239, on 240 to 255), so one channel serves both modes, though the manual prints 136 to 240 and 241 to 255 for 9-channel mode; reset fires at 150, 175, and 200 in both modes. The colour macro channel is not the manual's 17 presets but a smooth colour sweep from 8 to 231, filmed at 0.1 s per value; its ranges and colours here are approximate, read from the video. Auto 1 to 8 move the head, change colour, and strobe white; the sound programmes wait for sound, and each trigger changes colour and starts a move.",
   "links": {
     "manual": [
       "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/BETOPPER_Moving_Head_Stage_Led_Light_LM70_LM70S_Standard_User_Manual.pdf"
@@ -59,8 +58,7 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Light off"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 134],
@@ -76,8 +74,7 @@
         {
           "dmxRange": [240, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Light on"
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -109,8 +106,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "NoFunction",
-          "comment": "Red, green, blue, and white channels set the colour"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [8, 31],
