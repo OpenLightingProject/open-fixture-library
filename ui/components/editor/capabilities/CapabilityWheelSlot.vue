@@ -5,7 +5,9 @@
       :formstate="formstate"
       multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
-      label="Slot number">
+      label="Slot number"
+      hint="Use 1.5 to indicate a wheel position halfway between slots 1 and 2."
+      style="display: inline-block; margin-bottom: 12px;">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
@@ -35,7 +37,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -62,10 +63,10 @@ export default {
        * @public
        */
       defaultData: {
-        slotNumber: ``,
+        slotNumber: '',
         slotNumberStart: null,
         slotNumberEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },

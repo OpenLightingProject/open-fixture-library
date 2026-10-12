@@ -23,11 +23,9 @@
   </div>
 </template>
 
-
 <script>
 import { arrayProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
-
 import CategoryBadge from '../CategoryBadge.vue';
 
 export default {
@@ -40,7 +38,7 @@ export default {
     allCategories: arrayProp().required,
   },
   emits: {
-    input: value => true,
+    input: (value) => true,
     focus: () => true,
     blur: () => true,
   },
@@ -50,32 +48,32 @@ export default {
         return this.value;
       },
       set(newSelectedCategories) {
-        this.$emit(`input`, newSelectedCategories);
+        this.$emit('input', newSelectedCategories);
       },
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        category => !this.value.includes(category),
+        (category) => !this.value.includes(category),
       );
     },
   },
   methods: {
     select(selectedCategory) {
       const updatedCategoryList = [...this.value, selectedCategory];
-      this.$emit(`input`, updatedCategoryList);
+      this.$emit('input', updatedCategoryList);
       this.onBlur();
     },
     deselect(deselectedCategory) {
-      const updatedCategoryList = this.value.filter(category => category !== deselectedCategory);
-      this.$emit(`input`, updatedCategoryList);
+      const updatedCategoryList = this.value.filter((category) => category !== deselectedCategory);
+      this.$emit('input', updatedCategoryList);
       this.onBlur();
     },
     onFocus() {
-      this.$emit(`focus`);
+      this.$emit('focus');
     },
     onBlur(event) {
       if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
-        this.$emit(`blur`);
+        this.$emit('blur');
       }
     },
   },

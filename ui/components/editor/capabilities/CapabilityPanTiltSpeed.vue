@@ -50,7 +50,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -74,14 +73,14 @@ export default {
        * @public
        */
       defaultData: {
-        speedOrDuration: `speed`,
+        speedOrDuration: 'speed',
         speed: null,
-        speedStart: `fast`,
-        speedEnd: `slow`,
-        duration: ``,
+        speedStart: 'fast',
+        speedEnd: 'slow',
+        duration: '',
         durationStart: null,
         durationEnd: null,
-        comment: ``,
+        comment: '',
       },
     };
   },
@@ -92,7 +91,7 @@ export default {
      * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
+      const resetProperty = this.capability.typeData.speedOrDuration === 'duration' ? 'speed' : 'duration';
 
       return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },
