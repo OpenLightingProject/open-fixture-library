@@ -742,18 +742,15 @@ export default {
       const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
       this.currentMode.channels = this.currentMode.channels.map((key) => {
-        if (key === oldChannelKey) {
-          return newChannelKey;
+        if (key !== oldChannelKey) {
+          // map each old fine channel to the new fine channel
+          const oldFineChannel = this.fixture.availableChannels[key];
+          if (oldFineChannel.coarseChannelId === oldChannelKey) {
+            return fineChannelUuids[oldFineChannel.resolution];
+          }
         }
 
-        // map each old fine channel to the new fine channel
-        const oldFineChannel = this.fixture.availableChannels[key];
-        if (oldFineChannel.coarseChannelId === oldChannelKey) {
-          return fineChannelUuids[oldFineChannel.resolution];
-        }
-
-        // this channel is not affected by the duplicate at all
-        return key;
+        return key === oldChannelKey ? newChannelKey : key;
       });
     },
 
