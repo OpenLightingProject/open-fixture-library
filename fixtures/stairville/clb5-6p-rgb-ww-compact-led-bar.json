@@ -1,0 +1,168 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB5 6P RGB WW Compact LED Bar",
+  "shortName": "CLB5 6P",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Subjekt_91", "Luke Nelson"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_460583_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_clb5_6p_rgb_ww_compact_led_bar.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wWsKyDovmKU"
+    ]
+  },
+  "physical": {
+    "dimensions": [984, 68, 240],
+    "weight": 7.75,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "14× 4W RGBWW LEDs"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Spot 1", "Spot 2", "Spot 3", "Spot 4", "Spot 5", "Spot 6"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Preprogrammed automatic show": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Preprogrammed automatic show 1-38 and sound-controlled"
+      }
+    },
+    "Function depending on setting of channel 6": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master",
+        "Preprogrammed automatic show",
+        "Function depending on setting of channel 6",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Spot 1", "Spot 2", "Spot 3", "Spot 4", "Spot 5", "Spot 6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "26-channel",
+      "shortName": "26ch",
+      "channels": [
+        "Dimmer",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Spot 1", "Spot 2", "Spot 3", "Spot 4", "Spot 5", "Spot 6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        },
+        "Strobe"
+      ]
+    }
+  ]
+}
