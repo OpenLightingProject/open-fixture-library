@@ -190,21 +190,26 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
     return String(mode.getChannelIndex(channel.coarseChannel.key) + 1);
   }
 
-  if (attribute === 'FOCUS') {
-    return channel.type.toUpperCase(); // PAN or TILT
+  switch (attribute) {
+    case 'FOCUS': {
+      return channel.type.toUpperCase(); // PAN or TILT
+    }
+    case 'INTENSITY': {
+      if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
+        return 'DIMMER';
+      }
+    }
+    // fallthrough for other INTENSITY channels
+    default: {
+      // in all other attributes, custom text is allowed
+      // but we need to use another name syntax
+      return uniqueName
+        .toUpperCase()
+        .replaceAll(' ', '_')
+        .replaceAll('/', '|')
+        .replaceAll('COLOR', 'COLOUR');
+    }
   }
-
-  if (attribute === 'INTENSITY' && indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
-    return 'DIMMER';
-  }
-
-  // in all other attributes, custom text is allowed
-  // but we need to use another name syntax
-  return uniqueName
-    .toUpperCase()
-    .replaceAll(' ', '_')
-    .replaceAll('/', '|')
-    .replaceAll('COLOR', 'COLOUR');
 }
 
 /**
