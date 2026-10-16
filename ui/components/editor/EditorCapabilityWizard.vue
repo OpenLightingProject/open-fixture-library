@@ -289,7 +289,7 @@ export default {
         return 'Capability width must be greater than zero.';
       }
 
-      return this.wizard.start % 1 === 0 && this.wizard.width % 1 === 0 && this.wizard.count % 1 === 0
+      return Number.isSafeInteger(this.wizard.start) && Number.isSafeInteger(this.wizard.width) && Number.isSafeInteger(this.wizard.count)
         ? null
         : 'Please only enter whole numbers.';
     },
