@@ -409,12 +409,10 @@ export async function importFixtures(buffer, filename, authorName) {
     for (const gdtfMode of gdtfModes) {
       const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
       for (const gdtfChannel of gdtfChannels) {
-        if (gdtfChannel.$.DMXBreak === 'Overwrite') {
-          addChannel(templateChannels, gdtfChannel);
-        }
-        else {
-          addChannel(availableChannels, gdtfChannel);
-        }
+        addChannel(
+          gdtfChannel.$.DMXBreak === 'Overwrite' ? templateChannels : availableChannels,
+          gdtfChannel,
+        );
       }
     }
 

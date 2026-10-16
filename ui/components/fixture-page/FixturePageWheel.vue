@@ -281,12 +281,9 @@ export default {
       ));
     },
     animationGoboWidth() {
-      if (this.wheel.slots.length === 2) {
-        // wheel only contains AnimationGoboStart and AnimationGoboEnd
-        return this.slotCircumference;
-      }
-
-      return (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
+      return this.wheel.slots.length === 2
+        ? this.slotCircumference // wheel only contains AnimationGoboStart and AnimationGoboEnd
+        : (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
     },
     slotTitles() {
       return this.wheel.slots.map((slot, index) => {
