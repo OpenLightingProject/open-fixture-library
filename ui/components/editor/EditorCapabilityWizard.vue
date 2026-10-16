@@ -289,9 +289,9 @@ export default {
         return 'Capability width must be greater than zero.';
       }
 
-      return this.wizard.start % 1 !== 0 || this.wizard.width % 1 !== 0 || this.wizard.count % 1 !== 0
-        ? 'Please only enter whole numbers.'
-        : null;
+      return this.wizard.start % 1 === 0 && this.wizard.width % 1 === 0 && this.wizard.count % 1 === 0
+        ? null
+        : 'Please only enter whole numbers.';
     },
 
     /**
