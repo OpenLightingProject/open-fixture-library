@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PavoSlim 120C",
+  "shortName": "Pavo 120C",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Smith Creative Tech"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
+  },
+  "links": {
+    "manual": [
+      "https://cdn-aliyun.nanlite.com/release/1703218484897-153703-1124121241519342-PavoSlim_60C_120C_DMX_REFERENCE_GUIDE_EN.pdf",
+      "https://cdn-aliyun.nanlite.com/release/1706153084058-449771-1124121241512490-PavoSlim+120C+Manual%EF%BC%88NANLITE%EF%BC%89C%E7%89%88P00053-BZ-002_C01+W.pdf"
+    ],
+    "productPage": [
+      "https://nanliteus.com/products/pavoslim-120c-2x1-rgbww-led-panel-light-with-crmx?_pos=37&_sid=50cad09c6&_ss=r"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "HUE": {
+      "fineChannelAliases": ["HUE fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSI 16 Bit",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "HUE",
+        "HUE fine",
+        "Saturation",
+        "Saturation fine",
+        "Strobe",
+        "Reserved",
+        "Reserved 2",
+        "Reserved 3",
+        "Reserved 4"
+      ]
+    }
+  ]
+}
