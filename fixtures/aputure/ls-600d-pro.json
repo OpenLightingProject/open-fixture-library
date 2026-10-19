@@ -147,16 +147,16 @@
         {
           "dmxRange": [0, 127],
           "type": "Generic",
-          "comment": "Manual Mode"
+          "comment": "Lightning"
         },
         {
           "dmxRange": [128, 255],
           "type": "Generic",
-          "comment": "FX Mode"
+          "comment": "Effects"
         }
       ]
     },
-    "Lightning": {
+    "Lightning/Explosion": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -171,26 +171,7 @@
         {
           "dmxRange": [128, 255],
           "type": "Generic",
-          "comment": "Loop"
-        }
-      ]
-    },
-    "Explosion": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "Stop"
-        },
-        {
-          "dmxRange": [11, 127],
-          "type": "Generic",
-          "comment": "Trigger"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "NoFunction",
-          "comment": "Reserved"
+          "comment": "Loop (Lightning)"
         }
       ]
     }
@@ -203,8 +184,7 @@
         "Mode Selection",
         "Effects",
         "Frequency",
-        "Lightning",
-        "Explosion"
+        "Lightning/Explosion"
       ]
     }
   ]
