@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "P3 Color",
   "categories": ["Dimmer", "Color Changer"],
-  "helpWanted": "Please add the missing modes 6, 8, 14, 16, 40-49, 55-62, 68-77.",
+  "helpWanted": "Please add the missing modes 8, 16, 56, 58-62, 69, 71-77.",
   "meta": {
     "authors": ["Dyami Caliri"],
     "createDate": "2021-08-04",
-    "lastModifyDate": "2021-08-04"
+    "lastModifyDate": "2024-04-10"
   },
   "links": {
     "manual": [
@@ -221,6 +221,22 @@
         "comment": "0…100%"
       }
     },
+    "CIE x": {
+      "fineChannelAliases": ["CIE x fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…0.8"
+      }
+    },
+    "CIE y": {
+      "fineChannelAliases": ["CIE y fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…0.8"
+      }
+    },
     "Gel Filter": {
       "defaultValue": 0,
       "capabilities": [
@@ -428,6 +444,18 @@
       ]
     },
     {
+      "name": "6: CIExy 8bit",
+      "shortName": "M06",
+      "channels": [
+        "Master Intensity",
+        "CIE x",
+        "CIE y",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
       "name": "7: GEL 8bit",
       "shortName": "M07",
       "channels": [
@@ -540,6 +568,22 @@
       ]
     },
     {
+      "name": "14: CIExy 16bit",
+      "shortName": "M14",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "CIE x",
+        "CIE x fine",
+        "CIE y",
+        "CIE y fine",
+        "Fan",
+        "Dimming",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
       "name": "15: GEL 16bit",
       "shortName": "M15",
       "channels": [
@@ -551,6 +595,180 @@
         "Dimming",
         "Strobe",
         "Reserved for future use"
+      ]
+    },
+    {
+      "name": "40: RGB 8bit",
+      "shortName": "M40",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "41: CCTxy 8bit",
+      "shortName": "M41",
+      "channels": [
+        "Master Intensity",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Crossfade",
+        "CIE x",
+        "CIE y",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "42: ICTHS 8bit",
+      "shortName": "M42",
+      "channels": [
+        "Master Intensity",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Hue",
+        "Saturation",
+        "Reserved for future use",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "43: ICTRGBW 8bit",
+      "shortName": "M43",
+      "channels": [
+        "Master Intensity",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Reserved for future use",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "44: ICTxy 8bit",
+      "shortName": "M44",
+      "channels": [
+        "Master Intensity",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "CIE x",
+        "CIE y",
+        "Reserved for future use",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "45: RGB 16bit",
+      "shortName": "M45",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "46: CCTxy 16bit",
+      "shortName": "M46",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Crossfade",
+        "Crossfade fine",
+        "CIE x",
+        "CIE x fine",
+        "CIE y",
+        "CIE y fine",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "47: ICTHS 16bit",
+      "shortName": "M47",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Reserved for future use",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "48: ICTRGBW 16bit",
+      "shortName": "M48",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Reserved for future use",
+        "Fan",
+        "Dimming",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "49: ICTxy 16bit",
+      "shortName": "M49",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "CIE x",
+        "CIE x fine",
+        "CIE y",
+        "CIE y fine",
+        "Reserved for future use",
+        "Fan",
+        "Dimming",
+        "Strobe"
       ]
     },
     {
@@ -573,7 +791,7 @@
     },
     {
       "name": "52: EZ RGBW 8bit",
-      "shortName": "M42",
+      "shortName": "M52",
       "channels": [
         "Master Intensity",
         "Red",
@@ -606,6 +824,27 @@
         "Green",
         "Blue",
         "White"
+      ]
+    },
+    {
+      "name": "55: EZ CIExy 8bit",
+      "shortName": "M55",
+      "channels": [
+        "Master Intensity",
+        "CIE x",
+        "CIE y"
+      ]
+    },
+    {
+      "name": "57: EZ CCTxy 8bit",
+      "shortName": "M57",
+      "channels": [
+        "Master Intensity",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Crossfade",
+        "CIE x",
+        "CIE y"
       ]
     },
     {
@@ -686,6 +925,36 @@
         "Blue fine",
         "White",
         "White fine"
+      ]
+    },
+    {
+      "name": "68: EZ CIExy 16bit",
+      "shortName": "M68",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "CIE x",
+        "CIE x fine",
+        "CIE y",
+        "CIE y fine"
+      ]
+    },
+    {
+      "name": "70: EZ CCTxy 16bit",
+      "shortName": "M70",
+      "channels": [
+        "Master Intensity",
+        "Master Intensity fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Crossfade",
+        "Crossfade fine",
+        "CIE x",
+        "CIE x fine",
+        "CIE y",
+        "CIE y fine"
       ]
     }
   ]
