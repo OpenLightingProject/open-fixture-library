@@ -37,7 +37,7 @@
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
+      <h2>Anything wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3">
         <a
@@ -253,8 +253,8 @@ export default {
 };
 
 /**
- * @param {object} axios The Axios instance.
- * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
+ * @param {object} axios - The Axios instance.
+ * @param {string | undefined} redirectFrom - The query parameter with the original request's fixture key.
  * @returns {object} The redirect object.
  */
 async function fetchRedirectObject(axios, redirectFrom) {

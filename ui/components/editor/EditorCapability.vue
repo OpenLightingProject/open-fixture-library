@@ -236,8 +236,8 @@ export default {
     },
     clear() {
       const emptyCapability = getEmptyCapability();
-      for (const property of Object.keys(emptyCapability)) {
-        this.capability[property] = emptyCapability[property];
+      for (const [property, value] of Object.entries(emptyCapability)) {
+        this.capability[property] = value;
       }
       this.collapseWithNeighbors();
     },

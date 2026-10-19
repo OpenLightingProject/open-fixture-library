@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PL-E60D",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["MSP78"],
+    "createDate": "2026-07-28",
+    "lastModifyDate": "2026-07-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.swit.cc/uploads/2025/03/121414185091.pdf"
+    ],
+    "productPage": [
+      "https://www.swit.cc/index.php?c=article&id=513"
+    ]
+  },
+  "physical": {
+    "dimensions": [382, 403, 48],
+    "weight": 3.2,
+    "power": 60,
+    "bulb": {
+      "type": "320× SMD LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [70, 70]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "shortName": "normal",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}

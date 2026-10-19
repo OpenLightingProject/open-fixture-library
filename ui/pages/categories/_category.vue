@@ -63,7 +63,7 @@ export default {
     },
     fixtures() {
       return register.categories[this.categoryName].map((fullFixtureKey) => {
-        const [manufacturerKey, fixtureKey] = fullFixtureKey.split('/');
+        const [manufacturerKey, fixtureKey] = fullFixtureKey.split('/', 2);
         const manufacturerName = this.manufacturers[manufacturerKey].name;
         const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
 

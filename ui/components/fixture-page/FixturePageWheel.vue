@@ -276,21 +276,14 @@ export default {
       return 2 * Math.PI * Math.abs(this.slotRotateRadius);
     },
     slotSvgFragments() {
-      return this.wheel.slots.map((slot) => {
-        if (slot.colors !== null) {
-          return getColorCircleSvgFragment(slot.colors, this.slotRadius);
-        }
-
-        return null;
-      });
+      return this.wheel.slots.map((slot) => (
+        slot.colors === null ? null : getColorCircleSvgFragment(slot.colors, this.slotRadius)
+      ));
     },
     animationGoboWidth() {
-      if (this.wheel.slots.length === 2) {
-        // wheel only contains AnimationGoboStart and AnimationGoboEnd
-        return this.slotCircumference;
-      }
-
-      return (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
+      return this.wheel.slots.length === 2
+        ? this.slotCircumference // wheel only contains AnimationGoboStart and AnimationGoboEnd
+        : (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
     },
     slotTitles() {
       return this.wheel.slots.map((slot, index) => {

@@ -18,6 +18,14 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+.links a {
+  display: inline-flex;
+  gap: 0.5ex;
+  align-items: center;
+}
+</style>
+
 <script>
 import { arrayProp, objectProp } from 'vue-ts-types';
 import { getEmptyLink } from '../../assets/scripts/editor-utilities.js';

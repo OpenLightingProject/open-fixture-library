@@ -145,9 +145,9 @@ export default {
       await this.$nextTick();
 
       const defaultData = this.$refs.capabilityTypeData.defaultData;
-      for (const property of Object.keys(defaultData)) {
+      for (const [property, value] of Object.entries(defaultData)) {
         if (!(property in this.capability.typeData)) {
-          this.$set(this.capability.typeData, property, defaultData[property]);
+          this.$set(this.capability.typeData, property, value);
         }
       }
 

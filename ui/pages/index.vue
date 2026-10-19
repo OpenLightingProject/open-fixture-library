@@ -128,6 +128,7 @@ export default {
             'url': this.$config.websiteUrl,
             'potentialAction': {
               '@type': 'SearchAction',
+              // eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- `{search_term_string}` is a literal schema.org SearchAction placeholder
               'target': `${this.$config.websiteUrl}search?q={search_term_string}`,
               'query-input': 'required name=search_term_string',
             },
@@ -155,7 +156,7 @@ export default {
         name: this.getFixtureName(fixtureKey),
         action: register.filesystem[fixtureKey].lastAction,
         date: new Date(register.filesystem[fixtureKey].lastActionDate),
-        color: register.colors[fixtureKey.split('/')[0]],
+        color: register.colors[fixtureKey.split('/', 1)[0]],
       }),
     );
 
@@ -174,11 +175,11 @@ export default {
   },
   methods: {
     /**
-     * @param {string} fixtureKey The combined manufacturer / fixture key.
+     * @param {string} fixtureKey - The combined manufacturer / fixture key.
      * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
-      const manufacturerKey = fixtureKey.split('/')[0];
+      const manufacturerKey = fixtureKey.split('/', 1)[0];
       const manufacturerName = this.manufacturers[manufacturerKey].name;
       const fixtureName = register.filesystem[fixtureKey].name;
 
@@ -188,7 +189,7 @@ export default {
 };
 
 /**
- * @param {string} contributor The contributor name.
+ * @param {string} contributor - The contributor name.
  * @returns {string} The combined key of the latest fixture contributed to by this contributor.
  */
 function getLatestFixtureKey(contributor) {
