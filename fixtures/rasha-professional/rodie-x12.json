@@ -1,0 +1,642 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rodie X12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["David Oliver (Rasha Professional)"],
+    "createDate": "2026-10-19",
+    "lastModifyDate": "2026-10-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-19",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [270, 306, 125],
+    "weight": 4.6,
+    "power": 124,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1.9Hz",
+          "speedEnd": "27.8Hz",
+          "comment": "Strobe slow to fast (1.9 to 27.8 Hz)"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.39Hz",
+          "speedEnd": "6.25Hz",
+          "comment": "Pulse open slow to fast (0.39 to 6.25 Hz)"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "6.25Hz",
+          "speedEnd": "0.39Hz",
+          "comment": "Pulse close fast to slow (6.25 to 0.39 Hz)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Random strobe slow to fast (1.9 to 27.8 Hz)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lightness": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Black to hue"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Intensity",
+          "comment": "Full hue"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Intensity",
+          "comment": "Hue to white"
+        }
+      ]
+    },
+    "Color Temp": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [18, 100],
+          "type": "ColorPreset",
+          "comment": "Color temperature presets 1,800K to 10,000K (83 presets, see Color Temperature Chart)"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "ColorPreset",
+          "comment": "10,000K"
+        }
+      ]
+    },
+    "Lee Library 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 165],
+          "type": "ColorPreset",
+          "comment": "Lee colors 1 to 78 (see Lee Filter Chart)"
+        },
+        {
+          "dmxRange": [166, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lee 1-2 Xfade": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "Lee 1 to 50/50"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "50/50"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorPreset",
+          "comment": "50/50 to Lee 2"
+        }
+      ]
+    },
+    "Lee Library 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 165],
+          "type": "ColorPreset",
+          "comment": "Lee colors 1 to 78 (see Lee Filter Chart)"
+        },
+        {
+          "dmxRange": [166, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lee-Color Mix Xfade": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "Lee filter to 50/50"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "50/50"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorPreset",
+          "comment": "50/50 to color mix"
+        }
+      ]
+    },
+    "Tint": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "ColorPreset",
+          "comment": "Magenta 100% to 0%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Neutral point"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorPreset",
+          "comment": "Green 0 to 100%"
+        }
+      ]
+    },
+    "CCT-Color Xfade": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "CCT to 50/50"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "50/50"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorPreset",
+          "comment": "50/50 to color mix"
+        }
+      ]
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 35],
+          "type": "Effect",
+          "effectName": "RGB jump"
+        },
+        {
+          "dmxRange": [36, 55],
+          "type": "Effect",
+          "effectName": "RGBACL jump"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "Effect",
+          "effectName": "RGB fade"
+        },
+        {
+          "dmxRange": [76, 95],
+          "type": "Effect",
+          "effectName": "RGBACL fade"
+        },
+        {
+          "dmxRange": [96, 115],
+          "type": "Effect",
+          "effectName": "Mix fade"
+        },
+        {
+          "dmxRange": [116, 135],
+          "type": "Effect",
+          "effectName": "RGB morph"
+        },
+        {
+          "dmxRange": [136, 155],
+          "type": "Effect",
+          "effectName": "Sound RGB sequence",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [156, 175],
+          "type": "Effect",
+          "effectName": "Sound RGBACL sequence",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [176, 195],
+          "type": "Effect",
+          "effectName": "Sound mix sequence",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [196, 215],
+          "type": "Effect",
+          "effectName": "Sound RGBACL random",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [216, 235],
+          "type": "Effect",
+          "effectName": "Sound mix random",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "Sound rainbow",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Macro Speed / Mic Sen": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Macro speed slow to fast / microphone sensitivity"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: Linear (hold 8 s)"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: Square Law (hold 8 s)"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: Inverse Square Law (hold 8 s)"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "Dimmer curve: S-Curve (hold 8 s)"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "PWM frequency: 800 Hz (hold 8 s)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "PWM frequency: 1,200 Hz (hold 8 s)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "comment": "PWM frequency: 2,000 Hz (hold 8 s)"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "comment": "PWM frequency: 3,600 Hz (hold 8 s)"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Maintenance",
+          "comment": "PWM frequency: 12,000 Hz (hold 8 s)"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "PWM frequency: 25,000 Hz (hold 8 s)"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "Display invert: Off (hold 8 s)"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "comment": "Display invert: On (hold 8 s)"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "IR remote: Off (hold 8 s)"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "IR remote: On (hold 8 s)"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "Timer: Off (hold 8 s)"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Timer: On (hold 8 s)"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Maintenance",
+          "comment": "Timer repeat: Off (hold 8 s)"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Maintenance",
+          "comment": "Timer repeat: On (hold 8 s)"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Maintenance",
+          "comment": "Reserved"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel CCT",
+      "shortName": "4ch CCT",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Color Temp",
+        "Control"
+      ]
+    },
+    {
+      "name": "5-channel HSL",
+      "shortName": "5ch HSL",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Lightness",
+        "Shutter",
+        "Control"
+      ]
+    },
+    {
+      "name": "6-channel Easy",
+      "shortName": "6ch Easy",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime"
+      ]
+    },
+    {
+      "name": "9-channel Basic",
+      "shortName": "9ch Basic",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime",
+        "Control"
+      ]
+    },
+    {
+      "name": "13-channel 8-Bit Standard",
+      "shortName": "13ch 8-Bit Standard",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime",
+        "Lee Library 1",
+        "Color Temp",
+        "Macro",
+        "Macro Speed / Mic Sen",
+        "Control"
+      ]
+    },
+    {
+      "name": "20-channel 16-Bit Standard",
+      "shortName": "20ch 16-Bit Standard",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "Lime",
+        "Lime fine",
+        "Lee Library 1",
+        "Color Temp",
+        "Macro",
+        "Macro Speed / Mic Sen",
+        "Control"
+      ]
+    },
+    {
+      "name": "25-channel Spectrum",
+      "shortName": "25ch Spectrum",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine",
+        "Lime",
+        "Lime fine",
+        "Lee Library 1",
+        "Lee 1-2 Xfade",
+        "Lee Library 2",
+        "Lee-Color Mix Xfade",
+        "Color Temp",
+        "Tint",
+        "CCT-Color Xfade",
+        "Macro",
+        "Macro Speed / Mic Sen",
+        "Control"
+      ]
+    }
+  ]
+}
