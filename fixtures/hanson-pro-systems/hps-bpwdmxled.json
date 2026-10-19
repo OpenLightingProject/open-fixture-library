@@ -1,0 +1,244 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HPS-BPWDMXLED",
+  "categories": [
+    "Color Changer"
+  ],
+  "meta": {
+    "authors": ["Ryan Goodwin"],
+    "createDate": "2023-05-24",
+    "lastModifyDate": "2023-05-24"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=tTVWmepnOXw"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "dimensions": [290, 229, 84],
+    "weight": 5.44,
+    "bulb": {
+      "type": "24x LED"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Bank 1", "Bank 2", "Bank 3", "Bank 4", "Bank 5", "Bank 6"]
+      ]
+    ],
+    "pixelGroups": {
+      "All": "all"
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Where does the strobe actually start?"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "Effect",
+          "effectName": "LRL Single"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Effect",
+          "effectName": "LR Dual"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Effect",
+          "effectName": "LR Green + Blue"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Effect",
+          "effectName": "Color Cycle per Cluster"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Effect",
+          "effectName": "LR Fill"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "Effect",
+          "effectName": "Center Wipe Out"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "Effect",
+          "effectName": "Center Wipe In"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Effect",
+          "effectName": "Split Vertical"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Effect",
+          "effectName": "LRL Single Split"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Effect",
+          "effectName": "LR Cluster"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "All"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Program",
+        "Strobe",
+        "Program Speed",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "All"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "28-channel",
+      "shortName": "28ch",
+      "channels": [
+        "Dimmer",
+        "Program",
+        "Strobe",
+        "Program Speed",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue",
+            "$pixelKey White"
+          ]
+        }
+      ]
+    }
+  ]
+}
