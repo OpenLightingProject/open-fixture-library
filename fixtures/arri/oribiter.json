@@ -1,0 +1,468 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Orbiter",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Integrated Cinematics"],
+    "createDate": "2023-02-08",
+    "lastModifyDate": "2023-02-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.arri.com/resource/blob/304796/8768e110c12ec6c209eb7dffe8bd1d08/l5-0037325-arri-orbiter-user-manual-en-jul2022-l03917-data.pdf",
+      "https://www.arri.com/resource/blob/306142/c563bed1e5ac8c3d9d91fe0855f47c27/l5-0037960-arri-orbiter-dmx-mode-specification-en-v5-0-jul2022-data.pdf"
+    ],
+    "productPage": ["https://www.arri.com/en/lighting/led/orbiter"]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Green-Magenta Point 8bit": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Green-Magenta Point 16bit": {
+      "name": "Green-Magenta Point",
+      "fineChannelAliases": ["Green-Magenta Point 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4587],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [4588, 9830],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [9831, 30146],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30147, 39976],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [39977, 60292],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60293, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Cross Fade to Color": {
+      "fineChannelAliases": ["Cross Fade to Color fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "White … RGBW/HSI color"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Use Fan Mode of Fixture Menu"
+        },
+        {
+          "dmxRange": [10, 57],
+          "type": "Maintenance",
+          "comment": "Quiet, Fan speed fixed"
+        },
+        {
+          "dmxRange": [58, 105],
+          "type": "Maintenance",
+          "comment": "Variable, Fan speed variable"
+        },
+        {
+          "dmxRange": [106, 153],
+          "type": "Maintenance",
+          "comment": "High Temp, Fan speed fixed"
+        },
+        {
+          "dmxRange": [154, 201],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [202, 249],
+          "type": "Maintenance",
+          "comment": "Fan At Full Speed"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 23],
+          "type": "ColorPreset",
+          "comment": "Preset 01 - User Defined"
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "ColorPreset",
+          "comment": "Preset 02 - User Defined"
+        },
+        {
+          "dmxRange": [36, 47],
+          "type": "ColorPreset",
+          "comment": "Preset 03 - User Defined"
+        },
+        {
+          "dmxRange": [48, 59],
+          "type": "ColorPreset",
+          "comment": "Preset 04 - User Defined"
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "ColorPreset",
+          "comment": "Preset 05 - User Defined"
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "ColorPreset",
+          "comment": "Preset 06 - User Defined"
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "ColorPreset",
+          "comment": "Preset 07 - User Defined"
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "ColorPreset",
+          "comment": "Preset 08 - User Defined"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "ColorPreset",
+          "comment": "Preset 09 - User Defined"
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "ColorPreset",
+          "comment": "Preset 10 - User Defined"
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "ColorPreset",
+          "colorTemperature": "2900K",
+          "comment": "Preset 01"
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "ColorPreset",
+          "colorTemperature": "3200K",
+          "comment": "Preset 02"
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "ColorPreset",
+          "colorTemperature": "5600K",
+          "comment": "Preset 03"
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "ColorPreset",
+          "colorTemperature": "6500K",
+          "comment": "Preset 04"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "ColorPreset",
+          "comment": "Preset 05 - 120° Hue, 100% Saturation"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "ColorPreset",
+          "comment": "Preset 06 - 240° Hue, 100% Saturation"
+        },
+        {
+          "dmxRange": [204, 215],
+          "type": "ColorPreset",
+          "comment": "Preset 07 - Rosco 3408",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [216, 227],
+          "type": "ColorPreset",
+          "comment": "Preset 08 - Lee 187",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [228, 239],
+          "type": "ColorPreset",
+          "comment": "Preset 09 - Rosco 3152",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "Preset 10 - Lee 162",
+          "colorTemperature": "3200K"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "Zoom",
+          "angleStart": "15deg",
+          "angleEnd": "30deg",
+          "comment": "Linear Spot - Flood"
+        }
+      ]
+    },
+    "Focus": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction",
+          "comment": "No Effect"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "Generic",
+          "comment": "Linear Focus"
+        }
+      ]
+    },
+    "Reserved for future use": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Warmer / Cooler": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Saturate / Desaturate": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Sensor": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Sync": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8Bit",
+      "shortName": "CCT",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Zoom",
+        "Focus",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "CCT 8Bit (+RGB with ECC)",
+      "shortName": "CCT ECC",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Zoom",
+        "Focus",
+        "Reserved for future use",
+        "Warmer / Cooler",
+        "Saturate / Desaturate",
+        "Red",
+        "Green",
+        "Blue",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Color Sensor",
+        "Sync"
+      ]
+    }, 
+    {
+      "name": "13: RGBACL 8Bit",
+      "shortName": "RGBACL 8Bit",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Cyan",
+        "Lime",
+        "White",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Zoom",
+        "Focus",
+        "Reserved"
+      ]
+    }
+  ]
+}
