@@ -1,0 +1,766 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SUPER 420 IP",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Administrator", "Anonymous"],
+    "createDate": "2026-10-09",
+    "lastModifyDate": "2026-10-09",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-09",
+      "comment": "created by Q Light Controller Plus (version 4.14.4)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Colour": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "White/白光"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "comment": "White+Red/白光+红色"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "comment": "Red/红色"
+        },
+        {
+          "dmxRange": [13, 17],
+          "type": "ColorPreset",
+          "comment": "Red+Orange/红色+橙色"
+        },
+        {
+          "dmxRange": [18, 21],
+          "type": "ColorPreset",
+          "comment": "Orange/橙色"
+        },
+        {
+          "dmxRange": [22, 25],
+          "type": "ColorPreset",
+          "comment": "Orange+Aquamarine/橙色+碧绿色"
+        },
+        {
+          "dmxRange": [26, 29],
+          "type": "ColorPreset",
+          "comment": "Aquamarine/碧绿色"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Aquamarine+Green/碧绿色+绿色"
+        },
+        {
+          "dmxRange": [35, 38],
+          "type": "ColorPreset",
+          "comment": "Green/绿色"
+        },
+        {
+          "dmxRange": [39, 42],
+          "type": "ColorPreset",
+          "comment": "Green+Light Green/绿色+浅绿色"
+        },
+        {
+          "dmxRange": [43, 46],
+          "type": "ColorPreset",
+          "comment": "Light Green/浅绿色"
+        },
+        {
+          "dmxRange": [47, 51],
+          "type": "ColorPreset",
+          "comment": "Light Green+Lavender/浅绿色+浅紫色"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "Lavender/浅紫色"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "Lavender+Pink/浅紫色+粉红色"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "Pink/粉红色"
+        },
+        {
+          "dmxRange": [64, 68],
+          "type": "ColorPreset",
+          "comment": "Pink+Yellow/粉红色+黄色"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "comment": "Yellow/黄色"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "comment": "Yellow+Magenta/黄色+品红色"
+        },
+        {
+          "dmxRange": [77, 81],
+          "type": "ColorPreset",
+          "comment": "Magenta/品红色"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "ColorPreset",
+          "comment": "Magenta+Cyan/品红色+青色"
+        },
+        {
+          "dmxRange": [86, 89],
+          "type": "ColorPreset",
+          "comment": "Cyan/青色"
+        },
+        {
+          "dmxRange": [90, 93],
+          "type": "ColorPreset",
+          "comment": "Cyan+CTO 260/青色+CTO2"
+        },
+        {
+          "dmxRange": [94, 98],
+          "type": "ColorPreset",
+          "comment": "CTO 260/CTO2"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "ColorPreset",
+          "comment": "CTO 260+CTO 190/CTO2+CTO1"
+        },
+        {
+          "dmxRange": [103, 106],
+          "type": "ColorPreset",
+          "comment": "CTO 190/CTO1"
+        },
+        {
+          "dmxRange": [107, 110],
+          "type": "ColorPreset",
+          "comment": "CTO 190+CTB 8000/CTO1+CTB"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "CTB 8000/CTB"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "ColorPreset",
+          "comment": "CTB 8000+Blue/CTB+深蓝色"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ColorPreset",
+          "comment": "Blue/深蓝色"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ColorPreset",
+          "comment": "Blue+White/深蓝色+白光"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "CCW，Fast→Slow Rotation/由快到慢，逆时针旋转"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "CW，Slow→Fast Rotation/由慢到快，顺时针旋转"
+        }
+      ]
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "comment": "Cyan 0-100%/青色 0-100%"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta",
+        "comment": "Magenta 0-100%/品红色 0-100%"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "comment": "Yellow 0-100%/黄色 0-100%"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Slow-Fast Strobe/由慢到快频闪",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Open/开光",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [108, 157],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "由慢到快，快关慢开",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [158, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "由慢到快，快开慢关",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Open/开光",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Slow-Fast Strobe/由慢到快随机频闪",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Open/打开",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White/白光"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo1/图案1"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo2/图案2"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo3/图案3"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo4/图案4"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo5/图案5"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo6/图案6"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Gobo7/图案7"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo8/图案8"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo9/图案9"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Gobo10/图案10"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Gobo11/图案11"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Gobo12/图案12"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Gobo13/图案13"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Gobo14/图案14"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo15/图案15"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Gobo16/图案16"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Gobo17/图案17"
+        },
+        {
+          "dmxRange": [72, 113],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "ROTATION FAST--SLOW"
+        },
+        {
+          "dmxRange": [114, 117],
+          "type": "WheelSlotRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [118, 159],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "ROTATION SLOW--FAST"
+        },
+        {
+          "dmxRange": [160, 166],
+          "type": "WheelShake",
+          "slotNumber": 22,
+          "comment": "Gobo2 Shake Slow-Fast Speed/图案2由慢到快摆动"
+        },
+        {
+          "dmxRange": [167, 172],
+          "type": "WheelShake",
+          "slotNumber": 23,
+          "comment": "Gobo3 Shake Slow-Fast Speed/图案3由慢到快摆动"
+        },
+        {
+          "dmxRange": [173, 179],
+          "type": "WheelShake",
+          "slotNumber": 24,
+          "comment": "Gobo4 Shake Slow-Fast Speed/图案4由慢到快摆动"
+        },
+        {
+          "dmxRange": [180, 185],
+          "type": "WheelShake",
+          "slotNumber": 25,
+          "comment": "Gobo5 Shake Slow-Fast Speed/图案5由慢到快摆动"
+        },
+        {
+          "dmxRange": [186, 191],
+          "type": "WheelShake",
+          "slotNumber": 26,
+          "comment": "Gobo6 Shake Slow-Fast Speed/图案6由慢到快摆动"
+        },
+        {
+          "dmxRange": [192, 198],
+          "type": "WheelShake",
+          "slotNumber": 27,
+          "comment": "Gobo7 Shake Slow-Fast Speed/图案7由慢到快摆动"
+        },
+        {
+          "dmxRange": [199, 204],
+          "type": "WheelShake",
+          "slotNumber": 28,
+          "comment": "Gobo8 Shake Slow-Fast Speed/图案8由慢到快摆动"
+        },
+        {
+          "dmxRange": [205, 211],
+          "type": "WheelShake",
+          "slotNumber": 29,
+          "comment": "Gobo9 Shake Slow-Fast Speed/图案9由慢到快摆动"
+        },
+        {
+          "dmxRange": [212, 217],
+          "type": "WheelShake",
+          "slotNumber": 30,
+          "comment": "Gobo10 Shake Slow-Fast Speed/图案10由慢到快摆动"
+        },
+        {
+          "dmxRange": [218, 223],
+          "type": "WheelShake",
+          "slotNumber": 31,
+          "comment": "Gobo11 Shake Slow-Fast Speed/图案11由慢到快摆动"
+        },
+        {
+          "dmxRange": [224, 230],
+          "type": "WheelShake",
+          "slotNumber": 32,
+          "comment": "Gobo12 Shake Slow-Fast Speed/图案12由慢到快摆动"
+        },
+        {
+          "dmxRange": [231, 236],
+          "type": "WheelShake",
+          "slotNumber": 33,
+          "comment": "Gobo13 Shake Slow-Fast Speed/图案13由慢到快摆动"
+        },
+        {
+          "dmxRange": [237, 243],
+          "type": "WheelShake",
+          "slotNumber": 34,
+          "comment": "Gobo14 Shake Slow-Fast Speed/图案14由慢到快摆动"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "WheelShake",
+          "slotNumber": 35,
+          "comment": "Gobo16 Shake Slow-Fast Speed/图案16由慢到快摆动"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelShake",
+          "slotNumber": 36,
+          "comment": "Gobo17 Shake Slow-Fast Speed/图案17由慢到快摆动"
+        }
+      ]
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Prism",
+          "comment": "无效果"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Prism",
+          "comment": "Prism1/棱镜1"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Prism",
+          "comment": "Prism2/棱镜2"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Prism",
+          "comment": "Prism1+Prism2/棱镜1+棱镜2"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Prism",
+          "comment": "角度线性调节"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Prism",
+          "comment": "CCW，Fast → Slow/由快到慢，逆时针旋转"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Prism",
+          "comment": "CW，Slow → Fast/由慢到快，顺时针旋转"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Prism",
+          "comment": "由慢到快，90°来回旋转"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Prism",
+          "comment": "由慢到快，180°来回旋转"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Prism",
+          "comment": "由慢到快，270°来回旋转"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Prism",
+          "comment": "由慢到快，360°来回旋转"
+        }
+      ]
+    },
+    "Prism Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Prism",
+          "comment": "无效果"
+        },
+        {
+          "dmxRange": [16, 55],
+          "type": "Prism",
+          "comment": "由快到慢，8棱镜自由切换"
+        },
+        {
+          "dmxRange": [56, 95],
+          "type": "Prism",
+          "comment": "由快到慢，16棱镜自由切换"
+        },
+        {
+          "dmxRange": [96, 135],
+          "type": "Prism",
+          "comment": "由快到慢，8棱镜+16棱镜同时自由切换"
+        },
+        {
+          "dmxRange": [136, 175],
+          "type": "Prism",
+          "comment": "由快到慢，8棱镜选中+16棱镜自由切换"
+        },
+        {
+          "dmxRange": [176, 215],
+          "type": "Prism",
+          "comment": "由快到慢，16棱镜选中+8棱镜自由切换"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Prism",
+          "comment": "由快到慢，8棱镜与16棱镜互锁切换"
+        }
+      ]
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Frost/雾化"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Focus/调焦"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Pan/水平"
+      }
+    },
+    "TILT": {
+      "fineChannelAliases": ["TITL Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "TILT/垂直"
+      }
+    },
+    "Pan Description": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "CCW FAST--SLOW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "STOP"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "CW SLOW--FAST"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "comment": "Unused Range/不在使用范围"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "comment": "Effects Reset/头部电机复位"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "comment": "PAN/TITL Reset/XY轴复位"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Complete Reset/整机复位"
+        }
+      ]
+    },
+    "Lamp Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Unused Range/不在使用范围",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [26, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Lamp OFF/关闭灯泡",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Lamp ON/打开灯泡",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "19-channel",
+      "shortName": "19ch",
+      "channels": [
+        "Colour",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Shutter",
+        "Dimmer",
+        "Gobo",
+        "Prism",
+        "Prism Rotation",
+        "Prism Macro",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan Fine",
+        "TILT",
+        "TITL Fine",
+        "Pan Description",
+        "Reset",
+        "Lamp Control"
+      ]
+    }
+  ]
+}
