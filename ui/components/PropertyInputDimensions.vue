@@ -127,10 +127,6 @@ export default {
  * @returns {[number, number, number] | null} Dimensions array with the inputs or null if all inputs were null.
  */
 function getDimensionsArray(x, y, z) {
-  if (x === null && y === null && z === null) {
-    return null;
-  }
-
-  return [x, y, z];
+  return x === null && y === null && z === null ? null : [x, y, z];
 }
 </script>

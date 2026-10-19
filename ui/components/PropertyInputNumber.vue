@@ -40,36 +40,20 @@ export default {
         return this.minimum;
       }
 
-      if ('minimum' in this.schemaProperty) {
-        return this.schemaProperty.minimum;
-      }
-
-      return this.exclusiveMinimum;
+      return 'minimum' in this.schemaProperty ? this.schemaProperty.minimum : this.exclusiveMinimum;
     },
     max() {
       if (this.maximum !== undefined && this.maximum !== 'invalid') {
         return this.maximum;
       }
 
-      if ('maximum' in this.schemaProperty) {
-        return this.schemaProperty.maximum;
-      }
-
-      return this.exclusiveMaximum;
+      return 'maximum' in this.schemaProperty ? this.schemaProperty.maximum : this.exclusiveMaximum;
     },
     exclusiveMinimum() {
-      if ('exclusiveMinimum' in this.schemaProperty) {
-        return this.schemaProperty.exclusiveMinimum;
-      }
-
-      return null;
+      return 'exclusiveMinimum' in this.schemaProperty ? this.schemaProperty.exclusiveMinimum : null;
     },
     exclusiveMaximum() {
-      if ('exclusiveMaximum' in this.schemaProperty) {
-        return this.schemaProperty.exclusiveMaximum;
-      }
-
-      return null;
+      return 'exclusiveMaximum' in this.schemaProperty ? this.schemaProperty.exclusiveMaximum : null;
     },
     step() {
       if (this.stepOverride !== undefined) {

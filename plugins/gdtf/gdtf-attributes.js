@@ -20,11 +20,9 @@ export const gdtfUnits = {
     return `${value}kg`;
   },
   Time(value, otherValue) {
-    if (physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)) {
-      return `${value * 1000}ms`;
-    }
-
-    return `${value}s`;
+    return physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)
+      ? `${value * 1000}ms`
+      : `${value}s`;
   },
   Temperature(value) {
     return `${value}K`;
@@ -68,11 +66,9 @@ export const gdtfUnits = {
   AngularSpeed(value, otherValue) {
     // values are in deg/s
 
-    if (value === 0 && otherValue === null) {
-      return 'stop';
-    }
-
-    return `${value / 360 * 60}rpm`;
+    return value === 0 && otherValue === null
+      ? 'stop'
+      : `${value / 360 * 60}rpm`;
   },
   AngularAcc(value) {
     return `${value}deg/s2`;
@@ -222,15 +218,17 @@ const gdtfAttributes = {
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       const gdtfSlotIndex = Number.parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
 
-      if ('Wheel' in gdtfCapability._channelFunction.$) {
-        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
-        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
+      if (!('Wheel' in gdtfCapability._channelFunction.$)) {
+        return;
+      }
 
-        if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
-          // clear comment
-          gdtfCapability.$.Name = '';
-        }
+      const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+      const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
+      const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
+
+      if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
+        // clear comment
+        gdtfCapability.$.Name = '';
       }
     },
   },
@@ -427,20 +425,24 @@ const gdtfAttributes = {
       // sometimes a workaround to add color information is used: reference a virtual color wheel
 
       const index = Number.parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
-      if ('Wheel' in gdtfCapability._channelFunction.$) {
-        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
-        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[index];
+      if (!('Wheel' in gdtfCapability._channelFunction.$)) {
+        return;
+      }
 
-        if (gdtfSlot) {
-          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
-            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
-          }
+      const wheelReference = gdtfCapability._channelFunction.$.Wheel;
+      const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
+      const gdtfSlot = gdtfWheel.Slot[index];
 
-          if (gdtfSlot.$.Color) {
-            capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
-          }
-        }
+      if (!gdtfSlot) {
+        return;
+      }
+
+      if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
+        gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
+      }
+
+      if (gdtfSlot.$.Color) {
+        capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
       }
     },
   },
@@ -833,10 +835,22 @@ const gdtfAttributes = {
       capability.fogType = 'Haze';
     },
   },
-  'HSB_Brightness': undefined, // Controls the fixture's color attribute regarding the brightness.
-  'HSB_Hue': undefined, // Controls the fixture's color attribute regarding the hue.
+  'HSB_Brightness': {
+    // Controls the fixture's color attribute regarding the brightness.
+    oflType: 'Generic',
+    oflProperty: null,
+  },
+  'HSB_Hue': {
+    // Controls the fixture's color attribute regarding the hue.
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'HSB_Quality': undefined, // Controls the fixture's color attribute regarding the quality.
-  'HSB_Saturation': undefined, // Controls the fixture's color attribute regarding the saturation.
+  'HSB_Saturation': {
+    // Controls the fixture's color attribute regarding the saturation.
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'IntensityMSpeed': {
     // Movement speed of the fixture's intensity.
     oflType: 'Speed',
@@ -915,8 +929,16 @@ const gdtfAttributes = {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
     inheritFrom: 'AnimationWheel(n)Mode',
   },
-  'MediaContent': undefined, // Selects the content slot of in the selected media folder (e.g. of a media server). (since GDTF v1.0)
-  'MediaFolder': undefined, // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
+  'MediaContent(n)': {
+    // Selects the content slot in the selected media folder (e.g. of a media server). (since GDTF v1.0)
+    oflType: 'Generic',
+    oflProperty: null,
+  },
+  'MediaFolder(n)': {
+    // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'NoFeature': {
     // Ranges without a functionality.
     oflType: 'NoFunction',
@@ -1166,6 +1188,11 @@ const gdtfAttributes = {
   'VideoScale(n)_X': undefined, // Scales the media content or video object along the x-axis. (since GDTF v1.0)
   'VideoScale(n)_Y': undefined, // Scales the media content or video object along the y-axis. (since GDTF v1.0)
   'VideoScale(n)_Z': undefined, // Scales the media content or video object along the z-axis. (since GDTF v1.0)
+  'VideoSoundVolume(n)': {
+    // Adjusts sound volume. (since GDTF v1.0)
+    oflType: 'Generic',
+    oflProperty: null,
+  },
   'WavelengthCorrection': undefined, // Settings for WaveLength corrections of colors. (since GDTF v1.0)
   'WhiteCount': undefined, // Controls if White LED is proportionally added to RGB. (since GDTF v1.0)
   'XYZ_X': undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.

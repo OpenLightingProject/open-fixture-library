@@ -308,7 +308,7 @@
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
@@ -319,6 +319,7 @@ import {
   getSanitizedChannel,
   isCapabilityChanged,
   isChannelChanged,
+  scrollToFirstInvalidField,
 } from '../../assets/scripts/editor-utilities.js';
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -397,19 +398,20 @@ export default {
       return modeName;
     },
     title() {
-      if (this.channel.editMode === 'add-existing') {
-        return `Add channel to mode ${this.currentModeDisplayName}`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          return `Add channel to mode ${this.currentModeDisplayName}`;
+        }
+        case 'create': {
+          return 'Create new channel';
+        }
+        case 'edit-duplicate': {
+          return 'Edit channel duplicate';
+        }
+        default: {
+          return 'Edit channel';
+        }
       }
-
-      if (this.channel.editMode === 'create') {
-        return 'Create new channel';
-      }
-
-      if (this.channel.editMode === 'edit-duplicate') {
-        return 'Edit channel duplicate';
-      }
-
-      return 'Edit channel';
     },
     areCapabilitiesChanged() {
       return this.channel.capabilities.some(
@@ -417,16 +419,18 @@ export default {
       );
     },
     submitButtonTitle() {
-      if (this.channel.editMode === 'add-existing') {
-        const count = this.selectedChannelUuids.length;
-        return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+      switch (this.channel.editMode) {
+        case 'add-existing': {
+          const count = this.selectedChannelUuids.length;
+          return count <= 1 ? 'Add channel' : `Add ${count} channels`;
+        }
+        case 'create': {
+          return 'Create channel';
+        }
+        default: {
+          return 'Save changes';
+        }
       }
-
-      if (this.channel.editMode === 'create') {
-        return 'Create channel';
-      }
-
-      return 'Save changes';
     },
   },
   watch: {
@@ -445,7 +449,7 @@ export default {
   methods: {
     setEditModeCreate() {
       this.channel.editMode = 'create';
-      this.channel.uuid = uuidv4();
+      this.channel.uuid = uuidV4();
     },
 
     getChannelName(channelUuid) {
@@ -682,30 +686,7 @@ export default {
       }
 
       if (this.formstate.$invalid) {
-        const invalidFields = document.querySelectorAll('#channel-dialog .vf-field-invalid');
-
-        for (let index = 0; index < invalidFields.length; index++) {
-          const enclosingDetails = invalidFields[index].closest('details:not([open])');
-
-          if (enclosingDetails) {
-            enclosingDetails.open = true;
-
-            // current field could be enclosed another time, so repeat
-            index--;
-          }
-        }
-
-        const scrollContainer = invalidFields[0].closest('.dialog');
-        scrollIntoView(invalidFields[0], {
-          time: 300,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: (target) => target === scrollContainer,
-        }, () => invalidFields[0].focus());
-
+        scrollToFirstInvalidField(this.$el);
         return;
       }
 
@@ -753,7 +734,7 @@ export default {
     saveDuplicatedChannel() {
       const oldChannelKey = this.channel.uuid;
 
-      const newChannelKey = uuidv4();
+      const newChannelKey = uuidV4();
       const newChannel = getSanitizedChannel(this.channel);
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);
@@ -761,18 +742,15 @@ export default {
       const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
       this.currentMode.channels = this.currentMode.channels.map((key) => {
-        if (key === oldChannelKey) {
-          return newChannelKey;
+        if (key !== oldChannelKey) {
+          // map each old fine channel to the new fine channel
+          const oldFineChannel = this.fixture.availableChannels[key];
+          if (oldFineChannel.coarseChannelId === oldChannelKey) {
+            return fineChannelUuids[oldFineChannel.resolution];
+          }
         }
 
-        // map each old fine channel to the new fine channel
-        const oldFineChannel = this.fixture.availableChannels[key];
-        if (oldFineChannel.coarseChannelId === oldChannelKey) {
-          return fineChannelUuids[oldFineChannel.resolution];
-        }
-
-        // this channel is not affected by the duplicate at all
-        return key;
+        return key === oldChannelKey ? newChannelKey : key;
       });
     },
 

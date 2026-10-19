@@ -13,6 +13,7 @@ import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
 import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
+import fixtureJsonObjectFormatRule from './lib/internal-eslint-rules/fixture-json-object-format.js';
 import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
 
 const stylisticEslintConfig = eslintPluginStylistic.configs.customize({
@@ -179,6 +180,7 @@ const unicornRules = {
       cats: { categories: true },
     },
   }],
+  'unicorn/no-asterisk-prefix-in-documentation-comments': 'off', // incompatible with eslint-plugin-jsdoc
   'unicorn/no-computed-property-existence-check': 'off', // dynamic `key in obj` checks are fine and widely used
   'unicorn/no-null': 'off',
   'unicorn/no-process-exit': 'off',
@@ -194,6 +196,7 @@ const unicornRules = {
   'unicorn/prefer-number-coercion': 'off', // `Number.parseInt(x, 10)` is intentional and not equivalent to `Number(x)`
   'unicorn/prefer-private-class-fields': 'off', // `#private` members are not documented by jsdoc2md in `build:model-docs`
   'unicorn/prefer-uint8array-base64': 'off', // `Uint8Array.fromBase64()`/`toBase64()` are not available in the supported Node.js/browser versions yet
+  'unicorn/single-line-block-comment-style': 'off', // too verbose for type annotations and import declarations
   'unicorn/text-encoding-identifier-case': ['error', { withDash: true }],
 };
 
@@ -463,6 +466,7 @@ export default defineConfig([
       ofl: {
         rules: {
           'fixture-json-array-format': fixtureJsonArrayFormatRule,
+          'fixture-json-object-format': fixtureJsonObjectFormatRule,
         },
       },
     },
@@ -476,6 +480,7 @@ export default defineConfig([
       'jsonc/array-bracket-spacing': 'off',
 
       'ofl/fixture-json-array-format': 'error',
+      'ofl/fixture-json-object-format': 'error',
     },
   },
   {

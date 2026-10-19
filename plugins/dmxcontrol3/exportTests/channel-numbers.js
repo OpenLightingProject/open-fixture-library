@@ -111,13 +111,15 @@ export default async function testChannelNumbers(exportFile) {
       }
     }
 
-    if ('minval' in xmlNode.$) {
-      const minval = Number.parseInt(xmlNode.$.minval, 10);
-      const maxval = Number.parseInt(xmlNode.$.maxval, 10);
+    if (!('minval' in xmlNode.$)) {
+      return;
+    }
 
-      if (minval > maxval) {
-        errors.push(`Capability ${range} in channel ${channelIndex + 1} must not use a greater minval (${minval}) than maxval (${maxval}). Instead, swap mindmx and maxdmx.`);
-      }
+    const minval = Number.parseInt(xmlNode.$.minval, 10);
+    const maxval = Number.parseInt(xmlNode.$.maxval, 10);
+
+    if (minval > maxval) {
+      errors.push(`Capability ${range} in channel ${channelIndex + 1} must not use a greater minval (${minval}) than maxval (${maxval}). Instead, swap mindmx and maxdmx.`);
     }
   }
 

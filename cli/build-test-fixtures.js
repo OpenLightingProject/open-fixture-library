@@ -75,13 +75,11 @@ async function addMatchingFeatures(fixture, fixtureResult) {
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
-fixtureFeatureResults.sort((a, b) => {
-  if (a.features.length === b.features.length) {
-    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en');
-  }
-
-  return a.features.length - b.features.length;
-});
+fixtureFeatureResults.sort((a, b) => (
+  a.features.length === b.features.length
+    ? `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en')
+    : a.features.length - b.features.length
+));
 
 // filter out
 fixtureFeatureResults = fixtureFeatureResults.filter((fixture) => {

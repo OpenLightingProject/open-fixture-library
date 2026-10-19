@@ -30,7 +30,7 @@ app.use(cors({
       || !origin // allow non XHR/fetch requests
       || corsWhitelist.some((regex) => regex.test(origin));
 
-    callback(null, isCorsAllowed ? true : 'https://open-fixture-library.org');
+    callback(null, isCorsAllowed || 'https://open-fixture-library.org');
   },
   optionsSuccessStatus: 200, // IE11 chokes on default 204
 }));

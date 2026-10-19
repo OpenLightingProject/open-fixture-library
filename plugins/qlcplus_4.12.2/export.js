@@ -292,12 +292,14 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
   }
 
   const goboResource = await exportHelpers.getGoboResource(capability);
-  if (goboResource) {
-    xmlCapability.attribute('Res', goboResource);
+  if (!goboResource) {
+    return;
+  }
 
-    if (goboResource.startsWith('ofl/')) {
-      customGobos[goboResource] = capability.wheelSlot[0].resource;
-    }
+  xmlCapability.attribute('Res', goboResource);
+
+  if (goboResource.startsWith('ofl/')) {
+    customGobos[goboResource] = capability.wheelSlot[0].resource;
   }
 }
 
@@ -486,11 +488,7 @@ function getPanTiltMax(panOrTilt, channels) {
 
   if (panTiltMax === -Infinity) {
     const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
-    if (hasContinuousCapability) {
-      return 9999;
-    }
-
-    return 0;
+    return hasContinuousCapability ? 9999 : 0;
   }
 
   return Math.round(panTiltMax);
@@ -531,11 +529,9 @@ function addHeads(xmlMode, mode) {
     }
 
     if (channel.pixelKey !== null) {
-      if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
-        return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
-      }
-
-      return channel.pixelKey === pixelKey;
+      return mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)
+        ? mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey)
+        : channel.pixelKey === pixelKey;
     }
 
     return false;
@@ -566,11 +562,9 @@ function getFixtureType(fixture) {
    * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */
   function isBeamBar() {
-    if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
-      return true;
-    }
-
-    return fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
+    return !fixture.physical
+      || !fixture.physical.matrixPixelsSpacing
+      || fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
   }
 }
 

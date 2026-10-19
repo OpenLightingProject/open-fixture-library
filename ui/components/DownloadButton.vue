@@ -115,6 +115,7 @@ select {
     padding: 0.5ex 2ex;
     font-weight: 700;
     color: $primary-text-light;
+    text-decoration: none;
     cursor: pointer;
     background: theme-color(orange-background);
     border-radius: 2px;
@@ -154,6 +155,7 @@ select {
       display: block;
       padding: 0.2ex 2ex;
       color: theme-color(text-primary);
+      text-decoration: none;
       transition: background-color 0.2s;
     }
 
@@ -227,22 +229,14 @@ export default {
       return (this.editorFixtures && Object.keys(this.editorFixtures.fixtures).length === 1) || this.fixtureKey;
     },
     title() {
-      if (this.isSingle) {
-        return 'Download as…';
-      }
-
-      return `Download all ${this.fixtureCount} fixtures`;
+      return this.isSingle ? 'Download as…' : `Download all ${this.fixtureCount} fixtures`;
     },
     baseLink() {
       if (this.editorFixtures) {
         return '/download-editor';
       }
 
-      if (this.isSingle) {
-        return `/${this.fixtureKey}`;
-      }
-
-      return '/download';
+      return this.isSingle ? `/${this.fixtureKey}` : '/download';
     },
   },
   methods: {

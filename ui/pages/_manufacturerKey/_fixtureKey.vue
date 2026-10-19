@@ -37,7 +37,7 @@
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
+      <h2>Anything wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3">
         <a
