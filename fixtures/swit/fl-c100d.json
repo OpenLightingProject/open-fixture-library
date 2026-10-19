@@ -35,6 +35,28 @@
         "colorTemperatureStart": "2700K",
         "colorTemperatureEnd": "6500K"
       }
+    },
+    "Flood/Spot": {
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "15deg",
+        "angleEnd": "50deg"
+      }
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Fan On (Auto)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
     }
   },
   "modes": [
@@ -43,7 +65,9 @@
       "shortName": "normal",
       "channels": [
         "Dimmer",
-        "Color Temperature"
+        "Color Temperature",
+        "Flood/Spot",
+        "Fan Control"
       ]
     }
   ]

@@ -35,6 +35,13 @@
         "colorTemperatureStart": "2700K",
         "colorTemperatureEnd": "8000K"
       }
+    },
+    "Flood/Spot": {
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "15deg",
+        "angleEnd": "60deg"
+      }
     }
   },
   "modes": [
@@ -43,7 +50,8 @@
       "shortName": "normal",
       "channels": [
         "Dimmer",
-        "Color Temperature"
+        "Color Temperature",
+        "Flood/Spot"
       ]
     }
   ]
