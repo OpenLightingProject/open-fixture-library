@@ -80,13 +80,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   const sRGB1 = sRGB1_linear_to_sRGB1(XYZ100_to_sRGB1_linear(XYZ100));
   const RGB = sRGB1_to_sRGB255(sRGB1);
 
-  let r, g, b;
-  if (Y > 1) {
-    [r, g, b] = RGB.map((c) => (c > 0 ? c / 255 : 0));
-  }
-  else {
-    [r, g, b] = RGB;
-  }
+  let [r, g, b] = Y > 1 ? RGB.map((c) => (c > 0 ? c / 255 : 0)) : RGB;
 
   let count = 0;
   while (Math.max(r, g, b) < 127 && count < 5) {
@@ -97,7 +91,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
   }
 
   // clip to integers in range 0…255
-  [r, g, b] = [r, g, b].map((c) => Math.floor(Math.min(255, Math.max(0, c || 0))));
+  [r, g, b] = [r, g, b].map((c) => Math.floor(Math.min(255, Math.max(0, c))));
 
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 

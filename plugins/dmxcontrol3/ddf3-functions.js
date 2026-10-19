@@ -692,16 +692,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.fogOutput !== null && capability.fogOutput[0].number !== capability.fogOutput[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, capability.fogOutput[0].number, capability.fogOutput[1].number);
-            xmlCapability.attribute('type', 'fog');
-          }
-          else {
+          if (capability.fogOutput === null || capability.fogOutput[0].number === capability.fogOutput[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFogOn = capability.type !== 'NoFunction' && (capability.fogOutput === null || capability.fogOutput[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute('value', String(isFogOn));
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, capability.fogOutput[0].number, capability.fogOutput[1].number);
+            xmlCapability.attribute('type', 'fog');
           }
 
           xmlFog.importDocument(xmlCapability);
@@ -720,16 +720,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.speed !== null && capability.speed[0].number !== capability.speed[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, Math.abs(capability.speed[0].number), Math.abs(capability.speed[1].number));
-            xmlCapability.attribute('type', 'fan');
-          }
-          else {
+          if (capability.speed === null || capability.speed[0].number === capability.speed[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFanOn = capability.type !== 'NoFunction' && (capability.speed[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute('value', String(isFanOn));
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, Math.abs(capability.speed[0].number), Math.abs(capability.speed[1].number));
+            xmlCapability.attribute('type', 'fan');
           }
 
           xmlFan.importDocument(xmlCapability);

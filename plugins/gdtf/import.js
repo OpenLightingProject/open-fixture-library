@@ -6,7 +6,7 @@ import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-va
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
 import { followXmlNodeReference, getRgbColorFromGdtfColor } from './gdtf-helpers.js';
 
-export const version = '0.2.0';
+export const version = '0.2.2';
 
 /**
  * @typedef {object} Relation
@@ -334,7 +334,7 @@ export async function importFixtures(buffer, filename, authorName) {
               const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
               const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo, maxDmxValue, dmxFrom[1]);
 
-              return [{
+              return {
                 modeIndex,
                 masterGdtfChannel: masterChannel,
                 switchingChannelName: gdtfDmxChannel.$.Name,
@@ -342,7 +342,7 @@ export async function importFixtures(buffer, filename, authorName) {
                 followerChannelFunction: gdtfChannelFunction,
                 dmxFrom,
                 dmxTo,
-              }];
+              };
             });
           });
         });
@@ -376,7 +376,7 @@ export async function importFixtures(buffer, filename, authorName) {
           const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
           const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo, maxDmxValue, dmxFrom[1]);
 
-          return [{
+          return {
             modeIndex,
             masterGdtfChannel: masterChannel,
             switchingChannelName: followerChannel.$.Name,
@@ -384,7 +384,7 @@ export async function importFixtures(buffer, filename, authorName) {
             followerChannelFunction,
             dmxFrom,
             dmxTo,
-          }];
+          };
         });
       });
     }
@@ -409,12 +409,10 @@ export async function importFixtures(buffer, filename, authorName) {
     for (const gdtfMode of gdtfModes) {
       const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
       for (const gdtfChannel of gdtfChannels) {
-        if (gdtfChannel.$.DMXBreak === 'Overwrite') {
-          addChannel(templateChannels, gdtfChannel);
-        }
-        else {
-          addChannel(availableChannels, gdtfChannel);
-        }
+        addChannel(
+          gdtfChannel.$.DMXBreak === 'Overwrite' ? templateChannels : availableChannels,
+          gdtfChannel,
+        );
       }
     }
 
@@ -540,6 +538,11 @@ export async function importFixtures(buffer, filename, authorName) {
             gdtfChannelFunction.ChannelSet = [{ $: {} }];
           }
 
+          // GDTF: a channel set's DMX start and physical range default to its
+          // channel function's (and a function's physical range defaults to 0…1)
+          const channelFunctionPhysicalFrom = parseFloatWithFallback(gdtfChannelFunction.$.PhysicalFrom, 0);
+          const channelFunctionPhysicalTo = parseFloatWithFallback(gdtfChannelFunction.$.PhysicalTo, 1);
+
           // save GDTF attribute for later
           gdtfChannelFunction._attribute = followXmlNodeReference(
             gdtfFixture.AttributeDefinitions[0].Attributes[0],
@@ -562,16 +565,20 @@ export async function importFixtures(buffer, filename, authorName) {
               gdtfChannelSet.$.Name = '';
             }
 
+            if (!('DMXFrom' in gdtfChannelSet.$)) {
+              gdtfChannelSet.$.DMXFrom = gdtfChannelFunction.$.DMXFrom;
+            }
+
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom, 0);
 
-            const physicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, 0);
-            const physicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, 1);
+            const channelSetPhysicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, channelFunctionPhysicalFrom);
+            const channelSetPhysicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, channelFunctionPhysicalTo);
 
-            gdtfChannelSet._physicalFrom = physicalFrom;
-            gdtfChannelSet._physicalTo = physicalTo;
+            gdtfChannelSet._physicalFrom = channelSetPhysicalFrom;
+            gdtfChannelSet._physicalTo = channelSetPhysicalTo;
 
-            minPhysicalValue = Math.min(minPhysicalValue, physicalFrom, physicalTo);
-            maxPhysicalValue = Math.max(maxPhysicalValue, physicalFrom, physicalTo);
+            minPhysicalValue = Math.min(minPhysicalValue, channelSetPhysicalFrom, channelSetPhysicalTo);
+            maxPhysicalValue = Math.max(maxPhysicalValue, channelSetPhysicalFrom, channelSetPhysicalTo);
 
             return gdtfChannelSet;
           });
