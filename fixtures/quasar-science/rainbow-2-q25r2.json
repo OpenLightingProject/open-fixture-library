@@ -1,0 +1,1740 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rainbow 2 Q25R2",
+  "shortName": "Q25R2",
+  "categories": ["Pixel Bar", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2022-09-28",
+    "lastModifyDate": "2022-09-28"
+  },
+  "links": {
+    "manual": [
+      "https://help.quasarscience.com/double-rainbow-rainbow-2",
+      "https://docs.google.com/document/d/1RcxceOpdEsPvd5r3bYLP0bsPO73ieiat_rpTmc75Ydk/export?format=pdf"
+    ],
+    "productPage": [
+      "https://www.quasarscience.com/collections/lights/products/rainbow-2"
+    ]
+  },
+  "physical": {
+    "dimensions": [584, 44, 44],
+    "weight": 0.8,
+    "power": 25
+  },
+  "matrix": {
+    "pixelCount": [10, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/2": { "x": ["<=5"] },
+      "2/2": { "x": [">=6"] },
+      "1/5": ["1", "2"],
+      "2/5": ["3", "4"],
+      "3/5": ["5", "6"],
+      "4/5": ["7", "8"],
+      "5/5": ["9", "10"]
+    }
+  },
+  "templateChannels": {
+    "Intensity $pixelKey": {
+      "fineChannelAliases": ["Intensity $pixelKey fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red $pixelKey": {
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Emulated White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CCT $pixelKey": {
+      "defaultValue": 45,
+      "capability":
+        {
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1750K",
+          "colorTemperatureEnd": "10000K"
+        }
+    },
+    "Crossfade $pixelKey": {
+      "fineChannelAliases": ["Crossfade $pixelKey fine"],
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "CCT crossfade to RGB"
+        }
+    },
+    "Green-Magenta Point $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Hue $pixelKey": {
+      "fineChannelAliases": ["Hue $pixelKey fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation $pixelKey": {
+      "fineChannelAliases": ["Saturation $pixelKey fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Strobe $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Warm White $pixelKey": {
+      "fineChannelAliases": ["Warm White $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Cold White $pixelKey": {
+      "fineChannelAliases": ["Cold White $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "CIE x $pixelKey": {
+      "fineChannelAliases": ["CIE x $pixelKey fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…0.80"
+      }
+    },
+    "CIE y $pixelKey": {
+      "fineChannelAliases": ["CIE y $pixelKey fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…0.80"
+      }
+    },
+    "Spectrum Control $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "RGB to Max Spectrum"
+      }
+    }
+  },
+  "availableChannels": {
+    "FX": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [28, 39],
+          "type": "Effect",
+          "effectName": "Rainbow"
+        },
+        {
+          "dmxRange": [40, 51],
+          "type": "Effect",
+          "effectName": "Short Circuit"
+        },
+        {
+          "dmxRange": [52, 64],
+          "type": "Effect",
+          "effectName": "Paparazzi"
+        },
+        {
+          "dmxRange": [65, 77],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [78, 90],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [91, 102],
+          "type": "Effect",
+          "effectName": "Emergency Light"
+        },
+        {
+          "dmxRange": [103, 255],
+          "type": "NoFunction",
+          "comment": "Reserved for future use"
+        }
+      ]
+    },
+    "FX Rate": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "FX Size": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSIC+ 8-bit",
+      "shortName": "P1",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 8-bit - 2 Pixels",
+      "shortName": "P1 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 8-bit - 5 Pixels",
+      "shortName": "P1 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 8-bit - 10 Pixels",
+      "shortName": "P1 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 16-bit",
+      "shortName": "P2",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 16-bit - 2 Pixels",
+      "shortName": "P2 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 16-bit - 5 Pixels",
+      "shortName": "P2 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+ 16-bit - 10 Pixels",
+      "shortName": "P2 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 8-bit",
+      "shortName": "P3",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 8-bit - 2 Pixels",
+      "shortName": "P3 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 8-bit - 5 Pixels",
+      "shortName": "P3 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI 8-bit - 10 Pixels",
+      "shortName": "P3 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade + CC 8-bit",
+      "shortName": "P4",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade + CC 8-bit - 2 Pixels",
+      "shortName": "P4 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade + CC 8-bit - 5 Pixels",
+      "shortName": "P4 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade + CC 8-bit - 10 Pixels",
+      "shortName": "P4 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade 8-bit",
+      "shortName": "P5",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade 8-bit - 2 Pixels",
+      "shortName": "P5 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade 8-bit - 5 Pixels",
+      "shortName": "P5 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "XFade 8-bit - 10 Pixels",
+      "shortName": "P5 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 8-bit",
+      "shortName": "P6",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 8-bit - 2 Pixels",
+      "shortName": "P6 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 8-bit - 5 Pixels",
+      "shortName": "P6 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 8-bit - 10 Pixels",
+      "shortName": "P6 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 16-bit",
+      "shortName": "P7",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 16-bit - 2 Pixels",
+      "shortName": "P7 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 16-bit - 5 Pixels",
+      "shortName": "P7 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CCT & RGB 16-bit - 10 Pixels",
+      "shortName": "P7 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 8-bit",
+      "shortName": "P8",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 8-bit - 2 Pixels",
+      "shortName": "P8 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 8-bit - 5 Pixels",
+      "shortName": "P8 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 8-bit - 10 Pixels",
+      "shortName": "P8 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit",
+      "shortName": "P9",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit - 2 Pixels",
+      "shortName": "P9 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit - 5 Pixels",
+      "shortName": "P9 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 8-bit - 10 Pixels",
+      "shortName": "P9 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Saturation $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit",
+      "shortName": "P10",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit - 2 Pixels",
+      "shortName": "P10 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit - 5 Pixels",
+      "shortName": "P10 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "HSIC+FX 16-bit - 10 Pixels",
+      "shortName": "P10 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Hue $pixelKey",
+            "Hue $pixelKey fine",
+            "Saturation $pixelKey",
+            "Saturation $pixelKey fine"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit",
+      "shortName": "P11",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit - 2 Pixels",
+      "shortName": "P11 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit - 5 Pixels",
+      "shortName": "P11 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 8-bit - 10 Pixels",
+      "shortName": "P11 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit",
+      "shortName": "P12",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit - 2 Pixels",
+      "shortName": "P12 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit - 5 Pixels",
+      "shortName": "P12 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "CCT & RGB+FX 16-bit - 10 Pixels",
+      "shortName": "P12 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CCT $pixelKey",
+            "Green-Magenta Point $pixelKey",
+            "Crossfade $pixelKey",
+            "Crossfade $pixelKey fine",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "FX",
+        "FX Rate",
+        "FX Size"
+      ]
+    },
+    {
+      "name": "RGBTD 8-bit",
+      "shortName": "P13",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Cold White $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 8-bit - 2 Pixels",
+      "shortName": "P13 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Cold White $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 8-bit - 5 Pixels",
+      "shortName": "P13 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Cold White $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 8-bit - 10 Pixels",
+      "shortName": "P13 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Cold White $pixelKey",
+            "Warm White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 16-bit",
+      "shortName": "P14",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "Cold White $pixelKey",
+            "Cold White $pixelKey fine",
+            "Warm White $pixelKey",
+            "Warm White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 16-bit - 2 Pixels",
+      "shortName": "P14 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "Cold White $pixelKey",
+            "Cold White $pixelKey fine",
+            "Warm White $pixelKey",
+            "Warm White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 16-bit - 5 Pixels",
+      "shortName": "P14 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "Cold White $pixelKey",
+            "Cold White $pixelKey fine",
+            "Warm White $pixelKey",
+            "Warm White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBTD 16-bit - 10 Pixels",
+      "shortName": "P14 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "Cold White $pixelKey",
+            "Cold White $pixelKey fine",
+            "Warm White $pixelKey",
+            "Warm White $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 16-bit",
+      "shortName": "P15",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 16-bit - 2 Pixels",
+      "shortName": "P15 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 16-bit - 5 Pixels",
+      "shortName": "P15 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB 16-bit - 10 Pixels",
+      "shortName": "P15 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 8-bit",
+      "shortName": "P19",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 8-bit - 2 Pixels",
+      "shortName": "P19 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 8-bit - 5 Pixels",
+      "shortName": "P19 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 8-bit - 10 Pixels",
+      "shortName": "P19 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 16-bit",
+      "shortName": "P20",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 16-bit - 2 Pixels",
+      "shortName": "P20 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 16-bit - 5 Pixels",
+      "shortName": "P20 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy 16-bit - 10 Pixels",
+      "shortName": "P20 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 8-bit",
+      "shortName": "P21",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 8-bit - 2 Pixels",
+      "shortName": "P21 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 8-bit - 5 Pixels",
+      "shortName": "P21 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 8-bit - 10 Pixels",
+      "shortName": "P21 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "CIE x $pixelKey",
+            "CIE y $pixelKey",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 16-bit",
+      "shortName": "P22",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 16-bit - 2 Pixels",
+      "shortName": "P22 - 2 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 16-bit - 5 Pixels",
+      "shortName": "P22 - 5 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/5", "2/5", "3/5", "4/5", "5/5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "xy + S 16-bit - 10 Pixels",
+      "shortName": "P22 - 10 Pixels",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Intensity $pixelKey fine",
+            "CIE x $pixelKey",
+            "CIE x $pixelKey fine",
+            "CIE y $pixelKey",
+            "CIE y $pixelKey fine",
+            "Spectrum Control $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
