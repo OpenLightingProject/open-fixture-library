@@ -34,6 +34,9 @@
     "/manufacturers/{manufacturerKey}": {
       "$ref": "routes/manufacturers/_manufacturerKey.json"
     },
+    "/categories": {
+      "$ref": "routes/categories/index.json"
+    },
     "/plugins": {
       "$ref": "routes/plugins/index.json"
     },

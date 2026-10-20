@@ -5,5 +5,6 @@ export { importFixtureFile } from './routes/fixtures/import.js';
 export { submitFixtures } from './routes/fixtures/submit.js';
 export { getManufacturers } from './routes/manufacturers/index.js';
 export { getManufacturerByKey } from './routes/manufacturers/_manufacturerKey.js';
+export { getCategories } from './routes/categories/index.js';
 export { getPlugins } from './routes/plugins/index.js';
 export { getPluginByKey } from './routes/plugins/_pluginKey.js';

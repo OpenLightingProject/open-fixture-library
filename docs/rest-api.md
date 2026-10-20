@@ -628,6 +628,66 @@ Status Code **404**
 This operation does not require authentication
 </aside>
 
+<h1 id="open-fixture-library-api-categories">categories</h1>
+
+## getCategories
+
+<a id="opIdgetCategories"></a>
+
+`GET /categories`
+
+Returns general information about all fixture categories.
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "name": "string",
+    "fixtureCount": 0
+  }
+]
+```
+
+<h3 id="getcategories-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Category list returned|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
+
+<h3 id="getcategories-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» name|string|true|none|none|
+|» fixtureCount|integer|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 <h1 id="open-fixture-library-api-plugins">plugins</h1>
 
 ## getPlugins
