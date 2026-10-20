@@ -37,6 +37,9 @@
     "/categories": {
       "$ref": "routes/categories/index.json"
     },
+    "/categories/{categoryName}": {
+      "$ref": "routes/categories/_categoryName.json"
+    },
     "/plugins": {
       "$ref": "routes/plugins/index.json"
     },
