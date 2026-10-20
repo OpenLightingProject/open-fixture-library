@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WAC Colorscaping RGBWW Profile",
+  "shortName": "wac-rgbww",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["AP"],
+    "createDate": "2026-10-20",
+    "lastModifyDate": "2026-10-20"
+  },
+  "comment": "RGBWW profile via Colorscaping Smart Transformer.",
+  "links": {
+    "manual": [
+      "https://support.waclighting.com/hc/en-us/articles/22423499428375-How-to-set-DMX-Channels-with-the-MyWAC-App-Colorscaping"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K",
+        "comment": "This channel represents the white LEDs on the fixtures. It is only active when the R, G, and B channels are set to zero."
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
