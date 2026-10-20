@@ -1,0 +1,412 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RUBY - 14CH",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["LELEOR", "Lele"],
+    "createDate": "2026-10-20",
+    "lastModifyDate": "2026-10-20",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-20",
+      "comment": "created by Q Light Controller Plus (version 4.14.1-1)"
+    }
+  },
+  "physical": {
+    "dimensions": [465, 685, 465],
+    "weight": 32.6,
+    "power": 850,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSR 700W",
+      "colorTemperature": 7500,
+      "lumens": 56000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "wheels": {
+    "Color wheel": {
+      "slots": []
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "chiuso",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "lento veloce",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "sequenza",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "casuale",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "aperto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Funzione Colore": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Intensity",
+          "comment": "indicizato"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Intensity",
+          "comment": "indicizato con backOut"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Intensity",
+          "comment": "rotazione avanti"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Intensity",
+          "comment": "rotazione indetro"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Intensity",
+          "comment": "continua"
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "Intensity",
+          "comment": "Color Bounce"
+        },
+        {
+          "dmxRange": [112, 255],
+          "type": "Intensity",
+          "comment": "Da definire"
+        }
+      ]
+    },
+    "Color wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo funzione": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Indicizato"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Indicizato con BackOut"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "rotazione avanti"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "rotazione indietro"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "continuo"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "comment": "Shake"
+        },
+        {
+          "dmxRange": [96, 255],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Da definire"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset GoboWheelFine."
+      }
+    },
+    "Prisma": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Intensity",
+          "comment": "Indicizato con BackOut - open"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Intensity",
+          "comment": "8 facce"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Intensity",
+          "comment": "lineare"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Intensity",
+          "comment": "filtro frost"
+        }
+      ]
+    },
+    "Rotazione Prisma": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Intensity",
+          "comment": "da 0 a 360 gradi"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Intensity",
+          "comment": "rotazione in avanti - da fermo a massimo"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Intensity",
+          "comment": "rotazione indietro  - da fermo a massimo"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Controllo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "comment": "normale"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Intensity",
+          "comment": "reset generale"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Intensity",
+          "comment": "reset pan-tilt"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Intensity",
+          "comment": "reset colore"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Intensity",
+          "comment": "reset gobo"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Intensity",
+          "comment": "reset shutter"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Intensity",
+          "comment": "altri reset"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Intensity",
+          "comment": "display spento"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Intensity",
+          "comment": "display acceso"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Intensity",
+          "comment": "lampada spenta"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Intensity",
+          "comment": "lampada accesa"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Intensity",
+          "comment": "Ibernazione"
+        },
+        {
+          "dmxRange": [96, 255],
+          "type": "Intensity",
+          "comment": "da definire"
+        }
+      ]
+    },
+    "Tilt": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Shutter - dipende dal canale 4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Intensity",
+          "comment": "chiuso"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Intensity",
+          "comment": "lento a veloce"
+        },
+        {
+          "dmxRange": [33, 255],
+          "type": "Intensity",
+          "comment": "aperto"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Shutter",
+        "Shutter - dipende dal canale 4",
+        "Dimmer",
+        "Funzione Colore",
+        "Color wheel",
+        "Gobo funzione",
+        "Gobo",
+        "Prisma",
+        "Rotazione Prisma",
+        "Focus",
+        "Controllo"
+      ]
+    }
+  ]
+}
