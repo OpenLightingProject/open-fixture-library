@@ -699,6 +699,78 @@ Status Code **200**
 |»»» exportPluginVersion|string|false|none|none|
 |»»» exportTests|[string]|false|none|none|
 
+*allOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»» *anonymous*|any|false|none|none|
+
+*oneOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|object|false|none|none|
+
+*xor*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|any|false|none|none|
+
+*not*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» *anonymous*|any|false|none|none|
+
+*anyOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» *anonymous*|object|false|none|none|
+
+*or*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» *anonymous*|object|false|none|none|
+
+*and*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»» *anonymous*|any|false|none|none|
+
+*oneOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|object|false|none|none|
+
+*xor*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»» *anonymous*|any|false|none|none|
+
+*not*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»» *anonymous*|any|false|none|none|
+
+*anyOf*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» *anonymous*|object|false|none|none|
+
+*or*
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|»»»»»» *anonymous*|object|false|none|none|
+
 #### Enumerated Values
 
 |Property|Value|

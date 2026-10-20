@@ -64,12 +64,34 @@
                     "required": [
                       "name"
                     ],
-                    "dependencies": {
-                      "outdated": ["newPlugin"],
-                      "newPlugin": ["outdated"],
-                      "exportPluginVersion": ["exportTests"],
-                      "exportTests": ["exportPluginVersion"]
-                    },
+                    "allOf": [
+                      {
+                        "oneOf": [
+                          { "required": ["outdated", "newPlugin"] },
+                          {
+                            "not": {
+                              "anyOf": [
+                                { "required": ["outdated"] },
+                                { "required": ["newPlugin"] }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "oneOf": [
+                          { "required": ["exportPluginVersion", "exportTests"] },
+                          {
+                            "not": {
+                              "anyOf": [
+                                { "required": ["exportPluginVersion"] },
+                                { "required": ["exportTests"] }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
                     "additionalProperties": false
                   }
                 }
