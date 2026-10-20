@@ -38,8 +38,9 @@
 }
 
 .jump-link {
+  display: inline-flex;
   padding: 8px;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 
 h2 {
