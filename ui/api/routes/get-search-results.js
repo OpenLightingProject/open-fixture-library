@@ -19,7 +19,15 @@ export async function getSearchResults({ request }) {
 
   const results = Object.keys(register.filesystem).filter(
     (key) => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
-  );
+  ).map((key) => {
+    const manufacturer = key.split('/', 1)[0];
+
+    return {
+      key,
+      name: `${manufacturers[manufacturer].name} ${register.filesystem[key].name}`,
+      color: register.colors[manufacturer],
+    };
+  });
   return {
     body: results,
   };

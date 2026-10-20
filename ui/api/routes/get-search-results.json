@@ -43,7 +43,7 @@
     },
     "responses": {
       "200": {
-        "description": "Fixture keys matching the queries.",
+        "description": "Fixture information for fixtures matching the queries.",
         "headers": {
           "Content-Type": {
             "$ref": "../openapi.json#/components/headers/Content-Type"
@@ -60,14 +60,32 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key",
+                  "name",
+                  "color"
+                ],
+                "additionalProperties": false
               }
             },
             "example": [
-              "showtec/phantom-3r-beam",
-              "showtec/phantom-50-led-spot",
-              "showtec/phantom-140-led-spot",
-              "showtec/phantom-matrix-fx"
+              {
+                "key": "showtec/phantom-3r-beam",
+                "name": "Showtec Phantom 3R Beam",
+                "color": "#cca066"
+              }
             ]
           }
         }

@@ -48,10 +48,11 @@ Return search results for given parameters.
 
 ```json
 [
-  "showtec/phantom-3r-beam",
-  "showtec/phantom-50-led-spot",
-  "showtec/phantom-140-led-spot",
-  "showtec/phantom-matrix-fx"
+  {
+    "key": "showtec/phantom-3r-beam",
+    "name": "Showtec Phantom 3R Beam",
+    "color": "#cca066"
+  }
 ]
 ```
 
@@ -67,10 +68,18 @@ Return search results for given parameters.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture keys matching the queries.|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture information for fixtures matching the queries.|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getsearchresults-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|true|none|none|
+|» name|string|true|none|none|
+|» color|string|true|none|none|
 
 Status Code **400**
 
