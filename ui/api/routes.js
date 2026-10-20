@@ -7,5 +7,6 @@ export { getManufacturers } from './routes/manufacturers/index.js';
 export { getManufacturerByKey } from './routes/manufacturers/_manufacturerKey.js';
 export { getCategories } from './routes/categories/index.js';
 export { getCategoryByName } from './routes/categories/_categoryName.js';
+export { getRdmLookup } from './routes/rdm.js';
 export { getPlugins } from './routes/plugins/index.js';
 export { getPluginByKey } from './routes/plugins/_pluginKey.js';

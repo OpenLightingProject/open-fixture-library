@@ -68,7 +68,6 @@
 </template>
 
 <script>
-import register from '../../fixtures/register.json';
 import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
@@ -86,8 +85,22 @@ export default {
     }
 
     const modelId = parseIntOrUndefined(query.modelId);
+    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
 
-    if (!(String(manufacturerId) in register.rdm)) {
+    let rdmLookup;
+    try {
+      rdmLookup = await $axios.$get('/api/v1/rdm', {
+        params: {
+          manufacturerId,
+          ...(modelId !== undefined && { modelId }),
+        },
+      });
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+
+    if (rdmLookup.manufacturerKey === null) {
       return {
         notFound: 'manufacturer',
         searchFor: modelId === undefined ? 'manufacturer' : 'fixture',
@@ -96,27 +109,16 @@ export default {
       };
     }
 
-    const rdmManufacturer = register.rdm[String(manufacturerId)];
-    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
-
-    if (modelId === undefined || String(modelId) in rdmManufacturer.models) {
-      return redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect);
-    }
-
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
-    }
-    catch (requestError) {
-      return error(requestError);
+    if (modelId === undefined || rdmLookup.fixtureKey !== null) {
+      return redirectToCorrectPage(rdmLookup, personalityIndex, redirect);
     }
 
     return {
       notFound: 'fixture',
       searchFor: 'fixture',
       manufacturerId,
-      manufacturerKey: rdmManufacturer.key,
-      manufacturerName: manufacturers[rdmManufacturer.key].name,
+      manufacturerKey: rdmLookup.manufacturerKey,
+      manufacturerName: rdmLookup.manufacturerName,
       modelId,
     };
   },
@@ -163,19 +165,18 @@ function parseIntOrUndefined(string) {
 }
 
 /**
- * @param {object} rdmManufacturer - The manufacturer object that matches the provided RDM manufacturer id.
- * @param {number | undefined} modelId - The provided RDM model id, or undefined.
+ * @param {object} rdmLookup - The API result matching the provided RDM IDs.
  * @param {number | undefined} personalityIndex - The provided RDM personality index, or undefined.
  * @param {(code: number, path: string) => void} redirect - The redirect function to be called.
  */
-function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect) {
-  if (modelId === undefined) {
-    redirect(301, `/${rdmManufacturer.key}`);
+function redirectToCorrectPage(rdmLookup, personalityIndex, redirect) {
+  if (rdmLookup.fixtureKey === null) {
+    redirect(301, `/${rdmLookup.manufacturerKey}`);
     return;
   }
 
   const locationHash = personalityIndex === undefined ? '' : `#rdm-personality-${personalityIndex}`;
 
-  redirect(301, `/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`);
+  redirect(301, `/${rdmLookup.manufacturerKey}/${rdmLookup.fixtureKey}${locationHash}`);
 }
 </script>

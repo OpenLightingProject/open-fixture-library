@@ -40,6 +40,9 @@
     "/categories/{categoryName}": {
       "$ref": "routes/categories/_categoryName.json"
     },
+    "/rdm": {
+      "$ref": "routes/rdm.json"
+    },
     "/plugins": {
       "$ref": "routes/plugins/index.json"
     },

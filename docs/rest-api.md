@@ -771,6 +771,73 @@ Status Code **404**
 This operation does not require authentication
 </aside>
 
+<h1 id="open-fixture-library-api-rdm">rdm</h1>
+
+## getRdmLookup
+
+<a id="opIdgetRdmLookup"></a>
+
+`GET /rdm`
+
+Returns the manufacturer and fixture matching the given RDM IDs.
+
+<h3 id="getrdmlookup-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|manufacturerId|query|integer|true|none|
+|modelId|query|integer|false|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "manufacturerKey": "string",
+  "manufacturerName": "string",
+  "fixtureKey": "string"
+}
+```
+
+<h3 id="getrdmlookup-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|RDM lookup result returned|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
+
+<h3 id="getrdmlookup-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» manufacturerKey|string¦null|true|none|none|
+|» manufacturerName|string¦null|true|none|none|
+|» fixtureKey|string¦null|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 <h1 id="open-fixture-library-api-plugins">plugins</h1>
 
 ## getPlugins
