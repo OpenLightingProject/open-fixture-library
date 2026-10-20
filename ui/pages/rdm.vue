@@ -75,9 +75,9 @@ export default {
     LabeledInput,
   },
   async asyncData({ query, $axios, redirect, error }) {
-    const manufacturerId = parseIntOrUndefined(query.manufacturerId);
+    const manufacturerId = parseIntOrNull(query.manufacturerId);
 
-    if (manufacturerId === undefined) {
+    if (manufacturerId === null) {
       return {
         notFound: null,
         searchFor: 'nothing',
@@ -88,15 +88,15 @@ export default {
       };
     }
 
-    const modelId = parseIntOrUndefined(query.modelId);
-    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
+    const modelId = parseIntOrNull(query.modelId);
+    const personalityIndex = parseIntOrNull(query.personalityIndex);
 
     let rdmLookup;
     try {
       rdmLookup = await $axios.$get('/api/v1/rdm', {
         params: {
           manufacturerId,
-          ...(modelId !== undefined && { modelId }),
+          ...(modelId !== null && { modelId }),
         },
       });
     }
@@ -107,15 +107,15 @@ export default {
     if (rdmLookup.manufacturerKey === null) {
       return {
         notFound: 'manufacturer',
-        searchFor: modelId === undefined ? 'manufacturer' : 'fixture',
+        searchFor: modelId === null ? 'manufacturer' : 'fixture',
         manufacturerId,
         manufacturerKey: null,
         manufacturerName: null,
-        modelId: modelId ?? null,
+        modelId,
       };
     }
 
-    if (modelId === undefined || rdmLookup.fixtureKey !== null) {
+    if (modelId === null || rdmLookup.fixtureKey !== null) {
       return redirectToCorrectPage(rdmLookup, personalityIndex, redirect);
     }
 
@@ -172,16 +172,16 @@ export default {
 
 /**
  * @param {string | undefined} string - The string to parse.
- * @returns {number | undefined} The parsed number, or undefined if the string can't be parsed.
+ * @returns {number | null} The parsed number, or null if the string can't be parsed.
  */
-function parseIntOrUndefined(string) {
+function parseIntOrNull(string) {
   const number = Number.parseInt(string, 10);
-  return Number.isNaN(number) ? undefined : number;
+  return Number.isNaN(number) ? null : number;
 }
 
 /**
  * @param {object} rdmLookup - The API result matching the provided RDM IDs.
- * @param {number | undefined} personalityIndex - The provided RDM personality index, or undefined.
+ * @param {number | null} personalityIndex - The provided RDM personality index, or null.
  * @param {(code: number, path: string) => void} redirect - The redirect function to be called.
  */
 function redirectToCorrectPage(rdmLookup, personalityIndex, redirect) {
@@ -190,7 +190,7 @@ function redirectToCorrectPage(rdmLookup, personalityIndex, redirect) {
     return;
   }
 
-  const locationHash = personalityIndex === undefined ? '' : `#rdm-personality-${personalityIndex}`;
+  const locationHash = personalityIndex === null ? '' : `#rdm-personality-${personalityIndex}`;
 
   redirect(301, `/${rdmLookup.manufacturerKey}/${rdmLookup.fixtureKey}${locationHash}`);
 }
