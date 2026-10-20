@@ -6,7 +6,7 @@
 
       <p>Find a fixture definition or manufacturer by entering its RDM IDs.</p>
 
-      <form action="/rdm" method="get">
+      <form action="/rdm" method="get" @submit.prevent="onSubmit($event)">
         <LabeledInput label="Manufacturer ID">
           <input
             type="number"
@@ -81,6 +81,10 @@ export default {
       return {
         notFound: null,
         searchFor: 'nothing',
+        manufacturerId: null,
+        manufacturerKey: null,
+        manufacturerName: null,
+        modelId: null,
       };
     }
 
@@ -105,7 +109,9 @@ export default {
         notFound: 'manufacturer',
         searchFor: modelId === undefined ? 'manufacturer' : 'fixture',
         manufacturerId,
-        modelId,
+        manufacturerKey: null,
+        manufacturerName: null,
+        modelId: modelId ?? null,
       };
     }
 
@@ -141,7 +147,7 @@ export default {
         return '/fixture-editor';
       }
 
-      const shouldUseExistingManufacturer = this.manufacturerKey !== undefined;
+      const shouldUseExistingManufacturer = this.manufacturerKey !== null;
 
       const prefillObject = {
         useExistingManufacturer: shouldUseExistingManufacturer,
@@ -151,6 +157,15 @@ export default {
       };
 
       return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
+    },
+  },
+  watchQuery: ['manufacturerId', 'modelId', 'personalityIndex'],
+  methods: {
+    onSubmit(event) {
+      this.$router.push({
+        path: this.$route.path,
+        query: Object.fromEntries(new FormData(event.target)),
+      });
     },
   },
 };
