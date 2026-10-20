@@ -653,7 +653,7 @@ Returns general information about import and export plugins.
   "data": {
     "property1": {
       "name": "string",
-      "outdated": null,
+      "outdated": true,
       "newPlugin": "string",
       "importPluginVersion": "string",
       "exportPluginVersion": "string",
@@ -663,7 +663,7 @@ Returns general information about import and export plugins.
     },
     "property2": {
       "name": "string",
-      "outdated": null,
+      "outdated": true,
       "newPlugin": "string",
       "importPluginVersion": "string",
       "exportPluginVersion": "string",
@@ -693,11 +693,17 @@ Status Code **200**
 |» data|object|true|none|none|
 |»» **additionalProperties**|object|false|none|none|
 |»»» name|string|true|none|none|
-|»»» outdated|any|false|none|none|
+|»»» outdated|boolean|false|none|none|
 |»»» newPlugin|string|false|none|none|
 |»»» importPluginVersion|string|false|none|none|
 |»»» exportPluginVersion|string|false|none|none|
 |»»» exportTests|[string]|false|none|none|
+
+#### Enumerated Values
+
+|Property|Value|
+|---|---|
+|outdated|true|
 
 Status Code **400**
 

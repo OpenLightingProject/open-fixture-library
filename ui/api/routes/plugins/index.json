@@ -42,7 +42,8 @@
                         "type": "string"
                       },
                       "outdated": {
-                        "constant": true
+                        "type": "boolean",
+                        "enum": [true]
                       },
                       "newPlugin": {
                         "type": "string"
