@@ -55,13 +55,39 @@ Return search results for given parameters.
 ]
 ```
 
+> 400 Response
+
+```json
+{
+  "error": "Some error message."
+}
+```
+
 <h3 id="getsearchresults-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture keys matching the queries.|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getsearchresults-responseschema">Response Schema</h3>
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -117,11 +143,20 @@ Takes the input from the client side script and creates a GitHub issue with the 
 }
 ```
 
+> 400 Response
+
+```json
+{
+  "error": "Some error message."
+}
+```
+
 <h3 id="createfeedbackissue-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Issue created or error occured.|Inline|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Issue created or error occurred.|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="createfeedbackissue-responseschema">Response Schema</h3>
 
@@ -131,6 +166,23 @@ Status Code **201**
 |---|---|---|---|---|
 |» issueUrl|string¦null|true|none|none|
 |» error|string¦null|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|201|Content-Type|string||The response is JSON.|
+|201|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|201|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -206,6 +258,17 @@ Status Code **400**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|201|Content-Type|string||The response is JSON.|
+|201|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|201|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -291,6 +354,17 @@ Status Code **400**
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|201|Content-Type|string||The response is JSON.|
+|201|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|201|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -378,6 +452,17 @@ Status Code **400**
 |---|---|---|---|---|
 |» error|string|true|none|none|
 
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|201|Content-Type|string||The response is JSON.|
+|201|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|201|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+
 <aside class="success">
 This operation does not require authentication
 </aside>
@@ -416,6 +501,7 @@ Returns general information about all manufacturers.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getmanufacturers-responseschema">Response Schema</h3>
 
@@ -427,6 +513,23 @@ Status Code **200**
 |»» name|string|true|none|none|
 |»» fixtureCount|integer|true|none|none|
 |»» color|string|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -475,6 +578,7 @@ Returns information about a specific manufacturer.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
 
 <h3 id="getmanufacturerbykey-responseschema">Response Schema</h3>
@@ -494,11 +598,31 @@ Status Code **200**
 |»» name|string|true|none|none|
 |»» categories|[string]|false|none|none|
 
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
 Status Code **404**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+|404|Content-Type|string||The response is JSON.|
+|404|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|404|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -556,6 +680,7 @@ Returns general information about import and export plugins.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getplugins-responseschema">Response Schema</h3>
 
@@ -573,6 +698,23 @@ Status Code **200**
 |»»» importPluginVersion|string|false|none|none|
 |»»» exportPluginVersion|string|false|none|none|
 |»»» exportTests|[string]|false|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -633,6 +775,7 @@ Returns information about a specific import and export plugin. If an outdated pl
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
 
 <h3 id="getpluginbykey-responseschema">Response Schema</h3>
@@ -659,11 +802,31 @@ Status Code **200**
 |» exportPluginVersion|string|false|none|none|
 |» importPluginVersion|string|false|none|none|
 
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
 Status Code **404**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+|404|Content-Type|string||The response is JSON.|
+|404|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|404|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication

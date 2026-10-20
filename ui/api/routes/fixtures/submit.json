@@ -35,6 +35,17 @@
     "responses": {
       "201": {
         "description": "OK",
+        "headers": {
+          "Content-Type": {
+            "$ref": "../../openapi.json#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "../../openapi.json#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "../../openapi.json#/components/headers/Vary"
+          }
+        },
         "content": {
           "application/json": {
             "schema": {

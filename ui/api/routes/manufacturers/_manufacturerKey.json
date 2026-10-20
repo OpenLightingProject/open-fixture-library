@@ -16,6 +16,17 @@
     "tags": ["manufacturers"],
     "responses": {
       "200": {
+        "headers": {
+          "Content-Type": {
+            "$ref": "../../openapi.json#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "../../openapi.json#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "../../openapi.json#/components/headers/Vary"
+          }
+        },
         "content": {
           "application/json": {
             "schema": {
@@ -75,6 +86,9 @@
             }
           }
         }
+      },
+      "400": {
+        "$ref": "../../openapi.json#/components/responses/400-BadRequestError"
       },
       "404": {
         "$ref": "../../openapi.json#/components/responses/404-NotFoundError"

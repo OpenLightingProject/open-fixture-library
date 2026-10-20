@@ -42,6 +42,30 @@
     }
   },
   "components": {
+    "headers": {
+      "Content-Type": {
+        "description": "The response is JSON.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": ["application/json"]
+        }
+      },
+      "Access-Control-Allow-Origin": {
+        "description": "Added when the request includes an Origin header or the origin is not allowed.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Vary": {
+        "description": "Indicates that the response varies by Origin.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
     "schemas": {
       "FixtureCreateResult": {
         "type": "object",
@@ -106,6 +130,17 @@
     "responses": {
       "201-FixtureCreateResult": {
         "description": "Fixture successfully imported",
+        "headers": {
+          "Content-Type": {
+            "$ref": "#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "#/components/headers/Vary"
+          }
+        },
         "content": {
           "application/json": {
             "schema": {
@@ -116,6 +151,17 @@
       },
       "400-BadRequestError": {
         "description": "Bad request",
+        "headers": {
+          "Content-Type": {
+            "$ref": "#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "#/components/headers/Vary"
+          }
+        },
         "content": {
           "application/json": {
             "schema": {
@@ -126,6 +172,17 @@
       },
       "404-NotFoundError": {
         "description": "Not Found",
+        "headers": {
+          "Content-Type": {
+            "$ref": "#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "#/components/headers/Vary"
+          }
+        },
         "content": {
           "application/json": {
             "schema": {
