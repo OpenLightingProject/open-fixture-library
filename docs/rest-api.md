@@ -467,6 +467,158 @@ Status Code **400**
 This operation does not require authentication
 </aside>
 
+## getLastUpdatedFixtures
+
+<a id="opIdgetLastUpdatedFixtures"></a>
+
+`GET /fixtures/last-updated`
+
+Returns the five most recently updated fixtures.
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "key": "string",
+    "name": "string",
+    "action": "string",
+    "date": "2019-08-24",
+    "color": "string"
+  }
+]
+```
+
+<h3 id="getlastupdatedfixtures-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Recently updated fixtures returned|Inline|
+
+<h3 id="getlastupdatedfixtures-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|true|none|none|
+|» name|string|true|none|none|
+|» action|string|true|none|none|
+|» date|string(date)|true|none|none|
+|» color|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getFixtureCount
+
+<a id="opIdgetFixtureCount"></a>
+
+`GET /fixtures/count`
+
+Returns the number of fixtures in the library.
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 0
+}
+```
+
+<h3 id="getfixturecount-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture count returned|Inline|
+
+<h3 id="getfixturecount-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="open-fixture-library-api-contributors">contributors</h1>
+
+## getRecentContributors
+
+<a id="opIdgetRecentContributors"></a>
+
+`GET /contributors/recent`
+
+Returns the five most recent contributors.
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "name": "string",
+    "fixtureCount": 0,
+    "latestFixtureKey": "string",
+    "latestFixtureName": "string"
+  }
+]
+```
+
+<h3 id="getrecentcontributors-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Recent contributors returned|Inline|
+
+<h3 id="getrecentcontributors-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» name|string|true|none|none|
+|» fixtureCount|integer|true|none|none|
+|» latestFixtureKey|string|true|none|none|
+|» latestFixtureName|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 <h1 id="open-fixture-library-api-manufacturers">manufacturers</h1>
 
 ## getManufacturers

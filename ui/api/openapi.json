@@ -28,6 +28,15 @@
     "/fixtures/submit": {
       "$ref": "routes/fixtures/submit.json"
     },
+    "/fixtures/last-updated": {
+      "$ref": "routes/fixtures/last-updated.json"
+    },
+    "/fixtures/count": {
+      "$ref": "routes/fixtures/count.json"
+    },
+    "/contributors/recent": {
+      "$ref": "routes/contributors/recent.json"
+    },
     "/manufacturers": {
       "$ref": "routes/manufacturers/index.json"
     },

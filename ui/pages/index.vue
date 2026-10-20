@@ -27,10 +27,8 @@
               {{ fixture.name }}
               <div class="hint">
                 {{ fixture.action }}
-                <time
-                  :datetime="fixture.date.toISOString()"
-                  :title="fixture.date.toISOString()">
-                  {{ fixture.date.toISOString().replace(/T.*?$/, ``) }}
+                <time :datetime="fixture.date">
+                  {{ fixture.date }}
                 </time>
               </div>
 
@@ -52,7 +50,7 @@
             <NuxtLink :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">
-                {{ contributor.number }} fixture{{ contributor.number === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
+                {{ contributor.fixtureCount }} fixture{{ contributor.fixtureCount === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
               </div>
             </NuxtLink>
           </li>
@@ -86,7 +84,6 @@
 </template>
 
 <script>
-import register from '../../fixtures/register.json';
 import DownloadButton from '../components/DownloadButton.vue';
 import FixtureHeader from '../components/FixtureHeader.vue';
 
@@ -96,24 +93,23 @@ export default {
     FixtureHeader,
   },
   async asyncData({ $axios, error }) {
-    let manufacturers;
+    let fixtureCount;
+    let lastUpdated;
+    let recentContributors;
     try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+      const [fixtureCountResponse, updatedFixtures, contributors] = await Promise.all([
+        $axios.$get('/api/v1/fixtures/count'),
+        $axios.$get('/api/v1/fixtures/last-updated'),
+        $axios.$get('/api/v1/contributors/recent'),
+      ]);
+      fixtureCount = fixtureCountResponse.count;
+      lastUpdated = updatedFixtures;
+      recentContributors = contributors;
     }
     catch (requestError) {
       return error(requestError);
     }
-    return { manufacturers };
-  },
-  data() {
-    return {
-      lastUpdated: [],
-      recentContributors: [],
-
-      fixtureCount: Object.keys(register.filesystem).filter(
-        (fixtureKey) => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
-      ).length,
-    };
+    return { fixtureCount, lastUpdated, recentContributors };
   },
   head() {
     return {
@@ -149,52 +145,5 @@ export default {
       ],
     };
   },
-  created() {
-    this.lastUpdated = register.lastUpdated.slice(0, 5).map(
-      (fixtureKey) => ({
-        key: fixtureKey,
-        name: this.getFixtureName(fixtureKey),
-        action: register.filesystem[fixtureKey].lastAction,
-        date: new Date(register.filesystem[fixtureKey].lastActionDate),
-        color: register.colors[fixtureKey.split('/', 1)[0]],
-      }),
-    );
-
-    this.recentContributors = Object.keys(register.contributors).slice(0, 5).map(
-      (contributor) => {
-        const latestFixtureKey = getLatestFixtureKey(contributor);
-
-        return {
-          name: contributor,
-          number: register.contributors[contributor].fixtures.length,
-          latestFixtureKey,
-          latestFixtureName: this.getFixtureName(latestFixtureKey),
-        };
-      },
-    );
-  },
-  methods: {
-    /**
-     * @param {string} fixtureKey - The combined manufacturer / fixture key.
-     * @returns {string} The manufacturer and fixture names, separated by a space.
-     */
-    getFixtureName(fixtureKey) {
-      const manufacturerKey = fixtureKey.split('/', 1)[0];
-      const manufacturerName = this.manufacturers[manufacturerKey].name;
-      const fixtureName = register.filesystem[fixtureKey].name;
-
-      return `${manufacturerName} ${fixtureName}`;
-    },
-  },
 };
-
-/**
- * @param {string} contributor - The contributor name.
- * @returns {string} The combined key of the latest fixture contributed to by this contributor.
- */
-function getLatestFixtureKey(contributor) {
-  return register.lastUpdated.find(
-    (key) => register.contributors[contributor].fixtures.includes(key),
-  );
-}
 </script>
