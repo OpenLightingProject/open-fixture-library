@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url';
 import { styleText } from 'util';
+import addFormats from 'ajv-formats';
 import cors from 'cors';
 import express from 'express';
 import { OpenAPIBackend } from 'openapi-backend';
@@ -67,6 +68,10 @@ const api = new OpenAPIBackend({
     formats: {
       base64: base64Regex,
     },
+  },
+  customizeAjv(ajv) {
+    addFormats(ajv);
+    return ajv;
   },
   handlers: {
     ...routeHandlers,

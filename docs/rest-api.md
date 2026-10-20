@@ -164,7 +164,7 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» issueUrl|string¦null|true|none|none|
+|» issueUrl|string(uri)¦null|true|none|none|
 |» error|string¦null|true|none|none|
 
 Status Code **400**
@@ -427,7 +427,7 @@ Creates a GitHub pull request with the given fixture data. Includes warnings, er
 
 ```json
 {
-  "pullRequestUrl": "string"
+  "pullRequestUrl": "http://example.com"
 }
 ```
 
@@ -444,7 +444,7 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» pullRequestUrl|string|true|none|none|
+|» pullRequestUrl|string(uri)|true|none|none|
 
 Status Code **400**
 
@@ -558,7 +558,7 @@ Returns information about a specific manufacturer.
   "key": "string",
   "name": "string",
   "comment": "string",
-  "website": "string",
+  "website": "http://example.com",
   "rdmId": 0,
   "color": "string",
   "fixtures": [
@@ -590,7 +590,7 @@ Status Code **200**
 |» key|string|true|none|none|
 |» name|string|true|none|none|
 |» comment|string|false|none|none|
-|» website|string|false|none|none|
+|» website|string(uri)|false|none|none|
 |» rdmId|integer|false|none|none|
 |» color|string|true|none|none|
 |» fixtures|[object]|true|none|none|
@@ -1036,8 +1036,8 @@ Returns information about a specific import and export plugin. If an outdated pl
   },
   "description": "string",
   "links": {
-    "property1": "string",
-    "property2": "string"
+    "property1": "http://example.com",
+    "property2": "http://example.com"
   },
   "fixtureUsage": "string",
   "fileLocations": {
@@ -1078,7 +1078,7 @@ Status Code **200**
 |»» **additionalProperties**|string|false|none|none|
 |» description|string|true|none|none|
 |» links|object|true|none|none|
-|»» **additionalProperties**|string|false|none|none|
+|»» **additionalProperties**|string(uri)|false|none|none|
 |» fixtureUsage|string|false|none|none|
 |» fileLocations|object|false|none|none|
 |»» **additionalProperties**|object|false|none|none|
