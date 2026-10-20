@@ -1,0 +1,37 @@
+{
+  "get": {
+    "operationId": "getFixtureCount",
+    "description": "Returns the number of fixtures in the library.",
+    "tags": ["fixtures"],
+    "responses": {
+      "200": {
+        "description": "Fixture count returned",
+        "headers": {
+          "Content-Type": {
+            "$ref": "../../openapi.json#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "../../openapi.json#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "../../openapi.json#/components/headers/Vary"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "required": ["count"],
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

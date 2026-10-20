@@ -48,10 +48,11 @@ Return search results for given parameters.
 
 ```json
 [
-  "showtec/phantom-3r-beam",
-  "showtec/phantom-50-led-spot",
-  "showtec/phantom-140-led-spot",
-  "showtec/phantom-matrix-fx"
+  {
+    "key": "showtec/phantom-3r-beam",
+    "name": "Showtec Phantom 3R Beam",
+    "color": "#cca066"
+  }
 ]
 ```
 
@@ -67,10 +68,18 @@ Return search results for given parameters.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture keys matching the queries.|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture information for fixtures matching the queries.|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getsearchresults-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|true|none|none|
+|» name|string|true|none|none|
+|» color|string|true|none|none|
 
 Status Code **400**
 
@@ -164,7 +173,7 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» issueUrl|string¦null|true|none|none|
+|» issueUrl|string(uri)¦null|true|none|none|
 |» error|string¦null|true|none|none|
 
 Status Code **400**
@@ -427,7 +436,7 @@ Creates a GitHub pull request with the given fixture data. Includes warnings, er
 
 ```json
 {
-  "pullRequestUrl": "string"
+  "pullRequestUrl": "http://example.com"
 }
 ```
 
@@ -444,7 +453,7 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» pullRequestUrl|string|true|none|none|
+|» pullRequestUrl|string(uri)|true|none|none|
 
 Status Code **400**
 
@@ -462,6 +471,158 @@ Status Code **400**
 |400|Content-Type|string||The response is JSON.|
 |400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
 |400|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getLastUpdatedFixtures
+
+<a id="opIdgetLastUpdatedFixtures"></a>
+
+`GET /fixtures/last-updated`
+
+Returns the five most recently updated fixtures.
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "key": "string",
+    "name": "string",
+    "action": "string",
+    "date": "2019-08-24",
+    "color": "string"
+  }
+]
+```
+
+<h3 id="getlastupdatedfixtures-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Recently updated fixtures returned|Inline|
+
+<h3 id="getlastupdatedfixtures-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|true|none|none|
+|» name|string|true|none|none|
+|» action|string|true|none|none|
+|» date|string(date)|true|none|none|
+|» color|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getFixtureCount
+
+<a id="opIdgetFixtureCount"></a>
+
+`GET /fixtures/count`
+
+Returns the number of fixtures in the library.
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "count": 0
+}
+```
+
+<h3 id="getfixturecount-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Fixture count returned|Inline|
+
+<h3 id="getfixturecount-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» count|integer|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="open-fixture-library-api-contributors">contributors</h1>
+
+## getRecentContributors
+
+<a id="opIdgetRecentContributors"></a>
+
+`GET /contributors/recent`
+
+Returns the five most recent contributors.
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "name": "string",
+    "fixtureCount": 0,
+    "latestFixtureKey": "string",
+    "latestFixtureName": "string"
+  }
+]
+```
+
+<h3 id="getrecentcontributors-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Recent contributors returned|Inline|
+
+<h3 id="getrecentcontributors-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» name|string|true|none|none|
+|» fixtureCount|integer|true|none|none|
+|» latestFixtureKey|string|true|none|none|
+|» latestFixtureName|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -558,7 +719,7 @@ Returns information about a specific manufacturer.
   "key": "string",
   "name": "string",
   "comment": "string",
-  "website": "string",
+  "website": "http://example.com",
   "rdmId": 0,
   "color": "string",
   "fixtures": [
@@ -568,6 +729,12 @@ Returns information about a specific manufacturer.
       "categories": [
         "string"
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "key": "string",
+      "redirectTo": "string"
     }
   ]
 }
@@ -590,13 +757,16 @@ Status Code **200**
 |» key|string|true|none|none|
 |» name|string|true|none|none|
 |» comment|string|false|none|none|
-|» website|string|false|none|none|
+|» website|string(uri)|false|none|none|
 |» rdmId|integer|false|none|none|
 |» color|string|true|none|none|
 |» fixtures|[object]|true|none|none|
 |»» key|string|true|none|none|
 |»» name|string|true|none|none|
-|»» categories|[string]|false|none|none|
+|»» categories|[string]|true|none|none|
+|» redirects|[object]|true|none|none|
+|»» key|string|true|none|none|
+|»» redirectTo|string|true|none|none|
 
 Status Code **400**
 
@@ -623,6 +793,216 @@ Status Code **404**
 |404|Content-Type|string||The response is JSON.|
 |404|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
 |404|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="open-fixture-library-api-categories">categories</h1>
+
+## getCategories
+
+<a id="opIdgetCategories"></a>
+
+`GET /categories`
+
+Returns general information about all fixture categories.
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "name": "string",
+    "fixtureCount": 0
+  }
+]
+```
+
+<h3 id="getcategories-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Category list returned|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
+
+<h3 id="getcategories-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» name|string|true|none|none|
+|» fixtureCount|integer|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getCategoryByName
+
+<a id="opIdgetCategoryByName"></a>
+
+`GET /categories/{categoryName}`
+
+Returns fixture information for a specific category.
+
+<h3 id="getcategorybyname-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|categoryName|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "fixtures": [
+    {
+      "key": "string",
+      "name": "string",
+      "categories": [
+        "string"
+      ],
+      "color": "string"
+    }
+  ]
+}
+```
+
+<h3 id="getcategorybyname-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Category fixtures returned|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
+
+<h3 id="getcategorybyname-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» fixtures|[object]|true|none|none|
+|»» key|string|true|none|none|
+|»» name|string|true|none|none|
+|»» categories|[string]|true|none|none|
+|»» color|string|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+Status Code **404**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
+|404|Content-Type|string||The response is JSON.|
+|404|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|404|Vary|string||Indicates that the response varies by Origin.|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="open-fixture-library-api-rdm">rdm</h1>
+
+## getRdmLookup
+
+<a id="opIdgetRdmLookup"></a>
+
+`GET /rdm`
+
+Returns the manufacturer and fixture matching the given RDM IDs.
+
+<h3 id="getrdmlookup-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|manufacturerId|query|integer|true|none|
+|modelId|query|integer|false|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "manufacturerKey": "string",
+  "manufacturerName": "string",
+  "fixtureKey": "string"
+}
+```
+
+<h3 id="getrdmlookup-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|RDM lookup result returned|Inline|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
+
+<h3 id="getrdmlookup-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» manufacturerKey|string¦null|true|none|none|
+|» manufacturerName|string¦null|true|none|none|
+|» fixtureKey|string¦null|true|none|none|
+
+Status Code **400**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+### Response Headers
+
+|Status|Header|Type|Format|Description|
+|---|---|---|---|---|
+|200|Content-Type|string||The response is JSON.|
+|200|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|200|Vary|string||Indicates that the response varies by Origin.|
+|400|Content-Type|string||The response is JSON.|
+|400|Access-Control-Allow-Origin|string||Added when the request includes an Origin header or the origin is not allowed.|
+|400|Vary|string||Indicates that the response varies by Origin.|
 
 <aside class="success">
 This operation does not require authentication
@@ -826,8 +1206,8 @@ Returns information about a specific import and export plugin. If an outdated pl
   },
   "description": "string",
   "links": {
-    "property1": "string",
-    "property2": "string"
+    "property1": "http://example.com",
+    "property2": "http://example.com"
   },
   "fixtureUsage": "string",
   "fileLocations": {
@@ -868,7 +1248,7 @@ Status Code **200**
 |»» **additionalProperties**|string|false|none|none|
 |» description|string|true|none|none|
 |» links|object|true|none|none|
-|»» **additionalProperties**|string|false|none|none|
+|»» **additionalProperties**|string(uri)|false|none|none|
 |» fixtureUsage|string|false|none|none|
 |» fileLocations|object|false|none|none|
 |»» **additionalProperties**|object|false|none|none|

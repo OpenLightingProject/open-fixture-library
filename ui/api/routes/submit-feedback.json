@@ -67,6 +67,7 @@
               "properties": {
                 "issueUrl": {
                   "type": "string",
+                  "format": "uri",
                   "nullable": true
                 },
                 "error": {

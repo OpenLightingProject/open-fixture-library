@@ -43,7 +43,8 @@
                   "type": "string"
                 },
                 "website": {
-                  "type": "string"
+                  "type": "string",
+                  "format": "uri"
                 },
                 "rdmId": {
                   "type": "integer"
@@ -71,7 +72,27 @@
                     },
                     "required": [
                       "key",
-                      "name"
+                      "name",
+                      "categories"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "redirects": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "redirectTo": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "redirectTo"
                     ],
                     "additionalProperties": false
                   }
@@ -81,7 +102,8 @@
                 "key",
                 "name",
                 "color",
-                "fixtures"
+                "fixtures",
+                "redirects"
               ],
               "additionalProperties": false
             }
