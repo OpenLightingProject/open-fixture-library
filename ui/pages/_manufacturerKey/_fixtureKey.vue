@@ -78,7 +78,6 @@
 </style>
 
 <script>
-import register from '../../../fixtures/register.json';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
@@ -100,25 +99,33 @@ export default {
     FixtureHeader,
     HelpWantedDialog,
   },
-  validate({ params }) {
-    return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
-  },
   async asyncData({ params, query, $axios, redirect, error }) {
     const { manufacturerKey, fixtureKey } = params;
 
-    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
-    if (redirectTo) {
-      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    let manufacturerJson;
+    try {
+      manufacturerJson = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+
+    const redirectFixture = manufacturerJson.redirects.find(({ key }) => key === fixtureKey);
+    if (redirectFixture) {
+      return redirect(302, `/${redirectFixture.redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    }
+
+    const fixture = manufacturerJson.fixtures.find(({ key }) => key === fixtureKey);
+    if (!fixture) {
+      return error({ statusCode: 404, message: 'Fixture not found' });
     }
 
     let fixtureJson;
-    let manufacturerJson;
     let plugins;
     let redirectObject;
     try {
-      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
+      [fixtureJson, plugins, redirectObject] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
-        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get('/api/v1/plugins'),
         fetchRedirectObject($axios, query.redirectFrom),
       ]);

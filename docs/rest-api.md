@@ -730,6 +730,12 @@ Returns information about a specific manufacturer.
         "string"
       ]
     }
+  ],
+  "redirects": [
+    {
+      "key": "string",
+      "redirectTo": "string"
+    }
   ]
 }
 ```
@@ -758,6 +764,9 @@ Status Code **200**
 |»» key|string|true|none|none|
 |»» name|string|true|none|none|
 |»» categories|[string]|false|none|none|
+|» redirects|[object]|true|none|none|
+|»» key|string|true|none|none|
+|»» redirectTo|string|true|none|none|
 
 Status Code **400**
 

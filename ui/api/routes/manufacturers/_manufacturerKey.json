@@ -76,13 +76,33 @@
                     ],
                     "additionalProperties": false
                   }
+                },
+                "redirects": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "redirectTo": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "redirectTo"
+                    ],
+                    "additionalProperties": false
+                  }
                 }
               },
               "required": [
                 "key",
                 "name",
                 "color",
-                "fixtures"
+                "fixtures",
+                "redirects"
               ],
               "additionalProperties": false
             }
