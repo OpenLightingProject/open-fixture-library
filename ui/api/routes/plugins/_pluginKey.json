@@ -16,6 +16,7 @@
     "tags": ["plugins"],
     "responses": {
       "200": {
+        "description": "Plugin details returned",
         "headers": {
           "Content-Type": {
             "$ref": "../../openapi.json#/components/headers/Content-Type"

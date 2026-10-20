@@ -435,7 +435,7 @@ Creates a GitHub pull request with the given fixture data. Includes warnings, er
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|OK|Inline|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|GitHub pull request created|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="submitfixtures-responseschema">Response Schema</h3>
@@ -500,7 +500,7 @@ Returns general information about all manufacturers.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Manufacturer list returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getmanufacturers-responseschema">Response Schema</h3>
@@ -577,7 +577,7 @@ Returns information about a specific manufacturer.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Manufacturer details returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
 
@@ -679,7 +679,7 @@ Returns general information about import and export plugins.
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Plugin list returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 
 <h3 id="getplugins-responseschema">Response Schema</h3>
@@ -852,7 +852,7 @@ Returns information about a specific import and export plugin. If an outdated pl
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Plugin details returned|Inline|
 |400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad request|Inline|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
 

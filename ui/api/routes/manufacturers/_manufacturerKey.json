@@ -16,6 +16,7 @@
     "tags": ["manufacturers"],
     "responses": {
       "200": {
+        "description": "Manufacturer details returned",
         "headers": {
           "Content-Type": {
             "$ref": "../../openapi.json#/components/headers/Content-Type"

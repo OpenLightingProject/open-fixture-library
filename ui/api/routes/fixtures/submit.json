@@ -34,7 +34,7 @@
     },
     "responses": {
       "201": {
-        "description": "OK",
+        "description": "GitHub pull request created",
         "headers": {
           "Content-Type": {
             "$ref": "../../openapi.json#/components/headers/Content-Type"
