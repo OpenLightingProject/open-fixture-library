@@ -33,6 +33,7 @@
 
     <FixturePage
       :fixture="fixture"
+      :manufacturer-color="manufacturerJson.color"
       :load-all-modes="`loadAllModes` in $route.query"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
