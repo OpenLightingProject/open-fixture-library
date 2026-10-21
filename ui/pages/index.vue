@@ -27,9 +27,7 @@
               {{ fixture.name }}
               <div class="hint">
                 {{ fixture.action }}
-                <time :datetime="fixture.date">
-                  {{ fixture.date }}
-                </time>
+                <OflDate :date="fixture.date" />
               </div>
 
             </NuxtLink>
