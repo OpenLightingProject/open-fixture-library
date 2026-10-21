@@ -9,15 +9,15 @@
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflDate :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflDate :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflDate :date="fixture.meta.importDate" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>

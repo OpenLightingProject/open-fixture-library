@@ -1,6 +1,6 @@
 import Vue from 'vue';
+import OflDate from '../components/global/OflDate.vue';
 import OflSvg from '../components/global/OflSvg.vue';
-import OflTime from '../components/global/OflTime.vue';
 
+Vue.component('OflDate', OflDate);
 Vue.component('OflSvg', OflSvg);
-Vue.component('OflTime', OflTime);

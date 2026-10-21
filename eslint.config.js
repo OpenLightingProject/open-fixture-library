@@ -234,7 +234,7 @@ const vueRules = {
   'vue/no-mutating-props': 'warn', // reduced from `error` in the preset
   'vue/no-undef-components': ['error', {
     ignorePatterns: [
-      '^Ofl(Svg|Time)$', // global components
+      '^Ofl(Date|Svg)$', // global components
       '^Nuxt(Link)?$', '^ClientOnly$', // Nuxt components
       '^VueForm$', '^Validate$', '^FieldMessages$', // VueForm components
     ],
