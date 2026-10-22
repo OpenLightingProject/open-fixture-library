@@ -1,0 +1,215 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Panther 80",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Bob Beman"],
+    "createDate": "2025-09-15",
+    "lastModifyDate": "2025-09-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/09/150.440-Panther-80-LED-moving-head_manual_V1.4-2.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/panther-80-led-bee-eye-moving-head/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=p35W3_yEtAM"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 200, 260],
+    "weight": 2.65,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6000
+    },
+    "lens": {
+      "name": "Bee"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-90deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "ColorIntensity",
+          "color": "Red"
+        }
+      ]
+    },
+    "Green": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "ColorIntensity",
+          "color": "Green"
+        }
+      ]
+    },
+    "Blue": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        }
+      ]
+    },
+    "White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "ColorIntensity",
+          "color": "White"
+        }
+      ]
+    },
+    "Lens Rotation": {
+      "capability": {
+        "type": "Rotation",
+        "speed": "fast CW"
+      }
+    },
+    "Macro Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 149],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Generic",
+          "comment": "Sound Activated"
+        }
+      ]
+    },
+    "Lens Rotation Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Generic",
+          "comment": "X-Axis Final Motion"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic",
+          "comment": "Y-Axis Final Motion"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Generic",
+          "comment": "X/Y-Axis Final Motion"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset (Holds for 5 Secs)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Lens Rotation",
+        "Macro Function",
+        "Lens Rotation Speed",
+        "Mode"
+      ]
+    }
+  ]
+}
