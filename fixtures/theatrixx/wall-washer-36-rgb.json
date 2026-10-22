@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wall Washer 36 RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Vince St-Onge"],
+    "createDate": "2026-10-22",
+    "lastModifyDate": "2026-10-22"
+  },
+  "links": {
+    "manual": [
+      "https://theatrixx.com/wp-content/libraries/tcpdf/templates/datasheet.php?lang=fr&id=8784"
+    ],
+    "productPage": [
+      "https://theatrixx.com/fr/product/wall-washer-36-rgb/"
+    ],
+    "other": [
+      "https://theatrixx.com/fr/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [330, 178, 203],
+    "weight": 48,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
