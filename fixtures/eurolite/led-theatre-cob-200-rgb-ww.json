@@ -4,9 +4,9 @@
   "shortName": "LED THA COB 200",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Benjamin Blaikner / Theater der Mitte"],
+    "authors": ["Benjamin Blaikner / Theater der Mitte", "diam0ndkiller"],
     "createDate": "2024-11-25",
-    "lastModifyDate": "2024-11-25"
+    "lastModifyDate": "2026-09-03"
   },
   "links": {
     "manual": [
@@ -22,7 +22,8 @@
     "power": 140,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "1 x COB (Chip-on-board) 4in1 QCL RGB/WW"
+      "type": "1 x COB (Chip-on-board) 4in1 QCL RGB/WW",
+      "lumens": 14000
     },
     "lens": {
       "degreesMinMax": [17, 35]
@@ -83,97 +84,116 @@
         {
           "dmxRange": [10, 19],
           "type": "ColorPreset",
-          "comment": "Red"
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [20, 29],
           "type": "ColorPreset",
-          "comment": "Green"
+          "comment": "Green",
+          "colors": ["#00fe00"]
         },
         {
           "dmxRange": [30, 39],
           "type": "ColorPreset",
-          "comment": "Blue"
+          "comment": "Blue",
+          "colors": ["#0000fe"]
         },
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "comment": "Warm White"
+          "comment": "Warm White",
+          "colors": ["#fefec8"]
         },
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "comment": "Yellow"
+          "comment": "Yellow",
+          "colors": ["#fefe00"]
         },
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "comment": "Magenta"
+          "comment": "Magenta",
+          "colors": ["#fe00fe"]
         },
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "comment": "Cyan"
+          "comment": "Cyan",
+          "colors": ["#00fefe"]
         },
         {
           "dmxRange": [80, 89],
           "type": "ColorPreset",
-          "comment": "Dark Orange"
+          "comment": "Dark Orange",
+          "colors": ["#c86400"]
         },
         {
           "dmxRange": [90, 99],
           "type": "ColorPreset",
-          "comment": "Green yellow"
+          "comment": "Green yellow",
+          "colors": ["#7fff00"]
         },
         {
           "dmxRange": [100, 109],
           "type": "ColorPreset",
-          "comment": "Salmon"
+          "comment": "Salmon",
+          "colors": ["#fe9678"]
         },
         {
           "dmxRange": [110, 119],
           "type": "ColorPreset",
-          "comment": "Turquoise"
+          "comment": "Turquoise",
+          "colors": ["#008ca0"]
         },
         {
           "dmxRange": [120, 129],
           "type": "ColorPreset",
-          "comment": "Light green"
+          "comment": "Light green",
+          "colors": ["#64ff64"]
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorPreset",
-          "comment": "Orange"
+          "comment": "Orange",
+          "colors": ["#fe7f00"]
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorPreset",
-          "comment": "Straw"
+          "comment": "Straw",
+          "colors": ["#bfa849"]
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorPreset",
-          "comment": "Lavender"
+          "comment": "Lavender",
+          "colors": ["#9e7cc7"]
         },
         {
           "dmxRange": [160, 169],
           "type": "ColorPreset",
-          "comment": "Light blue"
+          "comment": "Light blue",
+          "colors": ["#68badd"]
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorPreset",
-          "comment": "Dark blue"
+          "comment": "Dark blue",
+          "colors": ["#00098f"]
         },
         {
           "dmxRange": [180, 189],
           "type": "ColorPreset",
-          "comment": "Pink"
+          "comment": "Pink",
+          "colors": ["#ff5bcb"]
         },
         {
           "dmxRange": [190, 255],
           "type": "ColorPreset",
-          "comment": "Full on"
+          "comment": "Full on",
+          "colors": ["#ffffff"]
         }
       ]
     },

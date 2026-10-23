@@ -7,8 +7,8 @@
     "Felix Edelmann <fxedel@gmail.com>"
   ],
   "engines": {
-    "node": "20.x",
-    "npm": "10.x"
+    "node": "26.x",
+    "npm": "12.x"
   },
   "type": "module",
   "scripts": {
@@ -21,21 +21,21 @@
     "build:plugin-data": "node cli/build-plugin-data.js",
     "build:test-fixtures": "node cli/build-test-fixtures.js",
     "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
-    "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
+    "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json && eslint --fix docs/rest-api.md",
     "clean": "rm -rf .nuxt tmp",
     "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx update-browserslist-db@latest",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
-    "lint:eslint": "eslint .",
-    "lint:eslint-errors-only": "eslint --quiet .",
+    "lint:eslint": "eslint --cache",
+    "lint:eslint-errors-only": "eslint --cache --quiet",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
     "test": "npm run lint && npm run test:fixtures-valid",
-    "test:dmx-value-scaling": "node tests/dmx-value-scaling.js",
+    "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
-    "test:http-status": "NODE_ENV=production node --tls-min-v1.0 tests/http-status.js",
+    "test:http-status": "vitest run tests/http-status.test.js",
     "test:built-files-committed": "node tests/built-files-committed.js"
   },
   "dependencies": {
-    "@heise/embetty-server": "^2.0.3",
+    "@embetty/server": "^3.2.12",
     "@nuxt/fonts": "^0.14.0",
     "@nuxtjs/color-mode": "^4.0.0",
     "@nuxtjs/robots": "^5.7.1",
@@ -48,59 +48,72 @@
     "ajv-formats": "^3.0.1",
     "chalk": "^5.6.2",
     "color-hash": "^2.0.2",
-    "color-name-list": "^14.44.0",
+    "color-name-list": "^14.70.0",
     "cors": "^2.8.6",
     "embetty-vue-3": "^0.1.7",
-    "express": "^4.22.2",
-    "jszip": "^3.10.1",
+    "express": "^5.3.0",
+    "jszip": "^3.10.2",
     "node-env-file": "^0.1.8",
     "nuxt": "^4.4.7",
     "nuxt-security": "^2.6.0",
-    "openapi-backend": "^5.18.0",
+    "openapi-backend": "^5.22.0",
     "sanitize-filename": "^1.6.4",
-    "sass": "^1.101.0",
+    "sass": "^1.105.2",
     "scroll-into-view": "^1.16.2",
     "unstorage": "^1.17.5",
+    "uuid": "^14.0.2",
     "vee-validate": "^4.15.1",
+    "vue-ts-types": "^1.10.0",
     "vuedraggable": "^4.1.0",
     "xml2js": "^0.6.2",
     "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {
     "@eslint/js": "~10.0.1",
-    "@eslint/markdown": "~8.0.2",
+    "@eslint/markdown": "~8.0.3",
     "@stylistic/eslint-plugin": "~5.10.0",
     "@stylistic/stylelint-config": "~5.0.0",
     "@types/node": "^22.19.20",
-    "@vitest/eslint-plugin": "^1.6.20",
+    "@vitest/eslint-plugin": "^1.6.27",
     "broken-link-checker": "^0.7.8",
     "dir-compare": "^5.0.0",
     "disparity": "^3.2.0",
-    "eslint": "~10.6.0",
+    "eslint": "~10.13.0",
     "eslint-plugin-import-x": "~4.17.1",
-    "eslint-plugin-jsdoc": "~63.0.2",
-    "eslint-plugin-jsonc": "~3.2.0",
+    "eslint-plugin-jsdoc": "~65.0.0",
+    "eslint-plugin-jsonc": "~3.4.2",
     "eslint-plugin-promise": "~7.3.0",
-    "eslint-plugin-sonarjs": "~4.1.0",
-    "eslint-plugin-unicorn": "~69.0.0",
-    "eslint-plugin-vue": "~10.9.2",
-    "eslint-plugin-vuejs-accessibility": "~2.5.0",
-    "globals": "^17.7.0",
+    "eslint-plugin-sonarjs": "~4.2.2",
+    "eslint-plugin-unicorn": "~78.0.0",
+    "eslint-plugin-vue": "~10.11.1",
+    "eslint-plugin-vuejs-accessibility": "~2.6.2",
+    "globals": "^17.13.0",
     "jsdoc-to-markdown": "^9.1.3",
-    "libxml2-wasm": "^0.7.1",
+    "libxml2-wasm": "^0.7.2",
     "minimist": "^1.2.8",
-    "postcss-html": "^1.8.1",
-    "stylelint": "~17.14.0",
-    "stylelint-config-html": "~1.1.0",
-    "stylelint-config-recess-order": "~7.2.0",
+    "postcss-html": "^2.0.0",
+    "stylelint": "~17.16.0",
+    "stylelint-config-html": "~2.0.0",
+    "stylelint-config-recess-order": "~7.8.2",
     "stylelint-config-standard-scss": "~17.0.0",
-    "stylelint-order": "^7.0.1",
+    "stylelint-order": "~8.1.1",
     "terminate": "^2.8.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.1.9",
+    "typescript-eslint": "^8.72.0",
+    "vitest": "^5.0.5",
     "vue-eslint-parser": "~10.4.1",
-    "vue-tsc": "^2.2.12",
     "widdershins": "^4.0.1"
+  },
+  "overrides": {
+    "broken-link-checker@^0.7.8": {
+      "useragent@2.3.0": {
+        "tmp": "^0.2.7"
+      }
+    },
+    "widdershins@^4.0.1": {
+      "httpsnippet@1.25.0": {
+        "form-data": "3.0.5"
+      }
+    }
   },
   "homepage": "https://open-fixture-library.org/",
   "repository": {
@@ -118,7 +131,11 @@
   ],
   "license": "MIT",
   "allowScripts": {
-    "core-js@3.37.1": true,
+    "core-js@3.29.1": true,
+    "core-js@3.50.0": true,
+    "esbuild@0.27.7": true,
+    "esbuild@0.28.2": true,
+    "@parcel/watcher@2.6.0": true,
     "unrs-resolver@1.12.2": true
   }
 }

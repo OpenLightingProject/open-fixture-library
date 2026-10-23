@@ -104,6 +104,12 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const emit = defineEmits<{
+  'insert-capability-before': [];
+  'insert-capability-after': [];
+}>();
+
+const instance = getCurrentInstance();
 
 const firstInput = ref<any>(null);
 const capabilityTypeData = ref<any>(null);
@@ -255,22 +261,20 @@ function collapseWithNeighbors() {
 }
 
 async function insertCapabilityBefore() {
-  const dialog = null;
+  emit('insert-capability-before');
+
+  const element = instance?.proxy?.$el as HTMLElement | undefined;
+  const dialog = element?.closest('.dialog') as HTMLElement | null;
   await nextTick();
 
-  const newCapability = null;
-  if (dialog) {
-    const capabilityEditor = dialog.querySelector('.capability-editor');
-    if (capabilityEditor) {
-      const newCap = capabilityEditor.children[props.capabilityIndex - 1];
-      if (newCap) {
-        dialog.scrollTop += newCap.clientHeight;
-      }
-    }
+  const newCapability = dialog?.querySelector('.capability-editor')?.children[props.capabilityIndex - 1];
+  if (dialog && newCapability) {
+    dialog.scrollTop += (newCapability as HTMLElement).clientHeight;
   }
 }
 
 function insertCapabilityAfter() {
+  emit('insert-capability-after');
 }
 
 function removePreviousCapability() {

@@ -38,7 +38,7 @@
             name-prefix="fixture" />
         </section>
 
-        <section class="fixture-modes">
+        <MasonryCardContainer>
           <EditorMode
             v-for="(mode, index) in fixture.modes"
             :key="mode.uuid"
@@ -49,12 +49,10 @@
             @open-channel-editor="openChannelEditor($event)"
             @remove="fixture.modes.splice(index, 1)" />
 
-          <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode()">
+          <a class="card add-mode-link" href="#add-mode" @click.prevent="addNewMode()">
             <h2>+ Add mode</h2>
           </a>
-
-          <div class="clearfix" />
-        </section>
+        </MasonryCardContainer>
 
         <section class="user card">
           <h2>Author data</h2>
@@ -127,8 +125,6 @@ noscript.card {
 </style>
 
 <script setup lang="ts">
-import scrollIntoView from 'scroll-into-view';
-
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 import {
   constants,
@@ -136,12 +132,17 @@ import {
   getEmptyFixture,
   getEmptyFormState,
   getEmptyMode,
+  scrollToFirstInvalidField,
 } from '@/assets/scripts/editor-utilities.js';
 
 const route = useRoute();
 const router = useRouter();
 
 const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
+
+if (manufacturers.value) {
+  delete manufacturers.value.generic;
+}
 
 const formstate = ref(getEmptyFormState());
 const readyToAutoSave = ref(false);
@@ -309,20 +310,7 @@ function storePrefillData() {
 
 function onSubmit() {
   if (formstate.value.$invalid) {
-    const field = document.querySelector('.vf-field-invalid');
-
-    if (field) {
-      scrollIntoView(field, {
-        time: 300,
-        align: {
-          top: 0,
-          left: 0,
-          topOffset: 100,
-        },
-        isScrollable: target => target === window,
-      }, () => (field as HTMLElement).focus());
-    }
-
+    scrollToFirstInvalidField();
     return;
   }
 

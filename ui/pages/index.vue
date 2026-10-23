@@ -27,11 +27,7 @@
               {{ fixture.name }}
               <div class="hint">
                 {{ fixture.action }}
-                <time
-                  :datetime="fixture.date.toISOString()"
-                  :title="fixture.date.toISOString()">
-                  {{ fixture.date.toISOString().replace(/T.*?$/, ``) }}
-                </time>
+                <OflDate :date="fixture.date" />
               </div>
 
             </NuxtLink>
@@ -52,7 +48,7 @@
             <NuxtLink :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">
-                {{ contributor.number }} fixture{{ contributor.number === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
+                {{ contributor.fixtureCount }} fixture{{ contributor.fixtureCount === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
               </div>
             </NuxtLink>
           </li>
@@ -86,80 +82,29 @@
 </template>
 
 <script setup lang="ts">
-import register from '~~/fixtures/register.json';
-
 const config = useRuntimeConfig();
 
-const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
+const [
+  { data: fixtureCountData, error: fixtureCountError },
+  { data: lastUpdatedData, error: lastUpdatedError },
+  { data: recentContributorsData, error: recentContributorsError },
+] = await Promise.all([
+  useFetch<{ count: number }>('/api/v1/fixtures/count'),
+  useFetch('/api/v1/fixtures/last-updated'),
+  useFetch('/api/v1/contributors/recent'),
+]);
 
-const fixtureCount = Object.keys(register.filesystem).filter(
-  fixtureKey => !('redirectTo' in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === 'SameAsDifferentBrand',
-).length;
-
-interface LastUpdatedItem {
-  key: string;
-  name: string;
-  action: string;
-  date: Date;
-  color: string;
+const fetchError = fixtureCountError.value ?? lastUpdatedError.value ?? recentContributorsError.value;
+if (fetchError) {
+  throw createError({
+    statusCode: fetchError.statusCode ?? 500,
+    statusMessage: 'Could not load homepage data',
+  });
 }
 
-interface RecentContributor {
-  name: string;
-  number: number;
-  latestFixtureKey: string;
-  latestFixtureName: string;
-}
-
-const lastUpdated = ref<LastUpdatedItem[]>([]);
-const recentContributors = ref<RecentContributor[]>([]);
-
-/**
- * @param {string} fixtureKey The combined manufacturer / fixture key.
- * @returns {string} The manufacturer and fixture names, separated by a space.
- */
-function getFixtureName(fixtureKey: string): string {
-  const manufacturerKey = fixtureKey.split('/')[0];
-  const manufacturerName = manufacturers.value?.[manufacturerKey]?.name ?? '';
-  const fixtureName = register.filesystem[fixtureKey]?.name ?? '';
-
-  return `${manufacturerName} ${fixtureName}`;
-}
-
-/**
- * @param {string} contributor The contributor name.
- * @returns {string | undefined} The combined key of the latest fixture contributed to by this contributor.
- */
-function getLatestFixtureKey(contributor: string): string | undefined {
-  return register.lastUpdated.find(
-    key => register.contributors[contributor]?.fixtures?.includes(key),
-  );
-}
-
-onMounted(() => {
-  lastUpdated.value = register.lastUpdated.slice(0, 5).map(
-    fixtureKey => ({
-      key: fixtureKey,
-      name: getFixtureName(fixtureKey),
-      action: register.filesystem[fixtureKey].lastAction,
-      date: new Date(register.filesystem[fixtureKey].lastActionDate),
-      color: register.colors[fixtureKey.split('/')[0]],
-    }),
-  );
-
-  recentContributors.value = Object.keys(register.contributors).slice(0, 5).map(
-    contributor => {
-      const latestFixtureKey = getLatestFixtureKey(contributor);
-
-      return {
-        name: contributor,
-        number: register.contributors[contributor].fixtures.length,
-        latestFixtureKey,
-        latestFixtureName: latestFixtureKey ? getFixtureName(latestFixtureKey) : '',
-      };
-    },
-  );
-});
+const fixtureCount = computed(() => fixtureCountData.value?.count ?? 0);
+const lastUpdated = computed(() => lastUpdatedData.value ?? []);
+const recentContributors = computed(() => recentContributorsData.value ?? []);
 
 useHead({
   script: [
@@ -167,7 +112,7 @@ useHead({
       hid: 'websiteStructuredData',
       type: 'application/ld+json',
       children: JSON.stringify({
-        '@context': 'http://schema.org',
+        '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Open Fixture Library',
         url: config.public.websiteUrl,
@@ -183,7 +128,7 @@ useHead({
       hid: 'organizationStructuredData',
       type: 'application/ld+json',
       children: JSON.stringify({
-        '@context': 'http://schema.org',
+        '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Open Fixture Library',
         description: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',

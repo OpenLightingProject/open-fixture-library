@@ -30,7 +30,7 @@ export async function createFeedbackIssue({ request }) {
     title = `Feedback for fixture \`${context}\``;
     labels.push('component-fixture');
 
-    const [manufacturerKey, fixtureKey] = context.split('/');
+    const [manufacturerKey, fixtureKey] = context.split('/', 2);
     const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
 
     issueContentData.Manufacturer = fixture.manufacturer.name;
@@ -54,8 +54,8 @@ export async function createFeedbackIssue({ request }) {
     lines.push(`\nThank you ${githubUsernameMarkdown}!`);
   }
 
-  let issueUrl;
-  let error;
+  let issueUrl = null;
+  let error = null;
   try {
     issueUrl = await createIssue(title, lines.join('\n'), labels);
     console.log(`Created issue at ${issueUrl}`);

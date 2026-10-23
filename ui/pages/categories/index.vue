@@ -17,19 +17,19 @@
 </template>
 
 <script setup lang="ts">
-import register from '~~/fixtures/register.json';
-
 interface Category {
   name: string;
   fixtureCount: number;
 }
 
-const categories = Object.keys(register.categories).sort((a, b) => a.localeCompare(b, 'en')).map(
-  category => ({
-    name: category,
-    fixtureCount: register.categories[category].length,
-  }),
-) as Category[];
+const { data: categories, error } = await useFetch<Category[]>('/api/v1/categories');
+
+if (error.value) {
+  throw createError({
+    statusCode: error.value.statusCode ?? 500,
+    statusMessage: 'Could not load categories',
+  });
+}
 
 useHead({
   title: 'Categories',

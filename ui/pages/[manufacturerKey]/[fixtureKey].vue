@@ -9,15 +9,15 @@
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflDate :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflDate :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflDate :date="fixture.meta.importDate" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
@@ -33,11 +33,12 @@
 
     <FixturePage
       :fixture="fixture"
+      :manufacturer-color="manufacturerJson?.color"
       :load-all-modes="'loadAllModes' in route.query"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
+      <h2>Anything wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3">
         <ClientOnly>
@@ -78,14 +79,6 @@
 </style>
 
 <script setup lang="ts">
-import register from '~~/fixtures/register.json';
-
-definePageMeta({
-  validate: (route) => {
-    return route.params.manufacturerKey in register.manufacturers;
-  },
-});
-
 import Fixture from '~~/lib/model/Fixture.js';
 import Manufacturer from '~~/lib/model/Manufacturer.js';
 
@@ -96,20 +89,32 @@ const manufacturerKey = route.params.manufacturerKey as string;
 const fixtureKeyRaw = route.params.fixtureKey as string;
 const fixtureKey = fixtureKeyRaw.replace(/\.json$/, '');
 
-const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`]?.redirectTo;
-if (redirectTo) {
-  navigateTo(`/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`, { redirectCode: 302 });
+const { data: manufacturerJson, error: manufacturerError } = await useFetch(`/api/v1/manufacturers/${manufacturerKey}`);
+
+if (manufacturerError.value || !manufacturerJson.value) {
+  throw createError({
+    statusCode: manufacturerError.value?.statusCode ?? 404,
+    statusMessage: 'Manufacturer not found',
+  });
 }
 
-const [{ data: fixtureData }, { data: manufacturerJson }, { data: plugins }, redirect] = await Promise.all([
-  useFetch(`/api/v1/fixtures/${manufacturerKey}/${fixtureKey}`),
-  useFetch(`/api/v1/manufacturers/${manufacturerKey}`),
+const redirectFixture = manufacturerJson.value.redirects.find(({ key }) => key === fixtureKey);
+if (redirectFixture) {
+  navigateTo(`/${redirectFixture.redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`, { redirectCode: 302 });
+}
+
+const fixtureMetadata = manufacturerJson.value.fixtures.find(({ key }) => key === fixtureKey);
+if (!fixtureMetadata) {
+  throw createError({ statusCode: 404, statusMessage: 'Fixture not found' });
+}
+
+const [{ data: fixtureJson }, { data: plugins }, redirect] = await Promise.all([
+  useFetch(`/${manufacturerKey}/${fixtureKey}.json`),
   useFetch('/api/v1/plugins'),
   fetchRedirectObject(route.query.redirectFrom as string | undefined),
 ]);
 
-const fixtureJson = computed(() => fixtureData.value?.data);
-const redirectFromFixture = computed(() => fixtureData.value?.redirect);
+const redirectFromFixture = computed(() => redirect);
 
 const fixture = computed(() => {
   if (!manufacturerJson.value || !fixtureJson.value) return null;
@@ -127,16 +132,15 @@ async function fetchRedirectObject(redirectFrom: string | undefined) {
     return undefined;
   }
 
-  const [redirectMan, redirectFix] = redirectFrom.split('/');
-  const { data: redirectData } = await useFetch(`/api/v1/fixtures/${redirectMan}/${redirectFix}`);
+  const { data: redirectJson } = await useFetch<{ reason?: string }>(`/${redirectFrom}.json`);
 
-  if (!redirectData.value?.redirect) {
+  if (!redirectJson.value?.reason) {
     return undefined;
   }
 
   return {
     from: redirectFrom,
-    reason: redirectReasonExplanations[redirectData.value.redirect.reason] || '',
+    reason: redirectReasonExplanations[redirectJson.value.reason] || '',
   };
 }
 

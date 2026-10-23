@@ -41,7 +41,7 @@ const featuresUsed = Object.fromEntries(allFixtureFeatures.map((feature) => [fea
 let fixtureFeatureResults = [];
 
 for (const manufacturerFixture of Object.keys(register.filesystem)) {
-  const [manufacturerKey, fixtureKey] = manufacturerFixture.split('/');
+  const [manufacturerKey, fixtureKey] = manufacturerFixture.split('/', 2);
 
   // pre-process data
   const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
@@ -75,13 +75,11 @@ async function addMatchingFeatures(fixture, fixtureResult) {
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
-fixtureFeatureResults.sort((a, b) => {
-  if (a.features.length === b.features.length) {
-    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en');
-  }
-
-  return a.features.length - b.features.length;
-});
+fixtureFeatureResults.sort((a, b) => (
+  a.features.length === b.features.length
+    ? `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, 'en')
+    : a.features.length - b.features.length
+));
 
 // filter out
 fixtureFeatureResults = fixtureFeatureResults.filter((fixture) => {

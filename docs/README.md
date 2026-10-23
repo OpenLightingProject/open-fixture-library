@@ -6,7 +6,7 @@ This is the developer documentation for the *Open Fixture Library*. Please follo
 
 * `cli/` – Useful scripts to be called from the command line
 * `docs/` – Documentation (*you are here!*)
-* `fixtures/` – Repository of our [fixture definitions](fixture-format.md)
+* `fixtures/` – Repository of our [fixture definitions](fixture-format.md) (see also [common mistakes](common-mistakes.md) to avoid when adding or editing fixtures)
 * `lib/` – Reusable modules used in the project
   - `fixture-features/` – [Fixture features](fixture-features.md), special fixture characteristics used to determine a set of test fixtures
   - `model/` – Classes of the [fixture model](fixture-model.md) that help ease processing fixture data (see the [model API reference](model-api.md))

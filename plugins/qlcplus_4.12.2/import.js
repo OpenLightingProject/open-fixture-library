@@ -106,11 +106,7 @@ export async function importFixtures(buffer, filename, authorName) {
 function getOflCategories(qlcPlusFixture) {
   const category = qlcPlusFixture.Type[0];
 
-  if (category.startsWith('LED Bar')) {
-    return ['Pixel Bar'];
-  }
-
-  return [category];
+  return [category.startsWith('LED Bar') ? 'Pixel Bar' : category];
 }
 
 /**
@@ -124,14 +120,16 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const hasModePhysical = firstPhysicalMode !== undefined;
   const hasGlobalPhysical = 'Physical' in qlcPlusFixture;
 
-  if (hasGlobalPhysical || (hasModePhysical && !allModesHavePhysical)) {
-    fixture.physical = getOflPhysical((hasGlobalPhysical ? qlcPlusFixture : firstPhysicalMode).Physical[0]);
+  if (!hasGlobalPhysical && (!hasModePhysical || allModesHavePhysical)) {
+    return;
+  }
 
-    if (qlcPlusFixture.Type[0] === 'LED Bar (Pixels)') {
-      fixture.physical.matrixPixels = {
-        spacing: [0, 0, 0],
-      };
-    }
+  fixture.physical = getOflPhysical((hasGlobalPhysical ? qlcPlusFixture : firstPhysicalMode).Physical[0]);
+
+  if (qlcPlusFixture.Type[0] === 'LED Bar (Pixels)') {
+    fixture.physical.matrixPixels = {
+      spacing: [0, 0, 0],
+    };
   }
 }
 
@@ -516,12 +514,11 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     .map((object) => object.Physical[0]);
 
   const [panMax, tiltMax] = ['PanMax', 'TiltMax'].map(
-    (property) => Math.max(...physicals.map((physical) => {
-      if (physical.Focus && property in physical.Focus[0].$) {
-        return Number.parseInt(physical.Focus[0].$[property], 10) || 0;
-      }
-      return 0;
-    })),
+    (property) => Math.max(...physicals.map((physical) => (
+      physical.Focus && property in physical.Focus[0].$
+        ? Number.parseInt(physical.Focus[0].$[property], 10) || 0
+        : 0
+    ))),
   );
 
   const channelName = qlcPlusChannel.$.Name;
@@ -739,11 +736,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
    * @returns {unknown} The property data, or undefined.
    */
   function getOflFixturePhysicalProperty(section, property) {
-    if (!(section in oflFixturePhysical)) {
-      return undefined;
-    }
-
-    return oflFixturePhysical[section][property];
+    return (section in oflFixturePhysical) ? oflFixturePhysical[section][property] : undefined;
   }
 }
 
@@ -1039,17 +1032,21 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
       }
     }
 
-    if (channel.fineChannelAliases.length === 0) {
-      delete channel.fineChannelAliases;
-      delete channel.dmxValueResolution;
+    if (channel.fineChannelAliases.length > 0) {
+      continue;
     }
+
+    delete channel.fineChannelAliases;
+    delete channel.dmxValueResolution;
   }
 
   const fixtureUsesHeads = qlcPlusFixture.Mode.some((mode) => 'Head' in mode);
-  if (!fixtureUsesHeads) {
-    delete fixture.matrix;
-    delete fixture.templateChannels;
+  if (fixtureUsesHeads) {
+    return;
   }
+
+  delete fixture.matrix;
+  delete fixture.templateChannels;
 }
 
 /**

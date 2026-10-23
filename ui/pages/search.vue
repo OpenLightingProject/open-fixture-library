@@ -58,7 +58,9 @@
 
       <div v-else-if="results.length > 0" class="card">
         <ul class="list fixtures">
-          <li v-for="fixture in fixtureResults" :key="fixture.key">
+          <li
+            v-for="fixture of results"
+            :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
@@ -95,38 +97,32 @@
 </style>
 
 <script setup lang="ts">
-import register from "~~/fixtures/register.json";
+interface SearchResult {
+  key: string;
+  name: string;
+  color: string;
+}
 
 const route = useRoute();
 const router = useRouter();
 
-const { data: manufacturers } = await useFetch("/api/v1/manufacturers");
+const [{ data: manufacturers }, { data: categoriesData }] = await Promise.all([
+  useFetch('/api/v1/manufacturers'),
+  useFetch<{ name: string; fixtureCount: number }[]>('/api/v1/categories'),
+]);
 
-const searchFor = ref("");
-const searchQuery = ref("");
+const categories = computed(() => (categoriesData.value ?? []).map(category => category.name));
+
+const searchFor = ref('');
+const searchQuery = ref('');
 const manufacturersQuery = ref<string[]>([]);
 const categoriesQuery = ref<string[]>([]);
 const detailsInitiallyOpen = ref<boolean | null>(null);
-const results = ref<string[]>([]);
-const categories = Object.keys(register.categories).sort((a, b) =>
-  a.localeCompare(b, "en"),
-);
+const results = ref<SearchResult[]>([]);
 const loading = ref(false);
 
 const buttonDisabled = computed(() => {
-  return searchQuery.value === "" && import.meta.client;
-});
-
-const fixtureResults = computed(() => {
-  return results.value.map((key) => {
-    const manufacturer = key.split("/")[0];
-
-    return {
-      key,
-      name: `${manufacturers.value?.[manufacturer]?.name ?? ""} ${register.filesystem[key]?.name ?? ""}`,
-      color: register.colors[manufacturer],
-    };
-  });
+  return searchQuery.value === '' && import.meta.client;
 });
 
 /**
@@ -134,11 +130,11 @@ const fixtureResults = computed(() => {
  * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query: Record<string, unknown>) {
-  const searchQueryRaw = (query.q || "") as string;
+  const searchQueryRaw = (query.q || '') as string;
   const searchQueryTrimmed = searchQueryRaw.trim();
 
   let manufacturersQueryRaw = query.manufacturers;
-  if (typeof manufacturersQueryRaw === "string") {
+  if (typeof manufacturersQueryRaw === 'string') {
     manufacturersQueryRaw = [manufacturersQueryRaw];
   }
   const manufacturersQueryArr = Array.isArray(manufacturersQueryRaw)
@@ -146,7 +142,7 @@ function getSanitizedQuery(query: Record<string, unknown>) {
     : [];
 
   let categoriesQueryRaw = query.categories;
-  if (typeof categoriesQueryRaw === "string") {
+  if (typeof categoriesQueryRaw === 'string') {
     categoriesQueryRaw = [categoriesQueryRaw];
   }
   const categoriesQueryArr = Array.isArray(categoriesQueryRaw)
@@ -177,8 +173,8 @@ async function performSearch() {
   }
 
   try {
-    results.value = await $fetch("/api/v1/get-search-results", {
-      method: "POST",
+    results.value = await $fetch<SearchResult[]>('/api/v1/get-search-results', {
+      method: 'POST',
       body: {
         searchQuery: sanitizedQuery.search,
         manufacturersQuery: sanitizedQuery.manufacturers,
@@ -202,7 +198,7 @@ watch(
 );
 
 function onSubmit() {
-  if (searchQuery.value === "") {
+  if (searchQuery.value === '') {
     return;
   }
 
@@ -217,7 +213,7 @@ function onSubmit() {
 }
 
 const title = computed(() =>
-  searchFor.value ? `Search "${searchFor.value}"` : "Search",
+  searchFor.value ? `Search "${searchFor.value}"` : 'Search',
 );
 
 useHead({

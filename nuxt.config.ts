@@ -31,8 +31,12 @@ export default defineNuxtConfig({
   },
   fonts: {
     families: [
-      { name: 'Lato', provider: 'google', weights: [300, 400, 700] },
-      { name: 'Inconsolata', provider: 'google', weights: [400] },
+      {
+        name: 'Atkinson Hyperlegible Next',
+        provider: 'google',
+        weights: [200, 300, 400, 700, 800],
+        styles: ['normal', 'italic'],
+      },
     ],
   },
   colorMode: {

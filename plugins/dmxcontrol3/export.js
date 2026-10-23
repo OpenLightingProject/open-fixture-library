@@ -148,12 +148,12 @@ function addFunctions(xml, mode) {
         (key) => ddf3Functions[key].isCapSuitable(capability),
       );
 
-      if (properFunction) {
-        if (!Object.keys(functionToCapabilities).includes(properFunction)) {
-          functionToCapabilities[properFunction] = [];
-        }
-        functionToCapabilities[properFunction].push(capability);
+      if (!properFunction) {
+        continue;
       }
+
+      functionToCapabilities[properFunction] ??= [];
+      functionToCapabilities[properFunction].push(capability);
     }
 
     const xmlFunctions = [];
@@ -275,15 +275,17 @@ function addProcedures(xml, mode) {
       value: capability.dmxRange.start,
     });
 
-    if (capability.hold) {
-      xmlProcedure.element('hold', {
-        value: capability.hold.baseUnitEntity.number * 1000,
-      });
-
-      xmlProcedure.element('restore', {
-        dmxchannel: channelIndex,
-      });
+    if (!capability.hold) {
+      continue;
     }
+
+    xmlProcedure.element('hold', {
+      value: capability.hold.baseUnitEntity.number * 1000,
+    });
+
+    xmlProcedure.element('restore', {
+      dmxchannel: channelIndex,
+    });
   }
 }
 
@@ -343,15 +345,19 @@ function addChannelAttributes(xmlElement, mode, channel) {
     (fineChannel) => mode.getChannelIndex(fineChannel.key),
   );
 
-  if (fineIndices.length > 0 && fineIndices[0] !== -1) {
-    xmlElement.attribute('finedmxchannel', fineIndices[0]);
+  if (fineIndices.length === 0 || fineIndices[0] === -1) {
+    return;
+  }
 
-    if (fineIndices.length > 1 && fineIndices[1] !== -1) {
-      xmlElement.attribute('ultradmxchannel', fineIndices[1]);
+  xmlElement.attribute('finedmxchannel', fineIndices[0]);
 
-      if (fineIndices.length > 2 && fineIndices[2] !== -1) {
-        xmlElement.attribute('ultrafinedmxchannel', fineIndices[2]);
-      }
-    }
+  if (fineIndices.length === 1 || fineIndices[1] === -1) {
+    return;
+  }
+
+  xmlElement.attribute('ultradmxchannel', fineIndices[1]);
+
+  if (fineIndices.length > 2 && fineIndices[2] !== -1) {
+    xmlElement.attribute('ultrafinedmxchannel', fineIndices[2]);
   }
 }

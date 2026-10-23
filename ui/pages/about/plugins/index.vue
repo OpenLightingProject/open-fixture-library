@@ -38,7 +38,7 @@
 
     <h3>New plugins</h3>
 
-    <p>If your desired import or export format is not yet supported, please see if there is already an <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Anew-plugin" rel="nofollow">open issue</a> for it in the GitHub repository. If so, try to add information there. Otherwise, please open a <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new?assignees=&amp;labels=new-plugin&amp;template=new-plugin.md&amp;title=Add+%5Bsoftware+%2F+console+name%5D+Plugin" rel="nofollow">new issue</a>.</p>
+    <p>If your desired import or export format is not yet supported, please see if there is already an <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3Anew-plugin" rel="nofollow">open issue</a> for it in the GitHub repository. If so, try to add information there. Otherwise, please open a <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new?template=new-plugin.yaml" rel="nofollow">new issue</a>.</p>
 
     <p>Useful information for developers: <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/plugins.md">Plugin documentation</a></p>
   </div>

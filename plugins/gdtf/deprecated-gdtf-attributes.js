@@ -518,11 +518,9 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
     return primaryColor;
   }
 
-  if (name.includes(secondaryColor.charAt(0).toLowerCase())) {
-    return secondaryColor;
-  }
-
-  return primaryColor;
+  return name.includes(secondaryColor.charAt(0).toLowerCase())
+    ? secondaryColor
+    : primaryColor;
 }
 
 export default deprecatedGdtfAttributes;

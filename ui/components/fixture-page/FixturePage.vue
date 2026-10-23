@@ -48,7 +48,7 @@
               target="_blank"
               rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
-              {{ link.name }}
+              <span class="link-name">{{ link.name }}</span>
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
@@ -101,14 +101,13 @@
 
     </section>
 
-    <section class="fixture-modes">
+    <MasonryCardContainer>
       <FixturePageMode
         v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
         @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
-      <div class="clearfix" />
-    </section>
+    </MasonryCardContainer>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
       <h2><OflSvg name="alert" /> This fixture is big!</h2>
@@ -161,7 +160,9 @@
   }
 
   & a {
-    display: inline-block;
+    display: inline-flex;
+    gap: 0.5ex;
+    align-items: center;
     margin-top: 4px;
   }
 }
@@ -171,10 +172,25 @@
   margin: 0;
   list-style: none;
 
+  a {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-decoration-line: none;
+  }
+
+  .link-name {
+    margin-right: 1ex;
+    margin-left: 0.5ex;
+    text-decoration-line: underline;
+    text-decoration-color: inherit;
+  }
+
   .hostname {
-    padding-left: 1ex;
+    min-width: 0;
     font-size: 0.9em;
     color: theme-color(text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .link-other {
@@ -193,7 +209,6 @@
 
 <script setup lang="ts">
 import { EmbettyVideo } from 'embetty-vue-3';
-import register from '~~/fixtures/register.json';
 
 import Fixture from '~~/lib/model/Fixture.js';
 import { linksProperties } from '~~/lib/schema-properties.js';
@@ -203,10 +218,12 @@ import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
 interface Props {
   fixture: Fixture;
   loadAllModes?: boolean;
+  manufacturerColor?: string | null;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   loadAllModes: false,
+  manufacturerColor: null,
 });
 
 defineEmits<{
@@ -215,7 +232,6 @@ defineEmits<{
 
 const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
 
-const manufacturerColor = ref<string | null>(register.colors[props.fixture.manufacturer.key] || null);
 const client = import.meta.client;
 const modeNumberLoadLimit = ref<number | undefined>(props.loadAllModes ? undefined : 5);
 const modeNumberLoadThreshold = 15;

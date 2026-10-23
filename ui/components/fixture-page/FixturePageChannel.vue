@@ -172,15 +172,9 @@ defineEmits<{
 const fixture = props.mode.fixture;
 
 const channelKey = computed(() => {
-  if (props.channel instanceof NullChannel) {
-    return `null`;
-  }
-
-  if (props.channel.key !== props.channel.name) {
-    return props.channel.key;
-  }
-
-  return ``;
+  return props.channel.key === props.channel.name || props.channel instanceof NullChannel
+    ? ``
+    : props.channel.key;
 });
 
 const resolutionInMode = computed(() => {

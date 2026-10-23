@@ -105,8 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import scrollIntoView from 'scroll-into-view';
-import { getEmptyFormState } from '../assets/scripts/editor-utilities.js';
+import { getEmptyFormState, scrollToFirstInvalidField } from '@/assets/scripts/editor-utilities.js';
 
 const formstate = ref(getEmptyFormState());
 const plugin = ref('');
@@ -135,20 +134,7 @@ function getFileDataUrl(file: File): Promise<string> {
 
 async function onSubmit() {
   if (formstate.value.$invalid) {
-    const field = document.querySelector('.vf-field-invalid');
-
-    if (field) {
-      scrollIntoView(field, {
-        time: 300,
-        align: {
-          top: 0,
-          left: 0,
-          topOffset: 100,
-        },
-        isScrollable: target => target === window,
-      }, () => (field as HTMLElement).focus());
-    }
-
+    scrollToFirstInvalidField();
     return;
   }
 

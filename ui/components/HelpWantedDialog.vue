@@ -81,7 +81,7 @@
   width: 100%;
   min-height: 10em;
   margin-top: 1ex;
-  font-family: $font-stack-code;
+  font-family: $system-monospace-font-stack;
 }
 .loading-text {
   display: inline-block;
@@ -130,7 +130,7 @@
   width: 100%;
   min-height: 5em;
   margin-top: 1ex;
-  font-family: $font-stack-code;
+  font-family: $system-monospace-font-stack;
 }
 </style>
 
