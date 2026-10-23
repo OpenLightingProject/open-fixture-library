@@ -1,0 +1,352 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MiN Wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Cristian Deluxe"],
+    "createDate": "2026-09-26",
+    "lastModifyDate": "2026-09-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/356465/Chauvet-Min-Wash.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [173, 249, 173],
+    "weight": 3.8,
+    "power": 61,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1× 14W RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [27, 27]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Vector Speed (Pan/Tilt)": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer/Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 21],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [22, 35],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [36, 49],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [50, 63],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [64, 77],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [78, 91],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [92, 105],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [106, 119],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#a020f0"]
+        },
+        {
+          "dmxRange": [120, 133],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [134, 147],
+          "type": "ColorPreset",
+          "comment": "Chartreuse",
+          "colors": ["#7fff00"]
+        },
+        {
+          "dmxRange": [148, 161],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [162, 175],
+          "type": "ColorPreset",
+          "comment": "Brown",
+          "colors": ["#a52a2a"]
+        },
+        {
+          "dmxRange": [176, 189],
+          "type": "ColorPreset",
+          "comment": "Gold",
+          "colors": ["#ffd700"]
+        },
+        {
+          "dmxRange": [190, 203],
+          "type": "ColorPreset",
+          "comment": "Crimson",
+          "colors": ["#dc143c"]
+        },
+        {
+          "dmxRange": [204, 217],
+          "type": "ColorPreset",
+          "comment": "Violet",
+          "colors": ["#ee82ee"]
+        },
+        {
+          "dmxRange": [218, 231],
+          "type": "ColorPreset",
+          "comment": "Crepe",
+          "colors": ["#e2bc8c"]
+        },
+        {
+          "dmxRange": [232, 244],
+          "type": "Effect",
+          "effectName": "Color-change macro 1"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Color-change macro 2"
+        }
+      ]
+    },
+    "Vector Speed (Color)": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "The manual gives no direction for this channel. Is 0 the slow or the fast end?"
+      }
+    },
+    "Movement Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 23],
+          "type": "Effect",
+          "effectName": "Auto program 1"
+        },
+        {
+          "dmxRange": [24, 39],
+          "type": "Effect",
+          "effectName": "Auto program 2"
+        },
+        {
+          "dmxRange": [40, 55],
+          "type": "Effect",
+          "effectName": "Auto program 3"
+        },
+        {
+          "dmxRange": [56, 71],
+          "type": "Effect",
+          "effectName": "Auto program 4"
+        },
+        {
+          "dmxRange": [72, 87],
+          "type": "Effect",
+          "effectName": "Auto program 5"
+        },
+        {
+          "dmxRange": [88, 104],
+          "type": "Effect",
+          "effectName": "Auto program 6"
+        },
+        {
+          "dmxRange": [105, 117],
+          "type": "Effect",
+          "effectName": "Auto program 7"
+        },
+        {
+          "dmxRange": [118, 135],
+          "type": "Effect",
+          "effectName": "Auto program 8"
+        },
+        {
+          "dmxRange": [136, 151],
+          "type": "Effect",
+          "effectName": "Sound active 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [152, 167],
+          "type": "Effect",
+          "effectName": "Sound active 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [168, 183],
+          "type": "Effect",
+          "effectName": "Sound active 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [184, 199],
+          "type": "Effect",
+          "effectName": "Sound active 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 215],
+          "type": "Effect",
+          "effectName": "Sound active 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [216, 231],
+          "type": "Effect",
+          "effectName": "Sound active 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [232, 247],
+          "type": "Effect",
+          "effectName": "Sound active 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound active 8",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Vector Speed (Pan/Tilt)",
+        "Dimmer/Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Vector Speed (Color)",
+        "Movement Macros",
+        "Reserved"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer/Strobe",
+        "Color Macros",
+        "Reserved"
+      ]
+    }
+  ]
+}
