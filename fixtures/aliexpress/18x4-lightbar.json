@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18x4 lightbar",
+  "shortName": "lightbar",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Nicolas"],
+    "createDate": "2026-10-14",
+    "lastModifyDate": "2026-10-14"
+  },
+  "links": {
+    "manual": [
+      "https://ae-pic-a1.aliexpress-media.com/kf/Sb9ee5f8e30a84ed98409d4614713ecacd.pdf?spm=a2g0o.detail.0.0.496fuxp8uxp8UL&file=Sb9ee5f8e30a84ed98409d4614713ecacd.pdf"
+    ],
+    "productPage": [
+      "https://de.aliexpress.com/item/1005008488777079.html?spm=a2g0o.order_list.order_list_main.10.28005c5fr4wpWQ&gatewayAdapt=glo2deu"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 500, 500],
+    "weight": 3,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000,
+      "lumens": 1000
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "RGB RUN CODE": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump",
+        "speed": "fast",
+        "duration": "instant",
+        "parameter": "fast"
+      }
+    },
+    "RGB RUN CODE SPEED": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 CH",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10 CH",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "RGB RUN CODE",
+        "RGB RUN CODE SPEED"
+      ]
+    }
+  ]
+}
