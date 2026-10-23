@@ -2,7 +2,8 @@
   "importPlugins": [
     "ecue",
     "gdtf",
-    "qlcplus_4.12.2"
+    "qlcplus_4.12.2",
+    "showsync"
   ],
   "exportPlugins": [
     "aglight",
@@ -111,6 +112,10 @@
         "fixture-tool-validation",
         "xsd-schema-conformity"
       ]
+    },
+    "showsync": {
+      "name": "Showsync Beam",
+      "importPluginVersion": "0.1.0"
     }
   }
 }
