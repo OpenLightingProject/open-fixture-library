@@ -31,25 +31,19 @@
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Color Macros": {
@@ -137,9 +131,7 @@
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     }
   },
