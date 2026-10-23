@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "led spot + ring",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["nomiem"],
+    "createDate": "2026-10-18",
+    "lastModifyDate": "2026-10-18"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=WLqBOon9Mro"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "50Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Program": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Program+": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Ring kleur": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "led spot + ring",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "No function",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Gobo Wheel",
+        "Program",
+        "Program+",
+        "Ring kleur"
+      ]
+    }
+  ]
+}
