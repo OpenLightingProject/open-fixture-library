@@ -1,0 +1,197 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Large Bar RGB Light",
+  "shortName": "large-bar",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Benjamin Dow"],
+    "createDate": "2026-10-18",
+    "lastModifyDate": "2026-10-18"
+  },
+  "links": {
+    "manual": [
+      "https://s4lights.com/apps/resources/1102160-s4i-large-bar-2026-manual-v040326"
+    ],
+    "productPage": [
+      "https://s4lights.com/products/large-bar-rgb-light"
+    ]
+  },
+  "physical": {
+    "dimensions": [1027, 170, 221],
+    "weight": 8.4,
+    "power": 165,
+    "DMXconnector": "S4i TL32",
+    "bulb": {
+      "type": "18x 8W RGBW"
+    },
+    "lens": {
+      "degreesMinMax": [18, 18]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [1, 13],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [14, 27],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [28, 41],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [42, 55],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [56, 69],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [70, 83],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [84, 97],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [98, 111],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [112, 125],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [126, 139],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [140, 153],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [154, 167],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [168, 181],
+          "type": "Effect",
+          "effectName": "Program 14"
+        },
+        {
+          "dmxRange": [182, 195],
+          "type": "Effect",
+          "effectName": "Program 15"
+        },
+        {
+          "dmxRange": [196, 209],
+          "type": "Effect",
+          "effectName": "Program 16"
+        },
+        {
+          "dmxRange": [210, 223],
+          "type": "Effect",
+          "effectName": "Program 17"
+        },
+        {
+          "dmxRange": [224, 237],
+          "type": "Effect",
+          "effectName": "Program 18"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Program 19"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6-channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2 Channel",
+      "shortName": "2-channel",
+      "channels": [
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
