@@ -39,7 +39,7 @@ for (const [key, data] of Object.entries(allPreviousVersions)) {
 
 // sort plugin data object by key
 plugins.data = Object.fromEntries(
-  Object.keys(plugins.data).toSorted().map((key) => [key, plugins.data[key]]),
+  Object.entries(plugins.data).toSorted(([a], [b]) => a.localeCompare(b)),
 );
 
 const filePath = fileURLToPath(new URL('plugins.json', pluginDirectoryUrl));
@@ -56,7 +56,7 @@ catch (error) {
 
 /**
  * Reads information from the plugin's `plugin.json` file into `plugins` and `allPreviousVersions`.
- * @param {string} pluginKey The plugin key.
+ * @param {string} pluginKey - The plugin key.
  */
 async function readPluginJson(pluginKey) {
   try {
@@ -81,7 +81,7 @@ async function readPluginJson(pluginKey) {
 
 /**
  * Reads information from the plugin's `import.js` file (if it exists) into `plugins`.
- * @param {string} pluginKey The plugin key.
+ * @param {string} pluginKey - The plugin key.
  */
 async function readPluginImport(pluginKey) {
   try {
@@ -102,7 +102,7 @@ async function readPluginImport(pluginKey) {
 
 /**
  * Reads information from the plugin's `export.js` file (if it exists) into `plugins`.
- * @param {string} pluginKey The plugin key.
+ * @param {string} pluginKey - The plugin key.
  */
 async function readPluginExport(pluginKey) {
   try {
@@ -124,7 +124,7 @@ async function readPluginExport(pluginKey) {
 
 /**
  * Adds the plugin's export tests (if any) to `plugins`.
- * @param {string} pluginKey The plugin key.
+ * @param {string} pluginKey - The plugin key.
  */
 async function readPluginExportTests(pluginKey) {
   try {

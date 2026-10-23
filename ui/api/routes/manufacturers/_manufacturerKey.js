@@ -4,14 +4,14 @@ import importJson from '../../../../lib/import-json.js';
 
 /**
  * Returns information about a specific manufacturer.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
 
   const manufacturers = await importJson('../../../../fixtures/manufacturers.json', import.meta.url);
-  if (!(manufacturerKey in manufacturers) || manufacturerKey === '$schema') {
+  if (manufacturerKey === '$schema' || !(manufacturerKey in manufacturers)) {
     return {
       statusCode: 404,
       body: {
@@ -21,6 +21,7 @@ export async function getManufacturerByKey({ request }) {
   }
 
   const register = await importJson('../../../../fixtures/register.json', import.meta.url);
+  const manufacturerFixtureKeyPrefix = `${manufacturerKey}/`;
   const manufacturer = {
     ...manufacturers[manufacturerKey],
     key: manufacturerKey,
@@ -34,6 +35,15 @@ export async function getManufacturerByKey({ request }) {
         ),
       }),
     ),
+    redirects: Object.entries(register.filesystem)
+      .filter(([fixturePath, fixture]) => (
+        fixturePath.startsWith(manufacturerFixtureKeyPrefix)
+        && 'redirectTo' in fixture
+      ))
+      .map(([fixturePath, fixture]) => ({
+        key: fixturePath.slice(manufacturerFixtureKeyPrefix.length),
+        redirectTo: fixture.redirectTo,
+      })),
   };
 
   return {

@@ -9,7 +9,7 @@ let plugins;
 let exportTests;
 let testFixtureKeys;
 
-let testErrored = false;
+let isTestErrored = false;
 
 /**
  * @typedef {object} Task
@@ -57,23 +57,17 @@ try {
     })
     .toSorted((a, b) => {
       const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
-      const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
-      const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
-      const testCompare = a.testKey.localeCompare(b.testKey);
-
       if (manufacturerCompare !== 0) {
         return manufacturerCompare;
       }
 
+      const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
       if (fixtureCompare !== 0) {
         return fixtureCompare;
       }
 
-      if (pluginCompare !== 0) {
-        return pluginCompare;
-      }
-
-      return testCompare;
+      const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
+      return pluginCompare === 0 ? a.testKey.localeCompare(b.testKey) : pluginCompare;
     });
 
   if (tasks.length === 0) {
@@ -97,14 +91,9 @@ try {
   for (const task of tasks) {
     const taskResultLines = await getTaskPromise(task);
 
-    // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
-    // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if ([...lines, ...taskResultLines, tooLongMessage].join('\r\n').length > 260_000) {
-      lines.push(tooLongMessage);
+    if (pullRequest.appendOrTruncate(lines, taskResultLines, tooLongMessage)) {
       break;
     }
-
-    lines.push(...taskResultLines);
   }
 
   await pullRequest.updateComment({
@@ -113,7 +102,7 @@ try {
     lines,
   });
 
-  if (testErrored) {
+  if (isTestErrored) {
     throw new Error('Unable to export some fixtures.');
   }
 }
@@ -123,9 +112,9 @@ catch (error) {
 }
 
 /**
- * @param {[pluginKey: string, testKey: string][]} tests An array of export tests.
- * @param {string} manufacturerKey The manufacturer key of the fixture that should be tested.
- * @param {string} fixtureKey The key of the fixture that should be tested.
+ * @param {[pluginKey: string, testKey: string][]} tests - An array of export tests.
+ * @param {string} manufacturerKey - The manufacturer key of the fixture that should be tested.
+ * @param {string} fixtureKey - The key of the fixture that should be tested.
  * @returns {Task[]} An array of export valid tasks.
  */
 function mapExportTestsToTasks(tests, manufacturerKey, fixtureKey) {
@@ -138,7 +127,7 @@ function mapExportTestsToTasks(tests, manufacturerKey, fixtureKey) {
 }
 
 /**
- * @param {object} changedComponents What components have been changed in this PR.
+ * @param {object} changedComponents - What components have been changed in this PR.
  * @returns {Task[]} What export valid tasks have to be done due to changes in the model. May be empty.
  */
 function getTasksForModel(changedComponents) {
@@ -158,7 +147,7 @@ function getTasksForModel(changedComponents) {
 }
 
 /**
- * @param {object} changedComponents What components have been changed in this PR.
+ * @param {object} changedComponents - What components have been changed in this PR.
  * @returns {Task[]} What export valid tasks have to be done due to changes in plugins. May be empty.
  */
 function getTasksForPlugins(changedComponents) {
@@ -183,7 +172,7 @@ function getTasksForPlugins(changedComponents) {
 }
 
 /**
- * @param {object} changedComponents What components have been changed in this PR.
+ * @param {object} changedComponents - What components have been changed in this PR.
  * @returns {Task[]} What export valid tasks have to be done due to changes in export tests. May be empty.
  */
 function getTasksForExportTests(changedComponents) {
@@ -199,7 +188,7 @@ function getTasksForExportTests(changedComponents) {
 }
 
 /**
- * @param {object} changedComponents What components have been changed in this PR.
+ * @param {object} changedComponents - What components have been changed in this PR.
  * @returns {Task[]} What export valid tasks have to be done due to changes in fixtures. May be empty.
  */
 function getTasksForFixtures(changedComponents) {
@@ -215,7 +204,7 @@ function getTasksForFixtures(changedComponents) {
 }
 
 /**
- * @param {Task} task The export valid task to fulfill.
+ * @param {Task} task - The export valid task to fulfill.
  * @returns {Promise} A promise resolving with an array of message lines.
  */
 async function getTaskPromise(task) {
@@ -250,7 +239,7 @@ async function getTaskPromise(task) {
   catch (error) {
     emoji = '❗';
     detailListItems.push(`Unable to export fixture: ${error.message}`);
-    testErrored = true;
+    isTestErrored = true;
   }
 
   return [

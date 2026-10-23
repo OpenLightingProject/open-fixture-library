@@ -8,8 +8,7 @@
         v-for="(letterData, letter) of letters"
         :key="letter"
         :href="`#${letterData.id}`"
-        class="jump-link"
-        @click="setScrollBehavior()">
+        class="jump-link">
         {{ letter }}
       </a>
     </div>
@@ -38,8 +37,9 @@
 }
 
 .jump-link {
+  display: inline-flex;
   padding: 8px;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 
 h2 {
@@ -76,7 +76,7 @@ export default {
     letters() {
       const letters = {};
 
-      for (const manufacturerKey of Object.keys(this.manufacturers)) {
+      for (const [manufacturerKey, manufacturer] of Object.entries(this.manufacturers)) {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
@@ -92,21 +92,28 @@ export default {
 
         letters[letter].manufacturers.push({
           key: manufacturerKey,
-          name: this.manufacturers[manufacturerKey].name,
-          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
-          color: this.manufacturers[manufacturerKey].color,
+          name: manufacturer.name,
+          fixtureCount: manufacturer.fixtureCount,
+          color: manufacturer.color,
         });
       }
 
       return letters;
     },
   },
+  mounted() {
+    window.addEventListener('hashchange', this.handleHashChange);
+    document.documentElement.style.scrollBehavior = 'smooth';
+  },
   destroyed() {
+    window.removeEventListener('hashchange', this.handleHashChange);
     document.documentElement.style.scrollBehavior = '';
   },
   methods: {
-    setScrollBehavior() {
-      document.documentElement.style.scrollBehavior = 'smooth';
+    handleHashChange() {
+      if (window.location.hash === '') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     },
   },
 };

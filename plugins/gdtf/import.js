@@ -6,7 +6,7 @@ import { scaleDmxRangeIndividually, scaleDmxValue } from '../../lib/scale-dmx-va
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
 import { followXmlNodeReference, getRgbColorFromGdtfColor } from './gdtf-helpers.js';
 
-export const version = '0.2.0';
+export const version = '0.2.2';
 
 /**
  * @typedef {object} Relation
@@ -19,9 +19,9 @@ export const version = '0.2.0';
  */
 
 /**
- * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
- * @param {string} authorName The importer's name.
+ * @param {Buffer} buffer - The imported file.
+ * @param {string} filename - The imported file's name.
+ * @param {string} authorName - The importer's name.
  * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
@@ -136,11 +136,7 @@ export async function importFixtures(buffer, filename, authorName) {
       return LongName;
     }
 
-    if (includeDescription) {
-      return Description;
-    }
-
-    return undefined;
+    return includeDescription ? Description : undefined;
   }
 
   /**
@@ -172,7 +168,8 @@ export async function importFixtures(buffer, filename, authorName) {
     function getLatestSoftwareVersion() {
       let maxSoftwareVersion = undefined;
 
-      for (const rdmVersion of rdmData.SoftwareVersionID || []) {
+      const softwareVersions = rdmData.SoftwareVersionID || [];
+      for (const rdmVersion of softwareVersions) {
         if (!maxSoftwareVersion || rdmVersion.$.Value > maxSoftwareVersion.$.Value) {
           maxSoftwareVersion = rdmVersion;
         }
@@ -255,9 +252,11 @@ export async function importFixtures(buffer, filename, authorName) {
    * already defined.
    */
   function autoGenerateGdtfNameAttributes() {
-    for (const gdtfMode of gdtfFixture.DMXModes[0].DMXMode) {
+    const gdtfModes = gdtfFixture.DMXModes[0].DMXMode;
+    for (const gdtfMode of gdtfModes) {
       // add default Name attributes, so that the references work later
-      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
+      const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
+      for (const gdtfChannel of gdtfChannels) {
         // auto-generate <DMXChannel> Name attribute
         const geometry = gdtfChannel.$.Geometry.split('.').pop();
         gdtfChannel.$.Name = `${geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
@@ -329,13 +328,13 @@ export async function importFixtures(buffer, filename, authorName) {
                 return [];
               }
 
-              const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split('.')[0]);
+              const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split('.', 1)[0]);
 
               const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeFrom, 0);
               const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
               const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo, maxDmxValue, dmxFrom[1]);
 
-              return [{
+              return {
                 modeIndex,
                 masterGdtfChannel: masterChannel,
                 switchingChannelName: gdtfDmxChannel.$.Name,
@@ -343,7 +342,7 @@ export async function importFixtures(buffer, filename, authorName) {
                 followerChannelFunction: gdtfChannelFunction,
                 dmxFrom,
                 dmxTo,
-              }];
+              };
             });
           });
         });
@@ -370,14 +369,14 @@ export async function importFixtures(buffer, filename, authorName) {
 
           // Slave was renamed to Follower in GDTF v0.88
           const followerChannelReference = gdtfRelation.$.Follower || gdtfRelation.$.Slave;
-          const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split('.')[0]);
+          const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split('.', 1)[0]);
           const followerChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference);
 
           const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom, 0);
           const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
           const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo, maxDmxValue, dmxFrom[1]);
 
-          return [{
+          return {
             modeIndex,
             masterGdtfChannel: masterChannel,
             switchingChannelName: followerChannel.$.Name,
@@ -385,7 +384,7 @@ export async function importFixtures(buffer, filename, authorName) {
             followerChannelFunction,
             dmxFrom,
             dmxTo,
-          }];
+          };
         });
       });
     }
@@ -406,14 +405,14 @@ export async function importFixtures(buffer, filename, authorName) {
     const availableChannels = [];
     const templateChannels = [];
 
-    for (const gdtfMode of gdtfFixture.DMXModes[0].DMXMode) {
-      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
-        if (gdtfChannel.$.DMXBreak === 'Overwrite') {
-          addChannel(templateChannels, gdtfChannel);
-        }
-        else {
-          addChannel(availableChannels, gdtfChannel);
-        }
+    const gdtfModes = gdtfFixture.DMXModes[0].DMXMode;
+    for (const gdtfMode of gdtfModes) {
+      const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
+      for (const gdtfChannel of gdtfChannels) {
+        addChannel(
+          gdtfChannel.$.DMXBreak === 'Overwrite' ? templateChannels : availableChannels,
+          gdtfChannel,
+        );
       }
     }
 
@@ -441,8 +440,8 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   /**
-   * @param {ChannelWrapper[]} channelWrappers The OFL availableChannels or templateChannels object.
-   * @param {object} gdtfChannel The GDTF <DMXChannel> XML object.
+   * @param {ChannelWrapper[]} channelWrappers - The OFL availableChannels or templateChannels object.
+   * @param {object} gdtfChannel - The GDTF <DMXChannel> XML object.
    */
   function addChannel(channelWrappers, gdtfChannel) {
     const name = getChannelName();
@@ -524,8 +523,8 @@ export async function importFixtures(buffer, filename, authorName) {
      * @returns {object[]} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
-      let minPhysicalValue = Number.POSITIVE_INFINITY;
-      let maxPhysicalValue = Number.NEGATIVE_INFINITY;
+      let minPhysicalValue = Infinity;
+      let maxPhysicalValue = -Infinity;
 
       // save all <ChannelSet> XML nodes in a flat list
       const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap((gdtfLogicalChannel) => {
@@ -538,6 +537,11 @@ export async function importFixtures(buffer, filename, authorName) {
             // add an empty <ChannelSet />
             gdtfChannelFunction.ChannelSet = [{ $: {} }];
           }
+
+          // GDTF: a channel set's DMX start and physical range default to its
+          // channel function's (and a function's physical range defaults to 0…1)
+          const channelFunctionPhysicalFrom = parseFloatWithFallback(gdtfChannelFunction.$.PhysicalFrom, 0);
+          const channelFunctionPhysicalTo = parseFloatWithFallback(gdtfChannelFunction.$.PhysicalTo, 1);
 
           // save GDTF attribute for later
           gdtfChannelFunction._attribute = followXmlNodeReference(
@@ -561,23 +565,35 @@ export async function importFixtures(buffer, filename, authorName) {
               gdtfChannelSet.$.Name = '';
             }
 
+            if (!('DMXFrom' in gdtfChannelSet.$)) {
+              gdtfChannelSet.$.DMXFrom = gdtfChannelFunction.$.DMXFrom;
+            }
+
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom, 0);
 
-            const physicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, 0);
-            const physicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, 1);
+            const channelSetPhysicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, channelFunctionPhysicalFrom);
+            const channelSetPhysicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, channelFunctionPhysicalTo);
 
-            gdtfChannelSet._physicalFrom = physicalFrom;
-            gdtfChannelSet._physicalTo = physicalTo;
+            gdtfChannelSet._physicalFrom = channelSetPhysicalFrom;
+            gdtfChannelSet._physicalTo = channelSetPhysicalTo;
 
-            minPhysicalValue = Math.min(minPhysicalValue, physicalFrom, physicalTo);
-            maxPhysicalValue = Math.max(maxPhysicalValue, physicalFrom, physicalTo);
+            minPhysicalValue = Math.min(minPhysicalValue, channelSetPhysicalFrom, channelSetPhysicalTo);
+            maxPhysicalValue = Math.max(maxPhysicalValue, channelSetPhysicalFrom, channelSetPhysicalTo);
 
             return gdtfChannelSet;
           });
         });
       });
 
-      return gdtfCapabilities.map((gdtfCapability, index) => {
+      // Collapse a channel whose ChannelSets are a fully-redundant
+      // (Closed, …, Open) / (Open, …, Closed) wrapping of a single full-range
+      // Intensity / ColorIntensity capability into one synthesized ChannelSet.
+      const collapseTarget = getCollapseTarget();
+      const collapsedGdtfCapabilities = collapseTarget !== null && allChannelSetsMatchCollapseTarget(collapseTarget)
+        ? [createCollapsedChannelSet()]
+        : gdtfCapabilities;
+
+      return collapsedGdtfCapabilities.map((gdtfCapability, index) => {
         const capability = {
           dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)],
         };
@@ -622,24 +638,93 @@ export async function importFixtures(buffer, filename, authorName) {
       });
 
       /**
-       * @param {number} index The index of the capability.
+       * @returns {object | null} The shared properties that every ChannelSet of
+       * this channel must match for the channel to collapse into a single
+       * full-range Intensity / ColorIntensity capability, or null if collapse
+       * is not applicable.
+       */
+      function getCollapseTarget() {
+        if (gdtfCapabilities.length < 2) {
+          return null;
+        }
+
+        const channelFunction = gdtfCapabilities[0]._channelFunction;
+        const oflType = getCapabilityTypeData(channelFunction._attribute.$.Name).oflType;
+        if (oflType !== 'Intensity' && oflType !== 'ColorIntensity') {
+          return null;
+        }
+
+        const closedNames = new Set(['Closed', 'closed', 'Min', 'min']);
+        const openNames = new Set(['Open', 'open', 'Max', 'max']);
+
+        const { _physicalFrom: physicalFrom, _physicalTo: physicalTo } = gdtfCapabilities[0];
+        if (physicalFrom === 0 && physicalTo === 1) {
+          return { channelFunction, physicalFrom, physicalTo, lowEndNames: closedNames, highEndNames: openNames };
+        }
+        return physicalFrom === 1 && physicalTo === 0
+          ? { channelFunction, physicalFrom, physicalTo, lowEndNames: openNames, highEndNames: closedNames }
+          : null;
+      }
+
+      /**
+       * @param {object} target - The shared properties returned by `getCollapseTarget`.
+       * @returns {boolean} Whether every ChannelSet matches the target's shared
+       * properties and has a Name consistent with its position in the channel.
+       */
+      function allChannelSetsMatchCollapseTarget(target) {
+        const firstName = gdtfCapabilities[0].$.Name;
+        const lastName = gdtfCapabilities.at(-1).$.Name;
+        const middleHasName = gdtfCapabilities.slice(1, -1).some((capability) => capability.$.Name !== '');
+
+        return !middleHasName
+          && (firstName === '' || target.lowEndNames.has(firstName))
+          && (lastName === '' || target.highEndNames.has(lastName))
+          && gdtfCapabilities.every((capability) =>
+            capability._channelFunction === target.channelFunction
+            && capability._physicalFrom === target.physicalFrom
+            && capability._physicalTo === target.physicalTo,
+          );
+      }
+
+      /**
+       * @returns {object} A synthesized ChannelSet that replaces all of
+       * `gdtfCapabilities` after a successful collapse check, copying the
+       * first ChannelSet's parent references and physical values but with an
+       * empty Name. The downstream `.map(...)` then turns this into a single
+       * OFL capability covering the channel's full DMX range.
+       */
+      function createCollapsedChannelSet() {
+        const firstCapability = gdtfCapabilities[0];
+        return {
+          $: { Name: '' },
+          _logicalChannel: firstCapability._logicalChannel,
+          _channelFunction: firstCapability._channelFunction,
+          _fixture: firstCapability._fixture,
+          _dmxFrom: firstCapability._dmxFrom,
+          _physicalFrom: firstCapability._physicalFrom,
+          _physicalTo: firstCapability._physicalTo,
+        };
+      }
+
+      /**
+       * @param {number} index - The index of the capability.
        * @returns {[number, Resolution]} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
-        const dmxFrom = gdtfCapabilities[index]._dmxFrom;
+        const dmxFrom = collapsedGdtfCapabilities[index]._dmxFrom;
 
-        if (index === gdtfCapabilities.length - 1) {
+        if (index === collapsedGdtfCapabilities.length - 1) {
           // last capability
           const resolution = dmxFrom[1];
           return [Math.pow(256, resolution) - 1, resolution];
         }
 
-        const [nextDmxFromValue, resolution] = gdtfCapabilities[index + 1]._dmxFrom;
+        const [nextDmxFromValue, resolution] = collapsedGdtfCapabilities[index + 1]._dmxFrom;
         return [nextDmxFromValue - 1, resolution];
       }
 
       /**
-       * @param {string} attributeName The GDTF attribute name.
+       * @param {string} attributeName - The GDTF attribute name.
        * @returns {object} The capability type data from `gdtf-attributes.js`
        */
       function getCapabilityTypeData(attributeName) {
@@ -673,21 +758,17 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {((...args: unknown[]) => unknown) | null} hook The hook function, or a falsy value.
-       * @param {unknown[]} parameters The arguments to pass to the hook.
+       * @param {((...args: unknown[]) => unknown) | null} hook - The hook function, or a falsy value.
+       * @param {unknown[]} parameters - The arguments to pass to the hook.
        * @returns {unknown} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...parameters) {
-        if (hook) {
-          return hook(...parameters);
-        }
-
-        return null;
+        return hook ? hook(...parameters) : null;
       }
 
       /**
-       * @param {object} capabilityTypeData The capability type data from `gdtf-attributes.js`
-       * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @param {object} capabilityTypeData - The capability type data from `gdtf-attributes.js`
+       * @param {object} gdtfCapability - The enhanced <ChannelSet> XML object.
        * @returns {string | null} The OFL property name, or null.
        */
       function getOflProperty(capabilityTypeData, gdtfCapability) {
@@ -695,15 +776,13 @@ export async function importFixtures(buffer, filename, authorName) {
           return null;
         }
 
-        if (typeof capabilityTypeData.oflProperty === 'function') {
-          return capabilityTypeData.oflProperty(gdtfCapability);
-        }
-
-        return capabilityTypeData.oflProperty;
+        return typeof capabilityTypeData.oflProperty === 'function'
+          ? capabilityTypeData.oflProperty(gdtfCapability)
+          : capabilityTypeData.oflProperty;
       }
 
       /**
-       * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @param {object} gdtfCapability - The enhanced <ChannelSet> XML object.
        * @returns {(value: number, otherValue?: number) => string} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
@@ -746,19 +825,15 @@ export async function importFixtures(buffer, filename, authorName) {
         return gdtfChannel.$.Offset.split(',').length;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Uber')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Uber')) {
         return 4;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Ultra')) {
+      if (hasNonNoneAttribute(gdtfChannel, 'Ultra')) {
         return 3;
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, 'Fine')) {
-        return 2;
-      }
-
-      return 1;
+      return hasNonNoneAttribute(gdtfChannel, 'Fine') ? 2 : 1;
     }
 
     /**
@@ -862,7 +937,8 @@ export async function importFixtures(buffer, filename, authorName) {
       /** @type {DmxBreakWrapper[]} */
       const dmxBreakWrappers = [];
 
-      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
+      const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
+      for (const gdtfChannel of gdtfChannels) {
         if (dmxBreakWrappers.length === 0 || dmxBreakWrappers.at(-1).dmxBreak !== gdtfChannel.$.DMXBreak) {
           dmxBreakWrappers.push({
             dmxBreak: gdtfChannel.$.DMXBreak,
@@ -934,8 +1010,8 @@ export async function importFixtures(buffer, filename, authorName) {
     /**
      * Adds the OFL channel key (and fine channel keys) to dmxBreakWrappers'
      * last entry's channels array.
-     * @param {object} gdtfChannel The GDTF channel object.
-     * @param {DmxBreakWrapper[]} dmxBreakWrappers The DMXBreak wrapper array.
+     * @param {object} gdtfChannel - The GDTF channel object.
+     * @param {DmxBreakWrapper[]} dmxBreakWrappers - The DMXBreak wrapper array.
      */
     function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
       const channelKey = gdtfChannel._oflChannelKey;
@@ -946,7 +1022,7 @@ export async function importFixtures(buffer, filename, authorName) {
       const channelKeys = [channelKey, ...(oflChannel.fineChannelAliases ?? [])];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
-      const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, 'Offset')
+      const channelOffsets = hasNonNoneAttribute(gdtfChannel, 'Offset')
         ? gdtfChannel.$.Offset.split(',')
         : [
             gdtfChannel.$.Coarse,
@@ -966,7 +1042,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     /**
      * Find all <GeometryReference> XML nodes with a given Geometry attribute.
-     * @param {string} geometryName The name of the geometry reference.
+     * @param {string} geometryName - The name of the geometry reference.
      * @returns {object[]} An array of all geometry reference XML objects.
      */
     function findGeometryReferences(geometryName) {
@@ -980,7 +1056,7 @@ export async function importFixtures(buffer, filename, authorName) {
        * Recursively go through the child nodes of a given XML node and add
        * <GeometryReference> nodes with the correct Geometry attribute to the
        * geometryReferences array.
-       * @param {object} xmlNode The XML node object to start traversing at.
+       * @param {object} xmlNode - The XML node object to start traversing at.
        */
       function traverseGeometries(xmlNode) {
         // add all suitable GeometryReference child nodes
@@ -1034,16 +1110,17 @@ export async function importFixtures(buffer, filename, authorName) {
     replaceSwitchingChannelsInModes(fixture, modeChannelReplacements);
 
     /**
-     * @param {string} triggerChannelKey Key of the trigger channel, whose relations should be simplified.
+     * @param {string} triggerChannelKey - Key of the trigger channel, whose relations should be simplified.
      * @returns {object} Simplified switching channel's relations.
      */
     function simplifySwitchingChannelRelations(triggerChannelKey) {
       const simplifiedRelations = {};
 
-      for (const [switchingChannelKey, relations] of Object.entries(relationsPerMaster[triggerChannelKey])) {
+      const masterRelations = relationsPerMaster[triggerChannelKey];
+      for (const [switchingChannelKey, relations] of Object.entries(masterRelations)) {
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
-          (otherKey) => JSON.stringify(relationsPerMaster[triggerChannelKey][otherKey]) === JSON.stringify(relations),
+          (otherKey) => JSON.stringify(masterRelations[otherKey]) === JSON.stringify(relations),
         );
 
         if (addedSwitchingChannelKey) {
@@ -1067,7 +1144,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     /**
-     * @param {CoarseChannel} channel The OFL channel object.
+     * @param {CoarseChannel} channel - The OFL channel object.
      * @returns {number} The fineness of the channel.
      */
     function getChannelResolution(channel) {
@@ -1075,18 +1152,16 @@ export async function importFixtures(buffer, filename, authorName) {
         return Number.parseInt(channel.dmxValueResolution, 10) * 8;
       }
 
-      if ('fineChannelAliases' in channel) {
-        return channel.fineChannelAliases.length + 1;
-      }
-
-      return CoarseChannel.RESOLUTION_8BIT;
+      return 'fineChannelAliases' in channel
+        ? channel.fineChannelAliases.length + 1
+        : CoarseChannel.RESOLUTION_8BIT;
     }
   }
 }
 
 /**
- * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
+ * @param {Buffer} buffer - The imported file.
+ * @param {string} filename - The imported file's name.
  * @returns {Promise<object>} A Promise that resolves to the parsed XML object.
  */
 async function getGdtfXml(buffer, filename) {
@@ -1110,7 +1185,7 @@ async function getGdtfXml(buffer, filename) {
 /**
  * Remove unnecessary `name` and `dmxValueResolution` properties and fill/remove
  * `fineChannelAliases`.
- * @param {ChannelWrapper[]} channelWrappers The OFL availableChannels or templateChannels objects.
+ * @param {ChannelWrapper[]} channelWrappers - The OFL availableChannels or templateChannels objects.
  */
 function cleanUpChannelWrappers(channelWrappers) {
   for (const channelWrapper of channelWrappers) {
@@ -1158,8 +1233,8 @@ function cleanUpChannelWrappers(channelWrappers) {
 
 /**
  * Bring relations into a structure we can work with.
- * @param {object} fixture The OFL fixture object.
- * @param {Relation[]} switchingChannelRelations An array of relations.
+ * @param {object} fixture - The OFL fixture object.
+ * @param {Relation[]} switchingChannelRelations - An array of relations.
  * @returns {TransformedRelations} The transformed relations.
  */
 function transformRelations(fixture, switchingChannelRelations) {
@@ -1201,9 +1276,9 @@ function transformRelations(fixture, switchingChannelRelations) {
 
   /**
    * Adds all implicit fine channel relations for a given relation.
-   * @param {Relation} relation The relation for the coarse channel.
-   * @param {string} switchingChannelKey The switching channel key of the coarse channel.
-   * @param {string} switchToChannelKey The switch to channel key of the coarse channel.
+   * @param {Relation} relation - The relation for the coarse channel.
+   * @param {string} switchingChannelKey - The switching channel key of the coarse channel.
+   * @param {string} switchToChannelKey - The switch to channel key of the coarse channel.
    */
   function transformRelationFineChannels(relation, switchingChannelKey, switchToChannelKey) {
     const masterKey = relation.masterGdtfChannel._oflChannelKey;
@@ -1234,8 +1309,8 @@ function transformRelations(fixture, switchingChannelRelations) {
 
 /**
  * Replaces normal channels with switching channels in fixture's modes.
- * @param {object} fixture The OFL fixture object.
- * @param {ModeChannelReplacements} modeChannelReplacements An object mapping a mode index and a switch to channel key to the switching channel key.
+ * @param {object} fixture - The OFL fixture object.
+ * @param {ModeChannelReplacements} modeChannelReplacements - An object mapping a mode index and a switch to channel key to the switching channel key.
  */
 function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
   for (const [modeIndex, mode] of fixture.modes.entries()) {
@@ -1243,11 +1318,12 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
       continue;
     }
 
-    for (const switchToChannelKey of Object.keys(modeChannelReplacements[modeIndex])) {
+    const channelReplacements = modeChannelReplacements[modeIndex];
+    for (const [switchToChannelKey, replacementChannelKey] of Object.entries(channelReplacements)) {
       const channelIndex = mode.channels.indexOf(switchToChannelKey);
 
       if (channelIndex !== -1) {
-        mode.channels[channelIndex] = modeChannelReplacements[modeIndex][switchToChannelKey];
+        mode.channels[channelIndex] = replacementChannelKey;
       }
     }
   }
@@ -1255,13 +1331,12 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
 
 /**
  * Removes `defaultValue`s and fixture matrix if they're unneeded.
- * @param {object} fixture The OFL fixture object.
- * @param {string[]} warnings An array to add warnings to.
+ * @param {object} fixture - The OFL fixture object.
+ * @param {string[]} warnings - An array to add warnings to.
  */
 function cleanUpFixture(fixture, warnings) {
   if ('availableChannels' in fixture) {
-    for (const channelKey of Object.keys(fixture.availableChannels)) {
-      const channel = fixture.availableChannels[channelKey];
+    for (const channel of Object.values(fixture.availableChannels)) {
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -1271,8 +1346,7 @@ function cleanUpFixture(fixture, warnings) {
   if ('templateChannels' in fixture) {
     warnings.push('Please fix the visual representation of the matrix.');
 
-    for (const channelKey of Object.keys(fixture.templateChannels)) {
-      const channel = fixture.templateChannels[channelKey];
+    for (const channel of Object.values(fixture.templateChannels)) {
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -1284,11 +1358,11 @@ function cleanUpFixture(fixture, warnings) {
 }
 
 /**
- * @param {object} xmlNode An XML node object.
- * @param {string} attribute The attribute name to check.
+ * @param {object} xmlNode - An XML node object.
+ * @param {string} attribute - The attribute name to check.
  * @returns {boolean} True if the node has the attribute and its value is not "None", false otherwise.
  */
-function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
+function hasNonNoneAttribute(xmlNode, attribute) {
   return attribute in xmlNode.$ && xmlNode.$[attribute] !== 'None';
 }
 
@@ -1297,8 +1371,8 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
  * the form "dd.MM.yyyy HH:mm:ss", so those have to be converted to the ISO format.
  *
  * @see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @param {string | undefined} dateString An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
- * @param {string} fallbackDateString A fallback date string to return if the parsed date is not valid.
+ * @param {string | undefined} dateString - An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
+ * @param {string} fallbackDateString - A fallback date string to return if the parsed date is not valid.
  * @returns {string} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
  */
 function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
@@ -1326,9 +1400,9 @@ function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
 }
 
 /**
- * @param {string | undefined} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
- * @param {number | undefined} fallbackValue DMX value that is used if `dmxValueString` is falsy.
- * @param {number} [fallbackResolution=1] DMX value resolution that is used if `dmxValueString` is falsy.
+ * @param {string | undefined} dmxValueString - GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @param {number | undefined} fallbackValue - DMX value that is used if `dmxValueString` is falsy.
+ * @param {number} [fallbackResolution=1] - DMX value resolution that is used if `dmxValueString` is falsy.
  * @returns {[number, Resolution]} Array containing DMX value and DMX resolution.
  */
 function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString, fallbackValue, fallbackResolution = 1) {
@@ -1346,8 +1420,8 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString, fallbackValue
 }
 
 /**
- * @param {string} value The string to parse.
- * @param {number} fallback The number to use if the string can't be parsed.
+ * @param {string} value - The string to parse.
+ * @param {number} fallback - The number to use if the string can't be parsed.
  * @returns {number} The parsed number.
  */
 function parseFloatWithFallback(value, fallback) {
@@ -1356,7 +1430,7 @@ function parseFloatWithFallback(value, fallback) {
 }
 
 /**
- * @param {string} string The string to slugify.
+ * @param {string} string - The string to slugify.
  * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {

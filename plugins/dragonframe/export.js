@@ -1,18 +1,20 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
+import { downgradeShutterEffect } from '../../lib/plugin-downgrade-helpers/downgrade-burst-shutter-effect.js';
+import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 // needed for export test
 export const supportedOflVersion = '12.2.1';
 
-export const version = '1.0.0';
+export const version = '1.0.1';
 
 /**
- * @param {Fixture[]} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDirectory Absolute path to OFL's root directory.
- * @param {Date} options.date The current time.
- * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {Fixture[]} fixtures - An array of Fixture objects.
+ * @param {object} options - Global options, including:
+ * @param {string} options.baseDirectory - Absolute path to OFL's root directory.
+ * @param {Date} options.date - The current time.
+ * @param {string | undefined} options.displayedPluginVersion - Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
@@ -38,7 +40,8 @@ export async function exportFixtures(fixtures, options) {
   const usedManufacturerData = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/manufacturers.json`,
   };
-  for (const manufacturer of Object.keys(manufacturers).toSorted()) {
+  const manufacturerKeys = Object.keys(manufacturers).toSorted((a, b) => a.localeCompare(b));
+  for (const manufacturer of manufacturerKeys) {
     if (usedManufacturers.has(manufacturer)) {
       usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }
@@ -53,7 +56,7 @@ export async function exportFixtures(fixtures, options) {
 }
 
 /**
- * @param {Fixture} fixture The fixture to export.
+ * @param {Fixture} fixture - The fixture to export.
  * @returns {object} The generated fixture JSON file.
  */
 function getFixtureFile(fixture) {
@@ -65,6 +68,8 @@ function getFixtureFile(fixture) {
   jsonData.oflURL = fixture.url;
 
   downgradePhysical(jsonData.physical);
+  replaceNullSwitchChannels(jsonData, fixture);
+  downgradeShutterEffectCapabilities(jsonData);
 
   for (const mode of jsonData.modes) {
     downgradePhysical(mode.physical);
@@ -80,10 +85,27 @@ function getFixtureFile(fixture) {
 
 /**
  * Removes `powerConnectors` from physical.
- * @param {object|undefined} physicalJsonData The physical object to transform.
+ * @param {object|undefined} physicalJsonData - The physical object to transform.
  */
 function downgradePhysical(physicalJsonData) {
   if (physicalJsonData) {
     delete physicalJsonData.powerConnectors;
+  }
+}
+
+/**
+ * Replaces shutter effects that are unsupported by AGLight.
+ * @param {object} fixtureJson - The fixture whose capabilities should be processed
+ */
+function downgradeShutterEffectCapabilities(fixtureJson) {
+  for (const channel of Object.values(fixtureJson.availableChannels)) {
+    if (channel.capability) {
+      downgradeShutterEffect(channel.capability);
+      continue;
+    }
+
+    for (const capability of channel.capabilities) {
+      downgradeShutterEffect(capability);
+    }
   }
 }

@@ -51,7 +51,7 @@
       <div v-else-if="results.length > 0" class="card">
         <ul class="list fixtures">
           <li
-            v-for="fixture of fixtureResults"
+            v-for="fixture of results"
             :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"
@@ -85,7 +85,6 @@
 </style>
 
 <script>
-import register from '../../fixtures/register.json';
 import ConditionalDetails from '../components/ConditionalDetails.vue';
 import LabeledInput from '../components/LabeledInput.vue';
 
@@ -96,13 +95,20 @@ export default {
   },
   async asyncData({ $axios, error }) {
     let manufacturers;
+    let categories;
     try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+      [manufacturers, categories] = await Promise.all([
+        $axios.$get('/api/v1/manufacturers'),
+        $axios.$get('/api/v1/categories'),
+      ]);
     }
     catch (requestError) {
       return error(requestError);
     }
-    return { manufacturers };
+    return {
+      manufacturers,
+      categories: categories.map(({ name }) => name),
+    };
   },
   data() {
     return {
@@ -112,7 +118,6 @@ export default {
       categoriesQuery: [],
       detailsInitiallyOpen: null,
       results: [],
-      categories: Object.keys(register.categories).toSorted((a, b) => a.localeCompare(b, 'en')),
       loading: false,
       isBrowser: false,
     };
@@ -157,19 +162,6 @@ export default {
       ],
     };
   },
-  computed: {
-    fixtureResults() {
-      return this.results.map((key) => {
-        const manufacturer = key.split('/')[0];
-
-        return {
-          key,
-          name: `${this.manufacturers[manufacturer].name} ${register.filesystem[key].name}`,
-          color: register.colors[manufacturer],
-        };
-      });
-    },
-  },
   watch: {
     '$route.query': '$fetch',
   },
@@ -195,7 +187,7 @@ export default {
 };
 
 /**
- * @param {object} query The raw query returned by Vue Router
+ * @param {object} query - The raw query returned by Vue Router
  * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {

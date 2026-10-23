@@ -1,5 +1,27 @@
 import xmlbuilder from 'xmlbuilder';
 
+/**
+ * Adds a `<range>` element for a single strobe/strobespeed capability combination, unless the strobe capability is of type "open".
+ * @param {object} xmlStrobe - The parent `<strobe>` XML element.
+ * @param {object} speedCapability - The strobespeed capability providing the range attributes.
+ * @param {object} strobeCapability - The strobe capability providing the type and DMX range.
+ */
+function addStrobeSpeedRange(xmlStrobe, speedCapability, strobeCapability) {
+  if (strobeCapability.attribs.type.value === 'open') {
+    return;
+  }
+
+  const xmlSpeedRange = xmlStrobe.element('range');
+  xmlSpeedRange.attribs = { ...speedCapability.attribs };
+  xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
+
+  xmlSpeedRange.element('step', {
+    handler: 'strobetype',
+    mindmx: strobeCapability.attribs.mindmx.value,
+    maxdmx: strobeCapability.attribs.maxdmx.value,
+  });
+}
+
 export default [
   {
     functions: ['strobe', 'strobespeed'],
@@ -12,17 +34,7 @@ export default [
 
       for (const speedCapability of strobespeed.children) {
         for (const strobeCapability of strobe.children) {
-          if (strobeCapability.attribs.type.value !== 'open') {
-            const xmlSpeedRange = xmlStrobe.element('range');
-            xmlSpeedRange.attribs = { ...speedCapability.attribs };
-            xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
-
-            xmlSpeedRange.element('step', {
-              handler: 'strobetype',
-              mindmx: strobeCapability.attribs.mindmx.value,
-              maxdmx: strobeCapability.attribs.maxdmx.value,
-            });
-          }
+          addStrobeSpeedRange(xmlStrobe, speedCapability, strobeCapability);
         }
       }
 
@@ -123,7 +135,7 @@ export default [
 ];
 
 /**
- * @param {string} tagName The XML tag name of the new parent element.
+ * @param {string} tagName - The XML tag name of the new parent element.
  * @returns {(...xmlElements: XMLElement[]) => XMLElement} A function that returns a new XML element with the given elements as children.
  */
 function mergeIntoNew(tagName) {
@@ -137,8 +149,8 @@ function mergeIntoNew(tagName) {
 }
 
 /**
- * @param {XMLElement} firstElement The element in which the other elements should be merged into.
- * @param {...XMLElement} xmlElements The elements that should be merge into the first element.
+ * @param {XMLElement} firstElement - The element in which the other elements should be merged into.
+ * @param {...XMLElement} xmlElements - The elements that should be merge into the first element.
  * @returns {XMLElement} The first element with the other elements as children.
  */
 function mergeIntoFirst(firstElement, ...xmlElements) {
@@ -149,7 +161,7 @@ function mergeIntoFirst(firstElement, ...xmlElements) {
 }
 
 /**
- * @param {string} tagName The new XML tag name.
+ * @param {string} tagName - The new XML tag name.
  * @returns {(xmlElement: XMLElement) => XMLElement} A function that alters the given XML element's tag name to the specified new name.
  */
 function rename(tagName) {

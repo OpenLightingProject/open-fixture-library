@@ -150,16 +150,11 @@ export default {
         return getSelectedUnit(this.value, this.enumValues, this.unitNames, this.units);
       },
       set(newUnit) {
-        if (this.enumValues.includes(newUnit) || newUnit === '') {
+        if (newUnit === '' || this.enumValues.includes(newUnit)) {
           this.update(newUnit);
         }
         else if (this.units[newUnit].unitString === '') {
-          if (this.selectedNumber === '') {
-            this.update('[no unit]');
-          }
-          else {
-            this.update(Number.parseFloat(this.selectedNumber));
-          }
+          this.update(this.selectedNumber === '' ? '[no unit]' : Number.parseFloat(this.selectedNumber));
           this.$emit('unit-selected', '[no unit]');
         }
         else {
@@ -187,12 +182,7 @@ export default {
         }
 
         if (this.units[this.selectedUnit].unitString === '') {
-          if (newNumber === '') {
-            this.update('[no unit]');
-          }
-          else {
-            this.update(Number.parseFloat(newNumber));
-          }
+          this.update(newNumber === '' ? '[no unit]' : Number.parseFloat(newNumber));
         }
         else {
           this.update(newNumber + this.units[this.selectedUnit].unitString);
@@ -212,11 +202,8 @@ export default {
 
       const otherFieldSelectedUnit = getSelectedUnit(this.associatedEntity, this.enumValues, this.unitNames, this.units);
 
-      if (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues)) {
-        return true;
-      }
-
-      return this.selectedUnit === otherFieldSelectedUnit;
+      return (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues))
+        || this.selectedUnit === otherFieldSelectedUnit;
     },
   },
   mounted() {
@@ -234,7 +221,7 @@ export default {
 
     /**
      * Called by {@link EditorProportionalPropertySwitcher}
-     * @param {string} newUnitString The unit string to set.
+     * @param {string} newUnitString - The unit string to set.
      * @public
      */
     setUnitString(newUnitString) {
@@ -267,7 +254,7 @@ export default {
 };
 
 /**
- * @param {string} pattern The pattern string to parse.
+ * @param {string} pattern - The pattern string to parse.
  * @returns {string} The unit string.
  */
 function parseUnitFromPattern(pattern) {
@@ -280,26 +267,22 @@ function parseUnitFromPattern(pattern) {
 }
 
 /**
- * @param {string} unitString The unit string, as required by the schema.
+ * @param {string} unitString - The unit string, as required by the schema.
  * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
-  if (unitString === '') {
-    return 'number';
-  }
-
-  return unitString.replace('^2', '²').replace('^3', '³');
+  return unitString === '' ? 'number' : unitString.replace('^2', '²').replace('^3', '³');
 }
 
 /**
- * @param {string | number | null} value The value to get the unit from.
- * @param {string[]} enumValues List of allowed keywords.
- * @param {string[]} unitNames List of names of allowed units.
- * @param {Record<string, object>} units Unit data by unit name.
+ * @param {string | number | null} value - The value to get the unit from.
+ * @param {string[]} enumValues - List of allowed keywords.
+ * @param {string[]} unitNames - List of names of allowed units.
+ * @param {Record<string, object>} units - Unit data by unit name.
  * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
-  if (enumValues.includes(value) || value === '') {
+  if (value === '' || enumValues.includes(value)) {
     return value;
   }
 
@@ -313,8 +296,8 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
 }
 
 /**
- * @param {string} unitName A unit name or keyword.
- * @param {string[]} enumValues List of allowed keywords.
+ * @param {string} unitName - A unit name or keyword.
+ * @param {string[]} enumValues - List of allowed keywords.
  * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {

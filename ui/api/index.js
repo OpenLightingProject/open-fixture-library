@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url';
 import { styleText } from 'util';
+import addFormats from 'ajv-formats';
 import cors from 'cors';
 import express from 'express';
 import { OpenAPIBackend } from 'openapi-backend';
@@ -26,16 +27,39 @@ const corsWhitelist = [
 
 app.use(cors({
   origin(origin, callback) {
-    const corsAllowed = process.env.NODE_ENV !== 'production'
+    const isCorsAllowed = process.env.NODE_ENV !== 'production'
       || !origin // allow non XHR/fetch requests
       || corsWhitelist.some((regex) => regex.test(origin));
 
-    callback(null, corsAllowed ? true : 'https://open-fixture-library.org');
+    callback(null, isCorsAllowed || 'https://open-fixture-library.org');
   },
   optionsSuccessStatus: 200, // IE11 chokes on default 204
 }));
 
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
+
+/**
+ * @param {string | object | object[] | null} validationErrors - Errors returned by an OpenAPI validator.
+ * @param {string} errorDescription - Description of the response that failed validation.
+ * @param {string} rootName - Root object name used in formatted validation messages.
+ */
+function logResponseValidationErrors(validationErrors, errorDescription, rootName) {
+  if (!validationErrors) {
+    return;
+  }
+
+  let error;
+  if (typeof validationErrors === 'string') {
+    error = validationErrors;
+  }
+  else {
+    const errors = Array.isArray(validationErrors) ? validationErrors : [validationErrors];
+    error = getAjvErrorMessages(errors, rootName).join(',\n');
+  }
+
+  console.error(styleText('bgRed', errorDescription));
+  console.error(error);
+}
 
 const api = new OpenAPIBackend({
   definition: fileURLToPath(new URL('openapi.json', import.meta.url)),
@@ -44,6 +68,10 @@ const api = new OpenAPIBackend({
     formats: {
       base64: base64Regex,
     },
+  },
+  customizeAjv(ajv) {
+    addFormats(ajv);
+    return ajv;
   },
   handlers: {
     ...routeHandlers,
@@ -82,7 +110,7 @@ const api = new OpenAPIBackend({
         body: { error: 'No handler registered for operation' },
       };
     },
-    postResponseHandler({ request, response, operation }) {
+    postResponseHandler({ request, response, operation }, httpResponse) {
       if (!response || !operation) {
         return null;
       }
@@ -91,20 +119,24 @@ const api = new OpenAPIBackend({
 
       // validate API responses in development mode
       if (process.env.NODE_ENV !== 'production') {
+        const requestIdentifier = `${request.originalUrl} (${operation.operationId}, status code ${statusCode})`;
+
         const valid = api.validateResponse(body, operation, statusCode);
+        logResponseValidationErrors(
+          valid.errors,
+          `API response for ${requestIdentifier} doesn't match schema:`,
+          'response',
+        );
 
-        if (valid.errors) {
-          let error = valid.errors;
-
-          if (typeof error !== 'string') {
-            error = getAjvErrorMessages(Array.isArray(error) ? error : [error], 'response').join(',\n');
-          }
-
-          const errorDescription = `API response for ${request.originalUrl} (${operation.operationId}, status code ${statusCode}) doesn't match schema:`;
-
-          console.error(styleText('bgRed', errorDescription));
-          console.error(error);
-        }
+        const headersValidation = api.validateResponseHeaders(httpResponse.getHeaders(), operation, {
+          statusCode,
+          setMatchType: 'superset',
+        });
+        logResponseValidationErrors(
+          headersValidation.errors,
+          `API response headers for ${requestIdentifier} don't match schema:`,
+          'response headers',
+        );
       }
 
       return response;
@@ -113,7 +145,8 @@ const api = new OpenAPIBackend({
 });
 
 app.use(async (request, response) => {
-  const { statusCode = 200, body } = await api.handleRequest(request);
+  response.setHeader('Content-Type', 'application/json');
+  const { statusCode = 200, body } = await api.handleRequest(request, response);
   response.statusCode = statusCode;
   sendJson(response, body);
 });

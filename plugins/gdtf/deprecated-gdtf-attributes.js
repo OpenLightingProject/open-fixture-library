@@ -502,9 +502,9 @@ const deprecatedGdtfAttributes = {
 };
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
- * @param {string} primaryColor The color that this capability is most likely.
- * @param {string} secondaryColor The color that this capability is second most likely.
+ * @param {object} gdtfCapability - The enhanced <ChannelSet> XML object.
+ * @param {string} primaryColor - The color that this capability is most likely.
+ * @param {string} secondaryColor - The color that this capability is second most likely.
  * @returns {string} Either the primary, or the secondary color.
  */
 function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
@@ -518,11 +518,9 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
     return primaryColor;
   }
 
-  if (name.includes(secondaryColor.charAt(0).toLowerCase())) {
-    return secondaryColor;
-  }
-
-  return primaryColor;
+  return name.includes(secondaryColor.charAt(0).toLowerCase())
+    ? secondaryColor
+    : primaryColor;
 }
 
 export default deprecatedGdtfAttributes;

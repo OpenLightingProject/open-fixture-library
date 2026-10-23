@@ -1,0 +1,21 @@
+name: Delete fixture branch on unmerged PR close
+on:
+  pull_request:
+    types: [closed]
+jobs:
+  delete-branch:
+    name: Delete branch
+    if: >-
+      ${{
+        !github.event.pull_request.merged &&
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        contains(github.event.pull_request.labels.*.name, 'new-fixture')
+      }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Delete branch
+        run: gh api repos/${{ github.repository }}/git/refs/heads/${{ github.head_ref }} -X DELETE
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -56,16 +56,16 @@ export default {
   },
   computed: {
     restoredDate() {
-      if (this.modelValue === undefined) {
-        return undefined;
-      }
-      return (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
+      return this.modelValue === undefined
+        ? undefined
+        : (new Date(this.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
     },
   },
   methods: {
     discardRestored() {
       // put all items except the last one back
-      localStorage.setItem('autoSave', JSON.stringify(JSON.parse(localStorage.getItem('autoSave')).slice(0, -1)));
+      const autoSaveItems = JSON.parse(localStorage.getItem('autoSave'));
+      localStorage.setItem('autoSave', JSON.stringify(autoSaveItems.slice(0, -1)));
 
       this.$emit('update:model-value', undefined);
       this.$emit('restore-complete');
@@ -90,7 +90,7 @@ export default {
 };
 
 /**
- * @param {object} fixture The fixture object from the saved user data.
+ * @param {object} fixture - The fixture object from the saved user data.
  * @returns {object} A fixture editor fixture object with all required properties.
  */
 function getRestoredFixture(fixture) {
@@ -115,8 +115,8 @@ function getRestoredFixture(fixture) {
 }
 
 /**
- * @param {object} channel The channel object from the saved user data.
- * @param {booelan} isChannelDialog True if the channel object is used in the channel dialog and should therefore not be sanitized.
+ * @param {object} channel - The channel object from the saved user data.
+ * @param {booelan} isChannelDialog - True if the channel object is used in the channel dialog and should therefore not be sanitized.
  * @returns {object} A fixture editor channel object with all required properties.
  */
 function getRestoredChannel(channel, isChannelDialog) {

@@ -13,7 +13,7 @@ import createPullRequest from '../../../../lib/create-github-pr.js';
 /**
  * Creates a GitHub pull request with the given fixture data.
  * Includes warnings, errors, GitHub username and GitHub comment in the PR description.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} ctx - Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
 export async function submitFixtures({ request }) {

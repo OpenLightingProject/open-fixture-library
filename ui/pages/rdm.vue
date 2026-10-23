@@ -6,7 +6,7 @@
 
       <p>Find a fixture definition or manufacturer by entering its RDM IDs.</p>
 
-      <form action="/rdm" method="get">
+      <form action="/rdm" method="get" @submit.prevent="onSubmit($event)">
         <LabeledInput label="Manufacturer ID">
           <input
             type="number"
@@ -68,7 +68,6 @@
 </template>
 
 <script>
-import register from '../../fixtures/register.json';
 import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
@@ -76,46 +75,56 @@ export default {
     LabeledInput,
   },
   async asyncData({ query, $axios, redirect, error }) {
-    const manufacturerId = parseIntOrUndefined(query.manufacturerId);
-    const modelId = parseIntOrUndefined(query.modelId);
-    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
+    const manufacturerId = parseIntOrNull(query.manufacturerId);
 
-    if (manufacturerId === undefined) {
+    if (manufacturerId === null) {
       return {
         notFound: null,
         searchFor: 'nothing',
+        manufacturerId: null,
+        manufacturerKey: null,
+        manufacturerName: null,
+        modelId: null,
       };
     }
 
-    if (!(String(manufacturerId) in register.rdm)) {
+    const modelId = parseIntOrNull(query.modelId);
+    const personalityIndex = parseIntOrNull(query.personalityIndex);
+
+    let rdmLookup;
+    try {
+      rdmLookup = await $axios.$get('/api/v1/rdm', {
+        params: {
+          manufacturerId,
+          ...(modelId !== null && { modelId }),
+        },
+      });
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+
+    if (rdmLookup.manufacturerKey === null) {
       return {
         notFound: 'manufacturer',
-        searchFor: modelId === undefined ? 'manufacturer' : 'fixture',
+        searchFor: modelId === null ? 'manufacturer' : 'fixture',
         manufacturerId,
+        manufacturerKey: null,
+        manufacturerName: null,
         modelId,
       };
     }
 
-    const rdmManufacturer = register.rdm[String(manufacturerId)];
-
-    if (modelId === undefined || String(modelId) in rdmManufacturer.models) {
-      return redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect);
-    }
-
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
-    }
-    catch (requestError) {
-      return error(requestError);
+    if (modelId === null || rdmLookup.fixtureKey !== null) {
+      return redirectToCorrectPage(rdmLookup, personalityIndex, redirect);
     }
 
     return {
       notFound: 'fixture',
       searchFor: 'fixture',
       manufacturerId,
-      manufacturerKey: rdmManufacturer.key,
-      manufacturerName: manufacturers[rdmManufacturer.key].name,
+      manufacturerKey: rdmLookup.manufacturerKey,
+      manufacturerName: rdmLookup.manufacturerName,
       modelId,
     };
   },
@@ -138,43 +147,51 @@ export default {
         return '/fixture-editor';
       }
 
-      const useExistingManufacturer = this.manufacturerKey !== undefined;
+      const shouldUseExistingManufacturer = this.manufacturerKey !== null;
 
       const prefillObject = {
-        useExistingManufacturer,
-        manufacturerKey: useExistingManufacturer ? this.manufacturerKey : undefined,
-        newManufacturerRdmId: useExistingManufacturer ? undefined : this.manufacturerId,
+        useExistingManufacturer: shouldUseExistingManufacturer,
+        manufacturerKey: shouldUseExistingManufacturer ? this.manufacturerKey : undefined,
+        newManufacturerRdmId: shouldUseExistingManufacturer ? undefined : this.manufacturerId,
         rdmModelId: this.modelId,
       };
 
       return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
     },
   },
+  watchQuery: ['manufacturerId', 'modelId', 'personalityIndex'],
+  methods: {
+    onSubmit(event) {
+      this.$router.push({
+        path: this.$route.path,
+        query: Object.fromEntries(new FormData(event.target)),
+      });
+    },
+  },
 };
 
 /**
- * @param {string | undefined} string The string to parse.
- * @returns {number | undefined} The parsed number, or undefined if the string can't be parsed.
+ * @param {string | undefined} string - The string to parse.
+ * @returns {number | null} The parsed number, or null if the string can't be parsed.
  */
-function parseIntOrUndefined(string) {
+function parseIntOrNull(string) {
   const number = Number.parseInt(string, 10);
-  return Number.isNaN(number) ? undefined : number;
+  return Number.isNaN(number) ? null : number;
 }
 
 /**
- * @param {object} rdmManufacturer The manufacturer object that matches the provided RDM manufacturer id.
- * @param {number | undefined} modelId The provided RDM model id, or undefined.
- * @param {number | undefined} personalityIndex The provided RDM personality index, or undefined.
- * @param {(code: number, path: string) => void} redirect The redirect function to be called.
+ * @param {object} rdmLookup - The API result matching the provided RDM IDs.
+ * @param {number | null} personalityIndex - The provided RDM personality index, or null.
+ * @param {(code: number, path: string) => void} redirect - The redirect function to be called.
  */
-function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect) {
-  if (modelId === undefined) {
-    redirect(301, `/${rdmManufacturer.key}`);
+function redirectToCorrectPage(rdmLookup, personalityIndex, redirect) {
+  if (rdmLookup.fixtureKey === null) {
+    redirect(301, `/${rdmLookup.manufacturerKey}`);
     return;
   }
 
-  const locationHash = personalityIndex === undefined ? '' : `#rdm-personality-${personalityIndex}`;
+  const locationHash = personalityIndex === null ? '' : `#rdm-personality-${personalityIndex}`;
 
-  redirect(301, `/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`);
+  redirect(301, `/${rdmLookup.manufacturerKey}/${rdmLookup.fixtureKey}${locationHash}`);
 }
 </script>
