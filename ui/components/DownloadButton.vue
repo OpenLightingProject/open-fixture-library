@@ -115,6 +115,7 @@ select {
     padding: 0.5ex 2ex;
     font-weight: 700;
     color: $primary-text-light;
+    text-decoration: none;
     cursor: pointer;
     background: theme-color(orange-background);
     border-radius: 2px;
@@ -154,6 +155,7 @@ select {
       display: block;
       padding: 0.2ex 2ex;
       color: theme-color(text-primary);
+      text-decoration: none;
       transition: background-color 0.2s;
     }
 
@@ -289,13 +291,25 @@ function downloadDataAsFile(blob: Blob, filename = '') {
 }
 
 async function formattedDownload(pluginKey: string) {
+  let filename = '';
+
   const response = await $fetch<Blob>(`${baseLink.value}.${pluginKey}`, {
     method: 'POST',
     body: props.editorFixtures,
     responseType: 'blob',
+    onResponse({ response: fetchResponse }) {
+      const disposition = fetchResponse.headers.get('content-disposition');
+      if (disposition && disposition.includes('attachment')) {
+        const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
+        const matches = filenameRegex.exec(disposition);
+        if (matches && matches[1]) {
+          filename = matches[1].replaceAll(/["']/g, '');
+        }
+      }
+    },
   });
 
-  downloadDataAsFile(response, '');
+  downloadDataAsFile(response, filename);
 }
 
 function onDownloadButton(event: MouseEvent, pluginKey: string) {

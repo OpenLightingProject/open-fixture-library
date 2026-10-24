@@ -13,7 +13,7 @@
 <script setup lang="ts">
 interface Props {
   required?: boolean;
-  modelValue: boolean;
+  modelValue: boolean | null;
   name: string;
   label: string;
 }
@@ -30,7 +30,7 @@ const emit = defineEmits<{
 const input = ref<HTMLInputElement | null>(null);
 
 const localValue = computed({
-  get: () => props.modelValue,
+  get: () => Boolean(props.modelValue),
   set: (newValue: boolean) => {
     emit('update:model-value', newValue ? true : null);
   },

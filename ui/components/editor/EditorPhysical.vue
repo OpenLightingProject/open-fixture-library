@@ -107,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance, nextTick } from 'vue';
+import { getCurrentInstance, nextTick, toRaw } from 'vue';
 import {
   physicalBulbProperties,
   physicalLensProperties,
@@ -147,12 +147,12 @@ const instance = getCurrentInstance();
 const firstInput = ref<any>(null);
 const newDmxConnectorInput = ref<any>(null);
 
-const localPhysical = ref<Physical>(structuredClone(props.modelValue));
+const localPhysical = ref<Physical>(structuredClone(toRaw(props.modelValue)));
 
 watch(
   localPhysical,
   () => {
-    emit('update:model-value', structuredClone(localPhysical.value));
+    emit('update:model-value', structuredClone(toRaw(localPhysical.value)));
   },
   { deep: true }
 );

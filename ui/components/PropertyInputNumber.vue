@@ -41,6 +41,22 @@ const emit = defineEmits<{
   'vf:validate': [validationData: Record<string, string | null>];
 }>();
 
+const exclusiveMinimum = computed(() => {
+  if ('exclusiveMinimum' in props.schemaProperty) {
+    return props.schemaProperty.exclusiveMinimum;
+  }
+
+  return null;
+});
+
+const exclusiveMaximum = computed(() => {
+  if ('exclusiveMaximum' in props.schemaProperty) {
+    return props.schemaProperty.exclusiveMaximum;
+  }
+
+  return null;
+});
+
 const min = computed(() => {
   if (props.minimum !== undefined && props.minimum !== 'invalid') {
     return props.minimum;

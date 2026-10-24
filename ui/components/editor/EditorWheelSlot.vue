@@ -135,6 +135,4 @@ async function changeSlotType() {
     }
   }
 }
-
-defineExpose({});
 </script>
