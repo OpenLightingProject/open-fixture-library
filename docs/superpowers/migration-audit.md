@@ -49,7 +49,7 @@ Only hit: `ui/components/editor/EditorWheelSlot.vue:139 defineExpose({})`.
 
 ## Dev-server render check
 
-`PORT=3005 npm run dev`, then Playwright (Chromium) loaded each route in a fresh browser context. Final state:
+`PORT=3000 npm run dev`, then Playwright (Chromium) loaded each route in a fresh browser context (the first run of this task used `PORT=3005`; every row below was reproduced on `PORT=3000`). Final state:
 
 | Route | HTTP | Title / h1 | Result |
 | --- | --- | --- | --- |
@@ -73,7 +73,7 @@ Exact shape: **22 entries**, each `{ man: string, key: string, name: string, fea
 The 22 fixtures cover 95 distinct feature strings: all 43 `capability-type-*` types plus 52 structural flags
 (`matrix-*`, `wheel-type-*`, `wheel-slot-type-*`, `fine-*`, `switching-*`, `16bit-*`, `null-channels-*`, `redirect-reason-*`, …).
 
-Feature-representative keys (use these for default coverage; `FULL_DOWNLOAD_MATRIX=1` for everything):
+Feature-representative keys (use these for the default Task 5 download suite; `FULL_DOWNLOAD_MATRIX=1` instead iterates **every fixture in `fixtures/register.json`**, as specified in the plan's Task 5 Step 1, not just these 22):
 
 | Family | Fixtures |
 | --- | --- |
@@ -112,6 +112,8 @@ Full key list: `afx/lmh460z`, `astera/fp3-hyperion-tube`, `ayrton/diablo-tc`, `c
 | `ui/components/editor/EditorRestoreDialog.vue:72` | `structuredClone(props.modelValue)` throws `DataCloneError` for reactive auto-save data. | Clone `toRaw(...)` (or JSON round-trip). |
 | `ui/components/editor/EditorRestoreDialog.vue:78-82` | Applies restored data through `getCurrentInstance().proxy.$parent` and assigns `parent.fixture`/`parent.channel`; script-setup parent state is not exposed this way. | Replace with explicit emits/props (or a shared store); cover autosave restore in the editor test. |
 | `ui/components/editor/EditorSubmitDialog.vue:342,376` | Leftover debug `console.log(..., structuredClone(requestBody.value))` calls will throw on reactive data during validate/submit. | Remove the debug logs; clone raw data only if still needed. |
+| `ui/pages/fixture-editor.vue:263` | `restoreAutoSave()` ends with `console.log('restore', structuredClone(restoredData.value))`. `restoredData` is `ref<unknown>` (`:149`), so `.value` is a reactive proxy → **uncaught `DataCloneError: Failed to execute 'structuredClone' on 'Window': #<Object> could not be cloned.`** on every `/fixture-editor` load that has a saved `localStorage.autoSave` entry (i.e. every returning editor user). The call is outside the surrounding `try/catch`, so it aborts `restoreAutoSave()` and the debug log never prints. Reproduced with Playwright by seeding `localStorage.autoSave`; the fresh-browser dev-server check above cannot see it. Same leftover-debug class as `EditorSubmitDialog.vue:342,376`. (File is owned by Task 14 Batch E; fix it here with the editor-restore work.) | Delete the debug log (or clone `toRaw(...)`/JSON round-trip if a log is still wanted). |
+| `ui/pages/fixture-editor.vue:227,230` | Leftover debug `console.log('autoSave fixture:'/'autoSave channel:', JSON.parse(JSON.stringify(...)))` dump the whole fixture/channel on every autosave. No throw, but noisy and same leftover-debug class. | Remove together with the `:263` log. |
 | `ui/components/editor/EditorCapabilityWizard.vue:196` | `structuredClone(props.wizard.templateCapability.typeData)` can receive a reactive proxy. | Use `toRaw(...)`/JSON clone. |
 | `ui/components/editor/EditorChannelDialog.vue:566` | `structuredClone(value)` when copying channel properties can receive proxy values. | Use `toRaw(...)`/JSON clone. |
 | `ui/assets/scripts/editor-utilities.js:271` | `structuredClone(channel)` is called with editor state that may be reactive. | Accept/convert raw input before cloning; add a restore-path test. |
@@ -120,8 +122,8 @@ Full key list: `afx/lmh460z`, `astera/fp3-hyperion-tube`, `ayrton/diablo-tc`, `c
 
 - **Task 9:** no new findings; `VueForm.vue`, `Validate.vue`, `FieldMessages.vue`, and `ui/plugins/vue-form.ts` remain as planned shims.
 - **Task 11:** no load-time findings on `/clay-paky/sharpy`; full matrix/wheel parity remains Task 11/16 work.
-- **Task 13:** no load-time findings. Wizard interactions were not exercised here.
-- **Task 14:** all pages/layouts are already `<script setup>` and load; the only global console issue is the ThemeSwitcher hydration mismatch (Task 10).
+- **Task 13:** no capability- or wheel-slot-specific findings; the `/fixture-editor` autosave `DataCloneError` is listed under Task 12 above. Wizard interactions were not exercised here.
+- **Task 14:** all pages/layouts are already `<script setup>` and load; the only global console issue is the ThemeSwitcher hydration mismatch (Task 10). `ui/pages/fixture-editor.vue` belongs to this batch, so confirm the Task 12 debug-log removal there (including the returning-user autosave path).
 
 ## Intentional differences
 
