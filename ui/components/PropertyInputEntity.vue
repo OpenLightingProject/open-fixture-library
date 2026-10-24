@@ -222,7 +222,7 @@ onMounted(() => {
   emit('vf:validate', validationData.value);
 });
 
-useEditorGroupField(
+const { touch } = useEditorGroupField(
   () => ({
     name: props.name,
     getValue: () => props.modelValue,
@@ -271,9 +271,13 @@ const onFocus = () => {
 };
 
 const onBlur = (event: FocusEvent) => {
-  if (!(event.target && event.relatedTarget) || (event.target as Element).closest('.entity-input') !== (event.relatedTarget as Element)?.closest('.entity-input')) {
-    emit('blur');
+  if (event.target && event.relatedTarget
+    && (event.target as Element).closest('.entity-input') === (event.relatedTarget as Element).closest('.entity-input')) {
+    return;
   }
+
+  touch();
+  emit('blur');
 };
 
 defineExpose({

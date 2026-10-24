@@ -338,6 +338,7 @@ const previewFixtureCreateResult = computed(() => {
 
 function toPlain<T>(value: T): T {
   // Vue 3 reactive proxies cannot be passed to `structuredClone`.
+  // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips the proxy
   return JSON.parse(JSON.stringify(value));
 }
 
@@ -404,7 +405,9 @@ async function onSubmit() {
 function onReset() {
   state.value = 'closed';
   emit('reset');
-}function onCancel() {
+}
+
+function onCancel() {
   state.value = 'closed';
 }
 

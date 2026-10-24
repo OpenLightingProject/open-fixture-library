@@ -58,3 +58,37 @@ test('valid editor data reaches the fixture preview', async ({ page, goto }) => 
   await page.getByRole('button', { name: 'Preview fixture' }).click();
   await expect(page.locator('#submit-dialog .fixture-page h1')).toContainText('Test Fixture');
 });
+
+test('an incomplete compound field shows its message on blur, before submit', async ({ page, goto }) => {
+  await openEditor(page, goto);
+
+  const start = page.locator('input[name="fixture-physical-lens-degreesMinMax-start"]');
+  await start.scrollIntoViewIfNeeded();
+  await start.fill('10');
+  await page.locator('input[name="fixture-name"]').click();
+
+  // Nuxt 2's validator directive was bound to the compound component and
+  // marked it touched on blur, so this message appears before any submit.
+  const rangeMessage = page.locator('section.fixture-physical-lens-degreesMinMax .error-message');
+  await expect(rangeMessage).toBeVisible();
+  await expect(rangeMessage).toContainText('Please fill out both start and end of the range.');
+  await expect(page.locator('#submit-dialog')).toBeHidden();
+});
+
+test('an invalid optional numeric input follows the Nuxt 2 oracle', async ({ page, goto }) => {
+  await openEditor(page, goto);
+  await fillValidFixture(page);
+
+  // The Nuxt 2 oracle drops the 'invalid' sentinel here: no client-side number
+  // message is shown, and the form reaches server-side fixture validation.
+  const rdmModelId = page.locator('input[name="rdmModelId"]');
+  await rdmModelId.scrollIntoViewIfNeeded();
+  await rdmModelId.click();
+  await page.keyboard.type('e');
+  await page.locator('input[name="fixture-name"]').click();
+
+  await expect(page.locator('section.rdmModelId .error-message')).toBeHidden();
+
+  await page.click('button.save-fixture');
+  await expect(page.locator('#submit-dialog')).toContainText('Unfortunately, the fixture validation returned some issues.', { timeout: 20_000 });
+});

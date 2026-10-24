@@ -50,6 +50,7 @@ const EDITOR_FIELD_GROUP_KEY: InjectionKey<EditorFieldGroupApi> = Symbol('editor
 
 interface EditorFieldGroupApi {
   registerField: (definition: FieldDefinition) => () => void;
+  markTouched: (name: string) => void;
   validate: () => void;
   getName: () => string;
 }
@@ -550,6 +551,10 @@ export function useEditorFieldGroup(options: {
       };
     },
     validate,
+    markTouched(name: string) {
+      form?.markTouched(name);
+      validate();
+    },
     getName: () => options.name(),
   };
 
@@ -627,11 +632,12 @@ export function useEditorFieldGroup(options: {
  * the compound value changes (e.g. selecting another unit).
  * @param {Function} getDefinition - Returns the field definition to register.
  * @param {Function} [validateOn] - Reactive source that triggers revalidation.
+ * @returns {object} A `touch()` helper that marks the compound field touched.
  */
 export function useEditorGroupField(
   getDefinition: () => FieldDefinition | null,
   validateOn?: () => unknown,
-): void {
+): { touch: () => void } {
   const group = inject(EDITOR_FIELD_GROUP_KEY, null);
   let unregister: (() => void) | null = null;
 
@@ -652,4 +658,13 @@ export function useEditorGroupField(
   if (validateOn) {
     watch(validateOn, () => group?.validate(), { deep: true });
   }
+
+  return {
+    touch() {
+      const definition = getDefinition();
+      if (definition) {
+        group?.markTouched(definition.name);
+      }
+    },
+  };
 }

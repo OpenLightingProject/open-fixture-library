@@ -51,7 +51,7 @@ const emit = defineEmits<{
 
 const root = ref<HTMLElement | null>(null);
 
-useEditorGroupField(
+const { touch } = useEditorGroupField(
   () => (properties.name
     ? {
         name: properties.name,
@@ -100,8 +100,12 @@ function onFocus() {
 }
 
 function onBlur(event: FocusEvent) {
-  if (!(event && event.target && event.relatedTarget) || (event.target as HTMLElement).parentNode !== (event.relatedTarget as HTMLElement)?.parentNode) {
-    emit('blur');
+  if (event && event.target && event.relatedTarget
+    && (event.target as HTMLElement).parentNode === (event.relatedTarget as HTMLElement)?.parentNode) {
+    return;
   }
+
+  touch();
+  emit('blur');
 }
 </script>

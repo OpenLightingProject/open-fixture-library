@@ -1,5 +1,7 @@
 <template>
   <input
+    ref="inputElement"
+    :name="name"
     :required="required"
     :min="min"
     :max="max"
@@ -15,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import { useEditorGroupField } from '~/composables/useEditorForm';
+
 interface Props {
   schemaProperty: {
     minimum?: number;
@@ -30,6 +34,7 @@ interface Props {
   modelValue: number | string | null;
   lazy?: boolean;
   stepOverride?: number;
+  name?: string;
 }
 
 const props = defineProps<Props>();
@@ -103,6 +108,48 @@ watch(validationData, (newValidationData) => {
   deep: true,
   immediate: true,
 });
+
+const inputElement = ref<HTMLInputElement | null>(null);
+
+const fieldRules = computed(() => {
+  // The Nuxt 2 oracle drops the `'invalid'` sentinel: its vf:validate data was
+  // emitted before the directive listener was attached, so only `required` was
+  // ever registered. Match that behaviour instead of adding a new client-side
+  // error the old site never showed.
+  if (props.modelValue === 'invalid') {
+    return [];
+  }
+
+  const rules: { name: string; params?: unknown }[] = [];
+
+  if (props.required) {
+    rules.push({ name: 'required' });
+  }
+
+  rules.push({ name: 'number' });
+
+  for (const ruleName of ['min', 'max', 'step', 'data-exclusive-minimum', 'data-exclusive-maximum']) {
+    const value = validationData.value[ruleName];
+    if (value !== null && value !== undefined) {
+      rules.push({ name: ruleName, params: value });
+    }
+  }
+
+  return rules;
+});
+
+useEditorGroupField(
+  () => (props.name
+    ? {
+        name: props.name,
+        getValue: () => props.modelValue,
+        getRules: () => fieldRules.value,
+        getAttrs: () => validationData.value,
+        getElement: () => inputElement.value,
+      }
+    : null),
+  () => props.modelValue,
+);
 
 const update = () => {
   const input = document.activeElement as HTMLInputElement;

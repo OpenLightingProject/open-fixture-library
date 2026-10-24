@@ -62,7 +62,7 @@ const emit = defineEmits<{
 const xInput = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
 const root = ref<HTMLElement | null>(null);
 
-useEditorGroupField(
+const { touch } = useEditorGroupField(
   () => ({
     name: props.name,
     getValue: () => props.modelValue,
@@ -109,9 +109,13 @@ const onFocus = () => {
 };
 
 const onBlur = (event: FocusEvent) => {
-  if (!(event.target && event.relatedTarget) || (event.target as Element).closest('.dimensions') !== (event.relatedTarget as Element)?.closest('.dimensions')) {
-    emit('blur');
+  if (event.target && event.relatedTarget
+    && (event.target as Element).closest('.dimensions') === (event.relatedTarget as Element).closest('.dimensions')) {
+    return;
   }
+
+  touch();
+  emit('blur');
 };
 
 defineExpose({
