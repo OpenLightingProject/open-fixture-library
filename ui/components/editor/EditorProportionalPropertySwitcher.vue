@@ -1,16 +1,10 @@
 <template>
   <div class="proportional-capability-data">
 
-    <Component
-      :is="formstate ? 'Validate' : 'span'"
-      v-if="hasStartEnd"
-      :state="formstate"
-      :tag="formstate ? 'span' : null">
+    <span
+      v-if="hasStartEnd">
 
-      <Component
-        :is="formstate ? 'Validate' : 'label'"
-        :state="formstate"
-        :tag="formstate ? 'label' : null"
+      <label
         class="entity-input">
 
         <PropertyInputNumber
@@ -47,7 +41,7 @@
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
 
-      </Component>
+      </label>
 
       <span class="separator">
         <button
@@ -61,10 +55,7 @@
         …
       </span>
 
-      <Component
-        :is="formstate ? 'Validate' : 'label'"
-        :state="formstate"
-        :tag="formstate ? 'label' : null"
+      <label
         class="entity-input">
 
         <PropertyInputNumber
@@ -101,8 +92,8 @@
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
 
-      </Component>
-    </Component>
+      </label>
+    </span>
 
     <template v-else>
       <PropertyInputNumber

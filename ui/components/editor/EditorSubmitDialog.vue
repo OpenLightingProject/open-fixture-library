@@ -336,19 +336,24 @@ const previewFixtureCreateResult = computed(() => {
   };
 });
 
-async function validate(body: any) {
-  requestBody.value = body;
+function toPlain<T>(value: T): T {
+  // Vue 3 reactive proxies cannot be passed to `structuredClone`.
+  return JSON.parse(JSON.stringify(value));
+}
 
-  console.log('validate', structuredClone(requestBody.value));
+async function validate(body: any) {
+  requestBody.value = toPlain(body);
+
+  console.log('validate', requestBody.value);
 
   state.value = 'validating';
   try {
-    const response = await $fetch(props.endpoint, {
+    const response = await $fetch<any>(props.endpoint, {
       method: 'POST',
       body: requestBody.value,
     });
 
-    fixtureCreateResult.value = response.data;
+    fixtureCreateResult.value = response.data ?? response;
     state.value = 'ready';
   }
   catch (err: any) {
@@ -367,22 +372,22 @@ async function onPreview() {
 }
 
 async function onSubmit() {
-  requestBody.value = {
+  requestBody.value = toPlain({
     fixtureCreateResult: fixtureCreateResult.value,
     githubUsername: props.githubUsername ?? null,
     githubComment: props.githubComment ?? null,
-  };
+  });
 
-  console.log('submit', structuredClone(requestBody.value));
+  console.log('submit', requestBody.value);
 
   state.value = 'uploading';
   try {
-    const response = await $fetch('/api/v1/fixtures/submit', {
+    const response = await $fetch<any>('/api/v1/fixtures/submit', {
       method: 'POST',
       body: requestBody.value,
     });
 
-    pullRequestUrl.value = response.data.pullRequestUrl;
+    pullRequestUrl.value = response.data?.pullRequestUrl ?? response.pullRequestUrl;
     state.value = 'success';
     emit('success');
   }
@@ -399,9 +404,7 @@ async function onSubmit() {
 function onReset() {
   state.value = 'closed';
   emit('reset');
-}
-
-function onCancel() {
+}function onCancel() {
   state.value = 'closed';
 }
 

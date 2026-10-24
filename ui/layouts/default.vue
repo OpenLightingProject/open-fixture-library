@@ -1,7 +1,6 @@
 <template>
   <div
     id="ofl-root"
-    data-allow-mismatch="class"
     :class="{
       js: client,
       'no-js': !client,
@@ -90,7 +89,7 @@ useHead({
   },
 });
 
-const client = import.meta.client;
+const client = ref(false);
 const isTouchScreen = ref(false);
 const lastTouchTime = ref(0);
 const contentRef = ref<HTMLElement | null>(null);
@@ -113,6 +112,11 @@ function onTouchStart() {
 }
 
 onMounted(() => {
+  // `import.meta.client` is evaluated during SSR too. Starting from `false`
+  // keeps SSR and hydration in sync; flipping it here (like the Nuxt 2 site's
+  // `js` class) reveals JavaScript-only UI after hydration.
+  client.value = true;
+
   // adapted from https://stackoverflow.com/a/30303898/451391
   document.addEventListener('touchstart', onTouchStart, { capture: true });
   document.addEventListener('mousemove', onMouseMove, { capture: true });

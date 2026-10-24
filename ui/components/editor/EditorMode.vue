@@ -65,16 +65,16 @@
 
     <h3>DMX channels</h3>
 
-    <Validate
-      :state="formstate"
-      :custom="{ 'no-empty-channel-list': channelListNotEmpty }"
-      tag="div"
-      class="mode-channels">
-      <input v-model="mode.channels" :name="`mode-${index}-channels`" type="hidden">
-      <Draggable :list="mode.channels" v-bind="dragOptions">
-        <TransitionGroup class="mode-channels" tag="ol">
+    <div class="mode-channels">
+      <input ref="channelInput" v-model="mode.channels" :name="`mode-${index}-channels`" type="hidden">
+      <Draggable
+        :list="mode.channels"
+        v-bind="dragOptions"
+        tag="ol"
+        class="mode-channels"
+        :item-key="(channelUuid: string) => channelUuid">
+        <template #item="{ element: channelUuid, index: channelIndex }">
           <li
-            v-for="(channelUuid, channelIndex) in mode.channels"
             :key="channelUuid"
             :value="channelIndex + 1"
             :data-channel-uuid="channelUuid">
@@ -113,19 +113,12 @@
             </span>
 
           </li>
-        </TransitionGroup>
-      </Draggable>
-      <FieldMessages
-        :state="formstate"
-        :name="`mode-${index}-channels`"
-        show="$submitted"
-        tag="div"
-        class="error-message">
-        <template #no-empty-channel-list>
-          <div>A mode must contain at least one channel.</div>
         </template>
-      </FieldMessages>
-    </Validate>
+      </Draggable>
+      <div v-show="channelListErrorVisible" class="error-message">
+        <div>A mode must contain at least one channel.</div>
+      </div>
+    </div>
 
     <a href="#add-channel" class="button primary" @click.prevent="addChannel()">add channel</a>
 
@@ -202,6 +195,7 @@ import Draggable from 'vuedraggable';
 
 import { modeProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
 import { constants } from '@/assets/scripts/editor-utilities.js';
+import { useEditorFormContext } from '~/composables/useEditorForm';
 
 interface Props {
   mode: {
@@ -279,6 +273,43 @@ const dragOptions = {
 };
 
 const channelListNotEmpty = computed(() => props.mode.channels.length > 0);
+const channelInput = ref<HTMLInputElement | null>(null);
+const editorForm = useEditorFormContext();
+const channelFieldName = computed(() => `mode-${props.index}-channels`);
+
+const channelListErrorVisible = computed(() => {
+  return Boolean(editorForm?.submitted.value && editorForm.errors.value[channelFieldName.value]);
+});
+
+let unregisterChannelField: (() => void) | null = null;
+
+function registerChannelField() {
+  unregisterChannelField?.();
+  unregisterChannelField = null;
+
+  if (!editorForm) {
+    return;
+  }
+
+  unregisterChannelField = editorForm.registerField({
+    name: channelFieldName.value,
+    getValue: () => props.mode.channels,
+    getRules: () => [{
+      name: 'no-empty-channel-list',
+      run: () => channelListNotEmpty.value,
+      allowEmpty: true,
+    }],
+    getAttrs: () => ({}),
+    getElement: () => channelInput.value,
+  });
+}
+
+onMounted(registerChannelField);
+onBeforeUnmount(() => unregisterChannelField?.());
+watch(channelFieldName, registerChannelField);
+watch(() => props.mode.channels.length, () => {
+  void editorForm?.validateField(channelFieldName.value);
+});
 
 function getFixtureEditor() {
   const parent = getCurrentInstance()?.parent;

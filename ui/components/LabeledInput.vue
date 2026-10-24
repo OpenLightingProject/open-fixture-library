@@ -1,9 +1,8 @@
 <template>
-  <Validate
-    v-if="formstate"
-    :state="formstate"
-    :custom="customValidators"
-    :tag="multipleInputs ? 'div' : 'label'">
+  <component
+    :is="multipleInputs ? 'div' : 'label'"
+    v-if="formstate && editorForm"
+    ref="root">
 
     <LabeledValue :name="name">
       <template #label>
@@ -14,7 +13,7 @@
       <slot />
 
       <div
-        v-show="fieldState?.$touched || fieldState?.$submitted"
+        v-show="errorVisible"
         class="error-message">
         <div v-if="isSelectField && fieldErrors.required">Please select a value.</div>
         <div v-else-if="fieldErrors.required">Please fill out this field.</div>
@@ -31,22 +30,22 @@
         <div v-else-if="fieldErrors['entity-complete']">Please fill out this field.</div>
         <div v-else-if="fieldErrors['entities-have-same-units']">Please use the same unit or select a keyword for both entities.</div>
         <div v-else-if="fieldErrors['valid-color-hex-list']">Please enter a list of #rrggbb (red, green, blue) hex codes.</div>
-        <div v-else-if="fieldErrors['max-file-size']">The file size must be less or equal to {{ fieldState?.$attrs['max-file-size'] }}.</div>
+        <div v-else-if="fieldErrors['max-file-size']">The file size must be less or equal to {{ fieldAttrs['max-file-size'] }}.</div>
         <div v-else-if="fieldErrors['animation-gobo-end-without-start']">AnimationGoboEnd slots must only be used directly after AnimationGoboStart slots.</div>
         <div v-else-if="fieldErrors['must-be-animation-gobo-end']">An AnimationGoboEnd slot must be used directly after an AnimationGoboStart slot.</div>
 
         <!-- general validators -->
         <div v-else-if="fieldErrors.number">Please enter a number.</div>
-        <div v-else-if="fieldErrors['data-exclusive-minimum']">Please enter a value greater than {{ fieldState?.$attrs['data-exclusive-minimum'] }}.</div>
-        <div v-else-if="fieldErrors.min">Please enter a value greater or equal to {{ fieldState?.$attrs.min }}.</div>
-        <div v-else-if="fieldErrors['data-exclusive-maximum']">Please enter a value less than {{ fieldState?.$attrs['data-exclusive-maximum'] }}.</div>
-        <div v-else-if="fieldErrors.max">Please enter a value less or equal to {{ fieldState?.$attrs.max }}.</div>
-        <div v-else-if="fieldErrors.step && Number(fieldState?.$attrs.step) === 1">Please enter a whole number.</div>
-        <div v-else-if="fieldErrors.step">Please enter a multiple of {{ fieldState?.$attrs.step }}.</div>
+        <div v-else-if="fieldErrors['data-exclusive-minimum']">Please enter a value greater than {{ fieldAttrs['data-exclusive-minimum'] }}.</div>
+        <div v-else-if="fieldErrors.min">Please enter a value greater or equal to {{ fieldAttrs.min }}.</div>
+        <div v-else-if="fieldErrors['data-exclusive-maximum']">Please enter a value less than {{ fieldAttrs['data-exclusive-maximum'] }}.</div>
+        <div v-else-if="fieldErrors.max">Please enter a value less or equal to {{ fieldAttrs.max }}.</div>
+        <div v-else-if="fieldErrors.step && Number(fieldAttrs.step) === 1">Please enter a whole number.</div>
+        <div v-else-if="fieldErrors.step">Please enter a multiple of {{ fieldAttrs.step }}.</div>
         <div v-else-if="fieldErrors.email">Please enter an email address.</div>
         <div v-else-if="fieldErrors.url">Please enter a URL.</div>
         <div v-else-if="fieldErrors.pattern">
-          Has to match pattern<span v-if="fieldState?.$attrs.title">: {{ fieldState.$attrs.title }}</span>.
+          Has to match pattern<span v-if="fieldAttrs.title">: {{ fieldAttrs.title }}</span>.
         </div>
       </div>
 
@@ -54,7 +53,7 @@
 
     </LabeledValue>
 
-  </Validate>
+  </component>
 
   <label v-else>
     <LabeledValue>
@@ -70,6 +69,11 @@
 </template>
 
 <script setup lang="ts">
+import {
+  useEditorFieldGroup,
+  useEditorFormContext,
+} from '~/composables/useEditorForm';
+
 interface Props {
   name?: string;
   label?: string;
@@ -83,43 +87,46 @@ const props = withDefaults(defineProps<Props>(), {
   multipleInputs: false,
 });
 
-const fieldState = computed(() => {
-  if (!props.formstate) {
-    return null;
+const editorForm = useEditorFormContext();
+const root = ref<HTMLElement | null>(null);
+
+const fieldGroup = useEditorFieldGroup({
+  name: () => props.name || '',
+  root: () => root.value,
+  customValidators: () => (props.customValidators as Record<string, unknown>) ?? {},
+  enabled: () => Boolean(props.formstate && editorForm),
+});
+
+const fieldNames = computed(() => {
+  return [...new Set([props.name, ...fieldGroup.names.value].filter(Boolean) as string[])];
+});
+
+const errorFieldName = computed(() => {
+  if (!editorForm) {
+    return '';
   }
 
-  const formstate = props.formstate as { $error?: Record<string, boolean>; [key: string]: unknown };
+  const errors = editorForm.errors.value;
 
-  if (props.name && formstate.$error?.[props.name]) {
-    return formstate[props.name] as object;
-  }
-
-  const subFieldNames = Object.keys(formstate).filter(
-    subFieldName => subFieldName.startsWith(props.name || ''),
-  );
-
-  for (const subFieldName of subFieldNames) {
-    if (!formstate.$error?.[subFieldName]) {
-      continue;
+  for (const fieldName of fieldNames.value) {
+    if (errors[fieldName] && (editorForm.isTouched(fieldName) || editorForm.submitted.value)) {
+      return fieldName;
     }
-
-    const fieldState = formstate[subFieldName] as { $touched?: boolean; $submitted?: boolean };
-
-    if (fieldState.$touched || fieldState.$submitted) {
-      return fieldState;
-    }
   }
 
-  return {};
+  return '';
 });
 
 const fieldErrors = computed(() => {
-  if (!('$valid' in (fieldState.value || {})) || (fieldState.value as { $valid?: boolean })?.$valid) {
-    return {};
-  }
-
-  return (fieldState.value as { $error?: Record<string, boolean> })?.$error || {};
+  const errorName = editorForm?.errors.value[errorFieldName.value];
+  return errorName ? { [errorName]: true } : {};
 });
+
+const fieldAttrs = computed(() => {
+  return fieldGroup.getAttrs(errorFieldName.value);
+});
+
+const errorVisible = computed(() => Boolean(errorFieldName.value));
 
 const isSelectField = computed(() => {
   return props.name === 'manufacturerKey' || props.name === 'plugin' || /^capability.*?-(?:type|shutterEffect|color|effectPreset|fogType)$/.test(props.name || '');

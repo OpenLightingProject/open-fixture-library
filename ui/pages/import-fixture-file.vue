@@ -12,10 +12,10 @@
 
     <ClientOnly placeholder="Fixture Importer is loading...">
 
-      <VueForm
-        :state="formstate"
+      <form
         action="#"
         class="only-js"
+        novalidate
         @submit.prevent="onSubmit()">
 
         <section class="card">
@@ -90,7 +90,7 @@
         <div class="button-bar right">
           <button type="submit" class="primary">Import fixture</button>
         </div>
-      </VueForm>
+      </form>
 
       <EditorSubmitDialog
         ref="submitDialog"
@@ -106,7 +106,9 @@
 
 <script setup lang="ts">
 import { getEmptyFormState, scrollToFirstInvalidField } from '@/assets/scripts/editor-utilities.js';
+import { useEditorForm } from '~/composables/useEditorForm';
 
+const editorForm = useEditorForm();
 const formstate = ref(getEmptyFormState());
 const plugin = ref('');
 const file = ref<File | undefined>(undefined);
@@ -133,7 +135,8 @@ function getFileDataUrl(file: File): Promise<string> {
 }
 
 async function onSubmit() {
-  if (formstate.value.$invalid) {
+  const { valid } = await editorForm.submit();
+  if (!valid) {
     scrollToFirstInvalidField();
     return;
   }
@@ -165,7 +168,7 @@ async function reset() {
   githubComment.value = '';
 
   await nextTick();
-  formstate.value._reset();
+  editorForm.reset();
 }
 
 function applyStoredPrefillData() {

@@ -40,19 +40,15 @@
         :name="`${namePrefix}-physical-DMXconnector`"
         :schema-property="physicalProperties.DMXconnector"
         addition-hint="other DMX connector" />
-      <Validate
+      <PropertyInputText
         v-if="modelValue.DMXconnector === `[add-value]`"
-        :state="formstate"
-        tag="span">
-        <PropertyInputText
-          ref="newDmxConnectorInput"
-          v-model="localPhysical.DMXconnectorNew"
-          :name="`${namePrefix}-physical-DMXconnectorNew`"
-          :schema-property="schemaDefinitions.nonEmptyString"
-          required
-          hint="other DMX connector"
-          class="addition" />
-      </Validate>
+        ref="newDmxConnectorInput"
+        v-model="localPhysical.DMXconnectorNew"
+        :name="`${namePrefix}-physical-DMXconnectorNew`"
+        :schema-property="schemaDefinitions.nonEmptyString"
+        required
+        hint="other DMX connector"
+        class="addition" />
     </LabeledInput>
 
     <h4>Bulb</h4>

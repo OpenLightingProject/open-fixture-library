@@ -8,9 +8,9 @@
     @show="onChannelDialogOpen()"
     @hide="onChannelDialogClose()">
 
-    <VueForm
-      :state="formstate"
+    <form
       action="#"
+      novalidate
       @submit.prevent="onSubmit()">
 
       <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
@@ -228,7 +228,7 @@
         <button :disabled="channel.wizard.show" type="submit" class="primary">{{ submitButtonTitle }}</button>
       </div>
 
-    </VueForm>
+    </form>
 
   </A11yDialog>
 </template>
@@ -319,6 +319,7 @@ import {
   isChannelChanged,
   scrollToFirstInvalidField,
 } from '@/assets/scripts/editor-utilities.js';
+import { useEditorForm } from '~/composables/useEditorForm';
 
 import A11yDialog from '../A11yDialog.vue';
 import LabeledInput from '../LabeledInput.vue';
@@ -343,12 +344,14 @@ const emit = defineEmits<{
 
 const channelDialog = ref<typeof A11yDialog | null>(null);
 const capabilities = ref<typeof EditorCapability[] | null>(null);
+const editorForm = useEditorForm();
 const formstate = ref(getEmptyFormState());
 const restored = ref(false);
 const channelChanged = ref(false);
 const selectedChannelUuids = ref<string[]>([]);
 
 const dmxMax = computed(() => Math.pow(256, props.channel.dmxValueResolution) - 1);
+const singleColors = capabilityTypes.ColorIntensity.properties.color.enum;
 
 const currentMode = computed(() => {
   const uuid = props.channel.modeId;
@@ -653,12 +656,13 @@ async function onDmxValueResolutionChanged() {
   }
 }
 
-function onSubmit() {
+async function onSubmit() {
   if (props.channel.wizard.show) {
     return;
   }
 
-  if (formstate.value.$invalid) {
+  const { valid } = await editorForm.submit();
+  if (!valid) {
     scrollToFirstInvalidField(document.querySelector(`#channel-dialog`) ?? document);
     return;
   }
@@ -758,7 +762,7 @@ async function resetChannelForm() {
   emit(`reset-channel`);
 
   await nextTick();
-  formstate.value._reset();
+  editorForm.reset();
 }
 
 function setWizardVisibility(show: boolean) {

@@ -1,4 +1,5 @@
 import scrollIntoView from 'scroll-into-view';
+import { toRaw } from 'vue';
 
 export const constants = {
   RESOLUTION_8BIT: 1,
@@ -268,7 +269,9 @@ export function colorsHexStringToArray(hexString) {
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
-  const sanitizedChannel = structuredClone(channel);
+  // Vue 3 exposes reactive proxies; `structuredClone` cannot clone those.
+  // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips the proxy
+  const sanitizedChannel = JSON.parse(JSON.stringify(toRaw(channel)));
   delete sanitizedChannel.editMode;
   delete sanitizedChannel.modeId;
   delete sanitizedChannel.wizard;

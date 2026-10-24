@@ -1,43 +1,38 @@
 <template>
-  <span class="dimensions">
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        ref="xInput"
-        v-model="x"
-        :name="`${name}-x`"
-        :schema-property="schemaProperty.items"
-        :required="required || dimensionsSpecified"
-        :hint="hints[0]"
-        @focus="onFocus()"
-        @blur="onBlur($event)" />
-    </Validate>
+  <span ref="root" class="dimensions">
+    <PropertyInputNumber
+      ref="xInput"
+      v-model="x"
+      :name="`${name}-x`"
+      :schema-property="schemaProperty.items"
+      :required="required || dimensionsSpecified"
+      :hint="hints[0]"
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
     &times;
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        v-model="y"
-        :name="`${name}-y`"
-        :schema-property="schemaProperty.items"
-        :required="required || dimensionsSpecified"
-        :hint="hints[1]"
-        @focus="onFocus()"
-        @blur="onBlur($event)" />
-    </Validate>
+    <PropertyInputNumber
+      v-model="y"
+      :name="`${name}-y`"
+      :schema-property="schemaProperty.items"
+      :required="required || dimensionsSpecified"
+      :hint="hints[1]"
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
     &times;
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        v-model="z"
-        :name="`${name}-z`"
-        :schema-property="schemaProperty.items"
-        :required="required || dimensionsSpecified"
-        :hint="hints[2]"
-        @focus="onFocus()"
-        @blur="onBlur($event)" />
-    </Validate>
+    <PropertyInputNumber
+      v-model="z"
+      :name="`${name}-z`"
+      :schema-property="schemaProperty.items"
+      :required="required || dimensionsSpecified"
+      :hint="hints[2]"
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
     {{ unit }}
   </span>
 </template>
 
 <script setup lang="ts">
+import { useEditorGroupField } from '~/composables/useEditorForm';
 
 interface Props {
   modelValue?: number[] | null;
@@ -65,6 +60,18 @@ const emit = defineEmits<{
 }>();
 
 const xInput = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
+const root = ref<HTMLElement | null>(null);
+
+useEditorGroupField(
+  () => ({
+    name: props.name,
+    getValue: () => props.modelValue,
+    getRules: () => [{ name: 'complete-dimensions' }],
+    getAttrs: () => ({}),
+    getElement: () => root.value,
+  }),
+  () => props.modelValue,
+);
 
 const validationData = ref({
   'complete-dimensions': '',

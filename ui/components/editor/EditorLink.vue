@@ -9,15 +9,13 @@
 
     <OflSvg :name="linkTypeIconNames[link.type]" />
 
-    <Validate :state="formstate" tag="span">
-      <PropertyInputText
-        v-model="url"
-        :name="`links-${link.uuid}`"
-        :schema-property="schemaDefinitions.urlString"
-        type="url"
-        :hint="placeholder"
-        required />
-    </Validate>
+    <PropertyInputText
+      v-model="url"
+      :name="`links-${link.uuid}`"
+      :schema-property="schemaDefinitions.urlString"
+      type="url"
+      :hint="placeholder"
+      required />
 
     <button
       v-if="canRemove"

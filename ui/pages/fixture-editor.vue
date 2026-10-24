@@ -13,12 +13,11 @@
 
     <ClientOnly placeholder="Fixture editor is loading...">
 
-      <VueForm
-        ref="formRef"
-        :state="formstate"
+      <form
         action="#"
         class="only-js"
-        @submit="onSubmit()">
+        novalidate
+        @submit.prevent="onSubmit()">
 
         <EditorManufacturer
           :fixture="fixture"
@@ -87,7 +86,7 @@
           <button type="submit" class="save-fixture primary">Create fixture</button>
         </div>
 
-      </VueForm>
+      </form>
 
       <EditorChannelDialog
         :channel="channel"
@@ -134,9 +133,12 @@ import {
   getEmptyMode,
   scrollToFirstInvalidField,
 } from '@/assets/scripts/editor-utilities.js';
+import { useEditorForm } from '~/composables/useEditorForm';
 
 const route = useRoute();
 const router = useRouter();
+
+const editorForm = useEditorForm();
 
 const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
 
@@ -308,8 +310,9 @@ function storePrefillData() {
   localStorage.setItem('prefillGithubUsername', githubUsername.value);
 }
 
-function onSubmit() {
-  if (formstate.value.$invalid) {
+async function onSubmit() {
+  const { valid } = await editorForm.submit();
+  if (!valid) {
     scrollToFirstInvalidField();
     return;
   }
@@ -340,7 +343,7 @@ async function reset() {
 
   await nextTick();
 
-  formstate.value._reset();
+  editorForm.reset();
   window.scrollTo(0, 0);
 }
 

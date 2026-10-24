@@ -1,38 +1,36 @@
 <template>
-  <span class="range">
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        ref="firstInput"
-        v-model="start"
-        :name="`${name}-start`"
-        :schema-property="schemaProperty.items"
-        :minimum="rangeMin"
-        :maximum="end === 'invalid' ? rangeMax : end"
-        :required="required || rangeIncomplete"
-        :hint="startHint"
-        lazy
-        @focus="onFocus($event)"
-        @blur="onBlur($event)" />
-    </Validate>
+  <span ref="root" class="range">
+    <PropertyInputNumber
+      ref="firstInput"
+      v-model="start"
+      :name="`${name}-start`"
+      :schema-property="schemaProperty.items"
+      :minimum="rangeMin"
+      :maximum="end === 'invalid' ? rangeMax : end"
+      :required="required || rangeIncomplete"
+      :hint="startHint"
+      lazy
+      @focus="onFocus($event)"
+      @blur="onBlur($event)" />
     …
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        v-model="end"
-        :name="`${name}-end`"
-        :schema-property="schemaProperty.items"
-        :minimum="start === 'invalid' ? rangeMin : start"
-        :maximum="rangeMax"
-        :required="required || rangeIncomplete"
-        :hint="endHint"
-        lazy
-        @focus="onFocus($event)"
-        @blur="onBlur($event)" />
-    </Validate>
+    <PropertyInputNumber
+      v-model="end"
+      :name="`${name}-end`"
+      :schema-property="schemaProperty.items"
+      :minimum="start === 'invalid' ? rangeMin : start"
+      :maximum="rangeMax"
+      :required="required || rangeIncomplete"
+      :hint="endHint"
+      lazy
+      @focus="onFocus($event)"
+      @blur="onBlur($event)" />
     {{ unit }}
   </span>
 </template>
 
 <script setup lang="ts">
+import { useEditorGroupField } from '~/composables/useEditorForm';
+
 interface Props {
   modelValue?: number[] | null;
   name: string;
@@ -65,6 +63,21 @@ const emit = defineEmits<{
 }>();
 
 const firstInput = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
+const root = ref<HTMLElement | null>(null);
+
+useEditorGroupField(
+  () => ({
+    name: props.name,
+    getValue: () => props.modelValue,
+    getRules: () => [
+      { name: 'complete-range' },
+      { name: 'valid-range' },
+    ],
+    getAttrs: () => ({}),
+    getElement: () => root.value,
+  }),
+  () => props.modelValue,
+);
 
 const validationData = ref({
   'complete-range': '',

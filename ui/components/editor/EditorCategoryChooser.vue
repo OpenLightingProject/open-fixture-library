@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <Draggable v-model="selectedCategories" tag="span">
-      <CategoryBadge
-        v-for="cat of modelValue"
-        :key="cat"
-        :category="cat"
-        selected
-        selectable
-        @click="deselect(cat)"
-        @focus="onFocus()"
-        @blur="onBlur($event)" />
+  <div ref="root">
+    <Draggable
+      v-model="selectedCategories"
+      tag="span"
+      :item-key="(category: string) => category">
+      <template #item="{ element: cat }">
+        <CategoryBadge
+          :key="cat"
+          :category="cat"
+          selected
+          selectable
+          @click="deselect(cat)"
+          @focus="onFocus()"
+          @blur="onBlur($event)" />
+      </template>
     </Draggable>
 
     <CategoryBadge
@@ -23,24 +27,50 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
-interface Props {
+import Draggable from 'vuedraggable';
+import { useEditorGroupField } from '~/composables/useEditorForm';
+
+interface Properties {
   modelValue: string[];
   allCategories: string[];
+  name?: string;
+  categoriesNotEmpty?: boolean;
 }
 
-const props = defineProps<Props>();
-import Draggable from 'vuedraggable';
+const properties = withDefaults(defineProps<Properties>(), {
+  name: '',
+  categoriesNotEmpty: false,
+});
 const emit = defineEmits<{
   'update:model-value': [value: string[]];
-  focus: [];
-  blur: [];
+  'focus': [];
+  'blur': [];
+  'vf:validate': [validationData: Record<string, string>];
 }>();
+
+const root = ref<HTMLElement | null>(null);
+
+useEditorGroupField(
+  () => (properties.name
+    ? {
+        name: properties.name,
+        getValue: () => properties.modelValue,
+        getRules: () => (properties.categoriesNotEmpty ? [{ name: 'categories-not-empty' }] : []),
+        getAttrs: () => ({}),
+        getElement: () => root.value,
+      }
+    : null),
+  () => properties.modelValue,
+);
+
+onMounted(() => {
+  emit('vf:validate', properties.categoriesNotEmpty ? { 'categories-not-empty': '' } : {});
+});
 
 const selectedCategories = computed({
   get() {
-    return props.modelValue;
+    return properties.modelValue;
   },
   set(newSelectedCategories: string[]) {
     emit('update:model-value', newSelectedCategories);
@@ -48,19 +78,19 @@ const selectedCategories = computed({
 });
 
 const unselectedCategories = computed(() => {
-  return props.allCategories.filter(
-    category => !props.modelValue.includes(category),
+  return properties.allCategories.filter(
+    (category) => !properties.modelValue.includes(category),
   );
 });
 
 function select(selectedCategory: string) {
-  const updatedCategoryList = [...props.modelValue, selectedCategory];
+  const updatedCategoryList = [...properties.modelValue, selectedCategory];
   emit('update:model-value', updatedCategoryList);
   emit('blur');
 }
 
 function deselect(deselectedCategory: string) {
-  const updatedCategoryList = props.modelValue.filter(category => category !== deselectedCategory);
+  const updatedCategoryList = properties.modelValue.filter((category) => category !== deselectedCategory);
   emit('update:model-value', updatedCategoryList);
   emit('blur');
 }

@@ -1,19 +1,18 @@
 <template>
-  <span class="entity-input" :class="{ 'has-number': hasNumber, wide }">
+  <span ref="root" class="entity-input" :class="{ 'has-number': hasNumber, wide }">
 
-    <Validate v-if="hasNumber" tag="span">
-      <PropertyInputNumber
-        ref="input"
-        v-model="selectedNumber"
-        class="property-input-number"
-        :schema-property="units[selectedUnit]?.numberSchema"
-        required
-        :minimum="minNumber === undefined ? 'invalid' : minNumber"
-        :maximum="maxNumber === undefined ? 'invalid' : maxNumber"
-        :name="name ? `${name}-number` : null"
-        @focus="onFocus()"
-        @blur="onBlur($event)" />
-    </Validate>
+    <PropertyInputNumber
+      v-if="hasNumber"
+      ref="input"
+      v-model="selectedNumber"
+      class="property-input-number"
+      :schema-property="units[selectedUnit]?.numberSchema"
+      required
+      :minimum="minNumber === undefined ? 'invalid' : minNumber"
+      :maximum="maxNumber === undefined ? 'invalid' : maxNumber"
+      :name="name ? `${name}-number` : null"
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
 
     <select
       ref="select"
@@ -80,6 +79,7 @@
 
 <script setup lang="ts">
 import { unitsSchema } from '~~/lib/schema-properties.js';
+import { useEditorGroupField } from '~/composables/useEditorForm';
 
 interface Props {
   schemaProperty: {
@@ -110,6 +110,7 @@ const emit = defineEmits<{
 
 const input = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
 const select = ref<HTMLSelectElement | null>(null);
+const root = ref<HTMLElement | null>(null);
 
 const validationData = ref({
   'entity-complete': '',
@@ -221,6 +222,25 @@ onMounted(() => {
   emit('vf:validate', validationData.value);
 });
 
+useEditorGroupField(
+  () => ({
+    name: props.name,
+    getValue: () => props.modelValue,
+    getRules: () => [
+      { name: 'entity-complete', allowEmpty: true },
+      { name: 'entities-have-same-units', allowEmpty: true },
+    ],
+    getAttrs: () => ({}),
+    getElement: () => root.value,
+    getEntityData: () => ({
+      hasNumber: hasNumber.value,
+      selectedNumber: selectedNumber.value,
+      hasSameUnit: hasSameUnit.value,
+    }),
+  }),
+  () => [props.modelValue, props.associatedEntity, selectedUnit.value],
+);
+
 const focus = () => {
   const focusField = input.value ?? select.value;
   focusField?.focus();
@@ -258,6 +278,8 @@ const onBlur = (event: FocusEvent) => {
 
 defineExpose({
   focus,
+  hasNumber,
+  selectedNumber,
   hasSameUnit,
   setUnitString,
 });
