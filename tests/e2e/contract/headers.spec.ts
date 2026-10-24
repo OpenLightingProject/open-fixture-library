@@ -26,6 +26,20 @@ const SECURITY_HEADERS = [
   'x-xss-protection',
 ];
 
+/**
+ * Helmet headers that master emitted on every response, including static
+ * assets. nuxt-security only emits these on rendered HTML, so the new site
+ * applies them through Nitro route rules (`nuxt.config.ts`).
+ */
+const HELMET_EVERYWHERE_HEADERS: Record<string, string> = {
+  'cross-origin-opener-policy': 'same-origin',
+  'cross-origin-resource-policy': 'same-origin',
+  'origin-agent-cluster': '?1',
+  'x-dns-prefetch-control': 'off',
+};
+
+const STATIC_ASSET_PATHS = ['/favicon-16x16.png', '/manifest.json'];
+
 const VOLATILE_CSP_TOKEN = /^'(?:sha(?:256|384|512)-[^']+|nonce-[^']+)'$/;
 
 // Computes a stable representation of a CSP header so directives and their
@@ -68,7 +82,7 @@ async function fetchHeaderPair(path: string, init?: RequestInit) {
 }
 
 describe('security header parity', () => {
-  for (const path of ['/', '/api/v1/categories']) {
+  for (const path of ['/', '/api/v1/categories', ...STATIC_ASSET_PATHS]) {
     it(`matches helmet security headers on ${path}`, async () => {
       const { oldResponse, newResponse } = await fetchHeaderPair(path);
 
@@ -80,6 +94,17 @@ describe('security header parity', () => {
           normalizeCsp(oldValue),
           `${header} on ${path}`,
         );
+      }
+    });
+  }
+
+  for (const path of STATIC_ASSET_PATHS) {
+    it(`emits every helmet-everywhere header on static asset ${path}`, async () => {
+      const { oldResponse, newResponse } = await fetchHeaderPair(path);
+
+      for (const [header, expected] of Object.entries(HELMET_EVERYWHERE_HEADERS)) {
+        assert.equal(oldResponse.headers.get(header), expected, `${header} on old ${path}`);
+        assert.equal(newResponse.headers.get(header), expected, `${header} on new ${path}`);
       }
     });
   }

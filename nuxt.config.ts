@@ -266,6 +266,22 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: 'node-server',
+    routeRules: {
+      // nuxt-security only emits `Cross-Origin-Opener-Policy`, `Cross-Origin-
+      // Resource-Policy`, `Origin-Agent-Cluster` and `X-DNS-Prefetch-Control`
+      // on rendered HTML. The Nuxt 2 helmet middleware set them on every
+      // response, including static files. Nitro route rules run through the
+      // same `serve-static` setHeaders path as nuxt-security's headers, which
+      // a `beforeResponse` hook does not.
+      '/**': {
+        headers: {
+          'Cross-Origin-Opener-Policy': 'same-origin',
+          'Cross-Origin-Resource-Policy': 'same-origin',
+          'Origin-Agent-Cluster': '?1',
+          'X-DNS-Prefetch-Control': 'off',
+        },
+      },
+    },
   },
   serverDir: 'ui/server',
 });
