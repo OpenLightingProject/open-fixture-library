@@ -47,6 +47,13 @@ scripts/start-baseline.sh        # defaults to PORT=3001
 PORT=3002 scripts/start-baseline.sh
 ```
 
-The script (added in the follow-up task) changes into the worktree and runs its
-dev server, so both sites can run side by side. Start the new site separately
-with `npm run dev` (port 3000) and then run `npm run test:parity`.
+The script changes into the worktree and runs its dev server, so both sites can
+run side by side. Start the new site separately with `npm run dev` (port 3000)
+and then run `npm run test:parity`.
+
+If the worktree was just created with `git worktree add`, it has no generated
+`fixtures/register.json` (it is gitignored), and Nuxt 2 aborts with
+`Cannot find module './fixtures/register.json'`. The script runs
+`npm run build:register` once in that case. On Node versions where webpack 4
+fails with `error:0308010C:digital envelope routines::unsupported`, run the
+script with `NODE_OPTIONS=--openssl-legacy-provider`.
