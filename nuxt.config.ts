@@ -124,14 +124,22 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
-    families: [
-      {
-        name: 'Atkinson Hyperlegible Next',
-        provider: 'google',
-        weights: [200, 300, 400, 700, 800],
-        styles: ['normal', 'italic'],
-      },
-    ],
+    // The Atkinson Hyperlegible Next files are vendored in `ui/public/fonts` and
+    // declared with @font-face in `ui/assets/styles/fonts.scss`, exactly like the
+    // Nuxt 2 site. Every provider that could resolve (or rewrite) this family is
+    // disabled: the `local` provider would otherwise pick up the public woff2 files
+    // and generate a weight-400-only face with `font-display: swap`, and the remote
+    // providers would download a different build. `npm` stays enabled because
+    // @nuxt/fonts requires at least one provider; it only scans installed packages.
+    providers: {
+      adobe: false,
+      bunny: false,
+      fontshare: false,
+      fontsource: false,
+      google: false,
+      googleicons: false,
+      local: false,
+    },
   },
   colorMode: {
     preference: 'system',
@@ -154,10 +162,18 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: '/favicon-16x16.png', sizes: '16x16' },
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#64b5f6' },
+        {
+          rel: 'preload',
+          href: '/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-Variable.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: '',
+        },
       ],
     },
   },
   css: [
+    '~/assets/styles/fonts.scss',
     '~/assets/styles/style.scss',
   ],
   vite: {
