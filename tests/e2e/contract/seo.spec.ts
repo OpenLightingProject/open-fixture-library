@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { gunzipSync } from 'node:zlib';
 import { describe, it } from 'vitest';
 import { fetchBoth } from '../helpers/parity';
 
@@ -97,13 +98,33 @@ describe('robots.txt parity', () => {
 });
 
 describe('sitemap.xml parity', () => {
-  it('serves the same content type', async () => {
+  it('serves the same content type without content encoding', async () => {
     const { oldResponse, newResponse } = await fetchBoth('/sitemap.xml');
 
     assert.equal(newResponse.status, oldResponse.status);
     assert.equal(
       newResponse.headers.get('content-type'),
       oldResponse.headers.get('content-type'),
+    );
+    assert.equal(
+      newResponse.headers.get('content-encoding'),
+      oldResponse.headers.get('content-encoding'),
+    );
+  });
+
+  it('is not compressed when the client accepts gzip', async () => {
+    const init = { headers: { 'accept-encoding': 'gzip' } };
+    const { oldResponse, newResponse } = await fetchBoth('/sitemap.xml', init);
+
+    assert.equal(newResponse.status, oldResponse.status);
+    assert.equal(
+      newResponse.headers.get('content-type'),
+      oldResponse.headers.get('content-type'),
+    );
+    assert.equal(
+      newResponse.headers.get('content-encoding'),
+      oldResponse.headers.get('content-encoding'),
+      'content-encoding with Accept-Encoding: gzip',
     );
   });
 
@@ -133,6 +154,31 @@ describe('sitemap.xml parity', () => {
       Object.fromEntries([...newEntries].filter(([, entry]) => entry.lastmod !== null)),
       Object.fromEntries([...oldEntries].filter(([, entry]) => entry.lastmod !== null)),
       'sitemap lastmod dates',
+    );
+  });
+
+  it('serves the gzipped sitemap endpoint like the oracle', async () => {
+    const { oldResponse, newResponse } = await fetchBoth('/sitemap.xml.gz');
+
+    assert.equal(newResponse.status, oldResponse.status, 'status');
+    assert.equal(
+      newResponse.headers.get('content-type'),
+      oldResponse.headers.get('content-type'),
+      'content-type',
+    );
+    assert.equal(
+      newResponse.headers.get('content-encoding'),
+      oldResponse.headers.get('content-encoding'),
+      'content-encoding',
+    );
+
+    const oldXml = gunzipSync(Buffer.from(await oldResponse.arrayBuffer())).toString('utf8');
+    const newXml = gunzipSync(Buffer.from(await newResponse.arrayBuffer())).toString('utf8');
+
+    assert.deepEqual(
+      [...parseSitemap(newXml).keys()].sort(),
+      [...parseSitemap(oldXml).keys()].sort(),
+      'uncompressed sitemap URL set',
     );
   });
 });

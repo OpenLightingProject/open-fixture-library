@@ -236,7 +236,6 @@ export default defineNuxtConfig({
   sitemap: {
     urls: sitemapUrls,
     cacheMaxAgeSeconds: false,
-    experimentalCompression: true,
     credits: false,
     xsl: false,
   },
