@@ -1,4 +1,4 @@
-import { api, apiReady, getCorsHeaders } from '~~/ui/server/utils/api';
+import { api, apiReady } from '~~/ui/server/utils/api';
 
 export default defineEventHandler(async (event) => {
   await apiReady;
@@ -28,7 +28,6 @@ export default defineEventHandler(async (event) => {
   const { statusCode = 200, body: responseBody } = result ?? {};
 
   setResponseStatus(event, statusCode);
-  setResponseHeaders(event, getCorsHeaders(getRequestHeader(event, 'origin')));
   setResponseHeader(event, 'Content-Type', 'application/json');
 
   return responseBody;

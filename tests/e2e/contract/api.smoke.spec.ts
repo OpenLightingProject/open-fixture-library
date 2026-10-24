@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { expectParity, NEW_URL } from '../helpers/parity';
+import { expectParity, fetchBoth, NEW_URL } from '../helpers/parity';
 
 describe('API parity smoke', () => {
   it('serves API routes without external $ref lookups', async () => {
@@ -47,6 +47,22 @@ describe('API parity smoke', () => {
 
   it('serves the RDM lookup identically', async () => {
     await expectParity('/api/v1/rdm?manufacturerId=1');
+  });
+
+  // Regression test for the Nitro production build's broken request XSS
+  // validator (`escapeHtml is not a function`): API GETs with a query string
+  // must not go through nuxt-security's validator.
+  it('returns 200 parity for valid and unknown RDM manufacturer IDs', async () => {
+    for (const manufacturerId of ['1', '9999']) {
+      const { oldResponse, newResponse } = await fetchBoth(
+        `/api/v1/rdm?manufacturerId=${manufacturerId}`,
+      );
+
+      expect(oldResponse.status, `oracle status for manufacturerId=${manufacturerId}`).toBe(200);
+      expect(newResponse.status, `new-site status for manufacturerId=${manufacturerId}`).toBe(200);
+    }
+
+    await expectParity('/api/v1/rdm?manufacturerId=9999');
   });
 
   it('rejects a malformed POST body with 400 parity', async () => {

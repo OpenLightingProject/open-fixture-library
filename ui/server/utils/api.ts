@@ -18,25 +18,6 @@ const routeHandlersPromise = import(
 
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
-/**
- * Same CORS policy as the Express API code in `ui/api/index.js`.
- *
- * @param {string | undefined} origin - The request's Origin header, if any.
- * @returns {string} The value for the Access-Control-Allow-Origin header.
- */
-function getAllowedOrigin(origin) {
-  const corsWhitelist = [
-    /[./]open-fixture-library\.org(?::\d+|)$/,
-    /\/localhost(?::\d+|)$/,
-  ];
-
-  const isCorsAllowed = process.env.NODE_ENV !== 'production'
-    || !origin // allow non XHR/fetch requests
-    || corsWhitelist.some((regex) => regex.test(origin));
-
-  return isCorsAllowed ? (origin ?? '*') : 'https://open-fixture-library.org';
-}
-
 export const api = new OpenAPIBackend({
   definition: openapi as never,
   apiRoot: '/api/v1',
@@ -81,16 +62,3 @@ export const apiReady = routeHandlersPromise.then((routeHandlers) => {
   api.register(routeHandlers);
   return api;
 });
-
-/**
- * Returns the CORS headers the API response should carry.
- *
- * @param {string | undefined} origin - The request's Origin header, if any.
- * @returns {Record<string, string>} The response headers.
- */
-export function getCorsHeaders(origin) {
-  return {
-    'Access-Control-Allow-Origin': getAllowedOrigin(origin),
-    'Vary': 'Origin',
-  };
-}
