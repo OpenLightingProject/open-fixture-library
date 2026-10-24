@@ -1,7 +1,14 @@
-import { describe, it } from 'vitest';
-import { expectParity } from '../helpers/parity';
+import { describe, expect, it } from 'vitest';
+import { expectParity, NEW_URL } from '../helpers/parity';
 
 describe('API parity smoke', () => {
+  it('serves API routes without external $ref lookups', async () => {
+    const response = await fetch(`${NEW_URL}/api/v1/categories`, {
+      headers: { accept: 'application/json' },
+    });
+    expect(response.status).toBe(200);
+  });
+
   it('serves the manufacturer list identically', async () => {
     await expectParity('/api/v1/manufacturers');
   });
@@ -12,5 +19,53 @@ describe('API parity smoke', () => {
 
   it('serves the category list identically', async () => {
     await expectParity('/api/v1/categories');
+  });
+
+  it('serves a category identically', async () => {
+    await expectParity('/api/v1/categories/Color%20Changer');
+  });
+
+  it('serves the fixture count identically', async () => {
+    await expectParity('/api/v1/fixtures/count');
+  });
+
+  it('serves the last updated fixtures identically', async () => {
+    await expectParity('/api/v1/fixtures/last-updated');
+  });
+
+  it('serves the recent contributors identically', async () => {
+    await expectParity('/api/v1/contributors/recent');
+  });
+
+  it('serves the plugin list identically', async () => {
+    await expectParity('/api/v1/plugins');
+  });
+
+  it('serves a plugin identically', async () => {
+    await expectParity('/api/v1/plugins/ofl');
+  });
+
+  it('serves the RDM lookup identically', async () => {
+    await expectParity('/api/v1/rdm?manufacturerId=1');
+  });
+
+  it('rejects a malformed POST body with 400 parity', async () => {
+    await expectParity('/api/v1/fixtures/import', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: '{}',
+    });
+  });
+
+  // The Nuxt 2 oracle returns a 500 for unknown operations because its
+  // `postResponseHandler` short-circuits with `null` before Express can send
+  // the 404 handler's response. The Nitro implementation intentionally
+  // returns the documented 404 instead, so this cannot use expectParity.
+  it('returns 404 for an unknown operation', async () => {
+    const response = await fetch(`${NEW_URL}/api/v1/not-an-operation`);
+
+    expect(response.status).toBe(404);
+    expect(response.headers.get('content-type')).toBe('application/json');
+    expect(await response.json()).toEqual({ error: 'Not found' });
   });
 });

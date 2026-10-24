@@ -1,6 +1,8 @@
-import { api } from '~~/ui/api/index.js';
+import { api, apiReady, getCorsHeaders } from '~~/ui/server/utils/api';
 
 export default defineEventHandler(async (event) => {
+  await apiReady;
+
   const method = event.method;
   const headers = getRequestHeaders(event);
   let body;
@@ -8,26 +10,26 @@ export default defineEventHandler(async (event) => {
   if (method !== 'GET' && method !== 'HEAD') {
     try {
       body = await readBody(event);
-    } catch {
+    }
+    catch {
       // body might be empty or unreadable
     }
   }
 
   const result = await api.handleRequest({
     path: event.path,
+    originalUrl: event.path,
     method,
     headers,
     body,
     query: getQuery(event),
   });
 
-  if (!result) {
-    setResponseStatus(event, 500);
-    return send(event, JSON.stringify({ error: 'Internal Server Error' }));
-  }
+  const { statusCode = 200, body: responseBody } = result ?? {};
 
-  const { statusCode = 200, body: responseBody } = result;
   setResponseStatus(event, statusCode);
+  setResponseHeaders(event, getCorsHeaders(getRequestHeader(event, 'origin')));
   setResponseHeader(event, 'Content-Type', 'application/json');
-  return send(event, JSON.stringify(responseBody));
+
+  return responseBody;
 });

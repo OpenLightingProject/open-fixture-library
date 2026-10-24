@@ -15,8 +15,9 @@
     "dev": "nuxt dev",
     "start": "nuxt start",
     "build": "npm run build-without-nuxt && npm run build:nuxt",
-    "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
+    "build-without-nuxt": "npm run build:openapi && npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
     "build:nuxt": "nuxt build",
+    "build:openapi": "node cli/build-openapi-bundle.js",
     "build:register": "node cli/build-register.js",
     "build:plugin-data": "node cli/build-plugin-data.js",
     "build:test-fixtures": "node cli/build-test-fixtures.js",
@@ -74,6 +75,7 @@
     "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^16.0.5",
     "@eslint/js": "~10.0.1",
     "@eslint/markdown": "~8.0.3",
     "@nuxt/test-utils": "^4.3.4",

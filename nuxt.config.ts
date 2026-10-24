@@ -111,6 +111,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   routeRules: {
     '/**': { cors: true },
+    // The `xss` package used by nuxt-security's request validator is not
+    // bundle-safe in the Nitro production build (any GET with a query string
+    // throws `TypeError: escapeHtml is not a function`). The OpenAPI backend
+    // validates its own input through AJV, so skip request XSS validation for
+    // the API. (Task 6 owns the full header/CORS parity work.)
+    '/api/v1/**': { security: { xssValidator: false } },
   },
   nitro: {
     preset: 'node-server',
