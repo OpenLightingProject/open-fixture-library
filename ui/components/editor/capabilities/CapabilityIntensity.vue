@@ -27,44 +27,30 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      hint: 'Master dimmer for the lamp\'s brightness. Use ColorIntensity for individual color components (e.g. Red, Green, Blue).',
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        brightness: null,
-        brightnessStart: 'off',
-        brightnessEnd: 'bright',
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      brightness?: string | null;
+      brightnessStart?: string;
+      brightnessEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const hint = `Master dimmer for the lamp's brightness. Use ColorIntensity for individual color components (e.g. Red, Green, Blue).`;
+
+const defaultData = {
+  brightness: null,
+  brightnessStart: 'off',
+  brightnessEnd: 'bright',
+  comment: '',
 };
 </script>

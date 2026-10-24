@@ -27,44 +27,30 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      hint: 'Doesn\'t activate fog, only controls the intensity of the fog output.',
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        fogOutput: null,
-        fogOutputStart: 'weak',
-        fogOutputEnd: 'strong',
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      fogOutput?: string | null;
+      fogOutputStart?: string;
+      fogOutputEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const hint = `Doesn't activate fog, only controls the intensity of the fog output.`;
+
+const defaultData = {
+  fogOutput: null,
+  fogOutputStart: 'weak',
+  fogOutputEnd: 'strong',
+  comment: '',
 };
 </script>

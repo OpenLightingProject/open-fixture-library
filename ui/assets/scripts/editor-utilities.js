@@ -1,5 +1,4 @@
 import scrollIntoView from 'scroll-into-view';
-import { v4 as uuidV4 } from 'uuid';
 
 export const constants = {
   RESOLUTION_8BIT: 1,
@@ -90,7 +89,7 @@ export function getEmptyFixture() {
  */
 export function getEmptyLink(linkType = 'manual') {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     type: linkType,
     url: '',
   };
@@ -123,7 +122,7 @@ export function getEmptyPhysical() {
  */
 export function getEmptyMode() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     name: '',
     shortName: '',
     rdmPersonalityIndex: null,
@@ -138,7 +137,7 @@ export function getEmptyMode() {
  */
 export function getEmptyChannel() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     editMode: '',
     modeId: '',
     name: '',
@@ -170,7 +169,7 @@ export function getEmptyChannel() {
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     coarseChannelId,
     resolution,
   };
@@ -181,7 +180,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
  */
 export function getEmptyCapability() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     open: true,
     dmxRange: null,
     type: '',
@@ -194,7 +193,7 @@ export function getEmptyCapability() {
  */
 export function getEmptyWheelSlot() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     type: '',
     typeData: {},
   };

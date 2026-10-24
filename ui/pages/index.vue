@@ -81,67 +81,61 @@
   </div>
 </template>
 
-<script>
-import DownloadButton from '../components/DownloadButton.vue';
-import FixtureHeader from '../components/FixtureHeader.vue';
+<script setup lang="ts">
+const config = useRuntimeConfig();
 
-export default {
-  components: {
-    DownloadButton,
-    FixtureHeader,
-  },
-  async asyncData({ $axios, error }) {
-    let fixtureCount;
-    let lastUpdated;
-    let recentContributors;
-    try {
-      const [fixtureCountResponse, updatedFixtures, contributors] = await Promise.all([
-        $axios.$get('/api/v1/fixtures/count'),
-        $axios.$get('/api/v1/fixtures/last-updated'),
-        $axios.$get('/api/v1/contributors/recent'),
-      ]);
-      fixtureCount = fixtureCountResponse.count;
-      lastUpdated = updatedFixtures;
-      recentContributors = contributors;
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { fixtureCount, lastUpdated, recentContributors };
-  },
-  head() {
-    return {
-      script: [
-        {
-          hid: 'websiteStructuredData',
-          type: 'application/ld+json',
-          json: {
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            'name': 'Open Fixture Library',
-            'url': this.$config.websiteUrl,
-            'potentialAction': {
-              '@type': 'SearchAction',
-              // eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- `{search_term_string}` is a literal schema.org SearchAction placeholder
-              'target': `${this.$config.websiteUrl}search?q={search_term_string}`,
-              'query-input': 'required name=search_term_string',
-            },
-          },
+const [
+  { data: fixtureCountData, error: fixtureCountError },
+  { data: lastUpdatedData, error: lastUpdatedError },
+  { data: recentContributorsData, error: recentContributorsError },
+] = await Promise.all([
+  useFetch<{ count: number }>('/api/v1/fixtures/count'),
+  useFetch('/api/v1/fixtures/last-updated'),
+  useFetch('/api/v1/contributors/recent'),
+]);
+
+const fetchError = fixtureCountError.value ?? lastUpdatedError.value ?? recentContributorsError.value;
+if (fetchError) {
+  throw createError({
+    statusCode: fetchError.statusCode ?? 500,
+    statusMessage: 'Could not load homepage data',
+  });
+}
+
+const fixtureCount = computed(() => fixtureCountData.value?.count ?? 0);
+const lastUpdated = computed(() => lastUpdatedData.value ?? []);
+const recentContributors = computed(() => recentContributorsData.value ?? []);
+
+useHead({
+  script: [
+    {
+      hid: 'websiteStructuredData',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Open Fixture Library',
+        url: config.public.websiteUrl,
+        potentialAction: {
+          '@type': 'SearchAction',
+          // eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- `{search_term_string}` is a literal schema.org SearchAction placeholder
+          target: `${config.public.websiteUrl}search?q={search_term_string}`,
+          'query-input': 'required name=search_term_string',
         },
-        {
-          hid: 'organizationStructuredData',
-          type: 'application/ld+json',
-          json: {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            'name': 'Open Fixture Library',
-            'description': 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
-            'url': this.$config.websiteUrl,
-            'logo': `${this.$config.websiteUrl}ofl-logo.svg`,
-          },
-        },
-      ],
-    };
-  },
-};
+      }),
+    },
+    {
+      hid: 'organizationStructuredData',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Open Fixture Library',
+        description: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
+        url: config.public.websiteUrl,
+        logo: `${config.public.websiteUrl}ofl-logo.svg`,
+      }),
+    },
+  ],
+});
 </script>

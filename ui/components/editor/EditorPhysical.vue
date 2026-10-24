@@ -106,71 +106,72 @@
   </div>
 </template>
 
-<script>
-import { objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+import { getCurrentInstance, nextTick, toRaw } from 'vue';
 import {
   physicalBulbProperties,
   physicalLensProperties,
   physicalProperties,
   schemaDefinitions,
-} from '../../../lib/schema-properties.js';
-import LabeledInput from '../LabeledInput.vue';
-import PropertyInputDimensions from '../PropertyInputDimensions.vue';
-import PropertyInputNumber from '../PropertyInputNumber.vue';
-import PropertyInputRange from '../PropertyInputRange.vue';
-import PropertyInputSelect from '../PropertyInputSelect.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+} from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputDimensions,
-    PropertyInputNumber,
-    PropertyInputRange,
-    PropertyInputSelect,
-    PropertyInputText,
-  },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    modelValue: objectProp().required,
-    formstate: objectProp().required,
-    namePrefix: stringProp().required,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      physicalProperties,
-      physicalBulbProperties,
-      physicalLensProperties,
-      localPhysical: structuredClone(this.modelValue),
-    };
-  },
-  watch: {
-    localPhysical: {
-      handler() {
-        this.$emit('update:model-value', structuredClone(this.localPhysical));
-      },
-      deep: true,
-    },
-    async 'modelValue.DMXconnector'(newValue) {
-      if (newValue !== '[add-value]' || !this.$root._oflRestoreComplete) {
-        return;
-      }
+interface Physical {
+  dimensions?: [number, number, number] | null;
+  weight?: number | null;
+  power?: number | null;
+  DMXconnector?: string | null;
+  DMXconnectorNew?: string;
+  bulb: {
+    type?: string;
+    colorTemperature?: number | null;
+    lumens?: number | null;
+  };
+  lens: {
+    name?: string;
+    degreesMinMax?: [number, number] | null;
+  };
+}
 
-      await this.$nextTick();
-      this.$refs.newDmxConnectorInput.focus();
-    },
+interface Props {
+  modelValue: Physical;
+  formstate: object;
+  namePrefix: string;
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  'update:model-value': [value: Physical];
+}>();
+
+const instance = getCurrentInstance();
+const firstInput = ref<any>(null);
+const newDmxConnectorInput = ref<any>(null);
+
+const localPhysical = ref<Physical>(structuredClone(toRaw(props.modelValue)));
+
+watch(
+  localPhysical,
+  () => {
+    emit('update:model-value', structuredClone(toRaw(localPhysical.value)));
   },
-  mounted() {
-    if (this.$root._oflRestoreComplete) {
-      this.$refs.firstInput.focus();
+  { deep: true }
+);
+
+watch(
+  () => props.modelValue.DMXconnector,
+  async (newValue) => {
+    if (newValue !== '[add-value]' || !(instance?.proxy?.$root as any)?._oflRestoreComplete) {
+      return;
     }
-  },
-};
+
+    await nextTick();
+    newDmxConnectorInput.value?.focus();
+  }
+);
+
+onMounted(() => {
+  if ((instance?.proxy?.$root as any)?._oflRestoreComplete) {
+    firstInput.value?.focus();
+  }
+});
 </script>

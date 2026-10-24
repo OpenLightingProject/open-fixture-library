@@ -14,10 +14,11 @@
     <ClientOnly placeholder="Fixture editor is loading...">
 
       <VueForm
+        ref="formRef"
         :state="formstate"
         action="#"
         class="only-js"
-        @submit.prevent="onSubmit()">
+        @submit="onSubmit()">
 
         <EditorManufacturer
           :fixture="fixture"
@@ -39,7 +40,7 @@
 
         <MasonryCardContainer>
           <EditorMode
-            v-for="(mode, index) of fixture.modes"
+            v-for="(mode, index) in fixture.modes"
             :key="mode.uuid"
             :mode="fixture.modes[index]"
             :index="index"
@@ -92,7 +93,7 @@
         :channel="channel"
         :fixture="fixture"
         @reset-channel="resetChannel()"
-        @channel-changed="autoSave(`channel`)"
+        @channel-changed="autoSave('channel')"
         @remove-channel="removeChannel($event)" />
 
       <EditorChooseChannelEditModeDialog
@@ -123,8 +124,8 @@ noscript.card {
 }
 </style>
 
-<script>
-import { schemaDefinitions } from '../../lib/schema-properties.js';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 import {
   constants,
   getEmptyChannel,
@@ -132,306 +133,236 @@ import {
   getEmptyFormState,
   getEmptyMode,
   scrollToFirstInvalidField,
-} from '../assets/scripts/editor-utilities.js';
-import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
-import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
-import EditorFixtureInformation from '../components/editor/EditorFixtureInformation.vue';
-import EditorManufacturer from '../components/editor/EditorManufacturer.vue';
-import EditorMode from '../components/editor/EditorMode.vue';
-import EditorPhysical from '../components/editor/EditorPhysical.vue';
-import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
-import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
-import LabeledInput from '../components/LabeledInput.vue';
-import MasonryCardContainer from '../components/MasonryCardContainer.vue';
-import PropertyInputText from '../components/PropertyInputText.vue';
+} from '@/assets/scripts/editor-utilities.js';
 
-export default {
-  components: {
-    EditorChannelDialog,
-    EditorChooseChannelEditModeDialog,
-    EditorFixtureInformation,
-    EditorManufacturer,
-    EditorMode,
-    EditorPhysical,
-    EditorRestoreDialog,
-    EditorSubmitDialog,
-    LabeledInput,
-    MasonryCardContainer,
-    PropertyInputText,
-  },
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
-      delete manufacturers.generic;
+const route = useRoute();
+const router = useRouter();
+
+const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
+
+if (manufacturers.value) {
+  delete manufacturers.value.generic;
+}
+
+const formstate = ref(getEmptyFormState());
+const readyToAutoSave = ref(false);
+const restoredData = ref<unknown>(undefined);
+const fixture = ref(getEmptyFixture());
+const channel = ref(getEmptyChannel());
+const githubUsername = ref('');
+const honeypot = ref('');
+const submitDialog = ref<{ validate: (data: unknown[]) => void } | null>(null);
+
+function addNewMode() {
+  fixture.value.modes.push(getEmptyMode());
+}
+
+function openChannelEditor(channelData: Record<string, unknown>) {
+  channel.value = { ...channel.value, ...channelData };
+}
+
+function resetChannel() {
+  channel.value = getEmptyChannel();
+}
+
+function getChannelName(channelUuid: string): string {
+  const channel = fixture.value.availableChannels[channelUuid];
+
+  if ('coarseChannelId' in channel) {
+    let name = `${getChannelName(channel.coarseChannelId)} fine`;
+    if (channel.resolution > constants.RESOLUTION_16BIT) {
+      name += `^${channel.resolution - 1}`;
     }
-    catch (requestError) {
-      return error(requestError);
+
+    return name;
+  }
+
+  return channel.name;
+}
+
+function isChannelNameUnique(channelUuid: string): boolean {
+  const channelName = getChannelName(channelUuid);
+
+  return Object.keys(fixture.value.availableChannels).every(
+    uuid => channelName !== getChannelName(uuid) || uuid === channelUuid,
+  );
+}
+
+function removeChannel(channelUuid: string, modeUuid?: string) {
+  if (modeUuid) {
+    const channelMode = fixture.value.modes.find(mode => mode.uuid === modeUuid);
+
+    if (channelMode) {
+      const channelPosition = channelMode.channels.indexOf(channelUuid);
+      if (channelPosition !== -1) {
+        channelMode.channels.splice(channelPosition, 1);
+      }
     }
-    return { manufacturers };
-  },
-  data() {
-    return {
-      formstate: getEmptyFormState(),
-      readyToAutoSave: false,
-      restoredData: undefined,
-      fixture: getEmptyFixture(),
-      channel: getEmptyChannel(),
-      githubUsername: '',
-      honeypot: '',
-      schemaDefinitions,
-    };
-  },
-  head() {
-    const title = 'Fixture Editor';
 
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-  watch: {
-    fixture: {
-      handler() {
-        this.autoSave('fixture');
-      },
-      deep: true,
+    return;
+  }
+
+  // remove fine channels first
+  for (const channel of Object.values(fixture.value.availableChannels)) {
+    if ('coarseChannelId' in channel && channel.coarseChannelId === channelUuid) {
+      removeChannel(channel.uuid);
+    }
+  }
+
+  // now remove all references from modes
+  for (const mode of fixture.value.modes) {
+    removeChannel(channelUuid, mode.uuid);
+  }
+
+  // finally remove the channel itself
+  delete fixture.value.availableChannels[channelUuid];
+}
+
+function autoSave(objectName: 'fixture' | 'channel') {
+  if (!readyToAutoSave.value) {
+    return;
+  }
+
+  if (objectName === 'fixture') {
+    console.log('autoSave fixture:', JSON.parse(JSON.stringify(fixture.value, null, 2)));
+  }
+  else if (objectName === 'channel') {
+    console.log('autoSave channel:', JSON.parse(JSON.stringify(channel.value, null, 2)));
+  }
+
+  localStorage.setItem('autoSave', JSON.stringify([
+    {
+      fixture: fixture.value,
+      channel: channel.value,
+      timestamp: Date.now(),
     },
-  },
-  beforeMount() {
-    this.$root._oflRestoreComplete = false;
-  },
-  async mounted() {
-    this.applyQueryPrefillData();
-    this.applyStoredPrefillData();
+  ]));
+}
 
-    // let all components initialize without auto-focus
-    await this.$nextTick();
+function clearAutoSave() {
+  localStorage.removeItem('autoSave');
+}
 
-    this.restoreAutoSave();
-  },
-  methods: {
-    addNewMode() {
-      this.fixture.modes.push(getEmptyMode());
-    },
+function restoreAutoSave() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('autoSave') || 'null');
+    if (saved) {
+      restoredData.value = saved.pop();
+    }
 
-    openChannelEditor(channelData) {
-      this.channel = { ...this.channel, ...channelData };
-    },
+    if (restoredData.value === undefined) {
+      throw new Error('restoredData is undefined');
+    }
+  }
+  catch {
+    restoredData.value = undefined;
+    restoreComplete();
+    return;
+  }
 
-    resetChannel() {
-      this.channel = getEmptyChannel();
-    },
+  console.log('restore', structuredClone(restoredData.value));
+}
 
-    /**
-     * @param {string} channelUuid - The channel's UUID.
-     * @returns {string} The channel's name.
-     */
-    getChannelName(channelUuid) {
-      const channel = this.fixture.availableChannels[channelUuid];
+function restoreComplete() {
+  readyToAutoSave.value = true;
+  window.scrollTo(0, 0);
+}
 
-      if ('coarseChannelId' in channel) {
-        let name = `${this.getChannelName(channel.coarseChannelId)} fine`;
-        if (channel.resolution > constants.RESOLUTION_16BIT) {
-          name += `^${channel.resolution - 1}`;
-        }
+function applyQueryPrefillData() {
+  if (!route.query.prefill) {
+    return;
+  }
 
-        return name;
+  try {
+    const prefillObject = JSON.parse(route.query.prefill as string);
+    for (const [key, value] of Object.entries(prefillObject)) {
+      if (isPrefillable(prefillObject, key)) {
+        (fixture.value as Record<string, unknown>)[key] = value;
       }
+    }
+  }
+  catch (parseError) {
+    console.log('prefill query could not be parsed:', route.query.prefill, parseError);
+  }
+}
 
-      return channel.name;
-    },
+function applyStoredPrefillData() {
+  if (!import.meta.client) {
+    return;
+  }
 
-    /**
-     * Called from {@link EditorMode}.
-     * @public
-     * @param {string} channelUuid - The channel's UUID.
-     * @returns {boolean} True if the channel's name is not used in another channel, too.
-     */
-    isChannelNameUnique(channelUuid) {
-      const channelName = this.getChannelName(channelUuid);
+  if (fixture.value.metaAuthor === '') {
+    fixture.value.metaAuthor = localStorage.getItem('prefillAuthor') || '';
+  }
 
-      return Object.keys(this.fixture.availableChannels).every(
-        (uuid) => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
-      );
-    },
+  if (githubUsername.value === '') {
+    githubUsername.value = localStorage.getItem('prefillGithubUsername') || '';
+  }
+}
 
-    /**
-     * @param {string} channelUuid - The channel's UUID.
-     * @param {string | null} [modeUuid] - The mode's UUID. If not supplied, remove channel everywhere.
-     */
-    removeChannel(channelUuid, modeUuid) {
-      if (modeUuid) {
-        const channelMode = this.fixture.modes.find((mode) => mode.uuid === modeUuid);
+function storePrefillData() {
+  if (!import.meta.client) {
+    return;
+  }
+  localStorage.setItem('prefillAuthor', fixture.value.metaAuthor);
+  localStorage.setItem('prefillGithubUsername', githubUsername.value);
+}
 
-        const channelPosition = channelMode.channels.indexOf(channelUuid);
-        if (channelPosition !== -1) {
-          // remove channel reference from mode
-          channelMode.channels.splice(channelPosition, 1);
-        }
+function onSubmit() {
+  if (formstate.value.$invalid) {
+    scrollToFirstInvalidField();
+    return;
+  }
 
-        return;
-      }
+  if (honeypot.value !== '') {
+    alert('Do not fill the "Ignore" fields!');
+    return;
+  }
 
-      // remove fine channels first
-      for (const channel of Object.values(this.fixture.availableChannels)) {
-        if ('coarseChannelId' in channel && channel.coarseChannelId === channelUuid) {
-          this.removeChannel(channel.uuid);
-        }
-      }
+  submitDialog.value?.validate([fixture.value]);
+}
 
-      // now remove all references from modes
-      for (const mode of this.fixture.modes) {
-        this.removeChannel(channelUuid, mode.uuid);
-      }
+function onFixtureSubmitted() {
+  storePrefillData();
+  clearAutoSave();
+}
 
-      // finally remove the channel itself
-      delete this.fixture.availableChannels[channelUuid];
-    },
+async function reset() {
+  fixture.value = getEmptyFixture();
+  channel.value = getEmptyChannel();
+  honeypot.value = '';
+  applyStoredPrefillData();
 
-    /**
-     * Saves the entered user data to the browser's local storage if available.
-     * @param {'fixture' | 'channel'} objectName - The object to save.
-     */
-    autoSave(objectName) {
-      if (!this.readyToAutoSave) {
-        return;
-      }
+  router.push({
+    path: route.path,
+    query: {},
+  });
 
-      if (objectName === 'fixture') {
-        console.log('autoSave fixture:', JSON.parse(JSON.stringify(this.fixture, null, 2)));
-      }
-      else if (objectName === 'channel') {
-        console.log('autoSave channel:', JSON.parse(JSON.stringify(this.channel, null, 2)));
-      }
+  await nextTick();
 
-      // use an array to be future-proof (maybe we want to support multiple browser tabs sometime)
-      localStorage.setItem('autoSave', JSON.stringify([
-        {
-          fixture: this.fixture,
-          channel: this.channel,
-          timestamp: Date.now(),
-        },
-      ]));
-    },
+  formstate.value._reset();
+  window.scrollTo(0, 0);
+}
 
-    clearAutoSave() {
-      localStorage.removeItem('autoSave');
-    },
+watch(fixture, () => {
+  autoSave('fixture');
+}, { deep: true });
 
-    /**
-     * Loads auto-saved data from browser's local storage into this component's `restoredData` property, such that a dialog is opened that lets the user choose if they want to apply or discard it.
-     */
-    restoreAutoSave() {
-      try {
-        this.restoredData = JSON.parse(localStorage.getItem('autoSave')).pop();
+onMounted(() => {
+  applyQueryPrefillData();
+  applyStoredPrefillData();
 
-        if (this.restoredData === undefined) {
-          throw new Error('this.restoredData is undefined.');
-        }
-      }
-      catch {
-        this.restoredData = undefined;
-        this.restoreComplete();
-        return;
-      }
+  nextTick(() => {
+    restoreAutoSave();
+  });
+});
 
-      console.log('restore', structuredClone(this.restoredData));
-    },
+useHead({
+  title: 'Fixture Editor',
+});
 
-    /**
-     * Called from restore dialog (via an event) after the restored data are either applied or discarded.
-     */
-    restoreComplete() {
-      this.readyToAutoSave = true;
-      this.$root._oflRestoreComplete = true;
-      window.scrollTo(0, 0);
-    },
-
-    applyQueryPrefillData() {
-      if (!this.$route.query.prefill) {
-        return;
-      }
-
-      try {
-        const prefillObject = JSON.parse(this.$route.query.prefill);
-        for (const [key, value] of Object.entries(prefillObject)) {
-          if (isPrefillable(prefillObject, key)) {
-            this.fixture[key] = value;
-          }
-        }
-      }
-      catch (parseError) {
-        console.log('prefill query could not be parsed:', this.$route.query.prefill, parseError);
-      }
-    },
-
-    applyStoredPrefillData() {
-      if (this.fixture.metaAuthor === '') {
-        this.fixture.metaAuthor = localStorage.getItem('prefillAuthor') || '';
-      }
-
-      if (this.githubUsername === '') {
-        this.githubUsername = localStorage.getItem('prefillGithubUsername') || '';
-      }
-    },
-
-    storePrefillData() {
-      localStorage.setItem('prefillAuthor', this.fixture.metaAuthor);
-      localStorage.setItem('prefillGithubUsername', this.githubUsername);
-    },
-
-    onSubmit() {
-      if (this.formstate.$invalid) {
-        scrollToFirstInvalidField();
-        return;
-      }
-
-      if (this.honeypot !== '') {
-        alert('Do not fill the "Ignore" fields!');
-        return;
-      }
-
-      this.$refs.submitDialog.validate([this.fixture]);
-    },
-
-    onFixtureSubmitted() {
-      this.storePrefillData();
-      this.clearAutoSave();
-    },
-
-    async reset() {
-      this.fixture = getEmptyFixture();
-      this.channel = getEmptyChannel();
-      this.honeypot = '';
-      this.applyStoredPrefillData();
-
-      this.$router.push({
-        path: this.$route.path,
-        query: {}, // clear prefill query
-      });
-
-      await this.$nextTick();
-
-      this.formstate._reset();
-      this.$refs.existingManufacturerSelect.focus();
-      window.scrollTo(0, 0);
-    },
-  },
-};
-
-/**
- * @param {object} prefillObject - The object supplied in the page query.
- * @param {string} key - The key to check.
- * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
- */
-function isPrefillable(prefillObject, key) {
-  const allowedPrefillValues = {
+function isPrefillable(prefillObject: Record<string, unknown>, key: string): boolean {
+  const allowedPrefillValues: Record<string, string> = {
     useExistingManufacturer: 'boolean',
     manufacturerKey: 'string',
     newManufacturerRdmId: 'number',

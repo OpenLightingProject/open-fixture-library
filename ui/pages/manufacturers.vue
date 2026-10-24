@@ -5,7 +5,7 @@
     <div class="toc">
       Jump to:
       <a
-        v-for="(letterData, letter) of letters"
+        v-for="(letterData, letter) in letters"
         :key="letter"
         :href="`#${letterData.id}`"
         class="jump-link">
@@ -13,7 +13,7 @@
       </a>
     </div>
 
-    <div v-for="(letterData, letter) of letters" :key="letter">
+    <div v-for="(letterData, letter) in letters" :key="letter">
       <h2 :id="letterData.id">{{ letter }}</h2>
 
       <div class="manufacturers grid-4">
@@ -47,74 +47,72 @@ h2 {
 }
 </style>
 
-<script>
-export default {
-  async asyncData({ $axios, error }) {
-    let manufacturers;
-    try {
-      manufacturers = await $axios.$get('/api/v1/manufacturers');
+<script setup lang="ts">
+import register from '~~/fixtures/register.json';
+
+interface ManufacturerData {
+  key: string;
+  name: string;
+  fixtureCount: number;
+  color: string;
+}
+
+interface LetterData {
+  id: string;
+  manufacturers: ManufacturerData[];
+}
+
+const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
+
+const letters = computed(() => {
+  const result: Record<string, LetterData> = {};
+
+  if (!manufacturers.value) {
+    return result;
+  }
+
+  for (const [manufacturerKey, manufacturer] of Object.entries(manufacturers.value)) {
+    let letter = manufacturerKey.charAt(0).toUpperCase();
+
+    if (!/^[A-Z]$/.test(letter)) {
+      letter = '#';
     }
-    catch (requestError) {
-      return error(requestError);
+
+    if (!(letter in result)) {
+      result[letter] = {
+        id: letter === '#' ? 'letter-numeric' : `letter-${letter.toLowerCase()}`,
+        manufacturers: [],
+      };
     }
-    return { manufacturers };
-  },
-  head() {
-    const title = 'Manufacturers';
 
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-  computed: {
-    letters() {
-      const letters = {};
+    result[letter].manufacturers.push({
+      key: manufacturerKey,
+      name: manufacturer.name,
+      fixtureCount: manufacturer.fixtureCount,
+      color: manufacturer.color,
+    });
+  }
 
-      for (const [manufacturerKey, manufacturer] of Object.entries(this.manufacturers)) {
-        let letter = manufacturerKey.charAt(0).toUpperCase();
+  return result;
+});
 
-        if (!/^[A-Z]$/.test(letter)) {
-          letter = '#';
-        }
+function handleHashChange() {
+  if (window.location.hash === '') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
 
-        if (!(letter in letters)) {
-          letters[letter] = {
-            id: letter === '#' ? 'letter-numeric' : `letter-${letter.toLowerCase()}`,
-            manufacturers: [],
-          };
-        }
+onMounted(() => {
+  window.addEventListener('hashchange', handleHashChange);
+  document.documentElement.style.scrollBehavior = 'smooth';
+});
 
-        letters[letter].manufacturers.push({
-          key: manufacturerKey,
-          name: manufacturer.name,
-          fixtureCount: manufacturer.fixtureCount,
-          color: manufacturer.color,
-        });
-      }
+onUnmounted(() => {
+  window.removeEventListener('hashchange', handleHashChange);
+  document.documentElement.style.scrollBehavior = '';
+});
 
-      return letters;
-    },
-  },
-  mounted() {
-    window.addEventListener('hashchange', this.handleHashChange);
-    document.documentElement.style.scrollBehavior = 'smooth';
-  },
-  destroyed() {
-    window.removeEventListener('hashchange', this.handleHashChange);
-    document.documentElement.style.scrollBehavior = '';
-  },
-  methods: {
-    handleHashChange() {
-      if (window.location.hash === '') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    },
-  },
-};
+useHead({
+  title: 'Manufacturers',
+});
 </script>

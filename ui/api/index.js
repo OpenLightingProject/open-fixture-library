@@ -63,6 +63,7 @@ function logResponseValidationErrors(validationErrors, errorDescription, rootNam
 
 const api = new OpenAPIBackend({
   definition: fileURLToPath(new URL('openapi.json', import.meta.url)),
+  apiRoot: '/api/v1',
   strict: process.env.NODE_ENV !== 'production',
   ajvOpts: {
     formats: {
@@ -128,15 +129,20 @@ const api = new OpenAPIBackend({
           'response',
         );
 
-        const headersValidation = api.validateResponseHeaders(httpResponse.getHeaders(), operation, {
-          statusCode,
-          setMatchType: 'superset',
-        });
-        logResponseValidationErrors(
-          headersValidation.errors,
-          `API response headers for ${requestIdentifier} don't match schema:`,
-          'response headers',
-        );
+        // The Nuxt server route calls `api.handleRequest(request)` without an
+        // HTTP response object, so response header validation is only possible
+        // when one is provided (e.g. by the Express middleware).
+        if (httpResponse) {
+          const headersValidation = api.validateResponseHeaders(httpResponse.getHeaders(), operation, {
+            statusCode,
+            setMatchType: 'superset',
+          });
+          logResponseValidationErrors(
+            headersValidation.errors,
+            `API response headers for ${requestIdentifier} don't match schema:`,
+            'response headers',
+          );
+        }
       }
 
       return response;
@@ -151,4 +157,5 @@ app.use(async (request, response) => {
   sendJson(response, body);
 });
 
+export { api };
 export default app;

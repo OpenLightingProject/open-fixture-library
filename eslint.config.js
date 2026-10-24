@@ -12,6 +12,7 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
 import fixtureJsonObjectFormatRule from './lib/internal-eslint-rules/fixture-json-object-format.js';
 import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
@@ -368,6 +369,8 @@ export default defineConfig([
       'server/ofl-secrets.json',
       '.vscode/',
       '.nuxt/',
+      '.output/',
+      '.worktrees/',
       'node_modules/',
       'tmp/',
     ],
@@ -387,6 +390,38 @@ export default defineConfig([
   ...eslintPluginVue.configs['flat/vue2-recommended-error'],
   ...eslintPluginVueA11y.configs['flat/recommended'],
   ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parser: tseslint.parser,
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: ['.vue'],
+      },
+    },
+  },
+  {
+    files: ['ui/**/*.js', 'ui/**/*.ts', 'ui/**/*.vue'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {
+      // TypeScript and Nuxt auto-imports cover these identifiers.
+      'no-undef': 'off',
+      // Nuxt auto-imports all components from `ui/components`.
+      'vue/no-undef-components': 'off',
+      // Both JavaScript and TypeScript `<script>` blocks are used in the UI.
+      'vue/block-lang': 'off',
+    },
+  },
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   scaleDmxRange,
   scaleDmxValue,
-} from '../lib/scale-dmx-values.js';
+} from '../../lib/scale-dmx-values.js';
 
 describe('scaleDmxValue', () => {
   describe('8bit → 16bit', () => {

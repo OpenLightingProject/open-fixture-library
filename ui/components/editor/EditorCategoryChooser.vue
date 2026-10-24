@@ -2,7 +2,7 @@
   <div>
     <Draggable v-model="selectedCategories" tag="span">
       <CategoryBadge
-        v-for="cat of value"
+        v-for="cat of modelValue"
         :key="cat"
         :category="cat"
         selected
@@ -23,59 +23,55 @@
   </div>
 </template>
 
-<script>
-import { arrayProp } from 'vue-ts-types';
-import Draggable from 'vuedraggable';
-import CategoryBadge from '../CategoryBadge.vue';
 
-export default {
-  components: {
-    Draggable,
-    CategoryBadge,
+<script setup lang="ts">
+interface Props {
+  modelValue: string[];
+  allCategories: string[];
+}
+
+const props = defineProps<Props>();
+import Draggable from 'vuedraggable';
+const emit = defineEmits<{
+  'update:model-value': [value: string[]];
+  focus: [];
+  blur: [];
+}>();
+
+const selectedCategories = computed({
+  get() {
+    return props.modelValue;
   },
-  props: {
-    value: arrayProp().required,
-    allCategories: arrayProp().required,
+  set(newSelectedCategories: string[]) {
+    emit('update:model-value', newSelectedCategories);
   },
-  emits: {
-    input: (value) => true,
-    focus: () => true,
-    blur: () => true,
-  },
-  computed: {
-    selectedCategories: {
-      get() {
-        return this.value;
-      },
-      set(newSelectedCategories) {
-        this.$emit('input', newSelectedCategories);
-      },
-    },
-    unselectedCategories() {
-      return this.allCategories.filter(
-        (category) => !this.value.includes(category),
-      );
-    },
-  },
-  methods: {
-    select(selectedCategory) {
-      const updatedCategoryList = [...this.value, selectedCategory];
-      this.$emit('input', updatedCategoryList);
-      this.onBlur();
-    },
-    deselect(deselectedCategory) {
-      const updatedCategoryList = this.value.filter((category) => category !== deselectedCategory);
-      this.$emit('input', updatedCategoryList);
-      this.onBlur();
-    },
-    onFocus() {
-      this.$emit('focus');
-    },
-    onBlur(event) {
-      if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
-        this.$emit('blur');
-      }
-    },
-  },
-};
+});
+
+const unselectedCategories = computed(() => {
+  return props.allCategories.filter(
+    category => !props.modelValue.includes(category),
+  );
+});
+
+function select(selectedCategory: string) {
+  const updatedCategoryList = [...props.modelValue, selectedCategory];
+  emit('update:model-value', updatedCategoryList);
+  emit('blur');
+}
+
+function deselect(deselectedCategory: string) {
+  const updatedCategoryList = props.modelValue.filter(category => category !== deselectedCategory);
+  emit('update:model-value', updatedCategoryList);
+  emit('blur');
+}
+
+function onFocus() {
+  emit('focus');
+}
+
+function onBlur(event: FocusEvent) {
+  if (!(event && event.target && event.relatedTarget) || (event.target as HTMLElement).parentNode !== (event.relatedTarget as HTMLElement)?.parentNode) {
+    emit('blur');
+  }
+}
 </script>

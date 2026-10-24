@@ -24,38 +24,26 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ params, $axios, error }) {
-    let fixtures;
-    try {
-      ({ fixtures } = await $axios.$get(`/api/v1/categories/${encodeURIComponent(params.category)}`));
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { fixtures };
-  },
-  head() {
-    const title = this.categoryName;
+<script setup lang="ts">
+const route = useRoute();
 
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-  computed: {
-    categoryName() {
-      return this.$route.params.category;
-    },
-    categoryClass() {
-      return this.categoryName.toLowerCase().replaceAll(/\W+/g, '-');
-    },
-  },
-};
+const categoryName = computed(() => route.params.category as string);
+const categoryClass = computed(() => categoryName.value.toLowerCase().replaceAll(/\W+/g, '-'));
+
+const { data, error } = await useFetch(
+  () => `/api/v1/categories/${encodeURIComponent(categoryName.value)}`,
+);
+
+if (error.value) {
+  throw createError({
+    statusCode: error.value.statusCode ?? 404,
+    statusMessage: 'Category not found',
+  });
+}
+
+const fixtures = computed(() => data.value?.fixtures ?? []);
+
+useHead({
+  title: categoryName,
+});
 </script>

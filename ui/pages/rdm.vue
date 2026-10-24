@@ -1,6 +1,6 @@
 <template>
   <div>
-    <template v-if="searchFor === `nothing`">
+    <template v-if="searchFor === 'nothing'">
 
       <h1>RDM Lookup</h1>
 
@@ -48,13 +48,13 @@
 
       <h1>RDM {{ searchFor }} not found</h1>
 
-      <template v-if="notFound === `fixture`">
+      <template v-if="notFound === 'fixture'">
         <p>The requested <a :href="`/${manufacturerKey}`">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
         <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="prefilledFixtureEditorUrl">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
 
-      <template v-else-if="searchFor === `fixture`">
+      <template v-else-if="searchFor === 'fixture'">
         <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="prefilledFixtureEditorUrl">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
@@ -67,131 +67,113 @@
   </div>
 </template>
 
-<script>
-import LabeledInput from '../components/LabeledInput.vue';
+<script setup lang="ts">
+interface RdmLookup {
+  manufacturerKey: string | null;
+  manufacturerName: string | null;
+  fixtureKey: string | null;
+}
 
-export default {
-  components: {
-    LabeledInput,
-  },
-  async asyncData({ query, $axios, redirect, error }) {
-    const manufacturerId = parseIntOrNull(query.manufacturerId);
+definePageMeta({
+  key: route => route.fullPath,
+});
 
-    if (manufacturerId === null) {
-      return {
-        notFound: null,
-        searchFor: 'nothing',
-        manufacturerId: null,
-        manufacturerKey: null,
-        manufacturerName: null,
-        modelId: null,
-      };
-    }
+const route = useRoute();
+const router = useRouter();
 
-    const modelId = parseIntOrNull(query.modelId);
-    const personalityIndex = parseIntOrNull(query.personalityIndex);
+const manufacturerId = parseIntOrNull(route.query.manufacturerId as string | undefined);
+const modelId = parseIntOrNull(route.query.modelId as string | undefined);
+const personalityIndex = parseIntOrNull(route.query.personalityIndex as string | undefined);
 
-    let rdmLookup;
-    try {
-      rdmLookup = await $axios.$get('/api/v1/rdm', {
-        params: {
-          manufacturerId,
-          ...(modelId !== null && { modelId }),
-        },
-      });
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
+const notFound = ref<string | null>(null);
+const searchFor = ref<string>('nothing');
+const manufacturerKey = ref<string | null>(null);
+const manufacturerName = ref<string | null>(null);
 
-    if (rdmLookup.manufacturerKey === null) {
-      return {
-        notFound: 'manufacturer',
-        searchFor: modelId === null ? 'manufacturer' : 'fixture',
-        manufacturerId,
-        manufacturerKey: null,
-        manufacturerName: null,
-        modelId,
-      };
-    }
-
-    if (modelId === null || rdmLookup.fixtureKey !== null) {
-      return redirectToCorrectPage(rdmLookup, personalityIndex, redirect);
-    }
-
-    return {
-      notFound: 'fixture',
-      searchFor: 'fixture',
+if (manufacturerId !== null) {
+  const { data: rdmLookup, error } = await useFetch<RdmLookup>('/api/v1/rdm', {
+    query: {
       manufacturerId,
-      manufacturerKey: rdmLookup.manufacturerKey,
-      manufacturerName: rdmLookup.manufacturerName,
-      modelId,
-    };
-  },
-  head() {
-    const title = 'RDM Lookup';
-
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-  computed: {
-    prefilledFixtureEditorUrl() {
-      if (this.searchFor !== 'fixture') {
-        return '/fixture-editor';
-      }
-
-      const shouldUseExistingManufacturer = this.manufacturerKey !== null;
-
-      const prefillObject = {
-        useExistingManufacturer: shouldUseExistingManufacturer,
-        manufacturerKey: shouldUseExistingManufacturer ? this.manufacturerKey : undefined,
-        newManufacturerRdmId: shouldUseExistingManufacturer ? undefined : this.manufacturerId,
-        rdmModelId: this.modelId,
-      };
-
-      return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
+      ...(modelId !== null && { modelId }),
     },
-  },
-  watchQuery: ['manufacturerId', 'modelId', 'personalityIndex'],
-  methods: {
-    onSubmit(event) {
-      this.$router.push({
-        path: this.$route.path,
-        query: Object.fromEntries(new FormData(event.target)),
-      });
-    },
-  },
-};
+  });
+
+  if (error.value) {
+    throw createError({
+      statusCode: error.value.statusCode ?? 500,
+      statusMessage: 'RDM lookup failed',
+    });
+  }
+
+  if (rdmLookup.value?.manufacturerKey === null) {
+    notFound.value = 'manufacturer';
+    searchFor.value = modelId === null ? 'manufacturer' : 'fixture';
+  }
+  else if (modelId === null || rdmLookup.value?.fixtureKey !== null) {
+    redirectToCorrectPage(rdmLookup.value as RdmLookup, personalityIndex);
+  }
+  else {
+    notFound.value = 'fixture';
+    searchFor.value = 'fixture';
+    manufacturerKey.value = rdmLookup.value.manufacturerKey;
+    manufacturerName.value = rdmLookup.value.manufacturerName;
+  }
+}
+
+useHead({
+  title: 'RDM Lookup',
+});
+
+const prefilledFixtureEditorUrl = computed(() => {
+  if (searchFor.value !== 'fixture') {
+    return '/fixture-editor';
+  }
+
+  const shouldUseExistingManufacturer = manufacturerKey.value !== null;
+
+  const prefillObject = {
+    useExistingManufacturer: shouldUseExistingManufacturer,
+    manufacturerKey: shouldUseExistingManufacturer ? manufacturerKey.value : undefined,
+    newManufacturerRdmId: shouldUseExistingManufacturer ? undefined : manufacturerId,
+    rdmModelId: modelId,
+  };
+
+  return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
+});
+
+function onSubmit(event: Event) {
+  const form = event.target as HTMLFormElement;
+  router.push({
+    path: route.path,
+    query: Object.fromEntries(new FormData(form).entries()) as Record<string, string>,
+  });
+}
 
 /**
  * @param {string | undefined} string - The string to parse.
  * @returns {number | null} The parsed number, or null if the string can't be parsed.
  */
-function parseIntOrNull(string) {
+function parseIntOrNull(string: string | undefined): number | null {
+  if (!string) {
+    return null;
+  }
+
   const number = Number.parseInt(string, 10);
   return Number.isNaN(number) ? null : number;
 }
 
 /**
- * @param {object} rdmLookup - The API result matching the provided RDM IDs.
+ * @param {RdmLookup} rdmLookup - The API result matching the provided RDM IDs.
  * @param {number | null} personalityIndex - The provided RDM personality index, or null.
- * @param {(code: number, path: string) => void} redirect - The redirect function to be called.
  */
-function redirectToCorrectPage(rdmLookup, personalityIndex, redirect) {
+function redirectToCorrectPage(rdmLookup: RdmLookup, personalityIndex: number | null) {
   if (rdmLookup.fixtureKey === null) {
-    redirect(301, `/${rdmLookup.manufacturerKey}`);
+    navigateTo(`/${rdmLookup.manufacturerKey}`, { redirectCode: 301 });
     return;
   }
 
   const locationHash = personalityIndex === null ? '' : `#rdm-personality-${personalityIndex}`;
 
-  redirect(301, `/${rdmLookup.manufacturerKey}/${rdmLookup.fixtureKey}${locationHash}`);
+  navigateTo(`/${rdmLookup.manufacturerKey}/${rdmLookup.fixtureKey}${locationHash}`, { redirectCode: 301 });
 }
 </script>

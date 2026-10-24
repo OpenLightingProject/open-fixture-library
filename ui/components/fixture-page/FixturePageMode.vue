@@ -54,60 +54,56 @@ ol.mode-channels {
   min-height: 1em;
   padding-left: 1.9em;
 
-  // switched channels
-  ::v-deep ol {
+  :deep(ol) {
     padding-left: 1.1em;
     list-style-type: lower-alpha;
   }
 }
 </style>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Mode from '../../../lib/model/Mode.js';
-import FixturePageChannel from './FixturePageChannel.vue';
-import FixturePagePhysical from './FixturePagePhysical.vue';
+<script setup lang="ts">
+import Mode from '~~/lib/model/Mode.js';
 
-export default {
-  components: {
-    FixturePageChannel,
-    FixturePagePhysical,
-  },
-  props: {
-    mode: instanceOfProp(Mode).required,
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  data() {
-    return {
-      hasDetails: true,
-    };
-  },
-  computed: {
-    showCollapseExpandButtons() {
-      return this.mode.channels.length > 1 && this.hasDetails;
-    },
-  },
-  async mounted() {
-    // wait for all child components to render
-    await this.$nextTick();
+interface Props {
+  mode: Mode;
+}
 
-    if (!this.$el.querySelector('details')) {
-      this.hasDetails = false;
-    }
-  },
-  methods: {
-    openDetails() {
-      for (const details of this.$el.querySelectorAll('details')) {
-        details.open = true;
-      }
-    },
-    closeDetails() {
-      for (const details of this.$el.querySelectorAll('details')) {
-        details.open = false;
-      }
-    },
-  },
-};
+const props = defineProps<Props>();
+
+defineEmits<{
+  'help-wanted-clicked': [event: unknown];
+}>();
+
+const hasDetails = ref(true);
+
+const showCollapseExpandButtons = computed(() => {
+  return props.mode.channels.length > 1 && hasDetails.value;
+});
+
+onMounted(async () => {
+  await nextTick();
+
+  const el = document.querySelector('.fixture-mode');
+  if (el && !el.querySelector(`details`)) {
+    hasDetails.value = false;
+  }
+});
+
+function openDetails() {
+  const el = document.querySelector('.fixture-mode');
+  if (!el) return;
+
+  for (const details of el.querySelectorAll(`details`)) {
+    details.open = true;
+  }
+}
+
+function closeDetails() {
+  const el = document.querySelector('.fixture-mode');
+  if (!el) return;
+
+  for (const details of el.querySelectorAll(`details`)) {
+    details.open = false;
+  }
+}
 </script>

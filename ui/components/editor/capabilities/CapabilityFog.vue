@@ -45,40 +45,32 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      fogTypes: capabilityTypes.Fog.properties.fogType.enum,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        fogType: '',
-        fogOutput: '',
-        fogOutputStart: null,
-        fogOutputEnd: null,
-        comment: '',
-      },
+interface Props {
+  capability: {
+    uuid: string;
+    typeData: {
+      fogType?: string;
+      fogOutput?: string;
+      fogOutputStart?: string | null;
+      fogOutputEnd?: string | null;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Props>();
+
+const fogTypes = capabilityTypes.Fog.properties.fogType.enum;
+
+const defaultData = {
+  fogType: '',
+  fogOutput: '',
+  fogOutputStart: null,
+  fogOutputEnd: null,
+  comment: '',
 };
 </script>
