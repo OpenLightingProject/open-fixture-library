@@ -36,7 +36,7 @@
     "test:parity": "OLD_URL=http://localhost:3001 NEW_URL=http://localhost:3000 npm run test:e2e",
     "test:dmx-value-scaling": "vitest run --project unit tests/unit/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
-    "test:http-status": "vitest run tests/http-status.test.js",
+    "test:http-status": "vitest run --project http-status",
     "test:built-files-committed": "node tests/built-files-committed.js"
   },
   "dependencies": {

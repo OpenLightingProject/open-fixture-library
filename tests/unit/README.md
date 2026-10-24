@@ -1,17 +1,19 @@
 # Test layout
 
 Tests live in `tests/` (plural). The Vitest setup in `vitest.config.ts` defines
-three separate projects so each layer can be run on its own:
+four separate projects so each layer can be run on its own:
 
 | Project | Script | Location | Environment | Purpose |
 | --- | --- | --- | --- | --- |
 | `unit` | `npm run test:unit` | `tests/unit/**/*.test.{js,ts}` | node | Pure functions from `lib/`, no Nuxt runtime |
 | `nuxt` | `npm run test:nuxt` | `tests/nuxt/**/*.nuxt.spec.ts` | `nuxt` (via `@nuxt/test-utils`) | Components and composables that need the Nuxt runtime |
 | `e2e` | `npm run test:e2e` | `tests/e2e/contract/**/*.spec.ts` | node | HTTP contract / parity checks against running servers |
+| `http-status` | `npm run test:http-status` | `tests/http-status.test.js` | node | Full-site internal link crawl (slow; starts a server) |
 
-Run everything at once with `npx vitest run`. Legacy scripts such as
-`npm run test:http-status` and `tests/sitemap-urls.js` are independent of these
-projects and are intentionally not part of them.
+Run everything at once with `npx vitest run`. The crawl in the `http-status`
+project takes up to 10 minutes, so prefer running it separately. Standalone
+scripts such as `tests/sitemap-urls.js` are independent of these projects and
+are intentionally not part of them.
 
 ## Playwright browser suite
 

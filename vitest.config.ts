@@ -26,6 +26,13 @@ export default defineConfig({
           testTimeout: 30_000,
         },
       },
+      {
+        test: {
+          name: 'http-status',
+          include: ['tests/http-status.test.js'],
+          environment: 'node',
+        },
+      },
     ],
   },
 });
