@@ -112,7 +112,7 @@ function addAttribute(xml, mode, attribute, channels) {
           '@id': mode.getChannelIndex(channel.key),
         },
         'parameterName': {
-          '@id': getParameterName(channel, mode, attribute, indexInAttribute),
+          '@id': getParameterName(channel, channels, mode, attribute, indexInAttribute),
         },
         'minLevel': {
           '@id': 0,
@@ -175,12 +175,13 @@ function addCapability(capability, xmlCapabilities) {
 
 /**
  * @param {CoarseChannel} channel - The channel to get the name for.
+ * @param {AbstractChannel[]} channels - All channels of the mode that are associated to the given attribute name.
  * @param {Mode} mode - The mode the channel is in.
  * @param {string} attribute - The D::Light attribute name.
  * @param {number} indexInAttribute - The index of this channel in the list of all channels related to the attribute.
  * @returns {string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
  */
-function getParameterName(channel, mode, attribute, indexInAttribute) {
+function getParameterName(channel, channels, mode, attribute, indexInAttribute) {
   const uniqueName = channel.uniqueName;
 
   channel = getUsableChannel(channel);
@@ -192,7 +193,26 @@ function getParameterName(channel, mode, attribute, indexInAttribute) {
 
   switch (attribute) {
     case 'FOCUS': {
-      return channel.type.toUpperCase(); // PAN or TILT
+      let name = channel.type.toUpperCase(); // PAN or TILT
+
+      // D::Light requires parameter names to be unique, so append a number to distinguish
+      // multiple same-type channels (e.g. the pan channels of a matrix's pixels).
+      let sameTypeCount = 0;
+      let sameTypeIndex = 0;
+      for (const otherChannel of channels) {
+        const other = getUsableChannel(otherChannel);
+        if (other.type === channel.type) {
+          if (other === channel) {
+            sameTypeIndex = sameTypeCount;
+          }
+          sameTypeCount++;
+        }
+      }
+      if (sameTypeCount > 1) {
+        name = `${name} ${sameTypeIndex + 1}`;
+      }
+
+      return name;
     }
     case 'INTENSITY': {
       if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
