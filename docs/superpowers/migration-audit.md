@@ -138,3 +138,4 @@ None introduced by this task. The `DownloadButton` style/filename changes restor
 | `npm run test:unit` | Pass (1 file, 65 tests) |
 | `npm run test:nuxt` | No test files exist yet (`tests/nuxt/**` is added in later tasks); not a code failure |
 | Dev-server route check | All four routes return 200 and render their page content |
+| Playwright, `/fixture-editor` with seeded `localStorage.autoSave` | Reproduces the uncaught `DataCloneError` from `ui/pages/fixture-editor.vue:263` (returning-user autosave path); scheduling entry added above |
