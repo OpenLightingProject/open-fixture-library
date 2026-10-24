@@ -4,14 +4,18 @@ const fixtureDownloadPattern = /^\/([^/]+)\/([^/.]+)\.([a-z0-9_.-]+)$/;
 
 export default defineEventHandler(async (event) => {
   const pathname = getRequestURL(event).pathname;
+  // The Nuxt 2 Express router registered these as `.get()` routes, which also
+  // answer HEAD requests. Nitro hands the method through verbatim, so map HEAD
+  // to the GET handlers explicitly.
+  const isGet = event.method === "GET" || event.method === "HEAD";
 
   const batchMatch = pathname.match(batchDownloadPattern);
-  if (batchMatch && event.method === "GET") {
+  if (batchMatch && isGet) {
     return handleBatchDownload(event, batchMatch[1]);
   }
 
   const fixtureMatch = pathname.match(fixtureDownloadPattern);
-  if (fixtureMatch && event.method === "GET") {
+  if (fixtureMatch && isGet) {
     return handleFixtureDownload(
       event,
       fixtureMatch[1],

@@ -1,13 +1,26 @@
 import { resolve } from "path";
+import { pathToFileURL } from "url";
 import type { H3Event } from "h3";
 import JSZip from "jszip";
 import { readFile } from "fs/promises";
-import Fixture from "~~/lib/model/Fixture.js";
-import Manufacturer from "~~/lib/model/Manufacturer.js";
-import {
-  fixtureFromRepository,
-  embedResourcesIntoFixtureJson,
-} from "~~/lib/model.js";
+
+/**
+ * `import.meta.url` is rewritten to the Nitro entry chunk in bundled server
+ * code, so the model's fixture and resource lookups would resolve against
+ * `.output/` instead of the repository root. Load the model from its real
+ * source location at runtime, like `ui/server/utils/api.ts` does for the API
+ * route handlers.
+ */
+const modelPromise = import(
+  pathToFileURL(resolve(process.cwd(), "lib/model.js")).href,
+);
+const modelClassesPromise = Promise.all([
+  import(pathToFileURL(resolve(process.cwd(), "lib/model/Fixture.js")).href),
+  import(pathToFileURL(resolve(process.cwd(), "lib/model/Manufacturer.js")).href),
+]).then(([fixtureModule, manufacturerModule]) => ({
+  Fixture: fixtureModule.default,
+  Manufacturer: manufacturerModule.default,
+}));
 
 interface RegisterEntry {
   name: string;
@@ -24,6 +37,17 @@ interface EditorBody {
 
 let exportPluginsCache: string[] | null = null;
 let registerCache: { filesystem: Record<string, RegisterEntry> } | null = null;
+
+/**
+ * Send a download error exactly like the old Express handler did: a plain-text
+ * 500 response without a `Content-Type` header. `createError` would render a
+ * JSON error body with a different status message instead.
+ */
+function sendPlainTextError(event: H3Event, message: string): void {
+  setResponseStatus(event, 500);
+  event.node.res.write(message);
+  event.node.res.end();
+}
 
 async function getExportPlugins(): Promise<string[]> {
   if (!exportPluginsCache) {
@@ -54,6 +78,7 @@ export async function handleBatchDownload(
     return;
   }
 
+  const { fixtureFromRepository } = await modelPromise;
   const register = await getRegister();
   const fixtures = await Promise.all(
     Object.keys(register.filesystem)
@@ -83,16 +108,29 @@ export async function handleFixtureDownload(
   }
 
   if (format === "json") {
-    const json = JSON.parse(
-      await readFile(
-        resolve("fixtures", `${manufacturerKey}/${fixtureKey}.json`),
-        "utf-8",
-      ),
-    );
-    await embedResourcesIntoFixtureJson(json);
+    const { embedResourcesIntoFixtureJson } = await modelPromise;
+    let json: Record<string, unknown>;
+    try {
+      json = JSON.parse(
+        await readFile(
+          resolve("fixtures", `${manufacturerKey}/${fixtureKey}.json`),
+          "utf-8",
+        ),
+      );
+      await embedResourcesIntoFixtureJson(json);
+    } catch (error) {
+      sendPlainTextError(
+        event,
+        `Fetching ${manufacturerKey}/${fixtureKey}.json failed: ${error.toString()}`,
+      );
+      return;
+    }
+
     setResponseHeader(event, "Content-Type", "application/json");
     setResponseStatus(event, 200);
-    return json;
+    // The Nuxt 2 oracle sends compact JSON; returning the object here would let
+    // Nitro pretty-print it and change the downloaded file byte-for-byte.
+    return JSON.stringify(json);
   }
 
   const exportPlugins = await getExportPlugins();
@@ -100,6 +138,7 @@ export async function handleFixtureDownload(
     return;
   }
 
+  const { fixtureFromRepository } = await modelPromise;
   const fixtures = [await fixtureFromRepository(manufacturerKey, fixtureKey)];
   return downloadFixtures(
     event,
@@ -113,15 +152,20 @@ export async function handleFixtureDownload(
 export async function handleEditorDownload(
   event: H3Event,
   format: string,
-): Promise<string | Buffer> {
+): Promise<string | Buffer | undefined> {
   const exportPlugins = await getExportPlugins();
   if (!exportPlugins.includes(format)) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: `Exporting fixture with ${format} failed: Plugin is not supported.`,
-    });
+    sendPlainTextError(
+      event,
+      `Exporting fixture with ${format} failed: Plugin is not supported.`,
+    );
+    return;
   }
 
+  const [{ embedResourcesIntoFixtureJson }, { Fixture, Manufacturer }] = await Promise.all([
+    modelPromise,
+    modelClassesPromise,
+  ]);
   const body = await readBody<EditorBody>(event);
   const fixtures = await Promise.all(
     Object.entries(body.fixtures).map(async ([key, jsonObject]) => {
@@ -151,10 +195,10 @@ export async function handleEditorDownload(
 export async function downloadFixtures(
   event: H3Event,
   pluginKey: string,
-  fixtures: InstanceType<typeof Fixture>[],
+  fixtures: unknown[],
   zipName: string,
   errorDesc: string,
-): Promise<string | Buffer> {
+): Promise<string | Buffer | undefined> {
   const plugin = await import(resolve("plugins", pluginKey, "export.js"));
 
   try {
@@ -194,9 +238,10 @@ export async function downloadFixtures(
     setResponseStatus(event, 200);
     return zipBuffer;
   } catch (error) {
-    throw createError({
-      statusCode: 500,
-      statusMessage: `Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`,
-    });
+    sendPlainTextError(
+      event,
+      `Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`,
+    );
+    return;
   }
 }
