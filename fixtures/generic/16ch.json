@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "16ch",
+  "categories": ["Moving Head", "Matrix"],
+  "meta": {
+    "authors": ["Dar Intriago"],
+    "createDate": "2025-11-19",
+    "lastModifyDate": "2025-11-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/-/es/canales-controlador-interruptor-dimmer-Equipmet/dp/B0111QP790"
+    ]
+  },
+  "availableChannels": {
+    "1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "5": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "6": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "7": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "8": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "9": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "10": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "11": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "12": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "13": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "14": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "15": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "16": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16ch",
+      "channels": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ]
+    }
+  ]
+}
