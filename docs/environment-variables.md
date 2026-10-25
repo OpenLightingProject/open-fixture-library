@@ -22,7 +22,7 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |`GITHUB_BROKEN_LINKS_ISSUE_NUMBER` | A GitHub issue number                     | Used by [tests/external-links.js](../tests/external-links.js) |
 |`NODE_ENV`                         | `production` or `development` (default)   | Read by Nuxt/Nitro and our scripts: `production` enables caching, minimizing and other optimizations [improving the performance a lot][node-env-perf]. |
 |`PORT`                             | A free port number                        | On which port the Nuxt/Nitro server listens, defaults to `3000`. |
-|`HOST`                             | A host name or IP address                 | On which host the Nuxt/Nitro server listens, defaults to `localhost`. |
+|`HOST`                             | A host name or IP address                 | Host the Nuxt/Nitro server binds to. `npm run dev` defaults to `localhost`; the built Nitro server (`node .output/server/index.mjs`) binds to all interfaces when `HOST` is unset. |
 |`WEBSITE_URL`                      | An absolute URL with a trailing slash.    | The public URL of the website. Defaults to `http://localhost:${PORT}/`. |
 |`GITHUB_PR_NUMBER`                 | A GitHub pull request number              | In a pull request, the PR number. |
 |`GITHUB_PR_HEAD_REF`               | A git ref                                 | In a pull request, the PR head ref (e.g. `feature-branch`). |

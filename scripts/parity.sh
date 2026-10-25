@@ -16,11 +16,15 @@
 # Environment:
 #   BASELINE_REF       Git ref of the Nuxt 2 oracle. Defaults to
 #                      upstream/master, then origin/master, then master.
+#                      Remote refs are fetched before use.
 #   BASELINE_DIR       Worktree directory for the oracle.
 #   PARITY_NEW_MODE    `build` (default) starts the production Nitro server,
 #                      `dev` starts `nuxt dev` instead.
 #   PARITY_FULL_MATRIX `0` skips the full download matrix.
+#   PARITY_FETCH       `0` skips fetching the baseline ref (use the local ref).
 #   PARITY_LOG_DIR     Directory for the server logs (default: tmp/parity).
+#
+# Requires git, curl and lsof.
 #
 # Both servers must be able to listen on ports 3000 (new site) and 3001
 # (oracle), because `npm run test:parity` pins those URLs.
@@ -39,6 +43,7 @@ OLD_URL="http://localhost:$OLD_PORT"
 NEW_URL="http://localhost:$NEW_PORT"
 SERVER_PIDS=""
 STARTED_PORTS=""
+REGENERATE_REGISTER=0
 
 usage() {
   cat <<'EOF'
@@ -56,7 +61,10 @@ Environment:
   PARITY_NEW_MODE     `build` (default) starts the production Nitro server,
                       `dev` starts `nuxt dev` instead.
   PARITY_FULL_MATRIX  `0` skips the full download matrix.
+  PARITY_FETCH        `0` skips fetching the baseline ref.
   PARITY_LOG_DIR      Directory for the server logs (default: tmp/parity).
+
+Requires git, curl and lsof.
 EOF
 }
 
@@ -69,33 +77,76 @@ fail() {
   exit 1
 }
 
-resolve_baseline_ref() {
-  if [[ -n "${BASELINE_REF:-}" ]]; then
-    echo "$BASELINE_REF"
-  elif git rev-parse --verify --quiet refs/remotes/upstream/master >/dev/null; then
-    echo upstream/master
-  elif git rev-parse --verify --quiet refs/remotes/origin/master >/dev/null; then
-    echo origin/master
+fetch_baseline_ref() {
+  local ref="$1"
+  local remote branch
+
+  if [[ "$ref" =~ ^([^/]+)/(.+)$ ]]; then
+    remote="${BASH_REMATCH[1]}"
+    branch="${BASH_REMATCH[2]}"
   else
-    echo master
+    return 0
   fi
+
+  git remote get-url "$remote" >/dev/null 2>&1 || return 0
+  if [[ "${PARITY_FETCH:-1}" == 0 ]]; then
+    return 0
+  fi
+
+  # Fetch stderr/stdout must not leak into the captured ref.
+  echo "[parity] fetching $remote/$branch" >&2
+  if ! git fetch --no-tags "$remote" "$branch" >&2; then
+    echo "[parity] warning: could not fetch $remote/$branch; using the local ref" >&2
+  fi
+}
+
+resolve_baseline_ref() {
+  local ref
+  if [[ -n "${BASELINE_REF:-}" ]]; then
+    ref="$BASELINE_REF"
+  elif git rev-parse --verify --quiet refs/remotes/upstream/master >/dev/null; then
+    ref=upstream/master
+  elif git rev-parse --verify --quiet refs/remotes/origin/master >/dev/null; then
+    ref=origin/master
+  else
+    ref=master
+  fi
+
+  fetch_baseline_ref "$ref"
+  echo "$ref"
 }
 
 prepare_worktree() {
   local ref
   ref="$(resolve_baseline_ref)"
 
+  local wanted
+  if ! wanted="$(git rev-parse "$ref^{commit}" 2>/dev/null)"; then
+    fail "cannot resolve baseline ref '$ref'; run 'git fetch' or set BASELINE_REF"
+  fi
+
   if [[ -e "$BASELINE_DIR" ]]; then
     if ! git -C "$BASELINE_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
       fail "$BASELINE_DIR exists but is not a git worktree; remove it or set BASELINE_DIR"
     fi
+
     local head
     head="$(git -C "$BASELINE_DIR" rev-parse HEAD)"
-    local wanted
-    wanted="$(git rev-parse "$ref^{commit}")"
-    log "reusing baseline worktree at $head"
-    if [[ "$head" != "$wanted" ]]; then
-      log "warning: worktree is not at $ref ($wanted); reusing it as-is"
+    if [[ "$head" == "$wanted" ]]; then
+      log "reusing baseline worktree at $head"
+      return
+    fi
+
+    if [[ -n "$(git -C "$BASELINE_DIR" status --porcelain)" ]]; then
+      fail "baseline worktree at $BASELINE_DIR has uncommitted changes; commit or stash them, or remove the worktree, then retry"
+    fi
+
+    log "updating baseline worktree from $head to $ref ($wanted)"
+    git -C "$BASELINE_DIR" checkout --detach "$wanted"
+    REGENERATE_REGISTER=1
+    if ! git -C "$BASELINE_DIR" diff --quiet "$head" "$wanted" -- package-lock.json; then
+      log "baseline package-lock.json changed; dependencies will be reinstalled"
+      rm -f "$BASELINE_DIR/node_modules/.package-lock.json"
     fi
     return
   fi
@@ -103,6 +154,7 @@ prepare_worktree() {
   log "creating baseline worktree at $BASELINE_DIR from $ref"
   mkdir -p "$(dirname "$BASELINE_DIR")"
   git worktree add --detach "$BASELINE_DIR" "$ref"
+  REGENERATE_REGISTER=1
 }
 
 install_baseline_dependencies() {
@@ -116,15 +168,13 @@ install_baseline_dependencies() {
 }
 
 ensure_baseline_register() {
-  if [[ ! -f "$BASELINE_DIR/fixtures/register.json" ]]; then
+  if [[ "$REGENERATE_REGISTER" == 1 || ! -f "$BASELINE_DIR/fixtures/register.json" ]]; then
     log "generating fixtures/register.json for the baseline"
     (cd "$BASELINE_DIR" && npm run build:register)
   fi
 }
 
 check_ports_free() {
-  command -v lsof >/dev/null 2>&1 || return 0
-
   local port
   for port in "$OLD_PORT" "$NEW_PORT"; do
     if [[ -n "$(lsof -ti "tcp:$port" 2>/dev/null || true)" ]]; then
@@ -211,7 +261,6 @@ wait_for_http() {
 
 kill_port() {
   local port="$1"
-  command -v lsof >/dev/null 2>&1 || return 0
 
   local pids
   pids="$(lsof -ti "tcp:$port" 2>/dev/null || true)"
@@ -280,6 +329,7 @@ main() {
   esac
 
   command -v curl >/dev/null 2>&1 || fail "curl is required"
+  command -v lsof >/dev/null 2>&1 || fail "lsof is required for port checks"
 
   mkdir -p "$LOG_DIR"
   trap cleanup EXIT

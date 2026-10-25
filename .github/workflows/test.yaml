@@ -82,12 +82,17 @@ jobs:
           exit 1
       - name: Run Playwright tests
         run: npm run test:browser
+      - name: Collect server log
+        if: failure()
+        run: cp "$RUNNER_TEMP/nuxt-server.log" nuxt-server.log 2>/dev/null || true
       - name: Upload Playwright results
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-results
-          path: test-results/
+          path: |
+            test-results/
+            nuxt-server.log
           if-no-files-found: ignore
   status:
     name: Status

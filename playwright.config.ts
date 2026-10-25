@@ -6,6 +6,7 @@ export default defineConfig<ConfigOptions>({
   fullyParallel: false,
   workers: 1,
   use: {
+    trace: 'retain-on-failure',
     nuxt: {
       rootDir: '.',
       build: false,

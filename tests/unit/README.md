@@ -5,7 +5,7 @@ four separate projects so each layer can be run on its own:
 
 | Project | Script | Location | Environment | Purpose |
 | --- | --- | --- | --- | --- |
-| `unit` | `npm run test:unit` | `tests/unit/**/*.test.{js,ts}` | node | Pure functions from `lib/`, no Nuxt runtime |
+| `unit` | `npm run test:unit` | `tests/unit/**/*.test.{js,ts}` | node | Pure functions from `lib/` and `ui/utils/`, no Nuxt runtime |
 | `nuxt` | `npm run test:nuxt` | `tests/nuxt/**/*.nuxt.spec.ts` | `nuxt` (via `@nuxt/test-utils`) | Components and composables that need the Nuxt runtime |
 | `e2e` | `npm run test:e2e` | `tests/e2e/contract/**/*.spec.ts` | node | HTTP contract / parity checks against running servers |
 | `http-status` | `npm run test:http-status` | `tests/http-status.test.js` | node | Full-site internal link crawl (slow; starts a server) |

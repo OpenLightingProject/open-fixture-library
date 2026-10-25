@@ -20,6 +20,9 @@ docker-compose.yml
 .output/
 fixtures/register.json
 
+# Parity baseline worktrees
+.worktrees/
+
 # opencode agent config
 .opencode/
 

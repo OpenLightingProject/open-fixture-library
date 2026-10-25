@@ -7,12 +7,14 @@ Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a 
 
 Locally, running `npm run dev` (after the [initial setup](README.md#local-installation)) starts the development server at `http://localhost:3000/` with hot module reloading, i.e. a changed Vue component file automatically patches only that component without having to reload the whole page. The port can be changed with the environment variable `PORT`, e.g. in the `.env` file.
 
-To run the production server locally, build first and start the Nitro output:
+To run the production server locally, build first and start the Nitro output directly:
 
 ```bash
 npm run build
-npm run start # or: node .output/server/index.mjs
+node .output/server/index.mjs
 ```
+
+(`npm run start` / `nuxt start` also launches the built server, but the Nuxt CLI documents it as a local preview command; run `node .output/server/index.mjs` in production.)
 
 `npm run build` regenerates the derived data (`fixtures/register.json`, plugin data, test fixtures, model/API docs, the bundled OpenAPI document) and then builds the Nuxt/Nitro server into `.output/`. The Playwright browser tests expect such a build (or a running dev server) and never build the site themselves.
 
@@ -44,7 +46,7 @@ npm run start # or: node .output/server/index.mjs
 
 ## Testing
 
-* `npm run test:unit` – Vitest unit tests for `lib/` code
+* `npm run test:unit` – Vitest unit tests for `lib/` and `ui/utils/` code
 * `npm run test:nuxt` – Vitest tests for components/composables that need the Nuxt runtime
 * `npm run test:e2e` / `npm run test:parity` – HTTP contract and Nuxt 2 parity tests against running servers
 * `npm run test:browser` – Playwright tests against a running site; select it with `TARGET_URL` (defaults to `http://localhost:3000`)
@@ -54,4 +56,6 @@ See [testing.md](testing.md) for details and [`tests/unit/README.md`](../tests/u
 
 ## Deployment
 
-Every time a new pull request is merged into the master branch, the new version is automatically deployed to <https://open-fixture-library.org/>. The PM2 configuration in [`server/ecosystem.config.js`](../server/ecosystem.config.js) runs `nuxt start` (Nitro's `node-server` preset) on port 5000 behind the nginx reverse proxy; [`server/redeploy.sh`](../server/redeploy.sh) pulls, installs, builds, and reloads the process. There is no separate Express process to deploy.
+Every time a new pull request is merged into the master branch, the new version is automatically deployed to <https://open-fixture-library.org/> (see the [`server/` directory](../server/)). In production, run the Nitro output directly (`node .output/server/index.mjs`, with the port set via `PORT`) behind the nginx reverse proxy; there is no separate Express process to deploy.
+
+> **Deployment status:** the checked-in [PM2 configuration](../server/ecosystem.config.js) is still the Nuxt 2 one. It starts `./node_modules/nuxt/bin/nuxt.js` on port 5000, but Nuxt 4 only ships `node_modules/nuxt/bin/nuxt.mjs`, so it cannot start the current site. The deployment migration (Task 21) must switch the `ofl` app to `./.output/server/index.mjs` and set `PORT: 3000` (or whichever port nginx proxies to). Until then, do not use that config as-is for a Nuxt 4 deployment.

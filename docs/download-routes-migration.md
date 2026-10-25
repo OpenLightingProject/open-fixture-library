@@ -153,7 +153,7 @@ This would allow three clean Nitro file-based routes:
 - The `plugins/` and `fixtures/` directories are read at server startup (via top-level `await`). This is fine because both files are relatively small and loaded once.
 - Dynamic plugin imports (`import(path.resolve('plugins', pluginKey, 'export.js'))`) work in Nitro's Node.js preset.
 - The middleware runs on every request — the regex checks are fast (simple string `.match()`), so the overhead is minimal.
-- In production, PM2 runs `npm run start` (`nuxt start`), i.e. Nitro's `node-server` preset as a single process on port 5000, behind nginx. The middleware runs in that process; there is no separate Express server.
+- In production, run the Nitro output directly (`node .output/server/index.mjs`, port set via `PORT`). The middleware runs in that process; there is no separate Express server. The checked-in PM2 config is still the Nuxt 2 one (it points at the removed `nuxt.js` binary and port 5000); the deployment migration (Task 21) must switch it to `./.output/server/index.mjs` with `PORT=3000`.
 
 ## Files
 
