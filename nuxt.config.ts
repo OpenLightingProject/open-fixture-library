@@ -187,7 +187,20 @@ export default defineNuxtConfig({
   },
   security: {
     rateLimiter: {
-      whiteList: ['127.0.0.1', '::1', 'localhost'],
+      // Node's dual-stack listener (Nitro's node-server preset) reports IPv4
+      // loopback connections as the IPv4-mapped IPv6 address
+      // `::ffff:127.0.0.1`, so the plain `127.0.0.1` entry alone does not
+      // match local requests.
+      //
+      // The empty string is not an address: `getRequestIP()` returns no IP for
+      // Nitro's in-process `$fetch()` calls made during SSR (e.g. every
+      // `useFetch('/api/v1/…')`), because those requests never touch a socket.
+      // Without this entry those loopback-only requests share one rate limit
+      // bucket per route and exhaust it after 150 page renders, even though
+      // every real client is whitelisted. No external connection can have an
+      // empty remote address. Keep the whitelist limited to loopback forms.
+      // eslint-disable-next-line sonarjs/no-hardcoded-ip -- loopback whitelist entry, not a configurable endpoint
+      whiteList: ['127.0.0.1', '::1', '::ffff:127.0.0.1', 'localhost', ''],
     },
     // CORS is implemented once in `ui/server/middleware/cors.ts`; the
     // nuxt-security default would add its own CORS headers to every route.
