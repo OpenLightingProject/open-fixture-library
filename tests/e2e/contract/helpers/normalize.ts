@@ -1,5 +1,5 @@
 import { Window } from 'happy-dom';
-import type { Document, Element, Text } from 'happy-dom';
+import type { Document, Element, Node, Text } from 'happy-dom';
 
 /**
  * A parsed, framework-independent snapshot of the user-visible content of a
@@ -17,6 +17,7 @@ export interface PageFacts {
   controls: ControlFact[];
   forms: FormFact[];
   textBlocks: TextBlockFact[];
+  loadingIndicators: LoadingIndicatorFact[];
 }
 
 export interface HeadingFact {
@@ -77,6 +78,13 @@ export interface TextBlockFact {
   text: string;
 }
 
+export interface LoadingIndicatorFact {
+  tag: string;
+  classes: string[];
+  text: string;
+  childCount: number;
+}
+
 const HTML_WHITESPACE = /[\t\n\f\r ]+/g;
 
 /**
@@ -92,9 +100,10 @@ export function normalizeText(value: string | null | undefined): string {
 
 /**
  * Rewrites origin-dependent and fingerprinted URLs into stable equivalents.
- * Absolute URLs lose their origin because the oracle runs on port 3001 while
- * the migrated site runs on port 3000. Nuxt build asset names are normalized
- * because Vite and webpack hash them differently.
+ * Absolute URLs on the two local test servers (ports 3001/3000) lose their
+ * origin so the ports do not cause false differences; external URLs keep
+ * their complete protocol, host, path, query and fragment. Nuxt build asset
+ * names are normalized because Vite and webpack hash them differently.
  *
  * @param {string | null | undefined} value - The URL or path to normalize.
  * @returns {string} The normalized URL or path.
@@ -153,7 +162,6 @@ export function stripVolatileMarkup(html: string): string {
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<div\b[^>]*\bclass="(?:[^"]* )?nuxt-loading-indicator(?: [^"]*)?"[^>]*>\s*<\/div>/gi, '')
     .replace(/\sdata-v-[a-z0-9]+(?:="[^"]*")?/gi, '')
     .replace(/\sdata-(?:server-rendered|n-head(?:-ssr)?|hid|fetch-key)(?:="[^"]*")?/gi, '');
 }
@@ -363,20 +371,55 @@ function formFacts(document: Document): FormFact[] {
 const TEXT_BLOCK_SELECTOR = 'p, li, td, th, dd, dt, summary, figcaption, time, code, label, option, caption';
 
 /**
- * Collects semantic text blocks in document order. Whitespace is removed
- * entirely: Nuxt 2 templates emit spaces around inline elements (for example
- * `0 …255`) while the Vue 3 compiler condenses them (`0…255`). The rendered
- * gap is CSS/framework detail, but every non-whitespace character of every
- * block (table cells, list items, paragraphs, ...) must still match. This
- * catches content changes that do not live in a heading, link or control.
+ * Collects the text of a block in a framework-independent way while preserving
+ * real word boundaries.
+ *
+ * Whitespace *inside* a text node is collapsed to one space and kept, so
+ * `"Beam angle"` and `"Beamangle"`, or `"10 000 lm"` and `"10000 lm"`, remain
+ * different. Whitespace at the edge of a text node is removed because it lies
+ * on an element boundary: Nuxt 2 keeps the trailing space of `<code>0 </code>`
+ * and the template spaces around inline elements, while the Vue 3 compiler
+ * drops them. Those boundary gaps are layout detail, not body copy.
+ *
+ * @param {Node} node - The text node or element to read.
+ * @returns {string} Text with internal spaces preserved.
+ */
+function canonicalText(node: Node): string {
+  if (node.nodeType === 3) {
+    return normalizeText(node.textContent);
+  }
+
+  return [...node.childNodes].map(canonicalText).join('');
+}
+
+/**
+ * Collects semantic text blocks in document order.
  *
  * @param {Document} document - The parsed document.
- * @returns {TextBlockFact[]} Tag and whitespace-free text per block.
+ * @returns {TextBlockFact[]} Tag and canonical text per block.
  */
 function textBlockFacts(document: Document): TextBlockFact[] {
   return [...document.querySelectorAll(TEXT_BLOCK_SELECTOR)].map((block) => ({
     tag: block.tagName.toLowerCase(),
-    text: normalizeText(block.textContent).replace(HTML_WHITESPACE, ''),
+    text: canonicalText(block),
+  }));
+}
+
+/**
+ * Collects Nuxt's client/SSR loading indicator. It is extracted as a fact
+ * rather than stripped: the oracle does not render it at all, while the Nuxt 4
+ * page shell contains one empty styled div. The caller asserts the exact shape
+ * as an allowlisted difference.
+ *
+ * @param {Document} document - The parsed document.
+ * @returns {LoadingIndicatorFact[]} Loading-indicator facts.
+ */
+function loadingIndicatorFacts(document: Document): LoadingIndicatorFact[] {
+  return [...document.querySelectorAll('.nuxt-loading-indicator')].map((indicator) => ({
+    tag: indicator.tagName.toLowerCase(),
+    classes: sortedClasses(indicator),
+    text: normalizeText(indicator.textContent),
+    childCount: indicator.children.length,
   }));
 }
 
@@ -399,6 +442,7 @@ export function pageFacts(html: string): PageFacts {
     controls: controlFacts(document),
     forms: formFacts(document),
     textBlocks: textBlockFacts(document),
+    loadingIndicators: loadingIndicatorFacts(document),
   };
 }
 
