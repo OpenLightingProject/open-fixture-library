@@ -1,6 +1,10 @@
 import { expect, test } from '@nuxt/test-utils/playwright';
 import type { Page } from '@playwright/test';
 
+// The corrupt-autoSave guard is a Nuxt 4 fix; the Nuxt 2 oracle still throws
+// on the same input, so that one regression test cannot run there.
+const isNuxt2Oracle = /:(3001)\b/.test(process.env.TARGET_URL ?? '');
+
 /**
  * Opens the fixture editor on both the Nuxt 2 and Nuxt 4 sites.
  * `waitUntil: 'load'` is used for the same reason as typography.spec.ts: the
@@ -140,7 +144,8 @@ test('auto-saved editor data can be discarded', async ({ page, goto }) => {
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('autoSave') || 'null'))).toEqual([]);
 });
 
-test('a corrupt auto-save value does not prevent discarding it', async ({ page, goto }) => {
+// New-site-only regression: the Nuxt 2 oracle still throws on corrupt data.
+(isNuxt2Oracle ? test.skip : test)('a corrupt auto-save value does not prevent discarding it', async ({ page, goto }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (error) => pageErrors.push(error.message));
 
