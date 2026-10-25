@@ -96,6 +96,9 @@ test('creating a channel with the capability wizard reaches the fixture preview'
 });
 
 test('auto-saved editor data is restored after a reload', async ({ page, goto }) => {
+  const pageErrors: string[] = [];
+  page.on('pageerror', (error) => pageErrors.push(error.message));
+
   await seedAutoSave(page, {
     name: 'Restored Fixture',
     categories: ['Dimmer'],
@@ -107,10 +110,16 @@ test('auto-saved editor data is restored after a reload', async ({ page, goto })
   await expect(restoreDialog).toBeVisible();
   await expect(restoreDialog).toContainText('Auto-saved fixture data found');
 
+  // Regression: restoreAutoSave() used to structuredClone() the reactive
+  // restoredData proxy, which threw an uncaught DataCloneError for every
+  // returning editor user. The dialog has to stay usable without page errors.
+  expect(pageErrors).toEqual([]);
+
   await restoreDialog.locator('button.restore').click();
   await expect(restoreDialog).toBeHidden();
   await expect(page.locator('input[name="fixture-name"]')).toHaveValue('Restored Fixture');
   await expect(page.locator('.category-badge.selected', { hasText: 'Dimmer' })).toBeVisible();
+  expect(pageErrors).toEqual([]);
 });
 
 test('auto-saved editor data can be discarded', async ({ page, goto }) => {
@@ -136,6 +145,14 @@ test('the editor still renders when localStorage writes fail', async ({ page, go
   page.on('pageerror', (error) => pageErrors.push(error.message));
 
   await page.addInitScript(() => {
+    // Seed a restorable entry before faking storage denial, so the Discard
+    // path is exercised too.
+    localStorage.setItem('autoSave', JSON.stringify([{
+      fixture: { name: 'Discarded Fixture' },
+      channel: {},
+      timestamp: Date.now(),
+    }]));
+
     Storage.prototype.setItem = function setItem() {
       throw new DOMException('Storage is disabled', 'QuotaExceededError');
     };
@@ -144,6 +161,12 @@ test('the editor still renders when localStorage writes fail', async ({ page, go
   await openEditor(page, goto);
   await expect(page.locator('h1').first()).toHaveText('Fixture Editor');
   await expect(page.locator('form.only-js')).toBeVisible();
+
+  // Discarding is a localStorage write as well and must stay best effort.
+  const restoreDialog = page.locator('#restore-dialog');
+  await expect(restoreDialog).toBeVisible();
+  await restoreDialog.locator('button.discard').click();
+  await expect(restoreDialog).toBeHidden();
 
   await page.fill('input[name="fixture-name"]', 'No Storage Fixture');
   await expect(page.locator('input[name="fixture-name"]')).toHaveValue('No Storage Fixture');

@@ -49,7 +49,15 @@ const config = useRuntimeConfig();
 
 const manufacturerKey = route.params.manufacturerKey as string;
 
-const { data: manufacturer } = await useFetch(`/api/v1/manufacturers/${manufacturerKey}`);
+const { data: manufacturer, error } = await useFetch(`/api/v1/manufacturers/${manufacturerKey}`);
+
+if (error.value || !manufacturer.value) {
+  throw createError({
+    statusCode: error.value?.statusCode ?? 404,
+    statusMessage: 'Manufacturer not found',
+    data: error.value?.data,
+  });
+}
 
 const fixtures = computed(() => manufacturer.value?.fixtures ?? []);
 

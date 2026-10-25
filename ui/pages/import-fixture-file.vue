@@ -107,6 +107,7 @@
 <script setup lang="ts">
 import { getEmptyFormState, scrollToFirstInvalidField } from '@/assets/scripts/editor-utilities.js';
 import { useEditorForm } from '~/composables/useEditorForm';
+import { getStoredItem, setStoredItem } from '~/utils/storage';
 
 const editorForm = useEditorForm();
 const formstate = ref(getEmptyFormState());
@@ -177,17 +178,17 @@ function applyStoredPrefillData() {
   }
 
   if (author.value === '') {
-    author.value = localStorage.getItem('prefillAuthor') || '';
+    author.value = getStoredItem('prefillAuthor') || '';
   }
 
   if (githubUsername.value === '') {
-    githubUsername.value = localStorage.getItem('prefillGithubUsername') || '';
+    githubUsername.value = getStoredItem('prefillGithubUsername') || '';
   }
 }
 
 function storePrefillData() {
-  localStorage.setItem('prefillAuthor', author.value);
-  localStorage.setItem('prefillGithubUsername', githubUsername.value);
+  setStoredItem('prefillAuthor', author.value);
+  setStoredItem('prefillGithubUsername', githubUsername.value);
 }
 
 onMounted(() => {

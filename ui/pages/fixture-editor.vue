@@ -92,7 +92,7 @@
         :channel="channel"
         :fixture="fixture"
         @reset-channel="resetChannel()"
-        @channel-changed="autoSave('channel')"
+        @channel-changed="autoSave()"
         @remove-channel="removeChannel($event)" />
 
       <EditorChooseChannelEditModeDialog
@@ -137,6 +137,11 @@ import {
   scrollToFirstInvalidField,
 } from '@/assets/scripts/editor-utilities.js';
 import { useEditorForm } from '~/composables/useEditorForm';
+import {
+  getStoredItem,
+  removeStoredItem,
+  setStoredItem,
+} from '~/utils/storage';
 
 const route = useRoute();
 const router = useRouter();
@@ -223,40 +228,27 @@ function removeChannel(channelUuid: string, modeUuid?: string) {
   delete fixture.value.availableChannels[channelUuid];
 }
 
-function autoSave(objectName: 'fixture' | 'channel') {
+function autoSave() {
   if (!readyToAutoSave.value) {
     return;
   }
 
-  if (objectName === 'fixture') {
-    console.log('autoSave fixture:', JSON.parse(JSON.stringify(fixture.value, null, 2)));
-  }
-  else if (objectName === 'channel') {
-    console.log('autoSave channel:', JSON.parse(JSON.stringify(channel.value, null, 2)));
-  }
-
-  try {
-    localStorage.setItem('autoSave', JSON.stringify([
-      {
-        fixture: fixture.value,
-        channel: channel.value,
-        timestamp: Date.now(),
-      },
-    ]));
-  }
-  catch {
-    // Auto-saving is best effort. Browsers may deny storage access (private
-    // mode, quota, disabled site data); the editor has to keep working.
-  }
+  setStoredItem('autoSave', JSON.stringify([
+    {
+      fixture: fixture.value,
+      channel: channel.value,
+      timestamp: Date.now(),
+    },
+  ]));
 }
 
 function clearAutoSave() {
-  localStorage.removeItem('autoSave');
+  removeStoredItem('autoSave');
 }
 
 function restoreAutoSave() {
   try {
-    const saved = JSON.parse(localStorage.getItem('autoSave') || 'null');
+    const saved = JSON.parse(getStoredItem('autoSave') || 'null');
     if (saved) {
       restoredData.value = saved.pop();
     }
@@ -268,10 +260,7 @@ function restoreAutoSave() {
   catch {
     restoredData.value = undefined;
     restoreComplete();
-    return;
   }
-
-  console.log('restore', structuredClone(restoredData.value));
 }
 
 function applyRestoredData(restored: { fixture: unknown; channel: unknown }) {
@@ -297,8 +286,8 @@ function applyQueryPrefillData() {
       }
     }
   }
-  catch (parseError) {
-    console.log('prefill query could not be parsed:', route.query.prefill, parseError);
+  catch {
+    // A malformed prefill query is ignored; the editor keeps the empty fixture.
   }
 }
 
@@ -308,11 +297,11 @@ function applyStoredPrefillData() {
   }
 
   if (fixture.value.metaAuthor === '') {
-    fixture.value.metaAuthor = localStorage.getItem('prefillAuthor') || '';
+    fixture.value.metaAuthor = getStoredItem('prefillAuthor') || '';
   }
 
   if (githubUsername.value === '') {
-    githubUsername.value = localStorage.getItem('prefillGithubUsername') || '';
+    githubUsername.value = getStoredItem('prefillGithubUsername') || '';
   }
 }
 
@@ -320,8 +309,8 @@ function storePrefillData() {
   if (!import.meta.client) {
     return;
   }
-  localStorage.setItem('prefillAuthor', fixture.value.metaAuthor);
-  localStorage.setItem('prefillGithubUsername', githubUsername.value);
+  setStoredItem('prefillAuthor', fixture.value.metaAuthor);
+  setStoredItem('prefillGithubUsername', githubUsername.value);
 }
 
 async function onSubmit() {
@@ -362,7 +351,7 @@ async function reset() {
 }
 
 watch(fixture, () => {
-  autoSave('fixture');
+  autoSave();
 }, { deep: true });
 
 onMounted(() => {

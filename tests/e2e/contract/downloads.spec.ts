@@ -325,18 +325,13 @@ describe('pass-through parity', () => {
     expect(newResponse.headers.get('content-disposition')).toBeNull();
   });
 
-  // Known gap, owned by Task 14 (page conversion): the Express download
-  // router correctly calls `next()` for an unknown format, so the request
-  // reaches the manufacturer page. The Nuxt 2 page forwards the failed
-  // manufacturer request (`error(requestError)` → 400, because the API rejects
-  // the dotted manufacturer key). The Nuxt 4 page leaves `manufacturer`
-  // undefined after the failed `useFetch` and renders a 500 instead.
-  //
-  // `it.fails` keeps the suite green today while asserting real oracle parity.
-  // Once Task 14 fixes the page, these tests pass and Vitest reports an
-  // unexpected pass, which intentionally fails the suite.
+  // The Express download router calls `next()` for an unknown format, so the
+  // request reaches the manufacturer page. Both sites forward the failed
+  // manufacturer request (`error(requestError)` on Nuxt 2 → 400, because the
+  // API rejects the dotted manufacturer key), which renders the shared error
+  // page.
   for (const path of ['/download.not-a-plugin', '/download.foo']) {
-    it.fails(`${path} matches the oracle rejection status (known Task 14 gap)`, async () => {
+    it(`${path} matches the oracle rejection status`, async () => {
       const { oldResponse, newResponse } = await fetchBoth(path);
 
       expect(oldResponse.status).toBe(400);

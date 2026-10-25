@@ -38,6 +38,7 @@ import {
   getSanitizedChannel,
   toPlainData,
 } from '@/assets/scripts/editor-utilities.js';
+import { getStoredItem, setStoredItem } from '~/utils/storage';
 
 interface Props {
   modelValue?: {
@@ -63,8 +64,8 @@ const restoredDate = computed(() => {
 
 function discardRestored() {
   // put all items except the last one back
-  const autoSaveItems = JSON.parse(localStorage.getItem('autoSave') || '[]');
-  localStorage.setItem('autoSave', JSON.stringify(autoSaveItems.slice(0, -1)));
+  const autoSaveItems = JSON.parse(getStoredItem('autoSave') || '[]');
+  setStoredItem('autoSave', JSON.stringify(autoSaveItems.slice(0, -1)));
 
   emit('update:model-value', undefined);
   emit('restore-complete');
