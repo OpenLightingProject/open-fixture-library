@@ -201,12 +201,14 @@ function getParameterName(channel, channels, mode, attribute, indexInAttribute) 
       let sameTypeIndex = 0;
       for (const otherChannel of channels) {
         const other = getUsableChannel(otherChannel);
-        if (other.type === channel.type) {
-          if (other === channel) {
-            sameTypeIndex = sameTypeCount;
-          }
-          sameTypeCount++;
+        if (other.type !== channel.type) {
+          continue;
         }
+
+        if (other === channel) {
+          sameTypeIndex = sameTypeCount;
+        }
+        sameTypeCount++;
       }
       if (sameTypeCount > 1) {
         name = `${name} ${sameTypeIndex + 1}`;
