@@ -51,4 +51,8 @@ const defaultData = {
   timeEnd: '',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

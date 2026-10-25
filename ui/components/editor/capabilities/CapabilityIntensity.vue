@@ -53,4 +53,9 @@ const defaultData = {
   brightnessEnd: 'bright',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

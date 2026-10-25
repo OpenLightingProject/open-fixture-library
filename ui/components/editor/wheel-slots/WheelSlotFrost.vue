@@ -34,4 +34,8 @@ const props = defineProps<Props>();
 const defaultData = {
   frostIntensity: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

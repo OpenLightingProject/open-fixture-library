@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 import {
   colorsHexStringToArray,
   getEmptyCapability,
@@ -38,6 +38,17 @@ describe('toPlainData', () => {
 
     expect(() => structuredClone(clone)).not.toThrow();
     expect(structuredClone(clone)).toEqual(fixture);
+  });
+
+  it('tracks reactive property changes when called inside a computed', () => {
+    const state = reactive({ typeData: { slotNumberStart: null as number | null } });
+    const cloned = computed(() => toPlainData(state.typeData));
+
+    expect(cloned.value).toEqual({ slotNumberStart: null });
+
+    state.typeData.slotNumberStart = 1;
+
+    expect(cloned.value).toEqual({ slotNumberStart: 1 });
   });
 });
 

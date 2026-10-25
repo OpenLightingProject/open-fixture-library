@@ -191,4 +191,9 @@ async function changeEffectNameOrPreset(newValue: string) {
     (effectNameOrPresetInput.value as { focus: () => void }).focus();
   }
 }
+
+defineExpose({
+  defaultData,
+  resetProperties,
+});
 </script>

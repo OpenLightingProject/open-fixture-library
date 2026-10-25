@@ -51,4 +51,8 @@ const defaultData = {
   distanceEnd: 'far',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

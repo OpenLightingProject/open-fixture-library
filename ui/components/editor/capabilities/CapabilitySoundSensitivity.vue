@@ -53,4 +53,9 @@ const defaultData = {
   soundSensitivityEnd: 'high',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

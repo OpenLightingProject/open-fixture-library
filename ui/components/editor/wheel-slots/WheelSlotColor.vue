@@ -83,4 +83,8 @@ watch(
   },
   { immediate: true }
 );
+
+defineExpose({
+  defaultData,
+});
 </script>

@@ -73,4 +73,8 @@ const defaultData = {
   fogOutputEnd: null,
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

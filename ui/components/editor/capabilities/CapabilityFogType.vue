@@ -58,4 +58,9 @@ const defaultData = {
   fogType: '',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

@@ -33,4 +33,8 @@ const props = defineProps<Props>();
 const defaultData = {
   name: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

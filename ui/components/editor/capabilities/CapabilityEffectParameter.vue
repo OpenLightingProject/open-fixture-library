@@ -53,4 +53,9 @@ const defaultData = {
   parameterEnd: 'high',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

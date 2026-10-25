@@ -8,4 +8,8 @@ defineOptions({
 });
 
 const defaultData = {};
+
+defineExpose({
+  defaultData,
+});
 </script>

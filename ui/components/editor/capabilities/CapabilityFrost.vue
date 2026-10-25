@@ -51,4 +51,8 @@ const defaultData = {
   frostIntensityEnd: 'high',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

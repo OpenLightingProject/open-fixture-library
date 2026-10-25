@@ -48,4 +48,8 @@ const defaultData = {
   name: '',
   facets: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

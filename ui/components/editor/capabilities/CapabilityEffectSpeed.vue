@@ -53,4 +53,9 @@ const defaultData = {
   speedEnd: 'fast',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

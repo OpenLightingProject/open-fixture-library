@@ -51,4 +51,8 @@ const defaultData = {
   openPercentEnd: 'closed',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

@@ -3,6 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
+      multiple-inputs
       :name="`capability${capability.uuid}-${capability.typeData.speedOrDuration}`">
 
       <template #label>
@@ -94,4 +95,9 @@ async function changeSpeedOrDuration(newValue: string) {
     speedOrDurationInput.value.focus();
   }
 }
+
+defineExpose({
+  defaultData,
+  resetProperties,
+});
 </script>

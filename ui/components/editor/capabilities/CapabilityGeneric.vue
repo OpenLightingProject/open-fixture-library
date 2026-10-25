@@ -31,4 +31,8 @@ defineProps<Props>();
 const defaultData = {
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

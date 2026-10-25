@@ -51,4 +51,8 @@ const defaultData = {
   colorTemperatureEnd: '',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

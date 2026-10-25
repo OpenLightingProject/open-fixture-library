@@ -94,4 +94,8 @@ const defaultData = {
   shakeAngleEnd: null,
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

@@ -53,4 +53,9 @@ const defaultData = {
   fogOutputEnd: 'strong',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

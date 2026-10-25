@@ -61,4 +61,8 @@ const defaultData = {
   slotNumberEnd: null,
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

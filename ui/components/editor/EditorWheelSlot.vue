@@ -46,8 +46,17 @@
 </style>
 
 <script setup lang="ts">
-import { wheelSlotTypes } from '~~/lib/schema-properties.js';
+import WheelSlotAnimationGoboEnd from './wheel-slots/WheelSlotAnimationGoboEnd.vue';
+import WheelSlotAnimationGoboStart from './wheel-slots/WheelSlotAnimationGoboStart.vue';
+import WheelSlotClosed from './wheel-slots/WheelSlotClosed.vue';
+import WheelSlotColor from './wheel-slots/WheelSlotColor.vue';
+import WheelSlotFrost from './wheel-slots/WheelSlotFrost.vue';
+import WheelSlotGobo from './wheel-slots/WheelSlotGobo.vue';
+import WheelSlotIris from './wheel-slots/WheelSlotIris.vue';
+import WheelSlotOpen from './wheel-slots/WheelSlotOpen.vue';
+import WheelSlotPrism from './wheel-slots/WheelSlotPrism.vue';
 import { getEmptyWheelSlot } from '@/assets/scripts/editor-utilities.js';
+import { wheelSlotTypes } from '~~/lib/schema-properties.js';
 
 interface Props {
   channel: {
@@ -64,6 +73,20 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+defineOptions({
+  components: {
+    WheelSlotAnimationGoboEnd,
+    WheelSlotAnimationGoboStart,
+    WheelSlotClosed,
+    WheelSlotColor,
+    WheelSlotFrost,
+    WheelSlotGobo,
+    WheelSlotIris,
+    WheelSlotOpen,
+    WheelSlotPrism,
+  },
+});
 
 const typeData = ref<any>(null);
 const open = ref(false);

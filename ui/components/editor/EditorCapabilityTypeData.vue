@@ -32,6 +32,49 @@
 </template>
 
 <script setup lang="ts">
+import CapabilityBeamAngle from './capabilities/CapabilityBeamAngle.vue';
+import CapabilityBeamPosition from './capabilities/CapabilityBeamPosition.vue';
+import CapabilityBladeInsertion from './capabilities/CapabilityBladeInsertion.vue';
+import CapabilityBladeRotation from './capabilities/CapabilityBladeRotation.vue';
+import CapabilityBladeSystemRotation from './capabilities/CapabilityBladeSystemRotation.vue';
+import CapabilityColorIntensity from './capabilities/CapabilityColorIntensity.vue';
+import CapabilityColorPreset from './capabilities/CapabilityColorPreset.vue';
+import CapabilityColorTemperature from './capabilities/CapabilityColorTemperature.vue';
+import CapabilityEffect from './capabilities/CapabilityEffect.vue';
+import CapabilityEffectDuration from './capabilities/CapabilityEffectDuration.vue';
+import CapabilityEffectParameter from './capabilities/CapabilityEffectParameter.vue';
+import CapabilityEffectSpeed from './capabilities/CapabilityEffectSpeed.vue';
+import CapabilityFocus from './capabilities/CapabilityFocus.vue';
+import CapabilityFog from './capabilities/CapabilityFog.vue';
+import CapabilityFogOutput from './capabilities/CapabilityFogOutput.vue';
+import CapabilityFogType from './capabilities/CapabilityFogType.vue';
+import CapabilityFrost from './capabilities/CapabilityFrost.vue';
+import CapabilityFrostEffect from './capabilities/CapabilityFrostEffect.vue';
+import CapabilityGeneric from './capabilities/CapabilityGeneric.vue';
+import CapabilityIntensity from './capabilities/CapabilityIntensity.vue';
+import CapabilityIris from './capabilities/CapabilityIris.vue';
+import CapabilityIrisEffect from './capabilities/CapabilityIrisEffect.vue';
+import CapabilityMaintenance from './capabilities/CapabilityMaintenance.vue';
+import CapabilityNoFunction from './capabilities/CapabilityNoFunction.vue';
+import CapabilityPan from './capabilities/CapabilityPan.vue';
+import CapabilityPanContinuous from './capabilities/CapabilityPanContinuous.vue';
+import CapabilityPanTiltSpeed from './capabilities/CapabilityPanTiltSpeed.vue';
+import CapabilityPrism from './capabilities/CapabilityPrism.vue';
+import CapabilityPrismRotation from './capabilities/CapabilityPrismRotation.vue';
+import CapabilityRotation from './capabilities/CapabilityRotation.vue';
+import CapabilityShutterStrobe from './capabilities/CapabilityShutterStrobe.vue';
+import CapabilitySoundSensitivity from './capabilities/CapabilitySoundSensitivity.vue';
+import CapabilitySpeed from './capabilities/CapabilitySpeed.vue';
+import CapabilityStrobeDuration from './capabilities/CapabilityStrobeDuration.vue';
+import CapabilityStrobeSpeed from './capabilities/CapabilityStrobeSpeed.vue';
+import CapabilityTilt from './capabilities/CapabilityTilt.vue';
+import CapabilityTiltContinuous from './capabilities/CapabilityTiltContinuous.vue';
+import CapabilityTime from './capabilities/CapabilityTime.vue';
+import CapabilityWheelRotation from './capabilities/CapabilityWheelRotation.vue';
+import CapabilityWheelShake from './capabilities/CapabilityWheelShake.vue';
+import CapabilityWheelSlot from './capabilities/CapabilityWheelSlot.vue';
+import CapabilityWheelSlotRotation from './capabilities/CapabilityWheelSlotRotation.vue';
+import CapabilityZoom from './capabilities/CapabilityZoom.vue';
 import { capabilityTypes } from '~~/lib/schema-properties.js';
 
 interface Props {
@@ -46,6 +89,54 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+defineOptions({
+  components: {
+    CapabilityBeamAngle,
+    CapabilityBeamPosition,
+    CapabilityBladeInsertion,
+    CapabilityBladeRotation,
+    CapabilityBladeSystemRotation,
+    CapabilityColorIntensity,
+    CapabilityColorPreset,
+    CapabilityColorTemperature,
+    CapabilityEffect,
+    CapabilityEffectDuration,
+    CapabilityEffectParameter,
+    CapabilityEffectSpeed,
+    CapabilityFocus,
+    CapabilityFog,
+    CapabilityFogOutput,
+    CapabilityFogType,
+    CapabilityFrost,
+    CapabilityFrostEffect,
+    CapabilityGeneric,
+    CapabilityIntensity,
+    CapabilityIris,
+    CapabilityIrisEffect,
+    CapabilityMaintenance,
+    CapabilityNoFunction,
+    CapabilityPan,
+    CapabilityPanContinuous,
+    CapabilityPanTiltSpeed,
+    CapabilityPrism,
+    CapabilityPrismRotation,
+    CapabilityRotation,
+    CapabilityShutterStrobe,
+    CapabilitySoundSensitivity,
+    CapabilitySpeed,
+    CapabilityStrobeDuration,
+    CapabilityStrobeSpeed,
+    CapabilityTilt,
+    CapabilityTiltContinuous,
+    CapabilityTime,
+    CapabilityWheelRotation,
+    CapabilityWheelShake,
+    CapabilityWheelSlot,
+    CapabilityWheelSlotRotation,
+    CapabilityZoom,
+  },
+});
 
 const capabilityTypeData = ref<any>(null);
 

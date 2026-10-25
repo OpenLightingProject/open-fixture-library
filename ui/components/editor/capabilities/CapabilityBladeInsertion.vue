@@ -67,4 +67,8 @@ const defaultData = {
   insertionEnd: 'in',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

@@ -67,4 +67,8 @@ const defaultData = {
   hold: '',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

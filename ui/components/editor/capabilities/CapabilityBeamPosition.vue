@@ -10,7 +10,7 @@
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="isPropertyEmpty('verticalAngle')"
+        :required="isPropertyEmpty(`verticalAngle`)"
         property-name="horizontalAngle" />
     </LabeledInput>
 
@@ -22,7 +22,7 @@
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="isPropertyEmpty('horizontalAngle')"
+        :required="isPropertyEmpty(`horizontalAngle`)"
         property-name="verticalAngle" />
     </LabeledInput>
 
@@ -85,4 +85,9 @@ function isPropertyEmpty(property: string): boolean {
 
   return isSteppedEmpty && isProportionalEmpty;
 }
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

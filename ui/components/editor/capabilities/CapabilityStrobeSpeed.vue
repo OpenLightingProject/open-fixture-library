@@ -53,4 +53,9 @@ const defaultData = {
   speedEnd: 'Hz',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

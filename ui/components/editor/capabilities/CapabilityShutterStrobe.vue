@@ -143,4 +143,9 @@ const resetProperties = computed(() => {
   }
   return [];
 });
+
+defineExpose({
+  defaultData,
+  resetProperties,
+});
 </script>

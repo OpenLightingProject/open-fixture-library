@@ -51,4 +51,8 @@ const defaultData = {
   angleEnd: 'deg',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

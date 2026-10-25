@@ -271,8 +271,10 @@ export function colorsHexStringToArray(hexString) {
  * @returns {unknown} A deep clone without proxies.
  */
 export function toPlainData(value) {
+  // Keep reading through reactive proxies so a call inside a computed tracks
+  // the cloned properties; `toRaw` would hide them from dependency collection.
   // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips reactive proxies
-  return JSON.parse(JSON.stringify(toRaw(value)));
+  return JSON.parse(JSON.stringify(value));
 }
 
 /**

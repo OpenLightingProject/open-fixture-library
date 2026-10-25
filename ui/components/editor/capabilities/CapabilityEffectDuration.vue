@@ -53,4 +53,9 @@ const defaultData = {
   durationEnd: 'long',
   comment: '',
 };
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>
