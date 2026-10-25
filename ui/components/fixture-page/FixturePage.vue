@@ -232,7 +232,14 @@ defineEmits<{
 
 const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
 
-const client = import.meta.client;
+// Must start as `false` during SSR and hydration, exactly like the Nuxt 2
+// `isBrowser` data property. `import.meta.client` is already `true` on the
+// first client render and would hydrate the client-only button differently.
+const client = ref(false);
+onMounted(() => {
+  client.value = true;
+});
+
 const modeNumberLoadLimit = ref<number | undefined>(props.loadAllModes ? undefined : 5);
 const modeNumberLoadThreshold = 15;
 const modeNumberLoadIncrement = 10;

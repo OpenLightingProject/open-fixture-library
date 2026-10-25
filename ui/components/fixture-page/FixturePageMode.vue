@@ -1,6 +1,7 @@
 <template>
   <section
     :id="mode.rdmPersonalityIndex === null ? null : `rdm-personality-${mode.rdmPersonalityIndex}`"
+    ref="root"
     class="card">
 
     <h2>{{ mode.name }} mode <code v-if="mode.hasShortName">{{ mode.shortName }}</code></h2>
@@ -74,6 +75,7 @@ defineEmits<{
   'help-wanted-clicked': [event: unknown];
 }>();
 
+const root = ref<HTMLElement | null>(null);
 const hasDetails = ref(true);
 
 const showCollapseExpandButtons = computed(() => {
@@ -83,26 +85,25 @@ const showCollapseExpandButtons = computed(() => {
 onMounted(async () => {
   await nextTick();
 
-  const el = document.querySelector('.fixture-mode');
-  if (el && !el.querySelector(`details`)) {
+  // query the component root instead of the whole document (the Nuxt 2
+  // version used `this.$el`)
+  if (root.value && !root.value.querySelector(`details`)) {
     hasDetails.value = false;
   }
 });
 
 function openDetails() {
-  const el = document.querySelector('.fixture-mode');
-  if (!el) return;
+  if (!root.value) return;
 
-  for (const details of el.querySelectorAll(`details`)) {
+  for (const details of root.value.querySelectorAll(`details`)) {
     details.open = true;
   }
 }
 
 function closeDetails() {
-  const el = document.querySelector('.fixture-mode');
-  if (!el) return;
+  if (!root.value) return;
 
-  for (const details of el.querySelectorAll(`details`)) {
+  for (const details of root.value.querySelectorAll(`details`)) {
     details.open = false;
   }
 }

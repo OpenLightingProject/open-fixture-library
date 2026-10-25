@@ -28,7 +28,7 @@
     </FixtureHeader>
 
     <section v-if="redirectFromFixture" class="card yellow">
-      Redirected from <code>{{ redirectFromFixture.from }}</code>: {{ redirectReasonExplanations[redirectFromFixture.reason] }}
+      Redirected from <code>{{ redirectFromFixture.from }}</code>: {{ redirectFromFixture.reason }}
     </section>
 
     <FixturePage
@@ -100,13 +100,19 @@ if (manufacturerError.value || !manufacturerJson.value) {
 
 const redirectFixture = manufacturerJson.value.redirects.find(({ key }) => key === fixtureKey);
 if (redirectFixture) {
-  navigateTo(`/${redirectFixture.redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`, { redirectCode: 302 });
+  const redirectFrom = encodeURIComponent(`${manufacturerKey}/${fixtureKey}`);
+  navigateTo(`/${redirectFixture.redirectTo}?redirectFrom=${redirectFrom}`, { redirectCode: 302 });
 }
 
 const fixtureMetadata = manufacturerJson.value.fixtures.find(({ key }) => key === fixtureKey);
 if (!fixtureMetadata) {
   throw createError({ statusCode: 404, statusMessage: 'Fixture not found' });
 }
+
+const redirectReasonExplanations: Record<string, string> = {
+  FixtureRenamed: 'The fixture was renamed.',
+  SameAsDifferentBrand: 'The fixture is the same but sold under different brands / names.',
+};
 
 const [{ data: fixtureJson }, { data: plugins }, redirect] = await Promise.all([
   useFetch(`/${manufacturerKey}/${fixtureKey}.json`),
@@ -121,11 +127,6 @@ const fixture = computed(() => {
   const manufacturer = new Manufacturer(manufacturerKey, manufacturerJson.value);
   return new Fixture(manufacturer, fixtureKey, fixtureJson.value);
 });
-
-const redirectReasonExplanations: Record<string, string> = {
-  FixtureRenamed: 'The fixture was renamed.',
-  SameAsDifferentBrand: 'The fixture is the same but sold under different brands / names.',
-};
 
 async function fetchRedirectObject(redirectFrom: string | undefined) {
   if (!redirectFrom) {

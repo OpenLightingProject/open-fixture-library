@@ -296,18 +296,49 @@ const slotTitles = computed(() => {
   });
 });
 
-function getColorCircleSvgFragment(colors: string[], radius: number) {
-  let markup = `<circle r="${radius}" fill="${colors[0]}"/>`;
-
-  if (colors.length >= 2) {
-    markup += `<circle r="${radius / 2}" fill="${colors[1]}"/>`;
+/**
+ * @param {string[]} colors - An array of hex colors to fill into the circle.
+ * @param {number} radius - The radius of the circle.
+ * @returns {string} A string containing one SVG <circle> element or multiple SVG <path> elements.
+ */
+function getColorCircleSvgFragment(colors: string[], radius: number): string {
+  if (colors.length === 1) {
+    return `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
   }
 
-  if (colors.length >= 3) {
-    const halfRadius = radius / 2;
-    markup += `<rect x="${-halfRadius}" y="${-halfRadius}" width="${radius}" height="${radius}" fill="${colors[2]}"/>`;
+  let svgString = '';
+  const slicePercent = 1 / colors.length;
+
+  const xAxisRotation = 0;
+  const largeArcFlag = 0;
+  const sweepFlag = 1;
+
+  for (const [index, color] of colors.entries()) {
+    const [startX, startY] = getCoordinatesForPercent(index * slicePercent, radius);
+    const [endX, endY] = getCoordinatesForPercent((index + 1) * slicePercent, radius);
+
+    const pathMove = `M ${startX} ${startY}`;
+    const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
+    const pathLine = 'L 0 0';
+
+    svgString += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${color}" />`;
   }
 
-  return markup;
+  return svgString;
+}
+
+/**
+ * Get x and y coordinates of the point that is `percent` percent of the way
+ * around a circle. Note that 37.5% are added to start at a 135deg angle.
+ * @param {number} percent - Percent of the whole circle.
+ * @param {number} radius - Radius of the circle.
+ * @returns {[number, number]} Array with x and y coordinate.
+ */
+function getCoordinatesForPercent(percent: number, radius: number): [number, number] {
+  percent += 0.375;
+
+  const x = radius * Math.cos(2 * Math.PI * percent);
+  const y = radius * Math.sin(2 * Math.PI * percent);
+  return [x, y];
 }
 </script>
