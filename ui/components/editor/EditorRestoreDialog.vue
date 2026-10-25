@@ -63,8 +63,18 @@ const restoredDate = computed(() => {
 });
 
 function discardRestored() {
-  // put all items except the last one back
-  const autoSaveItems = JSON.parse(getStoredItem('autoSave') || '[]');
+  // put all items except the last one back; a corrupt/foreign auto-save value
+  // must not make Discard un-dismissable
+  let autoSaveItems: unknown[] = [];
+  try {
+    const parsed = JSON.parse(getStoredItem('autoSave') || '[]');
+    if (Array.isArray(parsed)) {
+      autoSaveItems = parsed;
+    }
+  }
+  catch {
+    // Fall back to an empty list and still dismiss the dialog.
+  }
   setStoredItem('autoSave', JSON.stringify(autoSaveItems.slice(0, -1)));
 
   emit('update:model-value', undefined);

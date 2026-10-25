@@ -140,6 +140,29 @@ test('auto-saved editor data can be discarded', async ({ page, goto }) => {
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('autoSave') || 'null'))).toEqual([]);
 });
 
+test('a corrupt auto-save value does not prevent discarding it', async ({ page, goto }) => {
+  const pageErrors: string[] = [];
+  page.on('pageerror', (error) => pageErrors.push(error.message));
+
+  await seedAutoSave(page, {
+    name: 'Corrupt Me',
+    categories: ['Dimmer'],
+    metaAuthor: 'Tester',
+  });
+
+  await openEditor(page, goto);
+  const restoreDialog = page.locator('#restore-dialog');
+  await expect(restoreDialog).toBeVisible();
+
+  // Simulate a foreign/corrupt entry written while the dialog was open.
+  await page.evaluate(() => localStorage.setItem('autoSave', '{not json'));
+
+  await restoreDialog.locator('button.discard').click();
+  await expect(restoreDialog).toBeHidden();
+  expect(await page.evaluate(() => localStorage.getItem('autoSave'))).toBe('[]');
+  expect(pageErrors).toEqual([]);
+});
+
 test('the editor still renders when localStorage writes fail', async ({ page, goto }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (error) => pageErrors.push(error.message));

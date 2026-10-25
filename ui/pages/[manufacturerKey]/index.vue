@@ -44,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { getManufacturerLoadError } from '~/utils/manufacturer-error';
+
 const route = useRoute();
 const config = useRuntimeConfig();
 
@@ -52,11 +54,7 @@ const manufacturerKey = route.params.manufacturerKey as string;
 const { data: manufacturer, error } = await useFetch(`/api/v1/manufacturers/${manufacturerKey}`);
 
 if (error.value || !manufacturer.value) {
-  throw createError({
-    statusCode: error.value?.statusCode ?? 404,
-    statusMessage: 'Manufacturer not found',
-    data: error.value?.data,
-  });
+  throw createError(getManufacturerLoadError(error.value ?? undefined));
 }
 
 const fixtures = computed(() => manufacturer.value?.fixtures ?? []);
