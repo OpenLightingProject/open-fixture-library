@@ -63,7 +63,7 @@ ol.mode-channels {
 </style>
 
 <script setup lang="ts">
-import Mode from '~~/lib/model/Mode.js';
+import type { Mode } from '~/types/models';
 
 interface Props {
   mode: Mode;

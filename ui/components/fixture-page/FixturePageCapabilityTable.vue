@@ -135,8 +135,8 @@ th {
 </style>
 
 <script setup lang="ts">
-import CoarseChannel from '~~/lib/model/CoarseChannel.js';
-import Mode from '~~/lib/model/Mode.js';
+import type { Capability, Mode } from '~/types/models';
+import type CoarseChannel from '~~/lib/model/CoarseChannel.js';
 
 interface Props {
   channel: CoarseChannel;
@@ -151,7 +151,7 @@ defineEmits<{
 }>();
 
 interface CapabilityData {
-  model: unknown;
+  model: Capability;
   dmxRangeStart: number;
   dmxRangeEnd: number;
   switchChannels: { key: string; index: number; to: string }[];

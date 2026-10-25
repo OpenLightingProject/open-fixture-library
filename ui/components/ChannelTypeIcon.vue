@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import AbstractChannel from '~~/lib/model/AbstractChannel.js';
+import type { AbstractChannel } from '~/types/models';
 import FineChannel from '~~/lib/model/FineChannel.js';
 import NullChannel from '~~/lib/model/NullChannel.js';
 import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';

@@ -209,11 +209,9 @@
 
 <script setup lang="ts">
 import { EmbettyVideo } from 'embetty-vue-3';
-
-import Fixture from '~~/lib/model/Fixture.js';
-import { linksProperties } from '~~/lib/schema-properties.js';
-
 import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
+import type { Fixture } from '~/types/models';
+import { linksProperties } from '~~/lib/schema-properties.js';
 
 interface Props {
   fixture: Fixture;

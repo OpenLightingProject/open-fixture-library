@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import Capability from '~~/lib/model/Capability.js';
+import type { Capability } from '~/types/models';
 
 interface Props {
   capability: Capability;

@@ -150,10 +150,9 @@
 </style>
 
 <script setup lang="ts">
-import AbstractChannel from '~~/lib/model/AbstractChannel.js';
+import type { AbstractChannel, Mode } from '~/types/models';
 import CoarseChannel from '~~/lib/model/CoarseChannel.js';
 import FineChannel from '~~/lib/model/FineChannel.js';
-import Mode from '~~/lib/model/Mode.js';
 import NullChannel from '~~/lib/model/NullChannel.js';
 import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
 

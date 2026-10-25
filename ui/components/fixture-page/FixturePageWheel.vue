@@ -228,7 +228,7 @@ figcaption table {
 </style>
 
 <script setup lang="ts">
-import Wheel from '~~/lib/model/Wheel.js';
+import type { Wheel } from '~/types/models';
 
 interface Props {
   wheel: Wheel;
