@@ -1,5 +1,10 @@
 # Download Routes Migration: Nuxt 2 → Nuxt 4 / Nitro
 
+> **Status:** implemented. The Nitro middleware described below
+> ([`ui/server/middleware/download.ts`](../ui/server/middleware/download.ts)) is
+> the active implementation; the old Express router and API wrappers have been
+> deleted.
+
 ## The Problem
 
 Download endpoints for fixture exports (`/download.ofl`, `/cameo/clw-10.ddf`, etc.) stopped working after migrating from Nuxt 2 to Nuxt 4.
@@ -8,7 +13,7 @@ Download endpoints for fixture exports (`/download.ofl`, `/cameo/clw-10.ddf`, et
 
 ## How It Worked in Nuxt 2
 
-`ui/api/download.js` was an Express Router that handled three URL patterns:
+`ui/api/download.js` (since deleted) was an Express Router that handled three URL patterns:
 
 | Route | Method | Purpose |
 |---|---|---|
@@ -124,22 +129,23 @@ This would allow three clean Nitro file-based routes:
 - `routes/download/[manufacturer]/[fixture]/[format].get.ts`
 - `routes/download-editor/[format].post.ts`
 
-**Trade-off:** Requires updating all URL generation in `DownloadButton.vue`. The middleware approach is more invasive to the URL scheme but preserves backward compatibility.
+**Trade-off:** The file-based routes would require changing every download URL in `DownloadButton.vue` and all external links. The middleware keeps the existing dot-format URLs working and only adds a regex check per request, so it was chosen for the migration.
 
 ## What Was Reused From the Old Implementation
 
 - `lib/model/Fixture.js` — fixture model class
 - `lib/model/Manufacturer.js` — manufacturer model class
 - `lib/model.js` — `fixtureFromRepository()`, `embedResourcesIntoFixtureJson()`
-- `lib/import-json.js` — was used for loading JSON; replaced with direct `fs/promises` read in utils
+- `lib/import-json.js` — still used by the fixture JSON API route; the download utils read files directly with `fs/promises`
 - All plugin export files under `plugins/*/export.js` — `exportFixtures()` function signature unchanged
 - `plugins/plugins.json` — loaded once at startup, `exportPlugins` array used for format validation
+- `ui/api/routes.js` and `ui/api/routes/` — the operation handlers are still used, now registered with the OpenAPI backend instead of mounted as Express routes
 
 ## What Was Removed
 
 - `ui/api/download.js` — old Express Router (replaced entirely)
 - `ui/api/index.js` — old Express app for API v1 (replaced by `ui/server/api/v1/[...slug].ts`)
-- Express dependency (`express`, `node-mock-http`) — no longer needed for downloads
+- Express dependencies (`express`, `node-mock-http`) — no longer needed
 - `server-response-helpers.js` — `sendAttachment()` / `sendJson()` replaced by inline H3 calls
 
 ## Production Considerations
@@ -147,20 +153,13 @@ This would allow three clean Nitro file-based routes:
 - The `plugins/` and `fixtures/` directories are read at server startup (via top-level `await`). This is fine because both files are relatively small and loaded once.
 - Dynamic plugin imports (`import(path.resolve('plugins', pluginKey, 'export.js'))`) work in Nitro's Node.js preset.
 - The middleware runs on every request — the regex checks are fast (simple string `.match()`), so the overhead is minimal.
-- In production (PM2 + `npm run build`), the Nitro preset is `node-server` which is a single process on port 5000, the same as before.
+- In production, PM2 runs `npm run start` (`nuxt start`), i.e. Nitro's `node-server` preset as a single process on port 5000, behind nginx. The middleware runs in that process; there is no separate Express server.
 
-## Files Created
+## Files
 
 | File | Purpose |
 |---|---|
 | `ui/server/middleware/download.ts` | Nitro middleware — URL pattern matching + pass-through |
 | `ui/server/utils/download.ts` | All download logic — fixture loading, export, zip creation |
 
-## Files That Remain Unchanged (Reference / Dead Code)
-
-| File | Note |
-|---|---|
-| `ui/api/download.js` | Old Express Router — kept for reference, not active |
-| `ui/api/index.js` | Old Express API app — kept for reference |
-| `plugins/*/export.js` | All plugin export modules — still in use |
-| `lib/model/*.js` | All model classes — still in use |
+The old `ui/api/download.js` and `ui/api/index.js` files no longer exist. `ui/api/openapi.json`, `ui/api/openapi.bundled.json`, `ui/api/routes.js` and `ui/api/routes/` remain in use for the REST API; the plugin export modules in `plugins/*/export.js` and the model classes in `lib/model/` are unchanged.

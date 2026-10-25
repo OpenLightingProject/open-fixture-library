@@ -10,7 +10,23 @@ We try to develop unit tests wherever possible. They test specific components of
 
 Tests are located in the [`tests/`](../tests/) directory (surprise!), one test per file. They can be called manually except of the GitHub tests in [`tests/github/`](../tests/github/) (see below).
 
-We use [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) for continuous integration (CI): It runs our specified tests with every GitHub commit. The exit code returned by a test script tells GitHub Actions whether it has passed or failed: Tests with `0` exit code (in Node.js: `process.exit(0);`) have passed, all others (non-zero exit codes) have failed.
+## Test suites
+
+The project has several layers, each with its own npm script:
+
+| Command | Scope |
+| --- | --- |
+| `npm run lint` | ESLint and Stylelint |
+| `npm run typecheck` | Vue/Nuxt type checking (`nuxt typecheck`) |
+| `npm run test:unit` | Vitest unit tests for `lib/` in [`tests/unit/`](../tests/unit/) |
+| `npm run test:nuxt` | Vitest tests that need the Nuxt runtime in [`tests/nuxt/`](../tests/nuxt/) |
+| `npm run test:e2e` | HTTP contract tests against running servers in [`tests/e2e/contract/`](../tests/e2e/contract/) |
+| `npm run test:browser` | Playwright browser tests in [`tests/e2e/browser/`](../tests/e2e/browser/) |
+| `npm run test:parity` | Contract tests comparing the Nuxt 4 site with the Nuxt 2 oracle |
+
+`test:e2e` / `test:parity` expect the servers to be running already. [`scripts/parity.sh`](../scripts/parity.sh) automates that: it creates a Nuxt 2 worktree from `origin/master` (or `upstream/master` when available), installs its dependencies, starts the oracle on port 3001 and the built Nuxt 4 site on port 3000, then runs the default parity suite followed by the full download matrix (`FULL_DOWNLOAD_MATRIX=1`). A cold run takes several minutes (baseline install plus build), and the full matrix alone makes about 7,400 download requests. The script needs ports 3000 and 3001 to be free and fails fast otherwise. The Playwright suite also talks to an already running site; select it with `TARGET_URL` (defaults to `http://localhost:3000`).
+
+We use [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) for continuous integration (CI): It runs our specified tests with every GitHub commit. The pull request workflow runs lint, typecheck, unit, Nuxt component and Playwright checks; the Nuxt 2 parity suite runs manually and on a nightly schedule instead, because it has to install and start the old site (see [`.github/workflows/parity.yaml`](../.github/workflows/parity.yaml)). The exit code returned by a test script tells GitHub Actions whether it has passed or failed: Tests with `0` exit code (in Node.js: `process.exit(0);`) have passed, all others (non-zero exit codes) have failed.
 
 The GitHub repository is configured such that pull requests with failing tests can't be merged. To implement optional tests that don't prevent a PR from being merged, just make it always pass (with exit code `0`) and warn the developers via console output or a GitHub comment.
 
