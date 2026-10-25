@@ -192,6 +192,8 @@ select {
 </style>
 
 <script setup lang="ts">
+import { parseContentDispositionFilename } from '~/utils/content-disposition';
+
 interface EditorFixtures {
   fixtures: Record<string, unknown>;
 }
@@ -298,14 +300,7 @@ async function formattedDownload(pluginKey: string) {
     body: props.editorFixtures,
     responseType: 'blob',
     onResponse({ response: fetchResponse }) {
-      const disposition = fetchResponse.headers.get('content-disposition');
-      if (disposition && disposition.includes('attachment')) {
-        const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
-        const matches = filenameRegex.exec(disposition);
-        if (matches && matches[1]) {
-          filename = matches[1].replaceAll(/["']/g, '');
-        }
-      }
+      filename = parseContentDispositionFilename(fetchResponse.headers.get('content-disposition'));
     },
   });
 

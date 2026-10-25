@@ -2,17 +2,14 @@
   <time :datetime="isoDate">{{ isoDate }}</time>
 </template>
 
-<script>
-import { oneOfTypesProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Props {
+  date: Date | string;
+}
 
-export default {
-  props: {
-    date: oneOfTypesProp([Date, String]).required,
-  },
-  computed: {
-    isoDate() {
-      return this.date instanceof Date ? this.date.toISOString().replace(/T.*$/, '') : this.date;
-    },
-  },
-};
+const props = defineProps<Props>();
+
+const isoDate = computed(() => {
+  return props.date instanceof Date ? props.date.toISOString().replace(/T.*$/, '') : props.date;
+});
 </script>
