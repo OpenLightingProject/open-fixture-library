@@ -547,6 +547,15 @@ export default defineConfig([
     },
   },
   {
+    // `.icon` / `.gobo-icon` must be global: they also style the `<img>` in
+    // `CapabilityTypeIcon.vue`, and scoped styles cannot reach the SVG that
+    // `OflSvg` injects with `v-html`.
+    files: ['ui/components/OflSvg.vue'],
+    rules: {
+      'vue/enforce-style-attribute': ['error', { allow: ['plain'] }],
+    },
+  },
+  {
     files: ['fixtures/**/*.json'],
     plugins: {
       ofl: {

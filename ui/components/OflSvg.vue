@@ -6,7 +6,7 @@
     v-html="svgMarkup" />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .icon {
   display: inline-block;
   width: 1.4em;
