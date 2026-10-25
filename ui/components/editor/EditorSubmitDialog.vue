@@ -356,7 +356,8 @@ async function validate(body: any) {
     state.value = 'ready';
   }
   catch (err: any) {
-    const errorMessage = err.response?.data.error ?? err.message;
+    // ofetch exposes the parsed non-2xx response body as `err.data`.
+    const errorMessage = err.data?.error ?? err.message;
 
     console.error('There was a problem with the request:', errorMessage);
 
@@ -389,7 +390,8 @@ async function onSubmit() {
     emit('success');
   }
   catch (err: any) {
-    const errorMessage = err.response?.data.error ?? err.message;
+    // ofetch exposes the parsed non-2xx response body as `err.data`.
+    const errorMessage = err.data?.error ?? err.message;
 
     console.error('There was a problem with the request:', errorMessage);
 
