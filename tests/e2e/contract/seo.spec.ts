@@ -5,6 +5,11 @@ import { fetchBoth } from '../helpers/parity';
 
 // Extracts a path (and query) from a sitemap `<loc>` so the oracle's
 // `websiteUrl` (which includes its own port) does not leak into assertions.
+/**
+ * Converts a sitemap `<loc>` URL to a site-relative path.
+ * @param loc - The absolute URL from the sitemap.
+ * @returns The path and query string.
+ */
 function sitemapPath(loc: string): string {
   const url = new URL(loc);
   return `${url.pathname}${url.search}`;
@@ -13,7 +18,7 @@ function sitemapPath(loc: string): string {
 /**
  * Parses sitemap entries keyed by path.
  *
- * @param xml The sitemap XML.
+ * @param xml - The sitemap XML.
  * @returns A map from path to its change frequency and last modification date.
  */
 function parseSitemap(xml: string) {
@@ -40,7 +45,7 @@ function parseSitemap(xml: string) {
 /**
  * Extracts the robots meta directive from an HTML document.
  *
- * @param html The HTML document.
+ * @param html - The HTML document.
  * @returns The meta content, or null when no robots meta is present.
  */
 function robotsMetaContent(html: string): string | null {
@@ -56,7 +61,7 @@ function robotsMetaContent(html: string): string | null {
  * new site's port (3000) do not cause false differences. Everything else in
  * the file is compared byte-for-byte.
  *
- * @param body The robots.txt body.
+ * @param body - The robots.txt body.
  * @returns The normalized body.
  */
 function normalizeRobotsTxt(body: string): string {

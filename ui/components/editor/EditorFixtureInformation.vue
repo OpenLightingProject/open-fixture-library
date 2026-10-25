@@ -74,8 +74,8 @@
 </template>
 
 <script setup lang="ts">
+import type { EditorFixture } from '~/types/editor';
 import { fixtureProperties } from '~~/lib/schema-properties.js';
-
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
@@ -83,30 +83,26 @@ import PropertyInputTextarea from '../PropertyInputTextarea.vue';
 import EditorCategoryChooser from './EditorCategoryChooser.vue';
 import EditorLinks from './EditorLinks.vue';
 
-interface Props {
-  fixture: object;
+interface Properties {
+  fixture: EditorFixture;
   formstate: object;
   manufacturers: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const manufacturerName = computed(() => {
-  if (!props.fixture.useExistingManufacturer) {
-    return props.fixture.newManufacturerName;
+  if (!properties.fixture.useExistingManufacturer) {
+    return properties.fixture.newManufacturerName;
   }
 
-  const manufacturerKey = props.fixture.manufacturerKey;
+  const manufacturerKey = properties.fixture.manufacturerKey;
 
-  if (manufacturerKey === ``) {
-    return ``;
-  }
-
-  return (props.manufacturers as any)[manufacturerKey]?.name ?? '';
+  return manufacturerKey === '' ? '' : (properties.manufacturers as any)[manufacturerKey]?.name ?? '';
 });
 
 const fixtureNameIsWithoutManufacturer = computed(() => {
   const manufacturerNameValue = manufacturerName.value.trim().toLowerCase();
-  return manufacturerNameValue === `` || !props.fixture.name.trim().toLowerCase().startsWith(manufacturerNameValue);
+  return manufacturerNameValue === '' || !properties.fixture.name.trim().toLowerCase().startsWith(manufacturerNameValue);
 });
 </script>

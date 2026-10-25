@@ -11,14 +11,14 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   required?: boolean;
-  modelValue: boolean | null;
+  modelValue?: boolean | null;
   name: string;
   label: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   required: false,
   modelValue: false,
 });
@@ -30,9 +30,9 @@ const emit = defineEmits<{
 const input = ref<HTMLInputElement | null>(null);
 
 const localValue = computed({
-  get: () => Boolean(props.modelValue),
-  set: (newValue: boolean) => {
-    emit('update:model-value', newValue ? true : null);
+  get: () => Boolean(properties.modelValue),
+  set: (isChecked: boolean) => {
+    emit('update:model-value', isChecked ? true : null);
   },
 });
 

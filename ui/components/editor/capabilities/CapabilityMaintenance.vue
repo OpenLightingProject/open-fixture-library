@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import { capabilityTypes, entitiesSchema, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -54,7 +54,7 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
 const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;
 const holdEntityName = holdPropertySchema.$ref.replace('definitions.json#/entities/', '');

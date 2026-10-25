@@ -17,6 +17,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- eslint-disable-next-line vue/no-v-for-template-key -- Vue 3 requires the key on the `<template>` tag -->
       <template v-for="(cap, index) of capabilities" :key="`cap-${index}`">
         <tr class="capability" :data-capability-type="cap.model.type">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
@@ -135,19 +136,19 @@ th {
 </style>
 
 <script setup lang="ts">
-import type { Capability, Mode } from '~/types/models';
 import type CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import type { Capability, Mode } from '~/types/models';
 
-interface Props {
+interface Properties {
   channel: CoarseChannel;
   mode: Mode;
   resolutionInMode: number;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 defineEmits<{
-  'help-wanted-clicked': [event: unknown];
+  'help-wanted-clicked': [event: { context: object; type: string }];
 }>();
 
 interface CapabilityData {
@@ -158,13 +159,13 @@ interface CapabilityData {
 }
 
 const capabilities = computed((): CapabilityData[] => {
-  return props.channel.capabilities.map(capability => {
-    const dmxRange = capability.getDmxRangeWithResolution(props.resolutionInMode);
+  return properties.channel.capabilities.map((capability) => {
+    const dmxRange = capability.getDmxRangeWithResolution(properties.resolutionInMode);
     const switchChannels = [];
 
     // eslint-disable-next-line unicorn/prefer-default-parameters -- switchToChannelKey can be null
     for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
-      const switchingChannelIndex = props.mode.getChannelIndex(switchingChannelKey);
+      const switchingChannelIndex = properties.mode.getChannelIndex(switchingChannelKey);
 
       if (switchingChannelIndex > -1) {
         switchChannels.push({
@@ -179,7 +180,7 @@ const capabilities = computed((): CapabilityData[] => {
       model: capability,
       dmxRangeStart: dmxRange.start,
       dmxRangeEnd: dmxRange.end,
-      switchChannels: switchChannels.sort((a, b) => a.index - b.index),
+      switchChannels: switchChannels.toSorted((a, b) => a.index - b.index),
     };
   });
 });

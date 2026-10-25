@@ -1,4 +1,4 @@
-/* eslint-disable jsdoc/require-param-type, jsdoc/require-returns-type, jsdoc/reject-function-type -- TypeScript already declares these types */
+/* eslint-disable jsdoc/reject-function-type -- TypeScript function types are clearer here */
 import { useForm } from 'vee-validate';
 import { computed, inject, onBeforeUnmount, onMounted, onUpdated, provide, reactive, ref, shallowReactive, watch, watchEffect } from 'vue';
 import type { ComputedRef, InjectionKey, Ref } from 'vue';

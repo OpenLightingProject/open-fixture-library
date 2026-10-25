@@ -67,9 +67,10 @@
 
 <script setup lang="ts">
 import { nextTick } from 'vue';
+import type { EditorChannel } from '~/types/editor';
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -86,13 +87,11 @@ interface Props {
       comment?: string;
     };
   };
-  channel: {
-    capabilities?: any[];
-  };
+  channel: EditorChannel;
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const speedOrAngleInput = ref<any>(null);
 
 const defaultData = {
@@ -110,12 +109,16 @@ const defaultData = {
 };
 
 const resetProperties = computed(() => {
-  const resetProperty = props.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
+  const resetProperty = properties.capability.typeData.speedOrAngle === 'speed' ? 'angle' : 'speed';
   return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
 });
 
+/**
+ * Stores the selected speed or angle mode and refocuses the input.
+ * @param newValue - The selected value.
+ */
 async function changeSpeedOrAngle(newValue: string) {
-  props.capability.typeData.speedOrAngle = newValue;
+  properties.capability.typeData.speedOrAngle = newValue;
 
   await nextTick();
   if (speedOrAngleInput.value) {

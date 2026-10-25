@@ -1,3 +1,18 @@
+<template>
+  <NuxtLink
+    class="category-badge"
+    :class="{ selected: properties.selected }"
+    :to="selectable ? undefined : `/categories/${encodeURIComponent(properties.category)}`"
+    @click="handleClick($event)"
+    @focus="handleFocus()"
+    @blur="handleBlur($event)">
+    <OflSvg
+      type="fixture"
+      :name="properties.category" />
+    {{ properties.category }}
+  </NuxtLink>
+</template>
+
 <style lang="scss" scoped>
 .category-badge {
   display: inline-block;
@@ -43,13 +58,13 @@
 </style>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   category: string;
   selected?: boolean;
   selectable?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   selected: false,
   selectable: false,
 });
@@ -61,7 +76,7 @@ const emit = defineEmits<{
 }>();
 
 const handleClick = (event: MouseEvent) => {
-  if (props.selectable) {
+  if (properties.selectable) {
     emit('click');
   }
 };
@@ -74,17 +89,3 @@ const handleBlur = (event: FocusEvent) => {
   emit('blur', event);
 };
 </script>
-
-<template>
-  <NuxtLink
-    :class="{ 'category-badge': true, selected: props.selected }"
-    :to="selectable ? undefined : `/categories/${encodeURIComponent(props.category)}`"
-    @click="handleClick"
-    @focus="handleFocus"
-    @blur="handleBlur">
-    <OflSvg
-      type="fixture"
-      :name="props.category" />
-    {{ props.category }}
-  </NuxtLink>
-</template>

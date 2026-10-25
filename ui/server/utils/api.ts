@@ -33,13 +33,9 @@ export const api = new OpenAPIBackend({
   },
   handlers: {
     validationFail({ validation, request, operation }) {
-      let error = validation.errors;
+      const error = getAjvErrorMessages(validation.errors ?? [], 'request').join(',\n');
 
-      if (typeof error !== 'string') {
-        error = getAjvErrorMessages(Array.isArray(error) ? error : [error], 'request').join(',\n');
-      }
-
-      const errorDescription = `API request for ${request.originalUrl} (${operation.operationId}) doesn't match schema:`;
+      const errorDescription = `API request for ${request.path} (${operation.operationId}) doesn't match schema:`;
 
       console.error(styleText('bgRed', errorDescription));
       console.error(error);

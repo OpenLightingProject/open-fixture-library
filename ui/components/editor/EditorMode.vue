@@ -66,7 +66,11 @@
     <h3>DMX channels</h3>
 
     <div class="mode-channels">
-      <input ref="channelInput" v-model="mode.channels" :name="`mode-${index}-channels`" type="hidden">
+      <input
+        ref="channelInput"
+        v-model="mode.channels"
+        :name="`mode-${index}-channels`"
+        type="hidden">
       <Draggable
         :list="mode.channels"
         v-bind="dragOptions"
@@ -192,19 +196,20 @@
 
 <script setup lang="ts">
 import Draggable from 'vuedraggable';
-
-import { modeProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
 import { constants } from '@/assets/scripts/editor-utilities.js';
 import { useEditorFormContext } from '~/composables/useEditorForm';
+import type { EditorPhysical } from '~/types/editor';
+import { modeProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
+import PropertyInputText from '../PropertyInputText.vue';
 
-interface Props {
+interface Properties {
   mode: {
     uuid: string;
     name: string;
     shortName?: string;
     rdmPersonalityIndex?: number;
     enablePhysicalOverride: boolean;
-    physical?: Record<string, unknown>;
+    physical?: EditorPhysical;
     channels: string[];
   };
   index: number;
@@ -221,10 +226,10 @@ interface Props {
   formstate: Record<string, unknown>;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const emit = defineEmits<{
-  remove: [];
+  'remove': [];
   'open-channel-editor': [payload: { modeId: string; editMode: string; uuid?: string }];
 }>();
 
@@ -238,24 +243,22 @@ const dragOptions = {
     name: 'mode',
     pull: 'clone',
     put: (to: { el: HTMLElement }, from: unknown, dragElement: HTMLElement | null) => {
-      if (from === to) {
+      if ((from === to) || !dragElement) {
         return false;
       }
-
-      if (!dragElement) return false;
 
       const channelUuid = dragElement.getAttribute('data-channel-uuid');
       const modeUuid = to.el.closest('.editor-mode')?.getAttribute('data-mode-uuid');
-      if (!channelUuid || !modeUuid) return false;
-
-      const targetMode = props.fixture.modes.find(mode => mode.uuid === modeUuid);
-      if (!targetMode) return false;
-
-      if (targetMode.channels.includes(channelUuid)) {
+      if (!channelUuid || !modeUuid) {
         return false;
       }
 
-      const channel = props.fixture.availableChannels[channelUuid];
+      const targetMode = properties.fixture.modes.find((mode) => mode.uuid === modeUuid);
+      if (!targetMode || targetMode.channels.includes(channelUuid)) {
+        return false;
+      }
+
+      const channel = properties.fixture.availableChannels[channelUuid];
       if (!('coarseChannelId' in channel)) {
         return true;
       }
@@ -268,8 +271,8 @@ const dragOptions = {
         return true;
       }
 
-      return targetMode.channels.some(uuid => {
-        const otherChannel = props.fixture.availableChannels[uuid];
+      return targetMode.channels.some((uuid) => {
+        const otherChannel = properties.fixture.availableChannels[uuid];
         return otherChannel?.coarseChannelId === channel.coarseChannelId && otherChannel?.resolution === channel.resolution! - 1;
       });
     },
@@ -277,10 +280,10 @@ const dragOptions = {
   },
 };
 
-const channelListNotEmpty = computed(() => props.mode.channels.length > 0);
+const channelListNotEmpty = computed(() => properties.mode.channels.length > 0);
 const channelInput = ref<HTMLInputElement | null>(null);
 const editorForm = useEditorFormContext();
-const channelFieldName = computed(() => `mode-${props.index}-channels`);
+const channelFieldName = computed(() => `mode-${properties.index}-channels`);
 
 const channelListErrorVisible = computed(() => {
   return Boolean(editorForm?.submitted.value && editorForm.errors.value[channelFieldName.value]);
@@ -288,6 +291,9 @@ const channelListErrorVisible = computed(() => {
 
 let unregisterChannelField: (() => void) | null = null;
 
+/**
+ * Registers the mode's channel list with the editor form.
+ */
 function registerChannelField() {
   unregisterChannelField?.();
   unregisterChannelField = null;
@@ -298,7 +304,7 @@ function registerChannelField() {
 
   unregisterChannelField = editorForm.registerField({
     name: channelFieldName.value,
-    getValue: () => props.mode.channels,
+    getValue: () => properties.mode.channels,
     getRules: () => [{
       name: 'no-empty-channel-list',
       run: () => channelListNotEmpty.value,
@@ -312,12 +318,17 @@ function registerChannelField() {
 onMounted(registerChannelField);
 onBeforeUnmount(() => unregisterChannelField?.());
 watch(channelFieldName, registerChannelField);
-watch(() => props.mode.channels.length, () => {
+watch(() => properties.mode.channels.length, () => {
   void editorForm?.validateField(channelFieldName.value);
 });
 
+/**
+ * Resolves a channel's display name, including fine channel suffixes.
+ * @param channelUuid - The channel UUID.
+ * @returns The display name.
+ */
 function getChannelName(channelUuid: string): string {
-  const channel = props.fixture.availableChannels[channelUuid];
+  const channel = properties.fixture.availableChannels[channelUuid];
   if (!channel) {
     return channelUuid;
   }
@@ -334,53 +345,83 @@ function getChannelName(channelUuid: string): string {
   return channel.name ?? channelUuid;
 }
 
+/**
+ * Opens the channel editor for an existing channel.
+ * @param channelUuid - The channel UUID.
+ */
 function editChannel(channelUuid: string) {
   emit('open-channel-editor', {
-    modeId: props.mode.uuid,
+    modeId: properties.mode.uuid,
     editMode: 'edit-?',
     uuid: channelUuid,
   });
 }
 
+/**
+ * Opens the dialog for adding an existing channel.
+ */
 function addChannel() {
   emit('open-channel-editor', {
-    modeId: props.mode.uuid,
+    modeId: properties.mode.uuid,
     editMode: 'add-existing',
   });
 }
 
+/**
+ * Checks whether a channel's name is unique within the fixture.
+ * @param channelUuid - The channel UUID.
+ * @returns Whether the name is unique.
+ */
 function isChannelNameUnique(channelUuid: string): boolean {
   const channelName = getChannelName(channelUuid);
 
-  return Object.keys(props.fixture.availableChannels).every(
-    uuid => channelName !== getChannelName(uuid) || uuid === channelUuid,
+  return Object.keys(properties.fixture.availableChannels).every(
+    (uuid) => channelName !== getChannelName(uuid) || uuid === channelUuid,
   );
 }
 
+/**
+ * Checks whether a channel is a fine channel.
+ * @param channelUuid - The channel UUID.
+ * @returns Whether the channel is fine.
+ */
 function isFineChannel(channelUuid: string) {
-  return 'coarseChannelId' in props.fixture.availableChannels[channelUuid];
+  return 'coarseChannelId' in properties.fixture.availableChannels[channelUuid];
 }
 
+/**
+ * Moves a channel within the mode.
+ * @param channelUuid - The channel UUID.
+ * @param delta - The number of positions to move.
+ */
 function moveChannel(channelUuid: string, delta: number) {
-  const channelIndex = props.mode.channels.indexOf(channelUuid);
+  const channelIndex = properties.mode.channels.indexOf(channelUuid);
   const newIndex = channelIndex + delta;
-  if (newIndex < 0 || newIndex >= props.mode.channels.length) {
+  if (newIndex < 0 || newIndex >= properties.mode.channels.length) {
     return;
   }
 
-  props.mode.channels.splice(channelIndex, 1);
-  props.mode.channels.splice(newIndex, 0, channelUuid);
+  properties.mode.channels.splice(channelIndex, 1);
+  properties.mode.channels.splice(newIndex, 0, channelUuid);
 }
 
+/**
+ * Removes a channel reference from the mode.
+ * @param channelUuid - The channel UUID.
+ */
 function removeFromMode(channelUuid: string) {
-  const channelPosition = props.mode.channels.indexOf(channelUuid);
+  const channelPosition = properties.mode.channels.indexOf(channelUuid);
   if (channelPosition !== -1) {
-    props.mode.channels.splice(channelPosition, 1);
+    properties.mode.channels.splice(channelPosition, 1);
   }
 }
 
+/**
+ * Removes a channel and its finer channels from the mode.
+ * @param channelUuid - The channel UUID.
+ */
 function removeChannel(channelUuid: string) {
-  const channel = props.fixture.availableChannels[channelUuid];
+  const channel = properties.fixture.availableChannels[channelUuid];
 
   let coarseChannelId = channelUuid;
   let resolution = constants.RESOLUTION_8BIT;
@@ -390,7 +431,7 @@ function removeChannel(channelUuid: string) {
   }
 
   // remove finer channels of the same coarse channel first
-  for (const otherChannel of Object.values(props.fixture.availableChannels)) {
+  for (const otherChannel of Object.values(properties.fixture.availableChannels)) {
     if (otherChannel?.coarseChannelId === coarseChannelId && otherChannel.resolution! > resolution) {
       removeFromMode(otherChannel.uuid!);
     }
@@ -400,7 +441,6 @@ function removeChannel(channelUuid: string) {
 }
 
 onMounted(() => {
-  const root = getCurrentInstance()?.appContext.app._context.provides;
   if (window.__oflRestoreComplete) {
     firstInput.value?.$el?.focus();
   }

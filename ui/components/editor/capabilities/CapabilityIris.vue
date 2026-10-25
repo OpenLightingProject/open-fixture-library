@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -43,7 +43,7 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
 const defaultData = {
   openPercent: null,

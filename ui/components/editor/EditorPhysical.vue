@@ -104,6 +104,7 @@
 
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, toRaw } from 'vue';
+import type { EditorPhysical } from '~/types/editor';
 import {
   physicalBulbProperties,
   physicalLensProperties,
@@ -111,50 +112,33 @@ import {
   schemaDefinitions,
 } from '~~/lib/schema-properties.js';
 
-interface Physical {
-  dimensions?: [number, number, number] | null;
-  weight?: number | null;
-  power?: number | null;
-  DMXconnector?: string | null;
-  DMXconnectorNew?: string;
-  bulb: {
-    type?: string;
-    colorTemperature?: number | null;
-    lumens?: number | null;
-  };
-  lens: {
-    name?: string;
-    degreesMinMax?: [number, number] | null;
-  };
-}
-
-interface Props {
-  modelValue: Physical;
+interface Properties {
+  modelValue: EditorPhysical;
   formstate: object;
   namePrefix: string;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
-  'update:model-value': [value: Physical];
+  'update:model-value': [value: EditorPhysical];
 }>();
 
 const instance = getCurrentInstance();
 const firstInput = ref<any>(null);
 const newDmxConnectorInput = ref<any>(null);
 
-const localPhysical = ref<Physical>(structuredClone(toRaw(props.modelValue)));
+const localPhysical = ref<EditorPhysical>(structuredClone(toRaw(properties.modelValue)));
 
 watch(
   localPhysical,
   () => {
     emit('update:model-value', structuredClone(toRaw(localPhysical.value)));
   },
-  { deep: true }
+  { deep: true },
 );
 
 watch(
-  () => props.modelValue.DMXconnector,
+  () => properties.modelValue.DMXconnector,
   async (newValue) => {
     if (newValue !== '[add-value]' || !(instance?.proxy?.$root as any)?._oflRestoreComplete) {
       return;
@@ -162,7 +146,7 @@ watch(
 
     await nextTick();
     newDmxConnectorInput.value?.focus();
-  }
+  },
 );
 
 onMounted(() => {

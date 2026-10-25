@@ -19,10 +19,12 @@ Download endpoints for fixture exports (`/download.ofl`, `/cameo/clw-10.ddf`, et
 In `nuxt.config.js`:
 
 ```js
-serverMiddleware: [
-  { path: '/api/v1', handler: '~/api/index.js' },
-  { path: '/',        handler: '~/api/download.js' },  // Express Router mounted at root
-],
+export default {
+  serverMiddleware: [
+    { path: '/api/v1', handler: '~/api/index.js' },
+    { path: '/', handler: '~/api/download.js' }, // Express Router mounted at root
+  ],
+};
 ```
 
 The Express Router at `/` would:
@@ -45,11 +47,13 @@ The middleware approach solves this with a regex-based pre-check before requests
 ```typescript
 // Only short-circuit if URL matches a download pattern
 const batchMatch = pathname.match(/^\/download\.([a-z0-9_.-]+)$/);
-if (batchMatch) { return handleBatchDownload(event, batchMatch[1]); }
+if (batchMatch) {
+  return handleBatchDownload(event, batchMatch[1]);
+}
 
 // Request doesn't match any download pattern → return undefined
 // Nitro continues to the next handler (page renderer)
-return;
+return undefined;
 ```
 
 ## The New Implementation
@@ -77,7 +81,9 @@ export default defineEventHandler(async (event) => {
   if (batchMatch && method === 'GET') {
     return handleBatchDownload(event, batchMatch[1]);
   }
+
   // ... fixture and editor routes
+  return undefined;
 });
 ```
 

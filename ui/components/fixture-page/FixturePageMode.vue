@@ -65,21 +65,21 @@ ol.mode-channels {
 <script setup lang="ts">
 import type { Mode } from '~/types/models';
 
-interface Props {
+interface Properties {
   mode: Mode;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 defineEmits<{
-  'help-wanted-clicked': [event: unknown];
+  'help-wanted-clicked': [event: { context: object; type: string }];
 }>();
 
 const root = ref<HTMLElement | null>(null);
 const hasDetails = ref(true);
 
 const showCollapseExpandButtons = computed(() => {
-  return props.mode.channels.length > 1 && hasDetails.value;
+  return properties.mode.channels.length > 1 && hasDetails.value;
 });
 
 onMounted(async () => {
@@ -87,23 +87,33 @@ onMounted(async () => {
 
   // query the component root instead of the whole document (the Nuxt 2
   // version used `this.$el`)
-  if (root.value && !root.value.querySelector(`details`)) {
+  if (root.value && !root.value.querySelector('details')) {
     hasDetails.value = false;
   }
 });
 
+/**
+ * Opens every collapsible details section in this mode.
+ */
 function openDetails() {
-  if (!root.value) return;
+  if (!root.value) {
+    return;
+  }
 
-  for (const details of root.value.querySelectorAll(`details`)) {
+  for (const details of root.value.querySelectorAll('details')) {
     details.open = true;
   }
 }
 
+/**
+ * Closes every collapsible details section in this mode.
+ */
 function closeDetails() {
-  if (!root.value) return;
+  if (!root.value) {
+    return;
+  }
 
-  for (const details of root.value.querySelectorAll(`details`)) {
+  for (const details of root.value.querySelectorAll('details')) {
     details.open = false;
   }
 }

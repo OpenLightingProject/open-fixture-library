@@ -118,12 +118,12 @@
             fill="#fff" />
 
           <image
-            v-if="slot.resource && slot.resource.hasImage"
+            v-if="hasResourceImage(slot.resource)"
             :x="-slotRadius"
             :y="slotRotateRadius - slotRadius"
             :width="slotRadius * 2"
             :height="slotRadius * 2"
-            :xlink:href="slot.resource.imageDataUrl" />
+            :xlink:href="resourceImageDataUrl(slot.resource)" />
 
           <text
             v-else
@@ -230,25 +230,48 @@ figcaption table {
 <script setup lang="ts">
 import type { Wheel } from '~/types/models';
 
-interface Props {
+interface Properties {
   wheel: Wheel;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
+
+interface EmbeddedResource {
+  hasImage: boolean;
+  imageDataUrl: string | null;
+}
+
+/**
+ * Checks whether a wheel slot resource has an embedded image.
+ * @param resource - The wheel slot resource (or its reference string).
+ * @returns Whether the resource has an image.
+ */
+function hasResourceImage(resource: string | EmbeddedResource | null): boolean {
+  return typeof resource === 'object' && resource !== null && resource.hasImage;
+}
+
+/**
+ * Reads a wheel slot resource's embedded image data URL.
+ * @param resource - The wheel slot resource (or its reference string).
+ * @returns The image data URL, or `null` when there is none.
+ */
+function resourceImageDataUrl(resource: string | EmbeddedResource | null): string | null {
+  return typeof resource === 'object' && resource !== null ? resource.imageDataUrl : null;
+}
 
 const highlightedSlot = ref<number | null>(null);
 const wheelRadius = 50;
 const wheelPadding = 3;
 
 const wheelDirectionFactor = computed(() => {
-  return props.wheel.direction === `CCW` ? -1 : 1;
+  return properties.wheel.direction === 'CCW' ? -1 : 1;
 });
 
 const slotRadius = computed(() => {
   const usableRadius = wheelRadius - wheelPadding;
 
   const spacingFactor = 0.85;
-  const anglePerSlot = (2 * Math.PI / props.wheel.slots.length) * spacingFactor;
+  const anglePerSlot = (2 * Math.PI / properties.wheel.slots.length) * spacingFactor;
 
   const maximumRadius = (usableRadius / 2) - 5;
 
@@ -260,7 +283,7 @@ const slotRotateRadius = computed(() => {
 });
 
 const slotRotateAngle = computed(() => {
-  return 360 / props.wheel.slots.length * wheelDirectionFactor.value;
+  return 360 / properties.wheel.slots.length * wheelDirectionFactor.value;
 });
 
 const slotCircumference = computed(() => {
@@ -268,27 +291,19 @@ const slotCircumference = computed(() => {
 });
 
 const slotSvgFragments = computed(() => {
-  return props.wheel.slots.map(slot => {
-    if (slot.colors !== null) {
-      return getColorCircleSvgFragment(slot.colors, slotRadius.value);
-    }
-
-    return null;
+  return properties.wheel.slots.map((slot) => {
+    return slot.colors === null ? null : getColorCircleSvgFragment(slot.colors, slotRadius.value);
   });
 });
 
 const animationGoboWidth = computed(() => {
-  if (props.wheel.slots.length === 2) {
-    return slotCircumference.value;
-  }
-
-  return (2 * slotRadius.value) + (slotCircumference.value * Math.abs(slotRotateAngle.value) / 360);
+  return properties.wheel.slots.length === 2 ? slotCircumference.value : (2 * slotRadius.value) + (slotCircumference.value * Math.abs(slotRotateAngle.value) / 360);
 });
 
 const slotTitles = computed(() => {
-  return props.wheel.slots.map((slot, index) => {
-    if (slot.type === `AnimationGoboStart`) {
-      const splitSlot = props.wheel.getSlot(index + 1.5);
+  return properties.wheel.slots.map((slot, index) => {
+    if (slot.type === 'AnimationGoboStart') {
+      const splitSlot = properties.wheel.getSlot(index + 1.5);
       return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
     }
 

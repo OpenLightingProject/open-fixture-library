@@ -12,8 +12,8 @@
           <span class="last-modify-date">Last modified:&nbsp;<OflDate :date="fixture.meta.lastModifyDate" /></span>
           <span class="create-date">Created:&nbsp;<OflDate :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
+          <span class="source"><a :href="`${githubRepositoryPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepositoryPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
@@ -79,6 +79,7 @@
 </style>
 
 <script setup lang="ts">
+import type { HelpWantedModel } from '~/types/help-wanted';
 import Fixture from '~~/lib/model/Fixture.js';
 import Manufacturer from '~~/lib/model/Manufacturer.js';
 
@@ -123,11 +124,18 @@ const [{ data: fixtureJson }, { data: plugins }, redirect] = await Promise.all([
 const redirectFromFixture = computed(() => redirect);
 
 const fixture = computed(() => {
-  if (!manufacturerJson.value || !fixtureJson.value) return null;
+  if (!manufacturerJson.value || !fixtureJson.value) {
+    return null;
+  }
   const manufacturer = new Manufacturer(manufacturerKey, manufacturerJson.value);
   return new Fixture(manufacturer, fixtureKey, fixtureJson.value);
 });
 
+/**
+ * Looks up the reason for a deprecated fixture redirect.
+ * @param redirectFrom - The redirect target fixture path.
+ * @returns The redirect reason, or `undefined`.
+ */
 async function fetchRedirectObject(redirectFrom: string | undefined) {
   if (!redirectFrom) {
     return undefined;
@@ -145,22 +153,30 @@ async function fetchRedirectObject(redirectFrom: string | undefined) {
   };
 }
 
-const helpWantedContext = ref<unknown>(undefined);
-const helpWantedType = ref('');
+const helpWantedContext = ref<HelpWantedModel | undefined>(undefined);
+const helpWantedType = ref<'fixture' | 'capability' | 'plugin'>('fixture');
 
+/**
+ * Opens the help-wanted dialog for the emitting element.
+ * @param event - The help-wanted event payload.
+ * @param event.context - The capability, plugin or fixture requesting help.
+ * @param event.type - The context type.
+ */
 function openHelpWantedDialog(event: { context: unknown; type: string }) {
-  helpWantedContext.value = event.context;
-  helpWantedType.value = event.type;
+  helpWantedContext.value = event.context as HelpWantedModel;
+  helpWantedType.value = event.type as 'fixture' | 'capability' | 'plugin';
 }
 
 const productModelStructuredData = computed(() => {
-  if (!fixture.value) return {};
+  if (!fixture.value) {
+    return {};
+  }
   const data: Record<string, unknown> = {
     '@context': 'http://schema.org',
     '@type': 'ProductModel',
-    name: fixture.value.name,
-    category: fixture.value.mainCategory,
-    manufacturer: {
+    'name': fixture.value.name,
+    'category': fixture.value.mainCategory,
+    'manufacturer': {
       url: `${config.public.websiteUrl}${manufacturerKey}`,
     },
   };
@@ -179,40 +195,42 @@ const productModelStructuredData = computed(() => {
 });
 
 const breadcrumbListStructuredData = computed(() => {
-  if (!fixture.value) return {};
+  if (!fixture.value) {
+    return {};
+  }
   return {
     '@context': 'http://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
+    'itemListElement': [
       {
         '@type': 'ListItem',
-        position: 1,
-        item: {
+        'position': 1,
+        'item': {
           '@id': `${config.public.websiteUrl}manufacturers`,
-          name: 'Manufacturers',
+          'name': 'Manufacturers',
         },
       },
       {
         '@type': 'ListItem',
-        position: 2,
-        item: {
+        'position': 2,
+        'item': {
           '@id': `${config.public.websiteUrl}${manufacturerKey}`,
-          name: fixture.value?.manufacturer?.name,
+          'name': fixture.value?.manufacturer?.name,
         },
       },
       {
         '@type': 'ListItem',
-        position: 3,
-        item: {
+        'position': 3,
+        'item': {
           '@id': fixture.value?.url,
-          name: fixture.value?.name,
+          'name': fixture.value?.name,
         },
       },
     ],
   };
 });
 
-const githubRepoPath = computed(() => {
+const githubRepositoryPath = computed(() => {
   const slug = process.env.GITHUB_REPOSITORY || 'OpenLightingProject/open-fixture-library';
   return `https://github.com/${slug}`;
 });
@@ -228,17 +246,17 @@ const mailtoUrl = computed(() => {
 });
 
 useHead({
-  title: computed(() => fixture.value ? `${fixture.value.manufacturer.name} ${fixture.value.name} DMX fixture definition` : ''),
+  title: computed(() => (fixture.value ? `${fixture.value.manufacturer.name} ${fixture.value.name} DMX fixture definition` : '')),
   script: [
     {
-      hid: 'productModelStructuredData',
-      type: 'application/ld+json',
-      children: computed(() => JSON.stringify(productModelStructuredData.value)),
+      key: 'productModelStructuredData',
+      type: 'application/ld+json' as 'application/json', // Unhead's script type union omits JSON-LD
+      innerHTML: computed(() => JSON.stringify(productModelStructuredData.value)),
     },
     {
-      hid: 'breadcrumbListStructuredData',
-      type: 'application/ld+json',
-      children: computed(() => JSON.stringify(breadcrumbListStructuredData.value)),
+      key: 'breadcrumbListStructuredData',
+      type: 'application/ld+json' as 'application/json', // Unhead's script type union omits JSON-LD
+      innerHTML: computed(() => JSON.stringify(breadcrumbListStructuredData.value)),
     },
   ],
 });

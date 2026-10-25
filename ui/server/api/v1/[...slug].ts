@@ -18,7 +18,6 @@ export default defineEventHandler(async (event) => {
 
   const result = await api.handleRequest({
     path: event.path,
-    originalUrl: event.path,
     method,
     headers,
     body,

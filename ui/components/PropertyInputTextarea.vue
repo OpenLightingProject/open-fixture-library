@@ -9,17 +9,20 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   schemaProperty: {
     minLength?: number;
     maxLength?: number;
+    description?: string;
+    $ref?: string;
   };
   required?: boolean;
   hint?: string;
   modelValue: string | null;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
+  hint: '',
   required: false,
 });
 
@@ -31,11 +34,11 @@ const emit = defineEmits<{
 const localValue = ref('');
 
 const validationData = computed(() => ({
-  minlength: 'minLength' in props.schemaProperty ? String(props.schemaProperty.minLength) : null,
-  maxlength: 'maxLength' in props.schemaProperty ? String(props.schemaProperty.maxLength) : null,
+  minlength: 'minLength' in properties.schemaProperty ? String(properties.schemaProperty.minLength) : null,
+  maxlength: 'maxLength' in properties.schemaProperty ? String(properties.schemaProperty.maxLength) : null,
 }));
 
-watch(() => props.modelValue, (newValue) => {
+watch(() => properties.modelValue, (newValue) => {
   localValue.value = newValue ? String(newValue) : '';
 }, {
   immediate: true,

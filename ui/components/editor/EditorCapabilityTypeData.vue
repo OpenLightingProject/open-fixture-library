@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { capabilityTypes } from '~~/lib/schema-properties.js';
 import CapabilityBeamAngle from './capabilities/CapabilityBeamAngle.vue';
 import CapabilityBeamPosition from './capabilities/CapabilityBeamPosition.vue';
 import CapabilityBladeInsertion from './capabilities/CapabilityBladeInsertion.vue';
@@ -75,11 +76,11 @@ import CapabilityWheelShake from './capabilities/CapabilityWheelShake.vue';
 import CapabilityWheelSlot from './capabilities/CapabilityWheelSlot.vue';
 import CapabilityWheelSlotRotation from './capabilities/CapabilityWheelSlotRotation.vue';
 import CapabilityZoom from './capabilities/CapabilityZoom.vue';
-import { capabilityTypes } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
+    open?: boolean;
     type: string;
     typeData: Record<string, any>;
   };
@@ -88,7 +89,7 @@ interface Props {
   required?: boolean;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 defineOptions({
   components: {
@@ -144,33 +145,38 @@ const capabilityTypesList = Object.keys(capabilityTypes);
 const capabilityTypeHint = ref<string | null>(null);
 
 watch(
-  () => props.capability.type,
+  () => properties.capability.type,
   async () => {
     await nextTick();
 
     if (capabilityTypeData.value?.defaultData) {
       const defaultData = capabilityTypeData.value.defaultData;
       for (const [property, value] of Object.entries(defaultData)) {
-        if (!(property in props.capability.typeData)) {
-          props.capability.typeData[property] = value;
+        if (!(property in properties.capability.typeData)) {
+          properties.capability.typeData[property] = value;
         }
       }
     }
 
     capabilityTypeHint.value = capabilityTypeData.value?.hint ?? null;
-  }
+  },
 );
 
+/**
+ * Removes hidden type data properties before the capability is saved.
+ */
 function cleanCapabilityData() {
   const component = capabilityTypeData.value;
 
-  if (!component) return;
+  if (!component) {
+    return;
+  }
 
   const defaultData = component.defaultData;
 
-  for (const property of Object.keys(props.capability.typeData)) {
+  for (const property of Object.keys(properties.capability.typeData)) {
     if (!(property in defaultData)) {
-      delete props.capability.typeData[property];
+      delete properties.capability.typeData[property];
     }
   }
 
@@ -179,11 +185,11 @@ function cleanCapabilityData() {
 
     for (const property of resetProperties) {
       const defaultPropertyData = defaultData[property];
-      props.capability.typeData[property] = typeof defaultPropertyData === 'string' ? '' : defaultPropertyData;
+      properties.capability.typeData[property] = typeof defaultPropertyData === 'string' ? '' : defaultPropertyData;
     }
   }
 
-  props.capability.open = false;
+  properties.capability.open = false;
 }
 
 defineExpose({ cleanCapabilityData });

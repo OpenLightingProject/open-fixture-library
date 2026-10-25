@@ -7,7 +7,7 @@
 
     <form class="filter" action="/search" @submit.prevent="onSubmit()">
       <LabeledInput label="Search query">
-        <input v-model="searchQuery" type="search" name="q" />
+        <input v-model="searchQuery" type="search" name="q">
       </LabeledInput>
 
       <ConditionalDetails :open="detailsInitiallyOpen">
@@ -19,11 +19,10 @@
           </option>
 
           <option
-            v-for="(man, manufacturerKey) in manufacturers"
+            v-for="(man, manufacturerKey) of manufacturers"
             :key="manufacturerKey"
-            :selected="manufacturersQuery.includes(manufacturerKey)"
-            :value="manufacturerKey"
-          >
+            :selected="manufacturersQuery.includes(String(manufacturerKey))"
+            :value="manufacturerKey">
             {{ man.name }}
           </option>
         </select>
@@ -34,11 +33,10 @@
           </option>
 
           <option
-            v-for="cat in categories"
+            v-for="cat of categories"
             :key="cat"
             :selected="categoriesQuery.includes(cat)"
-            :value="cat"
-          >
+            :value="cat">
             {{ cat }}
           </option>
         </select>
@@ -64,8 +62,7 @@
             <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
-              class="manufacturer-color"
-            >
+              class="manufacturer-color">
               <span class="name">{{ fixture.name }}</span>
             </NuxtLink>
           </li>
@@ -111,7 +108,7 @@ const [{ data: manufacturers }, { data: categoriesData }] = await Promise.all([
   useFetch<{ name: string; fixtureCount: number }[]>('/api/v1/categories'),
 ]);
 
-const categories = computed(() => (categoriesData.value ?? []).map(category => category.name));
+const categories = computed(() => (categoriesData.value ?? []).map((category) => category.name));
 
 const searchFor = ref('');
 const searchQuery = ref('');
@@ -137,7 +134,7 @@ function getSanitizedQuery(query: Record<string, unknown>) {
   if (typeof manufacturersQueryRaw === 'string') {
     manufacturersQueryRaw = [manufacturersQueryRaw];
   }
-  const manufacturersQueryArr = Array.isArray(manufacturersQueryRaw)
+  const manufacturersQueryArray = Array.isArray(manufacturersQueryRaw)
     ? (manufacturersQueryRaw as string[])
     : [];
 
@@ -145,17 +142,20 @@ function getSanitizedQuery(query: Record<string, unknown>) {
   if (typeof categoriesQueryRaw === 'string') {
     categoriesQueryRaw = [categoriesQueryRaw];
   }
-  const categoriesQueryArr = Array.isArray(categoriesQueryRaw)
+  const categoriesQueryArray = Array.isArray(categoriesQueryRaw)
     ? (categoriesQueryRaw as string[])
     : [];
 
   return {
     search: searchQueryTrimmed,
-    manufacturers: manufacturersQueryArr,
-    categories: categoriesQueryArr,
+    manufacturers: manufacturersQueryArray,
+    categories: categoriesQueryArray,
   };
 }
 
+/**
+ * Loads search results for the current query parameters.
+ */
 async function performSearch() {
   loading.value = true;
 
@@ -168,8 +168,8 @@ async function performSearch() {
   searchFor.value = sanitizedQuery.search;
 
   if (detailsInitiallyOpen.value === null) {
-    detailsInitiallyOpen.value =
-      manufacturersQuery.value.length > 0 || categoriesQuery.value.length > 0;
+    detailsInitiallyOpen.value
+      = manufacturersQuery.value.length > 0 || categoriesQuery.value.length > 0;
   }
 
   try {
@@ -181,9 +181,11 @@ async function performSearch() {
         categoriesQuery: sanitizedQuery.categories,
       },
     });
-  } catch {
+  }
+  catch {
     results.value = [];
-  } finally {
+  }
+  finally {
     loading.value = false;
   }
 }
@@ -197,6 +199,9 @@ watch(
   },
 );
 
+/**
+ * Navigates to the search results for the entered filters.
+ */
 function onSubmit() {
   if (searchQuery.value === '') {
     return;
@@ -213,7 +218,7 @@ function onSubmit() {
 }
 
 const title = computed(() =>
-  searchFor.value ? `Search "${searchFor.value}"` : 'Search',
+  (searchFor.value ? `Search "${searchFor.value}"` : 'Search'),
 );
 
 useHead({

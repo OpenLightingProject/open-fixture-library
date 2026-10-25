@@ -4,11 +4,20 @@ import type { Page } from '@playwright/test';
 // Both the Nuxt 2 oracle and the Nuxt 4 site share these class names / messages.
 // `waitUntil: 'load'` is used for the same reason as typography.spec.ts: the
 // Nuxt 3 hydration wait helper does not exist on the Nuxt 2 oracle.
+/**
+ * Opens the fixture editor and waits for the client-side form.
+ * @param page - The Playwright page.
+ * @param goto - The test fixture's navigation helper.
+ */
 async function openEditor(page: Page, goto: (path: string, options?: object) => Promise<void>) {
   await goto('/fixture-editor', { waitUntil: 'load' });
   await page.waitForSelector('form.only-js');
 }
 
+/**
+ * Fills the editor with the minimum valid fixture data.
+ * @param page - The Playwright page.
+ */
 async function fillValidFixture(page: Page) {
   await page.selectOption('select[name="manufacturerKey"]', { index: 1 });
   await page.fill('input[name="fixture-name"]', 'Test Fixture');

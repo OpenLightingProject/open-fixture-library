@@ -51,7 +51,7 @@
 import { nextTick } from 'vue';
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -68,7 +68,7 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const speedOrDurationInput = ref<any>(null);
 
 const defaultData = {
@@ -83,12 +83,16 @@ const defaultData = {
 };
 
 const resetProperties = computed(() => {
-  const resetProperty = props.capability.typeData.speedOrDuration === 'duration' ? 'speed' : 'duration';
+  const resetProperty = properties.capability.typeData.speedOrDuration === 'duration' ? 'speed' : 'duration';
   return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
 });
 
+/**
+ * Stores the selected speed or duration mode and refocuses the input.
+ * @param newValue - The selected value.
+ */
 async function changeSpeedOrDuration(newValue: string) {
-  props.capability.typeData.speedOrDuration = newValue;
+  properties.capability.typeData.speedOrDuration = newValue;
 
   await nextTick();
   if (speedOrDurationInput.value) {

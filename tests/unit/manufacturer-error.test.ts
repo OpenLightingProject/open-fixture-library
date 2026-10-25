@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getManufacturerLoadError } from '../../ui/utils/manufacturer-error.ts';
+import { getManufacturerLoadError } from '../../ui/utils/manufacturer-error';
 
 describe('getManufacturerLoadError', () => {
   it('maps a missing manufacturer without a fetch error to 404', () => {

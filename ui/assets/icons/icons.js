@@ -9,5 +9,5 @@ const allIcons = {
 };
 
 export default Object.fromEntries(
-  Object.entries(allIcons).map(([key, value]) => [key.replace(/^\.\/(.+)\.svg$/, '$1'), value])
+  Object.entries(allIcons).map(([key, value]) => [key.replace(/^\.\/(.+)\.svg$/, '$1'), value]),
 );

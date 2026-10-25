@@ -74,6 +74,11 @@ const editorBody = JSON.stringify({
   },
 });
 
+/**
+ * Reads a response's content type.
+ * @param response - The HTTP response.
+ * @returns The content type, or an empty string.
+ */
 function contentType(response: Response): string {
   return response.headers.get('content-type') ?? '';
 }
@@ -83,22 +88,29 @@ function contentType(response: Response): string {
  *
  * - `colorsource`: top-level JSON `date` (`YYYY-MM-DDTHH:MM:SSZ`).
  * - `ecue`: `Document/@SaveTimeStamp` and the `Tiles`/`Fixtures` Manufacturer
- *   `_CreationDate`/`_ModifiedDate` attributes (`YYYY-MM-DD#HH:MM:SS`).
- *   Fixture-level `_CreationDate`/`_ModifiedDate` come from fixture metadata,
- *   not `options.date`, and stay byte-compared.
+ * `_CreationDate`/`_ModifiedDate` attributes (`YYYY-MM-DD#HH:MM:SS`).
+ * Fixture-level `_CreationDate`/`_ModifiedDate` come from fixture metadata,
+ * not `options.date`, and stay byte-compared.
  *
  * Verified by checking every `plugins/<plugin>/export.js` for `options.date` usage.
  * These fields are wall-clock time, so byte equality between two requests is
  * not a meaningful contract. Normalize exactly these fields (and assert their
  * format); all other bytes, including all other downloads, are unchanged.
  */
-const COLORSOURCE_DATE_PATTERN =
-  /^(\{\n {2}"date": ")(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)(")/;
-const ECUE_DOCUMENT_TIMESTAMP_PATTERN =
-  /(<Document\b[^>]*\bSaveTimeStamp=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})(")/;
-const ECUE_MANUFACTURER_TIMESTAMPS_PATTERN =
-  /(<Manufacturer\b[^>]*\b_CreationDate=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})("\s+_ModifiedDate=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})(")/g;
+const COLORSOURCE_DATE_PATTERN
+  = /^(\{\n {2}"date": ")(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)(")/;
+const ECUE_DOCUMENT_TIMESTAMP_PATTERN
+  = /(<Document\b[^>]*\bSaveTimeStamp=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})(")/;
+const ECUE_MANUFACTURER_TIMESTAMPS_PATTERN
+  = /(<Manufacturer\b[^>]*\b_CreationDate=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})("\s+_ModifiedDate=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})(")/g;
 
+/**
+ * Replaces the wall-clock timestamps two plugins embed in their output.
+ * @param pluginKey - The export plugin key.
+ * @param body - The raw response body.
+ * @param label - A label used in assertion messages.
+ * @returns The normalized body text.
+ */
 function normalizeTimeBearingBody(
   pluginKey: string,
   body: Buffer,
@@ -137,6 +149,13 @@ function normalizeTimeBearingBody(
   throw new Error(`no time normalization defined for plugin ${pluginKey}`);
 }
 
+/**
+ * Describes where two byte buffers differ.
+ * @param label - A label for the comparison.
+ * @param oldBuffer - The oracle's response body.
+ * @param newBuffer - The new site's response body.
+ * @returns A human-readable mismatch description.
+ */
 function describeBufferMismatch(
   label: string,
   oldBuffer: Buffer,
@@ -150,6 +169,12 @@ function describeBufferMismatch(
   return `${label}: first differing byte at offset ${offset} (OLD_URL ${oldBuffer[offset]}, NEW_URL ${newBuffer[offset]})`;
 }
 
+/**
+ * Asserts that two response bodies are byte-identical.
+ * @param label - A label for the comparison.
+ * @param oldBuffer - The oracle's response body.
+ * @param newBuffer - The new site's response body.
+ */
 function assertBuffersEqual(label: string, oldBuffer: Buffer, newBuffer: Buffer) {
   assert.ok(
     Buffer.compare(oldBuffer, newBuffer) === 0,
@@ -157,6 +182,12 @@ function assertBuffersEqual(label: string, oldBuffer: Buffer, newBuffer: Buffer)
   );
 }
 
+/**
+ * Compares two ZIP archives entry by entry.
+ * @param oldBuffer - The oracle's ZIP body.
+ * @param newBuffer - The new site's ZIP body.
+ * @param label - A label for assertion messages.
+ */
 async function expectSameZipEntries(
   oldBuffer: Buffer,
   newBuffer: Buffer,
@@ -195,6 +226,9 @@ async function expectSameZipEntries(
  * and compares the response body byte-for-byte. ZIP archives are compared by
  * entry because both servers stamp archive entries with `new Date()`, so raw
  * ZIP bytes legitimately differ between two requests.
+ * @param path - The download path to request from both sites.
+ * @param init - Optional fetch options such as method and body.
+ * @param pluginKey - Export plugin key used to name the archive.
  */
 async function expectDownloadParity(
   path: string,
@@ -243,6 +277,11 @@ async function expectDownloadParity(
   assertBuffersEqual(`body for ${path}`, oldBuffer, newBuffer);
 }
 
+/**
+ * Reads a redirect target without depending on URL encoding details.
+ * @param response - The redirect response.
+ * @returns The normalized location, or `null`.
+ */
 function normalizedLocation(response: Response): string | null {
   const location = response.headers.get('location');
   if (location === null) {
@@ -259,6 +298,7 @@ function normalizedLocation(response: Response): string | null {
  * the pass-through case: both sites answer with the same 302 and semantically
  * the same target. The raw `Location` encoding and the rendered 302 body are
  * framework details, so only status and target are compared here.
+ * @param path - The redirect URL to request from both sites.
  */
 async function expectRedirectParity(path: string) {
   const { oldResponse, newResponse } = await fetchBoth(path, {

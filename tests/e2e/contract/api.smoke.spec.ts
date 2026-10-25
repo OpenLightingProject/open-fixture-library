@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/assertions-in-tests -- expectParity() asserts that both responses match */
 import { describe, expect, it } from 'vitest';
 import { expectParity, fetchBoth, NEW_URL } from '../helpers/parity';
 

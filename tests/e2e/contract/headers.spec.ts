@@ -44,6 +44,11 @@ const VOLATILE_CSP_TOKEN = /^'(?:sha(?:256|384|512)-[^']+|nonce-[^']+)'$/;
 
 // Computes a stable representation of a CSP header so directives and their
 // sources can be compared regardless of ordering or per-page hashes/nonces.
+/**
+ * Normalizes a CSP header for order-independent comparison.
+ * @param value - The raw header value.
+ * @returns The normalized value, or `null`.
+ */
 function normalizeCsp(value: string | null): string | null {
   if (value === null) {
     return null;
@@ -64,6 +69,11 @@ function normalizeCsp(value: string | null): string | null {
     .join('; ');
 }
 
+/**
+ * Normalizes a `Vary` header for order-independent comparison.
+ * @param value - The raw header value.
+ * @returns The normalized value, or `null`.
+ */
 function normalizeVary(value: string | null): string | null {
   if (value === null) {
     return null;
@@ -76,6 +86,12 @@ function normalizeVary(value: string | null): string | null {
     .join(',');
 }
 
+/**
+ * Requests a path from both sites.
+ * @param path - The path to request.
+ * @param init - Optional fetch options.
+ * @returns Both responses.
+ */
 async function fetchHeaderPair(path: string, init?: RequestInit) {
   const { oldResponse, newResponse } = await fetchBoth(path, init);
   return { oldResponse, newResponse };

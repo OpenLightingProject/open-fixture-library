@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { schemaDefinitions, wheelSlotTypes } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   wheelSlot: {
     uuid: string;
     typeData: {
@@ -40,7 +40,7 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+defineProps<Properties>();
 
 const facetsSchema = wheelSlotTypes.Prism.properties.facets;
 

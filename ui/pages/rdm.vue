@@ -75,7 +75,7 @@ interface RdmLookup {
 }
 
 definePageMeta({
-  key: route => route.fullPath,
+  key: (route) => route.fullPath,
 });
 
 const route = useRoute();
@@ -141,11 +141,15 @@ const prefilledFixtureEditorUrl = computed(() => {
   return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
 });
 
+/**
+ * Navigates to the search results for the submitted RDM IDs.
+ * @param event - The form submit event.
+ */
 function onSubmit(event: Event) {
   const form = event.target as HTMLFormElement;
   router.push({
     path: route.path,
-    query: Object.fromEntries(new FormData(form).entries()) as Record<string, string>,
+    query: Object.fromEntries(new FormData(form)) as Record<string, string>,
   });
 }
 
@@ -164,15 +168,15 @@ function parseIntOrNull(string: string | undefined): number | null {
 
 /**
  * @param {RdmLookup} rdmLookup - The API result matching the provided RDM IDs.
- * @param {number | null} personalityIndex - The provided RDM personality index, or null.
+ * @param {number | null} rdmPersonalityIndex - The provided RDM personality index, or null.
  */
-function redirectToCorrectPage(rdmLookup: RdmLookup, personalityIndex: number | null) {
+function redirectToCorrectPage(rdmLookup: RdmLookup, rdmPersonalityIndex: number | null) {
   if (rdmLookup.fixtureKey === null) {
     navigateTo(`/${rdmLookup.manufacturerKey}`, { redirectCode: 301 });
     return;
   }
 
-  const locationHash = personalityIndex === null ? '' : `#rdm-personality-${personalityIndex}`;
+  const locationHash = rdmPersonalityIndex === null ? '' : `#rdm-personality-${rdmPersonalityIndex}`;
 
   navigateTo(`/${rdmLookup.manufacturerKey}/${rdmLookup.fixtureKey}${locationHash}`, { redirectCode: 301 });
 }

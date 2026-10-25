@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -43,9 +43,9 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
-const hint = `Doesn't activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.`;
+const hint = 'Doesn\'t activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.';
 
 const defaultData = {
   soundSensitivity: null,

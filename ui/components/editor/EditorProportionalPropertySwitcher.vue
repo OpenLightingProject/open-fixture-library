@@ -181,73 +181,67 @@ import {
   unitsSchema,
 } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
+    type?: string;
     typeData: Record<string, any>;
     dmxRange?: [number, number] | null;
   };
   propertyName: string;
   required?: boolean;
   hint?: string;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const steppedField = ref<any>(null);
 const startField = ref<any>(null);
 const endField = ref<any>(null);
 
-const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace(`#/units/`, ``);
+const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace('#/units/', '');
 const slotNumberSchema = unitsSchema[slotNumberUnit];
 
 const entity = computed(() => {
-  const capabilitySchema = capabilityTypes[props.capability.type];
+  const capabilitySchema = capabilityTypes[properties.capability.type];
   if (!capabilitySchema) {
     return '';
   }
 
-  const propertySchema = capabilitySchema.properties[props.propertyName];
-  if (!propertySchema) {
-    return '';
-  }
-
-  return (propertySchema.$ref || '').replace(`definitions.json#/entities/`, '');
+  const propertySchema = capabilitySchema.properties[properties.propertyName];
+  return propertySchema ? (propertySchema.$ref || '').replace('definitions.json#/entities/', '') : '';
 });
 
 const entitySchema = computed(() => {
-  if (entity.value === '') {
-    return null;
-  }
-
-  return entitiesSchema[entity.value];
+  return entity.value === '' ? null : entitiesSchema[entity.value];
 });
 
 const propertyDataStepped = computed({
   get() {
-    return props.capability.typeData[props.propertyName];
+    return properties.capability.typeData[properties.propertyName];
   },
   set(newData) {
-    props.capability.typeData[props.propertyName] = newData;
+    properties.capability.typeData[properties.propertyName] = newData;
   },
 });
 
 const propertyDataStart = computed({
   get() {
-    return props.capability.typeData[`${props.propertyName}Start`];
+    return properties.capability.typeData[`${properties.propertyName}Start`];
   },
   set(newData) {
-    props.capability.typeData[`${props.propertyName}Start`] = newData;
+    properties.capability.typeData[`${properties.propertyName}Start`] = newData;
   },
 });
 
 const propertyDataEnd = computed({
   get() {
-    return props.capability.typeData[`${props.propertyName}End`];
+    return properties.capability.typeData[`${properties.propertyName}End`];
   },
   set(newData) {
-    props.capability.typeData[`${props.propertyName}End`] = newData;
+    properties.capability.typeData[`${properties.propertyName}End`] = newData;
   },
 });
 
@@ -277,37 +271,42 @@ const hasStartEnd = computed({
 
 const slotNumberStepped = computed({
   get() {
-    return props.capability.typeData[props.propertyName];
+    return properties.capability.typeData[properties.propertyName];
   },
   set(newData) {
-    props.capability.typeData[props.propertyName] = newData === null ? '' : newData;
+    properties.capability.typeData[properties.propertyName] = newData === null ? '' : newData;
   },
 });
 
 const slotNumberStart = computed({
   get() {
-    return props.capability.typeData[`${props.propertyName}Start`];
+    return properties.capability.typeData[`${properties.propertyName}Start`];
   },
   set(newData) {
-    props.capability.typeData[`${props.propertyName}Start`] = newData === null ? '' : newData;
+    properties.capability.typeData[`${properties.propertyName}Start`] = newData === null ? '' : newData;
   },
 });
 
 const slotNumberEnd = computed({
   get() {
-    return props.capability.typeData[`${props.propertyName}End`];
+    return properties.capability.typeData[`${properties.propertyName}End`];
   },
   set(newData) {
-    props.capability.typeData[`${props.propertyName}End`] = newData === null ? '' : newData;
+    properties.capability.typeData[`${properties.propertyName}End`] = newData === null ? '' : newData;
   },
 });
 
 const swapButtonTabIndex = computed(() => {
-  return (propertyDataStart.value === propertyDataEnd.value ||
-    propertyDataStart.value === '' ||
-    propertyDataEnd.value === '') ? '-1' : null;
+  return (propertyDataStart.value === propertyDataEnd.value
+    || propertyDataStart.value === ''
+    || propertyDataEnd.value === '')
+    ? '-1'
+    : null;
 });
 
+/**
+ * Focuses the first visible value field.
+ */
 function focus() {
   for (const field of [steppedField, startField, endField]) {
     if (field.value) {
@@ -317,15 +316,24 @@ function focus() {
   }
 }
 
+/**
+ * Focuses the start or end field after switching to a range.
+ */
 async function focusEndField() {
   await nextTick();
 
-  if (hasStartEnd.value) {
-    const focusField = propertyDataStart.value === '' ? startField.value : endField.value;
-    focusField?.focus();
+  if (!hasStartEnd.value) {
+    return;
   }
+
+  const focusField = propertyDataStart.value === '' ? startField.value : endField.value;
+  focusField?.focus();
 }
 
+/**
+ * Applies a selected unit to both range fields.
+ * @param newUnit - The selected unit string.
+ */
 function onUnitSelected(newUnit: string) {
   if (!propertyDataStart.value.endsWith(newUnit)) {
     startField.value?.setUnitString(newUnit);
@@ -335,6 +343,9 @@ function onUnitSelected(newUnit: string) {
   }
 }
 
+/**
+ * Swaps the start and end values.
+ */
 function swapStartEnd() {
   const start = propertyDataStart.value;
   propertyDataStart.value = propertyDataEnd.value;

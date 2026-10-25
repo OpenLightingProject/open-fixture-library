@@ -25,32 +25,40 @@
 </template>
 
 <script setup lang="ts">
+import type { EditorChannel, EditorFixture } from '~/types/editor';
 import A11yDialog from '../A11yDialog.vue';
 
-interface Props {
-  channel: object;
-  fixture: object;
+interface Properties {
+  channel: EditorChannel;
+  fixture: EditorFixture;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
+/**
+ * Chooses an edit mode when a channel is not shared with another mode.
+ */
 function onChooseChannelEditModeDialogOpen() {
-  const channelUsedElsewhere = props.fixture.modes.some(
-    mode => mode.uuid !== props.channel.modeId && mode.channels.includes(props.channel.uuid),
+  const channelUsedElsewhere = properties.fixture.modes.some(
+    (mode) => mode.uuid !== properties.channel.modeId && mode.channels.includes(properties.channel.uuid),
   );
 
   if (channelUsedElsewhere) {
     return;
   }
 
-  chooseChannelEditMode(`edit-all`);
+  chooseChannelEditMode('edit-all');
 }
 
+/**
+ * Applies an edit mode after forcing the dialog to re-render.
+ * @param editMode - The edit mode to apply.
+ */
 async function chooseChannelEditMode(editMode: string) {
-  props.channel.editMode = ``;
+  properties.channel.editMode = '';
 
   await nextTick();
 
-  props.channel.editMode = editMode;
+  properties.channel.editMode = editMode;
 }
 </script>

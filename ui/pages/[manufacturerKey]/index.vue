@@ -24,7 +24,7 @@
 
     <div class="card">
       <ul class="list fixtures">
-        <li v-for="fixture in fixtures" :key="fixture.key">
+        <li v-for="fixture of fixtures" :key="fixture.key">
           <NuxtLink
             :to="`/${manufacturer.key}/${fixture.key}`"
             :style="{ borderLeftColor: manufacturer.color }"
@@ -62,18 +62,18 @@ const fixtures = computed(() => manufacturer.value?.fixtures ?? []);
 const organizationStructuredData = computed(() => ({
   '@context': 'http://schema.org',
   '@type': 'Organization',
-  name: manufacturer.value?.name,
-  brand: manufacturer.value?.name,
-  sameAs: 'website' in (manufacturer.value ?? {}) ? manufacturer.value?.website : undefined,
+  'name': manufacturer.value?.name,
+  'brand': manufacturer.value?.name,
+  'sameAs': 'website' in (manufacturer.value ?? {}) ? manufacturer.value?.website : undefined,
 }));
 
 const itemListStructuredData = computed(() => ({
   '@context': 'http://schema.org',
   '@type': 'ItemList',
-  itemListElement: fixtures.value.map((fixture, index) => ({
+  'itemListElement': fixtures.value.map((fixture, index) => ({
     '@type': 'ListItem',
-    position: index + 1,
-    url: `${config.public.websiteUrl}${manufacturerKey}/${fixture.key}`,
+    'position': index + 1,
+    'url': `${config.public.websiteUrl}${manufacturerKey}/${fixture.key}`,
   })),
 }));
 
@@ -81,14 +81,14 @@ useHead({
   title: computed(() => manufacturer.value?.name ?? ''),
   script: [
     {
-      hid: 'organizationStructuredData',
-      type: 'application/ld+json',
-      children: computed(() => JSON.stringify(organizationStructuredData.value)),
+      key: 'organizationStructuredData',
+      type: 'application/ld+json' as 'application/json', // Unhead's script type union omits JSON-LD
+      innerHTML: computed(() => JSON.stringify(organizationStructuredData.value)),
     },
     {
-      hid: 'itemListStructuredData',
-      type: 'application/ld+json',
-      children: computed(() => JSON.stringify(itemListStructuredData.value)),
+      key: 'itemListStructuredData',
+      type: 'application/ld+json' as 'application/json', // Unhead's script type union omits JSON-LD
+      innerHTML: computed(() => JSON.stringify(itemListStructuredData.value)),
     },
   ],
 });

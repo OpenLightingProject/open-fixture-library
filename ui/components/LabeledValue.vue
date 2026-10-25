@@ -53,13 +53,13 @@ section {
 </style>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   name?: string;
   label?: string;
   value?: string;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
 defineEmits<{
   focusin: [event: FocusEvent];

@@ -32,23 +32,19 @@ interface Error {
   };
 }
 
-const props = defineProps<{
+const properties = defineProps<{
   error: Error;
 }>();
 
 const errorMessage = computed(() => {
-  if (props.error.data?.error) {
-    return props.error.data.error;
-  }
-
-  return props.error.message;
+  return properties.error.data?.error || properties.error.message;
 });
 
-if (props.error.statusCode !== 404) {
-  console.error('Nuxt rendering error:', props.error);
+if (properties.error.statusCode !== 404) {
+  console.error('Nuxt rendering error:', properties.error);
 }
 
-const title = computed(() => props.error.statusCode === 404 ? 'Not Found' : 'Error');
+const title = computed(() => (properties.error.statusCode === 404 ? 'Not Found' : 'Error'));
 
 useHead({
   title,

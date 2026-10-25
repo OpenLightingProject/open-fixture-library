@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -43,9 +43,9 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
-const hint = `Doesn't activate strobe, only controls the strobe frequency when another channel is set to a ShutterStrobe capability with shutter effect 'Strobe'.`;
+const hint = 'Doesn\'t activate strobe, only controls the strobe frequency when another channel is set to a ShutterStrobe capability with shutter effect \'Strobe\'.';
 
 const defaultData = {
   speed: null,

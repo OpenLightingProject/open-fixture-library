@@ -12,5 +12,6 @@ export type { default as Capability } from '../../lib/model/Capability.js';
 export type { default as Entity } from '../../lib/model/Entity.js';
 export type { default as Fixture } from '../../lib/model/Fixture.js';
 export type { default as Mode } from '../../lib/model/Mode.js';
+export type { default as Physical } from '../../lib/model/Physical.js';
 export type { default as Wheel } from '../../lib/model/Wheel.js';
 export type { default as WheelSlot } from '../../lib/model/WheelSlot.js';

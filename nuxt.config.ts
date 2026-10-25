@@ -1,11 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { defineNuxtConfig } from 'nuxt/config';
-
 import plugins from './plugins/plugins.json';
 
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 const searchIndexingIsAllowed = process.env.ALLOW_SEARCH_INDEXING === 'allowed';
-
 
 const pluginData = plugins as {
   exportPlugins: string[];
@@ -220,19 +218,19 @@ export default defineNuxtConfig({
       // Same helmet configuration as the Nuxt 2 oracle. `Content-Security-
       // Policy-Report-Only` is intentional: master never enforced CSP.
       contentSecurityPolicy: {
-        'default-src': ["'none'"],
-        'script-src': ["'self'", "'unsafe-eval'"],
-        'style-src': ["'self'", "'unsafe-inline'"],
-        'img-src': ["'self'", 'https://*.open-fixture-library.org', 'https://*.ytimg.com', 'data:'],
-        'frame-src': ["'self'", 'https://*.vimeo.com', '*.youtube-nocookie.com', 'https://www.facebook.com'],
-        'font-src': ["'self'"],
-        'connect-src': ["'self'"],
-        'manifest-src': ["'self'"],
+        'default-src': ['\'none\''],
+        'script-src': ['\'self\'', '\'unsafe-eval\''],
+        'style-src': ['\'self\'', '\'unsafe-inline\''],
+        'img-src': ['\'self\'', 'https://*.open-fixture-library.org', 'https://*.ytimg.com', 'data:'],
+        'frame-src': ['\'self\'', 'https://*.vimeo.com', '*.youtube-nocookie.com', 'https://www.facebook.com'],
+        'font-src': ['\'self\''],
+        'connect-src': ['\'self\''],
+        'manifest-src': ['\'self\''],
         'media-src': ['*'],
-        'form-action': ["'self'"],
-        'frame-ancestors': ["'none'"],
-        'object-src': ["'none'"],
-        'base-uri': ["'self'"],
+        'form-action': ['\'self\''],
+        'frame-ancestors': ['\'none\''],
+        'object-src': ['\'none\''],
+        'base-uri': ['\'self\''],
         'script-src-attr': false,
         'upgrade-insecure-requests': false,
       },

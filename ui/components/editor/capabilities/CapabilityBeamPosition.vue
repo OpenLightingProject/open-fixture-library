@@ -53,7 +53,7 @@ interface CapabilityTypeData {
   comment?: string;
 }
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: CapabilityTypeData;
@@ -61,9 +61,9 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
-const hint = `Only move the beam and not a visible physical part of the fixture. This is especially useful for lasers. Use Pan/Tilt for moving heads.`;
+const hint = 'Only move the beam and not a visible physical part of the fixture. This is especially useful for lasers. Use Pan/Tilt for moving heads.';
 
 const defaultData: CapabilityTypeData = {
   horizontalAngle: null,
@@ -75,12 +75,17 @@ const defaultData: CapabilityTypeData = {
   comment: '',
 };
 
+/**
+ * Checks whether a stepped or proportional property is still empty.
+ * @param property - The type data property name.
+ * @returns Whether both variants are empty.
+ */
 function isPropertyEmpty(property: string): boolean {
-  const typeData = props.capability.typeData;
-  const propKey = property as keyof CapabilityTypeData;
+  const typeData = properties.capability.typeData;
+  const propertyKey = property as keyof CapabilityTypeData;
   const startKey = `${property}Start` as keyof CapabilityTypeData;
 
-  const isSteppedEmpty = typeData[propKey] === null || typeData[propKey] === '';
+  const isSteppedEmpty = typeData[propertyKey] === null || typeData[propertyKey] === '';
   const isProportionalEmpty = typeData[startKey] === null || typeData[startKey] === '';
 
   return isSteppedEmpty && isProportionalEmpty;

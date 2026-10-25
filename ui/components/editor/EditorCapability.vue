@@ -86,12 +86,13 @@
 </style>
 
 <script setup lang="ts">
-import { capabilityDmxRange } from '~~/lib/schema-properties.js';
 import { getEmptyCapability, isCapabilityChanged } from '@/assets/scripts/editor-utilities.js';
+import { capabilityDmxRange } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   channel: {
     capabilities: Array<{
+      uuid: string;
       dmxRange: [number, number] | null;
       type: string;
       typeData: Record<string, any>;
@@ -103,7 +104,7 @@ interface Props {
   formstate: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
   'insert-capability-before': [];
   'insert-capability-after': [];
@@ -114,15 +115,15 @@ const instance = getCurrentInstance();
 const firstInput = ref<any>(null);
 const capabilityTypeData = ref<any>(null);
 
-const capabilities = computed(() => props.channel.capabilities);
+const capabilities = computed(() => properties.channel.capabilities);
 
-const capability = computed(() => capabilities.value[props.capabilityIndex]);
+const capability = computed(() => capabilities.value[properties.capabilityIndex]);
 
-const dmxMax = computed(() => Math.pow(256, props.resolution) - 1);
+const dmxMax = computed(() => Math.pow(256, properties.resolution) - 1);
 
 const isChanged = computed(() => {
   return capabilities.value.some(
-    capability => isCapabilityChanged(capability),
+    (otherCapability) => isCapabilityChanged(otherCapability),
   );
 });
 
@@ -135,55 +136,58 @@ const end = computed(() => {
 });
 
 const min = computed(() => {
-  let minVal = 0;
-  let index = props.capabilityIndex - 1;
+  let minValue = 0;
+  let index = properties.capabilityIndex - 1;
   while (index >= 0) {
-    const capability = capabilities.value[index];
-    if (capability.dmxRange !== null) {
-      if (capability.dmxRange[1]) {
-        minVal = capability.dmxRange[1] + 1;
+    const previousCapability = capabilities.value[index];
+    if (previousCapability.dmxRange !== null) {
+      if (previousCapability.dmxRange[1]) {
+        minValue = previousCapability.dmxRange[1] + 1;
         break;
       }
-      if (capability.dmxRange[0] !== null) {
-        minVal = capability.dmxRange[0] + 1;
+      if (previousCapability.dmxRange[0] !== null) {
+        minValue = previousCapability.dmxRange[0] + 1;
         break;
       }
     }
     index--;
   }
-  return minVal;
+  return minValue;
 });
 
 const max = computed(() => {
-  let maxVal = dmxMax.value;
-  let index = props.capabilityIndex + 1;
+  let maxValue = dmxMax.value;
+  let index = properties.capabilityIndex + 1;
   while (index < capabilities.value.length) {
-    const capability = capabilities.value[index];
-    if (capability.dmxRange !== null) {
-      if (capability.dmxRange[0] !== null) {
-        maxVal = capability.dmxRange[0] - 1;
+    const nextCapability = capabilities.value[index];
+    if (nextCapability.dmxRange !== null) {
+      if (nextCapability.dmxRange[0] !== null) {
+        maxValue = nextCapability.dmxRange[0] - 1;
         break;
       }
-      if (capability.dmxRange[1] !== null) {
-        maxVal = capability.dmxRange[1] - 1;
+      if (nextCapability.dmxRange[1] !== null) {
+        maxValue = nextCapability.dmxRange[1] - 1;
         break;
       }
     }
     index++;
   }
-  return maxVal;
+  return maxValue;
 });
 
+/**
+ * Inserts or merges neighboring capabilities when the start DMX value changes.
+ */
 function onStartUpdated() {
   if (start.value === null) {
-    const previousCapability = capabilities.value[props.capabilityIndex - 1];
+    const previousCapability = capabilities.value[properties.capabilityIndex - 1];
     if (previousCapability && !isCapabilityChanged(previousCapability)) {
       removePreviousCapability();
     }
     return;
   }
 
-  const previousCapability = capabilities.value[props.capabilityIndex - 1];
+  const previousCapability = capabilities.value[properties.capabilityIndex - 1];
   if (previousCapability) {
     if (isCapabilityChanged(previousCapability)) {
       if (start.value > min.value) {
@@ -203,16 +207,19 @@ function onStartUpdated() {
   }
 }
 
+/**
+ * Inserts or merges neighboring capabilities when the end DMX value changes.
+ */
 function onEndUpdated() {
   if (end.value === null) {
-    const nextCapability = capabilities.value[props.capabilityIndex + 1];
+    const nextCapability = capabilities.value[properties.capabilityIndex + 1];
     if (nextCapability && !isCapabilityChanged(nextCapability)) {
       removeNextCapability();
     }
     return;
   }
 
-  const nextCapability = capabilities.value[props.capabilityIndex + 1];
+  const nextCapability = capabilities.value[properties.capabilityIndex + 1];
   if (nextCapability) {
     if (isCapabilityChanged(nextCapability)) {
       if (end.value < max.value) {
@@ -232,17 +239,23 @@ function onEndUpdated() {
   }
 }
 
+/**
+ * Resets the capability to its empty state and collapses empty neighbors.
+ */
 function clear() {
   const emptyCapability = getEmptyCapability();
   for (const [property, value] of Object.entries(emptyCapability)) {
-    capability.value[property as keyof typeof capability.value] = value as typeof capability.value[keyof typeof capability.value];
+    (capability.value as Record<string, unknown>)[property] = value;
   }
   collapseWithNeighbors();
 }
 
+/**
+ * Removes adjacent capabilities that have no user-entered data.
+ */
 function collapseWithNeighbors() {
-  const previousCapability = capabilities.value[props.capabilityIndex - 1];
-  const nextCapability = capabilities.value[props.capabilityIndex + 1];
+  const previousCapability = capabilities.value[properties.capabilityIndex - 1];
+  const nextCapability = capabilities.value[properties.capabilityIndex + 1];
 
   if (previousCapability && !isCapabilityChanged(previousCapability)) {
     if (nextCapability && !isCapabilityChanged(nextCapability)) {
@@ -260,6 +273,9 @@ function collapseWithNeighbors() {
   }
 }
 
+/**
+ * Inserts an empty capability before this one and keeps the dialog scrolled.
+ */
 async function insertCapabilityBefore() {
   emit('insert-capability-before');
 
@@ -267,28 +283,43 @@ async function insertCapabilityBefore() {
   const dialog = element?.closest('.dialog') as HTMLElement | null;
   await nextTick();
 
-  const newCapability = dialog?.querySelector('.capability-editor')?.children[props.capabilityIndex - 1];
+  const newCapability = dialog?.querySelector('.capability-editor')?.children[properties.capabilityIndex - 1];
   if (dialog && newCapability) {
     dialog.scrollTop += (newCapability as HTMLElement).clientHeight;
   }
 }
 
+/**
+ * Inserts an empty capability after this one.
+ */
 function insertCapabilityAfter() {
   emit('insert-capability-after');
 }
 
+/**
+ * Removes the capability before this one.
+ */
 function removePreviousCapability() {
-  capabilities.value.splice(props.capabilityIndex - 1, 1);
+  capabilities.value.splice(properties.capabilityIndex - 1, 1);
 }
 
+/**
+ * Removes this capability.
+ */
 function removeCurrentCapability() {
-  capabilities.value.splice(props.capabilityIndex, 1);
+  capabilities.value.splice(properties.capabilityIndex, 1);
 }
 
+/**
+ * Removes the capability after this one.
+ */
 function removeNextCapability() {
-  capabilities.value.splice(props.capabilityIndex + 1, 1);
+  capabilities.value.splice(properties.capabilityIndex + 1, 1);
 }
 
+/**
+ * Fills in default DMX range bounds before the capability is saved.
+ */
 function cleanCapabilityData() {
   if (capability.value.dmxRange === null) {
     capability.value.dmxRange = [null, null];
@@ -303,6 +334,9 @@ function cleanCapabilityData() {
   capabilityTypeData.value?.cleanCapabilityData();
 }
 
+/**
+ * Focuses the capability's first input.
+ */
 function focus() {
   firstInput.value?.focus();
 }

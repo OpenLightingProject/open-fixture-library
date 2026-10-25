@@ -12,36 +12,39 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   schemaProperty: {
     pattern?: string;
     minLength?: number;
     maxLength?: number;
+    description?: string;
+    $ref?: string;
   };
   required?: boolean;
   hint?: string;
   modelValue: string | null;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
+  hint: '',
   required: false,
 });
 
 const emit = defineEmits<{
   'update:model-value': [value: string];
-  blur: [value: string];
+  'blur': [value: string];
   'vf:validate': [validationData: Record<string, string | null>];
 }>();
 
 const localValue = ref('');
 
 const validationData = computed(() => ({
-  pattern: 'pattern' in props.schemaProperty ? props.schemaProperty.pattern : null,
-  minlength: 'minLength' in props.schemaProperty ? String(props.schemaProperty.minLength) : null,
-  maxlength: 'maxLength' in props.schemaProperty ? String(props.schemaProperty.maxLength) : null,
+  pattern: 'pattern' in properties.schemaProperty ? properties.schemaProperty.pattern : null,
+  minlength: 'minLength' in properties.schemaProperty ? String(properties.schemaProperty.minLength) : null,
+  maxlength: 'maxLength' in properties.schemaProperty ? String(properties.schemaProperty.maxLength) : null,
 }));
 
-watch(() => props.modelValue, (newValue) => {
+watch(() => properties.modelValue, (newValue) => {
   localValue.value = newValue ? String(newValue) : '';
 }, {
   immediate: true,

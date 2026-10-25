@@ -1,3 +1,4 @@
+/* eslint-disable import-x/extensions -- `#sitemap/*` are virtual specifiers without file extensions */
 import { gzipSync } from 'node:zlib';
 import { createSitemap } from '#sitemap/server/sitemap/nitro';
 import { useSitemapRuntimeConfig } from '#sitemap/server/utils';

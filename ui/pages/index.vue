@@ -109,31 +109,31 @@ const recentContributors = computed(() => recentContributorsData.value ?? []);
 useHead({
   script: [
     {
-      hid: 'websiteStructuredData',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      key: 'websiteStructuredData',
+      type: 'application/ld+json' as 'application/json', // Unhead's script type union omits JSON-LD
+      innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'Open Fixture Library',
-        url: config.public.websiteUrl,
-        potentialAction: {
+        'name': 'Open Fixture Library',
+        'url': config.public.websiteUrl,
+        'potentialAction': {
           '@type': 'SearchAction',
           // eslint-disable-next-line unicorn/no-incorrect-template-string-interpolation -- `{search_term_string}` is a literal schema.org SearchAction placeholder
-          target: `${config.public.websiteUrl}search?q={search_term_string}`,
+          'target': `${config.public.websiteUrl}search?q={search_term_string}`,
           'query-input': 'required name=search_term_string',
         },
       }),
     },
     {
-      hid: 'organizationStructuredData',
-      type: 'application/ld+json',
-      children: JSON.stringify({
+      key: 'organizationStructuredData',
+      type: 'application/ld+json' as 'application/json', // Unhead's script type union omits JSON-LD
+      innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'Open Fixture Library',
-        description: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
-        url: config.public.websiteUrl,
-        logo: `${config.public.websiteUrl}ofl-logo.svg`,
+        'name': 'Open Fixture Library',
+        'description': 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
+        'url': config.public.websiteUrl,
+        'logo': `${config.public.websiteUrl}ofl-logo.svg`,
       }),
     },
   ],

@@ -218,7 +218,7 @@ interface PluginsResponse {
   data: Record<string, PluginData>;
 }
 
-interface Props {
+interface Properties {
   fixtureCount?: number;
   editorFixtures?: EditorFixtures;
   fixtureKey?: string;
@@ -226,8 +226,10 @@ interface Props {
   showHelp?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   fixtureCount: 0,
+  editorFixtures: undefined,
+  fixtureKey: '',
   buttonStyle: 'default',
   showHelp: false,
 });
@@ -236,39 +238,37 @@ const { data: pluginsData } = await useFetch<PluginsResponse>('/api/v1/plugins')
 
 const exportPlugins = computed<Plugin[]>(() => {
   const plugins = pluginsData.value;
-  if (!plugins?.exportPlugins || !plugins.data) return [];
-  return plugins.exportPlugins.flatMap(pluginKey => {
-    const pluginData = plugins.data[pluginKey];
-    return pluginData ? [{ key: pluginKey, name: pluginData.name }] : [];
-  });
+  const pluginKeys = plugins?.exportPlugins && plugins.data ? plugins.exportPlugins : [];
+
+  return pluginKeys
+    .map((pluginKey) => ({ pluginKey, pluginData: plugins.data[pluginKey] }))
+    .filter(({ pluginData }) => pluginData)
+    .map(({ pluginKey, pluginData }) => ({ key: pluginKey, name: pluginData.name }));
 });
 
 const selectClicked = ref(false);
 
 const isSingle = computed(() => {
-  return (props.editorFixtures && Object.keys(props.editorFixtures.fixtures).length === 1) || props.fixtureKey;
+  return (properties.editorFixtures && Object.keys(properties.editorFixtures.fixtures).length === 1) || properties.fixtureKey;
 });
 
 const title = computed(() => {
-  if (isSingle.value) {
-    return 'Download as…';
-  }
-
-  return `Download all ${props.fixtureCount} fixtures`;
+  return isSingle.value ? 'Download as…' : `Download all ${properties.fixtureCount} fixtures`;
 });
 
 const baseLink = computed(() => {
-  if (props.editorFixtures) {
+  if (properties.editorFixtures) {
     return '/download-editor';
   }
 
-  if (isSingle.value) {
-    return `/${props.fixtureKey}`;
-  }
-
-  return '/download';
+  return isSingle.value ? `/${properties.fixtureKey}` : '/download';
 });
 
+/**
+ * Triggers a browser download for the given blob.
+ * @param blob - The file contents.
+ * @param filename - The suggested file name.
+ */
 function downloadDataAsFile(blob: Blob, filename = '') {
   const URL = window.URL || window.webkitURL;
   const downloadUrl = URL.createObjectURL(blob);
@@ -292,12 +292,16 @@ function downloadDataAsFile(blob: Blob, filename = '') {
   }, 100);
 }
 
+/**
+ * Requests a formatted download from the API and saves it.
+ * @param pluginKey - The export plugin key.
+ */
 async function formattedDownload(pluginKey: string) {
   let filename = '';
 
   const response = await $fetch<Blob>(`${baseLink.value}.${pluginKey}`, {
     method: 'POST',
-    body: props.editorFixtures,
+    body: properties.editorFixtures,
     responseType: 'blob',
     onResponse({ response: fetchResponse }) {
       filename = parseContentDispositionFilename(fetchResponse.headers.get('content-disposition'));
@@ -307,10 +311,15 @@ async function formattedDownload(pluginKey: string) {
   downloadDataAsFile(response, filename);
 }
 
+/**
+ * Starts an editor download and prevents the link's default navigation.
+ * @param event - The click event.
+ * @param pluginKey - The export plugin key.
+ */
 function onDownloadButton(event: MouseEvent, pluginKey: string) {
   (event.target as HTMLElement).blur();
 
-  if (!props.editorFixtures) {
+  if (!properties.editorFixtures) {
     return;
   }
 
@@ -318,12 +327,20 @@ function onDownloadButton(event: MouseEvent, pluginKey: string) {
   formattedDownload(pluginKey);
 }
 
+/**
+ * Clears focus from the plugin select after a selection.
+ * @param event - The change event.
+ */
 function onDownloadSelectChange(event: Event) {
   if (selectClicked.value) {
     (event.target as HTMLSelectElement).blur();
   }
 }
 
+/**
+ * Starts a download for the selected plugin and resets the select.
+ * @param event - The blur event.
+ */
 function onDownloadSelectBlur(event: FocusEvent) {
   const target = event.target as HTMLSelectElement;
   if (target.value === '') {
@@ -334,7 +351,7 @@ function onDownloadSelectBlur(event: FocusEvent) {
   target.value = '';
   selectClicked.value = false;
 
-  if (!props.editorFixtures) {
+  if (!properties.editorFixtures) {
     window.open(`${baseLink.value}.${pluginKey}`);
     return;
   }

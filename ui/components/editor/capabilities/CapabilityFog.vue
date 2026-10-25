@@ -48,7 +48,7 @@
 <script setup lang="ts">
 import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -62,7 +62,7 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
 const fogTypes = capabilityTypes.Fog.properties.fogType.enum;
 

@@ -206,13 +206,13 @@
 import Fixture from '~~/lib/model/Fixture.js';
 import Manufacturer from '~~/lib/model/Manufacturer.js';
 
-interface Props {
+interface Properties {
   endpoint: string;
   githubUsername?: string;
   githubComment?: string;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
   success: [];
   reset: [];
@@ -241,20 +241,13 @@ const stateTitlesPlural: Record<string, string> = {
 };
 
 const fixtureKeys = computed(() => {
-  if (fixtureCreateResult.value === null) {
-    return [];
-  }
-
-  return Object.keys(fixtureCreateResult.value.fixtures);
+  return fixtureCreateResult.value === null ? [] : Object.keys(fixtureCreateResult.value.fixtures);
 });
 
 const isPlural = computed(() => fixtureKeys.value.length > 1);
 
 const title = computed(() => {
-  if (state.value in stateTitlesPlural && isPlural.value) {
-    return stateTitlesPlural[state.value];
-  }
-  return stateTitles[state.value];
+  return state.value in stateTitlesPlural && isPlural.value ? stateTitlesPlural[state.value] : stateTitles[state.value];
 });
 
 const rawData = computed(() => {
@@ -269,29 +262,19 @@ const rawData = computed(() => {
 });
 
 const hasPreview = computed(() => {
-  if (fixtureCreateResult.value === null) {
-    return false;
-  }
-
-  return Object.values(fixtureCreateResult.value.errors).some(
-    errors => errors.length === 0,
-  );
+  return fixtureCreateResult.value === null
+    ? false
+    : Object.values(fixtureCreateResult.value.errors).some(
+        (errors) => (errors as unknown[]).length === 0,
+      );
 });
 
 const hasValidationErrors = computed(() => {
-  if (fixtureCreateResult.value === null) {
-    return false;
-  }
-
-  return Object.values(fixtureCreateResult.value.errors).flat().length > 0;
+  return fixtureCreateResult.value !== null && Object.values(fixtureCreateResult.value.errors).flat().length > 0;
 });
 
 const hasValidationWarnings = computed(() => {
-  if (fixtureCreateResult.value === null) {
-    return false;
-  }
-
-  return Object.values(fixtureCreateResult.value.warnings).flat().length > 0;
+  return fixtureCreateResult.value !== null && Object.values(fixtureCreateResult.value.warnings).flat().length > 0;
 });
 
 const previewFixture = computed(() => {
@@ -299,7 +282,7 @@ const previewFixture = computed(() => {
     return null;
   }
 
-  const [manufacturerKey, fixtureKey] = previewFixtureKey.value.split('/');
+  const [manufacturerKey, fixtureKey] = previewFixtureKey.value.split('/', 2);
 
   const manufacturer = new Manufacturer(manufacturerKey, fixtureCreateResult.value.manufacturers[manufacturerKey]);
 
@@ -336,18 +319,27 @@ const previewFixtureCreateResult = computed(() => {
   };
 });
 
+/**
+ * Removes Vue reactivity from a value for serialization.
+ * @param value - The reactive value.
+ * @returns The plain value.
+ */
 function toPlain<T>(value: T): T {
   // Vue 3 reactive proxies cannot be passed to `structuredClone`.
   // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips the proxy
   return JSON.parse(JSON.stringify(value));
 }
 
+/**
+ * Sends the payload to the fixture validation endpoint.
+ * @param body - The fixture data to validate.
+ */
 async function validate(body: any) {
   requestBody.value = toPlain(body);
 
   state.value = 'validating';
   try {
-    const response = await $fetch<any>(props.endpoint, {
+    const response = await $fetch<any>(properties.endpoint, {
       method: 'POST',
       body: requestBody.value,
     });
@@ -355,9 +347,9 @@ async function validate(body: any) {
     fixtureCreateResult.value = response.data ?? response;
     state.value = 'ready';
   }
-  catch (err: any) {
+  catch (error_: any) {
     // ofetch exposes the parsed non-2xx response body as `err.data`.
-    const errorMessage = err.data?.error ?? err.message;
+    const errorMessage = error_.data?.error ?? error_.message;
 
     console.error('There was a problem with the request:', errorMessage);
 
@@ -366,16 +358,22 @@ async function validate(body: any) {
   }
 }
 
+/**
+ * Shows the server's preview for the first created fixture.
+ */
 async function onPreview() {
   previewFixtureKey.value = Object.keys(fixtureCreateResult.value.fixtures)[0];
   state.value = 'preview';
 }
 
+/**
+ * Submits the editor result and stores the resulting pull request URL.
+ */
 async function onSubmit() {
   requestBody.value = toPlain({
     fixtureCreateResult: fixtureCreateResult.value,
-    githubUsername: props.githubUsername ?? null,
-    githubComment: props.githubComment ?? null,
+    githubUsername: properties.githubUsername ?? null,
+    githubComment: properties.githubComment ?? null,
   });
 
   state.value = 'uploading';
@@ -389,9 +387,9 @@ async function onSubmit() {
     state.value = 'success';
     emit('success');
   }
-  catch (err: any) {
+  catch (error_: any) {
     // ofetch exposes the parsed non-2xx response body as `err.data`.
-    const errorMessage = err.data?.error ?? err.message;
+    const errorMessage = error_.data?.error ?? error_.message;
 
     console.error('There was a problem with the request:', errorMessage);
 
@@ -400,11 +398,17 @@ async function onSubmit() {
   }
 }
 
+/**
+ * Closes the dialog and resets the editor.
+ */
 function onReset() {
   state.value = 'closed';
   emit('reset');
 }
 
+/**
+ * Closes the dialog without resetting the editor.
+ */
 function onCancel() {
   state.value = 'closed';
 }

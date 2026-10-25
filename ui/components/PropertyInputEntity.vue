@@ -78,15 +78,18 @@
 </style>
 
 <script setup lang="ts">
-import { unitsSchema } from '~~/lib/schema-properties.js';
 import { useEditorGroupField } from '~/composables/useEditorForm';
+import { unitsSchema } from '~~/lib/schema-properties.js';
+import PropertyInputNumber from './PropertyInputNumber.vue';
 
-interface Props {
+type EntityValue = string | number | null;
+
+interface Properties {
   schemaProperty: {
     oneOf?: object[];
   };
   required?: boolean;
-  modelValue: string | number | null;
+  modelValue?: EntityValue;
   associatedEntity?: unknown;
   minNumber?: number;
   maxNumber?: number;
@@ -94,16 +97,19 @@ interface Props {
   wide?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   required: false,
   modelValue: '',
+  associatedEntity: undefined,
+  minNumber: undefined,
+  maxNumber: undefined,
   wide: false,
 });
 
 const emit = defineEmits<{
-  'update:model-value': [value: string | number | null];
-  focus: [];
-  blur: [];
+  'update:model-value': [value: EntityValue];
+  'focus': [];
+  'blur': [];
   'unit-selected': [unitString: string];
   'vf:validate': [validationData: { 'entity-complete': string; 'entities-have-same-units': string }];
 }>();
@@ -117,53 +123,48 @@ const validationData = ref({
   'entities-have-same-units': '',
 });
 
-const subSchemas = computed(() => props.schemaProperty.oneOf || [props.schemaProperty]);
+const subSchemas = computed(() => properties.schemaProperty.oneOf || [properties.schemaProperty]);
 
 const enumValues = computed(() => {
-  const enumSubSchema = subSchemas.value.find(subSchema => 'enum' in subSchema);
+  const enumSubSchema = subSchemas.value.find((subSchema) => 'enum' in subSchema);
 
   return enumSubSchema ? (enumSubSchema as { enum: string[] }).enum : [];
 });
 
 const unitNames = computed(() => {
   return subSchemas.value.filter(
-    subSchema => '$ref' in subSchema && (subSchema as { $ref: string }).$ref.includes('#/units/'),
+    (subSchema) => '$ref' in subSchema && (subSchema as { $ref: string }).$ref.includes('#/units/'),
   ).map(
-    subSchema => (subSchema as { $ref: string }).$ref.replace(/^(?:definitions\.json)?#\/units\//, ''),
+    (subSchema) => (subSchema as { $ref: string }).$ref.replace(/^(?:definitions\.json)?#\/units\//, ''),
   );
 });
 
 const units = computed(() => {
-  const units: Record<string, { unitString: string; displayString: string; numberSchema: object }> = {};
+  const unitDefinitions: Record<string, { unitString: string; displayString: string; numberSchema: object }> = {};
   for (const unitName of unitNames.value) {
     const unitSchema = unitsSchema[unitName];
 
     const unitString = 'pattern' in unitSchema ? parseUnitFromPattern(unitSchema.pattern) : '';
     const numberSchema = 'pattern' in unitSchema ? unitsSchema.number : unitSchema;
 
-    units[unitName] = {
+    unitDefinitions[unitName] = {
       unitString,
       displayString: getUnitDisplayString(unitString),
       numberSchema,
     };
   }
 
-  return units;
+  return unitDefinitions;
 });
 
 const selectedUnit = computed({
-  get: () => getSelectedUnit(props.modelValue, enumValues.value, unitNames.value, units.value),
+  get: () => getSelectedUnit(properties.modelValue, enumValues.value, unitNames.value, units.value),
   set: (newUnit: string) => {
-    if (enumValues.value.includes(newUnit) || newUnit === '') {
+    if (newUnit === '' || enumValues.value.includes(newUnit)) {
       update(newUnit);
     }
     else if (units.value[newUnit]?.unitString === '') {
-      if (selectedNumber.value === '') {
-        update('[no unit]');
-      }
-      else {
-        update(Number.parseFloat(selectedNumber.value as string));
-      }
+      update(selectedNumber.value === '' ? '[no unit]' : Number.parseFloat(String(selectedNumber.value)));
       emit('unit-selected', '[no unit]');
     }
     else {
@@ -173,15 +174,15 @@ const selectedUnit = computed({
   },
 });
 
-const hasNumber = computed(() => hasNumberFunc(selectedUnit.value, enumValues.value));
+const hasNumber = computed(() => hasNumberFunction(selectedUnit.value, enumValues.value));
 
 const selectedNumber = computed({
   get: () => {
-    if (typeof props.modelValue !== 'string') {
-      return props.modelValue;
+    if (typeof properties.modelValue !== 'string') {
+      return properties.modelValue;
     }
 
-    const number = Number.parseFloat(props.modelValue.replace(selectedUnit.value, ''));
+    const number = Number.parseFloat(properties.modelValue.replace(selectedUnit.value, ''));
 
     return Number.isNaN(number) ? '' : number;
   },
@@ -191,12 +192,7 @@ const selectedNumber = computed({
     }
 
     if (units.value[selectedUnit.value]?.unitString === '') {
-      if (newNumber === '') {
-        update('[no unit]');
-      }
-      else {
-        update(Number.parseFloat(newNumber as string));
-      }
+      update(newNumber === '' ? '[no unit]' : Number.parseFloat(newNumber as string));
     }
     else {
       update(newNumber + units.value[selectedUnit.value].unitString);
@@ -205,17 +201,13 @@ const selectedNumber = computed({
 });
 
 const hasSameUnit = computed(() => {
-  if (!props.associatedEntity) {
+  if (!properties.associatedEntity) {
     return true;
   }
 
-  const otherFieldSelectedUnit = getSelectedUnit(props.associatedEntity, enumValues.value, unitNames.value, units.value);
+  const otherFieldSelectedUnit = getSelectedUnit(properties.associatedEntity as EntityValue, enumValues.value, unitNames.value, units.value);
 
-  if (!hasNumber.value && !hasNumberFunc(otherFieldSelectedUnit, enumValues.value)) {
-    return true;
-  }
-
-  return selectedUnit.value === otherFieldSelectedUnit;
+  return !(hasNumber.value || hasNumberFunction(otherFieldSelectedUnit, enumValues.value)) || selectedUnit.value === otherFieldSelectedUnit;
 });
 
 onMounted(() => {
@@ -224,8 +216,8 @@ onMounted(() => {
 
 const { touch } = useEditorGroupField(
   () => ({
-    name: props.name,
-    getValue: () => props.modelValue,
+    name: properties.name,
+    getValue: () => properties.modelValue,
     getRules: () => [
       { name: 'entity-complete', allowEmpty: true },
       { name: 'entities-have-same-units', allowEmpty: true },
@@ -238,7 +230,7 @@ const { touch } = useEditorGroupField(
       hasSameUnit: hasSameUnit.value,
     }),
   }),
-  () => [props.modelValue, props.associatedEntity, selectedUnit.value],
+  () => [properties.modelValue, properties.associatedEntity, selectedUnit.value],
 );
 
 const focus = () => {
@@ -246,7 +238,7 @@ const focus = () => {
   focusField?.focus();
 };
 
-const update = (newValue: string | number | null) => {
+const update = (newValue: EntityValue) => {
   emit('update:model-value', newValue);
 };
 
@@ -256,7 +248,7 @@ const setUnitString = (newUnitString: string) => {
   }
 
   selectedUnit.value = Object.keys(units.value).find(
-    unitName => units.value[unitName].unitString === newUnitString,
+    (unitName) => units.value[unitName].unitString === newUnitString,
   ) || '';
 };
 
@@ -288,6 +280,11 @@ defineExpose({
   setUnitString,
 });
 
+/**
+ * Extracts the unit suffix from a schema pattern.
+ * @param pattern - The JSON schema pattern.
+ * @returns The unit string.
+ */
 function parseUnitFromPattern(pattern: string): string {
   if (!pattern.endsWith('$')) {
     throw new Error(`Pattern does not end with '$': ${pattern}`);
@@ -297,29 +294,44 @@ function parseUnitFromPattern(pattern: string): string {
   return pattern.slice(lastNumberPartIndex + 1, -1).replaceAll('\\', '');
 }
 
+/**
+ * Formats a unit string for display.
+ * @param unitString - The raw unit string.
+ * @returns The display string.
+ */
 function getUnitDisplayString(unitString: string): string {
-  if (unitString === '') {
-    return 'number';
-  }
-
-  return unitString.replace('^2', '²').replace('^3', '³');
+  return unitString === '' ? 'number' : unitString.replace('^2', '²').replace('^3', '³');
 }
 
-function getSelectedUnit(value: string | number | null, enumValues: string[], unitNames: string[], units: Record<string, { unitString: string }>): string {
-  if (enumValues.includes(value as string) || value === '') {
+/**
+ * Determines which unit applies to the current value.
+ * @param value - The current entity value.
+ * @param enumValuesList - The allowed enum values.
+ * @param unitNamesList - The unit names allowed by the schema.
+ * @param unitDefinitions - Unit metadata keyed by unit name.
+ * @returns The selected unit name.
+ */
+function getSelectedUnit(value: EntityValue, enumValuesList: string[], unitNamesList: string[], unitDefinitions: Record<string, { unitString: string }>): string {
+  if (value === '' || enumValuesList.includes(value as string)) {
     return value as string;
   }
 
   if (value === '[no unit]' || typeof value !== 'string') {
-    return unitNames.find(name => units[name].unitString === '') || '';
+    return unitNamesList.find((name) => unitDefinitions[name].unitString === '') || '';
   }
 
   const unit = value.replace(/^-?\d+(\.\d+)?/, '');
 
-  return unitNames.find(name => units[name].unitString === unit) || '';
+  return unitNamesList.find((name) => unitDefinitions[name].unitString === unit) || '';
 }
 
-function hasNumberFunc(unitName: string, enumValues: string[]): boolean {
-  return unitName !== '' && !enumValues.includes(unitName);
+/**
+ * Checks whether a unit name represents a numeric value.
+ * @param unitName - The unit name.
+ * @param enumValuesList - The allowed enum values.
+ * @returns Whether the value is numeric.
+ */
+function hasNumberFunction(unitName: string, enumValuesList: string[]): boolean {
+  return unitName !== '' && !enumValuesList.includes(unitName);
 }
 </script>

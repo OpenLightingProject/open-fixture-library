@@ -153,14 +153,14 @@
 <script setup lang="ts">
 import Physical from '~~/lib/model/Physical.js';
 
-interface Props {
+interface Properties {
   physical: Physical;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const powerConnectors = computed(() => {
-  return Object.entries(props.physical.powerConnectors).map(([name, value]) => ({
+  return Object.entries(properties.physical.powerConnectors).map(([name, value]) => ({
     name,
     value,
   }));

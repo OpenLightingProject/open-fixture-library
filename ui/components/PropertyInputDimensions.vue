@@ -33,8 +33,9 @@
 
 <script setup lang="ts">
 import { useEditorGroupField } from '~/composables/useEditorForm';
+import PropertyInputNumber from './PropertyInputNumber.vue';
 
-interface Props {
+interface Properties {
   modelValue?: number[] | null;
   hints?: string[];
   schemaProperty: {
@@ -43,19 +44,21 @@ interface Props {
   unit?: string;
   required?: boolean;
   name: string;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
   formstate: object;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   modelValue: null,
   hints: () => ['x', 'y', 'z'],
+  unit: '',
   required: false,
 });
 
 const emit = defineEmits<{
   'update:model-value': [dimensions: number[] | null];
-  focus: [];
-  blur: [];
+  'focus': [];
+  'blur': [];
   'vf:validate': [validationData: { 'complete-dimensions': string }];
 }>();
 
@@ -64,13 +67,13 @@ const root = ref<HTMLElement | null>(null);
 
 const { touch } = useEditorGroupField(
   () => ({
-    name: props.name,
-    getValue: () => props.modelValue,
+    name: properties.name,
+    getValue: () => properties.modelValue,
     getRules: () => [{ name: 'complete-dimensions' }],
     getAttrs: () => ({}),
     getElement: () => root.value,
   }),
-  () => props.modelValue,
+  () => properties.modelValue,
 );
 
 const validationData = ref({
@@ -78,27 +81,27 @@ const validationData = ref({
 });
 
 const x = computed({
-  get: () => props.modelValue ? props.modelValue[0] : null,
-  set: (xInputVal: number | null) => {
-    emit('update:model-value', getDimensionsArray(xInputVal, y.value, z.value));
+  get: () => (properties.modelValue ? properties.modelValue[0] : null),
+  set: (xInputValue: number | null) => {
+    emit('update:model-value', getDimensionsArray(xInputValue, y.value, z.value));
   },
 });
 
 const y = computed({
-  get: () => props.modelValue ? props.modelValue[1] : null,
-  set: (yInputVal: number | null) => {
-    emit('update:model-value', getDimensionsArray(x.value, yInputVal, z.value));
+  get: () => (properties.modelValue ? properties.modelValue[1] : null),
+  set: (yInputValue: number | null) => {
+    emit('update:model-value', getDimensionsArray(x.value, yInputValue, z.value));
   },
 });
 
 const z = computed({
-  get: () => props.modelValue ? props.modelValue[2] : null,
-  set: (zInputVal: number | null) => {
-    emit('update:model-value', getDimensionsArray(x.value, y.value, zInputVal));
+  get: () => (properties.modelValue ? properties.modelValue[2] : null),
+  set: (zInputValue: number | null) => {
+    emit('update:model-value', getDimensionsArray(x.value, y.value, zInputValue));
   },
 });
 
-const dimensionsSpecified = computed(() => props.modelValue !== null);
+const dimensionsSpecified = computed(() => properties.modelValue !== null);
 
 onMounted(() => {
   emit('vf:validate', validationData.value);
@@ -124,11 +127,14 @@ defineExpose({
   },
 });
 
-function getDimensionsArray(x: number | null, y: number | null, z: number | null): [number, number, number] | null {
-  if (x === null && y === null && z === null) {
-    return null;
-  }
-
-  return [x, y, z];
+/**
+ * Builds the dimensions tuple, or `null` when all axes are empty.
+ * @param xValue - The width value.
+ * @param yValue - The height value.
+ * @param zValue - The depth value.
+ * @returns The dimensions tuple or `null`.
+ */
+function getDimensionsArray(xValue: number | null, yValue: number | null, zValue: number | null): [number, number, number] | null {
+  return xValue === null && yValue === null && zValue === null ? null : [xValue, yValue, zValue];
 }
 </script>

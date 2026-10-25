@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   schemaProperty: {
     enum: string[];
   };
@@ -24,7 +24,8 @@ interface Props {
   modelValue: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
+  additionHint: '',
   required: false,
 });
 
@@ -33,7 +34,7 @@ const emit = defineEmits<{
 }>();
 
 const localValue = computed({
-  get: () => props.modelValue,
+  get: () => properties.modelValue,
   set: (newValue: string) => {
     emit('update:model-value', newValue);
   },

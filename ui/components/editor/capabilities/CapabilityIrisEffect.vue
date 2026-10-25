@@ -41,7 +41,7 @@
 <script setup lang="ts">
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -55,9 +55,9 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
-const hint = `This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.`;
+const hint = 'This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.';
 
 const defaultData = {
   effectName: '',

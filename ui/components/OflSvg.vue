@@ -1,4 +1,12 @@
-<style lang="scss">
+<template>
+  <span
+    class="icon"
+    :class="$attrs.class"
+    :aria-hidden="hasTitle ? undefined : 'true'"
+    v-html="svgMarkup" />
+</template>
+
+<style lang="scss" scoped>
 .icon {
   display: inline-block;
   width: 1.4em;
@@ -28,17 +36,27 @@
 <script setup lang="ts">
 import icons from '../assets/icons/icons.js';
 
-interface Props {
+interface Properties {
   type?: string;
   name?: string;
   colors?: string[];
   title?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
+  type: undefined,
+  name: undefined,
   colors: () => [],
+  title: undefined,
 });
 
+/**
+ * Returns the SVG markup for an icon.
+ * @param name - The icon name.
+ * @param category - The optional icon category directory.
+ * @param title - An optional accessible title.
+ * @returns The SVG markup.
+ */
 function getSvg(name: string | undefined, category: string | undefined, title: string | undefined): string {
   if (name === undefined) {
     return '';
@@ -64,8 +82,14 @@ function getSvg(name: string | undefined, category: string | undefined, title: s
   return svg;
 }
 
+/**
+ * Builds a pie-chart color circle icon.
+ * @param colors - The colors to render as slices.
+ * @param title - An optional accessible title.
+ * @returns The SVG markup.
+ */
 function getColorCircle(colors: string[], title: string | undefined): string {
-  let svgString = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle" role="img">`;
+  let svgString = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle" role="img">';
 
   if (title) {
     svgString += `<title>${title}</title>`;
@@ -82,6 +106,12 @@ function getColorCircle(colors: string[], title: string | undefined): string {
   return svgString;
 }
 
+/**
+ * Builds the circles or slices inside a color circle icon.
+ * @param colors - The colors to render.
+ * @param radius - The circle radius.
+ * @returns The SVG fragment.
+ */
 function getColorCircleSvgFragment(colors: string[], radius: number): string {
   if (colors.length === 1) {
     return `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
@@ -108,6 +138,12 @@ function getColorCircleSvgFragment(colors: string[], radius: number): string {
   return svgString;
 }
 
+/**
+ * Converts a slice position on a color circle to Cartesian coordinates.
+ * @param percent - The position in the range 0 to 1.
+ * @param radius - The circle radius.
+ * @returns The x and y coordinates.
+ */
 function getCoordinatesForPercent(percent: number, radius: number): [number, number] {
   percent += 0.375;
 
@@ -118,36 +154,36 @@ function getCoordinatesForPercent(percent: number, radius: number): [number, num
 
 const svgData = computed(() => {
   let svg: string;
-  let hasTitle = Boolean(props.title);
+  let hasTitle = Boolean(properties.title);
 
-  if (props.type === 'color-circle') {
-    let colors = props.colors;
+  if (properties.type === 'color-circle') {
+    let colors = properties.colors;
 
-    if (props.colors.length === 0 && props.name !== undefined) {
+    if (properties.colors.length === 0 && properties.name !== undefined) {
       const colorLookup: Record<string, string> = {
-        Red: '#ff0000',
-        Green: '#00ff00',
-        Blue: '#0000ff',
-        Cyan: '#00ffff',
-        Magenta: '#ff00ff',
-        Yellow: '#ffff00',
-        Amber: '#ffbf00',
-        White: '#ffffff',
+        'Red': '#ff0000',
+        'Green': '#00ff00',
+        'Blue': '#0000ff',
+        'Cyan': '#00ffff',
+        'Magenta': '#ff00ff',
+        'Yellow': '#ffff00',
+        'Amber': '#ffbf00',
+        'White': '#ffffff',
         'Warm White': '#ffedde',
         'Cold White': '#edefff',
-        UV: '#8800ff',
-        Lime: '#bfff00',
-        Indigo: '#4b0082',
+        'UV': '#8800ff',
+        'Lime': '#bfff00',
+        'Indigo': '#4b0082',
       };
-      colors = [colorLookup[props.name] ?? ''];
+      colors = [colorLookup[properties.name] ?? ''];
     }
 
-    const title = props.title || props.name;
+    const title = properties.title || properties.name;
     hasTitle = Boolean(title);
     svg = getColorCircle(colors, title);
   }
   else {
-    svg = getSvg(props.name, props.type, props.title);
+    svg = getSvg(properties.name, properties.type, properties.title);
   }
 
   return { svg, hasTitle };
@@ -156,13 +192,3 @@ const svgData = computed(() => {
 const svgMarkup = computed(() => svgData.value.svg);
 const hasTitle = computed(() => svgData.value.hasTitle);
 </script>
-
-<template>
-  <span
-    class="icon"
-    :class="$attrs.class"
-    :aria-hidden="hasTitle ? undefined : 'true'"
-    v-html="svgMarkup"
-  />
-</template>
-

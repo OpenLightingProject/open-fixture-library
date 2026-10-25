@@ -3,18 +3,18 @@
 </template>
 
 <script setup lang="ts">
-import type { AbstractChannel } from '~/types/models';
 import FineChannel from '~~/lib/model/FineChannel.js';
 import NullChannel from '~~/lib/model/NullChannel.js';
 import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
+import type { AbstractChannel } from '~/types/models';
 
-interface Props {
+interface Properties {
   channel: AbstractChannel;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
-const iconProperties = computed(() => getIconProperties(props.channel));
+const iconProperties = computed(() => getIconProperties(properties.channel));
 
 const channelTypeIcons: Record<string, string> = {
   'Multi-Color': 'color-changer',
@@ -22,6 +22,11 @@ const channelTypeIcons: Record<string, string> = {
   'Intensity': 'dimmer',
 };
 
+/**
+ * Builds the icon props for a channel, resolving fine and switching channels.
+ * @param channel - The channel to describe.
+ * @returns The icon props.
+ */
 function getIconProperties(channel: AbstractChannel): { type: string; name: string; title: string; colors?: string[] } {
   while (channel instanceof FineChannel) {
     channel = channel.coarseChannel;
@@ -43,18 +48,20 @@ function getIconProperties(channel: AbstractChannel): { type: string; name: stri
     };
   }
 
-  if (channel.type === 'Single Color') {
+  const typedChannel = channel as unknown as { type: string; color?: string };
+
+  if (typedChannel.type === 'Single Color') {
     return {
       type: 'color-circle',
-      name: (channel as { color: string }).color,
-      title: `Channel type: Single Color, ${(channel as { color: string }).color}`,
+      name: typedChannel.color ?? '',
+      title: `Channel type: Single Color, ${typedChannel.color ?? ''}`,
     };
   }
 
   return {
     type: 'fixture',
-    name: channelTypeIcons[channel.type] || channel.type,
-    title: `Channel type: ${channel.type}`,
+    name: channelTypeIcons[typedChannel.type] || typedChannel.type,
+    title: `Channel type: ${typedChannel.type}`,
   };
 }
 </script>

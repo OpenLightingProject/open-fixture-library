@@ -82,7 +82,7 @@
 <script setup lang="ts">
 import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -101,7 +101,7 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const shutterEffects = capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
 
@@ -119,13 +119,13 @@ const defaultData = {
 };
 
 const isStrobeEffect = computed(() => {
-  return ['', 'Open', 'Closed'].includes(props.capability.typeData.shutterEffect as string) === false;
+  return !['', 'Open', 'Closed'].includes(properties.capability.typeData.shutterEffect as string);
 });
 
 const strobeEffectName = computed(() => {
-  return props.capability.typeData.shutterEffect === 'Strobe'
+  return properties.capability.typeData.shutterEffect === 'Strobe'
     ? 'Strobe'
-    : `${props.capability.typeData.shutterEffect} Strobe`;
+    : `${properties.capability.typeData.shutterEffect} Strobe`;
 });
 
 const resetProperties = computed(() => {

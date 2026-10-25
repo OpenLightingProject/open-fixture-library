@@ -102,6 +102,8 @@
 </style>
 
 <script setup lang="ts">
+import type { HelpWantedModel } from '~/types/help-wanted';
+
 const route = useRoute();
 
 const pluginKey = route.params.plugin as string;
@@ -120,7 +122,7 @@ if (pluginKey in pluginData.value.previousVersions) {
   navigateTo(`/about/plugins/${newPluginKey}`, { redirectCode: 301 });
 }
 
-const helpWantedContext = ref<unknown>(undefined);
+const helpWantedContext = ref<HelpWantedModel | undefined>(undefined);
 const libraryNames: Record<string, string> = {
   main: 'Main (system) library',
   user: 'User library',
@@ -130,17 +132,23 @@ const exportPluginVersion = computed(() => pluginData.value?.exportPluginVersion
 const importPluginVersion = computed(() => pluginData.value?.importPluginVersion);
 
 const fileLocationOSes = computed(() => {
-  if (!pluginData.value || !('fileLocations' in pluginData.value)) return null;
-  return Object.keys(pluginData.value.fileLocations).filter(
-    (os): os is string => os !== 'subDirectoriesAllowed',
-  );
+  return pluginData.value && ('fileLocations' in pluginData.value)
+    ? Object.keys(pluginData.value.fileLocations).filter(
+        (os): os is string => os !== 'subDirectoriesAllowed',
+      )
+    : null;
 });
 
+/**
+ * Opens the help-wanted dialog for the emitting element.
+ * @param event - The help-wanted event payload.
+ * @param event.context - The entity requesting help.
+ */
 function openHelpWantedDialog(event: { context: unknown }) {
-  helpWantedContext.value = event.context;
+  helpWantedContext.value = event.context as HelpWantedModel;
 }
 
 useHead({
-  title: computed(() => pluginData.value ? `${pluginData.value.name} Plugin` : ''),
+  title: computed(() => (pluginData.value ? `${pluginData.value.name} Plugin` : '')),
 });
 </script>

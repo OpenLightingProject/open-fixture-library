@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   date: Date;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
-const isoDate = computed(() => props.date.toISOString());
+const isoDate = computed(() => properties.date.toISOString());
 </script>

@@ -122,7 +122,7 @@
 import { nextTick } from 'vue';
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -148,7 +148,7 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const effectNameOrPresetInput = ref<HTMLInputElement | HTMLSelectElement | null>(null);
 
 const effectPresets = schemaDefinitions.effectPreset.enum;
@@ -174,17 +174,21 @@ const defaultData = {
 };
 
 const resetProperties = computed(() => {
-  const propsToReset = [props.capability.typeData.effectNameOrPreset === 'effectName' ? 'effectPreset' : 'effectName'];
+  const propertiesToReset = [properties.capability.typeData.effectNameOrPreset === 'effectName' ? 'effectPreset' : 'effectName'];
 
-  if (!props.capability.typeData.soundControlled) {
-    propsToReset.push('soundSensitivity', 'soundSensitivityStart', 'soundSensitivityEnd');
+  if (!properties.capability.typeData.soundControlled) {
+    propertiesToReset.push('soundSensitivity', 'soundSensitivityStart', 'soundSensitivityEnd');
   }
 
-  return propsToReset;
+  return propertiesToReset;
 });
 
+/**
+ * Stores the selected effect name or preset and refocuses the input.
+ * @param newValue - The selected value.
+ */
 async function changeEffectNameOrPreset(newValue: string) {
-  props.capability.typeData.effectNameOrPreset = newValue;
+  properties.capability.typeData.effectNameOrPreset = newValue;
 
   await nextTick();
   if (effectNameOrPresetInput.value) {

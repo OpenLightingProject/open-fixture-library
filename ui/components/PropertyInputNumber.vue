@@ -19,13 +19,15 @@
 <script setup lang="ts">
 import { useEditorGroupField } from '~/composables/useEditorForm';
 
-interface Props {
+interface Properties {
   schemaProperty: {
     minimum?: number;
     maximum?: number;
     exclusiveMinimum?: number;
     exclusiveMaximum?: number;
     type?: string;
+    description?: string;
+    $ref?: string;
   };
   required?: boolean;
   hint?: string;
@@ -37,69 +39,53 @@ interface Props {
   name?: string;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const emit = defineEmits<{
   'update:model-value': [value: number | string | null];
-  focus: [event: FocusEvent];
-  blur: [event: FocusEvent];
+  'focus': [event: FocusEvent];
+  'blur': [event: FocusEvent];
   'vf:validate': [validationData: Record<string, string | null>];
 }>();
 
 const exclusiveMinimum = computed(() => {
-  if ('exclusiveMinimum' in props.schemaProperty) {
-    return props.schemaProperty.exclusiveMinimum;
-  }
-
-  return null;
+  return 'exclusiveMinimum' in properties.schemaProperty ? properties.schemaProperty.exclusiveMinimum : null;
 });
 
 const exclusiveMaximum = computed(() => {
-  if ('exclusiveMaximum' in props.schemaProperty) {
-    return props.schemaProperty.exclusiveMaximum;
-  }
-
-  return null;
+  return 'exclusiveMaximum' in properties.schemaProperty ? properties.schemaProperty.exclusiveMaximum : null;
 });
 
 const min = computed(() => {
-  if (props.minimum !== undefined && props.minimum !== 'invalid') {
-    return props.minimum;
+  if (properties.minimum !== undefined && properties.minimum !== 'invalid') {
+    return properties.minimum;
   }
 
-  if ('minimum' in props.schemaProperty) {
-    return props.schemaProperty.minimum;
-  }
-
-  return exclusiveMinimum.value;
+  return 'minimum' in properties.schemaProperty ? properties.schemaProperty.minimum : exclusiveMinimum.value;
 });
 
 const max = computed(() => {
-  if (props.maximum !== undefined && props.maximum !== 'invalid') {
-    return props.maximum;
+  if (properties.maximum !== undefined && properties.maximum !== 'invalid') {
+    return properties.maximum;
   }
 
-  if ('maximum' in props.schemaProperty) {
-    return props.schemaProperty.maximum;
-  }
-
-  return exclusiveMaximum.value;
+  return 'maximum' in properties.schemaProperty ? properties.schemaProperty.maximum : exclusiveMaximum.value;
 });
 
 const step = computed(() => {
-  if (props.stepOverride !== undefined) {
-    return props.stepOverride;
+  if (properties.stepOverride !== undefined) {
+    return properties.stepOverride;
   }
-  return props.schemaProperty.type === 'integer' ? 1 : 'any';
+  return properties.schemaProperty.type === 'integer' ? 1 : 'any';
 });
 
 const validationData = computed(() => ({
-  min: min.value === null ? null : String(min.value),
-  max: max.value === null ? null : String(max.value),
+  'min': min.value === null ? null : String(min.value),
+  'max': max.value === null ? null : String(max.value),
   'data-exclusive-minimum': exclusiveMinimum.value === null ? null : String(exclusiveMinimum.value),
   'data-exclusive-maximum': exclusiveMaximum.value === null ? null : String(exclusiveMaximum.value),
-  step: String(step.value),
-  type: 'number',
+  'step': String(step.value),
+  'type': 'number',
 }));
 
 watch(validationData, (newValidationData) => {
@@ -116,13 +102,13 @@ const fieldRules = computed(() => {
   // emitted before the directive listener was attached, so only `required` was
   // ever registered. Match that behaviour instead of adding a new client-side
   // error the old site never showed.
-  if (props.modelValue === 'invalid') {
+  if (properties.modelValue === 'invalid') {
     return [];
   }
 
   const rules: { name: string; params?: unknown }[] = [];
 
-  if (props.required) {
+  if (properties.required) {
     rules.push({ name: 'required' });
   }
 
@@ -139,16 +125,16 @@ const fieldRules = computed(() => {
 });
 
 useEditorGroupField(
-  () => (props.name
+  () => (properties.name
     ? {
-        name: props.name,
-        getValue: () => props.modelValue,
+        name: properties.name,
+        getValue: () => properties.modelValue,
         getRules: () => fieldRules.value,
         getAttrs: () => validationData.value,
         getElement: () => inputElement.value,
       }
     : null),
-  () => props.modelValue,
+  () => properties.modelValue,
 );
 
 const update = () => {

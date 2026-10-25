@@ -38,7 +38,8 @@
     "test:dmx-value-scaling": "vitest run --project unit tests/unit/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
     "test:http-status": "vitest run --project http-status",
-    "test:built-files-committed": "node tests/built-files-committed.js"
+    "test:built-files-committed": "node tests/built-files-committed.js",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
     "@embetty/server": "^3.2.12",
@@ -107,9 +108,11 @@
     "stylelint-config-standard-scss": "~17.0.0",
     "stylelint-order": "~8.1.1",
     "terminate": "^2.8.0",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.0",
     "vitest": "^5.0.5",
     "vue-eslint-parser": "~10.4.1",
+    "vue-tsc": "^3.3.13",
     "widdershins": "^4.0.1"
   },
   "overrides": {

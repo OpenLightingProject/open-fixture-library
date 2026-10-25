@@ -83,22 +83,37 @@ const unselectedCategories = computed(() => {
   );
 });
 
+/**
+ * Adds a category to the selected list.
+ * @param selectedCategory - The category to add.
+ */
 function select(selectedCategory: string) {
   const updatedCategoryList = [...properties.modelValue, selectedCategory];
   emit('update:model-value', updatedCategoryList);
   emit('blur');
 }
 
+/**
+ * Removes a category from the selected list.
+ * @param deselectedCategory - The category to remove.
+ */
 function deselect(deselectedCategory: string) {
   const updatedCategoryList = properties.modelValue.filter((category) => category !== deselectedCategory);
   emit('update:model-value', updatedCategoryList);
   emit('blur');
 }
 
+/**
+ * Re-emits the focus event.
+ */
 function onFocus() {
   emit('focus');
 }
 
+/**
+ * Re-emits blur only when focus left the whole category group.
+ * @param event - The blur event.
+ */
 function onBlur(event: FocusEvent) {
   if (event && event.target && event.relatedTarget
     && (event.target as HTMLElement).parentNode === (event.relatedTarget as HTMLElement)?.parentNode) {

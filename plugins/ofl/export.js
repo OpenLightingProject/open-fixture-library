@@ -1,6 +1,6 @@
-import fixtureSchema from '../../schemas/fixture.json' with { type: 'json' };
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import importJson from '../../lib/import-json.js';
+import fixtureSchema from '../../schemas/fixture.json' with { type: 'json' };
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
 export const version = fixtureSchema.version;

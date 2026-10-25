@@ -47,11 +47,11 @@
 </template>
 
 <script setup lang="ts">
-import { entitiesSchema, schemaDefinitions } from '~~/lib/schema-properties.js';
-import { colorsHexStringToArray } from '@/assets/scripts/editor-utilities.js';
 import { ref, watch } from 'vue';
+import { colorsHexStringToArray } from '@/assets/scripts/editor-utilities.js';
+import { entitiesSchema, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   wheelSlot: {
     uuid: string;
     typeData: {
@@ -64,7 +64,7 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const defaultData = {
   name: '',
@@ -76,12 +76,12 @@ const defaultData = {
 const colorPreview = ref<string[] | null>(null);
 
 watch(
-  () => props.wheelSlot.typeData.colorsHexString,
+  () => properties.wheelSlot.typeData.colorsHexString,
   (hexString) => {
-    props.wheelSlot.typeData.colors = colorsHexStringToArray(hexString);
-    colorPreview.value = props.wheelSlot.typeData.colors;
+    properties.wheelSlot.typeData.colors = colorsHexStringToArray(hexString);
+    colorPreview.value = properties.wheelSlot.typeData.colors;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 defineExpose({

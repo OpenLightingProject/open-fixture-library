@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseContentDispositionFilename } from '../../ui/utils/content-disposition.ts';
+import { parseContentDispositionFilename } from '../../ui/utils/content-disposition';
 
 describe('parseContentDispositionFilename', () => {
   it('reads a quoted filename', () => {

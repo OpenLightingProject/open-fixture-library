@@ -30,11 +30,12 @@
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey of plugins.importPlugins" :key="pluginKey">
-                <option :value="pluginKey">
-                  {{ plugins.data[pluginKey].name }}
-                </option>
-              </template>
+              <option
+                v-for="pluginKey of plugins.importPlugins"
+                :key="pluginKey"
+                :value="pluginKey">
+                {{ plugins.data[pluginKey].name }}
+              </option>
 
             </select>
 
@@ -121,7 +122,12 @@ const submitDialog = ref<{ validate: (data: object) => void } | null>(null);
 
 const { data: plugins } = await useFetch('/api/v1/plugins');
 
-function getFileDataUrl(file: File): Promise<string> {
+/**
+ * Reads a file as a data URL.
+ * @param selectedFile - The file to read.
+ * @returns The data URL.
+ */
+function getFileDataUrl(selectedFile: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
 
@@ -131,10 +137,13 @@ function getFileDataUrl(file: File): Promise<string> {
     fileReader.addEventListener('error', reject);
     fileReader.addEventListener('abort', reject);
 
-    fileReader.readAsDataURL(file);
+    fileReader.readAsDataURL(selectedFile);
   });
 }
 
+/**
+ * Validates the form and starts the import submission flow.
+ */
 async function onSubmit() {
   const { valid } = await editorForm.submit();
   if (!valid) {
@@ -164,6 +173,9 @@ async function onSubmit() {
   }
 }
 
+/**
+ * Resets the import form.
+ */
 async function reset() {
   file.value = undefined;
   githubComment.value = '';
@@ -172,6 +184,9 @@ async function reset() {
   editorForm.reset();
 }
 
+/**
+ * Applies the author and GitHub username remembered from earlier sessions.
+ */
 function applyStoredPrefillData() {
   if (!import.meta.client) {
     return;
@@ -186,6 +201,9 @@ function applyStoredPrefillData() {
   }
 }
 
+/**
+ * Remembers the author and GitHub username for later sessions.
+ */
 function storePrefillData() {
   setStoredItem('prefillAuthor', author.value);
   setStoredItem('prefillGithubUsername', githubUsername.value);

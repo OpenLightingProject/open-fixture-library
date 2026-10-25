@@ -73,7 +73,7 @@
     <div class="button-bar right">
       <button
         type="button"
-        :disabled="error || !wizard.templateCapability.type"
+        :disabled="Boolean(error) || !wizard.templateCapability.type"
         class="restore primary"
         @click.prevent="apply()">
         Generate capabilities
@@ -135,42 +135,47 @@ import {
   getEmptyCapability,
   isCapabilityChanged,
   toPlainData,
-} from "@/assets/scripts/editor-utilities.js";
-
+} from '@/assets/scripts/editor-utilities.js';
+import type { EditorChannel, EditorWizard } from '~/types/editor';
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
-interface Props {
-  channel: object;
+interface Properties {
+  channel: EditorChannel;
   resolution: number;
-  wizard: object;
+  wizard: EditorWizard;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
   close: [insertIndex: number];
 }>();
 
 const firstInput = ref<HTMLInputElement | null>(null);
 
-const capabilities = computed(() => props.channel.capabilities);
+const capabilities = computed(() => properties.channel.capabilities);
 
-const dmxMax = computed(() => Math.pow(256, props.resolution) - 1);
+const dmxMax = computed(() => Math.pow(256, properties.resolution) - 1);
 
 const insertIndex = computed(() => {
   for (let index = capabilities.value.length - 1; index >= 0; index--) {
-    if (capabilities.value[index].dmxRange !== null && capabilities.value[index].dmxRange[1] !== null && capabilities.value[index].dmxRange[1] < props.wizard.start) {
+    if (capabilities.value[index].dmxRange !== null && capabilities.value[index].dmxRange[1] !== null && capabilities.value[index].dmxRange[1] < properties.wizard.start) {
       return index + 1;
     }
   }
   return 0;
 });
 
+/**
+ * Replaces `#` placeholders with the capability's one-based index.
+ * @param capabilityTypeData - The template capability data to update.
+ * @param index - The zero-based capability index.
+ */
 function replaceHashWithIndex(capabilityTypeData: object, index: number) {
-  if (`effectName` in capabilityTypeData) {
+  if ('effectName' in capabilityTypeData) {
     (capabilityTypeData as { effectName: string }).effectName = (capabilityTypeData as { effectName: string }).effectName.replace(/#/, () => String(index + 1));
   }
-  if (`comment` in capabilityTypeData) {
+  if ('comment' in capabilityTypeData) {
     (capabilityTypeData as { comment: string }).comment = (capabilityTypeData as { comment: string }).comment.replace(/#/, () => String(index + 1));
   }
 }
@@ -180,21 +185,21 @@ const computedCapabilites = computed(() => {
 
   const previousCapability = capabilities.value[insertIndex.value - 1];
   if (
-    (!previousCapability && props.wizard.start > 0) ||
-    (previousCapability && previousCapability.dmxRange !== null && props.wizard.start > previousCapability.dmxRange[1] + 1)
+    (!previousCapability && properties.wizard.start > 0)
+    || (previousCapability && previousCapability.dmxRange !== null && properties.wizard.start > previousCapability.dmxRange[1] + 1)
   ) {
     result.push(getEmptyCapability());
   }
 
-  for (let index = 0; index < props.wizard.count; index++) {
+  for (let index = 0; index < properties.wizard.count; index++) {
     const capability = getEmptyCapability();
 
     capability.dmxRange = [
-      props.wizard.start + (index * props.wizard.width),
-      props.wizard.start + ((index + 1) * props.wizard.width) - 1,
+      properties.wizard.start + (index * properties.wizard.width),
+      properties.wizard.start + ((index + 1) * properties.wizard.width) - 1,
     ];
-    capability.type = props.wizard.templateCapability.type;
-    capability.typeData = toPlainData(props.wizard.templateCapability.typeData);
+    capability.type = properties.wizard.templateCapability.type;
+    capability.typeData = toPlainData(properties.wizard.templateCapability.typeData);
     replaceHashWithIndex(capability.typeData, index);
 
     result.push(capability);
@@ -214,51 +219,49 @@ const removeCount = computed(() => {
   }
 
   const nextNonEmptyCapability = capabilities.value[insertIndex.value + 1];
-  if (nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && end.value + 1 === nextNonEmptyCapability.dmxRange[0]) {
-    return 1;
-  }
-
-  return 0;
+  return nextNonEmptyCapability && nextNonEmptyCapability.dmxRange !== null && end.value + 1 === nextNonEmptyCapability.dmxRange[0] ? 1 : 0;
 });
 
 const end = computed(() => {
   return computedCapabilites.value.length === 0 ? -1 : computedCapabilites.value.at(-1).dmxRange[1];
 });
 
-function getCapabilityWithSource(capability: object, source: string) {
+/**
+ * Tags a capability with where it came from in the wizard.
+ * @param capability - The capability data.
+ * @param source - The source label (`inherited` or `computed`).
+ * @returns A copy of the capability with its source.
+ */
+function getCapabilityWithSource<T extends object>(capability: T, source: string) {
   return { ...capability, source };
 }
 
 const allCapabilities = computed(() => {
   const inheritedCapabilities = capabilities.value.map(
-    capability => getCapabilityWithSource(capability, `inherited`),
+    (capability) => getCapabilityWithSource(capability, 'inherited'),
   );
 
-  const computedCaps = computedCapabilites.value.map(
-    capability => getCapabilityWithSource(capability, `computed`),
+  const computedCapabilities = computedCapabilites.value.map(
+    (capability) => getCapabilityWithSource(capability, 'computed'),
   );
 
-  inheritedCapabilities.splice(insertIndex.value, removeCount.value, ...computedCaps);
+  inheritedCapabilities.splice(insertIndex.value, removeCount.value, ...computedCapabilities);
 
   return inheritedCapabilities.filter(
-    capability => capability.dmxRange !== null,
+    (capability) => capability.dmxRange !== null,
   );
 });
 
 const validationError = computed(() => {
-  if (props.wizard.start < 0) {
-    return `Capabilities must not start below DMX value 0.`;
+  if (properties.wizard.start < 0) {
+    return 'Capabilities must not start below DMX value 0.';
   }
 
-  if (props.wizard.width <= 0) {
-    return `Capability width must be greater than zero.`;
+  if (properties.wizard.width <= 0) {
+    return 'Capability width must be greater than zero.';
   }
 
-  if (props.wizard.start % 1 !== 0 || props.wizard.width % 1 !== 0 || props.wizard.count % 1 !== 0) {
-    return `Please do only enter whole number values.`;
-  }
-
-  return null;
+  return Number.isSafeInteger(properties.wizard.start) && Number.isSafeInteger(properties.wizard.width) && Number.isSafeInteger(properties.wizard.count) ? null : 'Please do only enter whole number values.';
 });
 
 const error = computed(() => {
@@ -270,7 +273,7 @@ const error = computed(() => {
     return `Capabilities must not end above DMX value ${dmxMax.value}.`;
   }
 
-  const collisionDetected = capabilities.value.some(capability => {
+  const collisionDetected = capabilities.value.some((capability) => {
     if (capability.dmxRange === null) {
       return false;
     }
@@ -278,13 +281,9 @@ const error = computed(() => {
     const capabilityStart = capability.dmxRange[0] === null ? capability.dmxRange[1] : capability.dmxRange[0];
     const capabilityEnd = capability.dmxRange[1] === null ? capability.dmxRange[0] : capability.dmxRange[1];
 
-    return capabilityEnd >= props.wizard.start && capabilityStart <= end.value;
+    return capabilityEnd >= properties.wizard.start && capabilityStart <= end.value;
   });
-  if (collisionDetected) {
-    return `Generated capabilities must not overlap with existing ones.`;
-  }
-
-  return null;
+  return collisionDetected ? 'Generated capabilities must not overlap with existing ones.' : null;
 });
 
 onMounted(() => {
@@ -311,22 +310,25 @@ onMounted(() => {
     }
   }
 
-  props.wizard.start = lastOccupied + 1;
+  properties.wizard.start = lastOccupied + 1;
 });
 
+/**
+ * Applies the wizard's generated capabilities to the channel.
+ */
 function apply() {
   if (error.value) {
     return;
   }
 
   for (const capability of capabilities.value) {
-    if (capability.type !== ``) {
+    if (capability.type !== '') {
       capability.open = false;
     }
   }
 
   capabilities.value.splice(insertIndex.value, removeCount.value, ...computedCapabilites.value);
 
-  emit(`close`, insertIndex.value);
+  emit('close', insertIndex.value);
 }
 </script>

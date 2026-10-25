@@ -2,10 +2,10 @@
   <div
     id="ofl-root"
     :class="{
-      js: client,
+      'js': client,
       'no-js': !client,
-      touch: isTouchScreen,
-      'no-touch': !isTouchScreen,
+      'touch': isTouchscreen,
+      'no-touch': !isTouchscreen,
     }">
 
     <NuxtLoadingIndicator color="#1e88e5" />
@@ -90,24 +90,33 @@ useHead({
 });
 
 const client = ref(false);
-const isTouchScreen = ref(false);
+const isTouchscreen = ref(false);
 const lastTouchTime = ref(0);
 const contentRef = ref<HTMLElement | null>(null);
 
+/**
+ * Moves keyboard focus to the main content.
+ */
 function focusContent() {
   contentRef.value?.focus();
 }
 
+/**
+ * Leaves touchscreen mode after the touch interaction has settled.
+ */
 function onMouseMove() {
   if (Date.now() - lastTouchTime.value < 500) {
     return;
   }
 
-  isTouchScreen.value = false;
+  isTouchscreen.value = false;
 }
 
+/**
+ * Enables touchscreen mode for touch-driven interactions.
+ */
 function onTouchStart() {
-  isTouchScreen.value = true;
+  isTouchscreen.value = true;
   lastTouchTime.value = Date.now();
 }
 

@@ -6,10 +6,10 @@
     :aria-hidden="shown ? 'false' : 'true'"
     :aria-labelledby="`${id}-dialog-title`"
     :role="isAlertDialog ? 'alertdialog' : undefined"
-    @click.self="overlayClick($event)">
+    @click.self="overlayClick()">
 
     <div
-      ref="dialogEl"
+      ref="dialogElement"
       role="document"
       class="dialog card"
       :class="{ wide }">
@@ -111,7 +111,7 @@ $container-fade-duration: 200ms;
 </style>
 
 <script setup lang="ts">
-interface Props {
+interface Properties {
   id: string;
   isAlertDialog?: boolean;
   shown?: boolean;
@@ -119,8 +119,9 @@ interface Props {
   wide?: boolean;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   isAlertDialog: false,
+  // eslint-disable-next-line vue/no-boolean-default -- dialogs start visible unless the caller hides them
   shown: true,
   wide: false,
 });
@@ -130,11 +131,11 @@ const emit = defineEmits<{
   hide: [];
 }>();
 
-const dialogEl = ref<HTMLElement | null>(null);
-const dialog = ref<Awaited<ReturnType<typeof import('a11y-dialog')>> | null>(null);
+const dialogElement = ref<HTMLElement | null>(null);
+const dialog = ref<import('a11y-dialog').A11yDialogInstance | null>(null);
 
 const update = () => {
-  if (props.shown) {
+  if (properties.shown) {
     show();
   }
   else {
@@ -151,24 +152,28 @@ const hide = () => {
 };
 
 const overlayClick = () => {
-  if (!props.isAlertDialog) {
+  if (!properties.isAlertDialog) {
     hide();
   }
 };
 
-watch(() => props.shown, update);
+watch(() => properties.shown, update);
 
 onMounted(async () => {
   const { default: A11yDialog } = await import('a11y-dialog');
 
-  const el = document.getElementById(props.id);
-  if (!el) return;
+  const element = document.querySelector<HTMLElement>(`#${properties.id}`);
+  if (!element) {
+    return;
+  }
 
-  dialog.value = new A11yDialog(el);
+  dialog.value = new A11yDialog(element);
 
   dialog.value.on('show', () => {
-    const d = dialogEl.value;
-    if (d) d.scrollTop = 0;
+    const d = dialogElement.value;
+    if (d) {
+      d.scrollTop = 0;
+    }
     emit('show');
   });
 

@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   // The Nuxt 2 Express router registered these as `.get()` routes, which also
   // answer HEAD requests. Nitro hands the method through verbatim, so map HEAD
   // to the GET handlers explicitly.
-  const isGet = event.method === "GET" || event.method === "HEAD";
+  const isGet = event.method === 'GET' || event.method === 'HEAD';
 
   const batchMatch = pathname.match(batchDownloadPattern);
   if (batchMatch && isGet) {
@@ -25,7 +25,9 @@ export default defineEventHandler(async (event) => {
   }
 
   const editorMatch = pathname.match(editorDownloadPattern);
-  if (editorMatch && event.method === "POST") {
+  if (editorMatch && event.method === 'POST') {
     return handleEditorDownload(event, editorMatch[1]);
   }
+
+  return undefined;
 });

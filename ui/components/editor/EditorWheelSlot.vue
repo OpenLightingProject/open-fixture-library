@@ -46,6 +46,9 @@
 </style>
 
 <script setup lang="ts">
+import { getEmptyWheelSlot } from '@/assets/scripts/editor-utilities.js';
+import type { EditorChannel } from '~/types/editor';
+import { wheelSlotTypes } from '~~/lib/schema-properties.js';
 import WheelSlotAnimationGoboEnd from './wheel-slots/WheelSlotAnimationGoboEnd.vue';
 import WheelSlotAnimationGoboStart from './wheel-slots/WheelSlotAnimationGoboStart.vue';
 import WheelSlotClosed from './wheel-slots/WheelSlotClosed.vue';
@@ -55,24 +58,14 @@ import WheelSlotGobo from './wheel-slots/WheelSlotGobo.vue';
 import WheelSlotIris from './wheel-slots/WheelSlotIris.vue';
 import WheelSlotOpen from './wheel-slots/WheelSlotOpen.vue';
 import WheelSlotPrism from './wheel-slots/WheelSlotPrism.vue';
-import { getEmptyWheelSlot } from '@/assets/scripts/editor-utilities.js';
-import { wheelSlotTypes } from '~~/lib/schema-properties.js';
 
-interface Props {
-  channel: {
-    name: string;
-    wheel?: {
-      slots: Array<{
-        type: string;
-        typeData: Record<string, any>;
-      }>;
-    };
-  };
+interface Properties {
+  channel: EditorChannel;
   slotNumber: number;
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 defineOptions({
   components: {
@@ -94,20 +87,20 @@ const open = ref(false);
 const slotTypes = Object.keys(wheelSlotTypes);
 
 const slot = computed(() => {
-  return props.channel.wheel?.slots[props.slotNumber - 1];
+  return properties.channel.wheel?.slots[properties.slotNumber - 1];
 });
 
 const suggestedType = computed(() => {
-  const previousSlot = props.channel.wheel?.slots[props.slotNumber - 2];
+  const previousSlot = properties.channel.wheel?.slots[properties.slotNumber - 2];
   if (previousSlot && previousSlot.type === 'AnimationGoboStart') {
     return 'AnimationGoboEnd';
   }
 
-  if (props.slotNumber === 1) {
-    return /\banimation\b/i.test(props.channel.name) ? 'AnimationGoboStart' : 'Open';
+  if (properties.slotNumber === 1) {
+    return /\banimation\b/i.test(properties.channel.name) ? 'AnimationGoboStart' : 'Open';
   }
 
-  return slotTypes.find(type => props.channel.name.toLowerCase().includes(type.toLowerCase())) || '';
+  return slotTypes.find((type) => properties.channel.name.toLowerCase().includes(type.toLowerCase())) || '';
 });
 
 const animationGoboEndAfterStart = computed(() => {
@@ -115,27 +108,27 @@ const animationGoboEndAfterStart = computed(() => {
     return true;
   }
 
-  if (props.slotNumber === 1) {
+  if (properties.slotNumber === 1) {
     return false;
   }
 
-  const previousSlot = props.channel.wheel?.slots[props.slotNumber - 2];
+  const previousSlot = properties.channel.wheel?.slots[properties.slotNumber - 2];
   return !previousSlot || previousSlot.type === 'AnimationGoboStart';
 });
 
 const animationGoboEndValid = computed(() => {
-  const previousSlot = props.channel.wheel?.slots[props.slotNumber - 2];
+  const previousSlot = properties.channel.wheel?.slots[properties.slotNumber - 2];
   return !previousSlot || previousSlot.type !== 'AnimationGoboStart' || slot.value?.type === 'AnimationGoboEnd';
 });
 
 watch(
-  () => props.slotNumber,
+  () => properties.slotNumber,
   async (newSlotNumber) => {
-    if (props.channel.wheel?.slots[newSlotNumber - 1]) {
+    if (properties.channel.wheel?.slots[newSlotNumber - 1]) {
       return;
     }
 
-    props.channel.wheel.slots[newSlotNumber - 1] = getEmptyWheelSlot();
+    properties.channel.wheel.slots[newSlotNumber - 1] = getEmptyWheelSlot();
     open.value = true;
 
     await nextTick();
@@ -143,18 +136,23 @@ watch(
       slot.value.type = suggestedType.value;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
+/**
+ * Merges default data for newly selected wheel slot properties.
+ */
 async function changeSlotType() {
   await nextTick();
 
-  if (typeData.value) {
-    const defaultData = typeData.value.defaultData;
-    for (const [property, value] of Object.entries(defaultData)) {
-      if (!(property in slot.value.typeData)) {
-        slot.value.typeData[property] = value;
-      }
+  if (!typeData.value) {
+    return;
+  }
+
+  const defaultData = typeData.value.defaultData;
+  for (const [property, value] of Object.entries(defaultData)) {
+    if (!(property in slot.value.typeData)) {
+      slot.value.typeData[property] = value;
     }
   }
 }

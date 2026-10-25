@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -43,9 +43,9 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
-const hint = `Doesn't activate an effect, only controls the duration of running effects.`;
+const hint = 'Doesn\'t activate an effect, only controls the duration of running effects.';
 
 const defaultData = {
   duration: null,

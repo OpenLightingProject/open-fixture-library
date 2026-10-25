@@ -16,30 +16,30 @@
 </style>
 
 <script setup lang="ts">
-interface Props {
+import type { EditorChannel } from '~/types/editor';
+
+type SlotNumber = string | number | null;
+
+interface Properties {
   capability: {
     typeData: {
-      slotNumber?: number;
-      slotNumberStart?: number;
-      slotNumberEnd?: number;
+      slotNumber?: SlotNumber;
+      slotNumberStart?: SlotNumber;
+      slotNumberEnd?: SlotNumber;
     };
   };
-  channel: {
-    wheel?: {
-      slots?: Array<{ type: string }>;
-    };
-  };
+  channel: EditorChannel;
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const slotDetailNumbers = computed(() => {
   const slotNumbers = [
-    props.capability.typeData.slotNumber,
-    props.capability.typeData.slotNumberStart,
-    props.capability.typeData.slotNumberEnd,
-  ].filter(slotNumber => typeof slotNumber === 'number');
+    properties.capability.typeData.slotNumber,
+    properties.capability.typeData.slotNumberStart,
+    properties.capability.typeData.slotNumberEnd,
+  ].filter((slotNumber): slotNumber is number => typeof slotNumber === 'number');
 
   if (slotNumbers.length === 0) {
     return [];
@@ -49,9 +49,9 @@ const slotDetailNumbers = computed(() => {
   const max = Math.ceil(Math.max(...slotNumbers));
   const length = max - min + 1;
 
-  const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter(slotNumber => slotNumber >= 1);
+  const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter((slotNumber) => slotNumber >= 1);
 
-  if ((slotNumbers as number[]).at(-1) as number < (slotNumbers as number[])[0]) {
+  if (slotNumbers.at(-1)! < slotNumbers[0]) {
     slotNumbersInRange.reverse();
   }
 

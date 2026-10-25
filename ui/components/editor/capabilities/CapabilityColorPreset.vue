@@ -69,10 +69,10 @@
 </template>
 
 <script setup lang="ts">
-import { schemaDefinitions } from '~~/lib/schema-properties.js';
 import { colorsHexStringToArray } from '@/assets/scripts/editor-utilities.js';
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -91,9 +91,9 @@ interface Props {
   formstate?: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
-const hint = `This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.`;
+const hint = 'This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.';
 
 const defaultData = {
   comment: '',
@@ -113,30 +113,30 @@ const colorPreviewStart = ref<string[] | null>(null);
 const colorPreviewEnd = ref<string[] | null>(null);
 
 watch(
-  () => props.capability.typeData.colorsHexString,
+  () => properties.capability.typeData.colorsHexString,
   (hexString) => {
-    props.capability.typeData.colors = colorsHexStringToArray(hexString);
-    colorPreview.value = props.capability.typeData.colors;
+    properties.capability.typeData.colors = colorsHexStringToArray(hexString);
+    colorPreview.value = properties.capability.typeData.colors;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 watch(
-  () => props.capability.typeData.colorsHexStringStart,
+  () => properties.capability.typeData.colorsHexStringStart,
   (hexString) => {
-    props.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
-    colorPreviewStart.value = props.capability.typeData.colorsStart;
+    properties.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
+    colorPreviewStart.value = properties.capability.typeData.colorsStart;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 watch(
-  () => props.capability.typeData.colorsHexStringEnd,
+  () => properties.capability.typeData.colorsHexStringEnd,
   (hexString) => {
-    props.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
-    colorPreviewEnd.value = props.capability.typeData.colorsEnd;
+    properties.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
+    colorPreviewEnd.value = properties.capability.typeData.colorsEnd;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 defineExpose({

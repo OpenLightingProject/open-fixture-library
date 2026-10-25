@@ -48,33 +48,34 @@
 </style>
 
 <script setup lang="ts">
-import { linksProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
 import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
+import { linksProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   link: {
     type: string;
     url: string;
     uuid: string;
   };
   canRemove: boolean;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
   formstate: object;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
   'set-type': [value: string];
   'set-url': [value: string];
-  remove: [];
+  'remove': [];
 }>();
 
 const linkTypeSelect = ref<HTMLSelectElement | null>(null);
 
 const placeholders: Record<string, string> = {
-  manual: `e.g. https://example.org/fixture/manual.pdf`,
-  productPage: `e.g. https://example.org/fixture`,
-  video: `e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
-  other: `e.g. https://example.org/relevant-page`,
+  manual: 'e.g. https://example.org/fixture/manual.pdf',
+  productPage: 'e.g. https://example.org/fixture',
+  video: 'e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  other: 'e.g. https://example.org/relevant-page',
 };
 
 const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
@@ -82,7 +83,7 @@ const linkTypes = Object.keys(linksProperties);
 
 const type = computed({
   get() {
-    return props.link.type;
+    return properties.link.type;
   },
   set(value: string) {
     emit('set-type', value);
@@ -91,15 +92,18 @@ const type = computed({
 
 const url = computed({
   get() {
-    return props.link.url;
+    return properties.link.url;
   },
   set(value: string) {
     emit('set-url', value);
   },
 });
 
-const placeholder = computed(() => placeholders[props.type]);
+const placeholder = computed(() => placeholders[properties.link.type]);
 
+/**
+ * Focuses the link type select.
+ */
 function focus() {
   linkTypeSelect.value?.focus();
 }

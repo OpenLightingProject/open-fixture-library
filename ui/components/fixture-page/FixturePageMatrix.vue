@@ -85,12 +85,12 @@
 import Matrix from '~~/lib/model/Matrix.js';
 import Physical from '~~/lib/model/Physical.js';
 
-interface Props {
+interface Properties {
   matrix: Matrix;
   physical?: Physical | null;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const highlightedPixelKeys = ref<string[]>([]);
 const baseHeight = 3.2;
@@ -98,11 +98,11 @@ const baseHeight = 3.2;
 const pixelSizing = computed(() => {
   let sizing = `height: ${baseHeight}em; `;
 
-  if (props.physical?.hasMatrixPixels) {
-    const scale = baseHeight / props.physical.matrixPixelsDimensions[1];
-    sizing += `width: ${props.physical.matrixPixelsDimensions[0] * scale}em; `;
-    sizing += `margin-right: ${props.physical.matrixPixelsSpacing[0] * scale}em; `;
-    sizing += `margin-bottom: ${props.physical.matrixPixelsSpacing[1] * scale}em; `;
+  if (properties.physical?.hasMatrixPixels) {
+    const scale = baseHeight / properties.physical.matrixPixelsDimensions[1];
+    sizing += `width: ${properties.physical.matrixPixelsDimensions[0] * scale}em; `;
+    sizing += `margin-right: ${properties.physical.matrixPixelsSpacing[0] * scale}em; `;
+    sizing += `margin-bottom: ${properties.physical.matrixPixelsSpacing[1] * scale}em; `;
   }
   else {
     sizing += `width: ${baseHeight}em; `;
@@ -112,31 +112,31 @@ const pixelSizing = computed(() => {
 });
 
 const pixelGroups = computed(() => {
-  return props.matrix.pixelGroupKeys.map(groupKey => {
-    const group = props.matrix.jsonObject.pixelGroups[groupKey];
+  return properties.matrix.pixelGroupKeys.map((groupKey) => {
+    const group = properties.matrix.jsonObject.pixelGroups[groupKey];
 
-    if (group === `all`) {
-      return [groupKey, `All pixels`];
+    if (group === 'all') {
+      return [groupKey, 'All pixels'];
     }
 
-    const resolvedPixelsKeys = props.matrix.pixelGroups[groupKey];
-    const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
+    const resolvedPixelsKeys = properties.matrix.pixelGroups[groupKey];
+    const constraintAxes = ['x', 'y', 'z'].filter((axis) => axis in group);
 
     const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
-      axis => group[axis].some((constraint: string) => /^\d+n/.test(constraint)),
-    ) || constraintAxes.length > 2 || `name` in group;
+      (axis) => group[axis].some((constraint: string) => /^\d+n/.test(constraint)),
+    ) || constraintAxes.length > 2 || 'name' in group;
 
     if (shouldShowPixelKeyArray) {
-      return [groupKey, resolvedPixelsKeys.join(`, `)];
+      return [groupKey, resolvedPixelsKeys.join(', ')];
     }
 
-    const constraintText = constraintAxes.map(axis => {
+    const constraintText = constraintAxes.map((axis) => {
       const axisConstraints = (group[axis] as string[]).map(
-        constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
-      ).join(`, `);
+        (constraint) => constraint.replace('>=', '≥ ').replace('<=', '≤ ').replace('=', ''),
+      ).join(', ');
 
       return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;
-    }).join(` and `);
+    }).join(' and ');
 
     return [groupKey, `Pixels where ${constraintText}`];
   });

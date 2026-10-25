@@ -135,30 +135,15 @@
 </style>
 
 <script setup lang="ts">
-interface Capability {
-  name: string;
-  rawDmxRange: string;
-  _channel: {
-    key: string;
-    fixture: { manufacturer: { key: string }; key: string };
-  };
-}
+import type { HelpWantedModel } from '~/types/help-wanted';
+import A11yDialog from './A11yDialog.vue';
 
-interface PluginContext {
-  key: string;
-}
-
-interface FixtureContext {
-  manufacturer: { key: string };
-  key: string;
-}
-
-interface Props {
+interface Properties {
   type: 'plugin' | 'fixture' | 'capability';
-  modelValue?: (Capability | FixtureContext | PluginContext) & { helpWanted: string | null };
+  modelValue?: HelpWantedModel;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
   'update:model-value': [value: undefined];
 }>();
@@ -172,45 +157,54 @@ const issueUrl = ref<string | null>(null);
 const error = ref<string | null>(null);
 
 const title = computed(() => {
-  if (state.value === 'loading') return 'Sending your message…';
-  if (state.value === 'success') return 'Message sent';
-  if (state.value === 'error') return 'Failed to send message';
-  if (props.type === 'plugin') return 'Improve plugin';
-  return 'Improve fixture';
+  if (state.value === 'loading') {
+    return 'Sending your message…';
+  }
+  if (state.value === 'success') {
+    return 'Message sent';
+  }
+  if (state.value === 'error') {
+    return 'Failed to send message';
+  }
+  return properties.type === 'plugin' ? 'Improve plugin' : 'Improve fixture';
 });
 
 const location = computed(() => {
-  if (props.type === 'capability' && props.modelValue && 'name' in props.modelValue && '_channel' in props.modelValue) {
-    const capability = props.modelValue as Capability;
-    const channel = capability._channel;
-    return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
+  if (properties.type !== 'capability' || !properties.modelValue?._channel) {
+    return null;
   }
-  return null;
+
+  const channel = properties.modelValue._channel;
+  return `Channel "${channel.key ?? ''}" → Capability "${properties.modelValue.name ?? ''}" (${properties.modelValue.rawDmxRange ?? ''})`;
 });
 
 const fixtureContext = computed(() => {
-  if (props.type === 'fixture' && props.modelValue) return props.modelValue as FixtureContext;
-  if (props.type === 'capability' && props.modelValue?._channel) return props.modelValue._channel.fixture;
-  return null;
+  if (properties.type === 'fixture' && properties.modelValue?.manufacturer && properties.modelValue.key) {
+    return {
+      manufacturer: properties.modelValue.manufacturer,
+      key: properties.modelValue.key,
+    };
+  }
+  return properties.type === 'capability' ? properties.modelValue?._channel?.fixture ?? null : null;
 });
 
 const sendObject = computed(() => {
-  const obj: Record<string, unknown> = {
-    type: props.type,
+  const object: Record<string, unknown> = {
+    type: properties.type,
     location: location.value,
-    helpWanted: props.modelValue?.helpWanted,
+    helpWanted: properties.modelValue?.helpWanted,
     message: message.value,
     githubUsername: githubUsername.value === '' ? null : githubUsername.value,
   };
 
-  if (props.type === 'plugin' && props.modelValue && 'key' in props.modelValue) {
-    obj.context = props.modelValue.key;
+  if (properties.type === 'plugin' && properties.modelValue?.key) {
+    object.context = properties.modelValue.key;
   }
   else if (fixtureContext.value) {
-    obj.context = `${fixtureContext.value.manufacturer.key}/${fixtureContext.value.key}`;
+    object.context = `${fixtureContext.value.manufacturer.key}/${fixtureContext.value.key}`;
   }
 
-  return obj;
+  return object;
 });
 
 const errorData = computed(() => `${JSON.stringify(sendObject.value, null, 2)}\n\n${error.value}`);
@@ -220,7 +214,7 @@ const mailtoUrl = computed(() => {
 
   const mailBodyData: Record<string, string | null> = {
     'Problem location': location.value,
-    'Problem description': props.modelValue?.helpWanted || null,
+    'Problem description': properties.modelValue?.helpWanted || null,
     'Message': message.value,
   };
 
@@ -235,6 +229,7 @@ const mailtoUrl = computed(() => {
 });
 
 onMounted(() => {
+  // eslint-disable-next-line unicorn/prefer-simple-condition-first -- `localStorage` is undefined during SSR
   if (import.meta.client && localStorage) {
     githubUsername.value = localStorage.getItem('prefillGithubUsername') || '';
   }
@@ -242,6 +237,7 @@ onMounted(() => {
 
 const onSubmit = async () => {
   state.value = 'loading';
+  // eslint-disable-next-line unicorn/prefer-simple-condition-first -- `localStorage` is undefined during SSR
   if (import.meta.client && localStorage) {
     localStorage.setItem('prefillGithubUsername', githubUsername.value);
   }
@@ -259,9 +255,9 @@ const onSubmit = async () => {
     issueUrl.value = response.issueUrl || null;
     state.value = 'success';
   }
-  catch (e) {
-    console.error('There was a problem with the request.', e);
-    error.value = (e as Error).message;
+  catch (error_) {
+    console.error('There was a problem with the request.', error_);
+    error.value = (error_ as Error).message;
     state.value = 'error';
   }
 };

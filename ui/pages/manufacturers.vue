@@ -5,7 +5,7 @@
     <div class="toc">
       Jump to:
       <a
-        v-for="(letterData, letter) in letters"
+        v-for="(letterData, letter) of letters"
         :key="letter"
         :href="`#${letterData.id}`"
         class="jump-link">
@@ -13,7 +13,7 @@
       </a>
     </div>
 
-    <div v-for="(letterData, letter) in letters" :key="letter">
+    <div v-for="(letterData, letter) of letters" :key="letter">
       <h2 :id="letterData.id">{{ letter }}</h2>
 
       <div class="manufacturers grid-4">
@@ -48,7 +48,6 @@ h2 {
 </style>
 
 <script setup lang="ts">
-import register from '~~/fixtures/register.json';
 
 interface ManufacturerData {
   key: string;
@@ -62,7 +61,7 @@ interface LetterData {
   manufacturers: ManufacturerData[];
 }
 
-const { data: manufacturers } = await useFetch('/api/v1/manufacturers');
+const { data: manufacturers } = await useFetch<Record<string, Omit<ManufacturerData, 'key'>>>('/api/v1/manufacturers');
 
 const letters = computed(() => {
   const result: Record<string, LetterData> = {};
@@ -96,6 +95,9 @@ const letters = computed(() => {
   return result;
 });
 
+/**
+ * Scrolls back to the top when the hash is cleared.
+ */
 function handleHashChange() {
   if (window.location.hash === '') {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -35,9 +35,10 @@
 </template>
 
 <script setup lang="ts">
+import type { EditorChannel } from '~/types/editor';
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -47,13 +48,11 @@ interface Props {
       comment?: string;
     };
   };
-  channel: {
-    capabilities?: any[];
-  };
+  channel: EditorChannel;
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
 const defaultData = {
   slotNumber: '',

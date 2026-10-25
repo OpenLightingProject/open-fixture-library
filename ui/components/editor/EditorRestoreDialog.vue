@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, nextTick } from 'vue';
 import {
   getEmptyCapability,
   getEmptyChannel,
@@ -40,7 +40,7 @@ import {
 } from '@/assets/scripts/editor-utilities.js';
 import { getStoredItem, setStoredItem } from '~/utils/storage';
 
-interface Props {
+interface Properties {
   modelValue?: {
     timestamp: number;
     fixture: any;
@@ -48,7 +48,7 @@ interface Props {
   };
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 const emit = defineEmits<{
   'update:model-value': [value: undefined];
   'restore': [value: { fixture: any; channel: any }];
@@ -56,12 +56,12 @@ const emit = defineEmits<{
 }>();
 
 const restoredDate = computed(() => {
-  if (props.modelValue === undefined) {
-    return undefined;
-  }
-  return (new Date(props.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
+  return properties.modelValue === undefined ? undefined : (new Date(properties.modelValue.timestamp)).toISOString().replace(/\..*$/, '').replace('T', ', ');
 });
 
+/**
+ * Removes the pending auto-save entry and dismisses the dialog.
+ */
 function discardRestored() {
   // put all items except the last one back; a corrupt/foreign auto-save value
   // must not make Discard un-dismissable
@@ -81,8 +81,11 @@ function discardRestored() {
   emit('restore-complete');
 }
 
+/**
+ * Emits the sanitized auto-save data and closes the dialog.
+ */
 async function applyRestored() {
-  const modelValue = toPlainData(props.modelValue) as {
+  const modelValue = toPlainData(properties.modelValue) as {
     fixture: any;
     channel?: any;
   };
@@ -100,8 +103,11 @@ async function applyRestored() {
   emit('restore-complete');
 }
 
-import { nextTick } from 'vue';
-
+/**
+ * Merges stored fixture data with the current fixture defaults.
+ * @param fixture - The stored fixture data.
+ * @returns The restored fixture.
+ */
 function getRestoredFixture(fixture: any) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
 
@@ -123,9 +129,15 @@ function getRestoredFixture(fixture: any) {
   return restoredFixture;
 }
 
+/**
+ * Merges stored channel data with the current channel defaults.
+ * @param channel - The stored channel data.
+ * @param isChannelDialog - Whether the channel is restored into the channel dialog.
+ * @returns The restored channel.
+ */
 function getRestoredChannel(channel: any, isChannelDialog: boolean) {
   if ('coarseChannelId' in channel) {
-    return Object.assign(getEmptyFineChannel(), channel);
+    return Object.assign(getEmptyFineChannel(channel.coarseChannelId, channel.resolution), channel);
   }
 
   let emptyChannel = getEmptyChannel();

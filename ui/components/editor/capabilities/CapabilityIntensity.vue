@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-interface Props {
+interface Properties {
   capability: {
     uuid: string;
     typeData: {
@@ -43,9 +43,9 @@ interface Props {
   formstate?: object;
 }
 
-defineProps<Props>();
+defineProps<Properties>();
 
-const hint = `Master dimmer for the lamp's brightness. Use ColorIntensity for individual color components (e.g. Red, Green, Blue).`;
+const hint = 'Master dimmer for the lamp\'s brightness. Use ColorIntensity for individual color components (e.g. Red, Green, Blue).';
 
 const defaultData = {
   brightness: null,

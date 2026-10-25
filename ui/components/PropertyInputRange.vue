@@ -6,23 +6,23 @@
       :name="`${name}-start`"
       :schema-property="schemaProperty.items"
       :minimum="rangeMin"
-      :maximum="end === 'invalid' ? rangeMax : end"
+      :maximum="isInvalidValue(end) ? rangeMax : end"
       :required="required || rangeIncomplete"
       :hint="startHint"
       lazy
-      @focus="onFocus($event)"
+      @focus="onFocus()"
       @blur="onBlur($event)" />
     …
     <PropertyInputNumber
       v-model="end"
       :name="`${name}-end`"
       :schema-property="schemaProperty.items"
-      :minimum="start === 'invalid' ? rangeMin : start"
+      :minimum="isInvalidValue(start) ? rangeMin : start"
       :maximum="rangeMax"
       :required="required || rangeIncomplete"
       :hint="endHint"
       lazy
-      @focus="onFocus($event)"
+      @focus="onFocus()"
       @blur="onBlur($event)" />
     {{ unit }}
   </span>
@@ -30,8 +30,9 @@
 
 <script setup lang="ts">
 import { useEditorGroupField } from '~/composables/useEditorForm';
+import PropertyInputNumber from './PropertyInputNumber.vue';
 
-interface Props {
+interface Properties {
   modelValue?: number[] | null;
   name: string;
   startHint?: string;
@@ -43,13 +44,17 @@ interface Props {
   };
   unit?: string;
   required?: boolean;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
   formstate: object;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const properties = withDefaults(defineProps<Properties>(), {
   modelValue: null,
   startHint: 'start',
   endHint: 'end',
+  rangeMin: undefined,
+  rangeMax: undefined,
+  unit: '',
   required: false,
 });
 
@@ -57,8 +62,8 @@ const emit = defineEmits<{
   'update:model-value': [range: number[] | null];
   'start-updated': [];
   'end-updated': [];
-  focus: [];
-  blur: [];
+  'focus': [];
+  'blur': [];
   'vf:validate': [validationData: { 'complete-range': string; 'valid-range': string }];
 }>();
 
@@ -67,8 +72,8 @@ const root = ref<HTMLElement | null>(null);
 
 const { touch } = useEditorGroupField(
   () => ({
-    name: props.name,
-    getValue: () => props.modelValue,
+    name: properties.name,
+    getValue: () => properties.modelValue,
     getRules: () => [
       { name: 'complete-range' },
       { name: 'valid-range' },
@@ -76,7 +81,7 @@ const { touch } = useEditorGroupField(
     getAttrs: () => ({}),
     getElement: () => root.value,
   }),
-  () => props.modelValue,
+  () => properties.modelValue,
 );
 
 const validationData = ref({
@@ -85,7 +90,7 @@ const validationData = ref({
 });
 
 const start = computed({
-  get: () => props.modelValue ? props.modelValue[0] : null,
+  get: () => (properties.modelValue ? properties.modelValue[0] : null),
   set: (startInput: number | null) => {
     emit('update:model-value', getRange(startInput, end.value));
     emit('start-updated');
@@ -93,14 +98,23 @@ const start = computed({
 });
 
 const end = computed({
-  get: () => props.modelValue ? props.modelValue[1] : null,
+  get: () => (properties.modelValue ? properties.modelValue[1] : null),
   set: (endInput: number | null) => {
     emit('update:model-value', getRange(start.value, endInput));
     emit('end-updated');
   },
 });
 
-const rangeIncomplete = computed(() => props.modelValue && (start.value === null || end.value === null));
+const rangeIncomplete = computed(() => properties.modelValue && (start.value === null || end.value === null));
+
+/**
+ * Detects the sentinel emitted by the numeric input for unparsable values.
+ * @param value - The value to inspect.
+ * @returns Whether the value is the invalid-value sentinel.
+ */
+function isInvalidValue(value: unknown): boolean {
+  return value === 'invalid';
+}
 
 onMounted(() => {
   emit('vf:validate', validationData.value);
@@ -126,11 +140,13 @@ defineExpose({
   },
 });
 
-function getRange(start: number | null, end: number | null): number[] | null {
-  if (start === null && end === null) {
-    return null;
-  }
-
-  return [start, end];
+/**
+ * Builds the range tuple, or `null` when both bounds are empty.
+ * @param startValue - The lower bound.
+ * @param endValue - The upper bound.
+ * @returns The range tuple or `null`.
+ */
+function getRange(startValue: number | null, endValue: number | null): number[] | null {
+  return startValue === null && endValue === null ? null : [startValue, endValue];
 }
 </script>

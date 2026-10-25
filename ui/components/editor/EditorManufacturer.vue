@@ -64,30 +64,34 @@
 </template>
 
 <script setup lang="ts">
+import type { EditorFixture } from '~/types/editor';
 import { manufacturerProperties } from '~~/lib/schema-properties.js';
-
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import PropertyInputTextarea from '../PropertyInputTextarea.vue';
 
-interface Props {
-  fixture: object;
+interface Properties {
+  fixture: EditorFixture;
   formstate: object;
-  manufacturers: object;
+  manufacturers: Record<string, { name: string }>;
 }
 
-const props = defineProps<Props>();
+const properties = defineProps<Properties>();
 
 const existingManufacturerSelect = ref<HTMLSelectElement | null>(null);
 const newManufacturerNameInput = ref<typeof PropertyInputText | null>(null);
 
-watch(() => props.fixture.useExistingManufacturer, async function(useExisting) {
+watch(() => properties.fixture.useExistingManufacturer, async (isExisting) => {
   await nextTick();
-  (useExisting ? existingManufacturerSelect.value : newManufacturerNameInput.value)?.focus();
+  (isExisting ? existingManufacturerSelect.value : newManufacturerNameInput.value)?.focus();
 });
 
-function switchManufacturer(useExisting: boolean) {
-  props.fixture.useExistingManufacturer = useExisting;
+/**
+ * Switches between an existing and a new manufacturer.
+ * @param isExisting - Whether to use an existing manufacturer.
+ */
+function switchManufacturer(isExisting: boolean) {
+  properties.fixture.useExistingManufacturer = isExisting;
 }
 </script>
