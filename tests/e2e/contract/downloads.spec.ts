@@ -10,9 +10,33 @@ const testFixtures = JSON.parse(
   await readFile(new URL('tests/test-fixtures.json', repositoryRoot), 'utf8'),
 ) as { man: string; key: string; name: string; features: string[] }[];
 
-const { exportPlugins } = JSON.parse(
+const pluginData = JSON.parse(
   await readFile(new URL('plugins/plugins.json', repositoryRoot), 'utf8'),
-) as { exportPlugins: string[] };
+) as {
+  exportPlugins: string[];
+  data: Record<
+    string,
+    {
+      name: string;
+      importPluginVersion?: string;
+      exportPluginVersion?: string;
+      outdated?: boolean;
+      newPlugin?: string;
+    }
+  >;
+};
+
+const { exportPlugins } = pluginData;
+
+// `plugins.json` also contains non-exportable plugins: import-only plugins
+// (no `exportPluginVersion`) and outdated plugins (`outdated: true` with a
+// `newPlugin` replacement). The old Express download router accepted exactly
+// `exportPlugins`, so these formats fall through to the page router. They are
+// deliberately absent from the full matrix; the tests below pin that exclusion
+// and the fall-through parity instead of assuming it.
+const nonExportPluginKeys = Object.keys(pluginData.data)
+  .filter((pluginKey) => !exportPlugins.includes(pluginKey))
+  .sort();
 
 const register = JSON.parse(
   await readFile(new URL('fixtures/register.json', repositoryRoot), 'utf8'),
@@ -249,7 +273,34 @@ async function expectRedirectParity(path: string) {
   );
 }
 
+describe('export plugin set parity', () => {
+  it('contains every exportable plugin and no non-exportable one', () => {
+    for (const pluginKey of exportPlugins) {
+      expect(
+        pluginData.data[pluginKey]?.exportPluginVersion,
+        `${pluginKey} is an export plugin, so it must declare exportPluginVersion`,
+      ).toBeTypeOf('string');
+    }
+
+    for (const pluginKey of nonExportPluginKeys) {
+      const plugin = pluginData.data[pluginKey];
+
+      expect(
+        plugin.exportPluginVersion,
+        `${pluginKey} must not declare an exportPluginVersion`,
+      ).toBeUndefined();
+      expect(
+        plugin.importPluginVersion !== undefined || plugin.outdated === true,
+        `${pluginKey} must be import-only or explicitly marked outdated`,
+      ).toBe(true);
+    }
+  });
+});
+
 describe('download parity', () => {
+  // Some fixture/plugin combinations legitimately fail on both sites (e.g.
+  // dragonframe rejects fixtures whose channels cannot be represented); those
+  // cases are still compared exactly, so an error on only one site fails.
   for (const fixtureKey of fixtureKeys) {
     for (const pluginKey of exportPlugins) {
       it(`${fixtureKey}.${pluginKey}`, async () => {
@@ -290,13 +341,18 @@ describe('editor download parity', () => {
     });
   }
 
-  it('rejects an unsupported plugin identically', async () => {
-    await expectDownloadParity('/download-editor.not-a-plugin', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: editorBody,
+  for (const pluginKey of ['not-a-plugin', ...nonExportPluginKeys]) {
+    it(`download-editor.${pluginKey} rejects an unsupported plugin identically`, async () => {
+      // `not-a-plugin` is unknown; the other keys are plugins.json entries that
+      // are not exportable. The old Express handler wrote this exact plain-text
+      // 500 for every one of them, so the full-body comparison applies.
+      await expectDownloadParity(`/download-editor.${pluginKey}`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: editorBody,
+      });
     });
-  });
+  }
 });
 
 describe('download HEAD parity', () => {
@@ -312,18 +368,22 @@ describe('download HEAD parity', () => {
 });
 
 describe('pass-through parity', () => {
-  it('rejects an unknown fixture plugin with the same status', async () => {
-    const path = '/clay-paky/sharpy.not-a-plugin';
-    const { oldResponse, newResponse } = await fetchBoth(path);
+  for (const pluginKey of ['not-a-plugin', ...nonExportPluginKeys]) {
+    it(`rejects a non-export plugin (${pluginKey}) with the same status`, async () => {
+      const path = `/clay-paky/sharpy.${pluginKey}`;
+      const { oldResponse, newResponse } = await fetchBoth(path);
 
-    // Both sites pass this through to their page router, which renders its own
-    // 404 page. Nuxt 2 and Nuxt 4 error pages cannot match byte-for-byte, so
-    // the shared contract is pinned at the status and "not a download" level.
-    expect(oldResponse.status).toBe(404);
-    expect(newResponse.status).toBe(404);
-    expect(oldResponse.headers.get('content-disposition')).toBeNull();
-    expect(newResponse.headers.get('content-disposition')).toBeNull();
-  });
+      // None of these plugin keys is in `plugins.json`'s `exportPlugins`, so
+      // both sites pass the request through to their page router, which renders
+      // its own 404 page. Nuxt 2 and Nuxt 4 error pages cannot match
+      // byte-for-byte, so the shared contract is pinned at the status and
+      // "not a download" level.
+      expect(oldResponse.status).toBe(404);
+      expect(newResponse.status).toBe(404);
+      expect(oldResponse.headers.get('content-disposition')).toBeNull();
+      expect(newResponse.headers.get('content-disposition')).toBeNull();
+    });
+  }
 
   // The Express download router calls `next()` for an unknown format, so the
   // request reaches the manufacturer page. Both sites forward the failed
@@ -336,6 +396,24 @@ describe('pass-through parity', () => {
 
       expect(oldResponse.status).toBe(400);
       expect(newResponse.status).toBe(oldResponse.status);
+    });
+  }
+
+  // Plugins that exist in `plugins.json` but are not exportable (import-only or
+  // outdated) are rejected by the old Express router via `next()` just like an
+  // unknown format: the request reaches the page router, which rejects the
+  // dotted manufacturer key with 400. The new site must not answer these with a
+  // download or leak a 500 from the Nitro middleware. The error body/content
+  // type is rendered by the page layer (HTML on Nuxt 2, content-negotiated on
+  // Nuxt 4), so only status and the absence of an attachment are compared here.
+  for (const pluginKey of nonExportPluginKeys) {
+    it(`/download.${pluginKey} falls through like the oracle`, async () => {
+      const { oldResponse, newResponse } = await fetchBoth(`/download.${pluginKey}`);
+
+      expect(oldResponse.status).toBe(400);
+      expect(newResponse.status).toBe(oldResponse.status);
+      expect(oldResponse.headers.get('content-disposition')).toBeNull();
+      expect(newResponse.headers.get('content-disposition')).toBeNull();
     });
   }
 
