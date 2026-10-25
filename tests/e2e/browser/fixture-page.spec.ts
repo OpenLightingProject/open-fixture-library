@@ -198,9 +198,13 @@ test('redirected fixtures land on the target URL with the same Location', async 
     const navigation = await goto(redirect.from, { waitUntil: 'load' });
     expect(navigation?.status(), redirect.from).toBe(200);
 
+    // The server's Location uses `%2F`, but client-side hydration normalizes it
+    // to `/` in the browser URL at a timing-dependent point. Compare the decoded
+    // query value so the assertion does not depend on hydration timing.
     const landedUrl = new URL(page.url());
-    expect(`${landedUrl.pathname}${landedUrl.search}`).toBe(
-      `${redirect.to}?redirectFrom=${redirect.redirectFrom}`,
+    expect(landedUrl.pathname).toBe(redirect.to);
+    expect(landedUrl.searchParams.get('redirectFrom')).toBe(
+      decodeURIComponent(redirect.redirectFrom),
     );
 
     const notice = page.locator('section.card.yellow');
