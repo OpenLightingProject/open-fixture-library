@@ -54,6 +54,65 @@ function contentType(response: Response): string {
   return response.headers.get('content-type') ?? '';
 }
 
+/**
+ * Two export plugins embed the wall-clock `options.date` in their output:
+ *
+ * - `colorsource`: top-level JSON `date` (`YYYY-MM-DDTHH:MM:SSZ`).
+ * - `ecue`: `Document/@SaveTimeStamp` and the `Tiles`/`Fixtures` Manufacturer
+ *   `_CreationDate`/`_ModifiedDate` attributes (`YYYY-MM-DD#HH:MM:SS`).
+ *   Fixture-level `_CreationDate`/`_ModifiedDate` come from fixture metadata,
+ *   not `options.date`, and stay byte-compared.
+ *
+ * Verified by checking every `plugins/<plugin>/export.js` for `options.date` usage.
+ * These fields are wall-clock time, so byte equality between two requests is
+ * not a meaningful contract. Normalize exactly these fields (and assert their
+ * format); all other bytes, including all other downloads, are unchanged.
+ */
+const COLORSOURCE_DATE_PATTERN =
+  /^(\{\n {2}"date": ")(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)(")/;
+const ECUE_DOCUMENT_TIMESTAMP_PATTERN =
+  /(<Document\b[^>]*\bSaveTimeStamp=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})(")/;
+const ECUE_MANUFACTURER_TIMESTAMPS_PATTERN =
+  /(<Manufacturer\b[^>]*\b_CreationDate=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})("\s+_ModifiedDate=")(\d{4}-\d{2}-\d{2}#\d{2}:\d{2}:\d{2})(")/g;
+
+function normalizeTimeBearingBody(
+  pluginKey: string,
+  body: Buffer,
+  label: string,
+): string {
+  const text = body.toString('utf8');
+
+  if (pluginKey === 'colorsource') {
+    assert.match(
+      text,
+      COLORSOURCE_DATE_PATTERN,
+      `${label}: expected top-level colorsource date in YYYY-MM-DDTHH:MM:SSZ format`,
+    );
+    return text.replace(COLORSOURCE_DATE_PATTERN, '$1<volatile-date>$3');
+  }
+
+  if (pluginKey === 'ecue') {
+    assert.match(
+      text,
+      ECUE_DOCUMENT_TIMESTAMP_PATTERN,
+      `${label}: expected ecue Document/@SaveTimeStamp`,
+    );
+    assert.match(
+      text,
+      ECUE_MANUFACTURER_TIMESTAMPS_PATTERN,
+      `${label}: expected ecue Manufacturer timestamps`,
+    );
+    return text
+      .replace(ECUE_DOCUMENT_TIMESTAMP_PATTERN, '$1<volatile-timestamp>$3')
+      .replace(
+        ECUE_MANUFACTURER_TIMESTAMPS_PATTERN,
+        '$1<volatile-timestamp>$3<volatile-timestamp>$5',
+      );
+  }
+
+  throw new Error(`no time normalization defined for plugin ${pluginKey}`);
+}
+
 function describeBufferMismatch(
   label: string,
   oldBuffer: Buffer,
@@ -113,7 +172,11 @@ async function expectSameZipEntries(
  * entry because both servers stamp archive entries with `new Date()`, so raw
  * ZIP bytes legitimately differ between two requests.
  */
-async function expectDownloadParity(path: string, init?: RequestInit) {
+async function expectDownloadParity(
+  path: string,
+  init?: RequestInit,
+  pluginKey?: string,
+) {
   const { oldResponse, newResponse } = await fetchBoth(path, init);
 
   assert.equal(newResponse.status, oldResponse.status, `status for ${path}`);
@@ -134,6 +197,15 @@ async function expectDownloadParity(path: string, init?: RequestInit) {
   ]);
   const oldBuffer = Buffer.from(oldBody);
   const newBuffer = Buffer.from(newBody);
+
+  if (pluginKey === 'colorsource' || pluginKey === 'ecue') {
+    assert.equal(
+      normalizeTimeBearingBody(pluginKey, newBuffer, path),
+      normalizeTimeBearingBody(pluginKey, oldBuffer, path),
+      `time-normalized body for ${path}`,
+    );
+    return;
+  }
 
   if (Buffer.compare(oldBuffer, newBuffer) === 0) {
     return;
@@ -181,7 +253,7 @@ describe('download parity', () => {
   for (const fixtureKey of fixtureKeys) {
     for (const pluginKey of exportPlugins) {
       it(`${fixtureKey}.${pluginKey}`, async () => {
-        await expectDownloadParity(`/${fixtureKey}.${pluginKey}`);
+        await expectDownloadParity(`/${fixtureKey}.${pluginKey}`, undefined, pluginKey);
       });
     }
   }
@@ -198,7 +270,7 @@ describe('raw fixture JSON download parity', () => {
 describe('batch download parity', () => {
   for (const pluginKey of exportPlugins) {
     it(`download.${pluginKey}`, async () => {
-      await expectDownloadParity(`/download.${pluginKey}`);
+      await expectDownloadParity(`/download.${pluginKey}`, undefined, pluginKey);
     });
   }
 });
@@ -206,11 +278,15 @@ describe('batch download parity', () => {
 describe('editor download parity', () => {
   for (const pluginKey of exportPlugins) {
     it(`download-editor.${pluginKey}`, async () => {
-      await expectDownloadParity(`/download-editor.${pluginKey}`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: editorBody,
-      });
+      await expectDownloadParity(
+        `/download-editor.${pluginKey}`,
+        {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: editorBody,
+        },
+        pluginKey,
+      );
     });
   }
 
