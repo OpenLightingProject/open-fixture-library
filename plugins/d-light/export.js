@@ -211,7 +211,7 @@ function getParameterName(channel, channels, mode, attribute, indexInAttribute) 
         sameTypeCount++;
       }
       if (sameTypeCount > 1) {
-        name = `${name} ${sameTypeIndex + 1}`;
+        name += ` ${sameTypeIndex + 1}`;
       }
 
       return name;
