@@ -127,7 +127,10 @@ Full key list: `afx/lmh460z`, `astera/fp3-hyperion-tube`, `ayrton/diablo-tc`, `c
 
 ## Intentional differences
 
-None introduced by this task. The `DownloadButton` style/filename changes restore Nuxt 2 behavior; no new user-visible difference is expected.
+| Area | Difference | Rationale / owner |
+| --- | --- | --- |
+| Global request XSS validator (`nuxt.config.ts`) | Disabled. nuxt-security passes `escapeHtml: undefined` to `xss`, so it invokes undefined and throws for any query string. Nuxt 2 had no request-level XSS validation. Consequence: POST bodies are not screened either (e.g. `POST /download-editor.<ext>`), matching the oracle. | Parity decision (Task 11). API input still validated by AJV; pinned by `tests/e2e/contract/query-strings.spec.ts` and the fixture-page browser suite. |
+| ThemeSwitcher tooltip | Before hydration the title is the neutral `Switch theme`; after mount it becomes `Switch to light theme` / `Switch to dark theme`. | SSR-stable title (Task 10); pinned by `tests/e2e/browser/home.spec.ts`. |
 
 ## Verification
 

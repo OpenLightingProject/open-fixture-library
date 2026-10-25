@@ -192,12 +192,16 @@ export default defineNuxtConfig({
     // CORS is implemented once in `ui/server/middleware/cors.ts`; the
     // nuxt-security default would add its own CORS headers to every route.
     corsHandler: false,
-    // The `xss` package used by nuxt-security's request validator is not
-    // bundle-safe: any request with a query string throws `TypeError:
-    // escapeHtml is not a function` in dev and in the Nitro production build.
-    // Nuxt 2 had no request-level XSS validation, so skip it for parity. This
-    // keeps `?loadAllModes`, `?redirectFrom=`, `/search?q=…` and API queries
-    // working; the OpenAPI backend still validates input through AJV.
+    // nuxt-security passes `escapeHtml: undefined` explicitly to `xss`
+    // (xssValidator.js), and `xss` only applies its default when the option is
+    // absent, so it invokes `undefined` and throws `TypeError: escapeHtml is
+    // not a function` for any request with a query string. This is not a
+    // bundling issue. Nuxt 2 had no request-level XSS validation at all, so
+    // disable the validator for parity. This keeps `?loadAllModes`,
+    // `?redirectFrom=`, `/search?q=…` and API queries working, but it also
+    // means POST bodies are not screened (e.g. `POST /download-editor.<ext>`),
+    // exactly as on Nuxt 2. The OpenAPI backend still validates its input
+    // through AJV.
     xssValidator: false,
     headers: {
       // Same helmet configuration as the Nuxt 2 oracle. `Content-Security-

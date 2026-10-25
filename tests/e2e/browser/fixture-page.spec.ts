@@ -125,7 +125,8 @@ test('multi-color wheel slots render one pie segment per color', async ({ page, 
   const colorWheel = page.locator('figure.wheel').first();
   await expect(colorWheel.locator('figcaption summary')).toHaveText('Color Wheel');
 
-  // Two two-color slots: each color is a path wedge. The arrow adds two more paths.
+  // Two two-color slots × two wedges each = four paths. The direction arrow
+  // lives in `g.arrow`, outside the slot groups.
   expect(await colorWheel.locator('g.slot path').count()).toBe(4);
 });
 
