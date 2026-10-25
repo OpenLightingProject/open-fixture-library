@@ -318,6 +318,7 @@ import {
   isCapabilityChanged,
   isChannelChanged,
   scrollToFirstInvalidField,
+  toPlainData,
 } from '@/assets/scripts/editor-utilities.js';
 import { useEditorForm } from '~/composables/useEditorForm';
 
@@ -433,23 +434,36 @@ watch(() => props.channel, () => {
   channelChanged.value = true;
 }, { deep: true });
 
-function getFixtureEditor() {
-  return null;
+function getChannelName(channelUuid: string): string {
+  const channel = (props.fixture as any).availableChannels[channelUuid];
+  if (!channel) {
+    return channelUuid;
+  }
+
+  if ('coarseChannelId' in channel) {
+    let name = `${getChannelName(channel.coarseChannelId)} fine`;
+    if (channel.resolution > constants.RESOLUTION_16BIT) {
+      name += `^${channel.resolution - 1}`;
+    }
+
+    return name;
+  }
+
+  return channel.name ?? channelUuid;
+}
+
+function isChannelNameUnique(channelUuid: string): boolean {
+  const channelName = getChannelName(channelUuid);
+  const availableChannels = (props.fixture as any).availableChannels as Record<string, unknown>;
+
+  return Object.keys(availableChannels).every(
+    uuid => channelName !== getChannelName(uuid) || uuid === channelUuid,
+  );
 }
 
 function setEditModeCreate() {
   props.channel.editMode = `create`;
   props.channel.uuid = crypto.randomUUID();
-}
-
-function getChannelName(channelUuid: string) {
-  const fixtureEditor = getFixtureEditor();
-  return fixtureEditor?.getChannelName(channelUuid) ?? '';
-}
-
-function isChannelNameUnique(channelUuid: string) {
-  const fixtureEditor = getFixtureEditor();
-  return fixtureEditor?.isChannelNameUnique(channelUuid) ?? true;
 }
 
 function isChannelSelected(channelUuid: string) {
@@ -566,7 +580,7 @@ async function onChannelDialogOpen() {
 
 function copyPropertiesFromChannel(channel: object) {
   for (const [property, value] of Object.entries(channel)) {
-    (props.channel as any)[property] = structuredClone(value);
+    (props.channel as any)[property] = toPlainData(value);
   }
 }
 
@@ -778,10 +792,11 @@ async function onWizardClose(insertIndex: number) {
 
   await nextTick();
   const firstNewCapability = capabilities.value?.[insertIndex];
-  if (!firstNewCapability) return;
-  const scrollContainer = firstNewCapability.$el.closest(`.dialog`);
+  const firstNewCapabilityElement = (firstNewCapability as any)?.getElement?.();
+  if (!firstNewCapability || !firstNewCapabilityElement) return;
+  const scrollContainer = firstNewCapabilityElement.closest(`.dialog`);
 
-  scrollIntoView(firstNewCapability.$el, {
+  scrollIntoView(firstNewCapabilityElement, {
     time: 0,
     align: {
       top: 0,

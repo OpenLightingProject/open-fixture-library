@@ -307,5 +307,10 @@ function focus() {
   firstInput.value?.focus();
 }
 
-defineExpose({ cleanCapabilityData, focus });
+defineExpose({
+  cleanCapabilityData,
+  focus,
+  getElement: () => instance?.proxy?.$el as HTMLElement | undefined,
+  onEndUpdated,
+});
 </script>

@@ -265,6 +265,17 @@ export function colorsHexStringToArray(hexString) {
 }
 
 /**
+ * Creates a deep plain-object clone of editor state. Vue 3 exposes reactive
+ * proxies, which `structuredClone` cannot clone, so JSON is used instead.
+ * @param {unknown} value - The value to clone (may contain reactive proxies).
+ * @returns {unknown} A deep clone without proxies.
+ */
+export function toPlainData(value) {
+  // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips reactive proxies
+  return JSON.parse(JSON.stringify(toRaw(value)));
+}
+
+/**
  * @param {object} channel - The channel object that shall be sanitized.
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */

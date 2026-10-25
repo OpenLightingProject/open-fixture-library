@@ -36,6 +36,7 @@ import {
   getEmptyMode,
   getEmptyPhysical,
   getSanitizedChannel,
+  toPlainData,
 } from '@/assets/scripts/editor-utilities.js';
 
 interface Props {
@@ -49,6 +50,7 @@ interface Props {
 const props = defineProps<Props>();
 const emit = defineEmits<{
   'update:model-value': [value: undefined];
+  'restore': [value: { fixture: any; channel: any }];
   'restore-complete': [];
 }>();
 
@@ -69,23 +71,25 @@ function discardRestored() {
 }
 
 async function applyRestored() {
-  const modelValue = structuredClone(props.modelValue);
+  const modelValue = toPlainData(props.modelValue) as {
+    fixture: any;
+    channel?: any;
+  };
 
   emit('update:model-value', undefined);
 
   await nextTick();
 
-  const parent = getCurrentInstance()?.proxy?.$parent;
-  if (parent) {
-    parent.fixture = getRestoredFixture(modelValue.fixture);
-    parent.channel = getRestoredChannel(modelValue.channel, true);
-  }
+  emit('restore', {
+    fixture: getRestoredFixture(modelValue.fixture),
+    channel: getRestoredChannel(modelValue.channel, true),
+  });
 
   await nextTick();
   emit('restore-complete');
 }
 
-import { nextTick, getCurrentInstance } from 'vue';
+import { nextTick } from 'vue';
 
 function getRestoredFixture(fixture: any) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);

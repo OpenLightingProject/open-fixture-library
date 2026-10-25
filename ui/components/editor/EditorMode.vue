@@ -1,5 +1,5 @@
 <template>
-  <section :data-mode-uuid="mode.uuid" class="fixture-mode card">
+  <section :data-mode-uuid="mode.uuid" class="editor-mode card">
 
     <a
       v-if="fixture.modes.length > 1"
@@ -126,7 +126,7 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-mode :deep(section) {
+.editor-mode :deep(section) {
   flex-direction: column;
 
   & > .label {
@@ -210,7 +210,12 @@ interface Props {
   index: number;
   fixture: {
     modes: Array<{ uuid: string; channels: string[] }>;
-    availableChannels: Record<string, { coarseChannelId?: string; resolution?: number }>;
+    availableChannels: Record<string, {
+      name?: string;
+      uuid?: string;
+      coarseChannelId?: string;
+      resolution?: number;
+    }>;
     rdmModelId: number | null;
   };
   formstate: Record<string, unknown>;
@@ -240,7 +245,7 @@ const dragOptions = {
       if (!dragElement) return false;
 
       const channelUuid = dragElement.getAttribute('data-channel-uuid');
-      const modeUuid = to.el.closest('.fixture-mode')?.getAttribute('data-mode-uuid');
+      const modeUuid = to.el.closest('.editor-mode')?.getAttribute('data-mode-uuid');
       if (!channelUuid || !modeUuid) return false;
 
       const targetMode = props.fixture.modes.find(mode => mode.uuid === modeUuid);
@@ -311,20 +316,22 @@ watch(() => props.mode.channels.length, () => {
   void editorForm?.validateField(channelFieldName.value);
 });
 
-function getFixtureEditor() {
-  const parent = getCurrentInstance()?.parent;
-  if (!parent) return null;
-  const vueForm = parent.exposed || parent.proxy;
-  if (!vueForm) return null;
-  const grandParent = parent.parent;
-  if (!grandParent) return null;
-  return grandParent.exposed || grandParent.proxy;
-}
+function getChannelName(channelUuid: string): string {
+  const channel = props.fixture.availableChannels[channelUuid];
+  if (!channel) {
+    return channelUuid;
+  }
 
-function getChannelName(channelUuid: string) {
-  const editor = getFixtureEditor();
-  if (!editor || !editor.getChannelName) return channelUuid;
-  return editor.getChannelName(channelUuid);
+  if ('coarseChannelId' in channel) {
+    let name = `${getChannelName(channel.coarseChannelId)} fine`;
+    if (channel.resolution! > constants.RESOLUTION_16BIT) {
+      name += `^${channel.resolution! - 1}`;
+    }
+
+    return name;
+  }
+
+  return channel.name ?? channelUuid;
 }
 
 function editChannel(channelUuid: string) {
@@ -342,10 +349,12 @@ function addChannel() {
   });
 }
 
-function isChannelNameUnique(channelUuid: string) {
-  const editor = getFixtureEditor();
-  if (!editor || !editor.isChannelNameUnique) return true;
-  return editor.isChannelNameUnique(channelUuid);
+function isChannelNameUnique(channelUuid: string): boolean {
+  const channelName = getChannelName(channelUuid);
+
+  return Object.keys(props.fixture.availableChannels).every(
+    uuid => channelName !== getChannelName(uuid) || uuid === channelUuid,
+  );
 }
 
 function isFineChannel(channelUuid: string) {
@@ -363,6 +372,13 @@ function moveChannel(channelUuid: string, delta: number) {
   props.mode.channels.splice(newIndex, 0, channelUuid);
 }
 
+function removeFromMode(channelUuid: string) {
+  const channelPosition = props.mode.channels.indexOf(channelUuid);
+  if (channelPosition !== -1) {
+    props.mode.channels.splice(channelPosition, 1);
+  }
+}
+
 function removeChannel(channelUuid: string) {
   const channel = props.fixture.availableChannels[channelUuid];
 
@@ -373,19 +389,14 @@ function removeChannel(channelUuid: string) {
     resolution = channel.resolution!;
   }
 
+  // remove finer channels of the same coarse channel first
   for (const otherChannel of Object.values(props.fixture.availableChannels)) {
-    if (otherChannel?.coarseChannelId === coarseChannelId && otherChannel?.resolution! > resolution) {
-      const editor = getFixtureEditor();
-      if (editor?.removeChannel) {
-        editor.removeChannel(otherChannel.uuid, props.mode.uuid);
-      }
+    if (otherChannel?.coarseChannelId === coarseChannelId && otherChannel.resolution! > resolution) {
+      removeFromMode(otherChannel.uuid!);
     }
   }
 
-  const editor = getFixtureEditor();
-  if (editor?.removeChannel) {
-    editor.removeChannel(channelUuid, props.mode.uuid);
-  }
+  removeFromMode(channelUuid);
 }
 
 onMounted(() => {

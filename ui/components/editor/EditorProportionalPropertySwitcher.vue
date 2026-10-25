@@ -247,8 +247,6 @@ const propertyDataEnd = computed({
     return props.capability.typeData[`${props.propertyName}End`];
   },
   set(newData) {
-  },
-  set(newData) {
     props.capability.typeData[`${props.propertyName}End`] = newData;
   },
 });

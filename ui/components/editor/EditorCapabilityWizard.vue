@@ -134,6 +134,7 @@ th {
 import {
   getEmptyCapability,
   isCapabilityChanged,
+  toPlainData,
 } from "@/assets/scripts/editor-utilities.js";
 
 import LabeledValue from '../LabeledValue.vue';
@@ -193,7 +194,7 @@ const computedCapabilites = computed(() => {
       props.wizard.start + ((index + 1) * props.wizard.width) - 1,
     ];
     capability.type = props.wizard.templateCapability.type;
-    capability.typeData = structuredClone(props.wizard.templateCapability.typeData);
+    capability.typeData = toPlainData(props.wizard.templateCapability.typeData);
     replaceHashWithIndex(capability.typeData, index);
 
     result.push(capability);

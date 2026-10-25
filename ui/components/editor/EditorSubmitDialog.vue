@@ -345,8 +345,6 @@ function toPlain<T>(value: T): T {
 async function validate(body: any) {
   requestBody.value = toPlain(body);
 
-  console.log('validate', requestBody.value);
-
   state.value = 'validating';
   try {
     const response = await $fetch<any>(props.endpoint, {
@@ -378,8 +376,6 @@ async function onSubmit() {
     githubUsername: props.githubUsername ?? null,
     githubComment: props.githubComment ?? null,
   });
-
-  console.log('submit', requestBody.value);
 
   state.value = 'uploading';
   try {

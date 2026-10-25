@@ -99,7 +99,10 @@
         :channel="channel"
         :fixture="fixture" />
 
-      <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete()" />
+      <EditorRestoreDialog
+        v-model="restoredData"
+        @restore="applyRestoredData($event)"
+        @restore-complete="restoreComplete()" />
 
       <EditorSubmitDialog
         ref="submitDialog"
@@ -232,13 +235,19 @@ function autoSave(objectName: 'fixture' | 'channel') {
     console.log('autoSave channel:', JSON.parse(JSON.stringify(channel.value, null, 2)));
   }
 
-  localStorage.setItem('autoSave', JSON.stringify([
-    {
-      fixture: fixture.value,
-      channel: channel.value,
-      timestamp: Date.now(),
-    },
-  ]));
+  try {
+    localStorage.setItem('autoSave', JSON.stringify([
+      {
+        fixture: fixture.value,
+        channel: channel.value,
+        timestamp: Date.now(),
+      },
+    ]));
+  }
+  catch {
+    // Auto-saving is best effort. Browsers may deny storage access (private
+    // mode, quota, disabled site data); the editor has to keep working.
+  }
 }
 
 function clearAutoSave() {
@@ -263,6 +272,11 @@ function restoreAutoSave() {
   }
 
   console.log('restore', structuredClone(restoredData.value));
+}
+
+function applyRestoredData(restored: { fixture: unknown; channel: unknown }) {
+  fixture.value = restored.fixture as typeof fixture.value;
+  channel.value = restored.channel as typeof channel.value;
 }
 
 function restoreComplete() {
