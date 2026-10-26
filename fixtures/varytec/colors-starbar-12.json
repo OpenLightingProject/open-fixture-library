@@ -1,0 +1,1749 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colors StarBar 12",
+  "shortName": "StarBar",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Lars"],
+    "createDate": "2024-05-18",
+    "lastModifyDate": "2026-09-16",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-10-26",
+      "comment": "GDTF v1.2 fixture type ID: 8502B0B9-67BA-46D7-81A5-29F552A56D31"
+    }
+  },
+  "comment": "12x 3 Watt WW LED + 72x 5050 SMD RGB LED",
+  "availableChannels": {
+    "Dim": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "highlightValue": 100,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "FX1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Off",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [8, 12],
+          "type": "Effect",
+          "effectName": "Color Change 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "Effect",
+          "effectName": "Color Change 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "Effect",
+          "effectName": "Color Change 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "Effect",
+          "effectName": "Color Change 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "Effect",
+          "effectName": "Color Change 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "Effect",
+          "effectName": "Color Change 6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "Effect",
+          "effectName": "Color Change 7",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "Effect",
+          "effectName": "Color Change 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "Effect",
+          "effectName": "Color Change 9",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "Effect",
+          "effectName": "Color Change 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "Effect",
+          "effectName": "Color Change 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "Effect",
+          "effectName": "Color Change 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "Effect",
+          "effectName": "Color Change 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "Effect",
+          "effectName": "Color Change 14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "Effect",
+          "effectName": "Color Change 15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "Effect",
+          "effectName": "Color Change 16",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "Effect",
+          "effectName": "Color Change 17",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "Effect",
+          "effectName": "Color Change 18",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "Effect",
+          "effectName": "Color Change 19",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "Effect",
+          "effectName": "Color Change 20",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "Effect",
+          "effectName": "Color Change 21",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "Effect",
+          "effectName": "Color Change 22",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "Effect",
+          "effectName": "Color Change 23",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "Effect",
+          "effectName": "Color Change 24",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "Effect",
+          "effectName": "Color Change 25",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "Effect",
+          "effectName": "Color Change 26",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "Effect",
+          "effectName": "Color Change 27",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "Effect",
+          "effectName": "Color Change 28",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "Effect",
+          "effectName": "Color Change 29",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "Effect",
+          "effectName": "Color Change 30",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "Effect",
+          "effectName": "Color Change 31",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "Effect",
+          "effectName": "Color Change 32",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "Effect",
+          "effectName": "Color Change 33",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "Effect",
+          "effectName": "Color Change 34",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "Effect",
+          "effectName": "Color Change 35",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "Effect",
+          "effectName": "Color Change 36",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "Effect",
+          "effectName": "Color Change 37",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "Effect",
+          "effectName": "Color Change 38",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "Effect",
+          "effectName": "Color Change 39",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "Effect",
+          "effectName": "Color Change 40",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "Effect",
+          "effectName": "Color Change 41",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "Effect",
+          "effectName": "Color Change 42",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "Effect",
+          "effectName": "Color Change 43",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "Effect",
+          "effectName": "Color Change 44",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "Effect",
+          "effectName": "Color Change 45",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "Effect",
+          "effectName": "Color Change 46",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "Effect",
+          "effectName": "Color Change 47",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "Effect",
+          "effectName": "Color Change 48",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "Effect",
+          "effectName": "Color Change 49",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "Effect",
+          "effectName": "Color Change 50",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "Effect",
+          "effectName": "Color Change 51",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "Effect",
+          "effectName": "Color Change 52",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "Effect",
+          "effectName": "Color Change 53",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "Effect",
+          "effectName": "Color Change 54",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "Effect",
+          "effectName": "Color Change 55",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "Effect",
+          "effectName": "Color Change 56",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [233, 236],
+          "type": "Effect",
+          "effectName": "Color Change 57",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "Effect",
+          "effectName": "Color Change 58",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [241, 247],
+          "type": "Effect",
+          "effectName": "Color Change 59",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Music Mode",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "Fast"
+        }
+      ]
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe1": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Slow"
+        },
+        {
+          "dmxRange": [2, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Fast"
+        }
+      ]
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "WW": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "WW 2": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 3": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 4": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 5": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 5": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 5": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 5": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 6": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 6": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 6": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 6": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 7": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 7": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 7": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 7": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 8": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 8": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 8": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 8": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 9": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 9": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 9": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 9": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 10": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 10": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 10": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 10": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 11": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 11": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 11": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "G 12": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 12": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WW 12": {
+      "name": "WW",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "FX1 2": {
+      "name": "FX1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Off",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [8, 12],
+          "type": "Effect",
+          "effectName": "Color Change 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [13, 16],
+          "type": "Effect",
+          "effectName": "Color Change 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [17, 20],
+          "type": "Effect",
+          "effectName": "Color Change 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [21, 24],
+          "type": "Effect",
+          "effectName": "Color Change 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [25, 28],
+          "type": "Effect",
+          "effectName": "Color Change 5",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [29, 32],
+          "type": "Effect",
+          "effectName": "Color Change 6",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [33, 36],
+          "type": "Effect",
+          "effectName": "Color Change 7",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [37, 40],
+          "type": "Effect",
+          "effectName": "Color Change 8",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [41, 44],
+          "type": "Effect",
+          "effectName": "Color Change 9",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [45, 48],
+          "type": "Effect",
+          "effectName": "Color Change 10",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [49, 52],
+          "type": "Effect",
+          "effectName": "Color Change 11",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [53, 56],
+          "type": "Effect",
+          "effectName": "Color Change 12",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [57, 60],
+          "type": "Effect",
+          "effectName": "Color Change 13",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [61, 64],
+          "type": "Effect",
+          "effectName": "Color Change 14",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [65, 68],
+          "type": "Effect",
+          "effectName": "Color Change 15",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "Effect",
+          "effectName": "Color Change 16",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "Effect",
+          "effectName": "Color Change 17",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [77, 80],
+          "type": "Effect",
+          "effectName": "Color Change 18",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [81, 84],
+          "type": "Effect",
+          "effectName": "Color Change 19",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [85, 88],
+          "type": "Effect",
+          "effectName": "Color Change 20",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [89, 92],
+          "type": "Effect",
+          "effectName": "Color Change 21",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [93, 96],
+          "type": "Effect",
+          "effectName": "Color Change 22",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [97, 100],
+          "type": "Effect",
+          "effectName": "Color Change 23",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [101, 104],
+          "type": "Effect",
+          "effectName": "Color Change 24",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [105, 108],
+          "type": "Effect",
+          "effectName": "Color Change 25",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [109, 112],
+          "type": "Effect",
+          "effectName": "Color Change 26",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [113, 116],
+          "type": "Effect",
+          "effectName": "Color Change 27",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [117, 120],
+          "type": "Effect",
+          "effectName": "Color Change 28",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [121, 124],
+          "type": "Effect",
+          "effectName": "Color Change 29",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [125, 128],
+          "type": "Effect",
+          "effectName": "Color Change 30",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "Effect",
+          "effectName": "Color Change 31",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [133, 136],
+          "type": "Effect",
+          "effectName": "Color Change 32",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [137, 140],
+          "type": "Effect",
+          "effectName": "Color Change 33",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "Effect",
+          "effectName": "Color Change 34",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "Effect",
+          "effectName": "Color Change 35",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "Effect",
+          "effectName": "Color Change 36",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "Effect",
+          "effectName": "Color Change 37",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "Effect",
+          "effectName": "Color Change 38",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "Effect",
+          "effectName": "Color Change 39",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "Effect",
+          "effectName": "Color Change 40",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "Effect",
+          "effectName": "Color Change 41",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "Effect",
+          "effectName": "Color Change 42",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "Effect",
+          "effectName": "Color Change 43",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [181, 184],
+          "type": "Effect",
+          "effectName": "Color Change 44",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [185, 188],
+          "type": "Effect",
+          "effectName": "Color Change 45",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [189, 192],
+          "type": "Effect",
+          "effectName": "Color Change 46",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [193, 196],
+          "type": "Effect",
+          "effectName": "Color Change 47",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [197, 200],
+          "type": "Effect",
+          "effectName": "Color Change 48",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [201, 204],
+          "type": "Effect",
+          "effectName": "Color Change 49",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [205, 208],
+          "type": "Effect",
+          "effectName": "Color Change 50",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [209, 212],
+          "type": "Effect",
+          "effectName": "Color Change 51",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [213, 216],
+          "type": "Effect",
+          "effectName": "Color Change 52",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [217, 220],
+          "type": "Effect",
+          "effectName": "Color Change 53",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [221, 224],
+          "type": "Effect",
+          "effectName": "Color Change 54",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "Effect",
+          "effectName": "Color Change 55",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [229, 232],
+          "type": "Effect",
+          "effectName": "Color Change 56",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Effect",
+          "effectName": "",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [234, 236],
+          "type": "Effect",
+          "effectName": "Color Change 57",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [237, 240],
+          "type": "Effect",
+          "effectName": "Color Change 58",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [241, 247],
+          "type": "Effect",
+          "effectName": "Color Change 59",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Music Mode",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 8": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 9": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 10": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 11": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 12": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 13": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 14": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 15": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 16": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 17": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 18": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 19": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 20": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 21": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 22": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 23": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 24": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 11": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dim 25": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 26": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R 12": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dim 27": {
+      "name": "Dim",
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "Dim 3",
+        "FX1",
+        "FX1 Rate"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "channels": [
+        "Dim 4",
+        "Strobe1",
+        "R",
+        "G",
+        "B",
+        "Dim 3",
+        "FX1",
+        "FX1 Rate"
+      ]
+    },
+    {
+      "name": "12 Channel",
+      "channels": [
+        "Dim 4",
+        "Strobe1",
+        "R",
+        "G",
+        "B",
+        "Dim 3",
+        "R 2",
+        "G 2",
+        "B 2",
+        "Dim 6",
+        "FX1",
+        "FX1 Rate"
+      ]
+    },
+    {
+      "name": "52 Channel",
+      "channels": [
+        "Dim 4",
+        "Strobe1",
+        "R",
+        "G",
+        "B",
+        "WW",
+        "R 2",
+        "G 2",
+        "B 2",
+        "WW 2",
+        null,
+        "G 3",
+        "B 3",
+        "WW 3",
+        "R 3",
+        "G 4",
+        "B 4",
+        "WW 4",
+        "R 4",
+        "G 5",
+        "B 5",
+        "WW 5",
+        "R 5",
+        "G 6",
+        "B 6",
+        "WW 6",
+        "R 6",
+        "G 7",
+        "B 7",
+        "WW 7",
+        "R 7",
+        "G 8",
+        "B 8",
+        "WW 8",
+        "R 8",
+        "G 9",
+        "B 9",
+        "WW 9",
+        "R 9",
+        "G 10",
+        "B 10",
+        "WW 10",
+        "R 10",
+        "G 11",
+        "B 11",
+        "WW 11",
+        null,
+        "G 12",
+        "B 12",
+        "WW 12",
+        "FX1 2",
+        "FX1 Rate"
+      ]
+    },
+    {
+      "name": "52 Channel Inverted",
+      "channels": [
+        "Dim 4",
+        "Strobe1",
+        "R 12",
+        "G 12",
+        "B 12",
+        "Dim 27",
+        "R 11",
+        "G 11",
+        "B 11",
+        "Dim 25",
+        "R 10",
+        "G 10",
+        "B 10",
+        "Dim 23",
+        "R 9",
+        "G 9",
+        "B 9",
+        "Dim 21",
+        "R 8",
+        "G 8",
+        "B 8",
+        "Dim 19",
+        "R 7",
+        "G 7",
+        "B 7",
+        "Dim 17",
+        "R 6",
+        "G 6",
+        "B 6",
+        "Dim 15",
+        "R 5",
+        "G 5",
+        "B 5",
+        "Dim 13",
+        "R 4",
+        "G 4",
+        "B 4",
+        "Dim 11",
+        "R 3",
+        "G 3",
+        "B 3",
+        "Dim 9",
+        "R 2",
+        "G 2",
+        "B 2",
+        "Dim 7",
+        "R",
+        "G",
+        "B",
+        "Dim 6",
+        "FX1 2",
+        "FX1 Rate"
+      ]
+    }
+  ]
+}
