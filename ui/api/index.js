@@ -9,6 +9,7 @@ import { sendJson } from '../../lib/server-response-helpers.js';
 import * as routeHandlers from './routes.js';
 
 const apiDocumentationUrl = 'https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/rest-api.md';
+const apiDocumentationPaths = new Set(['/', '/v1', '/v1/']);
 
 /**
  * @typedef {object} ApiResponse
@@ -20,7 +21,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.use((request, response, next) => {
-  if (request.url === '/' || request.url === '/v1' || request.url === '/v1/') {
+  if (apiDocumentationPaths.has(request.url)) {
     response.redirect(apiDocumentationUrl);
     return;
   }
