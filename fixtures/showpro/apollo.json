@@ -49,6 +49,16 @@
         "comment": "0% to 100%"
       }
     },
+    "Value": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Dimmer": {
       "capability": {
         "type": "Intensity"
@@ -242,11 +252,20 @@
   "modes": [
     {
       "name": "3-channel HSV",
-      "shortName": "3ch HSV",
+      "shortName": "HSV",
       "channels": [
         "Hue",
         "Saturation",
-        "Dimmer"
+        "Value"
+      ]
+    },
+    {
+      "name": "3-channel HSI",
+      "shortName": "HSI",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity"
       ]
     },
     {
