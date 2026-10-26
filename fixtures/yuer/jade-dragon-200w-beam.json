@@ -20,11 +20,15 @@
     ]
   },
   "physical": {
+    "dimensions": [250, 375, 175],
     "weight": 4.5,
-    "power": 250,
+    "power": 280,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "200W white LED"
     },
     "lens": {
       "degreesMinMax": [2, 2]
