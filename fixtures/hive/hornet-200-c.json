@@ -22,6 +22,9 @@
     "dimensions": [100, 100, 224],
     "weight": 2.6,
     "power": 150,
+    "powerConnectors": {
+      "Proprietary": "input only"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"

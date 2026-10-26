@@ -877,6 +877,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         checkMatrixInsertBlockRepeatFor();
 
         for (const templateKey of matrixInsertBlock.templateChannels) {
+          if (templateKey === null) {
+            continue;
+          }
+
           const templateChannelExists = fixture.templateChannels.some((channel) => channel.allTemplateKeys.includes(templateKey));
           if (!templateChannelExists) {
             result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
