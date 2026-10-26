@@ -111,10 +111,60 @@
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 170],
+          "dmxRange": [11, 30],
           "type": "ColorPreset",
-          "comment": "RGB Macro",
-          "helpWanted": "Which colors are selectable with which DMX values?"
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"],
+          "comment": "Red…Yellow"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"],
+          "comment": "Yellow…Green"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Green…Cyan"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Cyan…Blue"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"],
+          "comment": "Blue…Magenta"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Magenta…Red"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Red…White"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "White…Blue"
         },
         {
           "dmxRange": [171, 200],
