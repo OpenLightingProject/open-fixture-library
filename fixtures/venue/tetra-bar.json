@@ -61,7 +61,7 @@
         "color": "Amber"
       }
     },
-    "Dimmer/Strobe $pixelKey": {
+    "Dimmer / Strobe $pixelKey": {
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -105,26 +105,6 @@
     }
   },
   "availableChannels": {
-    "Shutter / Strobe Master": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Intensity"
-        },
-        {
-          "dmxRange": [128, 227],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [228, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
     "No function": {
       "capability": {
         "type": "NoFunction"
@@ -225,7 +205,7 @@
         "Green Master",
         "Blue Master",
         "Amber Master",
-        "Shutter / Strobe Master"
+        "Dimmer / Strobe Master"
       ]
     },
     {
@@ -288,22 +268,22 @@
         "Green 1/4",
         "Blue 1/4",
         "Amber 1/4",
-        "Dimmer/Strobe 1/4",
+        "Dimmer / Strobe 1/4",
         "Red 2/4",
         "Green 2/4",
         "Blue 2/4",
         "Amber 2/4",
-        "Dimmer/Strobe 2/4",
+        "Dimmer / Strobe 2/4",
         "Red 3/4",
         "Green 3/4",
         "Blue 3/4",
         "Amber 3/4",
-        "Dimmer/Strobe 3/4",
+        "Dimmer / Strobe 3/4",
         "Red 4/4",
         "Green 4/4",
         "Blue 4/4",
         "Amber 4/4",
-        "Dimmer/Strobe 4/4"
+        "Dimmer / Strobe 4/4"
       ]
     },
     {
