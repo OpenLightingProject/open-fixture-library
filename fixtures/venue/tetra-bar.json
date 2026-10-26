@@ -19,12 +19,15 @@
     ]
   },
   "physical": {
-    "dimensions": [61, 170, 1004],
+    "dimensions": [1004, 170, 61],
     "weight": 3.6,
     "power": 46,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12x4W LED"
+      "type": "12×4W RGBW LED"
     },
     "lens": {
       "degreesMinMax": [15, 15]
@@ -71,8 +74,8 @@
           "dmxRange": [128, 227],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "23Hz"
         },
         {
           "dmxRange": [228, 255],
@@ -98,8 +101,8 @@
           "dmxRange": [1, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "23Hz"
         }
       ]
     }
