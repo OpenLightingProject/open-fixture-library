@@ -23,6 +23,9 @@
     "dimensions": [630, 105, 190],
     "weight": 7.3,
     "power": 230,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "bulb": {
       "type": "Luxeon K2 LEDs",
       "lumens": 650
