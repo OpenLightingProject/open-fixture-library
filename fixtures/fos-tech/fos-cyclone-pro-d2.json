@@ -1,0 +1,895 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FOS Cyclone Pro D2",
+  "shortName": "Cyclone Pro",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Tommaso Lovat"],
+    "createDate": "2026-06-07",
+    "lastModifyDate": "2026-06-07"
+  },
+  "comment": "one axis with 4 strobes tubes and 8 RGB matrix plates",
+  "links": {
+    "manual": [
+      "https://www.fos-lighting.eu/uploads/products_0_2_2_590.pdf"
+    ],
+    "productPage": [
+      "https://www.fos-lighting.eu/fos-cyclone-pro-d2-p-590.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-PSPApB2ac0&si=1ac69u9UwZ-liA5y"
+    ]
+  },
+  "physical": {
+    "dimensions": [178, 243, 482],
+    "weight": 10,
+    "power": 1000,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500,
+      "lumens": 1000
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-92.5deg",
+        "angleEnd": "92.5deg",
+        "comment": "Tilt Movement"
+      }
+    },
+    "Beam Dimmer": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Beam Intensity"
+      }
+    },
+    "Beam Strobe Mode": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Mode 1"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Mode 2"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Mode 3"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Mode 4"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Mode 5"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Mode 6"
+        }
+      ]
+    },
+    "Plate Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Red Dimmer"
+      }
+    },
+    "Plate Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Green Dimmer"
+      }
+    },
+    "Plate Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Blue Dimmer"
+      }
+    },
+    "Plate Strobe": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe from slow to fast"
+        }
+      ]
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-92.5deg",
+        "angleEnd": "92.5deg",
+        "comment": "Tilt Movement"
+      }
+    },
+    "Reserved": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Reserved Channel"
+      }
+    },
+    "Beam Macro": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Beam Off"
+        },
+        {
+          "dmxRange": [16, 55],
+          "type": "Effect",
+          "effectName": "Beam Macro 1"
+        },
+        {
+          "dmxRange": [56, 95],
+          "type": "Effect",
+          "effectName": "Beam Macro 2"
+        },
+        {
+          "dmxRange": [96, 135],
+          "type": "Effect",
+          "effectName": "Beam Macro 3"
+        },
+        {
+          "dmxRange": [136, 175],
+          "type": "Effect",
+          "effectName": "Beam Macro 4"
+        },
+        {
+          "dmxRange": [176, 215],
+          "type": "Effect",
+          "effectName": "Beam Macro 5"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Effect",
+          "effectName": "Beam Macro 6"
+        }
+      ]
+    },
+    "Plate Macro": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "Plate Macro Off"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "Effect",
+          "effectName": "Plate Macro 1"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Effect",
+          "effectName": "Plate Macro 2"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Effect",
+          "effectName": "Plate Macro 3"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Effect",
+          "effectName": "Plate Macro 4"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Effect",
+          "effectName": "Plate Macro 5"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Effect",
+          "effectName": "Plate Macro 6"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Effect",
+          "effectName": "Plate Macro 7"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Effect",
+          "effectName": "Plate Macro 8"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Effect",
+          "effectName": "Plate Macro 9"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Effect",
+          "effectName": "Plate Macro 10"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Effect",
+          "effectName": "Plate Macro 11"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Effect",
+          "effectName": "Plate Macro 12"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Effect",
+          "effectName": "Plate Macro 13"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Effect",
+          "effectName": "Plate Macro 14"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Effect",
+          "effectName": "Plate Macro 15"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Effect",
+          "effectName": "Plate Macro 16"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Effect",
+          "effectName": "Plate Macro 17"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Effect",
+          "effectName": "Plate Macro 18"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Effect",
+          "effectName": "Plate Macro 19"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Effect",
+          "effectName": "Plate Macro 20"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Effect",
+          "effectName": "Plate Macro 21"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Effect",
+          "effectName": "Plate Macro 22"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Effect",
+          "effectName": "Plate Macro 23"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Effect",
+          "effectName": "Plate Macro 24"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Effect",
+          "effectName": "Plate Macro 25"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Effect",
+          "effectName": "Plate Macro 26"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Effect",
+          "effectName": "Plate Macro 27"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Effect",
+          "effectName": "Plate Macro 28"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Effect",
+          "effectName": "Plate Macro 29"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Effect",
+          "effectName": "Plate Macro 30"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Effect",
+          "effectName": "Plate Macro 31"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Effect",
+          "effectName": "Plate Macro 32"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Effect",
+          "effectName": "Plate Macro 33"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "Effect",
+          "effectName": "Plate Macro 34"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Effect",
+          "effectName": "Plate Macro 35"
+        },
+        {
+          "dmxRange": [180, 184],
+          "type": "Effect",
+          "effectName": "Plate Macro 36"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "Effect",
+          "effectName": "Plate Macro 37"
+        },
+        {
+          "dmxRange": [190, 194],
+          "type": "Effect",
+          "effectName": "Plate Macro 38"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Effect",
+          "effectName": "Plate Macro 39"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Effect",
+          "effectName": "Plate Macro 40"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Effect",
+          "effectName": "Plate Macro 41"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Effect",
+          "effectName": "Plate Macro 42"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Effect",
+          "effectName": "Plate Macro 43"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Effect",
+          "effectName": "Plate Macro 44"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Effect",
+          "effectName": "Plate Macro 45"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Effect",
+          "effectName": "Plate Macro 46"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Effect",
+          "effectName": "Plate Macro 47"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Effect",
+          "effectName": "Plate Macro 48"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Effect",
+          "effectName": "Plate Macro 49"
+        },
+        {
+          "dmxRange": [250, 254],
+          "type": "Effect",
+          "effectName": "Plate Macro 50"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Plate Macro 51"
+        }
+      ]
+    },
+    "Plate Macro Color": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Plate Macro Color"
+      }
+    },
+    "Plate Macro Speed": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed From Slow To Fast"
+      }
+    },
+    "Plate Total Dimmer": {
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Close"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Dimmer from dark to bright"
+        }
+      ]
+    },
+    "Tilt Speed": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Tilt Speed From Fast To Slow"
+      }
+    },
+    "Dimmer Speed": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Plate Dimmer Speed From Fast To Slow"
+      }
+    },
+    "Beam Pixel 1": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Tube Pixel 1"
+      }
+    },
+    "Beam Pixel 2": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Tube Pixel 2"
+      }
+    },
+    "Beam Pixel 3": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Tube Pixel 3"
+      }
+    },
+    "Beam Pixel 4": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Tube Pixel 4"
+      }
+    },
+    "Plate Pixel 1 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 1 Red Dimmer"
+      }
+    },
+    "Plate Pixel 1 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 1 Green Dimmer"
+      }
+    },
+    "Plate Pixel 1 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 1 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 2 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 2 Red Dimmer"
+      }
+    },
+    "Plate Pixel 2 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 2 Green Dimmer"
+      }
+    },
+    "Plate Pixel 2 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 2 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 3 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 3 Red Dimmer"
+      }
+    },
+    "Plate Pixel 3 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 3 Green Dimmer"
+      }
+    },
+    "Plate Pixel 3 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 3 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 4 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 4 Red Dimmer"
+      }
+    },
+    "Plate Pixel 4 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 4 Green Dimmer"
+      }
+    },
+    "Plate Pixel 4 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 4 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 5 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 5 Red Dimmer"
+      }
+    },
+    "Plate Pixel 5 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 5 Green Dimmer"
+      }
+    },
+    "Plate Pixel 5 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 5 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 6 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 6 Red Dimmer"
+      }
+    },
+    "Plate Pixel 6 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 6 Green Dimmer"
+      }
+    },
+    "Plate Pixel 6 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 6 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 7 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 7 Red Dimmer"
+      }
+    },
+    "Plate Pixel 7 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 7 Green Dimmer"
+      }
+    },
+    "Plate Pixel 7 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 7 Blue Dimmer"
+      }
+    },
+    "Plate Pixel 8 Red": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Plate Pixel 8 Red Dimmer"
+      }
+    },
+    "Plate Pixel 8 Green": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Plate Pixel 8 Green Dimmer"
+      }
+    },
+    "Plate Pixel 8 Blue": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Plate Pixel 8 Blue Dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Tilt",
+        "Beam Dimmer",
+        "Beam Strobe Mode",
+        "Plate Red",
+        "Plate Green",
+        "Plate Blue",
+        "Plate Strobe"
+      ]
+    },
+    {
+      "name": "14 Channel",
+      "shortName": "14ch",
+      "channels": [
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Beam Dimmer",
+        "Beam Strobe Mode",
+        "Reserved",
+        "Beam Macro",
+        "Plate Red",
+        "Plate Green",
+        "Plate Blue",
+        "Plate Strobe",
+        "Plate Macro",
+        "Plate Macro Color",
+        "Plate Macro Speed",
+        "Plate Total Dimmer"
+      ]
+    },
+    {
+      "name": "16 Channel",
+      "shortName": "16ch",
+      "channels": [
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Beam Dimmer",
+        "Beam Strobe Mode",
+        "Reserved",
+        "Beam Macro",
+        "Plate Red",
+        "Plate Green",
+        "Plate Blue",
+        "Plate Strobe",
+        "Plate Macro",
+        "Plate Macro Color",
+        "Plate Macro Speed",
+        "Plate Total Dimmer",
+        "Tilt Speed",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "42 Channel",
+      "shortName": "42ch",
+      "channels": [
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Beam Dimmer",
+        "Beam Strobe Mode",
+        "Reserved",
+        "Beam Macro",
+        "Plate Red",
+        "Plate Green",
+        "Plate Blue",
+        "Plate Strobe",
+        "Plate Macro",
+        "Plate Macro Color",
+        "Plate Macro Speed",
+        "Plate Total Dimmer",
+        "Beam Pixel 1",
+        "Beam Pixel 2",
+        "Beam Pixel 3",
+        "Beam Pixel 4",
+        "Plate Pixel 1 Red",
+        "Plate Pixel 1 Green",
+        "Plate Pixel 1 Blue",
+        "Plate Pixel 2 Red",
+        "Plate Pixel 2 Green",
+        "Plate Pixel 2 Blue",
+        "Plate Pixel 3 Red",
+        "Plate Pixel 3 Green",
+        "Plate Pixel 3 Blue",
+        "Plate Pixel 4 Red",
+        "Plate Pixel 4 Green",
+        "Plate Pixel 4 Blue",
+        "Plate Pixel 5 Red",
+        "Plate Pixel 5 Green",
+        "Plate Pixel 5 Blue",
+        "Plate Pixel 6 Red",
+        "Plate Pixel 6 Green",
+        "Plate Pixel 6 Blue",
+        "Plate Pixel 7 Red",
+        "Plate Pixel 7 Green",
+        "Plate Pixel 7 Blue",
+        "Plate Pixel 8 Red",
+        "Plate Pixel 8 Green",
+        "Plate Pixel 8 Blue"
+      ]
+    },
+    {
+      "name": "44 Channel",
+      "shortName": "44ch",
+      "channels": [
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Beam Dimmer",
+        "Beam Strobe Mode",
+        "Reserved",
+        "Beam Macro",
+        "Plate Red",
+        "Plate Green",
+        "Plate Blue",
+        "Plate Strobe",
+        "Plate Macro",
+        "Plate Macro Color",
+        "Plate Macro Speed",
+        "Plate Total Dimmer",
+        "Beam Pixel 1",
+        "Beam Pixel 2",
+        "Beam Pixel 3",
+        "Beam Pixel 4",
+        "Plate Pixel 1 Red",
+        "Plate Pixel 1 Green",
+        "Plate Pixel 1 Blue",
+        "Plate Pixel 2 Red",
+        "Plate Pixel 2 Green",
+        "Plate Pixel 2 Blue",
+        "Plate Pixel 3 Red",
+        "Plate Pixel 3 Green",
+        "Plate Pixel 3 Blue",
+        "Plate Pixel 4 Red",
+        "Plate Pixel 4 Green",
+        "Plate Pixel 4 Blue",
+        "Plate Pixel 5 Red",
+        "Plate Pixel 5 Green",
+        "Plate Pixel 5 Blue",
+        "Plate Pixel 6 Red",
+        "Plate Pixel 6 Green",
+        "Plate Pixel 6 Blue",
+        "Plate Pixel 7 Red",
+        "Plate Pixel 7 Green",
+        "Plate Pixel 7 Blue",
+        "Plate Pixel 8 Red",
+        "Plate Pixel 8 Green",
+        "Plate Pixel 8 Blue",
+        "Tilt Speed",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}
