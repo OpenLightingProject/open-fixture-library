@@ -8,7 +8,7 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 /** @import Mode from '../../lib/model/Mode.js' */
 
-export const version = '0.2.0';
+export const version = '0.2.1';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
