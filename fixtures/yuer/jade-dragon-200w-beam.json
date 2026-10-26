@@ -120,6 +120,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -127,6 +128,7 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -398,44 +400,6 @@
           "comment": "Reset - hold 5 seconds"
         }
       ]
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Pan 3": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg",
-        "comment": "pan fine channel"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "180deg"
-      }
-    },
-    "Tilt 3": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 3 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "180deg",
-        "comment": "Tilt fine channel"
-      }
     }
   },
   "modes": [
@@ -460,10 +424,10 @@
       "name": "13-ch fine",
       "shortName": "13ch",
       "channels": [
-        "Pan 2",
-        "Pan 3",
-        "Tilt 2",
-        "Tilt 3",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Intensity",
         "Strobe",
