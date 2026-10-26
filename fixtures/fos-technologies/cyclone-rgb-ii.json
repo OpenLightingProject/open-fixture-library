@@ -1,0 +1,169 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cyclone RGB II",
+  "categories": ["Strobe", "Matrix"],
+  "meta": {
+    "authors": ["Björn Ebner"],
+    "createDate": "2026-10-25",
+    "lastModifyDate": "2026-10-25"
+  },
+  "comment": "Pixel RGB strobe with 8 independently controllable RGB sections (4x2). 3-channel mode controls all sections as one; strobe is only available in 9-channel mode.",
+  "links": {
+    "manual": [
+      "https://www.fos-lighting.eu/uploads/products_0_2_1_118.pdf"
+    ],
+    "productPage": [
+      "https://www.fos-lighting.eu/fos-cyclone-rgb-ii-p-118.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=CCZF0vO-c8c"
+    ]
+  },
+  "physical": {
+    "dimensions": [460, 240, 105],
+    "weight": 5.3,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["8", "7", "6", "5"],
+        ["1", "2", "3", "4"]
+      ]
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Chase 1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Built-in chases",
+        "comment": "Different chase every 2 DMX values"
+      }
+    },
+    "Chase 2": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Built-in chases",
+        "comment": "Different chase every 2 DMX values"
+      }
+    },
+    "Chase 3": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Built-in chases",
+        "comment": "Different chase every 2 DMX values"
+      }
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": ["Red", "Green", "Blue"]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Chase 1",
+        "Chase 2",
+        "Chase 3",
+        "Chase Speed"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1", "2", "3", "4", "5", "6", "7", "8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
