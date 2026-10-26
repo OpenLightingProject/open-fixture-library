@@ -10,7 +10,6 @@ import { sendAttachment, sendJson } from '../../lib/server-response-helpers.js';
 
 const pluginsPromise = importJson('../../plugins/plugins.json', import.meta.url);
 const registerPromise = importJson('../../fixtures/register.json', import.meta.url);
-const apiDocumentationUrl = 'https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/rest-api.md';
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
@@ -64,10 +63,6 @@ const router = express.Router();
 
 // support JSON encoded bodies
 router.use(express.json({ limit: '50mb' }));
-
-router.get(['/api', '/api/'], (request, response) => {
-  response.redirect(apiDocumentationUrl);
-});
 
 router.get(/^\/download\.(?<format>[a-z0-9_.-]+)$/, async (request, response, next) => {
   const { format } = request.params;

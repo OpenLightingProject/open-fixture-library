@@ -19,6 +19,19 @@ const apiDocumentationUrl = 'https://github.com/OpenLightingProject/open-fixture
 const app = express();
 app.disable('x-powered-by');
 
+app.use((request, response, next) => {
+  if (request.url === '/v1' || request.url === '/v1/') {
+    response.redirect(apiDocumentationUrl);
+    return;
+  }
+
+  if (request.url.startsWith('/v1/')) {
+    request.url = request.url.slice(3);
+  }
+
+  next();
+});
+
 // support JSON encoded bodies
 app.use(express.json({ limit: '50mb' }));
 
