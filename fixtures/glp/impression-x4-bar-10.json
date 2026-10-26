@@ -23,6 +23,9 @@
     "dimensions": [500, 240, 100],
     "weight": 8,
     "power": 200,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "Osram Ostar RGBW multi-chip LED",

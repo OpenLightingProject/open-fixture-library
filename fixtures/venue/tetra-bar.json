@@ -1,0 +1,248 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tetra Bar",
+  "categories": ["Pixel Bar", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["grayplex", "Flo Edelmann"],
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26"
+  },
+  "links": {
+    "manual": [
+      "https://venuelightingeffects.com/wp-content/uploads/2024/06/Venue-Tetra-Bar-Manual.pdf"
+    ],
+    "productPage": [
+      "https://venuelightingeffects.com/dp/tetra-bar/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=nizBT-vksjs"
+    ]
+  },
+  "physical": {
+    "dimensions": [1004, 170, 61],
+    "weight": 3.6,
+    "power": 46,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12×4W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/4": { "x": ["<=3"] },
+      "2/4": { "x": [">=4", "<=6"] },
+      "3/4": { "x": [">=7", "<=9"] },
+      "4/4": { "x": [">=9"] }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer / Strobe $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "23Hz"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "23Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "Dimmer / Strobe Master"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "Dimmer Master",
+        "Strobe Master"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "20-channel",
+      "shortName": "20ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "Dimmer / Strobe $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tetra Control 28-channel",
+      "shortName": "tetra-control-28ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    }
+  ]
+}

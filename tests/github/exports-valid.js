@@ -238,7 +238,7 @@ async function getTaskPromise(task) {
   }
   catch (error) {
     emoji = '❗';
-    detailListItems.push(`Unable to export fixture: ${error.message}`);
+    detailListItems.push(`Unable to export fixture with ${task.pluginKey} plugin: ${error.message}`);
     isTestErrored = true;
   }
 

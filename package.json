@@ -48,7 +48,7 @@
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
     "color-hash": "^2.0.2",
-    "color-name-list": "^14.70.0",
+    "color-name-list": "^14.77.0",
     "cookie-universal-nuxt": "^2.2.2",
     "cors": "^2.8.6",
     "embetty-vue": "^2.2.2",
@@ -67,6 +67,7 @@
     "vue-form": "^4.10.3",
     "vue-ts-types": "^1.10.0",
     "vuedraggable": "^2.24.3",
+    "webpack": "^4.47.0",
     "xml2js": "^0.6.2",
     "xmlbuilder": "^15.1.1"
   },
@@ -140,7 +141,7 @@
   "license": "MIT",
   "allowScripts": {
     "core-js@3.29.1": true,
-    "core-js@3.50.0": true,
+    "core-js@3.51.0": true,
     "nuxt@2.18.1": true,
     "@parcel/watcher@2.6.0": true,
     "unrs-resolver@1.12.2": true
