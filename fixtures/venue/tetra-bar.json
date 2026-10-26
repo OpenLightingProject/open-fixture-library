@@ -158,130 +158,90 @@
       "name": "12-channel",
       "shortName": "12ch",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "16-channel",
       "shortName": "16ch",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Amber 1/4",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Amber 2/4",
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Amber 3/4",
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4",
-        "Amber 4/4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "20-channel",
       "shortName": "20ch",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Amber 1/4",
-        "Dimmer / Strobe 1/4",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Amber 2/4",
-        "Dimmer / Strobe 2/4",
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Amber 3/4",
-        "Dimmer / Strobe 3/4",
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4",
-        "Amber 4/4",
-        "Dimmer / Strobe 4/4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "Dimmer / Strobe $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "24-channel",
       "shortName": "24ch",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Amber 1/4",
-        "Dimmer 1/4",
-        "Strobe 1/4",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Amber 2/4",
-        "Dimmer 2/4",
-        "Strobe 2/4",
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Amber 3/4",
-        "Dimmer 3/4",
-        "Strobe 3/4",
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4",
-        "Amber 4/4",
-        "Dimmer 4/4",
-        "Strobe 4/4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "Tetra Control 28-channel",
       "shortName": "tetra-control-28ch",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Amber 1/4",
-        null,
-        null,
-        null,
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        "Amber 2/4",
-        null,
-        null,
-        null,
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        "Amber 3/4",
-        null,
-        null,
-        null,
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4",
-        "Amber 4/4",
-        null,
-        null,
-        null
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            null,
+            null,
+            null
+          ]
+        }
       ]
     }
   ]
