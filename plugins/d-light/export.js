@@ -193,7 +193,7 @@ function getParameterName(channel, channels, mode, attribute, indexInAttribute) 
 
   switch (attribute) {
     case 'FOCUS': {
-      let name = channel.type.toUpperCase(); // PAN or TILT
+      const name = channel.type.toUpperCase(); // PAN or TILT
 
       // D::Light requires parameter names to be unique, so append a number to distinguish
       // multiple same-type channels (e.g. the pan channels of a matrix's pixels).
@@ -201,11 +201,9 @@ function getParameterName(channel, channels, mode, attribute, indexInAttribute) 
         .map((otherChannel) => getUsableChannel(otherChannel))
         .filter((otherChannel) => otherChannel.type === channel.type);
 
-      if (sameTypeChannels.length > 1) {
-        name += ` ${sameTypeChannels.indexOf(channel) + 1}`;
-      }
-
-      return name;
+      return sameTypeChannels.length > 1
+        ? `${name} ${sameTypeChannels.indexOf(channel) + 1}`
+        : name;
     }
     case 'INTENSITY': {
       if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
