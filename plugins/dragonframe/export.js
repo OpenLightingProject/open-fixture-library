@@ -7,7 +7,7 @@ import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replac
 // needed for export test
 export const supportedOflVersion = '12.2.1';
 
-export const version = '1.0.1';
+export const version = '1.0.2';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
