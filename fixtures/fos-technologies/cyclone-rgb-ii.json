@@ -4,8 +4,8 @@
   "categories": ["Strobe", "Matrix"],
   "meta": {
     "authors": ["Björn Ebner"],
-    "createDate": "2026-10-25",
-    "lastModifyDate": "2026-10-25"
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26"
   },
   "comment": "Pixel RGB strobe with 8 independently controllable RGB sections (4x2). 3-channel mode controls all sections as one; strobe is only available in 9-channel mode.",
   "links": {
@@ -37,75 +37,9 @@
         ["8", "7", "6", "5"],
         ["1", "2", "3", "4"]
       ]
-    ]
-  },
-  "availableChannels": {
-    "Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "30Hz"
-        }
-      ]
-    },
-    "Chase 1": {
-      "capability": {
-        "type": "Effect",
-        "effectName": "Built-in chases",
-        "comment": "Different chase every 2 DMX values"
-      }
-    },
-    "Chase 2": {
-      "capability": {
-        "type": "Effect",
-        "effectName": "Built-in chases",
-        "comment": "Different chase every 2 DMX values"
-      }
-    },
-    "Chase 3": {
-      "capability": {
-        "type": "Effect",
-        "effectName": "Built-in chases",
-        "comment": "Different chase every 2 DMX values"
-      }
-    },
-    "Chase Speed": {
-      "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
-      }
+    ],
+    "pixelGroups": {
+      "Master": "all"
     }
   },
   "templateChannels": {
@@ -128,24 +62,76 @@
       }
     }
   },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Chase Mode 1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different chases every 2 DMX values"
+      }
+    },
+    "Chase Mode 2": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different chases every 2 DMX values"
+      }
+    },
+    "Chase Mode 3": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different chases every 2 DMX values"
+      }
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
   "modes": [
     {
       "name": "3-channel",
       "shortName": "3ch",
-      "channels": ["Red", "Green", "Blue"]
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
     },
     {
       "name": "9-channel",
       "shortName": "9ch",
       "channels": [
         "Dimmer",
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Strobe",
-        "Chase 1",
-        "Chase 2",
-        "Chase 3",
+        "Chase Mode 1",
+        "Chase Mode 2",
+        "Chase Mode 3",
         "Chase Speed"
       ]
     },
@@ -155,7 +141,7 @@
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1", "2", "3", "4", "5", "6", "7", "8"],
+          "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
