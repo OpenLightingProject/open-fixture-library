@@ -143,11 +143,9 @@
   ],
   "license": "MIT",
   "allowScripts": {
-    "core-js@3.29.1": true,
-    "core-js@3.50.0": true,
-    "esbuild@0.27.7": true,
-    "esbuild@0.28.2": true,
-    "@parcel/watcher@2.6.0": true,
-    "unrs-resolver@1.12.2": true
+    "@parcel/watcher": true,
+    "core-js": true,
+    "esbuild": true,
+    "unrs-resolver": true
   }
 }
