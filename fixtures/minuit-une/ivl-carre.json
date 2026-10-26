@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["ameisso"],
     "createDate": "2018-03-30",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -99,8 +99,8 @@
           "dmxRange": [28, 227],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "30bpm",
-          "speedEnd": "1440bpm"
+          "speedStart": "0.5Hz",
+          "speedEnd": "24Hz"
         },
         {
           "dmxRange": [228, 255],

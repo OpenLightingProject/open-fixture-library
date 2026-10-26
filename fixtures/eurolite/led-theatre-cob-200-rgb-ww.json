@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Benjamin Blaikner / Theater der Mitte", "diam0ndkiller"],
     "createDate": "2024-11-25",
-    "lastModifyDate": "2026-09-03"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -70,8 +70,8 @@
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
@@ -334,8 +334,8 @@
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },

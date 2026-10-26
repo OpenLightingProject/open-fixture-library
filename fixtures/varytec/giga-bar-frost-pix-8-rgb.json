@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Luke Nelson"],
     "createDate": "2022-10-12",
-    "lastModifyDate": "2022-10-12",
+    "lastModifyDate": "2026-10-26",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2022-10-12",
@@ -76,8 +76,8 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "speedStart": "slow",
-        "speedEnd": "fast",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz",
         "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
