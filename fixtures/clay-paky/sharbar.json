@@ -562,7 +562,7 @@
         {
           "dmxRange": [103, 105],
           "type": "Maintenance",
-          "comment": "Pixel engine must be enabled through this Function parameter (DMX 103-105)"
+          "comment": "Enable pixel engine"
         },
         {
           "dmxRange": [106, 255],
@@ -793,8 +793,8 @@
   },
   "modes": [
     {
-      "name": "Standard - 24 ch",
-      "shortName": "24ch",
+      "name": "Standard",
+      "shortName": "std",
       "channels": [
         "Red",
         "Red fine",
@@ -825,8 +825,8 @@
       ]
     },
     {
-      "name": "Shape - 30 ch",
-      "shortName": "30ch",
+      "name": "Shape",
+      "shortName": "shp",
       "channels": [
         "Red",
         "Red fine",
@@ -863,8 +863,98 @@
       ]
     },
     {
-      "name": "Standard + Pixel RGBW - 48 ch",
-      "shortName": "48ch",
+      "name": "Standard + Pixel RGB",
+      "shortName": "rgb-std",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Temperature",
+        "Color Macro",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Tilt",
+        "Tilt fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey"
+          ]
+        },
+        "Function",
+        "Reset",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shape + Pixel RGB",
+      "shortName": "rgb-shp",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Temperature",
+        "Color Macro",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom",
+        "Tilt",
+        "Tilt fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Pan $pixelKey"
+          ]
+        },
+        "Function",
+        "Reset",
+        "Pixel Macro",
+        "Pixel Macro Speed",
+        "Pixel Macro Offset",
+        "Mirror Macro",
+        "Mirror Macro Speed",
+        "Mirror Macro Offset",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Standard + Pixel RGBW",
+      "shortName": "rgbw-std",
       "channels": [
         "Red",
         "Red fine",
@@ -906,8 +996,8 @@
       ]
     },
     {
-      "name": "Shape + Pixel RGBW - 54 ch",
-      "shortName": "54ch",
+      "name": "Shape + Pixel RGBW",
+      "shortName": "rgbw-shp",
       "channels": [
         "Red",
         "Red fine",
