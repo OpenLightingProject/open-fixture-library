@@ -506,21 +506,21 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "randomTiming": true,
-          "comment": "Random strobe, low frequency"
+          "speed": "slow"
         },
         {
           "dmxRange": [225, 237],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "randomTiming": true,
-          "comment": "Random strobe, medium frequency"
+          "speed": "50%"
         },
         {
           "dmxRange": [238, 250],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "randomTiming": true,
-          "comment": "Random strobe, high frequency"
+          "speed": "fast"
         },
         {
           "dmxRange": [251, 255],
