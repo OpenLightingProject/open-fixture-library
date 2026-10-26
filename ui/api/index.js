@@ -8,6 +8,9 @@ import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
 import { sendJson } from '../../lib/server-response-helpers.js';
 import * as routeHandlers from './routes.js';
 
+const apiDocumentationUrl = 'https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/rest-api.md';
+const apiDocumentationPaths = new Set(['/', '/v1', '/v1/']);
+
 /**
  * @typedef {object} ApiResponse
  * @property {number} [statusCode=200] The HTTP status code set for the response.
@@ -16,6 +19,19 @@ import * as routeHandlers from './routes.js';
 
 const app = express();
 app.disable('x-powered-by');
+
+app.use((request, response, next) => {
+  if (apiDocumentationPaths.has(request.url)) {
+    response.redirect(apiDocumentationUrl);
+    return;
+  }
+
+  if (request.url.startsWith('/v1/')) {
+    request.url = request.url.slice(3);
+  }
+
+  next();
+});
 
 // support JSON encoded bodies
 app.use(express.json({ limit: '50mb' }));
