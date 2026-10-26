@@ -32,5 +32,5 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |`GITHUB_REF`                       |                                           | [Set by GitHub Actions][gh-actions-docs] |
 
 [gh-token]: <https://github.com/settings/tokens>
-[node-env-perf]: <https://www.dynatrace.com/blog/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/>
+[node-env-perf]: <https://nodejs.org/en/learn/getting-started/nodejs-the-difference-between-development-and-production/>
 [gh-actions-docs]: <https://docs.github.com/en/free-pro-team@latest/actions/reference/environment-variables>

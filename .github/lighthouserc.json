@@ -1,8 +1,8 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "npm run start",
-      "startServerReadyPattern": "Nuxt.js is ready.",
+      "startServerCommand": "PORT=3000 node .output/server/index.mjs",
+      "startServerReadyPattern": "Listening on",
       "startServerReadyTimeout": 20000
     }
   }
