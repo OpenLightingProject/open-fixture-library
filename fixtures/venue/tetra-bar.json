@@ -27,31 +27,81 @@
       "degreesMinMax": [15, 15]
     }
   },
-  "availableChannels": {
-    "Red Master": {
+  "matrix": {
+    "pixelKeys": [[["1/4", "2/4", "3/4", "4/4"]]],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green Master": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue Master": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Amber Master": {
+    "Amber $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
+    "Dimmer/Strobe $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
     "Shutter / Strobe Master": {
       "capabilities": [
         {
@@ -69,292 +119,6 @@
           "dmxRange": [228, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Dimmer Master": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Strobe Master": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Red 1/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 1/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 1/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 2/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 2/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 2/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 3/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 3/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 3/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 4/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 4/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 4/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Amber 1/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Amber 2/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Amber 3/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Amber 4/4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Dimmer/Strobe 1/4": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Intensity"
-        },
-        {
-          "dmxRange": [128, 227],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [228, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Dimmer/Strobe 2/4": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Intensity"
-        },
-        {
-          "dmxRange": [128, 227],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [228, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Dimmer/Strobe 3/4": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Intensity"
-        },
-        {
-          "dmxRange": [128, 227],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [228, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Dimmer/Strobe 4/4": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Intensity"
-        },
-        {
-          "dmxRange": [128, 227],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [228, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Dimmer 1/4": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 2/4": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 3/4": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Dimmer 4/4": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Strobe 1/4": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Strobe 2/4": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Strobe 3/4": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Strobe 4/4": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
         }
       ]
     },
