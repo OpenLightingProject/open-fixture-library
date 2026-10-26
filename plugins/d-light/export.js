@@ -197,21 +197,12 @@ function getParameterName(channel, channels, mode, attribute, indexInAttribute) 
 
       // D::Light requires parameter names to be unique, so append a number to distinguish
       // multiple same-type channels (e.g. the pan channels of a matrix's pixels).
-      let sameTypeCount = 0;
-      let sameTypeIndex = 0;
-      for (const otherChannel of channels) {
-        const other = getUsableChannel(otherChannel);
-        if (other.type !== channel.type) {
-          continue;
-        }
+      const sameTypeChannels = channels
+        .map((otherChannel) => getUsableChannel(otherChannel))
+        .filter((otherChannel) => otherChannel.type === channel.type);
 
-        if (other === channel) {
-          sameTypeIndex = sameTypeCount;
-        }
-        sameTypeCount++;
-      }
-      if (sameTypeCount > 1) {
-        name += ` ${sameTypeIndex + 1}`;
+      if (sameTypeChannels.length > 1) {
+        name += ` ${sameTypeChannels.indexOf(channel) + 1}`;
       }
 
       return name;
