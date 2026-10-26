@@ -29,6 +29,9 @@
     "dimensions": [1000, 263, 170],
     "weight": 15,
     "power": 300,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "6× 30W RGBW LED (Osram Ostar Stage II LE RTDUW S2WN)",
@@ -474,8 +477,8 @@
           "dmxRange": [4, 69],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [70, 74],
@@ -486,15 +489,15 @@
           "dmxRange": [75, 140],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0.5Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [141, 206],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "24Hz",
+          "speedEnd": "0.5Hz"
         },
         {
           "dmxRange": [207, 211],
