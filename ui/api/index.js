@@ -8,6 +8,8 @@ import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
 import { sendJson } from '../../lib/server-response-helpers.js';
 import * as routeHandlers from './routes.js';
 
+const apiDocumentationUrl = 'https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/rest-api.md';
+
 /**
  * @typedef {object} ApiResponse
  * @property {number} [statusCode=200] The HTTP status code set for the response.
@@ -142,6 +144,10 @@ const api = new OpenAPIBackend({
       return response;
     },
   },
+});
+
+app.get('/', (request, response) => {
+  response.redirect(apiDocumentationUrl);
 });
 
 app.use(async (request, response) => {
