@@ -334,7 +334,7 @@ export async function importFixtures(buffer, filename, authorName) {
               const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
               const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo, maxDmxValue, dmxFrom[1]);
 
-              return [{
+              return {
                 modeIndex,
                 masterGdtfChannel: masterChannel,
                 switchingChannelName: gdtfDmxChannel.$.Name,
@@ -342,7 +342,7 @@ export async function importFixtures(buffer, filename, authorName) {
                 followerChannelFunction: gdtfChannelFunction,
                 dmxFrom,
                 dmxTo,
-              }];
+              };
             });
           });
         });
@@ -376,7 +376,7 @@ export async function importFixtures(buffer, filename, authorName) {
           const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
           const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo, maxDmxValue, dmxFrom[1]);
 
-          return [{
+          return {
             modeIndex,
             masterGdtfChannel: masterChannel,
             switchingChannelName: followerChannel.$.Name,
@@ -384,7 +384,7 @@ export async function importFixtures(buffer, filename, authorName) {
             followerChannelFunction,
             dmxFrom,
             dmxTo,
-          }];
+          };
         });
       });
     }
@@ -409,12 +409,10 @@ export async function importFixtures(buffer, filename, authorName) {
     for (const gdtfMode of gdtfModes) {
       const gdtfChannels = gdtfMode.DMXChannels[0].DMXChannel;
       for (const gdtfChannel of gdtfChannels) {
-        if (gdtfChannel.$.DMXBreak === 'Overwrite') {
-          addChannel(templateChannels, gdtfChannel);
-        }
-        else {
-          addChannel(availableChannels, gdtfChannel);
-        }
+        addChannel(
+          gdtfChannel.$.DMXBreak === 'Overwrite' ? templateChannels : availableChannels,
+          gdtfChannel,
+        );
       }
     }
 

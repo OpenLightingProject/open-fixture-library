@@ -54,8 +54,8 @@ export async function createFeedbackIssue({ request }) {
     lines.push(`\nThank you ${githubUsernameMarkdown}!`);
   }
 
-  let issueUrl;
-  let error;
+  let issueUrl = null;
+  let error = null;
   try {
     issueUrl = await createIssue(title, lines.join('\n'), labels);
     console.log(`Created issue at ${issueUrl}`);

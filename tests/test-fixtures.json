@@ -696,5 +696,26 @@
       "wheel-type-Open",
       "wheel-slot-type-Open"
     ]
+  },
+  {
+    "man": "venue",
+    "key": "tetra-bar",
+    "name": "Tetra Bar",
+    "features": [
+      "capability-type-NoFunction",
+      "capability-type-ShutterStrobe",
+      "capability-type-Intensity",
+      "capability-type-ColorIntensity",
+      "duplicate-channel-names",
+      "floating-point-weight",
+      "matrix-pixelCount",
+      "matrix-pixelGroups",
+      "matrix-pixelGroups-number-constraints",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "null-channels-0",
+      "null-channels-matrix-insert",
+      "reused-channels"
+    ]
   }
 ]

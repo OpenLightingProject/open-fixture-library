@@ -9,15 +9,15 @@
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflDate :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflDate :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflDate :date="fixture.meta.importDate" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
@@ -33,6 +33,7 @@
 
     <FixturePage
       :fixture="fixture"
+      :manufacturer-color="manufacturerJson.color"
       :load-all-modes="`loadAllModes` in $route.query"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
@@ -77,7 +78,6 @@
 </style>
 
 <script>
-import register from '../../../fixtures/register.json';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
@@ -99,25 +99,33 @@ export default {
     FixtureHeader,
     HelpWantedDialog,
   },
-  validate({ params }) {
-    return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
-  },
   async asyncData({ params, query, $axios, redirect, error }) {
     const { manufacturerKey, fixtureKey } = params;
 
-    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
-    if (redirectTo) {
-      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    let manufacturerJson;
+    try {
+      manufacturerJson = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+
+    const redirectFixture = manufacturerJson.redirects.find(({ key }) => key === fixtureKey);
+    if (redirectFixture) {
+      return redirect(302, `/${redirectFixture.redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    }
+
+    const fixture = manufacturerJson.fixtures.find(({ key }) => key === fixtureKey);
+    if (!fixture) {
+      return error({ statusCode: 404, message: 'Fixture not found' });
     }
 
     let fixtureJson;
-    let manufacturerJson;
     let plugins;
     let redirectObject;
     try {
-      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
+      [fixtureJson, plugins, redirectObject] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
-        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get('/api/v1/plugins'),
         fetchRedirectObject($axios, query.redirectFrom),
       ]);
