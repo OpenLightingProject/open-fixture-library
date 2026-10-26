@@ -1,0 +1,49 @@
+{
+  "get": {
+    "operationId": "getCategories",
+    "description": "Returns general information about all fixture categories.",
+    "tags": ["categories"],
+    "responses": {
+      "200": {
+        "description": "Category list returned",
+        "headers": {
+          "Content-Type": {
+            "$ref": "../../openapi.json#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "../../openapi.json#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "../../openapi.json#/components/headers/Vary"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "fixtureCount": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "fixtureCount"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../../openapi.json#/components/responses/400-BadRequestError"
+      }
+    }
+  }
+}

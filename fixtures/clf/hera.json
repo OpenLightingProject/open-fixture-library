@@ -12,7 +12,7 @@
       "https://www.clf-lighting.com/wp-content/uploads/CLF_HERA_Manual.pdf"
     ],
     "productPage": [
-      "https://www.clf-lighting.com/product/hera"
+      "https://www.clf-lighting.com/product/hera/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=lxO2bXqmgJE"
@@ -22,6 +22,9 @@
     "dimensions": [260, 290, 180],
     "weight": 3.8,
     "power": 121,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "12× RGBWAUV LEDs"

@@ -5,7 +5,7 @@
 
 [<img alt="OFL logo" src="https://cdn.rawgit.com/OpenLightingProject/open-fixture-library/master/ui/static/ofl-logo.svg" width="250" />](ui/static/ofl-logo.svg)
 
-To use lighting control software like [QLC+](https://www.qlcplus.org/), [DMXControl](https://www.dmxcontrol.org/) or [e:cue](https://www.osram.de/ecue/), you need fixture definition files that describe your lighting hardware. Since one software can usually only understand its own fixture definition format, switching between different programs can be difficult.
+To use lighting control software like [QLC+](https://www.qlcplus.org/), [DMXControl](https://www.dmxcontrol.org/) or [e:cue](https://eu.traxon-ecue.com/products/lighting-application-suite/), you need fixture definition files that describe your lighting hardware. Since one software can usually only understand its own fixture definition format, switching between different programs can be difficult.
 
 The *Open Fixture Library* tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](docs/fixture-format.md) that tries to bundle as much information as possible for all the different output formats.
 
@@ -16,7 +16,7 @@ The easiest way to help: Head over to the online [Fixture Editor](https://open-f
 
 There are also [other ways you can help without coding](docs/CONTRIBUTING.md#how-you-can-help).
 
-**🙏 Help wanted!** There are [a lot of pull requests](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture+sort%3Aupdated-desc) for new fixtures that are not yet reviewed and merged. Reviewing them (and maybe fixing smaller issues) helps get this number down and the number of fixtures in OFL up! See the [step-by-step instructions for fixture reviews](docs/CONTRIBUTING.md#fixtures).
+**🙏 Help wanted!** There are [a lot of pull requests](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture+sort%3Aupdated-desc) for new fixtures that are not yet reviewed and merged. Reviewing them (and maybe fixing smaller issues) helps get this number down and the number of fixtures in OFL up! See the [step-by-step instructions for fixture reviews](docs/CONTRIBUTING.md#fixtures). New contributors are welcome to help review fixtures and improve documentation.
 
 
 ## Contribute code

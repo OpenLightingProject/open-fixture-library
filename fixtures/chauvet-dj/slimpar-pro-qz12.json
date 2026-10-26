@@ -8,13 +8,22 @@
     "lastModifyDate": "2018-08-10"
   },
   "links": {
-    "manual": ["https://www.chauvetdj.com/wp-content/uploads/2017/10/SlimPAR_Pro_QZ12_USB_UM_Rev1_WO.pdf"],
-    "productPage": ["https://www.chauvetdj.com/products/slimpar-pro-qz12-usb/"],
-    "video": ["https://www.youtube.com/watch?v=elPlzmj5CrI"]
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2017/10/SlimPAR_Pro_QZ12_USB_UM_Rev1_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/slimpar-pro-qz12-usb/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=elPlzmj5CrI"
+    ]
   },
   "physical": {
     "dimensions": [234, 269, 318],
     "weight": 4.6,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "12x 10W RGBA LEDs"

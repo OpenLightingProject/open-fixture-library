@@ -53,14 +53,13 @@
 import { booleanProp, objectProp } from 'vue-ts-types';
 import { linksProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-
 import PropertyInputText from '../PropertyInputText.vue';
 
 const placeholders = {
-  manual: `e.g. https://example.org/fixture/manual.pdf`,
-  productPage: `e.g. https://example.org/fixture`,
-  video: `e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
-  other: `e.g. https://example.org/relevant-page`,
+  manual: 'e.g. https://example.org/fixture/manual.pdf',
+  productPage: 'e.g. https://example.org/fixture',
+  video: 'e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  other: 'e.g. https://example.org/relevant-page',
 };
 
 export default {
@@ -73,9 +72,9 @@ export default {
     formstate: objectProp().required,
   },
   emits: {
-    'set-type': type => true,
-    'set-url': url => true,
-    remove: () => true,
+    'set-type': (type) => true,
+    'set-url': (url) => true,
+    'remove': () => true,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
@@ -92,7 +91,7 @@ export default {
         return this.link.type;
       },
       set(type) {
-        this.$emit(`set-type`, type);
+        this.$emit('set-type', type);
       },
     },
     url: {
@@ -100,7 +99,7 @@ export default {
         return this.link.url;
       },
       set(url) {
-        this.$emit(`set-url`, url);
+        this.$emit('set-url', url);
       },
     },
     placeholder() {

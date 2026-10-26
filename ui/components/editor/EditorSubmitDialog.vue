@@ -141,7 +141,14 @@
     </div>
 
     <div v-else-if="state === `error`">
-      Unfortunately, there was an error while uploading. Please copy the following data and
+      Unfortunately, there was an error while uploading.
+      <template v-if="isImport">
+        <br>
+        This may be because the uploaded file is too large or in the wrong format, or because
+        the import plugin needs to be improved. You can help with that by sharing the data!
+        <br>
+      </template>
+      Please copy the following data and
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
         target="_blank"
@@ -149,7 +156,7 @@
         manually submit them to GitHub
       </a>.
 
-      <textarea v-model="rawData" readonly />
+      <pre class="error-container" tabindex="0">{{ rawData }}</pre>
 
       <div class="button-bar right">
         <button type="button" class="button secondary" @click.prevent="onCancel()">Close</button>
@@ -192,6 +199,23 @@
   }
 }
 
+.error-container {
+  display: block;
+  height: 15em;
+  min-height: 4em;
+  padding: 1em;
+  overflow: auto;
+  font-family: $system-monospace-font-stack;
+  font-size: 0.8em;
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: pre-wrap;
+  cursor: text;
+  user-select: all;
+  background: theme-color(header-background);
+  border-radius: 3px;
+}
+
 .button-bar {
   position: sticky;
   bottom: 0;
@@ -206,24 +230,23 @@
 import { stringProp } from 'vue-ts-types';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
-
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
 import FixturePage from '../fixture-page/FixturePage.vue';
 import FixtureHeader from '../FixtureHeader.vue';
 
 const stateTitles = {
-  closed: `Closed`,
-  validating: `Validating your new fixture…`,
-  ready: `Submit your new fixture`,
-  preview: `Preview fixture`,
-  uploading: `Submitting your new fixture…`,
-  success: `Upload complete`,
-  error: `Upload failed`,
+  closed: 'Closed',
+  validating: 'Validating your new fixture…',
+  ready: 'Submit your new fixture',
+  preview: 'Preview fixture',
+  uploading: 'Submitting your new fixture…',
+  success: 'Upload complete',
+  error: 'Upload failed',
 };
 const stateTitlesPlural = {
-  ready: `Submit your new fixtures`,
-  uploading: `Submitting your new fixtures…`,
+  ready: 'Submit your new fixtures',
+  uploading: 'Submitting your new fixtures…',
 };
 
 export default {
@@ -244,7 +267,7 @@ export default {
   },
   data() {
     return {
-      state: `closed`,
+      state: 'closed',
       requestBody: null,
       error: null,
       pullRequestUrl: null,
@@ -254,60 +277,49 @@ export default {
   },
   computed: {
     fixtureKeys() {
-      if (this.fixtureCreateResult === null) {
-        return [];
-      }
-
-      return Object.keys(this.fixtureCreateResult.fixtures);
+      return this.fixtureCreateResult === null ? [] : Object.keys(this.fixtureCreateResult.fixtures);
     },
     isPlural() {
       return this.fixtureKeys.length > 1;
     },
     title() {
-      if (this.state in stateTitlesPlural && this.isPlural) {
-        return stateTitlesPlural[this.state];
-      }
-      return stateTitles[this.state];
+      return this.state in stateTitlesPlural && this.isPlural
+        ? stateTitlesPlural[this.state]
+        : stateTitles[this.state];
+    },
+    isImport() {
+      return this.endpoint.endsWith('/import');
     },
     rawData() {
       const rawData = JSON.stringify(this.requestBody, null, 2);
+      const errorMessage = typeof this.error === 'object' && this.error !== null
+        ? JSON.stringify(this.error, null, 2)
+        : this.error;
 
-      if (this.state === `error`) {
-        const backticks = '```'; // eslint-disable-line quotes
-        return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
+      if (this.state === 'error') {
+        const backticks = '```';
+        return `${backticks}json\n${errorMessage}\n\n${rawData}\n${backticks}`;
       }
 
       return rawData;
     },
     hasPreview() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.errors).some(
-        errors => errors.length === 0,
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).some(
+        (errors) => errors.length === 0,
       );
     },
     hasValidationErrors() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.errors).flat().length > 0;
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).flat().length > 0;
     },
     hasValidationWarnings() {
-      if (this.fixtureCreateResult === null) {
-        return false;
-      }
-
-      return Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
+      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
     },
     previewFixture() {
       if (this.previewFixtureKey === null) {
         return null;
       }
 
-      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split(`/`);
+      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/', 2);
 
       const manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
 
@@ -344,16 +356,16 @@ export default {
   },
   methods: {
     /**
-     * Called from fixture editor to open the dialog.
+     * Called from fixture editor and import page to open the dialog.
      * @public
-     * @param {any} requestBody The data to pass to the API endpoint.
+     * @param {object} requestBody - The data to pass to the API endpoint.
      */
     async validate(requestBody) {
       this.requestBody = requestBody;
 
-      console.log(`validate`, structuredClone(this.requestBody));
+      console.log('validate', structuredClone(this.requestBody));
 
-      this.state = `validating`;
+      this.state = 'validating';
       try {
         const response = await this.$axios.post(
           this.endpoint,
@@ -361,23 +373,20 @@ export default {
         );
 
         this.fixtureCreateResult = response.data;
-        this.state = `ready`;
+        this.state = 'ready';
       }
       catch (error) {
-        let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
-        }
+        const errorMessage = error.response?.data.error ?? error.message;
 
-        console.error(`There was a problem with the request:`, errorMessage);
+        console.error('There was a problem with the request:', errorMessage);
 
         this.error = errorMessage;
-        this.state = `error`;
+        this.state = 'error';
       }
     },
     async onPreview() {
       this.previewFixtureKey = Object.keys(this.fixtureCreateResult.fixtures)[0];
-      this.state = `preview`;
+      this.state = 'preview';
     },
     async onSubmit() {
       this.requestBody = {
@@ -386,37 +395,34 @@ export default {
         githubComment: this.githubComment ?? null,
       };
 
-      console.log(`submit`, structuredClone(this.requestBody));
+      console.log('submit', structuredClone(this.requestBody));
 
-      this.state = `uploading`;
+      this.state = 'uploading';
       try {
         const response = await this.$axios.post(
-          `/api/v1/fixtures/submit`,
+          '/api/v1/fixtures/submit',
           this.requestBody,
         );
 
         this.pullRequestUrl = response.data.pullRequestUrl;
-        this.state = `success`;
-        this.$emit(`success`);
+        this.state = 'success';
+        this.$emit('success');
       }
       catch (error) {
-        let errorMessage = error.message;
-        if (error.response && error.response.data.error) {
-          errorMessage = error.response.data.error;
-        }
+        const errorMessage = error.response?.data.error ?? error.message;
 
-        console.error(`There was a problem with the request:`, errorMessage);
+        console.error('There was a problem with the request:', errorMessage);
 
         this.error = errorMessage;
-        this.state = `error`;
+        this.state = 'error';
       }
     },
     onReset() {
-      this.state = `closed`;
-      this.$emit(`reset`);
+      this.state = 'closed';
+      this.$emit('reset');
     },
     onCancel() {
-      this.state = `closed`;
+      this.state = 'closed';
     },
   },
 };

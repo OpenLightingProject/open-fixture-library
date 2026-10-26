@@ -39,7 +39,7 @@ export default {
   methods: {
     onChooseChannelEditModeDialogOpen() {
       const channelUsedElsewhere = this.fixture.modes.some(
-        mode => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
+        (mode) => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
       );
 
       if (channelUsedElsewhere) {
@@ -48,11 +48,11 @@ export default {
       }
 
       // else duplicate makes no sense here -> continue directly
-      this.chooseChannelEditMode(`edit-all`);
+      this.chooseChannelEditMode('edit-all');
     },
     async chooseChannelEditMode(editMode) {
       // close this dialog
-      this.channel.editMode = ``;
+      this.channel.editMode = '';
 
       await this.$nextTick();
 

@@ -9,15 +9,15 @@
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflDate :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflDate :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflDate :date="fixture.meta.importDate" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
@@ -33,11 +33,12 @@
 
     <FixturePage
       :fixture="fixture"
+      :manufacturer-color="manufacturerJson.color"
       :load-all-modes="`loadAllModes` in $route.query"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
+      <h2>Anything wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3">
         <a
@@ -77,11 +78,8 @@
 </style>
 
 <script>
-import register from '../../../fixtures/register.json';
-
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
-
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
@@ -89,8 +87,8 @@ import FixtureHeader from '../../components/FixtureHeader.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 
 const redirectReasonExplanations = {
-  FixtureRenamed: `The fixture was renamed.`,
-  SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
+  FixtureRenamed: 'The fixture was renamed.',
+  SameAsDifferentBrand: 'The fixture is the same but sold under different brands / names.',
 };
 
 export default {
@@ -101,26 +99,34 @@ export default {
     FixtureHeader,
     HelpWantedDialog,
   },
-  validate({ params }) {
-    return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
-  },
   async asyncData({ params, query, $axios, redirect, error }) {
     const { manufacturerKey, fixtureKey } = params;
 
-    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
-    if (redirectTo) {
-      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    let manufacturerJson;
+    try {
+      manufacturerJson = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+
+    const redirectFixture = manufacturerJson.redirects.find(({ key }) => key === fixtureKey);
+    if (redirectFixture) {
+      return redirect(302, `/${redirectFixture.redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
+    }
+
+    const fixture = manufacturerJson.fixtures.find(({ key }) => key === fixtureKey);
+    if (!fixture) {
+      return error({ statusCode: 404, message: 'Fixture not found' });
     }
 
     let fixtureJson;
-    let manufacturerJson;
     let plugins;
     let redirectObject;
     try {
-      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
+      [fixtureJson, plugins, redirectObject] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
-        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
-        $axios.$get(`/api/v1/plugins`),
+        $axios.$get('/api/v1/plugins'),
         fetchRedirectObject($axios, query.redirectFrom),
       ]);
     }
@@ -141,7 +147,7 @@ export default {
     return {
       isBrowser: false,
       helpWantedContext: undefined,
-      helpWantedType: ``,
+      helpWantedType: '',
     };
   },
   head() {
@@ -151,19 +157,19 @@ export default {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
       script: [
         {
-          hid: `productModelStructuredData`,
-          type: `application/ld+json`,
+          hid: 'productModelStructuredData',
+          type: 'application/ld+json',
           json: this.productModelStructuredData,
         },
         {
-          hid: `breadcrumbListStructuredData`,
-          type: `application/ld+json`,
+          hid: 'breadcrumbListStructuredData',
+          type: 'application/ld+json',
           json: this.breadcrumbListStructuredData,
         },
       ],
@@ -176,12 +182,12 @@ export default {
     },
     productModelStructuredData() {
       const data = {
-        '@context': `http://schema.org`,
-        '@type': `ProductModel`,
+        '@context': 'https://schema.org',
+        '@type': 'ProductModel',
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${this.$config.websiteUrl}${this.manufacturerKey}`,
+          url: `${this.$config.websiteUrl}${this.manufacturerKey}`,
         },
       };
 
@@ -199,19 +205,19 @@ export default {
     },
     breadcrumbListStructuredData() {
       return {
-        '@context': `http://schema.org`,
-        '@type': `BreadcrumbList`,
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
         'itemListElement': [
           {
-            '@type': `ListItem`,
+            '@type': 'ListItem',
             'position': 1,
             'item': {
               '@id': `${this.$config.websiteUrl}manufacturers`,
-              'name': `Manufacturers`,
+              'name': 'Manufacturers',
             },
           },
           {
-            '@type': `ListItem`,
+            '@type': 'ListItem',
             'position': 2,
             'item': {
               '@id': `${this.$config.websiteUrl}${this.manufacturerKey}`,
@@ -219,7 +225,7 @@ export default {
             },
           },
           {
-            '@type': `ListItem`,
+            '@type': 'ListItem',
             'position': 3,
             'item': {
               '@id': this.fixture.url,
@@ -230,13 +236,13 @@ export default {
       };
     },
     githubRepoPath() {
-      const slug = process.env.GITHUB_REPOSITORY || `OpenLightingProject/open-fixture-library`;
+      const slug = process.env.GITHUB_REPOSITORY || 'OpenLightingProject/open-fixture-library';
       return `https://github.com/${slug}`;
     },
     branch() {
-      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || `master`;
+      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || 'master';
       // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
-      return gitRef.split(`/`).pop();
+      return gitRef.split('/').pop();
     },
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;
@@ -255,8 +261,8 @@ export default {
 };
 
 /**
- * @param {any} axios The Axios instance.
- * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
+ * @param {object} axios - The Axios instance.
+ * @param {string | undefined} redirectFrom - The query parameter with the original request's fixture key.
  * @returns {object} The redirect object.
  */
 async function fetchRedirectObject(axios, redirectFrom) {

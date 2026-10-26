@@ -9,16 +9,19 @@
   },
   "links": {
     "manual": [
-      "https://www.aputure.com/wp-content/uploads/2022/06/LS600X-Pro-DMX-Profile-Specification-V1.0-.pdf"
+      "https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20600x%20Pro/All%20Files/LS600X-Pro-DMX-Profile-Specification-V1.0-.pdf"
     ],
     "productPage": [
-      "https://www.aputure.com/products/ls-600x-pro/"
+      "https://aputure.com/products/ls-600x-pro/"
     ]
   },
   "physical": {
     "dimensions": [302, 147, 149],
     "weight": 5.2,
     "power": 600,
+    "powerConnectors": {
+      "powerCON TRUE1 TOP": "input only"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"

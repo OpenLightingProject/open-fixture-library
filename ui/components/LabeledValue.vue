@@ -25,6 +25,10 @@ section {
   & > .label {
     color: theme-color(text-secondary);
   }
+
+  & > .value {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 // move labels left of values
@@ -58,10 +62,10 @@ export default {
     value: stringProp().optional,
   },
   emits: {
-    focusin: event => true,
-    focusout: event => true,
-    mouseover: event => true,
-    mouseout: event => true,
+    focusin: (event) => true,
+    focusout: (event) => true,
+    mouseover: (event) => true,
+    mouseout: (event) => true,
   },
 };
 </script>

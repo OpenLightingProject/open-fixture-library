@@ -24,6 +24,9 @@
     "dimensions": [87, 1018, 63],
     "weight": 2.2,
     "power": 70,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "12x 5W RGBA LEDs"
@@ -67,7 +70,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Macros": {

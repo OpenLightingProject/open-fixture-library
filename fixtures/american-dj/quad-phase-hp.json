@@ -13,7 +13,7 @@
       "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/6976/ADJ%20Quad%20Phase%20HP%20-%20User%20Manual.pdf"
     ],
     "productPage": [
-      "https://www.adj.com/quad-phase-hp"
+      "https://www.adj.com/products/quad-phase-hp"
     ],
     "video": [
       "https://www.youtube.com/watch?v=g3qTCXyDvK8",
@@ -24,6 +24,9 @@
     "dimensions": [198, 279, 312],
     "weight": 4,
     "power": 64,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
