@@ -20,7 +20,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.use((request, response, next) => {
-  if (request.url === '/v1' || request.url === '/v1/') {
+  if (request.url === '/' || request.url === '/v1' || request.url === '/v1/') {
     response.redirect(apiDocumentationUrl);
     return;
   }
@@ -160,11 +160,6 @@ const api = new OpenAPIBackend({
 });
 
 app.use(async (request, response) => {
-  if (request.url === '/') {
-    response.redirect(apiDocumentationUrl);
-    return;
-  }
-
   response.setHeader('Content-Type', 'application/json');
   const { statusCode = 200, body } = await api.handleRequest(request, response);
   response.statusCode = statusCode;
