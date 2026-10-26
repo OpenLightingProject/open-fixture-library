@@ -159,11 +159,12 @@ const api = new OpenAPIBackend({
   },
 });
 
-app.get('/', (request, response) => {
-  response.redirect(apiDocumentationUrl);
-});
-
 app.use(async (request, response) => {
+  if (request.url === '/') {
+    response.redirect(apiDocumentationUrl);
+    return;
+  }
+
   response.setHeader('Content-Type', 'application/json');
   const { statusCode = 200, body } = await api.handleRequest(request, response);
   response.statusCode = statusCode;
