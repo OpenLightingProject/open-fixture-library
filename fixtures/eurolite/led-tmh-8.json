@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Heiko Fanieng", "Flo Edelmann"],
     "createDate": "2020-03-29",
-    "lastModifyDate": "2020-03-29"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -107,8 +107,8 @@
           "dmxRange": [135, 239],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
         },
         {
           "dmxRange": [240, 255],

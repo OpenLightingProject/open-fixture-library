@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["ameisso", "Flo Edelmann"],
     "createDate": "2019-01-21",
-    "lastModifyDate": "2019-01-21"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -377,16 +377,16 @@
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz",
           "comment": "Zones 2 and 3 only"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz",
           "comment": "All Zones"
         },
         {

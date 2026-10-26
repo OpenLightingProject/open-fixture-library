@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-11-08",
-    "lastModifyDate": "2024-11-23"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -149,8 +149,8 @@
           "dmxRange": [4, 109],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "18Hz"
         },
         {
           "dmxRange": [110, 209],

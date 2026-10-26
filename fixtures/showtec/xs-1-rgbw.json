@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Jo"],
     "createDate": "2018-05-28",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -150,8 +150,8 @@
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "15Hz"
         },
         {
           "dmxRange": [132, 139],
