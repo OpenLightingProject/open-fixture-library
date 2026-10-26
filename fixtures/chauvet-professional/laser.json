@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "laser",
+  "shortName": "laser",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["lightmatt"],
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26"
+  },
+  "links": {
+    "manual": [
+      "https://impact-even.com/wp-content/uploads/2024/08/chauvet_colorstrikem_tabledmxv403.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "laser",
+      "lumens": 2000
+    }
+  },
+  "availableChannels": {
+    "Intensité": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Obturateur / Stroboscope": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "22Hz"
+      }
+    },
+    "Vitesse d'effet": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Intensité",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Obturateur / Stroboscope",
+        "Vitesse d'effet"
+      ]
+    }
+  ]
+}
