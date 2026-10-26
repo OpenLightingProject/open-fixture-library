@@ -94,11 +94,16 @@ function downgradePhysical(physicalJsonData) {
 }
 
 /**
- * Replaces shutter effects that are unsupported by AGLight.
+ * Replaces shutter effects that are unsupported by Dragonframe.
  * @param {object} fixtureJson - The fixture whose capabilities should be processed
  */
 function downgradeShutterEffectCapabilities(fixtureJson) {
-  for (const channel of Object.values(fixtureJson.availableChannels)) {
+  const channels = [
+    ...Object.values(fixtureJson.availableChannels ?? {}),
+    ...Object.values(fixtureJson.templateChannels ?? {}),
+  ];
+
+  for (const channel of channels) {
     if (channel.capability) {
       downgradeShutterEffect(channel.capability);
       continue;
