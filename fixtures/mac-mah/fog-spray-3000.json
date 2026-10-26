@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fog Spray 3000",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["DJ Aled"],
+    "createDate": "2026-04-05",
+    "lastModifyDate": "2026-04-05"
+  },
+  "links": {
+    "manual": [
+      "https://audioeffetti.com/product/documents/MSC/MACFOGSPRAY3000RGB-01.pdf"
+    ],
+    "productPage": [
+      "https://audioeffetti.com/product/documents/MSC/MACFOGSPRAY3000RGB-01.pdf"
+    ],
+    "video": [
+      "https://audioeffetti.com/product/documents/MSC/MACFOGSPRAY3000RGB-01.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutput": "strong"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "shortName": "Default",
+      "channels": [
+        "Fog",
+        "Color Macros",
+        "Color Presets",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
