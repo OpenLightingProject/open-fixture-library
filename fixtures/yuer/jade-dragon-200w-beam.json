@@ -151,8 +151,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction",
-          "comment": "No strobing"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 249],
@@ -163,8 +163,8 @@
         },
         {
           "dmxRange": [250, 255],
-          "type": "NoFunction",
-          "comment": "No strobing"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -317,7 +317,7 @@
         },
         {
           "dmxRange": [128, 255],
-          "type": "PrismRotation",
+          "type": "Prism",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
@@ -396,8 +396,9 @@
         },
         {
           "dmxRange": [251, 255],
-          "type": "Generic",
-          "comment": "Reset - hold 5 seconds"
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "5s"
         }
       ]
     }
