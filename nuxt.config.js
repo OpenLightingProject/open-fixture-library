@@ -29,7 +29,7 @@ export default {
   ],
   serverMiddleware: [
     {
-      path: '/api/v1',
+      path: '/api',
       handler: '~/api/index.js',
     },
     {
