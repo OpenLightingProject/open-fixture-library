@@ -17,8 +17,9 @@
       </tr>
     </thead>
     <tbody>
-      <template v-for="(cap, index) of capabilities">
-        <tr :key="`cap-${index}`" class="capability" :data-capability-type="cap.model.type">
+      <!-- eslint-disable-next-line vue/no-v-for-template-key -- Vue 3 requires the key on the `<template>` tag -->
+      <template v-for="(cap, index) of capabilities" :key="`cap-${index}`">
+        <tr class="capability" :data-capability-type="cap.model.type">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
@@ -134,53 +135,53 @@ th {
 }
 </style>
 
-<script>
-import { instanceOfProp, numberProp } from 'vue-ts-types';
-import CoarseChannel from '../../../lib/model/CoarseChannel.js';
-import Mode from '../../../lib/model/Mode.js';
-import CapabilityTypeIcon from '../CapabilityTypeIcon.vue';
-import HelpWantedMessage from '../HelpWantedMessage.vue';
+<script setup lang="ts">
+import type CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import type { Capability, Mode } from '~/types/models';
 
-export default {
-  components: {
-    CapabilityTypeIcon,
-    HelpWantedMessage,
-  },
-  props: {
-    channel: instanceOfProp(CoarseChannel).required,
-    mode: instanceOfProp(Mode).required,
-    resolutionInMode: numberProp().required,
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  computed: {
-    capabilities() {
-      return this.channel.capabilities.map((capability) => {
-        const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
-        const switchChannels = [];
+interface Properties {
+  channel: CoarseChannel;
+  mode: Mode;
+  resolutionInMode: number;
+}
 
-        // eslint-disable-next-line unicorn/prefer-default-parameters -- switchToChannelKey can be null
-        for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
-          const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
+const properties = defineProps<Properties>();
 
-          if (switchingChannelIndex > -1) {
-            switchChannels.push({
-              key: switchingChannelKey,
-              index: switchingChannelIndex,
-              to: switchToChannelKey ?? 'No Function',
-            });
-          }
-        }
+defineEmits<{
+  'help-wanted-clicked': [event: { context: object; type: string }];
+}>();
 
-        return {
-          model: capability,
-          dmxRangeStart: dmxRange.start,
-          dmxRangeEnd: dmxRange.end,
-          switchChannels: switchChannels.toSorted((a, b) => a.index - b.index), // ascending indices
-        };
-      });
-    },
-  },
-};
+interface CapabilityData {
+  model: Capability;
+  dmxRangeStart: number;
+  dmxRangeEnd: number;
+  switchChannels: { key: string; index: number; to: string }[];
+}
+
+const capabilities = computed((): CapabilityData[] => {
+  return properties.channel.capabilities.map((capability) => {
+    const dmxRange = capability.getDmxRangeWithResolution(properties.resolutionInMode);
+    const switchChannels = [];
+
+    // eslint-disable-next-line unicorn/prefer-default-parameters -- switchToChannelKey can be null
+    for (const [switchingChannelKey, switchToChannelKey] of Object.entries(capability.switchChannels)) {
+      const switchingChannelIndex = properties.mode.getChannelIndex(switchingChannelKey);
+
+      if (switchingChannelIndex > -1) {
+        switchChannels.push({
+          key: switchingChannelKey,
+          index: switchingChannelIndex,
+          to: switchToChannelKey ?? 'No Function',
+        });
+      }
+    }
+
+    return {
+      model: capability,
+      dmxRangeStart: dmxRange.start,
+      dmxRangeEnd: dmxRange.end,
+      switchChannels: switchChannels.toSorted((a, b) => a.index - b.index),
+    };
+  });
+});
 </script>

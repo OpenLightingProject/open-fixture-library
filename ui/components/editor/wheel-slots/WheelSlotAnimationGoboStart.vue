@@ -15,33 +15,26 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
+<script setup lang="ts">
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    wheelSlot: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorWheelSlot}
-       * @public
-       */
-      defaultData: {
-        name: '',
-      },
+interface Properties {
+  wheelSlot: {
+    uuid: string;
+    typeData: {
+      name?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Properties>();
+
+const defaultData = {
+  name: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

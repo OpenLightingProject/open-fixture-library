@@ -40,19 +40,15 @@
         :name="`${namePrefix}-physical-DMXconnector`"
         :schema-property="physicalProperties.DMXconnector"
         addition-hint="other DMX connector" />
-      <Validate
+      <PropertyInputText
         v-if="modelValue.DMXconnector === `[add-value]`"
-        :state="formstate"
-        tag="span">
-        <PropertyInputText
-          ref="newDmxConnectorInput"
-          v-model="localPhysical.DMXconnectorNew"
-          :name="`${namePrefix}-physical-DMXconnectorNew`"
-          :schema-property="schemaDefinitions.nonEmptyString"
-          required
-          hint="other DMX connector"
-          class="addition" />
-      </Validate>
+        ref="newDmxConnectorInput"
+        v-model="localPhysical.DMXconnectorNew"
+        :name="`${namePrefix}-physical-DMXconnectorNew`"
+        :schema-property="schemaDefinitions.nonEmptyString"
+        required
+        hint="other DMX connector"
+        class="addition" />
     </LabeledInput>
 
     <h4>Bulb</h4>
@@ -106,71 +102,56 @@
   </div>
 </template>
 
-<script>
-import { objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+import { getCurrentInstance, nextTick, toRaw } from 'vue';
+import type { EditorPhysical } from '~/types/editor';
 import {
   physicalBulbProperties,
   physicalLensProperties,
   physicalProperties,
   schemaDefinitions,
-} from '../../../lib/schema-properties.js';
-import LabeledInput from '../LabeledInput.vue';
-import PropertyInputDimensions from '../PropertyInputDimensions.vue';
-import PropertyInputNumber from '../PropertyInputNumber.vue';
-import PropertyInputRange from '../PropertyInputRange.vue';
-import PropertyInputSelect from '../PropertyInputSelect.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+} from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputDimensions,
-    PropertyInputNumber,
-    PropertyInputRange,
-    PropertyInputSelect,
-    PropertyInputText,
-  },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    modelValue: objectProp().required,
-    formstate: objectProp().required,
-    namePrefix: stringProp().required,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      physicalProperties,
-      physicalBulbProperties,
-      physicalLensProperties,
-      localPhysical: structuredClone(this.modelValue),
-    };
-  },
-  watch: {
-    localPhysical: {
-      handler() {
-        this.$emit('update:model-value', structuredClone(this.localPhysical));
-      },
-      deep: true,
-    },
-    async 'modelValue.DMXconnector'(newValue) {
-      if (newValue !== '[add-value]' || !this.$root._oflRestoreComplete) {
-        return;
-      }
+interface Properties {
+  modelValue: EditorPhysical;
+  formstate: object;
+  namePrefix: string;
+}
 
-      await this.$nextTick();
-      this.$refs.newDmxConnectorInput.focus();
-    },
+const properties = defineProps<Properties>();
+const emit = defineEmits<{
+  'update:model-value': [value: EditorPhysical];
+}>();
+
+const instance = getCurrentInstance();
+const firstInput = ref<any>(null);
+const newDmxConnectorInput = ref<any>(null);
+
+const localPhysical = ref<EditorPhysical>(structuredClone(toRaw(properties.modelValue)));
+
+watch(
+  localPhysical,
+  () => {
+    emit('update:model-value', structuredClone(toRaw(localPhysical.value)));
   },
-  mounted() {
-    if (this.$root._oflRestoreComplete) {
-      this.$refs.firstInput.focus();
+  { deep: true },
+);
+
+watch(
+  () => properties.modelValue.DMXconnector,
+  async (newValue) => {
+    if (newValue !== '[add-value]' || !(instance?.proxy?.$root as any)?._oflRestoreComplete) {
+      return;
     }
+
+    await nextTick();
+    newDmxConnectorInput.value?.focus();
   },
-};
+);
+
+onMounted(() => {
+  if ((instance?.proxy?.$root as any)?._oflRestoreComplete) {
+    firstInput.value?.focus();
+  }
+});
 </script>

@@ -12,10 +12,10 @@
 
     <ClientOnly placeholder="Fixture Importer is loading...">
 
-      <VueForm
-        :state="formstate"
+      <form
         action="#"
         class="only-js"
+        novalidate
         @submit.prevent="onSubmit()">
 
         <section class="card">
@@ -24,17 +24,18 @@
           <LabeledInput :formstate="formstate" name="plugin" label="Import file type">
             <select
               v-model="plugin"
-              :class="{ empty: plugin === `` }"
+              :class="{ empty: plugin === '' }"
               required
               name="plugin">
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey of plugins.importPlugins">
-                <option :key="pluginKey" :value="pluginKey">
-                  {{ plugins.data[pluginKey].name }}
-                </option>
-              </template>
+              <option
+                v-for="pluginKey of plugins.importPlugins"
+                :key="pluginKey"
+                :value="pluginKey">
+                {{ plugins.data[pluginKey].name }}
+              </option>
 
             </select>
 
@@ -90,7 +91,7 @@
         <div class="button-bar right">
           <button type="submit" class="primary">Import fixture</button>
         </div>
-      </VueForm>
+      </form>
 
       <EditorSubmitDialog
         ref="submitDialog"
@@ -104,125 +105,115 @@
   </div>
 </template>
 
-<script>
-import { getEmptyFormState, scrollToFirstInvalidField } from '../assets/scripts/editor-utilities.js';
-import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
-import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
-import LabeledInput from '../components/LabeledInput.vue';
+<script setup lang="ts">
+import { getEmptyFormState, scrollToFirstInvalidField } from '@/assets/scripts/editor-utilities.js';
+import { useEditorForm } from '~/composables/useEditorForm';
+import { getStoredItem, setStoredItem } from '~/utils/storage';
 
-export default {
-  components: {
-    EditorFileUpload,
-    EditorSubmitDialog,
-    LabeledInput,
-  },
-  async asyncData({ $axios, error }) {
-    let plugins;
-    try {
-      plugins = await $axios.$get('/api/v1/plugins');
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { plugins };
-  },
-  data() {
-    return {
-      formstate: getEmptyFormState(),
-      plugin: '',
-      file: undefined,
-      githubComment: '',
-      author: '',
-      githubUsername: '',
-      honeypot: '',
-    };
-  },
-  head() {
-    const title = 'Import fixture';
+const editorForm = useEditorForm();
+const formstate = ref(getEmptyFormState());
+const plugin = ref('');
+const file = ref<File | undefined>(undefined);
+const githubComment = ref('');
+const author = ref('');
+const githubUsername = ref('');
+const honeypot = ref('');
+const submitDialog = ref<{ validate: (data: object) => void } | null>(null);
 
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-  mounted() {
-    this.applyStoredPrefillData();
-  },
-  methods: {
-    async onSubmit() {
-      if (this.formstate.$invalid) {
-        scrollToFirstInvalidField();
-        return;
-      }
+const { data: plugins } = await useFetch('/api/v1/plugins');
 
-      if (this.honeypot !== '') {
-        alert('Do not fill the "Ignore" fields!');
-        return;
-      }
+/**
+ * Reads a file as a data URL.
+ * @param selectedFile - The file to read.
+ * @returns The data URL.
+ */
+function getFileDataUrl(selectedFile: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
 
-      try {
-        const fileDataUrl = await getFileDataUrl(this.file);
-        const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
+    fileReader.addEventListener('load', () => {
+      resolve(fileReader.result as string);
+    });
+    fileReader.addEventListener('error', reject);
+    fileReader.addEventListener('abort', reject);
 
-        this.$refs.submitDialog.validate({
-          plugin: this.plugin,
-          fileName: this.file.name,
-          fileContentBase64,
-          author: this.author,
-        });
-      }
-      catch (fileReaderError) {
-        alert('Could not read the file.');
-        console.error('Could not read the file.', fileReaderError);
-      }
+    fileReader.readAsDataURL(selectedFile);
+  });
+}
 
-      /**
-       * @param {File} file - A File object from an HTML5 file input.
-       * @returns {Promise<string>} Resolves with the file contents as dataURL string.
-       */
-      function getFileDataUrl(file) {
-        return new Promise((resolve, reject) => {
-          const fileReader = new FileReader();
+/**
+ * Validates the form and starts the import submission flow.
+ */
+async function onSubmit() {
+  const { valid } = await editorForm.submit();
+  if (!valid) {
+    scrollToFirstInvalidField();
+    return;
+  }
 
-          fileReader.addEventListener('load', () => {
-            resolve(fileReader.result);
-          });
-          fileReader.addEventListener('error', reject);
-          fileReader.addEventListener('abort', reject);
+  if (honeypot.value !== '') {
+    alert('Do not fill the "Ignore" fields!');
+    return;
+  }
 
-          fileReader.readAsDataURL(file);
-        });
-      }
-    },
-    async reset() {
-      this.file = undefined;
-      this.githubComment = '';
+  try {
+    const fileDataUrl = await getFileDataUrl(file.value!);
+    const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/)!;
 
-      await this.$nextTick();
-      this.formstate._reset();
-    },
-    applyStoredPrefillData() {
-      if (!localStorage) {
-        return;
-      }
+    submitDialog.value?.validate({
+      plugin: plugin.value,
+      fileName: file.value!.name,
+      fileContentBase64,
+      author: author.value,
+    });
+  }
+  catch (fileReaderError) {
+    alert('Could not read the file.');
+    console.error('Could not read the file.', fileReaderError);
+  }
+}
 
-      if (this.author === '') {
-        this.author = localStorage.getItem('prefillAuthor') || '';
-      }
+/**
+ * Resets the import form.
+ */
+async function reset() {
+  file.value = undefined;
+  githubComment.value = '';
 
-      if (this.githubUsername === '') {
-        this.githubUsername = localStorage.getItem('prefillGithubUsername') || '';
-      }
-    },
-    storePrefillData() {
-      localStorage.setItem('prefillAuthor', this.author);
-      localStorage.setItem('prefillGithubUsername', this.githubUsername);
-    },
-  },
-};
+  await nextTick();
+  editorForm.reset();
+}
+
+/**
+ * Applies the author and GitHub username remembered from earlier sessions.
+ */
+function applyStoredPrefillData() {
+  if (!import.meta.client) {
+    return;
+  }
+
+  if (author.value === '') {
+    author.value = getStoredItem('prefillAuthor') || '';
+  }
+
+  if (githubUsername.value === '') {
+    githubUsername.value = getStoredItem('prefillGithubUsername') || '';
+  }
+}
+
+/**
+ * Remembers the author and GitHub username for later sessions.
+ */
+function storePrefillData() {
+  setStoredItem('prefillAuthor', author.value);
+  setStoredItem('prefillGithubUsername', githubUsername.value);
+}
+
+onMounted(() => {
+  applyStoredPrefillData();
+});
+
+useHead({
+  title: 'Import fixture',
+});
 </script>

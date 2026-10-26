@@ -1,6 +1,7 @@
 <template>
   <section
     :id="mode.rdmPersonalityIndex === null ? null : `rdm-personality-${mode.rdmPersonalityIndex}`"
+    ref="root"
     class="card">
 
     <h2>{{ mode.name }} mode <code v-if="mode.hasShortName">{{ mode.shortName }}</code></h2>
@@ -54,60 +55,66 @@ ol.mode-channels {
   min-height: 1em;
   padding-left: 1.9em;
 
-  // switched channels
-  ::v-deep ol {
+  :deep(ol) {
     padding-left: 1.1em;
     list-style-type: lower-alpha;
   }
 }
 </style>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Mode from '../../../lib/model/Mode.js';
-import FixturePageChannel from './FixturePageChannel.vue';
-import FixturePagePhysical from './FixturePagePhysical.vue';
+<script setup lang="ts">
+import type { Mode } from '~/types/models';
 
-export default {
-  components: {
-    FixturePageChannel,
-    FixturePagePhysical,
-  },
-  props: {
-    mode: instanceOfProp(Mode).required,
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  data() {
-    return {
-      hasDetails: true,
-    };
-  },
-  computed: {
-    showCollapseExpandButtons() {
-      return this.mode.channels.length > 1 && this.hasDetails;
-    },
-  },
-  async mounted() {
-    // wait for all child components to render
-    await this.$nextTick();
+interface Properties {
+  mode: Mode;
+}
 
-    if (!this.$el.querySelector('details')) {
-      this.hasDetails = false;
-    }
-  },
-  methods: {
-    openDetails() {
-      for (const details of this.$el.querySelectorAll('details')) {
-        details.open = true;
-      }
-    },
-    closeDetails() {
-      for (const details of this.$el.querySelectorAll('details')) {
-        details.open = false;
-      }
-    },
-  },
-};
+const properties = defineProps<Properties>();
+
+defineEmits<{
+  'help-wanted-clicked': [event: { context: object; type: string }];
+}>();
+
+const root = ref<HTMLElement | null>(null);
+const hasDetails = ref(true);
+
+const showCollapseExpandButtons = computed(() => {
+  return properties.mode.channels.length > 1 && hasDetails.value;
+});
+
+onMounted(async () => {
+  await nextTick();
+
+  // query the component root instead of the whole document (the Nuxt 2
+  // version used `this.$el`)
+  if (root.value && !root.value.querySelector('details')) {
+    hasDetails.value = false;
+  }
+});
+
+/**
+ * Opens every collapsible details section in this mode.
+ */
+function openDetails() {
+  if (!root.value) {
+    return;
+  }
+
+  for (const details of root.value.querySelectorAll('details')) {
+    details.open = true;
+  }
+}
+
+/**
+ * Closes every collapsible details section in this mode.
+ */
+function closeDetails() {
+  if (!root.value) {
+    return;
+  }
+
+  for (const details of root.value.querySelectorAll('details')) {
+    details.open = false;
+  }
+}
 </script>

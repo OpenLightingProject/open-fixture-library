@@ -118,12 +118,12 @@
             fill="#fff" />
 
           <image
-            v-if="slot.resource && slot.resource.hasImage"
+            v-if="hasResourceImage(slot.resource)"
             :x="-slotRadius"
             :y="slotRotateRadius - slotRadius"
             :width="slotRadius * 2"
             :height="slotRadius * 2"
-            :xlink:href="slot.resource.imageDataUrl" />
+            :xlink:href="resourceImageDataUrl(slot.resource)" />
 
           <text
             v-else
@@ -196,7 +196,7 @@ svg {
   }
 }
 
-figcaption ::v-deep summary {
+figcaption :deep(summary) {
   position: sticky;
   top: 0;
   font-weight: 700;
@@ -227,74 +227,133 @@ figcaption table {
 }
 </style>
 
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Wheel from '../../../lib/model/Wheel.js';
-import ConditionalDetails from '../ConditionalDetails.vue';
-import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
+<script setup lang="ts">
+import type { Wheel } from '~/types/models';
 
-export default {
-  components: {
-    ConditionalDetails,
-  },
-  props: {
-    wheel: instanceOfProp(Wheel).required,
-  },
-  data() {
-    return {
-      highlightedSlot: null,
-      wheelRadius: 50,
-      wheelPadding: 3,
-    };
-  },
-  computed: {
-    wheelDirectionFactor() {
-      return this.wheel.direction === 'CCW' ? -1 : 1;
-    },
-    slotRadius() {
-      const usableRadius = this.wheelRadius - this.wheelPadding;
+interface Properties {
+  wheel: Wheel;
+}
 
-      const spacingFactor = 0.85;
-      const anglePerSlot = (2 * Math.PI / this.wheel.slots.length) * spacingFactor; // radians
+const properties = defineProps<Properties>();
 
-      const maximumRadius = (usableRadius / 2) - 5; // preserve some space in the middle
+interface EmbeddedResource {
+  hasImage: boolean;
+  imageDataUrl: string | null;
+}
 
-      // (I):       slotRotateRadius = slotRadius / sin(anglePerSlot / 2)
-      // (II):      slotRadius + slotRotateRadius = usableRadius
-      // (I in II): slotRadius + slotRadius / sin(anglePerSlot / 2) = usableRadius
-      //            slotRadius * (1 + 1 / sin(anglePerSlot / 2)) = usableRadius
-      //            slotRadius = usableRadius / (1 + 1 / sin(anglePerSlot / 2))
-      return Math.min(usableRadius / (1 + (1 / Math.sin(anglePerSlot / 2))), maximumRadius);
-    },
-    slotRotateRadius() {
-      return -this.wheelRadius + this.slotRadius + this.wheelPadding;
-    },
-    slotRotateAngle() {
-      return 360 / this.wheel.slots.length * this.wheelDirectionFactor;
-    },
-    slotCircumference() {
-      return 2 * Math.PI * Math.abs(this.slotRotateRadius);
-    },
-    slotSvgFragments() {
-      return this.wheel.slots.map((slot) => (
-        slot.colors === null ? null : getColorCircleSvgFragment(slot.colors, this.slotRadius)
-      ));
-    },
-    animationGoboWidth() {
-      return this.wheel.slots.length === 2
-        ? this.slotCircumference // wheel only contains AnimationGoboStart and AnimationGoboEnd
-        : (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
-    },
-    slotTitles() {
-      return this.wheel.slots.map((slot, index) => {
-        if (slot.type === 'AnimationGoboStart') {
-          const splitSlot = this.wheel.getSlot(index + 1.5);
-          return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
-        }
+/**
+ * Checks whether a wheel slot resource has an embedded image.
+ * @param resource - The wheel slot resource (or its reference string).
+ * @returns Whether the resource has an image.
+ */
+function hasResourceImage(resource: string | EmbeddedResource | null): boolean {
+  return typeof resource === 'object' && resource !== null && resource.hasImage;
+}
 
-        return `Slot ${index + 1}: ${slot.name}`;
-      });
-    },
-  },
-};
+/**
+ * Reads a wheel slot resource's embedded image data URL.
+ * @param resource - The wheel slot resource (or its reference string).
+ * @returns The image data URL, or `null` when there is none.
+ */
+function resourceImageDataUrl(resource: string | EmbeddedResource | null): string | null {
+  return typeof resource === 'object' && resource !== null ? resource.imageDataUrl : null;
+}
+
+const highlightedSlot = ref<number | null>(null);
+const wheelRadius = 50;
+const wheelPadding = 3;
+
+const wheelDirectionFactor = computed(() => {
+  return properties.wheel.direction === 'CCW' ? -1 : 1;
+});
+
+const slotRadius = computed(() => {
+  const usableRadius = wheelRadius - wheelPadding;
+
+  const spacingFactor = 0.85;
+  const anglePerSlot = (2 * Math.PI / properties.wheel.slots.length) * spacingFactor;
+
+  const maximumRadius = (usableRadius / 2) - 5;
+
+  return Math.min(usableRadius / (1 + (1 / Math.sin(anglePerSlot / 2))), maximumRadius);
+});
+
+const slotRotateRadius = computed(() => {
+  return -wheelRadius + slotRadius.value + wheelPadding;
+});
+
+const slotRotateAngle = computed(() => {
+  return 360 / properties.wheel.slots.length * wheelDirectionFactor.value;
+});
+
+const slotCircumference = computed(() => {
+  return 2 * Math.PI * Math.abs(slotRotateRadius.value);
+});
+
+const slotSvgFragments = computed(() => {
+  return properties.wheel.slots.map((slot) => {
+    return slot.colors === null ? null : getColorCircleSvgFragment(slot.colors, slotRadius.value);
+  });
+});
+
+const animationGoboWidth = computed(() => {
+  return properties.wheel.slots.length === 2 ? slotCircumference.value : (2 * slotRadius.value) + (slotCircumference.value * Math.abs(slotRotateAngle.value) / 360);
+});
+
+const slotTitles = computed(() => {
+  return properties.wheel.slots.map((slot, index) => {
+    if (slot.type === 'AnimationGoboStart') {
+      const splitSlot = properties.wheel.getSlot(index + 1.5);
+      return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
+    }
+
+    return `Slot ${index + 1}: ${slot.name}`;
+  });
+});
+
+/**
+ * @param {string[]} colors - An array of hex colors to fill into the circle.
+ * @param {number} radius - The radius of the circle.
+ * @returns {string} A string containing one SVG <circle> element or multiple SVG <path> elements.
+ */
+function getColorCircleSvgFragment(colors: string[], radius: number): string {
+  if (colors.length === 1) {
+    return `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
+  }
+
+  let svgString = '';
+  const slicePercent = 1 / colors.length;
+
+  const xAxisRotation = 0;
+  const largeArcFlag = 0;
+  const sweepFlag = 1;
+
+  for (const [index, color] of colors.entries()) {
+    const [startX, startY] = getCoordinatesForPercent(index * slicePercent, radius);
+    const [endX, endY] = getCoordinatesForPercent((index + 1) * slicePercent, radius);
+
+    const pathMove = `M ${startX} ${startY}`;
+    const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
+    const pathLine = 'L 0 0';
+
+    svgString += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${color}" />`;
+  }
+
+  return svgString;
+}
+
+/**
+ * Get x and y coordinates of the point that is `percent` percent of the way
+ * around a circle. Note that 37.5% are added to start at a 135deg angle.
+ * @param {number} percent - Percent of the whole circle.
+ * @param {number} radius - Radius of the circle.
+ * @returns {[number, number]} Array with x and y coordinate.
+ */
+function getCoordinatesForPercent(percent: number, radius: number): [number, number] {
+  percent += 0.375;
+
+  const x = radius * Math.cos(2 * Math.PI * percent);
+  const y = radius * Math.sin(2 * Math.PI * percent);
+  return [x, y];
+}
 </script>

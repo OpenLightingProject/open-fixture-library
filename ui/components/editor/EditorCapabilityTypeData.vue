@@ -14,7 +14,7 @@
         <option value="" disabled>Please select a capability type</option>
 
         <option
-          v-for="type of capabilityTypes"
+          v-for="type of capabilityTypesList"
           :key="type"
           :value="type">{{ type }}</option>
 
@@ -31,10 +31,8 @@
   </div>
 </template>
 
-<script>
-import { booleanProp, objectProp } from 'vue-ts-types';
-import { capabilityTypes } from '../../../lib/schema-properties.js';
-import LabeledInput from '../LabeledInput.vue';
+<script setup lang="ts">
+import { capabilityTypes } from '~~/lib/schema-properties.js';
 import CapabilityBeamAngle from './capabilities/CapabilityBeamAngle.vue';
 import CapabilityBeamPosition from './capabilities/CapabilityBeamPosition.vue';
 import CapabilityBladeInsertion from './capabilities/CapabilityBladeInsertion.vue';
@@ -79,110 +77,120 @@ import CapabilityWheelSlot from './capabilities/CapabilityWheelSlot.vue';
 import CapabilityWheelSlotRotation from './capabilities/CapabilityWheelSlotRotation.vue';
 import CapabilityZoom from './capabilities/CapabilityZoom.vue';
 
-export default {
+interface Properties {
+  capability: {
+    uuid: string;
+    open?: boolean;
+    type: string;
+    typeData: Record<string, any>;
+  };
+  channel: object;
+  formstate?: object;
+  required?: boolean;
+}
+
+const properties = defineProps<Properties>();
+
+defineOptions({
   components: {
-    LabeledInput,
-    CapabilityNoFunction,
-    CapabilityShutterStrobe,
-    CapabilityStrobeSpeed,
-    CapabilityStrobeDuration,
-    CapabilityIntensity,
-    CapabilityColorIntensity,
-    CapabilityColorPreset,
-    CapabilityColorTemperature,
-    CapabilityPan,
-    CapabilityPanContinuous,
-    CapabilityTilt,
-    CapabilityTiltContinuous,
-    CapabilityPanTiltSpeed,
-    CapabilityWheelSlot,
-    CapabilityWheelShake,
-    CapabilityWheelSlotRotation,
-    CapabilityWheelRotation,
-    CapabilityEffect,
-    CapabilityEffectSpeed,
-    CapabilityEffectDuration,
-    CapabilityEffectParameter,
-    CapabilitySoundSensitivity,
     CapabilityBeamAngle,
     CapabilityBeamPosition,
-    CapabilityFocus,
-    CapabilityZoom,
-    CapabilityIris,
-    CapabilityIrisEffect,
-    CapabilityFrost,
-    CapabilityFrostEffect,
-    CapabilityPrism,
-    CapabilityPrismRotation,
     CapabilityBladeInsertion,
     CapabilityBladeRotation,
     CapabilityBladeSystemRotation,
+    CapabilityColorIntensity,
+    CapabilityColorPreset,
+    CapabilityColorTemperature,
+    CapabilityEffect,
+    CapabilityEffectDuration,
+    CapabilityEffectParameter,
+    CapabilityEffectSpeed,
+    CapabilityFocus,
     CapabilityFog,
     CapabilityFogOutput,
     CapabilityFogType,
-    CapabilityRotation,
-    CapabilitySpeed,
-    CapabilityTime,
-    CapabilityMaintenance,
+    CapabilityFrost,
+    CapabilityFrostEffect,
     CapabilityGeneric,
+    CapabilityIntensity,
+    CapabilityIris,
+    CapabilityIrisEffect,
+    CapabilityMaintenance,
+    CapabilityNoFunction,
+    CapabilityPan,
+    CapabilityPanContinuous,
+    CapabilityPanTiltSpeed,
+    CapabilityPrism,
+    CapabilityPrismRotation,
+    CapabilityRotation,
+    CapabilityShutterStrobe,
+    CapabilitySoundSensitivity,
+    CapabilitySpeed,
+    CapabilityStrobeDuration,
+    CapabilityStrobeSpeed,
+    CapabilityTilt,
+    CapabilityTiltContinuous,
+    CapabilityTime,
+    CapabilityWheelRotation,
+    CapabilityWheelShake,
+    CapabilityWheelSlot,
+    CapabilityWheelSlotRotation,
+    CapabilityZoom,
   },
-  props: {
-    capability: objectProp().required,
-    channel: objectProp().required,
-    formstate: objectProp().optional,
-    required: booleanProp().withDefault(false),
-  },
-  data() {
-    return {
-      capabilityTypes: Object.keys(capabilityTypes),
-      capabilityTypeHint: null,
-    };
-  },
-  watch: {
-    async 'capability.type'() {
-      // Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
+});
 
-      await this.$nextTick();
+const capabilityTypeData = ref<any>(null);
 
-      const defaultData = this.$refs.capabilityTypeData.defaultData;
+const capabilityTypesList = Object.keys(capabilityTypes);
+const capabilityTypeHint = ref<string | null>(null);
+
+watch(
+  () => properties.capability.type,
+  async () => {
+    await nextTick();
+
+    if (capabilityTypeData.value?.defaultData) {
+      const defaultData = capabilityTypeData.value.defaultData;
       for (const [property, value] of Object.entries(defaultData)) {
-        if (!(property in this.capability.typeData)) {
-          this.$set(this.capability.typeData, property, value);
+        if (!(property in properties.capability.typeData)) {
+          properties.capability.typeData[property] = value;
         }
       }
+    }
 
-      this.capabilityTypeHint = 'hint' in this.$refs.capabilityTypeData
-        ? this.$refs.capabilityTypeData.hint
-        : null;
-    },
+    capabilityTypeHint.value = capabilityTypeData.value?.hint ?? null;
   },
-  methods: {
-    /**
-     * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
-     * @public
-     */
-    cleanCapabilityData() {
-      const component = this.$refs.capabilityTypeData;
+);
 
-      const defaultData = component.defaultData;
+/**
+ * Removes hidden type data properties before the capability is saved.
+ */
+function cleanCapabilityData() {
+  const component = capabilityTypeData.value;
 
-      for (const property of Object.keys(this.capability.typeData)) {
-        if (!(property in defaultData)) {
-          delete this.capability.typeData[property];
-        }
-      }
+  if (!component) {
+    return;
+  }
 
-      if (component && 'resetProperties' in component) {
-        const resetProperties = component.resetProperties;
+  const defaultData = component.defaultData;
 
-        for (const property of resetProperties) {
-          const defaultPropertyData = defaultData[property];
-          this.capability.typeData[property] = typeof defaultPropertyData === 'string' ? '' : defaultPropertyData;
-        }
-      }
+  for (const property of Object.keys(properties.capability.typeData)) {
+    if (!(property in defaultData)) {
+      delete properties.capability.typeData[property];
+    }
+  }
 
-      this.capability.open = false;
-    },
-  },
-};
+  if (component?.resetProperties) {
+    const resetProperties = component.resetProperties;
+
+    for (const property of resetProperties) {
+      const defaultPropertyData = defaultData[property];
+      properties.capability.typeData[property] = typeof defaultPropertyData === 'string' ? '' : defaultPropertyData;
+    }
+  }
+
+  properties.capability.open = false;
+}
+
+defineExpose({ cleanCapabilityData });
 </script>

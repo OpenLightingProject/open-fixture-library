@@ -1,9 +1,10 @@
+import { fileURLToPath } from 'node:url';
 import eslintJs from '@eslint/js';
 import eslintMarkdown from '@eslint/markdown';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
 import eslintPluginVitest from '@vitest/eslint-plugin';
 import { defineConfig } from 'eslint/config';
-import eslintPluginImport from 'eslint-plugin-import-x';
+import eslintPluginImport, { createNodeResolver } from 'eslint-plugin-import-x';
 import eslintPluginJsdoc from 'eslint-plugin-jsdoc';
 import { configs as eslintPluginJsoncConfigs } from 'eslint-plugin-jsonc';
 import eslintPluginPromise from 'eslint-plugin-promise';
@@ -12,6 +13,7 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueA11y from 'eslint-plugin-vuejs-accessibility';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 import fixtureJsonArrayFormatRule from './lib/internal-eslint-rules/fixture-json-array-format.js';
 import fixtureJsonObjectFormatRule from './lib/internal-eslint-rules/fixture-json-object-format.js';
 import internalNuxt2EslintPlugin from './lib/internal-eslint-rules/nuxt2/index.js';
@@ -80,14 +82,36 @@ const stylisticRules = {
 };
 
 // eslint-plugin-import-x
+
+// Nuxt aliases (`~`/`@` point to the `ui` source directory, `~~`/`@@` to the
+// repository root). `import-x` needs them to resolve the aliased imports.
+const uiDirectory = fileURLToPath(new URL('ui', import.meta.url));
+const rootDirectory = fileURLToPath(new URL('./', import.meta.url));
+const importResolver = createNodeResolver({
+  extensions: ['.mjs', '.cjs', '.js', '.json', '.node', '.ts', '.vue'],
+  alias: {
+    '~': [uiDirectory],
+    '@': [uiDirectory],
+    '~~': [rootDirectory],
+    '@@': [rootDirectory],
+  },
+});
+
 const importRules = {
-  'import-x/extensions': ['error', 'ignorePackages'],
+  // Nuxt resolves extensionless TypeScript imports; `.vue` and `.js` keep their extension.
+  'import-x/extensions': ['error', 'ignorePackages', { ts: 'never' }],
   'import-x/first': 'error',
   'import-x/newline-after-import': 'error',
   'import-x/no-commonjs': ['error', { allowConditionalRequire: false }],
   'import-x/no-dynamic-require': 'error',
   'import-x/no-unresolved': ['error', {
-    ignore: ['^@octokit/rest$', '^uuid$'],
+    ignore: [
+      '^@octokit/rest$',
+      '^uuid$',
+      // Nuxt virtual modules that are generated at build time.
+      '^#app$',
+      '^#sitemap/',
+    ],
   }],
   'import-x/order': ['error', {
     'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
@@ -368,7 +392,12 @@ export default defineConfig([
       'server/ofl-secrets.json',
       '.vscode/',
       '.nuxt/',
+      '.output/',
+      '.superpowers/', // local SDD task briefs and reports
+      '.worktrees/',
+      'docs/superpowers/', // internal migration plan documents
       'node_modules/',
+      'test-results/', // Playwright output
       'tmp/',
     ],
   },
@@ -387,6 +416,27 @@ export default defineConfig([
   ...eslintPluginVue.configs['flat/vue2-recommended-error'],
   ...eslintPluginVueA11y.configs['flat/recommended'],
   ...eslintPluginJsoncConfigs['recommended-with-json'], // has to be after `vue`
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parser: tseslint.parser,
+    },
+    rules: {
+      // TypeScript reports undefined identifiers and declares parameter/return types.
+      'no-undef': 'off',
+      'jsdoc/require-param-type': 'off',
+      'jsdoc/require-returns-type': 'off',
+    },
+  },
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: ['.vue'],
+      },
+    },
+  },
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
@@ -410,7 +460,9 @@ export default defineConfig([
       ...vueExtensionRuleConfigs,
     },
     settings: {
-      jsdoc: {
+      // Resolve Nuxt aliases and `.ts`/`.vue` extensions without additional resolver packages.
+      'import-x/resolver-next': [importResolver],
+      'jsdoc': {
         tagNamePreference: {
           augments: 'extends',
           class: 'constructor',
@@ -435,6 +487,39 @@ export default defineConfig([
       },
     },
   },
+  {
+    // Ambient declarations are consumed by TypeScript, not referenced as variables.
+    files: ['**/*.d.ts'],
+    rules: {
+      'no-unused-vars': 'off',
+    },
+  },
+  {
+    // Converted UI components are TypeScript, so JSDoc only carries descriptions.
+    files: ['ui/**/*.vue'],
+    rules: {
+      'jsdoc/require-param-type': 'off',
+      'jsdoc/require-returns-type': 'off',
+    },
+  },
+  {
+    // Nuxt auto-imports and TypeScript make these core checks redundant in the UI.
+    files: ['ui/**/*.js', 'ui/**/*.ts', 'ui/**/*.vue'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    rules: {
+      // TypeScript and Nuxt auto-imports define these identifiers.
+      'no-undef': 'off',
+      // Nuxt auto-imports all components from `ui/components`.
+      'vue/no-undef-components': 'off',
+      // Both JavaScript and TypeScript `<script>` blocks are used in the UI.
+      'vue/block-lang': 'off',
+    },
+  },
   ...eslintMarkdown.configs.processor,
   {
     files: ['**/*.md/*.js'],
@@ -455,9 +540,19 @@ export default defineConfig([
     },
   },
   {
-    files: ['ui/layouts/*.vue', 'ui/pages/**/*.vue'],
+    // Nuxt reserves `error.vue` and uses single-word names for layouts/pages.
+    files: ['ui/error.vue', 'ui/layouts/*.vue', 'ui/pages/**/*.vue'],
     rules: {
       'vue/multi-word-component-names': 'off',
+    },
+  },
+  {
+    // `.icon` / `.gobo-icon` must be global: they also style the `<img>` in
+    // `CapabilityTypeIcon.vue`, and scoped styles cannot reach the SVG that
+    // `OflSvg` injects with `v-html`.
+    files: ['ui/components/OflSvg.vue'],
+    rules: {
+      'vue/enforce-style-attribute': ['error', { allow: ['plain'] }],
     },
   },
   {

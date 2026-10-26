@@ -73,9 +73,9 @@
   </section>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { fixtureProperties } from '../../../lib/schema-properties.js';
+<script setup lang="ts">
+import type { EditorFixture } from '~/types/editor';
+import { fixtureProperties } from '~~/lib/schema-properties.js';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
@@ -83,39 +83,26 @@ import PropertyInputTextarea from '../PropertyInputTextarea.vue';
 import EditorCategoryChooser from './EditorCategoryChooser.vue';
 import EditorLinks from './EditorLinks.vue';
 
-export default {
-  components: {
-    EditorCategoryChooser,
-    EditorLinks,
-    LabeledInput,
-    PropertyInputNumber,
-    PropertyInputText,
-    PropertyInputTextarea,
-  },
-  props: {
-    fixture: objectProp().required,
-    formstate: objectProp().required,
-    manufacturers: objectProp().required,
-  },
-  data() {
-    return {
-      fixtureProperties,
-    };
-  },
-  computed: {
-    manufacturerName() {
-      if (!this.fixture.useExistingManufacturer) {
-        return this.fixture.newManufacturerName;
-      }
+interface Properties {
+  fixture: EditorFixture;
+  formstate: object;
+  manufacturers: object;
+}
 
-      const manufacturerKey = this.fixture.manufacturerKey;
+const properties = defineProps<Properties>();
 
-      return manufacturerKey === '' ? '' : this.manufacturers[manufacturerKey].name;
-    },
-    fixtureNameIsWithoutManufacturer() {
-      const manufacturerName = this.manufacturerName.trim().toLowerCase();
-      return manufacturerName === '' || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
-    },
-  },
-};
+const manufacturerName = computed(() => {
+  if (!properties.fixture.useExistingManufacturer) {
+    return properties.fixture.newManufacturerName;
+  }
+
+  const manufacturerKey = properties.fixture.manufacturerKey;
+
+  return manufacturerKey === '' ? '' : (properties.manufacturers as any)[manufacturerKey]?.name ?? '';
+});
+
+const fixtureNameIsWithoutManufacturer = computed(() => {
+  const manufacturerNameValue = manufacturerName.value.trim().toLowerCase();
+  return manufacturerNameValue === '' || !properties.fixture.name.trim().toLowerCase().startsWith(manufacturerNameValue);
+});
 </script>

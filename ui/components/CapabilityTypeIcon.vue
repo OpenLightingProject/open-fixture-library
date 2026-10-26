@@ -1,45 +1,30 @@
-<script>
-import { instanceOfProp } from 'vue-ts-types';
-import Capability from '../../lib/model/Capability.js';
+<template>
+  <!-- The Nuxt 2 oracle renders this decorative icon without an alt attribute. -->
+  <img
+    v-if="showImage"
+    :src="imageSource"
+    :title="imageTitle"
+    :alt="undefined"
+    class="icon gobo-icon">
+  <OflSvg v-else v-bind="iconProperties" />
+</template>
 
-export default {
-  functional: true,
-  props: {
-    capability: instanceOfProp(Capability).required,
-  },
-  render(createElement, context) {
-    const capability = context.props.capability;
-    const wheelSlot = capability.wheelSlot;
+<script setup lang="ts">
+import type { Capability } from '~/types/models';
 
-    if (wheelSlot !== null && capability.type !== 'WheelShake' && wheelSlot[0] === wheelSlot[1]) {
-      const resource = wheelSlot[0].resource;
+interface Properties {
+  capability: Capability;
+}
 
-      if (resource && resource.hasImage) {
-        const data = {
-          ...context.data,
-          attrs: {
-            ...context.data.attrs,
-            src: resource.imageDataUrl,
-            title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`,
-          },
-          class: [context.data.class, 'icon', 'gobo-icon'],
-        };
+const properties = defineProps<Properties>();
 
-        return createElement('img', data);
-      }
-    }
-
-    return createElement('OflSvg', {
-      ...context.data,
-      props: getIconProperties(capability),
-    });
-  },
+const isAnimationGoboSlot = (slot: { type: string }) => slot.type.startsWith('AnimationGobo');
+const isAnimationGoboFunction = (capability: Capability) => {
+  const ws = capability.wheelSlot;
+  return isAnimationGoboSlot(ws[0]) && isAnimationGoboSlot(ws[1]);
 };
 
-const isAnimationGoboSlot = (slot) => slot.type.startsWith('AnimationGobo');
-const isAnimationGobo = (capability) => isAnimationGoboSlot(capability.wheelSlot[0]) && isAnimationGoboSlot(capability.wheelSlot[1]);
-
-const specialIconFunctions = {
+const specialIconFunctions: Record<string, (capability: Capability, iconProperties: { type: string; name?: string; title: string; colors?: string[] }) => void> = {
   ShutterStrobe(capability, iconProperties) {
     if (capability.shutterEffect === 'Closed' || capability.shutterEffect === 'Open') {
       iconProperties.type = 'color-circle';
@@ -50,13 +35,13 @@ const specialIconFunctions = {
       iconProperties.name = 'Strobe';
     }
   },
-  Intensity(capability, iconProperties) {
+  Intensity(_capability, iconProperties) {
     iconProperties.name = 'dimmer';
   },
-  ColorIntensity(capability, iconProperties) {
+  ColorIntensity(_capability, iconProperties) {
     iconProperties.name = 'dimmer';
   },
-  ColorPreset(capability, iconProperties) {
+  ColorPreset(_capability, iconProperties) {
     iconProperties.name = 'color-changer';
   },
   PanContinuous(capability, iconProperties) {
@@ -66,7 +51,7 @@ const specialIconFunctions = {
     else if (capability.speed[0].number > 0 || capability.speed[1].number > 0) {
       iconProperties.name = 'pan-continuous-cw';
     }
-    else if (capability.speed[0].number < 0 || capability.speed[1].number < 0) {
+    else {
       iconProperties.name = 'pan-continuous-ccw';
     }
   },
@@ -77,12 +62,12 @@ const specialIconFunctions = {
     else if (capability.speed[0].number > 0 || capability.speed[1].number > 0) {
       iconProperties.name = 'tilt-continuous-cw';
     }
-    else if (capability.speed[0].number < 0 || capability.speed[1].number < 0) {
+    else {
       iconProperties.name = 'tilt-continuous-ccw';
     }
   },
   WheelSlot(capability, iconProperties) {
-    if (isAnimationGobo(capability)) {
+    if (isAnimationGoboFunction(capability)) {
       iconProperties.name = 'animation-gobo';
     }
     else if (capability.wheelSlot[0] === capability.wheelSlot[1] && capability.wheelSlot[0].type !== 'Split') {
@@ -94,7 +79,7 @@ const specialIconFunctions = {
     }
   },
   WheelShake(capability, iconProperties) {
-    if (capability.wheelSlot && isAnimationGobo(capability)) {
+    if (capability.wheelSlot && isAnimationGoboFunction(capability)) {
       iconProperties.name = 'animation-gobo';
     }
     else if (capability.wheelSlot && capability.wheelSlot[0] !== capability.wheelSlot[1]) {
@@ -102,22 +87,21 @@ const specialIconFunctions = {
     }
     else {
       iconProperties.name = capability.isShaking === 'slot' ? 'slot-shake' : 'wheel-shake';
-
       if (capability.wheelSlot) {
         iconProperties.title += `, slot ${capability.slotNumber[0]} (${capability.wheelSlot[0].name})`;
       }
     }
   },
-  IrisEffect(capability, iconProperties) {
+  IrisEffect(_capability, iconProperties) {
     iconProperties.name = 'Iris';
   },
-  FrostEffect(capability, iconProperties) {
+  FrostEffect(_capability, iconProperties) {
     iconProperties.name = 'Frost';
   },
   Fog(capability, iconProperties) {
     specialIconFunctions.FogType(capability, iconProperties);
   },
-  FogOutput(capability, iconProperties) {
+  FogOutput(_capability, iconProperties) {
     iconProperties.name = 'smoke';
   },
   FogType(capability, iconProperties) {
@@ -156,30 +140,21 @@ const specialIconFunctions = {
       iconProperties.name = 'rotation-ccw';
     }
   },
-  Generic(capability, iconProperties) {
+  Generic(_capability, iconProperties) {
     iconProperties.name = 'other';
   },
 };
 
 /**
- * @param {AbstractChannel} capability - The capability to get an icon for.
- * @returns {object} Object containing the props to pass to <OflSvg />
+ * Builds the icon props for a capability.
+ * @param capability - The capability to describe.
+ * @returns The icon props.
  */
-function getIconProperties(capability) {
+function getIconProperties(capability: Capability): { type: string; name?: string; title: string; colors?: string[] } {
   if (capability.colors !== null) {
-    return {
-      type: 'color-circle',
-      colors: capability.colors.allColors,
-      title: `Capability type: ${capability.type}, ${getColorDescription(capability)}`,
-    };
+    return { type: 'color-circle', colors: capability.colors.allColors, title: `Capability type: ${capability.type}, ${getColorDescription(capability)}` };
   }
-
-  const iconProperties = {
-    type: 'fixture',
-    name: capability.type,
-    title: `Capability type: ${capability.type}`,
-  };
-
+  const iconProperties: { type: string; name?: string; title: string } = { type: 'fixture', name: capability.type, title: `Capability type: ${capability.type}` };
   if (capability.isSoundControlled) {
     iconProperties.name = 'sound-controlled';
     iconProperties.title += ' (sound-controlled)';
@@ -193,27 +168,40 @@ function getIconProperties(capability) {
   else if (capability.type.endsWith('Rotation')) {
     specialIconFunctions.Rotation(capability, iconProperties);
   }
-
   return iconProperties;
 }
 
 /**
- * @param {Capability} capability - The capability model object.
- * @returns {string | null} A string describing the colors of this capability, or null if it has no colors.
+ * Describes a capability's colors for its tooltip.
+ * @param capability - The capability to describe.
+ * @returns The color description, or `null` for capabilities without colors.
  */
-function getColorDescription(capability) {
+function getColorDescription(capability: Capability): string | null {
   if (capability.colors === null) {
     return null;
   }
-
   if (capability.colors.isStep) {
-    const plural = capability.colors.allColors.length > 1 ? 'colors' : 'color';
-    const allColors = capability.colors.allColors.join(', ');
-    return `${plural}: ${allColors}`;
+    return `${capability.colors.allColors.length > 1 ? 'colors' : 'color'}: ${capability.colors.allColors.join(', ')}`;
   }
-
-  const startColors = capability.colors.startColors.join(', ');
-  const endColors = capability.colors.endColors.join(', ');
-  return `transition from ${startColors} to ${endColors}`;
+  return `transition from ${capability.colors.startColors.join(', ')} to ${capability.colors.endColors.join(', ')}`;
 }
+
+const capability = properties.capability;
+const wheelSlot = capability.wheelSlot;
+
+/**
+ * Reads a wheel slot resource's embedded image data URL, if it has one.
+ * @param resource - The wheel slot resource (or its reference string).
+ * @returns The image data URL, or `null` when there is no embedded image.
+ */
+function getResourceImageDataUrl(resource: unknown): string | null {
+  return typeof resource === 'object' && resource !== null && 'imageDataUrl' in resource
+    ? (resource as { imageDataUrl: string | null }).imageDataUrl
+    : null;
+}
+
+const showImage = computed(() => capability.type !== 'WheelShake' && wheelSlot !== null && wheelSlot[0] === wheelSlot[1] && getResourceImageDataUrl(wheelSlot[0].resource) !== null);
+const imageSource = computed(() => (wheelSlot && wheelSlot[0] === wheelSlot[1] ? getResourceImageDataUrl(wheelSlot[0].resource) ?? '' : ''));
+const imageTitle = computed(() => (wheelSlot && wheelSlot[0] === wheelSlot[1] ? `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})` : ''));
+const iconProperties = computed(() => getIconProperties(capability));
 </script>

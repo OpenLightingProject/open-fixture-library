@@ -1,0 +1,2516 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Open Fixture Library API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://open-fixture-library.org/api/v1"
+    },
+    {
+      "url": "http://localhost:3000/api/v1"
+    }
+  ],
+  "paths": {
+    "/get-search-results": {
+      "post": {
+        "operationId": "getSearchResults",
+        "description": "Return search results for given parameters.",
+        "tags": [
+          "root"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "searchQuery": {
+                    "type": "string"
+                  },
+                  "manufacturersQuery": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "categoriesQuery": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "searchQuery",
+                  "manufacturersQuery",
+                  "categoriesQuery"
+                ],
+                "additionalProperties": false
+              },
+              "example": {
+                "searchQuery": "showtec phantom",
+                "manufacturersQuery": [],
+                "categoriesQuery": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Fixture information for fixtures matching the queries.",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "color": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "name",
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "example": [
+                  {
+                    "key": "showtec/phantom-3r-beam",
+                    "name": "Showtec Phantom 3R Beam",
+                    "color": "#cca066"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/submit-feedback": {
+      "post": {
+        "operationId": "createFeedbackIssue",
+        "description": "Takes the input from the client side script and creates a GitHub issue with the given feedback.",
+        "tags": [
+          "root"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "fixture",
+                      "capability",
+                      "plugin"
+                    ]
+                  },
+                  "context": {
+                    "type": "string",
+                    "description": "The fixture key or plugin key."
+                  },
+                  "location": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "helpWanted": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "githubUsername": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "context",
+                  "location",
+                  "helpWanted",
+                  "message",
+                  "githubUsername"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Issue created or error occurred.",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "issueUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "nullable": true
+                    },
+                    "error": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "issueUrl",
+                    "error"
+                  ],
+                  "additionalProperties": false
+                },
+                "example": {
+                  "issueUrl": "https://github.com/OpenLightingProject/open-fixture-library/issues/1154"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fixtures/from-editor": {
+      "post": {
+        "operationId": "createFixtureFromEditor",
+        "description": "Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.",
+        "tags": [
+          "fixtures"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "Fixture object used in the Fixture Editor"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Fixture successfully imported",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "manufacturers": {
+                      "type": "object"
+                    },
+                    "fixtures": {
+                      "type": "object"
+                    },
+                    "warnings": {
+                      "type": "object"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "manufacturers",
+                    "fixtures",
+                    "warnings",
+                    "errors"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "manufacturers": {
+                      "man-key": {
+                        "name": "Manufacturer name",
+                        "website": "https://example.org"
+                      }
+                    },
+                    "fixtures": {
+                      "man-key/fix-key": {
+                        "name": "Fixture name",
+                        "$comment": "…"
+                      }
+                    },
+                    "warnings": {
+                      "man-key/fix-key": [
+                        "Some warning for fixture man-key/fix-key."
+                      ]
+                    },
+                    "errors": {
+                      "man-key/fix-key": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fixtures/import": {
+      "post": {
+        "operationId": "importFixtureFile",
+        "description": "Imports the uploaded fixture file and responds with a FixtureCreateResult.",
+        "tags": [
+          "fixtures"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "plugin": {
+                    "type": "string"
+                  },
+                  "fileName": {
+                    "type": "string"
+                  },
+                  "fileContentBase64": {
+                    "type": "string",
+                    "format": "base64"
+                  },
+                  "author": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "plugin",
+                  "fileName",
+                  "fileContentBase64",
+                  "author"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Fixture successfully imported",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "manufacturers": {
+                      "type": "object"
+                    },
+                    "fixtures": {
+                      "type": "object"
+                    },
+                    "warnings": {
+                      "type": "object"
+                    },
+                    "errors": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "manufacturers",
+                    "fixtures",
+                    "warnings",
+                    "errors"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "manufacturers": {
+                      "man-key": {
+                        "name": "Manufacturer name",
+                        "website": "https://example.org"
+                      }
+                    },
+                    "fixtures": {
+                      "man-key/fix-key": {
+                        "name": "Fixture name",
+                        "$comment": "…"
+                      }
+                    },
+                    "warnings": {
+                      "man-key/fix-key": [
+                        "Some warning for fixture man-key/fix-key."
+                      ]
+                    },
+                    "errors": {
+                      "man-key/fix-key": []
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fixtures/submit": {
+      "post": {
+        "operationId": "submitFixtures",
+        "description": "Creates a GitHub pull request with the given fixture data. Includes warnings, errors, GitHub username and GitHub comment in the PR description.",
+        "tags": [
+          "fixtures"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fixtureCreateResult": {
+                    "type": "object",
+                    "properties": {
+                      "manufacturers": {
+                        "type": "object"
+                      },
+                      "fixtures": {
+                        "type": "object"
+                      },
+                      "warnings": {
+                        "type": "object"
+                      },
+                      "errors": {
+                        "type": "object"
+                      }
+                    },
+                    "required": [
+                      "manufacturers",
+                      "fixtures",
+                      "warnings",
+                      "errors"
+                    ],
+                    "additionalProperties": false,
+                    "example": {
+                      "manufacturers": {
+                        "man-key": {
+                          "name": "Manufacturer name",
+                          "website": "https://example.org"
+                        }
+                      },
+                      "fixtures": {
+                        "man-key/fix-key": {
+                          "name": "Fixture name",
+                          "$comment": "…"
+                        }
+                      },
+                      "warnings": {
+                        "man-key/fix-key": [
+                          "Some warning for fixture man-key/fix-key."
+                        ]
+                      },
+                      "errors": {
+                        "man-key/fix-key": []
+                      }
+                    }
+                  },
+                  "githubUsername": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "githubComment": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "fixtureCreateResult",
+                  "githubUsername",
+                  "githubComment"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "GitHub pull request created",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pullRequestUrl": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "pullRequestUrl"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fixtures/last-updated": {
+      "get": {
+        "operationId": "getLastUpdatedFixtures",
+        "description": "Returns the five most recently updated fixtures.",
+        "tags": [
+          "fixtures"
+        ],
+        "responses": {
+          "200": {
+            "description": "Recently updated fixtures returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "action": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "color": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "key",
+                      "name",
+                      "action",
+                      "date",
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fixtures/count": {
+      "get": {
+        "operationId": "getFixtureCount",
+        "description": "Returns the number of fixtures in the library.",
+        "tags": [
+          "fixtures"
+        ],
+        "responses": {
+          "200": {
+            "description": "Fixture count returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "count"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contributors/recent": {
+      "get": {
+        "operationId": "getRecentContributors",
+        "description": "Returns the five most recent contributors.",
+        "tags": [
+          "contributors"
+        ],
+        "responses": {
+          "200": {
+            "description": "Recent contributors returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "fixtureCount": {
+                        "type": "integer"
+                      },
+                      "latestFixtureKey": {
+                        "type": "string"
+                      },
+                      "latestFixtureName": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fixtureCount",
+                      "latestFixtureKey",
+                      "latestFixtureName"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/manufacturers": {
+      "get": {
+        "operationId": "getManufacturers",
+        "description": "Returns general information about all manufacturers.",
+        "tags": [
+          "manufacturers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Manufacturer list returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "fixtureCount": {
+                        "type": "integer"
+                      },
+                      "color": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fixtureCount",
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/manufacturers/{manufacturerKey}": {
+      "parameters": [
+        {
+          "name": "manufacturerKey",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9\\-]+$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getManufacturerByKey",
+        "description": "Returns information about a specific manufacturer.",
+        "tags": [
+          "manufacturers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Manufacturer details returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "comment": {
+                      "type": "string"
+                    },
+                    "website": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "rdmId": {
+                      "type": "integer"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "fixtures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "name",
+                          "categories"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "redirects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "redirectTo": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "redirectTo"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "name",
+                    "color",
+                    "fixtures",
+                    "redirects"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "operationId": "getCategories",
+        "description": "Returns general information about all fixture categories.",
+        "tags": [
+          "categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "Category list returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "fixtureCount": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "fixtureCount"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{categoryName}": {
+      "parameters": [
+        {
+          "name": "categoryName",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getCategoryByName",
+        "description": "Returns fixture information for a specific category.",
+        "tags": [
+          "categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "Category fixtures returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fixtures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "categories": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "color": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "name",
+                          "categories",
+                          "color"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "fixtures"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rdm": {
+      "get": {
+        "operationId": "getRdmLookup",
+        "description": "Returns the manufacturer and fixture matching the given RDM IDs.",
+        "tags": [
+          "rdm"
+        ],
+        "parameters": [
+          {
+            "name": "manufacturerId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            }
+          },
+          {
+            "name": "modelId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 65535
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "RDM lookup result returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "manufacturerKey": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "manufacturerName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fixtureKey": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "manufacturerKey",
+                    "manufacturerName",
+                    "fixtureKey"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/plugins": {
+      "get": {
+        "operationId": "getPlugins",
+        "description": "Returns general information about import and export plugins.",
+        "tags": [
+          "plugins"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plugin list returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "importPlugins": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exportPlugins": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "outdated": {
+                            "type": "boolean",
+                            "enum": [
+                              true
+                            ]
+                          },
+                          "newPlugin": {
+                            "type": "string"
+                          },
+                          "importPluginVersion": {
+                            "type": "string"
+                          },
+                          "exportPluginVersion": {
+                            "type": "string"
+                          },
+                          "exportTests": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "name"
+                        ],
+                        "allOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "required": [
+                                  "outdated",
+                                  "newPlugin"
+                                ]
+                              },
+                              {
+                                "not": {
+                                  "anyOf": [
+                                    {
+                                      "required": [
+                                        "outdated"
+                                      ]
+                                    },
+                                    {
+                                      "required": [
+                                        "newPlugin"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "oneOf": [
+                              {
+                                "required": [
+                                  "exportPluginVersion",
+                                  "exportTests"
+                                ]
+                              },
+                              {
+                                "not": {
+                                  "anyOf": [
+                                    {
+                                      "required": [
+                                        "exportPluginVersion"
+                                      ]
+                                    },
+                                    {
+                                      "required": [
+                                        "exportTests"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "importPlugins",
+                    "exportPlugins",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/plugins/{pluginKey}": {
+      "parameters": [
+        {
+          "name": "pluginKey",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9_.-]+$"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getPluginByKey",
+        "description": "Returns information about a specific import and export plugin. If an outdated plugin is requested, the information for the renamed plugin is returned.",
+        "tags": [
+          "plugins"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plugin details returned",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "previousVersions": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "links": {
+                      "type": "object",
+                      "minProperties": 1,
+                      "additionalProperties": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    },
+                    "fixtureUsage": {
+                      "type": "string"
+                    },
+                    "fileLocations": {
+                      "type": "object",
+                      "minProperties": 1,
+                      "properties": {
+                        "subDirectoriesAllowed": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": {
+                        "type": "object",
+                        "minProperties": 1,
+                        "properties": {
+                          "main": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "additionalInfo": {
+                      "type": "string"
+                    },
+                    "helpWanted": {
+                      "type": "string"
+                    },
+                    "exportPluginVersion": {
+                      "type": "string"
+                    },
+                    "importPluginVersion": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "name",
+                    "previousVersions",
+                    "description",
+                    "links"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Content-Type": {
+                "description": "The response is JSON.",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "application/json"
+                  ]
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "description": "Added when the request includes an Origin header or the origin is not allowed.",
+                "required": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Vary": {
+                "description": "Indicates that the response varies by Origin.",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "additionalProperties": false,
+                  "example": {
+                    "error": "Some error message."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "headers": {
+      "Content-Type": {
+        "description": "The response is JSON.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "application/json"
+          ]
+        }
+      },
+      "Access-Control-Allow-Origin": {
+        "description": "Added when the request includes an Origin header or the origin is not allowed.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Vary": {
+        "description": "Indicates that the response varies by Origin.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "FixtureCreateResult": {
+        "type": "object",
+        "properties": {
+          "manufacturers": {
+            "type": "object"
+          },
+          "fixtures": {
+            "type": "object"
+          },
+          "warnings": {
+            "type": "object"
+          },
+          "errors": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "manufacturers",
+          "fixtures",
+          "warnings",
+          "errors"
+        ],
+        "additionalProperties": false,
+        "example": {
+          "manufacturers": {
+            "man-key": {
+              "name": "Manufacturer name",
+              "website": "https://example.org"
+            }
+          },
+          "fixtures": {
+            "man-key/fix-key": {
+              "name": "Fixture name",
+              "$comment": "…"
+            }
+          },
+          "warnings": {
+            "man-key/fix-key": [
+              "Some warning for fixture man-key/fix-key."
+            ]
+          },
+          "errors": {
+            "man-key/fix-key": []
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "additionalProperties": false,
+        "example": {
+          "error": "Some error message."
+        }
+      }
+    },
+    "responses": {
+      "201-FixtureCreateResult": {
+        "description": "Fixture successfully imported",
+        "headers": {
+          "Content-Type": {
+            "description": "The response is JSON.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ]
+            }
+          },
+          "Access-Control-Allow-Origin": {
+            "description": "Added when the request includes an Origin header or the origin is not allowed.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          "Vary": {
+            "description": "Indicates that the response varies by Origin.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "manufacturers": {
+                  "type": "object"
+                },
+                "fixtures": {
+                  "type": "object"
+                },
+                "warnings": {
+                  "type": "object"
+                },
+                "errors": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "manufacturers",
+                "fixtures",
+                "warnings",
+                "errors"
+              ],
+              "additionalProperties": false,
+              "example": {
+                "manufacturers": {
+                  "man-key": {
+                    "name": "Manufacturer name",
+                    "website": "https://example.org"
+                  }
+                },
+                "fixtures": {
+                  "man-key/fix-key": {
+                    "name": "Fixture name",
+                    "$comment": "…"
+                  }
+                },
+                "warnings": {
+                  "man-key/fix-key": [
+                    "Some warning for fixture man-key/fix-key."
+                  ]
+                },
+                "errors": {
+                  "man-key/fix-key": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "400-BadRequestError": {
+        "description": "Bad request",
+        "headers": {
+          "Content-Type": {
+            "description": "The response is JSON.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ]
+            }
+          },
+          "Access-Control-Allow-Origin": {
+            "description": "Added when the request includes an Origin header or the origin is not allowed.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          "Vary": {
+            "description": "Indicates that the response varies by Origin.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "error"
+              ],
+              "additionalProperties": false,
+              "example": {
+                "error": "Some error message."
+              }
+            }
+          }
+        }
+      },
+      "404-NotFoundError": {
+        "description": "Not Found",
+        "headers": {
+          "Content-Type": {
+            "description": "The response is JSON.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ]
+            }
+          },
+          "Access-Control-Allow-Origin": {
+            "description": "Added when the request includes an Origin header or the origin is not allowed.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          "Vary": {
+            "description": "Indicates that the response varies by Origin.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "error"
+              ],
+              "additionalProperties": false,
+              "example": {
+                "error": "Some error message."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

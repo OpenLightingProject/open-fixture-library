@@ -141,14 +141,7 @@
     </div>
 
     <div v-else-if="state === `error`">
-      Unfortunately, there was an error while uploading.
-      <template v-if="isImport">
-        <br>
-        This may be because the uploaded file is too large or in the wrong format, or because
-        the import plugin needs to be improved. You can help with that by sharing the data!
-        <br>
-      </template>
-      Please copy the following data and
+      Unfortunately, there was an error while uploading. Please copy the following data and
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
         target="_blank"
@@ -156,7 +149,7 @@
         manually submit them to GitHub
       </a>.
 
-      <pre class="error-container" tabindex="0">{{ rawData }}</pre>
+      <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
         <button type="button" class="button secondary" @click.prevent="onCancel()">Close</button>
@@ -189,7 +182,7 @@
   margin: 1rem -1rem -1rem;
   background: theme-color(page-background);
 
-  & ::v-deep .help-wanted .actions {
+  & :deep(.help-wanted .actions) {
     cursor: not-allowed;
 
     a {
@@ -197,23 +190,6 @@
       opacity: 0.7;
     }
   }
-}
-
-.error-container {
-  display: block;
-  height: 15em;
-  min-height: 4em;
-  padding: 1em;
-  overflow: auto;
-  font-family: $system-monospace-font-stack;
-  font-size: 0.8em;
-  font-weight: 400;
-  line-height: 1.3;
-  white-space: pre-wrap;
-  cursor: text;
-  user-select: all;
-  background: theme-color(header-background);
-  border-radius: 3px;
 }
 
 .button-bar {
@@ -226,16 +202,30 @@
 }
 </style>
 
-<script>
-import { stringProp } from 'vue-ts-types';
-import Fixture from '../../../lib/model/Fixture.js';
-import Manufacturer from '../../../lib/model/Manufacturer.js';
-import A11yDialog from '../A11yDialog.vue';
-import DownloadButton from '../DownloadButton.vue';
-import FixturePage from '../fixture-page/FixturePage.vue';
-import FixtureHeader from '../FixtureHeader.vue';
+<script setup lang="ts">
+import Fixture from '~~/lib/model/Fixture.js';
+import Manufacturer from '~~/lib/model/Manufacturer.js';
 
-const stateTitles = {
+interface Properties {
+  endpoint: string;
+  githubUsername?: string;
+  githubComment?: string;
+}
+
+const properties = defineProps<Properties>();
+const emit = defineEmits<{
+  success: [];
+  reset: [];
+}>();
+
+const state = ref<string>('closed');
+const requestBody = ref<any>(null);
+const error = ref<string | null>(null);
+const pullRequestUrl = ref<string | null>(null);
+const fixtureCreateResult = ref<any>(null);
+const previewFixtureKey = ref<string | null>(null);
+
+const stateTitles: Record<string, string> = {
   closed: 'Closed',
   validating: 'Validating your new fixture…',
   ready: 'Submit your new fixture',
@@ -244,186 +234,184 @@ const stateTitles = {
   success: 'Upload complete',
   error: 'Upload failed',
 };
-const stateTitlesPlural = {
+
+const stateTitlesPlural: Record<string, string> = {
   ready: 'Submit your new fixtures',
   uploading: 'Submitting your new fixtures…',
 };
 
-export default {
-  components: {
-    A11yDialog,
-    DownloadButton,
-    FixturePage,
-    FixtureHeader,
-  },
-  props: {
-    endpoint: stringProp().required,
-    githubUsername: stringProp().optional,
-    githubComment: stringProp().optional,
-  },
-  emits: {
-    success: () => true,
-    reset: () => true,
-  },
-  data() {
-    return {
-      state: 'closed',
-      requestBody: null,
-      error: null,
-      pullRequestUrl: null,
-      fixtureCreateResult: null,
-      previewFixtureKey: null,
-    };
-  },
-  computed: {
-    fixtureKeys() {
-      return this.fixtureCreateResult === null ? [] : Object.keys(this.fixtureCreateResult.fixtures);
-    },
-    isPlural() {
-      return this.fixtureKeys.length > 1;
-    },
-    title() {
-      return this.state in stateTitlesPlural && this.isPlural
-        ? stateTitlesPlural[this.state]
-        : stateTitles[this.state];
-    },
-    isImport() {
-      return this.endpoint.endsWith('/import');
-    },
-    rawData() {
-      const rawData = JSON.stringify(this.requestBody, null, 2);
-      const errorMessage = typeof this.error === 'object' && this.error !== null
-        ? JSON.stringify(this.error, null, 2)
-        : this.error;
+const fixtureKeys = computed(() => {
+  return fixtureCreateResult.value === null ? [] : Object.keys(fixtureCreateResult.value.fixtures);
+});
 
-      if (this.state === 'error') {
-        const backticks = '```';
-        return `${backticks}json\n${errorMessage}\n\n${rawData}\n${backticks}`;
-      }
+const isPlural = computed(() => fixtureKeys.value.length > 1);
 
-      return rawData;
-    },
-    hasPreview() {
-      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).some(
-        (errors) => errors.length === 0,
+const title = computed(() => {
+  return state.value in stateTitlesPlural && isPlural.value ? stateTitlesPlural[state.value] : stateTitles[state.value];
+});
+
+const rawData = computed(() => {
+  const data = JSON.stringify(requestBody.value, null, 2);
+
+  if (state.value === 'error') {
+    const backticks = '```';
+    return `${backticks}json\n${data}\n\n${error.value}\n${backticks}`;
+  }
+
+  return data;
+});
+
+const hasPreview = computed(() => {
+  return fixtureCreateResult.value === null
+    ? false
+    : Object.values(fixtureCreateResult.value.errors).some(
+        (errors) => (errors as unknown[]).length === 0,
       );
+});
+
+const hasValidationErrors = computed(() => {
+  return fixtureCreateResult.value !== null && Object.values(fixtureCreateResult.value.errors).flat().length > 0;
+});
+
+const hasValidationWarnings = computed(() => {
+  return fixtureCreateResult.value !== null && Object.values(fixtureCreateResult.value.warnings).flat().length > 0;
+});
+
+const previewFixture = computed(() => {
+  if (previewFixtureKey.value === null) {
+    return null;
+  }
+
+  const [manufacturerKey, fixtureKey] = previewFixtureKey.value.split('/', 2);
+
+  const manufacturer = new Manufacturer(manufacturerKey, fixtureCreateResult.value.manufacturers[manufacturerKey]);
+
+  return new Fixture(manufacturer, fixtureKey, fixtureCreateResult.value.fixtures[previewFixtureKey.value]);
+});
+
+const previewFixtureResults = computed(() => {
+  if (previewFixtureKey.value === null) {
+    return null;
+  }
+
+  return {
+    warnings: fixtureCreateResult.value.warnings[previewFixtureKey.value],
+    errors: fixtureCreateResult.value.errors[previewFixtureKey.value],
+  };
+});
+
+const previewFixtureCreateResult = computed(() => {
+  if (previewFixtureKey.value === null) {
+    return null;
+  }
+
+  return {
+    manufacturers: fixtureCreateResult.value.manufacturers,
+    fixtures: {
+      [previewFixtureKey.value]: fixtureCreateResult.value.fixtures[previewFixtureKey.value],
     },
-    hasValidationErrors() {
-      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.errors).flat().length > 0;
+    warnings: {
+      [previewFixtureKey.value]: previewFixtureResults.value?.warnings,
     },
-    hasValidationWarnings() {
-      return this.fixtureCreateResult !== null && Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
+    errors: {
+      [previewFixtureKey.value]: previewFixtureResults.value?.errors,
     },
-    previewFixture() {
-      if (this.previewFixtureKey === null) {
-        return null;
-      }
+  };
+});
 
-      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split('/', 2);
+/**
+ * Removes Vue reactivity from a value for serialization.
+ * @param value - The reactive value.
+ * @returns The plain value.
+ */
+function toPlain<T>(value: T): T {
+  // Vue 3 reactive proxies cannot be passed to `structuredClone`.
+  // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips the proxy
+  return JSON.parse(JSON.stringify(value));
+}
 
-      const manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
+/**
+ * Sends the payload to the fixture validation endpoint.
+ * @param body - The fixture data to validate.
+ */
+async function validate(body: any) {
+  requestBody.value = toPlain(body);
 
-      return new Fixture(manufacturer, fixtureKey, this.fixtureCreateResult.fixtures[this.previewFixtureKey]);
-    },
-    previewFixtureResults() {
-      if (this.previewFixtureKey === null) {
-        return null;
-      }
+  state.value = 'validating';
+  try {
+    const response = await $fetch<any>(properties.endpoint, {
+      method: 'POST',
+      body: requestBody.value,
+    });
 
-      return {
-        warnings: this.fixtureCreateResult.warnings[this.previewFixtureKey],
-        errors: this.fixtureCreateResult.errors[this.previewFixtureKey],
-      };
-    },
-    previewFixtureCreateResult() {
-      if (this.previewFixtureKey === null) {
-        return null;
-      }
+    fixtureCreateResult.value = response.data ?? response;
+    state.value = 'ready';
+  }
+  catch (error_: any) {
+    // ofetch exposes the parsed non-2xx response body as `err.data`.
+    const errorMessage = error_.data?.error ?? error_.message;
 
-      return {
-        manufacturers: this.fixtureCreateResult.manufacturers,
-        fixtures: {
-          [this.previewFixtureKey]: this.fixtureCreateResult.fixtures[this.previewFixtureKey],
-        },
-        warnings: {
-          [this.previewFixtureKey]: this.previewFixtureResults.warnings,
-        },
-        errors: {
-          [this.previewFixtureKey]: this.previewFixtureResults.errors,
-        },
-      };
-    },
-  },
-  methods: {
-    /**
-     * Called from fixture editor and import page to open the dialog.
-     * @public
-     * @param {object} requestBody - The data to pass to the API endpoint.
-     */
-    async validate(requestBody) {
-      this.requestBody = requestBody;
+    console.error('There was a problem with the request:', errorMessage);
 
-      console.log('validate', structuredClone(this.requestBody));
+    error.value = errorMessage;
+    state.value = 'error';
+  }
+}
 
-      this.state = 'validating';
-      try {
-        const response = await this.$axios.post(
-          this.endpoint,
-          this.requestBody,
-        );
+/**
+ * Shows the server's preview for the first created fixture.
+ */
+async function onPreview() {
+  previewFixtureKey.value = Object.keys(fixtureCreateResult.value.fixtures)[0];
+  state.value = 'preview';
+}
 
-        this.fixtureCreateResult = response.data;
-        this.state = 'ready';
-      }
-      catch (error) {
-        const errorMessage = error.response?.data.error ?? error.message;
+/**
+ * Submits the editor result and stores the resulting pull request URL.
+ */
+async function onSubmit() {
+  requestBody.value = toPlain({
+    fixtureCreateResult: fixtureCreateResult.value,
+    githubUsername: properties.githubUsername ?? null,
+    githubComment: properties.githubComment ?? null,
+  });
 
-        console.error('There was a problem with the request:', errorMessage);
+  state.value = 'uploading';
+  try {
+    const response = await $fetch<any>('/api/v1/fixtures/submit', {
+      method: 'POST',
+      body: requestBody.value,
+    });
 
-        this.error = errorMessage;
-        this.state = 'error';
-      }
-    },
-    async onPreview() {
-      this.previewFixtureKey = Object.keys(this.fixtureCreateResult.fixtures)[0];
-      this.state = 'preview';
-    },
-    async onSubmit() {
-      this.requestBody = {
-        fixtureCreateResult: this.fixtureCreateResult,
-        githubUsername: this.githubUsername ?? null,
-        githubComment: this.githubComment ?? null,
-      };
+    pullRequestUrl.value = response.data?.pullRequestUrl ?? response.pullRequestUrl;
+    state.value = 'success';
+    emit('success');
+  }
+  catch (error_: any) {
+    // ofetch exposes the parsed non-2xx response body as `err.data`.
+    const errorMessage = error_.data?.error ?? error_.message;
 
-      console.log('submit', structuredClone(this.requestBody));
+    console.error('There was a problem with the request:', errorMessage);
 
-      this.state = 'uploading';
-      try {
-        const response = await this.$axios.post(
-          '/api/v1/fixtures/submit',
-          this.requestBody,
-        );
+    error.value = errorMessage;
+    state.value = 'error';
+  }
+}
 
-        this.pullRequestUrl = response.data.pullRequestUrl;
-        this.state = 'success';
-        this.$emit('success');
-      }
-      catch (error) {
-        const errorMessage = error.response?.data.error ?? error.message;
+/**
+ * Closes the dialog and resets the editor.
+ */
+function onReset() {
+  state.value = 'closed';
+  emit('reset');
+}
 
-        console.error('There was a problem with the request:', errorMessage);
+/**
+ * Closes the dialog without resetting the editor.
+ */
+function onCancel() {
+  state.value = 'closed';
+}
 
-        this.error = errorMessage;
-        this.state = 'error';
-      }
-    },
-    onReset() {
-      this.state = 'closed';
-      this.$emit('reset');
-    },
-    onCancel() {
-      this.state = 'closed';
-    },
-  },
-};
+defineExpose({ validate });
 </script>

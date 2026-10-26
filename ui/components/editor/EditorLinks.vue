@@ -26,50 +26,64 @@
 }
 </style>
 
-<script>
-import { arrayProp, objectProp } from 'vue-ts-types';
-import { getEmptyLink } from '../../assets/scripts/editor-utilities.js';
-import EditorLink from './EditorLink.vue';
+<script setup lang="ts">
+import { getEmptyLink } from '@/assets/scripts/editor-utilities.js';
 
-export default {
-  components: {
-    EditorLink,
-  },
-  inheritAttrs: false,
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    modelValue: arrayProp().required,
-    formstate: objectProp().required,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-  },
-  methods: {
-    async addLink() {
-      const newLinks = [...this.modelValue, getEmptyLink()];
-      this.$emit('update:model-value', newLinks);
+interface Link {
+  uuid: string;
+  type: string;
+  url: string;
+}
 
-      await this.$nextTick();
-      this.$refs.links[newLinks.length - 1].focus();
-    },
-    updateLinkProperty(updateLink, key, value) {
-      const updatedLink = {
-        ...updateLink,
-        [key]: value,
-      };
+interface Properties {
+  modelValue: Link[];
+  formstate: object;
+}
 
-      this.$emit('update:model-value', this.modelValue.map(
-        (link) => (link === updateLink ? updatedLink : link),
-      ));
-    },
-    removeLink(removeLink) {
-      this.$emit('update:model-value', this.modelValue.filter(
-        (link) => link !== removeLink,
-      ));
-    },
-  },
-};
+const properties = defineProps<Properties>();
+const emit = defineEmits<{
+  'update:model-value': [value: Link[]];
+}>();
+
+const links = ref<any[]>([]);
+
+/**
+ * Appends an empty link and focuses its editor.
+ */
+async function addLink() {
+  const newLinks = [...properties.modelValue, getEmptyLink()];
+  emit('update:model-value', newLinks);
+
+  await nextTick();
+  if (links.value[newLinks.length - 1]) {
+    links.value[newLinks.length - 1].focus();
+  }
+}
+
+/**
+ * Updates one property of a link.
+ * @param updateLink - The link to update.
+ * @param key - The property name.
+ * @param value - The new property value.
+ */
+function updateLinkProperty(updateLink: Link, key: string, value: string) {
+  const updatedLink = {
+    ...updateLink,
+    [key]: value,
+  };
+
+  emit('update:model-value', properties.modelValue.map(
+    (link) => (link === updateLink ? updatedLink : link),
+  ));
+}
+
+/**
+ * Removes a link from the list.
+ * @param linkToRemove - The link to remove.
+ */
+function removeLink(linkToRemove: Link) {
+  emit('update:model-value', properties.modelValue.filter(
+    (link) => link !== linkToRemove,
+  ));
+}
 </script>
