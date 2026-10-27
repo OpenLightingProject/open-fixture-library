@@ -38,6 +38,18 @@ export default async function testSchemaConformity(exportFile, allExportFiles) {
   if (!schemaValid) {
     throw getAjvErrorMessages(schemaValidate.errors, 'fixture');
   }
+
+  const fixture = exportFile.fixtures[0];
+  const inputDmxConnector = fixture.jsonObject.physical?.DMXconnector;
+  const exportedPhysical = JSON.parse(exportFile.content).physical || {};
+
+  if (inputDmxConnector === '5-pin XLR IP65' && exportedPhysical.DMXconnector !== '5-pin') {
+    throw ['5-pin XLR IP65 connector should be downgraded to 5-pin'];
+  }
+
+  if (inputDmxConnector === 'RJ45' && 'DMXconnector' in exportedPhysical) {
+    throw ['RJ45 connector should be omitted because it is unsupported by OFL schema 7.3.0'];
+  }
 }
 
 /**
