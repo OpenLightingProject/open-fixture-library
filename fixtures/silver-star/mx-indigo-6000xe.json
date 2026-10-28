@@ -1,22 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "MX-Indigo 6000XE",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Khors"],
-    "createDate": "2019-10-26",
-    "lastModifyDate": "2019-10-26"
-  },
-  "links": {
-    "manual": [
-      "https://file001.shop-pro.jp/PA01017/727/silverstar/ss_indg6000xe_mnl.pdf"
-    ],
-    "productPage": [
-      "https://www.show-light.ru/svetovoe-oborudovanie/svetodiodnye-oborydovanie-led/pribory-polnogo-vrashcheniya-led/silver-star-yg-led621xwa-mx-indigo-6000-xe-povorotnaya-golova-detail"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=5PMrgbFYnJo"
-    ]
+    "authors": ["Khors", "Saito"],
+    "createDate": "2026-10-28",
+    "lastModifyDate": "2026-10-28",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-28",
+      "comment": "created by OFL – https://open-fixture-library.org/silver-star/mx-indigo-6000xe (version 1.3.2)"
+    }
   },
   "physical": {
     "dimensions": [339, 433, 252],
@@ -30,7 +24,8 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": "50%",
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -39,7 +34,8 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -47,6 +43,7 @@
       }
     },
     "Pan/Tilt Speed": {
+      "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "slow",
@@ -54,36 +51,42 @@
       }
     },
     "Red": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Amber": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
     "Color Macros": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -98,57 +101,49 @@
           "dmxRange": [11, 30],
           "type": "ColorPreset",
           "comment": "Red … Yellow",
-          "colorsStart": ["#ff0000"],
-          "colorsEnd": ["#ffff00"]
+          "colors": ["#ff0000", "#ffff00"]
         },
         {
           "dmxRange": [31, 50],
           "type": "ColorPreset",
           "comment": "Yellow … Green",
-          "colorsStart": ["#ffff00"],
-          "colorsEnd": ["#00ff00"]
+          "colors": ["#ffff00", "#00ff00"]
         },
         {
           "dmxRange": [51, 70],
           "type": "ColorPreset",
           "comment": "Green … Cyan",
-          "colorsStart": ["#00ff00"],
-          "colorsEnd": ["#00ffff"]
+          "colors": ["#00ff00", "#00ffff"]
         },
         {
           "dmxRange": [71, 90],
           "type": "ColorPreset",
           "comment": "Cyan … Blue",
-          "colorsStart": ["#00ffff"],
-          "colorsEnd": ["#0000ff"]
+          "colors": ["#00ffff", "#0000ff"]
         },
         {
           "dmxRange": [91, 110],
           "type": "ColorPreset",
           "comment": "Blue … Magenta",
-          "colorsStart": ["#0000ff"],
-          "colorsEnd": ["#ff00ff"]
+          "colors": ["#0000ff", "#ff00ff"]
         },
         {
           "dmxRange": [111, 130],
           "type": "ColorPreset",
           "comment": "Magenta … Red",
-          "colorsStart": ["#ff00ff"],
-          "colorsEnd": ["#ff0000"]
+          "colors": ["#ff00ff", "#ff0000"]
         },
         {
           "dmxRange": [131, 150],
           "type": "ColorPreset",
           "comment": "Red … White",
-          "colorsStart": ["#ff0000"],
-          "colorsEnd": ["#ffffff"]
+          "colors": ["#ff0000", "#ffffff"]
         },
         {
           "dmxRange": [151, 170],
           "type": "ColorPreset",
           "comment": "White … Blue",
-          "colorsStart": ["#ffffff"],
-          "colorsEnd": ["#0000ff"]
+          "colors": ["#ffffff", "#0000ff"]
         },
         {
           "dmxRange": [171, 200],
@@ -159,104 +154,98 @@
         {
           "dmxRange": [201, 205],
           "type": "ColorPreset",
-          "comment": "White 1",
-          "colors": ["#ffffff"],
-          "colorTemperature": "3200K"
+          "comment": "White 1 (3200K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [206, 210],
           "type": "ColorPreset",
-          "comment": "White 2",
-          "colors": ["#ffffff"],
-          "colorTemperature": "3400K"
+          "comment": "White 2 (3400K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [211, 215],
           "type": "ColorPreset",
-          "comment": "White 3",
-          "colors": ["#ffffff"],
-          "colorTemperature": "4200K"
+          "comment": "White 3 (4200K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [216, 220],
           "type": "ColorPreset",
-          "comment": "White 4",
-          "colors": ["#ffffff"],
-          "colorTemperature": "4900K"
+          "comment": "White 4 (4900K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [221, 225],
           "type": "ColorPreset",
-          "comment": "White 5",
-          "colors": ["#ffffff"],
-          "colorTemperature": "5600K"
+          "comment": "White 5 (5600K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [226, 230],
           "type": "ColorPreset",
-          "comment": "White 6",
-          "colors": ["#ffffff"],
-          "colorTemperature": "5900K"
+          "comment": "White 6 (5900K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [231, 235],
           "type": "ColorPreset",
-          "comment": "White 7",
-          "colors": ["#ffffff"],
-          "colorTemperature": "6500K"
+          "comment": "White 7 (6500K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [236, 240],
           "type": "ColorPreset",
-          "comment": "White 8",
-          "colors": ["#ffffff"],
-          "colorTemperature": "7200K"
+          "comment": "White 8 (7200K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [241, 245],
           "type": "ColorPreset",
-          "comment": "White 9",
-          "colors": ["#ffffff"],
-          "colorTemperature": "8000K"
+          "comment": "White 9 (8000K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [246, 250],
           "type": "ColorPreset",
-          "comment": "White 10",
-          "colors": ["#ffffff"],
-          "colorTemperature": "8500K"
+          "comment": "White 10 (8500K)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [251, 255],
           "type": "ColorPreset",
-          "comment": "White 11",
-          "colors": ["#ffffff"],
-          "colorTemperature": "10000K"
+          "comment": "White 11 (10000K)",
+          "colors": ["#ffffff"]
         }
       ]
     },
     "Dimmer": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 9],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
         },
         {
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "1Hz",
-          "speedEnd": "20Hz"
+          "speedEnd": "20Hz",
+          "comment": "Strobe 1…20Hz"
         }
       ]
     },
     "Zoom": {
+      "defaultValue": 0,
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
@@ -264,6 +253,7 @@
       }
     },
     "Control": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 19],
@@ -302,26 +292,22 @@
         {
           "dmxRange": [140, 149],
           "type": "Maintenance",
-          "comment": "Auto 1",
-          "hold": "3s"
+          "comment": "Auto 1 (hold 3s)"
         },
         {
           "dmxRange": [150, 159],
           "type": "Maintenance",
-          "comment": "Auto 2",
-          "hold": "3s"
+          "comment": "Auto 2 (hold 3s)"
         },
         {
           "dmxRange": [160, 169],
           "type": "Maintenance",
-          "comment": "Test",
-          "hold": "3s"
+          "comment": "Test (hold 3s)"
         },
         {
           "dmxRange": [170, 179],
           "type": "Maintenance",
-          "comment": "Custom",
-          "hold": "3s"
+          "comment": "Custom (hold 3s)"
         },
         {
           "dmxRange": [180, 199],
@@ -331,8 +317,7 @@
         {
           "dmxRange": [200, 219],
           "type": "Maintenance",
-          "comment": "Reset",
-          "hold": "3s"
+          "comment": "Reset (hold 3s)"
         },
         {
           "dmxRange": [220, 235],
@@ -369,7 +354,7 @@
   "modes": [
     {
       "name": "Advanced 15-channel",
-      "shortName": "15ch",
+      "shortName": "Advanced 15ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -390,7 +375,7 @@
     },
     {
       "name": "Basic 12-channel",
-      "shortName": "12ch",
+      "shortName": "Basic 12ch",
       "channels": [
         "Pan",
         "Tilt",
