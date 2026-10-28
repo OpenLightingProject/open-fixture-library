@@ -267,7 +267,7 @@ function addIfValidData(object, property, data, value) {
     value = data;
   }
 
-  if (data !== undefined && data !== null && data !== false) {
+  if (![undefined, null, false].includes(data)) {
     object[property] = value;
   }
 }
