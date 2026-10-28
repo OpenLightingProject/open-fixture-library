@@ -768,10 +768,10 @@ export default {
     /**
      * @param {object} coarseChannel - The channel object of the coarse channel.
      * @param {number} offset - At which resolution should be started.
-     * @param {boolean} [addToMode] - If true, the fine channel is pushed to the current mode's channels.
+     * @param {boolean} [shouldAddToMode] - If true, the fine channel is pushed to the current mode's channels.
      * @returns {string[]} Array of added fine channel UUIDs (at the index of their resolution).
      */
-    addFineChannels(coarseChannel, offset, addToMode) {
+    addFineChannels(coarseChannel, offset, shouldAddToMode) {
       const addedFineChannelUuids = [];
 
       for (let index = offset; index <= coarseChannel.resolution; index++) {
@@ -779,7 +779,7 @@ export default {
         this.$set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
         addedFineChannelUuids[index] = fineChannel.uuid;
 
-        if (addToMode) {
+        if (shouldAddToMode) {
           this.currentMode.channels.push(fineChannel.uuid);
         }
       }
@@ -795,12 +795,12 @@ export default {
     },
 
     /**
-     * @param {boolean} show - Whether to show or hide the Capability Wizard.
+     * @param {boolean} shouldShow - Whether to show or hide the Capability Wizard.
      */
-    setWizardVisibility(show) {
-      this.channel.wizard.show = show;
+    setWizardVisibility(shouldShow) {
+      this.channel.wizard.show = shouldShow;
 
-      if (!show) {
+      if (!shouldShow) {
         this.onDmxValueResolutionChanged(); // maybe DMX value resolution has been changed while wizard was open
       }
     },

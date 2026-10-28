@@ -41,7 +41,7 @@ try {
   for (const task of tasks) {
     const taskResultLines = await performTask(task);
 
-    if (pullRequest.appendOrTruncate(lines, taskResultLines, tooLongMessage)) {
+    if (pullRequest.didAppendOrTruncate(lines, taskResultLines, tooLongMessage)) {
       break;
     }
   }
