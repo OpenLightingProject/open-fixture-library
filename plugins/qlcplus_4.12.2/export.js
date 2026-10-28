@@ -249,7 +249,7 @@ async function addCapability(xmlChannel, capability, customGobos) {
     },
   });
 
-  const preset = didAddCapabilityAliases(xmlCapability, capability)
+  const preset = addCapabilityAliases(xmlCapability, capability)
     ? {
         presetName: 'Alias',
         res1: null,
@@ -308,7 +308,7 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
  * @param {Capability} capability - The OFL capability object.
  * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
-function didAddCapabilityAliases(xmlCapability, capability) {
+function addCapabilityAliases(xmlCapability, capability) { // eslint-disable-line unicorn/consistent-boolean-name -- Keep the established function name.
   const fixture = capability._channel.fixture;
 
   let isAliasAdded = false;

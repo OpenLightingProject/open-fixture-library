@@ -91,7 +91,7 @@ try {
   for (const task of tasks) {
     const taskResultLines = await getTaskPromise(task);
 
-    if (pullRequest.didAppendOrTruncate(lines, taskResultLines, tooLongMessage)) {
+    if (pullRequest.appendOrTruncate(lines, taskResultLines, tooLongMessage)) {
       break;
     }
   }

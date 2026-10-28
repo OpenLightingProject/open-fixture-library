@@ -7,7 +7,7 @@ import https from 'https';
 import { styleText } from 'util';
 import { Octokit } from '@octokit/rest';
 import SiteCrawler from '../lib/site-crawler.js';
-import { didAppendOrTruncate } from './github/pull-request.js';
+import { appendOrTruncate } from './github/pull-request.js';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
@@ -402,7 +402,7 @@ async function updateGithubIssue(urlResults) {
       const link = `<a href="${url}" target="_blank">${url}</a>`;
       const row = `<tr><td nowrap>${statusIcons}</td><td>${link}</td></tr>`;
 
-      if (didAppendOrTruncate(lines, [row], tooLongRow, trailingLines)) {
+      if (appendOrTruncate(lines, [row], tooLongRow, trailingLines)) {
         break;
       }
     }
