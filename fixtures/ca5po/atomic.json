@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Atomic",
+  "shortName": "Atomic caspo",
+  "categories": ["Dimmer", "Strobe", "Color Changer", "Effect", "Pixel Bar", "Stand", "Matrix", "Scanner", "Other", "Blinder"],
+  "meta": {
+    "authors": ["JAYANTO"],
+    "createDate": "2026-10-28",
+    "lastModifyDate": "2026-10-28"
+  },
+  "links": {
+    "productPage": [
+      "https://share.google/7gVQci5pQ9tAfwr71"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 255,
+      "lumens": 40
+    },
+    "lens": {
+      "degreesMinMax": [1, 255]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "instant",
+        "durationEnd": "long"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Mode": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Vesolity": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Indigo": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Atomic",
+      "shortName": "Atomic",
+      "physical": {
+        "dimensions": [invalid, , ],
+        "DMXconnector": "3-pin"
+      },
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Color Wheel",
+        "Indigo",
+        "Color Temperature",
+        "Mode",
+        "Vesolity",
+        "Red",
+        "Blue"
+      ]
+    }
+  ]
+}
