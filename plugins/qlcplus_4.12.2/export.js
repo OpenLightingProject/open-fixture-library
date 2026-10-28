@@ -308,7 +308,8 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
  * @param {Capability} capability - The OFL capability object.
  * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
-function addCapabilityAliases(xmlCapability, capability) { // eslint-disable-line unicorn/consistent-boolean-name -- Keep the established function name.
+// eslint-disable-next-line unicorn/consistent-boolean-name -- returning a boolean is not the primary purpose
+function addCapabilityAliases(xmlCapability, capability) {
   const fixture = capability._channel.fixture;
 
   let isAliasAdded = false;
