@@ -267,7 +267,8 @@ export async function updateComment(test) {
  * @param {readonly string[]} trailingLines - Lines always appended after the loop (not yet in `lines`), used in the byte check.
  * @returns {boolean} `true` if truncation occurred, `false` otherwise.
  */
-export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) { // eslint-disable-line unicorn/consistent-boolean-name -- Keep the established function name.
+// eslint-disable-next-line unicorn/consistent-boolean-name -- returning a boolean is not the primary purpose
+export function appendOrTruncate(lines, newLines, tooLongMessage, trailingLines = []) {
   const testContent = [...lines, ...newLines, tooLongMessage, ...trailingLines].join('\r\n');
 
   if (Buffer.byteLength(testContent, 'utf-8') > GITHUB_BODY_MAX_BYTES - RESERVED_COMMENT_BYTES) {
