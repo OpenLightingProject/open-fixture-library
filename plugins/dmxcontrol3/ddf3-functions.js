@@ -350,16 +350,16 @@ export default {
         const isDistinguishableKey = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
         const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => isDistinguishableKey(key));
         const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
-        const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
+        const hasDifferentKeys = !areArraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
           if (key === 'slotNumber') {
             // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
-            return !arraysEqual(capability1.wheelSlot, capability2.wheelSlot);
+            return !areArraysEqual(capability1.wheelSlot, capability2.wheelSlot);
           }
 
           const value1 = capability1.jsonObject[key];
           const value2 = capability2.jsonObject[key];
-          return value1 !== value2 && !arraysEqual(value1, value2);
+          return value1 !== value2 && !areArraysEqual(value1, value2);
         });
         if (hasDifferentKeys || hasDifferentValues) {
           return null;
@@ -435,8 +435,8 @@ export default {
         }
       }
 
-      const usesShake = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
-      if (usesShake) {
+      const isShakeUsed = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
+      if (isShakeUsed) {
         xmlGoboWheel.element('goboshake');
       }
 
@@ -912,7 +912,7 @@ function getRotationSpeedXmlCapability(capability) {
  * @param {Array} array2 - Second array to compare.
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
-function arraysEqual(array1, array2) {
+function areArraysEqual(array1, array2) {
   return array1 === array2 || (
     Array.isArray(array1)
     && Array.isArray(array2)

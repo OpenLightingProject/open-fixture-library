@@ -962,11 +962,11 @@ function mergeDuplicatesInto(switchChannels, switchChannelIndex) {
     }
 
     const otherSwitchTo = otherSwitchChannel.switchTo;
-    const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
+    const areSwitchToEntriesEqual = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
       ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
     );
 
-    if (!switchToSame) {
+    if (!areSwitchToEntriesEqual) {
       continue;
     }
 

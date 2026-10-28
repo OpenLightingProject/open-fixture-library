@@ -219,7 +219,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   addIfValidData(downgradedChannel, 'crossfade', channel.canCrossfade);
   addIfValidData(downgradedChannel, 'precedence', jsonChannel.precedence);
 
-  if (capabilitiesNeeded()) {
+  if (shouldIncludeCapabilities()) {
     downgradedChannel.capabilities = [];
 
     for (const capability of channel.capabilities) {
@@ -248,7 +248,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   /**
    * @returns {boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
    */
-  function capabilitiesNeeded() {
+  function shouldIncludeCapabilities() {
     const trivialCapabilityTypes = ['Intensity', 'ColorIntensity', 'Pan', 'Tilt', 'NoFunction'];
     return channel.capabilities.length !== 1 || !trivialCapabilityTypes.includes(channel.capabilities[0].type);
   }
@@ -267,7 +267,7 @@ function addIfValidData(object, property, data, value) {
     value = data;
   }
 
-  if (data !== undefined && data !== null && data !== false) {
+  if (![undefined, null, false].includes(data)) {
     object[property] = value;
   }
 }

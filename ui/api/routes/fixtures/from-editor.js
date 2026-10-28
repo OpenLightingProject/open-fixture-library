@@ -117,11 +117,11 @@ async function getFixtureCreateResult(fixtures) {
         return;
       }
       default: {
-        if (property === 'rdm' && propertyExistsIn('rdmModelId', fixture)) {
+        if (property === 'rdm' && doesPropertyExistIn('rdmModelId', fixture)) {
           result.fixtures[key].rdm = {
             modelId: fixture.rdmModelId,
           };
-          if (propertyExistsIn('rdmSoftwareVersion', fixture)) {
+          if (doesPropertyExistIn('rdmSoftwareVersion', fixture)) {
             result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
           }
         }
@@ -134,7 +134,7 @@ async function getFixtureCreateResult(fixtures) {
         else if (property === 'wheels') {
           addWheels(result.fixtures[key], fixture);
         }
-        else if (propertyExistsIn(property, fixture)) {
+        else if (doesPropertyExistIn(property, fixture)) {
           result.fixtures[key][property] = fixture[property];
         }
       }
@@ -159,15 +159,15 @@ async function getFixtureCreateResult(fixtures) {
       name: fixture.newManufacturerName,
     };
 
-    if (propertyExistsIn('newManufacturerComment', fixture)) {
+    if (doesPropertyExistIn('newManufacturerComment', fixture)) {
       result.manufacturers[manufacturerKey].comment = fixture.newManufacturerComment;
     }
 
-    if (propertyExistsIn('newManufacturerWebsite', fixture)) {
+    if (doesPropertyExistIn('newManufacturerWebsite', fixture)) {
       result.manufacturers[manufacturerKey].website = fixture.newManufacturerWebsite;
     }
 
-    if (propertyExistsIn('newManufacturerRdmId', fixture)) {
+    if (doesPropertyExistIn('newManufacturerRdmId', fixture)) {
       result.manufacturers[manufacturerKey].rdmId = fixture.newManufacturerRdmId;
     }
 
@@ -209,7 +209,7 @@ async function getFixtureCreateResult(fixtures) {
         physical[property] = {};
 
         for (const subProperty of Object.keys(propertyDefinition.properties)) {
-          if (propertyExistsIn(subProperty, from[property])) {
+          if (doesPropertyExistIn(subProperty, from[property])) {
             physical[property][subProperty] = getComboboxInput(subProperty, from[property]);
           }
         }
@@ -218,7 +218,7 @@ async function getFixtureCreateResult(fixtures) {
           delete physical[property];
         }
       }
-      else if (propertyExistsIn(property, from)) {
+      else if (doesPropertyExistIn(property, from)) {
         physical[property] = getComboboxInput(property, from);
       }
     }
@@ -295,7 +295,7 @@ async function getFixtureCreateResult(fixtures) {
         const wheelSlotSchema = wheelSlotTypes[wheelSlot.type];
 
         for (const slotProperty of Object.keys(wheelSlotSchema.properties)) {
-          if (propertyExistsIn(slotProperty, editorWheelSlot.typeData)) {
+          if (doesPropertyExistIn(slotProperty, editorWheelSlot.typeData)) {
             wheelSlot[slotProperty] = editorWheelSlot.typeData[slotProperty];
           }
         }
@@ -349,7 +349,7 @@ async function getFixtureCreateResult(fixtures) {
           channel.dmxValueResolution = `${from.dmxValueResolution * 8}bit`;
         }
       }
-      else if (propertyExistsIn(property, from)) {
+      else if (doesPropertyExistIn(property, from)) {
         channel[property] = getComboboxInput(property, from);
       }
     }
@@ -418,10 +418,10 @@ async function getFixtureCreateResult(fixtures) {
       const capabilitySchema = capabilityTypes[editorCapability.type];
 
       for (const capabilityProperty of Object.keys(capabilitySchema.properties)) {
-        if (propertyExistsIn(capabilityProperty, editorCapability)) {
+        if (doesPropertyExistIn(capabilityProperty, editorCapability)) {
           capability[capabilityProperty] = editorCapability[capabilityProperty];
         }
-        else if (propertyExistsIn(capabilityProperty, editorCapability.typeData)) {
+        else if (doesPropertyExistIn(capabilityProperty, editorCapability.typeData)) {
           capability[capabilityProperty] = editorCapability.typeData[capabilityProperty];
         }
       }
@@ -452,7 +452,7 @@ async function getFixtureCreateResult(fixtures) {
       else if (property === 'channels') {
         mode.channels = from.channels.map((uuid) => channelKeyMapping[uuid]);
       }
-      else if (propertyExistsIn(property, from)) {
+      else if (doesPropertyExistIn(property, from)) {
         mode[property] = from[property];
       }
     }
@@ -476,7 +476,7 @@ function isEmptyObject(object) {
  * @param {object | null} object - The object to check. If it's null, false is returned.
  * @returns {boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
-function propertyExistsIn(property, object) {
+function doesPropertyExistIn(property, object) {
   const isObjectValid = object !== undefined && object !== null;
   return isObjectValid && object[property] !== undefined && object[property] !== null && object[property] !== '';
 }
