@@ -2,15 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "RGB Panel Light LD75R",
   "shortName": "LD75R",
-  "categories": ["Other", "Dimmer", "Flower", "Color Changer", "Barrel Scanner"],
+  "categories": ["Dimmer", "Color Changer", "Effect"],
   "meta": {
     "authors": ["LAP70"],
     "createDate": "2023-06-01",
-    "lastModifyDate": "2023-06-01"
+    "lastModifyDate": "2026-10-29"
   },
   "links": {
     "manual": [
-      "https://www.godox.com/static/upload/file/20230310/1678438291595550.pdf"
+      "https://www.godox.com/static/upload/file/20230310/1678438291595550.pdf",
+      "https://www.godox.com/static/upload/file/20230829/1693297779505470.pdf"
     ],
     "productPage": [
       "https://www.godox.com/product-d/LD75R-LD150R-LD150Rs.html"
@@ -23,7 +24,11 @@
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
+      "lumens": 9320,
       "colorTemperature": 5500
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
     }
   },
   "availableChannels": {
