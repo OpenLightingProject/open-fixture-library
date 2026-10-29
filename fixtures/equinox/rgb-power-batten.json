@@ -13,13 +13,16 @@
       "https://www.prolight.co.uk/ftp-in/EQLED032A_Manual.pdf"
     ],
     "productPage": [
-      "https://prolight.co.uk/product/rgb-power-batten"
+      "https://web.archive.org/web/20220118184538/https://prolight.co.uk/product/rgb-power-batten"
     ]
   },
   "physical": {
     "dimensions": [1075, 85, 65],
     "weight": 1.8,
     "power": 30,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "240x 10mm LEDs (96x red, 72x green, 72x blue)"
@@ -326,7 +329,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "50Hz",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off? Is the frequency of 50Hz correct?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off? Is the frequency of 50Hz correct?"
       }
     }
   },

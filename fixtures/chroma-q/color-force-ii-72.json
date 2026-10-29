@@ -24,6 +24,9 @@
     "dimensions": [1759, 191, 165],
     "weight": 24,
     "power": 800,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
@@ -280,7 +283,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Strobe Duration": {

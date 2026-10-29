@@ -9,8 +9,12 @@
     "lastModifyDate": "2018-08-09"
   },
   "links": {
-    "manual": ["https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLATPRO7/CLPFLATPRO7-12-18_Cameo_Bedienungsanleitung_EN_DE_FR_ES.pdf"],
-    "video": ["https://www.youtube.com/watch?v=MtzWwkFTuFk"]
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLATPRO7/CLPFLATPRO7-12-18_Cameo_Bedienungsanleitung_EN_DE_FR_ES.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=MtzWwkFTuFk"
+    ]
   },
   "physical": {
     "dimensions": [280, 280, 130],
@@ -248,7 +252,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "0%",
-        "speedEnd": "100%"
+        "speedEnd": "100%",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Red": {

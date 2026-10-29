@@ -20,6 +20,9 @@
     "dimensions": [169, 270, 156],
     "weight": 2.52,
     "power": 43,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
@@ -67,7 +70,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "20Hz",
-        "helpWanted": "At which DMX values is the Strobe deactivated?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Red": {

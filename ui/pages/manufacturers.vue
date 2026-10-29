@@ -8,8 +8,7 @@
         v-for="(letterData, letter) of letters"
         :key="letter"
         :href="`#${letterData.id}`"
-        class="jump-link"
-        @click="setScrollBehavior()">
+        class="jump-link">
         {{ letter }}
       </a>
     </div>
@@ -38,8 +37,9 @@
 }
 
 .jump-link {
+  display: inline-flex;
   padding: 8px;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 
 h2 {
@@ -52,7 +52,7 @@ export default {
   async asyncData({ $axios, error }) {
     let manufacturers;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get('/api/v1/manufacturers');
     }
     catch (requestError) {
       return error(requestError);
@@ -60,13 +60,13 @@ export default {
     return { manufacturers };
   },
   head() {
-    const title = `Manufacturers`;
+    const title = 'Manufacturers';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -76,37 +76,44 @@ export default {
     letters() {
       const letters = {};
 
-      for (const manufacturerKey of Object.keys(this.manufacturers)) {
+      for (const [manufacturerKey, manufacturer] of Object.entries(this.manufacturers)) {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
-          letter = `#`;
+          letter = '#';
         }
 
         if (!(letter in letters)) {
           letters[letter] = {
-            id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
+            id: letter === '#' ? 'letter-numeric' : `letter-${letter.toLowerCase()}`,
             manufacturers: [],
           };
         }
 
         letters[letter].manufacturers.push({
           key: manufacturerKey,
-          name: this.manufacturers[manufacturerKey].name,
-          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
-          color: this.manufacturers[manufacturerKey].color,
+          name: manufacturer.name,
+          fixtureCount: manufacturer.fixtureCount,
+          color: manufacturer.color,
         });
       }
 
       return letters;
     },
   },
+  mounted() {
+    window.addEventListener('hashchange', this.handleHashChange);
+    document.documentElement.style.scrollBehavior = 'smooth';
+  },
   destroyed() {
-    document.documentElement.style.scrollBehavior = ``;
+    window.removeEventListener('hashchange', this.handleHashChange);
+    document.documentElement.style.scrollBehavior = '';
   },
   methods: {
-    setScrollBehavior() {
-      document.documentElement.style.scrollBehavior = `smooth`;
+    handleHashChange() {
+      if (window.location.hash === '') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     },
   },
 };

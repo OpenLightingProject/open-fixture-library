@@ -6,14 +6,14 @@
   "meta": {
     "authors": ["Da Graca Neves Eric", "Ken Harris"],
     "createDate": "2022-04-19",
-    "lastModifyDate": "2022-04-19"
+    "lastModifyDate": "2026-10-01"
   },
   "links": {
     "productPage": [
-      "https://www.chauvetprofessional.com/products/colorado-1-solo/"
+      "https://chauvetprofessional.com/product/colorado-1-solo/"
     ],
     "manual": [
-      "https://www.chauvetprofessional.com/wp-content/uploads//2018/01/COLORado_1_Solo_UM_Rev8.pdf"
+      "https://chauvetprofessional.com/wp-content/uploads/2018/01/COLORado_1_Solo_UM_Rev8.pdf"
     ],
     "video": [
       "https://www.youtube.com/watch?v=0hqRufKRupk"
@@ -23,10 +23,12 @@
     "dimensions": [242, 176, 346],
     "weight": 5.4,
     "power": 65,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "5-pin XLR IP65",
     "bulb": {
-      "type": "LED",
-      "lumens": 780
+      "type": "1× 60W RGBW LED"
     },
     "lens": {
       "name": "Zoom",
@@ -114,7 +116,7 @@
           "dmxRange": [91, 110],
           "type": "ColorPreset",
           "comment": "Blue … Magenta",
-          "colorsStart": ["#00ffff"],
+          "colorsStart": ["#0000ff"],
           "colorsEnd": ["#ff00ff"]
         },
         {
@@ -282,7 +284,8 @@
         },
         {
           "dmxRange": [10, 99],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "25Hz"
         },

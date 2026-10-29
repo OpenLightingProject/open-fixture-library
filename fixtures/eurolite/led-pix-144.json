@@ -5,11 +5,11 @@
   "meta": {
     "authors": ["Paolo Zanchi"],
     "createDate": "2019-02-06",
-    "lastModifyDate": "2019-02-06"
+    "lastModifyDate": "2024-11-23"
   },
   "links": {
     "manual": [
-      "https://www.steinigke.de/download/51930439-Manual-111069-1.00-eurolite-led-pix-144-rgb-bar-de_en.pdf"
+      "https://www.steinigke.de/download/51930439-Manual-143047-1.200-eurolite-led-pix-144-rgb-bar-de_en.pdf"
     ],
     "productPage": [
       "https://www.steinigke.de/en/mpn51930439-eurolite-led-pix-144-rgb-bar.html"
@@ -23,6 +23,9 @@
     "dimensions": [1020, 65, 80],
     "weight": 1,
     "power": 25,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "144x RGB-SMD LEDs"
@@ -99,7 +102,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "20Hz",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Auto Program $pixelKey": {

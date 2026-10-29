@@ -21,7 +21,7 @@ export default {
     label: stringProp().required,
   },
   emits: {
-    input: value => true,
+    input: (value) => true,
   },
   computed: {
     localValue: {
@@ -29,7 +29,7 @@ export default {
         return this.value;
       },
       set(newValue) {
-        this.$emit(`input`, newValue ? true : null);
+        this.$emit('input', newValue ? true : null);
       },
     },
   },

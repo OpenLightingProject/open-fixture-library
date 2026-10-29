@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["peaceman"],
     "createDate": "2019-10-06",
-    "lastModifyDate": "2019-10-06"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -114,8 +114,8 @@
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0.5Hz",
+          "speedEnd": "30Hz"
         }
       ]
     },
