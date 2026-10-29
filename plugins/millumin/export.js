@@ -3,10 +3,14 @@ import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
-export const version = '0.4.0';
+export const version = '0.4.1';
 
 // needed for export test
 export const supportedOflVersion = '7.3.0';
+
+const dmxConnectorReplacements = {
+  '5-pin XLR IP65': '5-pin',
+};
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
@@ -174,6 +178,10 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
       delete jsonPhysical.matrixPixels;
       jsonPhysical.matrixPixels = matrixPixels;
     }
+  }
+
+  if (Object.hasOwn(dmxConnectorReplacements, jsonPhysical.DMXconnector)) {
+    jsonPhysical.DMXconnector = dmxConnectorReplacements[jsonPhysical.DMXconnector];
   }
 
   delete jsonPhysical.powerConnectors;
