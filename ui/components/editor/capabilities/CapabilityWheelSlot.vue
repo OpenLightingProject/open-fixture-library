@@ -34,41 +34,34 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-import EditorWheelSlots from '../EditorWheelSlots.vue';
+<script setup lang="ts">
+import type { EditorChannel } from '~/types/editor';
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    EditorWheelSlots,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    channel: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        slotNumber: '',
-        slotNumberStart: null,
-        slotNumberEnd: null,
-        comment: '',
-      },
+interface Properties {
+  capability: {
+    uuid: string;
+    typeData: {
+      slotNumber?: string;
+      slotNumberStart?: string | null;
+      slotNumberEnd?: string | null;
+      comment?: string;
     };
-  },
+  };
+  channel: EditorChannel;
+  formstate?: object;
+}
+
+defineProps<Properties>();
+
+const defaultData = {
+  slotNumber: '',
+  slotNumberStart: null,
+  slotNumberEnd: null,
+  comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

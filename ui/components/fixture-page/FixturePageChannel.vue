@@ -4,7 +4,7 @@
       <template #summary>
         <ChannelTypeIcon class="channel-type-icon" :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <OflSvg
-          v-if="channel.isHelpWanted"
+          v-if="isChannelHelpWanted(channel)"
           class="help-wanted-icon"
           name="comment-question-outline"
           title="Help wanted!" />
@@ -37,9 +37,10 @@
               name="switchingChannel-triggerRanges"
               label="Activated when">
               Trigger channel is set to
-              <template v-for="(range, index) of ranges">
+              <!-- eslint-disable-next-line vue/no-v-for-template-key -- Vue 3 requires the key on the `<template>` tag -->
+              <template v-for="(range, index) of ranges" :key="range.toString()">
                 {{ index > 0 ? ` or ` : `` }}
-                <span :key="range.toString()" style="white-space: nowrap;">
+                <span style="white-space: nowrap;">
                   {{ range.toString() }}
                 </span>
               </template>
@@ -149,52 +150,53 @@
 }
 </style>
 
-<script>
-import { instanceOfProp, stringProp } from 'vue-ts-types';
-import AbstractChannel from '../../../lib/model/AbstractChannel.js';
-import CoarseChannel from '../../../lib/model/CoarseChannel.js';
-import FineChannel from '../../../lib/model/FineChannel.js';
-import Mode from '../../../lib/model/Mode.js';
-import NullChannel from '../../../lib/model/NullChannel.js';
-import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
-import ChannelTypeIcon from '../ChannelTypeIcon.vue';
-import ConditionalDetails from '../ConditionalDetails.vue';
-import LabeledValue from '../LabeledValue.vue';
-import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
+<script setup lang="ts">
+import CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import FineChannel from '~~/lib/model/FineChannel.js';
+import NullChannel from '~~/lib/model/NullChannel.js';
+import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
+import type { AbstractChannel, Mode } from '~/types/models';
 
-export default {
-  name: 'FixturePageChannel',
-  components: {
-    ConditionalDetails,
-    ChannelTypeIcon,
-    FixturePageCapabilityTable,
-    LabeledValue,
-  },
-  props: {
-    channel: instanceOfProp(AbstractChannel).required,
-    mode: instanceOfProp(Mode).required,
-    appendToHeading: stringProp().optional,
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  data() {
-    return {
-      CoarseChannel,
-      FineChannel,
-      SwitchingChannel,
-      fixture: this.mode.fixture,
-    };
-  },
-  computed: {
-    channelKey() {
-      return this.channel.key === this.channel.name || this.channel instanceof NullChannel
-        ? ''
-        : this.channel.key;
-    },
-    resolutionInMode() {
-      return this.channel.getResolutionInMode(this.mode);
-    },
-  },
-};
+interface Properties {
+  channel: AbstractChannel;
+  mode: Mode;
+  appendToHeading?: string | null;
+}
+
+const properties = defineProps<Properties>();
+
+/**
+ * Checks whether the channel's capabilities need help.
+ * @param channel - The channel to inspect.
+ * @returns Whether the channel has help wanted capabilities.
+ */
+function isChannelHelpWanted(channel: AbstractChannel): channel is AbstractChannel & { isHelpWanted: boolean } {
+  return Boolean((channel as unknown as { isHelpWanted?: boolean }).isHelpWanted);
+}
+
+/**
+ * Resolves a channel's DMX resolution within the given mode.
+ * @param channel - The channel to inspect.
+ * @param mode - The mode the channel is used in.
+ * @returns The channel's resolution in that mode.
+ */
+function channelResolutionInMode(channel: AbstractChannel, mode: Mode): number {
+  return (channel as unknown as { getResolutionInMode: (mode: Mode) => number }).getResolutionInMode(mode);
+}
+
+defineEmits<{
+  'help-wanted-clicked': [event: { context: object; type: string }];
+}>();
+
+const fixture = properties.mode.fixture;
+
+const channelKey = computed(() => {
+  return properties.channel.key === properties.channel.name || properties.channel instanceof NullChannel
+    ? ''
+    : properties.channel.key;
+});
+
+const resolutionInMode = computed(() => {
+  return channelResolutionInMode(properties.channel, properties.mode);
+});
 </script>

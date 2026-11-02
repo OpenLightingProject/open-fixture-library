@@ -9,7 +9,7 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-header ::v-deep .download-button {
+.fixture-header :deep(.download-button) {
   position: relative;
   display: block;
 }
@@ -26,7 +26,7 @@
       flex-shrink: 1;
     }
 
-    & ::v-deep .download-button {
+    & :deep(.download-button) {
       flex-grow: 0;
       flex-shrink: 0;
       width: 14em;

@@ -2,19 +2,21 @@
   <div
     id="ofl-root"
     :class="{
-      'js': isBrowser,
-      'no-js': !isBrowser,
-      'touch': isTouchScreen,
-      'no-touch': !isTouchScreen,
+      'js': client,
+      'no-js': !client,
+      'touch': isTouchscreen,
+      'no-touch': !isTouchscreen,
     }">
 
-    <a href="#content" class="accessibility">Skip to content</a>
+    <NuxtLoadingIndicator color="#1e88e5" />
+
+    <a href="#content" class="accessibility"> Skip to content</a>
 
     <HeaderBar @focus-content="focusContent()" />
 
-    <div id="content" ref="content" tabindex="-1">
+    <div id="content" ref="contentRef" tabindex="-1">
       <ClimateStrikeBanner />
-      <Nuxt />
+      <slot />
     </div>
 
   </div>
@@ -62,51 +64,75 @@
 }
 </style>
 
-<script>
-import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
-import HeaderBar from '../components/HeaderBar.vue';
-
-export default {
-  components: {
-    HeaderBar,
-    ClimateStrikeBanner,
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} – Open Fixture Library` : 'Open Fixture Library';
   },
-  data() {
-    return {
-      isBrowser: false,
-      isTouchScreen: false,
-      lastTouchTime: 0,
-    };
-  },
-  mounted() {
-    this.isBrowser = true;
+});
 
-    // adapted from https://stackoverflow.com/a/30303898/451391
-    document.addEventListener('touchstart', this.onTouchStart, { capture: true });
-    document.addEventListener('mousemove', this.onMouseMove, { capture: true });
-  },
-  beforeDestroy() {
-    document.removeEventListener('touchstart', this.onTouchStart, true);
-    document.removeEventListener('mousemove', this.onMouseMove, true);
-  },
-  methods: {
-    focusContent() {
-      this.$refs.content.focus();
-    },
+<script setup lang="ts">
+useSeoMeta({
+  twitterCard: 'summary',
+  ogSiteName: 'Open Fixture Library',
+  ogLocale: 'en_US',
+  ogType: 'website',
+  ogDescription: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
+  ogImage: 'https://open-fixture-library.org/open-graph.png',
+  ogImageType: 'image/png',
+  ogImageWidth: 1280,
+  ogImageHeight: 640,
+});
 
-    onMouseMove() {
-      // filter emulated events coming from touch events
-      if (Date.now() - this.lastTouchTime < 500) {
-        return;
-      }
-
-      this.isTouchScreen = false;
-    },
-
-    onTouchStart() {
-      this.isTouchScreen = true;
-      this.lastTouchTime = Date.now();
-    },
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} – Open Fixture Library` : 'Open Fixture Library';
   },
-};
+});
+
+const client = ref(false);
+const isTouchscreen = ref(false);
+const lastTouchTime = ref(0);
+const contentRef = ref<HTMLElement | null>(null);
+
+/**
+ * Moves keyboard focus to the main content.
+ */
+function focusContent() {
+  contentRef.value?.focus();
+}
+
+/**
+ * Leaves touchscreen mode after the touch interaction has settled.
+ */
+function onMouseMove() {
+  if (Date.now() - lastTouchTime.value < 500) {
+    return;
+  }
+
+  isTouchscreen.value = false;
+}
+
+/**
+ * Enables touchscreen mode for touch-driven interactions.
+ */
+function onTouchStart() {
+  isTouchscreen.value = true;
+  lastTouchTime.value = Date.now();
+}
+
+onMounted(() => {
+  // `import.meta.client` is evaluated during SSR too. Starting from `false`
+  // keeps SSR and hydration in sync; flipping it here (like the Nuxt 2 site's
+  // `js` class) reveals JavaScript-only UI after hydration.
+  client.value = true;
+
+  // adapted from https://stackoverflow.com/a/30303898/451391
+  document.addEventListener('touchstart', onTouchStart, { capture: true });
+  document.addEventListener('mousemove', onMouseMove, { capture: true });
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('touchstart', onTouchStart, { capture: true });
+  document.removeEventListener('mousemove', onMouseMove, { capture: true });
+});
 </script>

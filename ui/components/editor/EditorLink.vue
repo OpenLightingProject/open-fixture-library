@@ -9,15 +9,13 @@
 
     <OflSvg :name="linkTypeIconNames[link.type]" />
 
-    <Validate :state="formstate" tag="span">
-      <PropertyInputText
-        v-model="url"
-        :name="`links-${link.uuid}`"
-        :schema-property="schemaDefinitions.urlString"
-        type="url"
-        :hint="placeholder"
-        required />
-    </Validate>
+    <PropertyInputText
+      v-model="url"
+      :name="`links-${link.uuid}`"
+      :schema-property="schemaDefinitions.urlString"
+      type="url"
+      :hint="placeholder"
+      required />
 
     <button
       v-if="canRemove"
@@ -49,68 +47,66 @@
 }
 </style>
 
-<script>
-import { booleanProp, objectProp } from 'vue-ts-types';
-import { linksProperties, schemaDefinitions } from '../../../lib/schema-properties.js';
-import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-import PropertyInputText from '../PropertyInputText.vue';
+<script setup lang="ts">
+import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
+import { linksProperties, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-const placeholders = {
+interface Properties {
+  link: {
+    type: string;
+    url: string;
+    uuid: string;
+  };
+  canRemove: boolean;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
+  formstate: object;
+}
+
+const properties = defineProps<Properties>();
+const emit = defineEmits<{
+  'set-type': [value: string];
+  'set-url': [value: string];
+  'remove': [];
+}>();
+
+const linkTypeSelect = ref<HTMLSelectElement | null>(null);
+
+const placeholders: Record<string, string> = {
   manual: 'e.g. https://example.org/fixture/manual.pdf',
   productPage: 'e.g. https://example.org/fixture',
   video: 'e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   other: 'e.g. https://example.org/relevant-page',
 };
 
-export default {
-  components: {
-    PropertyInputText,
+const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
+const linkTypes = Object.keys(linksProperties);
+
+const type = computed({
+  get() {
+    return properties.link.type;
   },
-  props: {
-    link: objectProp().required,
-    canRemove: booleanProp().required,
-    formstate: objectProp().required,
+  set(value: string) {
+    emit('set-type', value);
   },
-  emits: {
-    'set-type': (type) => true,
-    'set-url': (url) => true,
-    'remove': () => true,
+});
+
+const url = computed({
+  get() {
+    return properties.link.url;
   },
-  data() {
-    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
-    return {
-      schemaDefinitions,
-      linkTypes: Object.keys(linksProperties),
-      linkTypeIconNames,
-      linkTypeNames,
-    };
+  set(value: string) {
+    emit('set-url', value);
   },
-  computed: {
-    type: {
-      get() {
-        return this.link.type;
-      },
-      set(type) {
-        this.$emit('set-type', type);
-      },
-    },
-    url: {
-      get() {
-        return this.link.url;
-      },
-      set(url) {
-        this.$emit('set-url', url);
-      },
-    },
-    placeholder() {
-      return placeholders[this.type];
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$refs.linkTypeSelect.focus();
-    },
-  },
-};
+});
+
+const placeholder = computed(() => placeholders[properties.link.type]);
+
+/**
+ * Focuses the link type select.
+ */
+function focus() {
+  linkTypeSelect.value?.focus();
+}
+
+defineExpose({ focus });
 </script>

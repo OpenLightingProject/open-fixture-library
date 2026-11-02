@@ -7,43 +7,71 @@
     @change="onFileChanged()">
 </template>
 
-<script>
-import { anyProp, booleanProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+import { useAttrs } from 'vue';
+import { useEditorGroupField } from '~/composables/useEditorForm';
 
-export default {
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    required: booleanProp().withDefault(false),
-    name: stringProp().required,
-    modelValue: anyProp().optional,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-  },
-  watch: {
-    modelValue(newFile) {
-      if (!newFile) {
-        this.$refs.fileInput.value = '';
+interface Properties {
+  required?: boolean;
+  name: string;
+  modelValue?: File;
+}
+
+const properties = defineProps<Properties>();
+const emit = defineEmits<{
+  'update:model-value': [value: File | undefined];
+}>();
+
+const attributes = useAttrs();
+const fileInput = ref<HTMLInputElement | null>(null);
+
+useEditorGroupField(
+  () => ({
+    name: properties.name,
+    getValue: () => properties.modelValue,
+    getRules: () => {
+      const rules = [];
+      if (properties.required) {
+        rules.push({ name: 'required' });
       }
-    },
-  },
-  mounted() {
-    this.onFileChanged();
-  },
-  methods: {
-    onFileChanged() {
-      const file = this.$refs.fileInput.files[0];
-
-      if (!file) {
-        this.$emit('update:model-value', undefined);
-        return;
+      if (attributes['max-file-size']) {
+        rules.push({ name: 'max-file-size', params: attributes['max-file-size'] });
       }
-
-      this.$emit('update:model-value', file);
+      return rules;
     },
+    getAttrs: () => ({
+      'required': properties.required ? '' : undefined,
+      'max-file-size': attributes['max-file-size'],
+    }),
+    getElement: () => fileInput.value,
+  }),
+  () => properties.modelValue,
+);
+
+watch(
+  () => properties.modelValue,
+  (newFile) => {
+    if (!newFile && fileInput.value) {
+      fileInput.value.value = '';
+    }
   },
-};
+);
+
+onMounted(() => {
+  onFileChanged();
+});
+
+/**
+ * Emits the newly selected file.
+ */
+function onFileChanged() {
+  const file = fileInput.value?.files?.[0];
+
+  if (!file) {
+    emit('update:model-value', undefined);
+    return;
+  }
+
+  emit('update:model-value', file);
+}
 </script>

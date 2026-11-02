@@ -68,77 +68,79 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import { colorsHexStringToArray } from '../../../assets/scripts/editor-utilities.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { colorsHexStringToArray } from '@/assets/scripts/editor-utilities.js';
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      hint: 'This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.',
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        comment: '',
-        colors: null,
-        colorsStart: null,
-        colorsEnd: null,
-        colorsHexString: '',
-        colorsHexStringStart: null,
-        colorsHexStringEnd: null,
-        colorTemperature: '',
-        colorTemperatureStart: null,
-        colorTemperatureEnd: null,
-      },
-      colorPreview: null,
-      colorPreviewStart: null,
-      colorPreviewEnd: null,
+interface Properties {
+  capability: {
+    uuid: string;
+    typeData: {
+      comment?: string;
+      colors?: string[] | null;
+      colorsStart?: string[] | null;
+      colorsEnd?: string[] | null;
+      colorsHexString?: string;
+      colorsHexStringStart?: string | null;
+      colorsHexStringEnd?: string | null;
+      colorTemperature?: string;
+      colorTemperatureStart?: string | null;
+      colorTemperatureEnd?: string | null;
     };
-  },
-  watch: {
-    'capability.typeData.colorsHexString': {
-      handler(hexString) {
-        this.capability.typeData.colors = colorsHexStringToArray(hexString);
-        this.colorPreview = this.capability.typeData.colors;
-      },
-      immediate: true,
-    },
-    'capability.typeData.colorsHexStringStart': {
-      handler(hexString) {
-        this.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
-        this.colorPreviewStart = this.capability.typeData.colorsStart;
-      },
-      immediate: true,
-    },
-    'capability.typeData.colorsHexStringEnd': {
-      handler(hexString) {
-        this.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
-        this.colorPreviewEnd = this.capability.typeData.colorsEnd;
-      },
-      immediate: true,
-    },
-  },
+  };
+  formstate?: object;
+}
+
+const properties = defineProps<Properties>();
+
+const hint = 'This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.';
+
+const defaultData = {
+  comment: '',
+  colors: null,
+  colorsStart: null,
+  colorsEnd: null,
+  colorsHexString: '',
+  colorsHexStringStart: null,
+  colorsHexStringEnd: null,
+  colorTemperature: '',
+  colorTemperatureStart: null,
+  colorTemperatureEnd: null,
 };
+
+const colorPreview = ref<string[] | null>(null);
+const colorPreviewStart = ref<string[] | null>(null);
+const colorPreviewEnd = ref<string[] | null>(null);
+
+watch(
+  () => properties.capability.typeData.colorsHexString,
+  (hexString) => {
+    properties.capability.typeData.colors = colorsHexStringToArray(hexString);
+    colorPreview.value = properties.capability.typeData.colors;
+  },
+  { immediate: true },
+);
+
+watch(
+  () => properties.capability.typeData.colorsHexStringStart,
+  (hexString) => {
+    properties.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
+    colorPreviewStart.value = properties.capability.typeData.colorsStart;
+  },
+  { immediate: true },
+);
+
+watch(
+  () => properties.capability.typeData.colorsHexStringEnd,
+  (hexString) => {
+    properties.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
+    colorPreviewEnd.value = properties.capability.typeData.colorsEnd;
+  },
+  { immediate: true },
+);
+
+defineExpose({
+  defaultData,
+  hint,
+});
 </script>

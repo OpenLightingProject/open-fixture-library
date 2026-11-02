@@ -8,60 +8,56 @@
     @input="update()" />
 </template>
 
-<script>
-import { anyProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Properties {
+  schemaProperty: {
+    minLength?: number;
+    maxLength?: number;
+    description?: string;
+    $ref?: string;
+  };
+  required?: boolean;
+  hint?: string;
+  modelValue: string | null;
+}
 
-export default {
-  props: {
-    schemaProperty: objectProp().required,
-    required: booleanProp().withDefault(false),
-    hint: stringProp().optional,
-    value: anyProp().required,
-  },
-  emits: {
-    'input': (value) => true,
-    'vf:validate': (validationData) => true,
-  },
-  data() {
-    return {
-      localValue: '',
-    };
-  },
-  computed: {
-    /**
-     * @public
-     * @returns {Record<string, string | null>} Validation data for vue-form
-     */
-    validationData() {
-      return {
-        minlength: 'minLength' in this.schemaProperty ? String(this.schemaProperty.minLength) : null,
-        maxlength: 'maxLength' in this.schemaProperty ? String(this.schemaProperty.maxLength) : null,
-      };
-    },
-  },
-  watch: {
-    value: {
-      handler(newValue) {
-        this.localValue = newValue ? String(newValue) : '';
-      },
-      immediate: true,
-    },
-    validationData: {
-      handler(newValidationData) {
-        this.$emit('vf:validate', newValidationData);
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$el.focus();
-    },
-    update() {
-      this.$emit('input', this.localValue);
-    },
-  },
+const properties = withDefaults(defineProps<Properties>(), {
+  hint: '',
+  required: false,
+});
+
+const emit = defineEmits<{
+  'update:model-value': [value: string];
+  'vf:validate': [validationData: Record<string, string | null>];
+}>();
+
+const localValue = ref('');
+
+const validationData = computed(() => ({
+  minlength: 'minLength' in properties.schemaProperty ? String(properties.schemaProperty.minLength) : null,
+  maxlength: 'maxLength' in properties.schemaProperty ? String(properties.schemaProperty.maxLength) : null,
+}));
+
+watch(() => properties.modelValue, (newValue) => {
+  localValue.value = newValue ? String(newValue) : '';
+}, {
+  immediate: true,
+});
+
+watch(validationData, (newValidationData) => {
+  emit('vf:validate', newValidationData);
+}, {
+  deep: true,
+  immediate: true,
+});
+
+const update = () => {
+  emit('update:model-value', localValue.value);
 };
+
+defineExpose({
+  focus: () => {
+    (document.activeElement as HTMLElement)?.focus();
+  },
+});
 </script>

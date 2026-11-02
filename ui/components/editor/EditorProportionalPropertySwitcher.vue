@@ -1,16 +1,10 @@
 <template>
   <div class="proportional-capability-data">
 
-    <Component
-      :is="formstate ? 'Validate' : 'span'"
-      v-if="hasStartEnd"
-      :state="formstate"
-      :tag="formstate ? 'span' : null">
+    <span
+      v-if="hasStartEnd">
 
-      <Component
-        :is="formstate ? 'Validate' : 'label'"
-        :state="formstate"
-        :tag="formstate ? 'label' : null"
+      <label
         class="entity-input">
 
         <PropertyInputNumber
@@ -47,7 +41,7 @@
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
 
-      </Component>
+      </label>
 
       <span class="separator">
         <button
@@ -61,10 +55,7 @@
         …
       </span>
 
-      <Component
-        :is="formstate ? 'Validate' : 'label'"
-        :state="formstate"
-        :tag="formstate ? 'label' : null"
+      <label
         class="entity-input">
 
         <PropertyInputNumber
@@ -101,8 +92,8 @@
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
 
-      </Component>
-    </Component>
+      </label>
+    </span>
 
     <template v-else>
       <PropertyInputNumber
@@ -182,172 +173,184 @@
 }
 </style>
 
-<script>
-import { booleanProp, objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
 import {
   capabilityTypes,
   entitiesSchema,
   schemaDefinitions,
   unitsSchema,
-} from '../../../lib/schema-properties.js';
-import PropertyInputEntity from '../PropertyInputEntity.vue';
-import PropertyInputNumber from '../PropertyInputNumber.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+} from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    PropertyInputEntity,
-    PropertyInputNumber,
-    PropertyInputText,
+interface Properties {
+  capability: {
+    uuid: string;
+    type?: string;
+    typeData: Record<string, any>;
+    dmxRange?: [number, number] | null;
+  };
+  propertyName: string;
+  required?: boolean;
+  hint?: string;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
+  formstate?: object;
+}
+
+const properties = defineProps<Properties>();
+
+const steppedField = ref<any>(null);
+const startField = ref<any>(null);
+const endField = ref<any>(null);
+
+const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace('#/units/', '');
+const slotNumberSchema = unitsSchema[slotNumberUnit];
+
+const entity = computed(() => {
+  const capabilitySchema = capabilityTypes[properties.capability.type];
+  if (!capabilitySchema) {
+    return '';
+  }
+
+  const propertySchema = capabilitySchema.properties[properties.propertyName];
+  return propertySchema ? (propertySchema.$ref || '').replace('definitions.json#/entities/', '') : '';
+});
+
+const entitySchema = computed(() => {
+  return entity.value === '' ? null : entitiesSchema[entity.value];
+});
+
+const propertyDataStepped = computed({
+  get() {
+    return properties.capability.typeData[properties.propertyName];
   },
-  props: {
-    capability: objectProp().required,
-    propertyName: stringProp().required,
-    required: booleanProp().withDefault(false),
-    hint: stringProp().optional,
-    formstate: objectProp().optional,
+  set(newData) {
+    properties.capability.typeData[properties.propertyName] = newData;
   },
-  data() {
-    const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace('#/units/', '');
+});
 
-    return {
-      schemaDefinitions,
-      slotNumberSchema: unitsSchema[slotNumberUnit],
-    };
+const propertyDataStart = computed({
+  get() {
+    return properties.capability.typeData[`${properties.propertyName}Start`];
   },
-  computed: {
-    entity() {
-      const capabilitySchema = capabilityTypes[this.capability.type];
-      if (!capabilitySchema) {
-        return '';
-      }
-
-      const propertySchema = capabilitySchema.properties[this.propertyName];
-      const ref = propertySchema?.$ref ?? '';
-      return ref.replace('definitions.json#/entities/', '');
-    },
-    entitySchema() {
-      return this.entity === '' ? null : entitiesSchema[this.entity];
-    },
-    propertyDataStepped: {
-      get() {
-        return this.capability.typeData[this.propertyName];
-      },
-      set(newData) {
-        this.capability.typeData[this.propertyName] = newData;
-      },
-    },
-    propertyDataStart: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}Start`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}Start`] = newData;
-      },
-    },
-    propertyDataEnd: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}End`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}End`] = newData;
-      },
-    },
-    hasStartEnd: {
-      get() {
-        if (this.propertyDataStepped === null && this.propertyDataStart === null) {
-          throw new Error('Stepped and start value are both null. At least one of them should have a value, e.g. an empty string.');
-        }
-
-        return this.propertyDataStepped === null;
-      },
-      set(shouldHaveStartEnd) {
-        if (shouldHaveStartEnd && !this.hasStartEnd) {
-          const savedData = this.propertyDataStepped;
-          this.propertyDataStepped = null;
-          this.propertyDataStart = savedData;
-          this.propertyDataEnd = savedData;
-        }
-        else if (!shouldHaveStartEnd && this.hasStartEnd) {
-          const savedData = this.propertyDataStart;
-          this.propertyDataStepped = savedData;
-          this.propertyDataStart = null;
-          this.propertyDataEnd = null;
-        }
-      },
-    },
-
-    // slotNumber entity requires a bit of special handling
-    slotNumberStepped: {
-      get() {
-        return this.capability.typeData[this.propertyName];
-      },
-      set(newData) {
-        this.capability.typeData[this.propertyName] = newData === null ? '' : newData;
-      },
-    },
-    slotNumberStart: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}Start`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}Start`] = newData === null ? '' : newData;
-      },
-    },
-    slotNumberEnd: {
-      get() {
-        return this.capability.typeData[`${this.propertyName}End`];
-      },
-      set(newData) {
-        this.capability.typeData[`${this.propertyName}End`] = newData === null ? '' : newData;
-      },
-    },
-
-    swapButtonTabIndex() {
-      return (
-        (
-          this.propertyDataStart === this.propertyDataEnd
-          || this.propertyDataStart === ''
-          || this.propertyDataEnd === ''
-        )
-          ? '-1'
-          : null
-      );
-    },
+  set(newData) {
+    properties.capability.typeData[`${properties.propertyName}Start`] = newData;
   },
-  methods: {
-    /** @public */
-    focus() {
-      for (const field of ['steppedField', 'startField', 'endField']) {
-        if (this.$refs[field]) {
-          this.$refs[field].focus();
-          return;
-        }
-      }
-    },
-    async focusEndField() {
-      await this.$nextTick();
+});
 
-      if (!this.hasStartEnd) {
-        return;
-      }
-
-      const focusField = this.propertyDataStart === '' ? this.$refs.startField : this.$refs.endField;
-      focusField.focus();
-    },
-    onUnitSelected(newUnit) {
-      if (!this.propertyDataStart.endsWith(newUnit)) {
-        this.$refs.startField.setUnitString(newUnit);
-      }
-      if (!this.propertyDataEnd.endsWith(newUnit)) {
-        this.$refs.endField.setUnitString(newUnit);
-      }
-    },
-    swapStartEnd() {
-      const start = this.propertyDataStart;
-      this.propertyDataStart = this.propertyDataEnd;
-      this.propertyDataEnd = start;
-    },
+const propertyDataEnd = computed({
+  get() {
+    return properties.capability.typeData[`${properties.propertyName}End`];
   },
-};
+  set(newData) {
+    properties.capability.typeData[`${properties.propertyName}End`] = newData;
+  },
+});
+
+const hasStartEnd = computed({
+  get() {
+    if (propertyDataStepped.value === null && propertyDataStart.value === null) {
+      throw new Error('Stepped and start value are both null. At least one of them should have a value, e.g. an empty string.');
+    }
+
+    return propertyDataStepped.value === null;
+  },
+  set(shouldHaveStartEnd: boolean) {
+    if (shouldHaveStartEnd && !hasStartEnd.value) {
+      const savedData = propertyDataStepped.value;
+      propertyDataStepped.value = null;
+      propertyDataStart.value = savedData;
+      propertyDataEnd.value = savedData;
+    }
+    else if (!shouldHaveStartEnd && hasStartEnd.value) {
+      const savedData = propertyDataStart.value;
+      propertyDataStepped.value = savedData;
+      propertyDataStart.value = null;
+      propertyDataEnd.value = null;
+    }
+  },
+});
+
+const slotNumberStepped = computed({
+  get() {
+    return properties.capability.typeData[properties.propertyName];
+  },
+  set(newData) {
+    properties.capability.typeData[properties.propertyName] = newData === null ? '' : newData;
+  },
+});
+
+const slotNumberStart = computed({
+  get() {
+    return properties.capability.typeData[`${properties.propertyName}Start`];
+  },
+  set(newData) {
+    properties.capability.typeData[`${properties.propertyName}Start`] = newData === null ? '' : newData;
+  },
+});
+
+const slotNumberEnd = computed({
+  get() {
+    return properties.capability.typeData[`${properties.propertyName}End`];
+  },
+  set(newData) {
+    properties.capability.typeData[`${properties.propertyName}End`] = newData === null ? '' : newData;
+  },
+});
+
+const swapButtonTabIndex = computed(() => {
+  return (propertyDataStart.value === propertyDataEnd.value
+    || propertyDataStart.value === ''
+    || propertyDataEnd.value === '')
+    ? '-1'
+    : null;
+});
+
+/**
+ * Focuses the first visible value field.
+ */
+function focus() {
+  for (const field of [steppedField, startField, endField]) {
+    if (field.value) {
+      field.value.focus();
+      return;
+    }
+  }
+}
+
+/**
+ * Focuses the start or end field after switching to a range.
+ */
+async function focusEndField() {
+  await nextTick();
+
+  if (!hasStartEnd.value) {
+    return;
+  }
+
+  const focusField = propertyDataStart.value === '' ? startField.value : endField.value;
+  focusField?.focus();
+}
+
+/**
+ * Applies a selected unit to both range fields.
+ * @param newUnit - The selected unit string.
+ */
+function onUnitSelected(newUnit: string) {
+  if (!propertyDataStart.value.endsWith(newUnit)) {
+    startField.value?.setUnitString(newUnit);
+  }
+  if (!propertyDataEnd.value.endsWith(newUnit)) {
+    endField.value?.setUnitString(newUnit);
+  }
+}
+
+/**
+ * Swaps the start and end values.
+ */
+function swapStartEnd() {
+  const start = propertyDataStart.value;
+  propertyDataStart.value = propertyDataEnd.value;
+  propertyDataEnd.value = start;
+}
+
+defineExpose({ focus });
 </script>

@@ -63,41 +63,35 @@
   </section>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { manufacturerProperties } from '../../../lib/schema-properties.js';
+<script setup lang="ts">
+import type { EditorFixture } from '~/types/editor';
+import { manufacturerProperties } from '~~/lib/schema-properties.js';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import PropertyInputTextarea from '../PropertyInputTextarea.vue';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputNumber,
-    PropertyInputText,
-    PropertyInputTextarea,
-  },
-  props: {
-    fixture: objectProp().required,
-    formstate: objectProp().required,
-    manufacturers: objectProp().required,
-  },
-  data() {
-    return {
-      manufacturerProperties,
-    };
-  },
-  watch: {
-    async 'fixture.useExistingManufacturer'(useExisting) {
-      await this.$nextTick();
-      this.$refs[useExisting ? 'existingManufacturerSelect' : 'newManufacturerNameInput'].focus();
-    },
-  },
-  methods: {
-    switchManufacturer(useExisting) {
-      this.fixture.useExistingManufacturer = useExisting;
-    },
-  },
-};
+interface Properties {
+  fixture: EditorFixture;
+  formstate: object;
+  manufacturers: Record<string, { name: string }>;
+}
+
+const properties = defineProps<Properties>();
+
+const existingManufacturerSelect = ref<HTMLSelectElement | null>(null);
+const newManufacturerNameInput = ref<typeof PropertyInputText | null>(null);
+
+watch(() => properties.fixture.useExistingManufacturer, async (isExisting) => {
+  await nextTick();
+  (isExisting ? existingManufacturerSelect.value : newManufacturerNameInput.value)?.focus();
+});
+
+/**
+ * Switches between an existing and a new manufacturer.
+ * @param isExisting - Whether to use an existing manufacturer.
+ */
+function switchManufacturer(isExisting: boolean) {
+  properties.fixture.useExistingManufacturer = isExisting;
+}
 </script>

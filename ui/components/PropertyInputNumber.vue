@@ -1,5 +1,7 @@
 <template>
   <input
+    ref="inputElement"
+    :name="name"
     :required="required"
     :min="min"
     :max="max"
@@ -7,112 +9,160 @@
     :data-exclusive-maximum="exclusiveMaximum"
     :step="step"
     :placeholder="hint"
-    :value="value === `invalid` ? `` : value"
+    :value="modelValue === 'invalid' ? '' : modelValue"
     type="number"
     v-on="lazy ? { change: update } : { input: update }"
     @focus="$emit('focus', $event)"
     @blur="$emit('blur', $event)">
 </template>
 
-<script>
-import { anyProp, booleanProp, numberProp, objectProp, oneOfTypesProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+import { useEditorGroupField } from '~/composables/useEditorForm';
 
-export default {
-  props: {
-    schemaProperty: objectProp().required,
-    required: booleanProp().withDefault(false),
-    hint: stringProp().optional,
-    minimum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
-    maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
-    value: anyProp().required,
-    lazy: booleanProp().withDefault(false),
-    stepOverride: numberProp().optional,
-  },
-  emits: {
-    'input': (value) => true,
-    'focus': () => true,
-    'blur': () => true,
-    'vf:validate': (validationData) => true,
-  },
-  computed: {
-    min() {
-      if (this.minimum !== undefined && this.minimum !== 'invalid') {
-        return this.minimum;
-      }
+interface Properties {
+  schemaProperty: {
+    minimum?: number;
+    maximum?: number;
+    exclusiveMinimum?: number;
+    exclusiveMaximum?: number;
+    type?: string;
+    description?: string;
+    $ref?: string;
+  };
+  required?: boolean;
+  hint?: string;
+  minimum?: number | string;
+  maximum?: number | string;
+  modelValue: number | string | null;
+  lazy?: boolean;
+  stepOverride?: number;
+  name?: string;
+}
 
-      return 'minimum' in this.schemaProperty ? this.schemaProperty.minimum : this.exclusiveMinimum;
-    },
-    max() {
-      if (this.maximum !== undefined && this.maximum !== 'invalid') {
-        return this.maximum;
-      }
+const properties = defineProps<Properties>();
 
-      return 'maximum' in this.schemaProperty ? this.schemaProperty.maximum : this.exclusiveMaximum;
-    },
-    exclusiveMinimum() {
-      return 'exclusiveMinimum' in this.schemaProperty ? this.schemaProperty.exclusiveMinimum : null;
-    },
-    exclusiveMaximum() {
-      return 'exclusiveMaximum' in this.schemaProperty ? this.schemaProperty.exclusiveMaximum : null;
-    },
-    step() {
-      if (this.stepOverride !== undefined) {
-        return this.stepOverride;
-      }
-      return this.schemaProperty.type === 'integer' ? 1 : 'any';
-    },
+const emit = defineEmits<{
+  'update:model-value': [value: number | string | null];
+  'focus': [event: FocusEvent];
+  'blur': [event: FocusEvent];
+  'vf:validate': [validationData: Record<string, string | null>];
+}>();
 
-    /**
-     * @public
-     * @returns {Record<string, string | null>} Validation data for vue-form
-     */
-    validationData() {
-      return {
-        'min': this.min === null ? null : String(this.min),
-        'max': this.max === null ? null : String(this.max),
-        'data-exclusive-minimum': this.exclusiveMinimum === null ? null : String(this.exclusiveMinimum),
-        'data-exclusive-maximum': this.exclusiveMaximum === null ? null : String(this.exclusiveMaximum),
-        'step': String(this.step),
-        'type': 'number',
-      };
-    },
-  },
-  watch: {
-    validationData: {
-      handler(newValidationData) {
-        this.$emit('vf:validate', newValidationData);
-      },
-      deep: true,
-      immediate: true,
-    },
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$el.focus();
-    },
-    update() {
-      const input = this.$el;
-      if (input.validity && input.validity.badInput) {
-        this.$emit('input', 'invalid');
-        return;
-      }
+const exclusiveMinimum = computed(() => {
+  return 'exclusiveMinimum' in properties.schemaProperty ? properties.schemaProperty.exclusiveMinimum : null;
+});
 
-      if (input.value === '') {
-        this.$emit('input', null);
-        return;
-      }
+const exclusiveMaximum = computed(() => {
+  return 'exclusiveMaximum' in properties.schemaProperty ? properties.schemaProperty.exclusiveMaximum : null;
+});
 
-      let value;
-      try {
-        value = Number.parseFloat(input.value);
-      }
-      catch {
-        value = 'invalid';
-      }
+const min = computed(() => {
+  if (properties.minimum !== undefined && properties.minimum !== 'invalid') {
+    return properties.minimum;
+  }
 
-      this.$emit('input', value);
-    },
-  },
+  return 'minimum' in properties.schemaProperty ? properties.schemaProperty.minimum : exclusiveMinimum.value;
+});
+
+const max = computed(() => {
+  if (properties.maximum !== undefined && properties.maximum !== 'invalid') {
+    return properties.maximum;
+  }
+
+  return 'maximum' in properties.schemaProperty ? properties.schemaProperty.maximum : exclusiveMaximum.value;
+});
+
+const step = computed(() => {
+  if (properties.stepOverride !== undefined) {
+    return properties.stepOverride;
+  }
+  return properties.schemaProperty.type === 'integer' ? 1 : 'any';
+});
+
+const validationData = computed(() => ({
+  'min': min.value === null ? null : String(min.value),
+  'max': max.value === null ? null : String(max.value),
+  'data-exclusive-minimum': exclusiveMinimum.value === null ? null : String(exclusiveMinimum.value),
+  'data-exclusive-maximum': exclusiveMaximum.value === null ? null : String(exclusiveMaximum.value),
+  'step': String(step.value),
+  'type': 'number',
+}));
+
+watch(validationData, (newValidationData) => {
+  emit('vf:validate', newValidationData);
+}, {
+  deep: true,
+  immediate: true,
+});
+
+const inputElement = ref<HTMLInputElement | null>(null);
+
+const fieldRules = computed(() => {
+  // The Nuxt 2 oracle drops the `'invalid'` sentinel: its vf:validate data was
+  // emitted before the directive listener was attached, so only `required` was
+  // ever registered. Match that behaviour instead of adding a new client-side
+  // error the old site never showed.
+  if (properties.modelValue === 'invalid') {
+    return [];
+  }
+
+  const rules: { name: string; params?: unknown }[] = [];
+
+  if (properties.required) {
+    rules.push({ name: 'required' });
+  }
+
+  rules.push({ name: 'number' });
+
+  for (const ruleName of ['min', 'max', 'step', 'data-exclusive-minimum', 'data-exclusive-maximum']) {
+    const value = validationData.value[ruleName];
+    if (value !== null && value !== undefined) {
+      rules.push({ name: ruleName, params: value });
+    }
+  }
+
+  return rules;
+});
+
+useEditorGroupField(
+  () => (properties.name
+    ? {
+        name: properties.name,
+        getValue: () => properties.modelValue,
+        getRules: () => fieldRules.value,
+        getAttrs: () => validationData.value,
+        getElement: () => inputElement.value,
+      }
+    : null),
+  () => properties.modelValue,
+);
+
+const update = () => {
+  const input = document.activeElement as HTMLInputElement;
+  if (input.validity && input.validity.badInput) {
+    emit('update:model-value', 'invalid');
+    return;
+  }
+
+  if (input.value === '') {
+    emit('update:model-value', null);
+    return;
+  }
+
+  let value: number | string;
+  try {
+    value = Number.parseFloat(input.value);
+  }
+  catch {
+    value = 'invalid';
+  }
+
+  emit('update:model-value', value);
 };
+
+defineExpose({
+  focus: () => {
+    (document.activeElement as HTMLElement)?.focus();
+  },
+});
 </script>

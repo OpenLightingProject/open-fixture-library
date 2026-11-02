@@ -23,19 +23,77 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Run unit tests
+        run: npm run test:unit
+      - name: Run Nuxt component tests
+        run: npm run test:nuxt
       - parallel:
-          - name: Run ESLint
-            run: npm run lint:eslint
-          - name: Run Stylelint
-            run: npm run lint:stylelint -- --formatter compact
-          - name: Run dmx-value-scaling test
-            run: npm run test:dmx-value-scaling
           - name: Run fixtures-valid test
             run: npm run test:fixtures-valid
           - name: Run http-status test
             run: npm run test:http-status
           - name: Run built-files-committed test
             run: npm run test:built-files-committed
+  browser:
+    name: Browser
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PORT: 3000
+      TARGET_URL: http://localhost:3000
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+      - name: Setup Node.js v26
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26
+          cache: 'npm'
+      - name: Setup npm v12
+        run: npm install --global npm@12
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start Nuxt server
+        run: |
+          node .output/server/index.mjs > "$RUNNER_TEMP/nuxt-server.log" 2>&1 &
+          server_pid=$!
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent --show-error --output /dev/null "$TARGET_URL/"; then
+              echo "Server is ready at $TARGET_URL"
+              exit 0
+            fi
+            if ! kill -0 "$server_pid" 2>/dev/null; then
+              echo "Server exited before it became ready"
+              cat "$RUNNER_TEMP/nuxt-server.log"
+              exit 1
+            fi
+            sleep 1
+          done
+          echo "Server did not become ready within 60 seconds"
+          cat "$RUNNER_TEMP/nuxt-server.log"
+          exit 1
+      - name: Run Playwright tests
+        run: npm run test:browser
+      - name: Collect server log
+        if: failure()
+        run: cp "$RUNNER_TEMP/nuxt-server.log" nuxt-server.log 2>/dev/null || true
+      - name: Upload Playwright results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: |
+            test-results/
+            nuxt-server.log
+          if-no-files-found: ignore
   status:
     name: Status
     runs-on: ubuntu-latest

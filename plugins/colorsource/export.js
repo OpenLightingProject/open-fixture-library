@@ -1,4 +1,4 @@
-import { v5 as uuidv5 } from 'uuid';
+import { createHash } from 'node:crypto';
 import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
@@ -18,6 +18,24 @@ const CHANNEL_TYPE_BEAM = 4;
 const CHANNEL_TYPE_COLOR = 5;
 
 const UUID_NAMESPACE = '0de81b51-02b2-45e3-b53c-578f9eb31b77'; // seed for UUIDs
+
+/**
+ * Builds a deterministic UUID v5 for the given name and namespace.
+ * @param {string} name - The name to hash.
+ * @param {string} namespace - The namespace UUID as a hyphenated hex string.
+ * @returns {string} The generated UUID.
+ */
+function uuidv5(name, namespace) {
+  const nsBytes = Buffer.from(namespace.replaceAll('-', ''), 'hex');
+  // eslint-disable-next-line sonarjs/hashing -- UUID v5 is defined in terms of SHA-1
+  const hash = createHash('sha1').update(nsBytes).update(name, 'utf-8').digest();
+  // eslint-disable-next-line no-bitwise -- UUID v5 encodes its version and variant in these bits
+  hash[6] = (hash[6] & 0x0F) | 0x50;
+  // eslint-disable-next-line no-bitwise -- UUID v5 encodes its version and variant in these bits
+  hash[8] = (hash[8] & 0x3F) | 0x80;
+  const hex = hash.subarray(0, 16).toString('hex');
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20, 32)}`;
+}
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.

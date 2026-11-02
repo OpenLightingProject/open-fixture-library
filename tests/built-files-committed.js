@@ -22,10 +22,22 @@ const result = childProcess.spawnSync('git diff --exit-code', {
   shell: true,
   stdio: 'inherit',
 });
+
+// `git diff` ignores untracked files, so explicitly make sure the generated
+// OpenAPI bundle was committed as well.
+const bundledSpecStatus = childProcess.spawnSync('git', ['status', '--porcelain', '--', 'ui/api/openapi.bundled.json'], {
+  cwd: projectDirectory,
+  encoding: 'utf-8',
+});
 console.log('\n');
 
 if (result.status !== 0) {
   console.error(styleText('red', '[FAIL]'), 'Built files (or other changes) are not committed. Please run `npm run build` and stage (git add) all changes.');
+  process.exit(1);
+}
+
+if (bundledSpecStatus.status !== 0 || bundledSpecStatus.stdout.trim() !== '') {
+  console.error(styleText('red', '[FAIL]'), 'The bundled OpenAPI document is not committed. Please run `npm run build:openapi` and stage `ui/api/openapi.bundled.json`.');
   process.exit(1);
 }
 

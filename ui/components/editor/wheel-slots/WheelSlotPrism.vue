@@ -26,37 +26,30 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions, wheelSlotTypes } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputNumber from '../../PropertyInputNumber.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
+<script setup lang="ts">
+import { schemaDefinitions, wheelSlotTypes } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    LabeledInput,
-    PropertyInputNumber,
-    PropertyInputText,
-  },
-  props: {
-    wheelSlot: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      facetsSchema: wheelSlotTypes.Prism.properties.facets,
-
-      /**
-       * Used in {@link EditorWheelSlot}
-       * @public
-       */
-      defaultData: {
-        name: '',
-        facets: '',
-      },
+interface Properties {
+  wheelSlot: {
+    uuid: string;
+    typeData: {
+      name?: string;
+      facets?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Properties>();
+
+const facetsSchema = wheelSlotTypes.Prism.properties.facets;
+
+const defaultData = {
+  name: '',
+  facets: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>
