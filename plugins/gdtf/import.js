@@ -589,7 +589,7 @@ export async function importFixtures(buffer, filename, authorName) {
       // (Closed, …, Open) / (Open, …, Closed) wrapping of a single full-range
       // Intensity / ColorIntensity capability into one synthesized ChannelSet.
       const collapseTarget = getCollapseTarget();
-      const collapsedGdtfCapabilities = collapseTarget !== null && allChannelSetsMatchCollapseTarget(collapseTarget)
+      const collapsedGdtfCapabilities = collapseTarget !== null && isCollapseTargetMatchedByAllChannelSets(collapseTarget)
         ? [createCollapsedChannelSet()]
         : gdtfCapabilities;
 
@@ -671,7 +671,7 @@ export async function importFixtures(buffer, filename, authorName) {
        * @returns {boolean} Whether every ChannelSet matches the target's shared
        * properties and has a Name consistent with its position in the channel.
        */
-      function allChannelSetsMatchCollapseTarget(target) {
+      function isCollapseTargetMatchedByAllChannelSets(target) {
         const firstName = gdtfCapabilities[0].$.Name;
         const lastName = gdtfCapabilities.at(-1).$.Name;
         const middleHasName = gdtfCapabilities.slice(1, -1).some((capability) => capability.$.Name !== '');
@@ -844,8 +844,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
       // make unique by appending ' 2', ' 3', ... if necessary
       let duplicates = 1;
-      const keyExists = () => channelWrappers.some((channelWrapper) => channelWrapper.key === key);
-      while (keyExists()) {
+      const doesChannelKeyExist = () => channelWrappers.some((channelWrapper) => channelWrapper.key === key);
+      while (doesChannelKeyExist()) {
         duplicates++;
         key = `${name} ${duplicates}`;
       }

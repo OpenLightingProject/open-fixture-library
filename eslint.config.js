@@ -210,7 +210,6 @@ const unicornRules = {
   'unicorn/no-process-exit': 'off',
   'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
   'unicorn/no-top-level-assignment-in-function': 'off', // module-level state assigned from functions is intentional here
-  'unicorn/no-top-level-side-effects': 'off', // some modules legitimately set up state at import time
   'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
   'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
@@ -392,7 +391,9 @@ export default defineConfig([
       'server/ofl-secrets.json',
       '.vscode/',
       '.nuxt/',
+      'ui/.nuxt/',
       '.output/',
+      '.opencode/', // local tool configuration
       '.superpowers/', // local SDD task briefs and reports
       '.worktrees/',
       'docs/superpowers/', // internal migration plan documents

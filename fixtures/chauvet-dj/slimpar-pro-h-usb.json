@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-08-09",
-    "lastModifyDate": "2018-08-10"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -88,8 +88,8 @@
           "dmxRange": [16, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "31Hz"
         }
       ]
     },

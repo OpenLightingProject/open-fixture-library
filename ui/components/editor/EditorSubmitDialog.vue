@@ -262,11 +262,10 @@ const rawData = computed(() => {
 });
 
 const hasPreview = computed(() => {
-  return fixtureCreateResult.value === null
-    ? false
-    : Object.values(fixtureCreateResult.value.errors).some(
-        (errors) => (errors as unknown[]).length === 0,
-      );
+  return fixtureCreateResult.value !== null
+    && Object.values(fixtureCreateResult.value.errors).some(
+      (errors) => (errors as unknown[]).length === 0,
+    );
 });
 
 const hasValidationErrors = computed(() => {

@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Ryan Goodwin"],
     "createDate": "2023-04-24",
-    "lastModifyDate": "2023-07-12"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "productPage": [
@@ -64,8 +64,8 @@
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
         }
       ]
     },

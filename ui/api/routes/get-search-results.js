@@ -18,7 +18,7 @@ export async function getSearchResults({ request }) {
   manufacturers = await importJson('../../../fixtures/manufacturers.json', import.meta.url);
 
   const results = Object.keys(register.filesystem).filter(
-    (key) => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
+    (key) => doesFixtureMatchSearchQuery(searchQuery, key) && doesFixtureMatchManufacturerQuery(manufacturersQuery, key) && doesFixtureMatchCategoryQuery(categoriesQuery, key),
   ).map((key) => {
     const manufacturer = key.split('/', 1)[0];
 
@@ -39,7 +39,7 @@ export async function getSearchResults({ request }) {
  * @param {string} fixtureKey - Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the search query, false otherwise.
  */
-function queryMatch(searchQuery, fixtureKey) {
+function doesFixtureMatchSearchQuery(searchQuery, fixtureKey) {
   const manufacturer = fixtureKey.split('/', 1)[0];
   const fixtureData = register.filesystem[fixtureKey];
 
@@ -52,7 +52,7 @@ function queryMatch(searchQuery, fixtureKey) {
  * @param {string} fixtureKey - Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
-function manufacturerMatch(manufacturersQuery, fixtureKey) {
+function doesFixtureMatchManufacturerQuery(manufacturersQuery, fixtureKey) {
   const manufacturer = fixtureKey.split('/', 1)[0];
 
   return (
@@ -68,7 +68,7 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
  * @param {string} fixtureKey - Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the category query, false otherwise.
  */
-function categoryMatch(categoriesQuery, fixtureKey) {
+function doesFixtureMatchCategoryQuery(categoriesQuery, fixtureKey) {
   return (
     categoriesQuery.length === 0
     || (categoriesQuery.length === 1 && categoriesQuery[0] === '')
