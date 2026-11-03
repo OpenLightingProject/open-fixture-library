@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SoundSatio",
+  "shortName": "ZZEN200WW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["angelopi"],
+    "createDate": "2026-11-03",
+    "lastModifyDate": "2026-11-03"
+  },
+  "links": {
+    "manual": [
+      "http://www.google.com"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 240, 230],
+    "weight": 3,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED COB",
+      "colorTemperature": 4000
+    }
+  },
+  "availableChannels": {
+    "Bianco freddo": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Bianco caldo": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Strobo",
+      "channels": [
+        "Bianco caldo",
+        "Bianco freddo",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
