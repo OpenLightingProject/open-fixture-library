@@ -1,0 +1,461 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TSL250",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Martin"],
+    "createDate": "2026-10-27",
+    "lastModifyDate": "2026-10-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51786125-Anleitung-131438-1.1000-eurolite-led-tsl-250-scan-cob-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/mpn51786125-eurolite-led-tsl-250-scan-cob.html"
+    ],
+    "video": [
+      "https://www.youtube.de/"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 330, 150],
+    "weight": 3,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED"
+    },
+    "lens": {
+      "degreesMinMax": [9, 9]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Rot"
+        },
+        {
+          "type": "Color",
+          "name": "Grün"
+        },
+        {
+          "type": "Color",
+          "name": "Blau"
+        },
+        {
+          "type": "Color",
+          "name": "Gelb"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Hellblau"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "Orange+Hellblau"
+        },
+        {
+          "type": "Color",
+          "name": "Hellblau+Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta+Gelb"
+        },
+        {
+          "type": "Color",
+          "name": "Gelb+Blau"
+        },
+        {
+          "type": "Color",
+          "name": "Blau+Grün"
+        },
+        {
+          "type": "Color",
+          "name": "Grün+Rot"
+        },
+        {
+          "type": "Color",
+          "name": "Regenbogen"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ventilator"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gitter"
+        },
+        {
+          "type": "Gobo",
+          "name": "Spirale"
+        },
+        {
+          "type": "Gobo",
+          "name": "Punkte"
+        },
+        {
+          "type": "Gobo",
+          "name": "Strich"
+        },
+        {
+          "type": "Gobo",
+          "name": "Blades"
+        },
+        {
+          "type": "Gobo",
+          "name": "Radioaktiv"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ventilator-Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gitter-Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Spirale-Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Punkte-Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Strich-Shake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Blades-Shake"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-120deg",
+        "angleEnd": "120deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-90deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 14
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "ColorPreset",
+          "comment": "Regenbogen",
+          "colorTemperature": "default"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Weiss"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Rot"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Grün"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blau"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "Gelb"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Hellblau"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Orange+Hellblau"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Hellblau+Magenta"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Magenta+Gelb"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Gelb+Blau"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Blau+Grün"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Grün+Rot"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "ColorPreset",
+          "comment": "Regenbogen"
+        }
+      ]
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "WheelSlot",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 15,
+          "comment": "Radioaktiv-Shake"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "WheelSlotRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "Vorwaerts mit abnehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "WheelSlotRotation",
+          "speed": "stop",
+          "comment": "No Rotation"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Rueckwaerts mit zunehmender Geschwindigkeit"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "1deg",
+          "angleEnd": "360deg",
+          "comment": "Gobowinkel"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW",
+          "comment": "Rueckwaerts mit abnehmender Geschwindigkeit"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Rotation",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Strobe Speed"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer"
+      }
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Effect",
+          "effectName": "Programm1",
+          "comment": "Programm1"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Effect",
+          "effectName": "Programm2",
+          "comment": "Programm2"
+        },
+        {
+          "dmxRange": [110, 159],
+          "type": "Effect",
+          "effectName": "Programm3",
+          "comment": "Programm3"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Effect",
+          "effectName": "Musik Programm1",
+          "soundControlled": true,
+          "comment": "Musik Programm1"
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Effect",
+          "effectName": "Musik Programm2",
+          "soundControlled": true,
+          "comment": "Musik Programm2"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectName": "Musik Programm3",
+          "soundControlled": true,
+          "comment": "Musik Programm3"
+        }
+      ]
+    },
+    "PAN/TILT-Macros/Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "PanContinuous",
+          "speed": "fast CW",
+          "comment": "PAN-Wippen"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "TiltContinuous",
+          "speed": "fast CW",
+          "comment": "TILT-Wippen"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Generic",
+          "comment": "PAN/TILT-Wippen"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel 2",
+        "Gobo Wheel Rotation",
+        "Strobe",
+        "Intensity",
+        "Program",
+        "PAN/TILT-Macros/Reset"
+      ]
+    }
+  ]
+}
