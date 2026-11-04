@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wash 84x3w",
+  "shortName": "TrixterWash",
+  "categories": ["Color Changer", "Dimmer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["Orco"],
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26"
+  },
+  "links": {
+    "other": [
+      "https://www.trixter.com.mx/?srsltid=AYCX9vJQvTEPsi4UL-2shqtxz7W4V92zRGjzzSSx5DO7TQvU4Bq2gXCK"
+    ]
+  },
+  "rdm": {
+    "modelId": 843
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade",
+        "speed": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Luminosidad",
+      "shortName": "Luz",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Red",
+      "shortName": "Rojo",
+      "channels": [
+        "Red"
+      ]
+    },
+    {
+      "name": "Green",
+      "shortName": "Verde",
+      "channels": [
+        "Green"
+      ]
+    },
+    {
+      "name": "Blue",
+      "shortName": "Azul",
+      "channels": [
+        "Blue"
+      ]
+    },
+    {
+      "name": "Strobe",
+      "shortName": "Estrobo",
+      "channels": [
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Party",
+      "shortName": "Fiesta",
+      "channels": [
+        "Color Macros"
+      ]
+    }
+  ]
+}
