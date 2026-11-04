@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7LED ",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["LELE", "Lele"],
+    "createDate": "2026-10-20",
+    "lastModifyDate": "2026-10-20",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-20",
+      "comment": "created by Q Light Controller Plus (version 4.10.5b)"
+    }
+  },
+  "availableChannels": {
+    "PAN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "TILT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "PAN-TIL-SPEED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "rosso": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "blu": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "bianco": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 canali",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "PAN",
+        "TILT",
+        "PAN-TIL-SPEED",
+        "dimmer",
+        "rosso",
+        "verde",
+        "blu",
+        "bianco",
+        "reset"
+      ]
+    }
+  ]
+}
