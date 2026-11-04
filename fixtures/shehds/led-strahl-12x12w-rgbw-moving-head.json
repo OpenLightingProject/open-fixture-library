@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Strahl 12x12W RGBW Moving Head",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["KaJuBi"],
+    "createDate": "2026-11-04",
+    "lastModifyDate": "2026-11-04"
+  },
+  "links": {
+    "manual": [
+      "https://ae-pic-a1.aliexpress-media.com/kf/Saec5b36111984f07ab6485c39b1f49fdw.pdf?spm=a2g0o.detail.0.0.53a61b0dSOtjKV&file=Saec5b36111984f07ab6485c39b1f49fdw.pdf"
+    ],
+    "productPage": [
+      "https://de.aliexpress.com/item/1005008305945294.html?src=bing&exp_tag=pcgcp&albch=shopping&acnt=135095331&albcp=555719830&albag=1298524520830547&slnk=&trgt=pla-4584757338403269&plac=&crea=81157847198625&netw=o&device=c&mtctp=e&utm_source=Bing&utm_medium=shopping&utm_campaign=PA_Bing_DE_PLA_%E5%85%A8%E5%93%81_CPS%E5%87%BA%E4%BB%B7_AESupply_3%2F2_pur%E4%BA%8B%E4%BB%B6&utm_content=Ad+group+%231&utm_term=shehds+LED+beam+12x12w+rgb+mooving+head&msclkid=4170599d980b1566c1b73376f548292b&aff_fcid=9ca2d2ac19664ff28befa20faec5a2ec-1793813831159-06833-UneMJZVf&aff_fsk=UneMJZVf&aff_platform=aaf&sk=UneMJZVf&aff_trace_key=9ca2d2ac19664ff28befa20faec5a2ec-1793813831159-06833-UneMJZVf&terminal_id=0c3476eb0e1540f598384bfeb5ef7400&afSmartRedirect=n&gatewayAdapt=glo2deu#nav-moretolove"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ch9",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
