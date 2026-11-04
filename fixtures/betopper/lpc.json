@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LPC!@)",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Oliver Grainger"],
+    "createDate": "2026-10-28",
+    "lastModifyDate": "2026-10-28"
+  },
+  "links": {
+    "manual": [
+      "https://betopperdj.com/pages/user-guides"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-full-color-4-in-1-dyed-wedding-bar-par-lights"
+    ],
+    "video": [
+      "https://share.google/sa2owOU4T5SRyZ6GZ"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Effect Duration",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
