@@ -1,0 +1,424 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ruby (14CH)",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["AI Assistant", "Lele"],
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-26",
+      "comment": "created by Millumin User (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [294, 437, 200],
+    "weight": 10.5,
+    "power": 212,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Sirius HRI 132W",
+      "colorTemperature": 9200,
+      "lumens": 5150
+    },
+    "lens": {
+      "degreesMinMax": [0, 2]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "265deg"
+      }
+    },
+    "Movement Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Shutter Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Shutter Functions"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Color Mode Selection"
+      }
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Generic",
+          "comment": "White / Open"
+        },
+        {
+          "dmxRange": [9, 17],
+          "type": "Generic",
+          "comment": "Half Open / Half TAN"
+        },
+        {
+          "dmxRange": [18, 26],
+          "type": "Generic",
+          "comment": "Warm White (TAN)"
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "Generic",
+          "comment": "Half TAN / Half CTB"
+        },
+        {
+          "dmxRange": [36, 44],
+          "type": "Generic",
+          "comment": "CTB"
+        },
+        {
+          "dmxRange": [45, 53],
+          "type": "Generic",
+          "comment": "Half CTB / Half Yellow"
+        },
+        {
+          "dmxRange": [54, 62],
+          "type": "Generic",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "Generic",
+          "comment": "Half Yellow / Half Light Purple"
+        },
+        {
+          "dmxRange": [72, 80],
+          "type": "Generic",
+          "comment": "Light Purple"
+        },
+        {
+          "dmxRange": [81, 89],
+          "type": "Generic",
+          "comment": "Half Light Purple / Half Brown"
+        },
+        {
+          "dmxRange": [90, 98],
+          "type": "Generic",
+          "comment": "Brown"
+        },
+        {
+          "dmxRange": [99, 107],
+          "type": "Generic",
+          "comment": "Half Brown / Half Light Blue"
+        },
+        {
+          "dmxRange": [108, 116],
+          "type": "Generic",
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [117, 125],
+          "type": "Generic",
+          "comment": "Half Light Blue / Half Purple Red"
+        },
+        {
+          "dmxRange": [126, 134],
+          "type": "Generic",
+          "comment": "Purple Red"
+        },
+        {
+          "dmxRange": [135, 143],
+          "type": "Generic",
+          "comment": "Half Purple Red / Half Grass Green"
+        },
+        {
+          "dmxRange": [144, 152],
+          "type": "Generic",
+          "comment": "Grass Green"
+        },
+        {
+          "dmxRange": [153, 161],
+          "type": "Generic",
+          "comment": "Half Grass Green / Half UV"
+        },
+        {
+          "dmxRange": [162, 170],
+          "type": "Generic",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [171, 179],
+          "type": "Generic",
+          "comment": "Half UV / Half Magenta"
+        },
+        {
+          "dmxRange": [180, 188],
+          "type": "Generic",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [189, 197],
+          "type": "Generic",
+          "comment": "Half Magenta / Half Green"
+        },
+        {
+          "dmxRange": [198, 206],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [207, 215],
+          "type": "Generic",
+          "comment": "Half Green / Half Orange"
+        },
+        {
+          "dmxRange": [216, 224],
+          "type": "Generic",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [225, 233],
+          "type": "Generic",
+          "comment": "Half Orange / Half Blue"
+        },
+        {
+          "dmxRange": [234, 242],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [243, 251],
+          "type": "Generic",
+          "comment": "Half Blue / Half Red"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "Red"
+        }
+      ]
+    },
+    "Gobo Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Gobo Mode Selection"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [14, 27],
+          "type": "Generic",
+          "comment": "Gobo 1 (Small Circle)"
+        },
+        {
+          "dmxRange": [28, 41],
+          "type": "Generic",
+          "comment": "Gobo 2 (Medium Circle)"
+        },
+        {
+          "dmxRange": [42, 55],
+          "type": "Generic",
+          "comment": "Gobo 3 (Parallel Bars)"
+        },
+        {
+          "dmxRange": [56, 69],
+          "type": "Generic",
+          "comment": "Gobo 4 (Rays / Star)"
+        },
+        {
+          "dmxRange": [70, 83],
+          "type": "Generic",
+          "comment": "Gobo 5 (Mesh Grid)"
+        },
+        {
+          "dmxRange": [84, 97],
+          "type": "Generic",
+          "comment": "Gobo 6 (4-Point Star)"
+        },
+        {
+          "dmxRange": [98, 111],
+          "type": "Generic",
+          "comment": "Gobo 7 (Tunnel)"
+        },
+        {
+          "dmxRange": [112, 125],
+          "type": "Generic",
+          "comment": "Gobo 8 (Rain / Dots)"
+        },
+        {
+          "dmxRange": [126, 139],
+          "type": "Generic",
+          "comment": "Gobo 9 (Spiral / Twist)"
+        },
+        {
+          "dmxRange": [140, 153],
+          "type": "Generic",
+          "comment": "Gobo 10 (Triangles)"
+        },
+        {
+          "dmxRange": [154, 167],
+          "type": "Generic",
+          "comment": "Gobo 11 (Vertical Slot)"
+        },
+        {
+          "dmxRange": [168, 181],
+          "type": "Generic",
+          "comment": "Gobo 12 (Cross Hatch)"
+        },
+        {
+          "dmxRange": [182, 195],
+          "type": "Generic",
+          "comment": "Gobo 13 (Flower Kaleidoscope)"
+        },
+        {
+          "dmxRange": [196, 209],
+          "type": "Generic",
+          "comment": "Gobo 14 (Raw Glass)"
+        },
+        {
+          "dmxRange": [210, 223],
+          "type": "Generic",
+          "comment": "Gobo 15 (Rosette)"
+        },
+        {
+          "dmxRange": [224, 237],
+          "type": "Generic",
+          "comment": "Gobo 16 (Organic Waves)"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Generic",
+          "comment": "Gobo 17 (Complex Star)"
+        }
+      ]
+    },
+    "Prism Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Prism / Frost OFF"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Circular 8-Facet Prism ON"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Linear 6-Facet Prism ON"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Frost Filter ON"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Generic",
+          "comment": "No Rotation / Indexing Mode"
+        },
+        {
+          "dmxRange": [26, 135],
+          "type": "Generic",
+          "comment": "Clockwise Rotation (Fast to Slow)"
+        },
+        {
+          "dmxRange": [136, 245],
+          "type": "Generic",
+          "comment": "Counter-Clockwise Rotation (Slow to Fast)"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Generic",
+          "comment": "Prism Macro / Complex Rotation"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset MaintenanceReset."
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 14-channel",
+      "shortName": "Standard 14ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Movement Speed",
+        "Shutter Function",
+        "Shutter",
+        "Dimmer",
+        "Color Function",
+        "Color",
+        "Gobo Function",
+        "Gobo",
+        "Prism Selection",
+        "Prism Rotation",
+        "Focus",
+        "Control"
+      ]
+    }
+  ]
+}
