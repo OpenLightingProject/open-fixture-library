@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vega Bar RGBW",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2026-10-25",
+    "lastModifyDate": "2026-10-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/639746/Lightmaxx-Vega-Bar-Rgbw.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto Programm": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Farblauftabelle 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Master Dimmer 1": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master Dimmer 2": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Auto Programm 2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Farblauftabelle": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Kanäle",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto Programm",
+        "Farblauftabelle",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "16 Kanäle",
+      "channels": [
+        "Master Dimmer 1",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto Programm",
+        "Master Dimmer 2",
+        "Strobe 2",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Auto Programm 2",
+        "Farblauftabelle 2",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
