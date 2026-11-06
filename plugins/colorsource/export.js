@@ -221,7 +221,7 @@ function getColorSourceChannels(mode, hasIntensity) {
 
     removeEmptyProperties(channelJson);
 
-    return [channelJson];
+    return channelJson;
   });
 
   /**

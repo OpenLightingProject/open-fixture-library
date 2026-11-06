@@ -1,5 +1,5 @@
 import scrollIntoView from 'scroll-into-view';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 
 export const constants = {
   RESOLUTION_8BIT: 1,
@@ -90,7 +90,7 @@ export function getEmptyFixture() {
  */
 export function getEmptyLink(linkType = 'manual') {
   return {
-    uuid: uuidv4(),
+    uuid: uuidV4(),
     type: linkType,
     url: '',
   };
@@ -123,7 +123,7 @@ export function getEmptyPhysical() {
  */
 export function getEmptyMode() {
   return {
-    uuid: uuidv4(),
+    uuid: uuidV4(),
     name: '',
     shortName: '',
     rdmPersonalityIndex: null,
@@ -138,7 +138,7 @@ export function getEmptyMode() {
  */
 export function getEmptyChannel() {
   return {
-    uuid: uuidv4(),
+    uuid: uuidV4(),
     editMode: '',
     modeId: '',
     name: '',
@@ -170,7 +170,7 @@ export function getEmptyChannel() {
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
-    uuid: uuidv4(),
+    uuid: uuidV4(),
     coarseChannelId,
     resolution,
   };
@@ -181,7 +181,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
  */
 export function getEmptyCapability() {
   return {
-    uuid: uuidv4(),
+    uuid: uuidV4(),
     open: true,
     dmxRange: null,
     type: '',
@@ -194,7 +194,7 @@ export function getEmptyCapability() {
  */
 export function getEmptyWheelSlot() {
   return {
-    uuid: uuidv4(),
+    uuid: uuidV4(),
     type: '',
     typeData: {},
   };

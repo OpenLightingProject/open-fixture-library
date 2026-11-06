@@ -21,6 +21,9 @@
   "physical": {
     "dimensions": [234, 269, 318],
     "weight": 4.6,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "12x 10W RGBA LEDs"

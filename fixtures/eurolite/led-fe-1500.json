@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-12-31",
-    "lastModifyDate": "2024-11-23"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -351,8 +351,8 @@
           "dmxRange": [5, 254],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "30Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [255, 255],
@@ -515,8 +515,8 @@
           "dmxRange": [5, 254],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "30Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [255, 255],

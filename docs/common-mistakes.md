@@ -263,7 +263,7 @@ When the manual doesn't clearly state at which DMX value strobe is disabled (i.e
 
 ### Missing `colors` in `ColorPreset` capabilities
 
-Color macros should use the `ColorPreset` capability type with a `colors` array of hex codes so lighting software can display the correct color. For split (half-and-half) slots, provide both colors.
+Color macros should use the `ColorPreset` capability type with a `colors` array of hex codes so lighting software can display the correct color.
 
 ```diff
   {
@@ -271,12 +271,6 @@ Color macros should use the `ColorPreset` capability type with a `colors` array 
     "type": "ColorPreset",
     "comment": "Red",
 +   "colors": ["#ff0000"]
-  },
-  {
-    "dmxRange": [22, 32],
-    "type": "ColorPreset",
-    "comment": "Red + Blue",
-+   "colors": ["#ff0000", "#0000ff"]
   }
 ```
 

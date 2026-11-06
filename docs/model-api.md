@@ -67,6 +67,12 @@ Currently used to create matrix channels.</p>
 <dt><a href="#Resolution">Resolution</a> : <code>number</code></dt>
 <dd><p>1 for 8bit, 2 for 16bit, ...</p>
 </dd>
+<dt><a href="#ModeChannelKey">ModeChannelKey</a> : <code>string</code> | <code>null</code></dt>
+<dd><p>A mode channel key, or null for an unused channel.</p>
+</dd>
+<dt><a href="#MatrixChannelInsert">MatrixChannelInsert</a> : <code>object</code></dt>
+<dd><p>A matrix channel insert block from a mode definition.</p>
+</dd>
 <dt><a href="#SwitchingChannelBehavior">SwitchingChannelBehavior</a> : <code>&#x27;keyOnly&#x27;</code> | <code>&#x27;defaultOnly&#x27;</code> | <code>&#x27;switchedOnly&#x27;</code> | <code>&#x27;all&#x27;</code></dt>
 <dd></dd>
 <dt><a href="#TriggerCapability">TriggerCapability</a> : <code>object</code></dt>
@@ -1593,10 +1599,10 @@ A fixture's configuration that enables a fixed set of channels and channel order
     * [.rdmPersonalityIndex](#Mode+rdmPersonalityIndex) ⇒ <code>number</code> \| <code>null</code>
     * [.physicalOverride](#Mode+physicalOverride) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
     * [.physical](#Mode+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
-    * [.channelKeys](#Mode+channelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.channelKeys](#Mode+channelKeys) ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey)
     * [.nullChannelCount](#Mode+nullChannelCount) ⇒ <code>number</code>
     * [.channels](#Mode+channels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
-    * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ <code>Array.&lt;string&gt;</code> ℗
+    * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) ℗
     * [._getRepeatForPixelKeys(repeatFor)](#Mode+_getRepeatForPixelKeys) ⇒ <code>Array.&lt;string&gt;</code> ℗
     * [.getChannelIndex(channelKey, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>number</code>
 
@@ -1653,9 +1659,9 @@ Creates a new Mode instance
 **Returns**: [<code>Physical</code>](#Physical) \| <code>null</code> - Fixture's physical with mode's physical override (if present) applied on. Null if neither fixture nor mode define physical data.  
 <a name="Mode+channelKeys"></a>
 
-### mode.channelKeys ⇒ <code>Array.&lt;string&gt;</code>
+### mode.channelKeys ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey)
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: <code>Array.&lt;string&gt;</code> - The mode's channel keys. The count and position equals to actual DMX channel count and position.  
+**Returns**: [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) - The mode's channel keys. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+nullChannelCount"></a>
 
 ### mode.nullChannelCount ⇒ <code>number</code>
@@ -1668,16 +1674,16 @@ Creates a new Mode instance
 **Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The mode's channels. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+_getMatrixChannelKeysFromInsertBlock"></a>
 
-### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ <code>Array.&lt;string&gt;</code> ℗
+### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) ℗
 Resolves the matrix channel insert block into a list of channel keys
 
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
-**Returns**: <code>Array.&lt;string&gt;</code> - The resolved channel keys  
+**Returns**: [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) - The resolved channel keys  
 **Access**: private  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| channelInsert | <code>object</code> | The JSON channel insert block |
+| channelInsert | [<code>MatrixChannelInsert</code>](#MatrixChannelInsert) | The JSON channel insert block |
 
 <a name="Mode+_getRepeatForPixelKeys"></a>
 
@@ -2704,6 +2710,26 @@ Creates a new WheelSlot instance.
 1 for 8bit, 2 for 16bit, ...
 
 **Kind**: global typedef  
+<a name="ModeChannelKey"></a>
+
+## ModeChannelKey : <code>string</code> \| <code>null</code>
+A mode channel key, or null for an unused channel.
+
+**Kind**: global typedef  
+<a name="MatrixChannelInsert"></a>
+
+## MatrixChannelInsert : <code>object</code>
+A matrix channel insert block from a mode definition.
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| repeatFor | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Pixel or pixel group keys to repeat the channels for. |
+| channelOrder | <code>&#x27;perPixel&#x27;</code> \| <code>&#x27;perChannel&#x27;</code> | The order in which to insert channels. |
+| templateChannels | [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) | Template channel keys or null channels to insert. |
+
 <a name="SwitchingChannelBehavior"></a>
 
 ## SwitchingChannelBehavior : <code>&#x27;keyOnly&#x27;</code> \| <code>&#x27;defaultOnly&#x27;</code> \| <code>&#x27;switchedOnly&#x27;</code> \| <code>&#x27;all&#x27;</code>

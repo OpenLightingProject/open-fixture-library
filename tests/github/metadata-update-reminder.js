@@ -185,13 +185,13 @@ async function buildFixtureReviewComments(manufacturerKey, fixtureKey, headSha, 
       '```',
     ].join('\n');
 
-    return [{
+    return {
       path: filePath,
       line: lineNumber,
       side: 'RIGHT',
       body,
       isIncludedInDiffHunk,
-    }];
+    };
   });
 }
 

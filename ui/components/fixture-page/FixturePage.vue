@@ -209,8 +209,7 @@
 
 <script>
 import { EmbettyVideo } from 'embetty-vue';
-import { booleanProp, instanceOfProp } from 'vue-ts-types';
-import register from '../../../fixtures/register.json';
+import { booleanProp, instanceOfProp, stringProp } from 'vue-ts-types';
 import Fixture from '../../../lib/model/Fixture.js';
 import { linksProperties } from '../../../lib/schema-properties.js';
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
@@ -240,6 +239,7 @@ export default {
   props: {
     fixture: instanceOfProp(Fixture).required,
     loadAllModes: booleanProp().withDefault(false),
+    manufacturerColor: stringProp().nullable,
   },
   emits: {
     'help-wanted-clicked': (payload) => true,
@@ -247,7 +247,6 @@ export default {
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
-      manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited

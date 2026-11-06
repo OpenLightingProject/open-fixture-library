@@ -6,11 +6,11 @@
   "meta": {
     "authors": ["Ryan Goodwin"],
     "createDate": "2023-04-24",
-    "lastModifyDate": "2023-07-12"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "productPage": [
-      "https://www.uking-online.com/product/uking-zq-b20-mini-60w-spider-light/"
+      "https://web.archive.org/web/20240526171539/https://www.uking-online.com/product/uking-zq-b20-mini-60w-spider-light/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=4KL1MdtnQ34"
@@ -64,8 +64,8 @@
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
         }
       ]
     },
