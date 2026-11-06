@@ -5,9 +5,8 @@
   "meta": {
     "authors": ["DC", "Ken Harris", "Luke Nelson"],
     "createDate": "2026-10-02",
-    "lastModifyDate": "2026-10-02"
+    "lastModifyDate": "2026-11-06"
   },
-  "comment": "7 x 10W Mini LED Moving Head",
   "links": {
     "manual": [
       "https://web.archive.org/web/20240518121823/https://www.uking-online.com/wp-content/uploads/2020/04/B136.pdf"
@@ -24,7 +23,7 @@
     "power": 70,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7× 10W RGBW LEDs"
     }
   },
   "availableChannels": {
@@ -115,7 +114,7 @@
         {
           "dmxRange": [232, 255],
           "type": "Effect",
-          "effectName": "Color jump"
+          "effectPreset": "ColorJump"
         }
       ]
     },
@@ -128,9 +127,9 @@
     },
     "Auto": {
       "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "type": "Effect",
+        "effectName": "Auto",
+        "helpWanted": "Which automatic programs can be selected at which DMX values?"
       }
     },
     "Reset": {
