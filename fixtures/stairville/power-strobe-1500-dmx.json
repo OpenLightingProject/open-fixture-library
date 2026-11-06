@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Power Strobe 1500 DMX",
+  "shortName": "PowerStrobe1500",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Martin Schumacher"],
+    "createDate": "2026-10-30",
+    "lastModifyDate": "2026-10-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/168875_c_168875_de_online.pdf"
+    ],
+    "other": [
+      "https://en.audiofanzine.com/stairville/STROBE-1500-DMX-POWER-STROBE/"
+    ]
+  },
+  "physical": {
+    "dimensions": [453, 145, 115],
+    "weight": 2.9,
+    "power": 1600,
+    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "Hardwired": "input only"
+    },
+    "bulb": {
+      "type": "Xenon 1500W"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "12Hz",
+          "comment": "Level 1 … 15"
+        }
+      ]
+    },
+    "Intensity": {
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Level 1 … 15"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Strobe",
+        "Intensity"
+      ]
+    }
+  ]
+}
