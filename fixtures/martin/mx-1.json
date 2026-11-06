@@ -1,0 +1,335 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MX-1",
+  "shortName": "MartinMX1",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["Martin Schumacher"],
+    "createDate": "2026-10-30",
+    "lastModifyDate": "2026-10-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/269404/Martin-Mx-1.html"
+    ],
+    "other": [
+      "https://www.geocities.ws/ddaf_99/martin.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [269, 263, 537],
+    "weight": 6,
+    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
+    "bulb": {
+      "type": "Halogen ELC 24V 250W"
+    },
+    "lens": {
+      "degreesMinMax": [16, 16]
+    }
+  },
+  "wheels": {
+    "Color/Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Fern Green 205 [Squiggles]",
+          "colors": ["#3f9b4b"]
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/spider-web",
+          "name": "Spider Web"
+        },
+        {
+          "type": "Color",
+          "name": "Pink 312 [Flower]",
+          "colors": ["#ff6fa8"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Color [Starburst]"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/broken-ring",
+          "name": "Broken Ring"
+        },
+        {
+          "type": "Color",
+          "name": "Cyan 104 [Radial Maze]",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange 306 [Four Arcs]",
+          "colors": ["#ff8000"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Green 204 [Dots]",
+          "colors": ["#90ee90"]
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/diagonal-cross",
+          "name": "Cross"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 106 [Zigzag Lines]",
+          "colors": ["#0040ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Mauve 507 [Star Pattern]",
+          "colors": ["#b06fd0"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow 603 [Ring of Segments]",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Color [Four T-Bars]"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/concentric-maze",
+          "name": "Concentric Maze"
+        },
+        {
+          "type": "Color",
+          "name": "Flame Red 304 [Spoked Wheel]",
+          "colors": ["#ff2a00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow 603 [Anchor]",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/splash-star",
+          "name": "Splash Star"
+        },
+        {
+          "type": "Color",
+          "name": "Split Color [Three Circles]"
+        },
+        {
+          "type": "Closed"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer/Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 154],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [155, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [170, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Effect",
+          "effectName": "Stand-alone music trigger",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Effect",
+          "effectName": "Stand-alone automatic"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "No Function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color/Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [12, 23],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [36, 47],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [48, 59],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "WheelSlot",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [204, 215],
+          "type": "WheelSlot",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [216, 227],
+          "type": "WheelSlot",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [228, 246],
+          "type": "WheelSlot",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Effect",
+          "effectName": "Random color/gobo",
+          "comment": "Speed set by the Dimmer/Strobe channel"
+        }
+      ]
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "76deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "Tracking mode"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer/Strobe",
+        "No Function",
+        "Color/Gobo Wheel",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
