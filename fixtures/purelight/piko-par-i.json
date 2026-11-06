@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PIKO PAR I",
+  "shortName": "PikoParI",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Martin Schumacher"],
+    "createDate": "2026-10-30",
+    "lastModifyDate": "2026-10-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/1622289/Purelight-Piko-Par-I.html"
+    ],
+    "productPage": [
+      "https://www.musicstore.de/en_DE/EUR/PURElight-PIKO-PAR-I-14x10W-RGBW/art-LIG0017001-000"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 185, 80],
+    "weight": 0.84,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros / Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "DMX channel control"
+        },
+        {
+          "dmxRange": [4, 127],
+          "type": "ColorPreset",
+          "comment": "8 fixed colors"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Effect",
+          "effectName": "Color jump"
+        },
+        {
+          "dmxRange": [170, 210],
+          "type": "Effect",
+          "effectName": "Color fade"
+        },
+        {
+          "dmxRange": [211, 229],
+          "type": "Effect",
+          "effectName": "Sound control 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Sound control 2",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Macros / Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
