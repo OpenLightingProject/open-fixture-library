@@ -5,8 +5,8 @@
   "categories": ["Other"],
   "meta": {
     "authors": ["Bram Delafonteyne"],
-    "createDate": "2026-07-28",
-    "lastModifyDate": "2026-07-28"
+    "createDate": "2026-11-06",
+    "lastModifyDate": "2026-11-06"
   },
   "links": {
     "manual": [
@@ -35,6 +35,15 @@
         "angleEnd": "360deg"
       }
     },
+    "Angle": {
+      "fineChannelAliases": ["Angle fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
     "Speed": {
       "defaultValue": 0,
       "capability": {
@@ -48,13 +57,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 75],
-          "type": "Generic",
-          "comment": "Stop"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [76, 255],
-          "type": "Generic",
-          "comment": "CW"
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -63,13 +72,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 75],
-          "type": "Generic",
-          "comment": "Stop"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [76, 255],
-          "type": "Generic",
-          "comment": "CCW"
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Set CW limit": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Save CW limit"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Set CCW limit": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Save CCW limit"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -79,25 +120,56 @@
         {
           "dmxRange": [0, 128],
           "type": "Generic",
-          "comment": "Position"
+          "comment": "Position",
+          "switchChannels": {
+            "Position / Angle": "Position",
+            "Position fine / Angle fine": "Position fine",
+            "CW / Set CW limit": "CW",
+            "CCW / Set CCW limit": "CCW"
+          }
         },
         {
           "dmxRange": [129, 129],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Position / Angle": "Position",
+            "Position fine / Angle fine": "Position fine",
+            "CW / Set CW limit": "CW",
+            "CCW / Set CCW limit": "CCW"
+          }
         },
         {
           "dmxRange": [130, 137],
           "type": "Generic",
-          "comment": "Position with Soft Limit"
+          "comment": "Position with Soft Limit",
+          "switchChannels": {
+            "Position / Angle": "Position",
+            "Position fine / Angle fine": "Position fine",
+            "CW / Set CW limit": "Set CW limit",
+            "CCW / Set CCW limit": "Set CCW limit"
+          }
         },
         {
           "dmxRange": [138, 203],
-          "type": "NoFunction"
+          "type": "Generic",
+          "comment": "Position",
+          "switchChannels": {
+            "Position / Angle": "Position",
+            "Position fine / Angle fine": "Position fine",
+            "CW / Set CW limit": "CW",
+            "CCW / Set CCW limit": "CCW"
+          }
         },
         {
           "dmxRange": [204, 255],
           "type": "Generic",
-          "comment": "Angular mode"
+          "comment": "Angular mode",
+          "switchChannels": {
+            "Position / Angle": "Angle",
+            "Position fine / Angle fine": "Angle fine",
+            "CW / Set CW limit": "CW",
+            "CCW / Set CCW limit": "CCW"
+          }
         }
       ]
     }
@@ -106,11 +178,11 @@
     {
       "name": "Slow Speed",
       "channels": [
-        "Position",
-        "Position fine",
+        "Position / Angle",
+        "Position fine / Angle fine",
         "Speed",
-        "CW",
-        "CCW",
+        "CW / Set CW limit",
+        "CCW / Set CCW limit",
         "Mode"
       ]
     }
