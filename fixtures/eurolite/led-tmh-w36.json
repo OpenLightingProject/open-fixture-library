@@ -23,6 +23,9 @@
     "dimensions": [155, 255, 145],
     "weight": 2.5,
     "power": 65,
+    "powerConnectors": {
+      "powerCON": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"

@@ -21,6 +21,9 @@
     "dimensions": [170, 170, 160],
     "weight": 2.0,
     "power": 30,
+    "powerConnectors": {
+      "Hardwired": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"

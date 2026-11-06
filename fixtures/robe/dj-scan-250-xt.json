@@ -4,9 +4,9 @@
   "shortName": "Scan250XT",
   "categories": ["Scanner", "Color Changer"],
   "meta": {
-    "authors": ["Flo Edelmann", "Felix Edelmann"],
+    "authors": ["Flo Edelmann", "Felix Edelmann", "Ken Harris"],
     "createDate": "2017-01-20",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2026-10-29"
   },
   "links": {
     "manual": [
@@ -169,7 +169,6 @@
       }
     },
     "Color Wheel": {
-      "precedence": "HTP",
       "capabilities": [
         {
           "dmxRange": [0, 7],

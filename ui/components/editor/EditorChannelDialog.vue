@@ -308,7 +308,7 @@
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
@@ -449,7 +449,7 @@ export default {
   methods: {
     setEditModeCreate() {
       this.channel.editMode = 'create';
-      this.channel.uuid = uuidv4();
+      this.channel.uuid = uuidV4();
     },
 
     getChannelName(channelUuid) {
@@ -734,7 +734,7 @@ export default {
     saveDuplicatedChannel() {
       const oldChannelKey = this.channel.uuid;
 
-      const newChannelKey = uuidv4();
+      const newChannelKey = uuidV4();
       const newChannel = getSanitizedChannel(this.channel);
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);
@@ -742,18 +742,15 @@ export default {
       const fineChannelUuids = this.addFineChannels(newChannel, constants.RESOLUTION_16BIT, false);
 
       this.currentMode.channels = this.currentMode.channels.map((key) => {
-        if (key === oldChannelKey) {
-          return newChannelKey;
+        if (key !== oldChannelKey) {
+          // map each old fine channel to the new fine channel
+          const oldFineChannel = this.fixture.availableChannels[key];
+          if (oldFineChannel.coarseChannelId === oldChannelKey) {
+            return fineChannelUuids[oldFineChannel.resolution];
+          }
         }
 
-        // map each old fine channel to the new fine channel
-        const oldFineChannel = this.fixture.availableChannels[key];
-        if (oldFineChannel.coarseChannelId === oldChannelKey) {
-          return fineChannelUuids[oldFineChannel.resolution];
-        }
-
-        // this channel is not affected by the duplicate at all
-        return key;
+        return key === oldChannelKey ? newChannelKey : key;
       });
     },
 
@@ -771,10 +768,10 @@ export default {
     /**
      * @param {object} coarseChannel - The channel object of the coarse channel.
      * @param {number} offset - At which resolution should be started.
-     * @param {boolean} [addToMode] - If true, the fine channel is pushed to the current mode's channels.
+     * @param {boolean} [shouldAddToMode] - If true, the fine channel is pushed to the current mode's channels.
      * @returns {string[]} Array of added fine channel UUIDs (at the index of their resolution).
      */
-    addFineChannels(coarseChannel, offset, addToMode) {
+    addFineChannels(coarseChannel, offset, shouldAddToMode) {
       const addedFineChannelUuids = [];
 
       for (let index = offset; index <= coarseChannel.resolution; index++) {
@@ -782,7 +779,7 @@ export default {
         this.$set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
         addedFineChannelUuids[index] = fineChannel.uuid;
 
-        if (addToMode) {
+        if (shouldAddToMode) {
           this.currentMode.channels.push(fineChannel.uuid);
         }
       }
@@ -798,12 +795,12 @@ export default {
     },
 
     /**
-     * @param {boolean} show - Whether to show or hide the Capability Wizard.
+     * @param {boolean} shouldShow - Whether to show or hide the Capability Wizard.
      */
-    setWizardVisibility(show) {
-      this.channel.wizard.show = show;
+    setWizardVisibility(shouldShow) {
+      this.channel.wizard.show = shouldShow;
 
-      if (!show) {
+      if (!shouldShow) {
         this.onDmxValueResolutionChanged(); // maybe DMX value resolution has been changed while wizard was open
       }
     },

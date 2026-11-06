@@ -3,10 +3,14 @@ import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replace-null-switch-channels.js';
 /** @import Fixture from '../../lib/model/Fixture.js' */
 
-export const version = '0.4.0';
+export const version = '0.4.1';
 
 // needed for export test
 export const supportedOflVersion = '7.3.0';
+
+const dmxConnectorReplacements = {
+  '5-pin XLR IP65': '5-pin',
+};
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
@@ -176,6 +180,10 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     }
   }
 
+  if (Object.hasOwn(dmxConnectorReplacements, jsonPhysical.DMXconnector)) {
+    jsonPhysical.DMXconnector = dmxConnectorReplacements[jsonPhysical.DMXconnector];
+  }
+
   delete jsonPhysical.powerConnectors;
 
   // don't return empty objects
@@ -219,7 +227,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   addIfValidData(downgradedChannel, 'crossfade', channel.canCrossfade);
   addIfValidData(downgradedChannel, 'precedence', jsonChannel.precedence);
 
-  if (capabilitiesNeeded()) {
+  if (shouldIncludeCapabilities()) {
     downgradedChannel.capabilities = [];
 
     for (const capability of channel.capabilities) {
@@ -248,7 +256,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   /**
    * @returns {boolean} Whether or not it is needed to include capabilities in a downgraded version of this channel
    */
-  function capabilitiesNeeded() {
+  function shouldIncludeCapabilities() {
     const trivialCapabilityTypes = ['Intensity', 'ColorIntensity', 'Pan', 'Tilt', 'NoFunction'];
     return channel.capabilities.length !== 1 || !trivialCapabilityTypes.includes(channel.capabilities[0].type);
   }
@@ -267,7 +275,7 @@ function addIfValidData(object, property, data, value) {
     value = data;
   }
 
-  if (data !== undefined && data !== null && data !== false) {
+  if (![undefined, null, false].includes(data)) {
     object[property] = value;
   }
 }

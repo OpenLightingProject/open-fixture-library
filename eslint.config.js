@@ -180,12 +180,12 @@ const unicornRules = {
       cats: { categories: true },
     },
   }],
+  'unicorn/no-asterisk-prefix-in-documentation-comments': 'off', // incompatible with eslint-plugin-jsdoc
   'unicorn/no-computed-property-existence-check': 'off', // dynamic `key in obj` checks are fine and widely used
   'unicorn/no-null': 'off',
   'unicorn/no-process-exit': 'off',
   'unicorn/no-this-outside-of-class': 'off', // needed in Vue Options API
   'unicorn/no-top-level-assignment-in-function': 'off', // module-level state assigned from functions is intentional here
-  'unicorn/no-top-level-side-effects': 'off', // some modules legitimately set up state at import time
   'unicorn/no-useless-switch-case': 'off', // explicit "useless" switch chases are documentation
   'unicorn/no-useless-undefined': 'off', // conflicts with `consistent-return`
   'unicorn/prefer-export-from': ['error', { checkUsedVariables: false }],
@@ -233,7 +233,7 @@ const vueRules = {
   'vue/no-mutating-props': 'warn', // reduced from `error` in the preset
   'vue/no-undef-components': ['error', {
     ignorePatterns: [
-      '^Ofl(Svg|Time)$', // global components
+      '^Ofl(Date|Svg)$', // global components
       '^Nuxt(Link)?$', '^ClientOnly$', // Nuxt components
       '^VueForm$', '^Validate$', '^FieldMessages$', // VueForm components
     ],

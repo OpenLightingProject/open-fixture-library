@@ -23,6 +23,9 @@
     "dimensions": [1200, 315, 65],
     "weight": 9,
     "power": 130,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"

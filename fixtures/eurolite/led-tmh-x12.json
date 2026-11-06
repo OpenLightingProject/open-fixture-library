@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-11-08",
-    "lastModifyDate": "2024-11-23"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -22,6 +22,9 @@
     "dimensions": [320, 400, 330],
     "weight": 10.5,
     "power": 170,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "120W white COB LED"
@@ -146,8 +149,8 @@
           "dmxRange": [4, 109],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "18Hz"
         },
         {
           "dmxRange": [110, 209],

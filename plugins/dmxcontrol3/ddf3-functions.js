@@ -350,16 +350,16 @@ export default {
         const isDistinguishableKey = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
         const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => isDistinguishableKey(key));
         const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
-        const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
+        const hasDifferentKeys = !areArraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
           if (key === 'slotNumber') {
             // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
-            return !arraysEqual(capability1.wheelSlot, capability2.wheelSlot);
+            return !areArraysEqual(capability1.wheelSlot, capability2.wheelSlot);
           }
 
           const value1 = capability1.jsonObject[key];
           const value2 = capability2.jsonObject[key];
-          return value1 !== value2 && !arraysEqual(value1, value2);
+          return value1 !== value2 && !areArraysEqual(value1, value2);
         });
         if (hasDifferentKeys || hasDifferentValues) {
           return null;
@@ -435,8 +435,8 @@ export default {
         }
       }
 
-      const usesShake = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
-      if (usesShake) {
+      const isShakeUsed = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
+      if (isShakeUsed) {
         xmlGoboWheel.element('goboshake');
       }
 
@@ -692,16 +692,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.fogOutput !== null && capability.fogOutput[0].number !== capability.fogOutput[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, capability.fogOutput[0].number, capability.fogOutput[1].number);
-            xmlCapability.attribute('type', 'fog');
-          }
-          else {
+          if (capability.fogOutput === null || capability.fogOutput[0].number === capability.fogOutput[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFogOn = capability.type !== 'NoFunction' && (capability.fogOutput === null || capability.fogOutput[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute('value', String(isFogOn));
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, capability.fogOutput[0].number, capability.fogOutput[1].number);
+            xmlCapability.attribute('type', 'fog');
           }
 
           xmlFog.importDocument(xmlCapability);
@@ -720,16 +720,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.speed !== null && capability.speed[0].number !== capability.speed[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, Math.abs(capability.speed[0].number), Math.abs(capability.speed[1].number));
-            xmlCapability.attribute('type', 'fan');
-          }
-          else {
+          if (capability.speed === null || capability.speed[0].number === capability.speed[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFanOn = capability.type !== 'NoFunction' && (capability.speed[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute('value', String(isFanOn));
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, Math.abs(capability.speed[0].number), Math.abs(capability.speed[1].number));
+            xmlCapability.attribute('type', 'fan');
           }
 
           xmlFan.importDocument(xmlCapability);
@@ -912,7 +912,7 @@ function getRotationSpeedXmlCapability(capability) {
  * @param {Array} array2 - Second array to compare.
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
-function arraysEqual(array1, array2) {
+function areArraysEqual(array1, array2) {
   return array1 === array2 || (
     Array.isArray(array1)
     && Array.isArray(array2)

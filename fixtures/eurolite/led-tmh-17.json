@@ -3,9 +3,9 @@
   "name": "LED TMH-17",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Lech"],
+    "authors": ["Lech", "Flo Edelmann"],
     "createDate": "2019-08-22",
-    "lastModifyDate": "2019-08-22",
+    "lastModifyDate": "2026-10-19",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2019-08-22",
@@ -85,25 +85,32 @@
           "type": "Open"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/3-segment-ring"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/8-radial-ellipse-rows"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/8-radial-dot-rows"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/angular-splotches"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/bokeh-dot-cluster"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/organic-fractures"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "resource": "gobos/diagonal-slashes"
         }
       ]
     }

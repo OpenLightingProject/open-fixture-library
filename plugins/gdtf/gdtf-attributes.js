@@ -20,7 +20,7 @@ export const gdtfUnits = {
     return `${value}kg`;
   },
   Time(value, otherValue) {
-    return physicalValuesFulfillCondition(value, otherValue, (number) => Math.abs(number) < 1)
+    return arePhysicalValuesFulfilledByCondition(value, otherValue, (number) => Math.abs(number) < 1)
       ? `${value * 1000}ms`
       : `${value}s`;
   },
@@ -89,11 +89,11 @@ export const gdtfUnits = {
 /**
  * @param {number} value1 - The first physical value.
  * @param {number | null} value2 - The second physical value, or null.
- * @param {(value: number) => boolean} predicate - A function returning a boolean.
+ * @param {(value: number) => boolean} doesValueFulfillCondition - A function returning a boolean.
  * @returns {boolean} True if all provided values fulfill the condition predicate.
  */
-function physicalValuesFulfillCondition(value1, value2, predicate) {
-  return predicate(value1) && (value2 === null || predicate(value2));
+function arePhysicalValuesFulfilledByCondition(value1, value2, doesValueFulfillCondition) {
+  return doesValueFulfillCondition(value1) && (value2 === null || doesValueFulfillCondition(value2));
 }
 
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Appendix_A._Attribute_Definitions

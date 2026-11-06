@@ -5,6 +5,18 @@
     "tags": ["plugins"],
     "responses": {
       "200": {
+        "description": "Plugin list returned",
+        "headers": {
+          "Content-Type": {
+            "$ref": "../../openapi.json#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "../../openapi.json#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "../../openapi.json#/components/headers/Vary"
+          }
+        },
         "content": {
           "application/json": {
             "schema": {
@@ -31,7 +43,8 @@
                         "type": "string"
                       },
                       "outdated": {
-                        "constant": true
+                        "type": "boolean",
+                        "enum": [true]
                       },
                       "newPlugin": {
                         "type": "string"
@@ -52,12 +65,34 @@
                     "required": [
                       "name"
                     ],
-                    "dependencies": {
-                      "outdated": ["newPlugin"],
-                      "newPlugin": ["outdated"],
-                      "exportPluginVersion": ["exportTests"],
-                      "exportTests": ["exportPluginVersion"]
-                    },
+                    "allOf": [
+                      {
+                        "oneOf": [
+                          { "required": ["outdated", "newPlugin"] },
+                          {
+                            "not": {
+                              "anyOf": [
+                                { "required": ["outdated"] },
+                                { "required": ["newPlugin"] }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "oneOf": [
+                          { "required": ["exportPluginVersion", "exportTests"] },
+                          {
+                            "not": {
+                              "anyOf": [
+                                { "required": ["exportPluginVersion"] },
+                                { "required": ["exportTests"] }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
                     "additionalProperties": false
                   }
                 }
@@ -71,6 +106,9 @@
             }
           }
         }
+      },
+      "400": {
+        "$ref": "../../openapi.json#/components/responses/400-BadRequestError"
       }
     }
   }

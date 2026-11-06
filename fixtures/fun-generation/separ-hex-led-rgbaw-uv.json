@@ -27,6 +27,9 @@
     "dimensions": [180, 175, 115],
     "weight": 1.1,
     "power": 21,
+    "powerConnectors": {
+      "IEC C13": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "5x 8W RGBAW UV LEDs"

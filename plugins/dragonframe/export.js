@@ -7,7 +7,7 @@ import replaceNullSwitchChannels from '../../lib/plugin-downgrade-helpers/replac
 // needed for export test
 export const supportedOflVersion = '12.2.1';
 
-export const version = '1.0.1';
+export const version = '1.0.2';
 
 /**
  * @param {Fixture[]} fixtures - An array of Fixture objects.
@@ -94,11 +94,16 @@ function downgradePhysical(physicalJsonData) {
 }
 
 /**
- * Replaces shutter effects that are unsupported by AGLight.
+ * Replaces shutter effects that are unsupported by Dragonframe.
  * @param {object} fixtureJson - The fixture whose capabilities should be processed
  */
 function downgradeShutterEffectCapabilities(fixtureJson) {
-  for (const channel of Object.values(fixtureJson.availableChannels)) {
+  const channels = [
+    ...Object.values(fixtureJson.availableChannels ?? {}),
+    ...Object.values(fixtureJson.templateChannels ?? {}),
+  ];
+
+  for (const channel of channels) {
     if (channel.capability) {
       downgradeShutterEffect(channel.capability);
       continue;

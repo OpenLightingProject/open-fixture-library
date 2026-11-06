@@ -8,8 +8,7 @@
         v-for="(letterData, letter) of letters"
         :key="letter"
         :href="`#${letterData.id}`"
-        class="jump-link"
-        @click="setScrollBehavior()">
+        class="jump-link">
         {{ letter }}
       </a>
     </div>
@@ -38,8 +37,9 @@
 }
 
 .jump-link {
+  display: inline-flex;
   padding: 8px;
-  margin: 0 2px;
+  margin: 0 4px;
 }
 
 h2 {
@@ -101,12 +101,19 @@ export default {
       return letters;
     },
   },
+  mounted() {
+    window.addEventListener('hashchange', this.handleHashChange);
+    document.documentElement.style.scrollBehavior = 'smooth';
+  },
   destroyed() {
+    window.removeEventListener('hashchange', this.handleHashChange);
     document.documentElement.style.scrollBehavior = '';
   },
   methods: {
-    setScrollBehavior() {
-      document.documentElement.style.scrollBehavior = 'smooth';
+    handleHashChange() {
+      if (window.location.hash === '') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     },
   },
 };
