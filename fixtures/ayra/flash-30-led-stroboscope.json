@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flash 30 LED stroboscope",
+  "shortName": "Flash 30 LED",
+  "categories": ["Strobe", "Blinder"],
+  "meta": {
+    "authors": ["Sijmen"],
+    "createDate": "2026-10-03",
+    "lastModifyDate": "2026-10-03",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-02-23",
+      "comment": "GDTF v1.2 fixture type ID: 8F4E0E5A-F2CE-400A-AB93-D6AF7BD5244B"
+    }
+  },
+  "comment": "Ayra Flash 30 LED stroboscope",
+  "links": {
+    "manual": [
+      "https://www.bax-shop.nl/downloads/products/9000-0031-9698/ayra_flash_30_60_manual_eng.pdf"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/led-stroboscoop/ayra-flash-30-led-stroboscoop"
+    ]
+  },
+  "physical": {
+    "dimensions": [235, 205, 190],
+    "weight": 2.1,
+    "power": 18.4,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "60x 5050 SMD LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": ["Dimmer", "Strobe"]
+    }
+  ]
+}
