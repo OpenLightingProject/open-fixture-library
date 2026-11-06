@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEDForce 7 RGBW",
+  "shortName": "LEDForce 7",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["RUGE Audiovisuales"],
+    "createDate": "2026-10-03",
+    "lastModifyDate": "2026-10-03",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-03-06",
+      "comment": "GDTF v1.2 fixture type ID: AE92BE76-BDDA-4432-BDAA-06AD46F01BF3"
+    }
+  },
+  "comment": "LEDForce 7™ RGBW: GDTF info: 3D model does not match 100% physical appearance of the light. Proportions of 3D model are correct.\n\nThe LEDForce 7 RGB and LEDForce 7 RGBW are new compact TriColor and Quadcolor LED based Par Can fixtures in sturdy high-impact aluminum body equipped with 7 x 3 Watt Tri Color RGB LEDs and 7 x5 Watt Quad Color RGBW LEDs. Fitted with LED control display for easy setting up and with double hanging brackets – for truss mounting and floor standing. Powerful Tri-color and Quad-color LEDs will amaze you with bright saturated colors with no multicolor shadows. Special driving technology ensures flicker free operation while maintaining long 50.000 hours of LED‘s life time.",
+  "links": {
+    "manual": [
+      "https://www.robe.cz/res/downloads/user_manuals/User_manual_LEDForce_7_RGBW.pdf"
+    ],
+    "productPage": [
+      "https://www.robe.cz/ledforce-7-rgbw"
+    ]
+  },
+  "physical": {
+    "dimensions": [254, 184, 146],
+    "weight": 1.9,
+    "power": 38,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "7×5W RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [10, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
