@@ -1,0 +1,86 @@
+---
+name: New plugin
+description: Open Fixture Library should have a plugin for this fixture format.
+title: Add [software / console name] Plugin
+labels:
+  - new-plugin
+body:
+  - type: markdown
+    attributes:
+      value: Please provide as much information as you can about the fixture format.
+
+  - type: input
+    id: software-name
+    attributes:
+      label: Software / desk console name
+      description: What software or desk console uses this fixture format?
+    validations:
+      required: true
+
+  - type: textarea
+    id: software-description
+    attributes:
+      label: Short description
+      description: Briefly describe the software or desk console.
+    validations:
+      required: true
+
+  - type: input
+    id: software-website
+    attributes:
+      label: Software / desk console website
+      description: Enter None if no website is available.
+      placeholder: https://example.org
+    validations:
+      required: true
+
+  - type: textarea
+    id: fixture-downloads
+    attributes:
+      label: Where can fixtures of this format be downloaded?
+      description: Include links if available, or enter None.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: file-type
+    attributes:
+      label: What file type is the fixture format?
+      options:
+        - Binary
+        - XML
+        - JSON
+        - Unknown
+      default: 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: format-documentation
+    attributes:
+      label: Does a schema, description, or documentation of the format exist?
+      description: If yes, include a link. Otherwise, enter No or Unknown.
+      placeholder: https://example.org
+    validations:
+      required: true
+
+  - type: dropdown
+    id: fixture-quality
+    attributes:
+      label: Are there many fixtures of good quality in this format?
+      options:
+        - "Yes"
+        - "No"
+        - Unknown
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: existing-parser
+    attributes:
+      label: Is there any existing work to parse this format?
+      description: If yes, include a link. Otherwise, enter No or Unknown.
+      placeholder: https://example.org
+    validations:
+      required: true

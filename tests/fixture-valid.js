@@ -182,14 +182,16 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push('meta.lastModifyDate is earlier than meta.createDate.');
     }
 
-    if (meta.importPlugin) {
-      const pluginData = plugins.data[meta.importPlugin];
-      const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
-      const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+    if (!meta.importPlugin) {
+      return;
+    }
 
-      if (!(isImportPlugin || isOutdatedImportPlugin)) {
-        result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
-      }
+    const pluginData = plugins.data[meta.importPlugin];
+    const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
+    const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
+
+    if (!(isImportPlugin || isOutdatedImportPlugin)) {
+      result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
     }
   }
 
@@ -352,7 +354,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         }
       }));
 
-      if (!arraysEqual(expectedAnimationGoboEndSlots, foundAnimationGoboEndSlots)) {
+      if (!areArraysEqual(expectedAnimationGoboEndSlots, foundAnimationGoboEndSlots)) {
         result.errors.push(`An 'AnimationGoboEnd' slot must be used after an 'AnimationGoboStart' slot in wheel ${wheel.name}. (${expectedAnimationGoboEndSlots}; ${foundAnimationGoboEndSlots})`);
       }
     }
@@ -501,7 +503,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
         if (!hasInvalidDmxRange) {
-          hasInvalidDmxRange = !checkDmxRange(index);
+          hasInvalidDmxRange = !isDmxRangeValid(index);
         }
 
         // Use JSON dmxRange rather than rawDmxRange, because that one might throw unhelpful errors
@@ -515,22 +517,22 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        * @param {number} capabilityNumber - The number of the capability in the channel, starting with 0.
        * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
-      function checkDmxRange(capabilityNumber) {
+      function isDmxRangeValid(capabilityNumber) {
         const capability = channel.capabilities[capabilityNumber];
         const [rawDmxStart, rawDmxEnd] = capability.jsonObject.dmxRange;
         const errorLocationString = `capability '${capability.name}' (${rawDmxStart}…${rawDmxEnd}) in channel '${channel.key}'`;
 
-        return checkDmxRangeWithinBounds()
-          && checkFirstCapabilityRangeStart()
-          && checkRangeValid()
-          && checkRangesAdjacent()
-          && checkLastCapabilityRangeEnd();
+        return isDmxRangeWithinBounds()
+          && isFirstCapabilityRangeStartValid()
+          && isCapabilityRangeValid()
+          && areCapabilityRangesAdjacent()
+          && isLastCapabilityRangeEndValid();
 
         /**
          * Checks that the capability's DMX range values don't exceed the maximum value for the channel's resolution.
          * @returns {boolean} True if the DMX range is within bounds, false otherwise.
          */
-        function checkDmxRangeWithinBounds() {
+        function isDmxRangeWithinBounds() {
           if (rawDmxStart > maxDmxValue || rawDmxEnd > maxDmxValue) {
             result.errors.push(`dmxRange is out of bounds (maximum ${maxDmxValue} for ${channel.dmxValueResolution * 8}bit resolution) in ${errorLocationString}.`);
             return false;
@@ -543,7 +545,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Checks that the first capability's DMX range starts with 0.
          * @returns {boolean} True if this is not the first capability or it starts with 0, false otherwise.
          */
-        function checkFirstCapabilityRangeStart() {
+        function isFirstCapabilityRangeStartValid() {
           if (capabilityNumber === 0 && capability.rawDmxRange.start !== 0) {
             result.errors.push(`The first dmxRange has to start at 0 in ${errorLocationString}.`);
             return false;
@@ -555,7 +557,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         /**
          * @returns {boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
          */
-        function checkRangeValid() {
+        function isCapabilityRangeValid() {
           if (capability.rawDmxRange.start > capability.rawDmxRange.end) {
             result.errors.push(`dmxRange invalid in ${errorLocationString}.`);
             return false;
@@ -567,7 +569,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         /**
          * @returns {boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
          */
-        function checkRangesAdjacent() {
+        function areCapabilityRangesAdjacent() {
           if (capabilityNumber > 0) {
             const previousCapability = channel.capabilities[capabilityNumber - 1];
 
@@ -584,7 +586,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Checks that the last capability's DMX range is one of the allowed values, e.g. 255 or 65535 for 16bit channels.
          * @returns {boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
          */
-        function checkLastCapabilityRangeEnd() {
+        function isLastCapabilityRangeEndValid() {
           if (capabilityNumber === channel.capabilities.length - 1 && channel.capabilities[capabilityNumber].rawDmxRange.end !== maxDmxValue) {
             result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in ${errorLocationString}.`);
             return false;
@@ -601,9 +603,13 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkCapability(capability, errorPrefix) {
         const switchingChannelAliases = Object.keys(capability.switchChannels);
-        if (arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
+        if (areArraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
+            if (channelKey === null) {
+              continue;
+            }
+
             usedChannelKeys.add(channelKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(channelKey) === null) {
@@ -832,17 +838,19 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       // "6ch" / "8-Channel" / "9 channels" mode names
       for (const nameProperty of ['name', 'shortName']) {
         const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
-        if (match !== null) {
-          const intendedLength = Number.parseInt(match[1], 10);
+        if (!match) {
+          continue;
+        }
 
-          if (mode.channels.length !== intendedLength) {
-            result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
-          }
+        const intendedLength = Number.parseInt(match[1], 10);
 
-          const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
-            result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
-          }
+        if (mode.channels.length !== intendedLength) {
+          result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
+        }
+
+        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+        if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
+          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
     }
@@ -869,6 +877,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         checkMatrixInsertBlockRepeatFor();
 
         for (const templateKey of matrixInsertBlock.templateChannels) {
+          if (templateKey === null) {
+            continue;
+          }
+
           const templateChannelExists = fixture.templateChannels.some((channel) => channel.allTemplateKeys.includes(templateKey));
           if (!templateChannelExists) {
             result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
@@ -1195,13 +1207,12 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     /**
      * @param {string} type - What capability type to search for.
-     * @param {number} [minimum=1] - How many occurrences are needed to succeed.
-     * @returns {boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
+     * @returns {boolean} Whether the given capability type occurs at least once in the fixture.
      */
-    function hasCapabilityOfType(type, minimum = 1) {
-      return fixture.capabilities.filter(
+    function hasCapabilityOfType(type) {
+      return fixture.capabilities.some(
         (capability) => capability.type === type,
-      ).length >= minimum;
+      );
     }
 
     /**
@@ -1213,11 +1224,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         (capability) => capability.type.startsWith('Fog'),
       );
 
-      if (fogCapabilities.length === 0) {
-        return false;
-      }
-
-      return fogCapabilities.some((capability) => capability.fogType === fogType) || fogCapabilities.every((capability) => capability.fogType === null);
+      return fogCapabilities.length > 0 && (
+        fogCapabilities.some((capability) => capability.fogType === fogType)
+        || fogCapabilities.every((capability) => capability.fogType === null)
+      );
     }
 
     /**
@@ -1325,11 +1335,7 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
  * @returns {string} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
-  if (typeof error === 'string') {
-    return `${description} ${error}`;
-  }
-
-  return `${description} ${inspect(error, false, null)}`;
+  return typeof error === 'string' ? `${description} ${error}` : `${description} ${inspect(error, false, null)}`;
 }
 
 /**
@@ -1337,14 +1343,11 @@ function getErrorString(description, error) {
  * @param {Array | null} b - Another array.
  * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
  */
-function arraysEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-
-  if (a == null || b == null || a.length !== b.length) {
-    return false;
-  }
-
-  return a.every((value, index) => value === b[index]);
+function areArraysEqual(a, b) {
+  return (a === b) || (
+    a != null
+    && b != null
+    && a.length === b.length
+    && a.every((value, index) => value === b[index])
+  );
 }

@@ -57,6 +57,7 @@
   justify-content: center;
   margin-left: -1px;
   font-size: 90%;
+  font-variant-numeric: tabular-nums;
   line-height: 1.4em;
   vertical-align: top;
   text-align: center;

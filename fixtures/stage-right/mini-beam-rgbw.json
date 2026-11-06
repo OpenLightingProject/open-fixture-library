@@ -20,6 +20,9 @@
     "dimensions": [200, 127, 122],
     "weight": 2,
     "power": 50,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "RGBW LED"

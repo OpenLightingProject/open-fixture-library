@@ -408,11 +408,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray, colors) {
             return 'ColorIntensity';
           }
 
-          if (/wheel\b/i.test(channelName)) {
-            return 'WheelSlot';
-          }
-
-          return 'ColorPreset';
+          return /wheel\b/i.test(channelName) ? 'WheelSlot' : 'ColorPreset';
         },
         ChannelIntensity() {
           // fall back to default
@@ -433,11 +429,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray, colors) {
 
           const panOrTilt = isPan ? 'Pan' : 'Tilt';
 
-          if (/continuous/i.test(channelName)) {
-            return `${panOrTilt}Continuous`;
-          }
-
-          return panOrTilt;
+          return /continuous/i.test(channelName) ? `${panOrTilt}Continuous` : panOrTilt;
         },
         ChannelBeam() {
           const capabilityTypeRegexps = {

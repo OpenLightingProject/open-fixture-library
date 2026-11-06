@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Gloryfire"],
     "createDate": "2019-07-20",
-    "lastModifyDate": "2019-07-20"
+    "lastModifyDate": "2026-09-09"
   },
   "links": {
     "manual": [
@@ -74,8 +74,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 2],
-          "type": "Effect",
-          "effectName": "No function"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [3, 5],

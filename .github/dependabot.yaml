@@ -8,11 +8,6 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
-    groups:
-      eslint:
-        patterns:
-          - "eslint"
-          - "@eslint/js"
     ignore:
       - dependency-name: "eslint-plugin-jsdoc"
         update-types:

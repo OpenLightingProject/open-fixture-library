@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "M-Fog 2500",
+  "shortName": "M-2500",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomannmusic.com/stairville_m_fog_2500_dmx_fog_machine.htm"
+    ],
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_355877_355990_355991_v6_en_online.pdf"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i4308p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 262, 595],
+    "weight": 13,
+    "power": 2500,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Volume": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "FogOutput",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "FogOutput",
+          "fogOutputStart": "0m^3/min",
+          "fogOutputEnd": "470m^3/min"
+        }
+      ]
+    },
+    "Interval": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Time",
+          "timeStart": "10s",
+          "timeEnd": "2450s"
+        }
+      ]
+    },
+    "Duration": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Time",
+          "timeStart": "1s",
+          "timeEnd": "245s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Volume",
+        "Interval",
+        "Duration"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cyclone RGB II",
+  "categories": ["Strobe", "Matrix"],
+  "meta": {
+    "authors": ["Björn Ebner"],
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.fos-lighting.eu/uploads/products_0_2_1_118.pdf"
+    ],
+    "productPage": [
+      "https://www.fos-lighting.eu/fos-cyclone-rgb-ii-p-118.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=CCZF0vO-c8c"
+    ]
+  },
+  "physical": {
+    "dimensions": [460, 240, 105],
+    "weight": 5.3,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["8", "7", "6", "5"],
+        ["1", "2", "3", "4"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Chase Mode 1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different chases every 2 DMX values"
+      }
+    },
+    "Chase Mode 2": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different chases every 2 DMX values"
+      }
+    },
+    "Chase Mode 3": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different chases every 2 DMX values"
+      }
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Strobe",
+        "Chase Mode 1",
+        "Chase Mode 2",
+        "Chase Mode 3",
+        "Chase Speed"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

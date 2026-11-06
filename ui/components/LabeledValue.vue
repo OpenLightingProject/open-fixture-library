@@ -25,6 +25,10 @@ section {
   & > .label {
     color: theme-color(text-secondary);
   }
+
+  & > .value {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 // move labels left of values

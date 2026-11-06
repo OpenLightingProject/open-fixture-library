@@ -224,25 +224,30 @@ export default {
       for (let index = 0; index < presetCapabilities.length; index++) {
         const capability = presetCapabilities[index];
 
-        if (!capability.isStep) {
-          const splittedCapabilities = getSplittedCapabilities(capability);
-          presetCapabilities.splice(index, 1, ...splittedCapabilities);
+        if (capability.isStep) {
+          continue;
         }
+
+        const splittedCapabilities = getSplittedCapabilities(capability);
+        presetCapabilities.splice(index, 1, ...splittedCapabilities);
       }
 
       // merge adjacent stepped caps
       for (let index = 0; index < presetCapabilities.length; index++) {
-        const capability = presetCapabilities[index];
-
-        if (index + 1 < presetCapabilities.length) {
-          const nextCapability = presetCapabilities[index + 1];
-          const mergedCapability = getMergedCapability(capability, nextCapability);
-
-          if (mergedCapability) {
-            presetCapabilities.splice(index, 2, mergedCapability);
-            index--; // maybe the merged capability can be merged another time
-          }
+        if (index + 1 >= presetCapabilities.length) {
+          continue;
         }
+
+        const capability = presetCapabilities[index];
+        const nextCapability = presetCapabilities[index + 1];
+        const mergedCapability = getMergedCapability(capability, nextCapability);
+
+        if (!mergedCapability) {
+          continue;
+        }
+
+        presetCapabilities.splice(index, 2, mergedCapability);
+        index--; // maybe the merged capability can be merged another time
       }
 
       for (const capability of presetCapabilities) {
@@ -327,10 +332,9 @@ export default {
           (capabilityJson) => new Capability(capabilityJson, capability._resolution, capability._channel),
         );
 
-        if (capability.slotNumber) {
-          return [startCapability, centerCapability, endCapability];
-        }
-        return [startCapability, endCapability];
+        return capability.slotNumber
+          ? [startCapability, centerCapability, endCapability]
+          : [startCapability, endCapability];
       }
 
       /**
@@ -346,16 +350,16 @@ export default {
         const isDistinguishableKey = (key) => !['dmxRange', '_splitted', 'menuClick'].includes(key);
         const distinguishableKeys1 = Object.keys(capability1.jsonObject).filter((key) => isDistinguishableKey(key));
         const distinguishableKeys2 = Object.keys(capability2.jsonObject).filter((key) => isDistinguishableKey(key));
-        const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
+        const hasDifferentKeys = !areArraysEqual(distinguishableKeys1, distinguishableKeys2);
         const hasDifferentValues = distinguishableKeys1.some((key) => {
           if (key === 'slotNumber') {
             // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
-            return !arraysEqual(capability1.wheelSlot, capability2.wheelSlot);
+            return !areArraysEqual(capability1.wheelSlot, capability2.wheelSlot);
           }
 
           const value1 = capability1.jsonObject[key];
           const value2 = capability2.jsonObject[key];
-          return value1 !== value2 && !arraysEqual(value1, value2);
+          return value1 !== value2 && !areArraysEqual(value1, value2);
         });
         if (hasDifferentKeys || hasDifferentValues) {
           return null;
@@ -431,8 +435,8 @@ export default {
         }
       }
 
-      const usesShake = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
-      if (usesShake) {
+      const isShakeUsed = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
+      if (isShakeUsed) {
         xmlGoboWheel.element('goboshake');
       }
 
@@ -688,16 +692,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.fogOutput !== null && capability.fogOutput[0].number !== capability.fogOutput[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, capability.fogOutput[0].number, capability.fogOutput[1].number);
-            xmlCapability.attribute('type', 'fog');
-          }
-          else {
+          if (capability.fogOutput === null || capability.fogOutput[0].number === capability.fogOutput[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFogOn = capability.type !== 'NoFunction' && (capability.fogOutput === null || capability.fogOutput[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute('value', String(isFogOn));
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, capability.fogOutput[0].number, capability.fogOutput[1].number);
+            xmlCapability.attribute('type', 'fog');
           }
 
           xmlFog.importDocument(xmlCapability);
@@ -716,16 +720,16 @@ export default {
         for (const capability of capabilities) {
           let xmlCapability;
 
-          if (capability.speed !== null && capability.speed[0].number !== capability.speed[1].number) {
-            xmlCapability = getBaseXmlCapability(capability, Math.abs(capability.speed[0].number), Math.abs(capability.speed[1].number));
-            xmlCapability.attribute('type', 'fan');
-          }
-          else {
+          if (capability.speed === null || capability.speed[0].number === capability.speed[1].number) {
             // generate <step>s with value="true" or value="false"
             // this is not documented, but used in other fixtures
             const isFanOn = capability.type !== 'NoFunction' && (capability.speed[0].number > 0);
             xmlCapability = getBaseXmlCapability(capability);
             xmlCapability.attribute('value', String(isFanOn));
+          }
+          else {
+            xmlCapability = getBaseXmlCapability(capability, Math.abs(capability.speed[0].number), Math.abs(capability.speed[1].number));
+            xmlCapability.attribute('type', 'fan');
           }
 
           xmlFan.importDocument(xmlCapability);
@@ -908,16 +912,13 @@ function getRotationSpeedXmlCapability(capability) {
  * @param {Array} array2 - Second array to compare.
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
-function arraysEqual(array1, array2) {
-  if (array1 === array2) {
-    return true;
-  }
-
-  if (!Array.isArray(array1) || !Array.isArray(array2)) {
-    return false;
-  }
-
-  return array1.length === array2.length && array1.every(
-    (item, index) => item === array2[index],
+function areArraysEqual(array1, array2) {
+  return array1 === array2 || (
+    Array.isArray(array1)
+    && Array.isArray(array2)
+    && array1.length === array2.length
+    && array1.every(
+      (item, index) => item === array2[index],
+    )
   );
 }

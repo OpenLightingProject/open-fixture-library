@@ -14,8 +14,12 @@
   },
   "comment": "40mW Green CW laser (λ = 532nm)\n80mW Red CW laser (λ = 650nm)\nLaser radiation class: 3B",
   "links": {
-    "manual": ["https://www.manualslib.com/download/1126183/Jbsystems-Light-Twin-Effect.html"],
-    "video": ["https://www.youtube.com/watch?v=rCnrJEq-BV0"]
+    "manual": [
+      "https://www.manualslib.com/download/1126183/Jbsystems-Light-Twin-Effect.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rCnrJEq-BV0"
+    ]
   },
   "physical": {
     "dimensions": [240, 110, 215],
@@ -76,15 +80,15 @@
           "type": "NoFunction",
           "comment": "Laser off",
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -92,15 +96,15 @@
           "type": "Effect",
           "effectName": "AUn mode (Auto grating + pattern effects show)",
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -109,15 +113,15 @@
           "effectName": "Son mode (Sound active grating / pattern effects show)",
           "soundControlled": true,
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -125,15 +129,15 @@
           "type": "Effect",
           "effectName": "AUP mode (Auto pattern effects show)",
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -142,15 +146,15 @@
           "effectName": "SoP (Sound active pattern effects show)",
           "soundControlled": true,
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -158,15 +162,15 @@
           "type": "Effect",
           "effectName": "AUd mode (Auto grating effects show)",
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -175,15 +179,15 @@
           "effectName": "Sod mode (Sound active grating effects show)",
           "soundControlled": true,
           "switchChannels": {
-            "Channel 2": "Unused 1",
-            "Channel 3": "Unused 2",
-            "Channel 4": "Unused 3",
-            "Channel 5": "Unused 4",
-            "Channel 6": "Unused 5",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 2": null,
+            "Channel 3": null,
+            "Channel 4": null,
+            "Channel 5": null,
+            "Channel 6": null,
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -196,10 +200,10 @@
             "Channel 4": "colors-10ch-A",
             "Channel 5": "Strobe",
             "Channel 6": "grating-rotation-10ch-A",
-            "Channel 7": "Unused 6",
-            "Channel 8": "Unused 7",
-            "Channel 9": "Unused 8",
-            "Channel 10": "Unused 9"
+            "Channel 7": null,
+            "Channel 8": null,
+            "Channel 9": null,
+            "Channel 10": null
           }
         },
         {
@@ -231,7 +235,7 @@
             "Channel 7": "X Axis Moving",
             "Channel 8": "Y Axis Moving",
             "Channel 9": "colors-10ch-C",
-            "Channel 10": "Unused 9"
+            "Channel 10": null
           }
         }
       ]
@@ -737,60 +741,6 @@
           "effectName": "Zooming in & out"
         }
       ]
-    },
-    "Unused 1": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 2": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 3": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 4": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 5": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 6": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 7": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 8": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Unused 9": {
-      "name": "Unused",
-      "capability": {
-        "type": "NoFunction"
-      }
     }
   },
   "modes": [
