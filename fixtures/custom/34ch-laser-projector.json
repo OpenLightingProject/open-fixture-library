@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "34CH Laser Projector",
+  "shortName": "34CH",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Nikita"],
+    "createDate": "2026-10-07",
+    "lastModifyDate": "2026-10-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.ozon.ru/product/lazernyy-proektor-laser-show-f3200a-2200-mvt-858236140/questions/?__rr=1&abt_att=1&origin_referer=yandex.ru"
+    ]
+  },
+  "availableChannels": {
+    "1CH Паттерн 1 вкл/выкл": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Вкл/Выкл"
+        },
+        {
+          "dmxRange": [1, 99],
+          "type": "Effect",
+          "effectName": "Авто мод",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Effect",
+          "effectName": "Звук"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Резерв"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "34 chanel",
+      "shortName": "34CH",
+      "channels": [
+        "1CH Паттерн 1 вкл/выкл"
+      ]
+    }
+  ]
+}
