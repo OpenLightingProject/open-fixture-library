@@ -1,0 +1,4773 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Aurora Strip 12",
+  "shortName": "Aurora12",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Woejefe"],
+    "createDate": "2024-01-05",
+    "lastModifyDate": "2024-01-05",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-05-24",
+      "comment": "GDTF v1.2 fixture type ID: CB3E3C01-E3CB-11EA-ABC8-525400685065"
+    }
+  },
+  "comment": "Aurora 12 is a high output theatrical strip luminaire that provides rich color mixing for multiple applications around the performance stage, including set piece illumination, graze / cyc lighting, foot lighting, and more.",
+  "rdm": {
+    "modelId": 285,
+    "softwareVersion": "0x0"
+  },
+  "wheels": {
+    "COLOR PRESET": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Moroccan Pink",
+          "colors": ["#e4a497"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#e0309e"]
+        },
+        {
+          "type": "Color",
+          "name": "Flesh Pink",
+          "colors": ["#dc7a9d"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright Rose",
+          "colors": ["#cd4865"]
+        },
+        {
+          "type": "Color",
+          "name": "Follies Pink",
+          "colors": ["#9f4c9e"]
+        },
+        {
+          "type": "Color",
+          "name": "Fuchsia Pink",
+          "colors": ["#b968c2"]
+        },
+        {
+          "type": "Color",
+          "name": "Surprise Pink",
+          "colors": ["#ac81d7"]
+        },
+        {
+          "type": "Color",
+          "name": "Congo Blue",
+          "colors": ["#002c53"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Virgin Blue",
+          "colors": ["#04a4d0"]
+        },
+        {
+          "type": "Color",
+          "name": "Midnight Maya",
+          "colors": ["#5746b0"]
+        },
+        {
+          "type": "Color",
+          "name": "Double C T Blue",
+          "colors": ["#1781df"]
+        },
+        {
+          "type": "Color",
+          "name": "Slate Blue",
+          "colors": ["#0082bc"]
+        },
+        {
+          "type": "Color",
+          "name": "Regal Blue",
+          "colors": ["#5f5fce"]
+        },
+        {
+          "type": "Color",
+          "name": "Full C T Blue",
+          "colors": ["#1653e2"]
+        },
+        {
+          "type": "Color",
+          "name": "Steel Blue",
+          "colors": ["#016eaa"]
+        },
+        {
+          "type": "Color",
+          "name": "Lighter Blue",
+          "colors": ["#07acd0"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#03b1b1"]
+        },
+        {
+          "type": "Color",
+          "name": "Marine Blue",
+          "colors": ["#01aab4"]
+        },
+        {
+          "type": "Color",
+          "name": "Soft Green",
+          "colors": ["#00a198"]
+        },
+        {
+          "type": "Color",
+          "name": "Moss Green",
+          "colors": ["#2e9752"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00e400"]
+        },
+        {
+          "type": "Color",
+          "name": "Fem Green",
+          "colors": ["#0aa718"]
+        },
+        {
+          "type": "Color",
+          "name": "JAS Green",
+          "colors": ["#9be400"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Green",
+          "colors": ["#b3cd91"]
+        },
+        {
+          "type": "Color",
+          "name": "Spring Yellow",
+          "colors": ["#e4cd26"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#e4e404"]
+        },
+        {
+          "type": "Color",
+          "name": "Deep Amber",
+          "colors": ["#de4e00"]
+        },
+        {
+          "type": "Color",
+          "name": "Chrome Orange",
+          "colors": ["#e49605"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#e48705"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#e404e4"]
+        },
+        {
+          "type": "Color",
+          "name": "Flame Red",
+          "colors": ["#dd4a06"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#8f3ba4"]
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "fineChannelAliases": ["Dim fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open - Shutter Open"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
+          "comment": "Strobe S > F - Strobe"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open - Shutter Open"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
+          "comment": "Lighting Strobe S > F - Strobe"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open - Shutter Open"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true,
+          "comment": "Strobe Random S > F - Strobe Random"
+        }
+      ]
+    },
+    "C1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Color Off - Custom"
+        },
+        {
+          "dmxRange": [11, 14],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 1,
+          "comment": "Moroccan Pink - Color"
+        },
+        {
+          "dmxRange": [15, 18],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 2,
+          "comment": "Pink - Color"
+        },
+        {
+          "dmxRange": [19, 22],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 3,
+          "comment": "Flesh Pink - Color"
+        },
+        {
+          "dmxRange": [23, 26],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 4,
+          "comment": "Bright Rose - Color"
+        },
+        {
+          "dmxRange": [27, 30],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 5,
+          "comment": "Follies Pink - Color"
+        },
+        {
+          "dmxRange": [31, 34],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 6,
+          "comment": "Fuchsia Pink - Color"
+        },
+        {
+          "dmxRange": [35, 38],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 7,
+          "comment": "Surprise Pink - Color"
+        },
+        {
+          "dmxRange": [39, 42],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 8,
+          "comment": "Congo Blue - Color"
+        },
+        {
+          "dmxRange": [43, 46],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 9,
+          "comment": "Blue - Color"
+        },
+        {
+          "dmxRange": [47, 50],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 10,
+          "comment": "Virgin Blue - Color"
+        },
+        {
+          "dmxRange": [51, 54],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 11,
+          "comment": "Midnight Maya - Color"
+        },
+        {
+          "dmxRange": [55, 58],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 12,
+          "comment": "Double C T Blue - Color"
+        },
+        {
+          "dmxRange": [59, 62],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 13,
+          "comment": "Slate Blue - Color"
+        },
+        {
+          "dmxRange": [63, 66],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 14,
+          "comment": "Regal Blue - Color"
+        },
+        {
+          "dmxRange": [67, 70],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 15,
+          "comment": "Full C T Blue - Color"
+        },
+        {
+          "dmxRange": [71, 74],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 16,
+          "comment": "Steel Blue - Color"
+        },
+        {
+          "dmxRange": [75, 78],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 17,
+          "comment": "Lighter Blue - Color"
+        },
+        {
+          "dmxRange": [79, 82],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 18,
+          "comment": "Cyan - Color"
+        },
+        {
+          "dmxRange": [83, 86],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 19,
+          "comment": "Marine Blue - Color"
+        },
+        {
+          "dmxRange": [87, 90],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 20,
+          "comment": "Soft Green - Color"
+        },
+        {
+          "dmxRange": [91, 94],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 21,
+          "comment": "Moss Green - Color"
+        },
+        {
+          "dmxRange": [95, 98],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 22,
+          "comment": "Green - Color"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 23,
+          "comment": "Fem Green - Color"
+        },
+        {
+          "dmxRange": [103, 106],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 24,
+          "comment": "JAS Green - Color"
+        },
+        {
+          "dmxRange": [107, 110],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 25,
+          "comment": "Pale Green - Color"
+        },
+        {
+          "dmxRange": [111, 114],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 26,
+          "comment": "Spring Yellow - Color"
+        },
+        {
+          "dmxRange": [115, 118],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 27,
+          "comment": "Yellow - Color"
+        },
+        {
+          "dmxRange": [119, 122],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 28,
+          "comment": "Deep Amber - Color"
+        },
+        {
+          "dmxRange": [123, 126],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 29,
+          "comment": "Chrome Orange - Color"
+        },
+        {
+          "dmxRange": [127, 130],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 30,
+          "comment": "Orange - Color"
+        },
+        {
+          "dmxRange": [131, 134],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 31,
+          "comment": "Magenta - Color"
+        },
+        {
+          "dmxRange": [135, 138],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 32,
+          "comment": "Flame Red - Color"
+        },
+        {
+          "dmxRange": [139, 142],
+          "type": "WheelSlot",
+          "wheel": "COLOR PRESET",
+          "slotNumber": 33,
+          "comment": "Purple - Color"
+        },
+        {
+          "dmxRange": [143, 146],
+          "type": "Effect",
+          "effectName": "User Preset 1 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [147, 150],
+          "type": "Effect",
+          "effectName": "User Preset 2 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [151, 154],
+          "type": "Effect",
+          "effectName": "User Preset 3 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [155, 158],
+          "type": "Effect",
+          "effectName": "User Preset 4 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [159, 162],
+          "type": "Effect",
+          "effectName": "User Preset 5 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [163, 166],
+          "type": "Effect",
+          "effectName": "User Preset 6 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [167, 170],
+          "type": "Effect",
+          "effectName": "User Preset 7 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [171, 174],
+          "type": "Effect",
+          "effectName": "User Preset 8 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [175, 178],
+          "type": "Effect",
+          "effectName": "User Preset 9 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [179, 182],
+          "type": "Effect",
+          "effectName": "User Preset 10 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [183, 186],
+          "type": "Effect",
+          "effectName": "User Preset 11 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [187, 190],
+          "type": "Effect",
+          "effectName": "User Preset 12 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [191, 194],
+          "type": "Effect",
+          "effectName": "User Preset 13 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [195, 198],
+          "type": "Effect",
+          "effectName": "User Preset 14 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [199, 202],
+          "type": "Effect",
+          "effectName": "User Preset 15 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [203, 206],
+          "type": "Effect",
+          "effectName": "User Preset 16 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [207, 210],
+          "type": "Effect",
+          "effectName": "User Preset 17 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [211, 214],
+          "type": "Effect",
+          "effectName": "User Preset 18 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [215, 218],
+          "type": "Effect",
+          "effectName": "User Preset 18 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [219, 222],
+          "type": "Effect",
+          "effectName": "User Preset 20 - Macro",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [223, 255],
+          "type": "NoFunction",
+          "comment": "Channel Off - Custom"
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Idle - Custom"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Full Luminaire Recal - Reset"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "NoFunction",
+          "comment": "Fixture Shutdown - Custom"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Unknown (DisplayIntensity)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Display-Menu On - Custom"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Unknown (DisplayIntensity)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Display-Menu Off - Custom"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Tungsten Dimming On - Custom"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Tungsten Dimming Off - Custom"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Dimming Curve Linear - Dimmer"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Dimming Curve S-Curve - Dimmer"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Dimming Curve Square Law - Dimmer"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Speed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Dimmer Snap On - Speed"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Speed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Dimmer Snap Off - Speed"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Color Calibration On - Reset"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "NoFunction",
+          "comment": "Color Callbration Off - Custom"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction",
+          "comment": "No Func - Custom"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Record Color Preset - Custom"
+        },
+        {
+          "dmxRange": [156, 170],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Reset Fixture To Default - Reset"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "C": {
+      "fineChannelAliases": ["C fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y": {
+      "fineChannelAliases": ["Y fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M": {
+      "fineChannelAliases": ["M fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 2": {
+      "name": "C",
+      "fineChannelAliases": ["C 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 2": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 2": {
+      "name": "M",
+      "fineChannelAliases": ["M 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 2": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 3 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 3": {
+      "name": "C",
+      "fineChannelAliases": ["C 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 3": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 3": {
+      "name": "M",
+      "fineChannelAliases": ["M 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 3": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 4": {
+      "name": "C",
+      "fineChannelAliases": ["C 4 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 4": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 4 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 4": {
+      "name": "M",
+      "fineChannelAliases": ["M 4 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 4": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "R": {
+      "fineChannelAliases": ["R fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G": {
+      "fineChannelAliases": ["G fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B": {
+      "fineChannelAliases": ["B fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 2": {
+      "name": "R",
+      "fineChannelAliases": ["R 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 2": {
+      "name": "G",
+      "fineChannelAliases": ["G 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 2": {
+      "name": "B",
+      "fineChannelAliases": ["B 2 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 2": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 2": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 2 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 3": {
+      "name": "R",
+      "fineChannelAliases": ["R 3 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 3": {
+      "name": "G",
+      "fineChannelAliases": ["G 3 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 3": {
+      "name": "B",
+      "fineChannelAliases": ["B 3 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 3": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 3": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 3 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 4": {
+      "name": "R",
+      "fineChannelAliases": ["R 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 4": {
+      "name": "G",
+      "fineChannelAliases": ["G 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 4": {
+      "name": "B",
+      "fineChannelAliases": ["B 4 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 4": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 4 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 4": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 4 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 5 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 5": {
+      "name": "C",
+      "fineChannelAliases": ["C 5 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 5": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 5 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 5": {
+      "name": "M",
+      "fineChannelAliases": ["M 5 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 5": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 6 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 6": {
+      "name": "C",
+      "fineChannelAliases": ["C 6 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 6": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 6 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 6": {
+      "name": "M",
+      "fineChannelAliases": ["M 6 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 6": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 7 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 7": {
+      "name": "C",
+      "fineChannelAliases": ["C 7 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 7": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 7 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 7": {
+      "name": "M",
+      "fineChannelAliases": ["M 7 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 7": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 8": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 8 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 8": {
+      "name": "C",
+      "fineChannelAliases": ["C 8 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 8": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 8 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 8": {
+      "name": "M",
+      "fineChannelAliases": ["M 8 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 8": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 9": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 9 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 9": {
+      "name": "C",
+      "fineChannelAliases": ["C 9 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 9": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 9 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 9": {
+      "name": "M",
+      "fineChannelAliases": ["M 9 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 9": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 10": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 10 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 10": {
+      "name": "C",
+      "fineChannelAliases": ["C 10 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 10": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 10 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 10": {
+      "name": "M",
+      "fineChannelAliases": ["M 10 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 10": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 11": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 11 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 11": {
+      "name": "C",
+      "fineChannelAliases": ["C 11 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 11": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 11 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 11": {
+      "name": "M",
+      "fineChannelAliases": ["M 11 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 11": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "Dim 12": {
+      "name": "Dim",
+      "fineChannelAliases": ["Dim 12 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": 0,
+          "brightnessEnd": 1,
+          "comment": "Max"
+        }
+      ]
+    },
+    "C 12": {
+      "name": "C",
+      "fineChannelAliases": ["C 12 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Y 12": {
+      "name": "Y",
+      "fineChannelAliases": ["Y 12 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "comment": "Max"
+        }
+      ]
+    },
+    "M 12": {
+      "name": "M",
+      "fineChannelAliases": ["M 12 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Max"
+        }
+      ]
+    },
+    "CTC 12": {
+      "name": "CTC",
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "ColorTemperature",
+          "colorTemperature": 1800,
+          "comment": "1800K - CTC"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": 2700,
+          "comment": "2700K - CTC"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "ColorTemperature",
+          "colorTemperature": 3000,
+          "comment": "3000K - CTC"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "ColorTemperature",
+          "colorTemperature": 3200,
+          "comment": "3200K - CTC"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "ColorTemperature",
+          "colorTemperature": 4000,
+          "comment": "4000K - CTC"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": 4500,
+          "comment": "4500K - CTC"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "ColorTemperature",
+          "colorTemperature": 5000,
+          "comment": "5000K - CTC"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "ColorTemperature",
+          "colorTemperature": 5600,
+          "comment": "5600K - CTC"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "ColorTemperature",
+          "colorTemperature": 6500,
+          "comment": "6500K - CTC"
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "ColorTemperature",
+          "colorTemperature": 8000,
+          "comment": "8000K - CTC"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "ColorTemperature",
+          "colorTemperature": 10000,
+          "comment": "10000K - CTC"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Reserved - Custom"
+        }
+      ]
+    },
+    "R 5": {
+      "name": "R",
+      "fineChannelAliases": ["R 5 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 5": {
+      "name": "G",
+      "fineChannelAliases": ["G 5 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 5": {
+      "name": "B",
+      "fineChannelAliases": ["B 5 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 5": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 5 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 5": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 5 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 6": {
+      "name": "R",
+      "fineChannelAliases": ["R 6 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 6": {
+      "name": "G",
+      "fineChannelAliases": ["G 6 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 6": {
+      "name": "B",
+      "fineChannelAliases": ["B 6 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 6": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 6 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 6": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 6 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 7": {
+      "name": "R",
+      "fineChannelAliases": ["R 7 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 7": {
+      "name": "G",
+      "fineChannelAliases": ["G 7 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 7": {
+      "name": "B",
+      "fineChannelAliases": ["B 7 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 7": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 7 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 7": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 7 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 8": {
+      "name": "R",
+      "fineChannelAliases": ["R 8 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 8": {
+      "name": "G",
+      "fineChannelAliases": ["G 8 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 8": {
+      "name": "B",
+      "fineChannelAliases": ["B 8 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 8": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 8 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 8": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 8 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 9": {
+      "name": "R",
+      "fineChannelAliases": ["R 9 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 9": {
+      "name": "G",
+      "fineChannelAliases": ["G 9 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 9": {
+      "name": "B",
+      "fineChannelAliases": ["B 9 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 9": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 9 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 9": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 9 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 10": {
+      "name": "R",
+      "fineChannelAliases": ["R 10 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 10": {
+      "name": "G",
+      "fineChannelAliases": ["G 10 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 10": {
+      "name": "B",
+      "fineChannelAliases": ["B 10 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 10": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 10 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 10": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 10 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 11": {
+      "name": "R",
+      "fineChannelAliases": ["R 11 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 11": {
+      "name": "G",
+      "fineChannelAliases": ["G 11 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 11": {
+      "name": "B",
+      "fineChannelAliases": ["B 11 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 11": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 11 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 11": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 11 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    },
+    "R 12": {
+      "name": "R",
+      "fineChannelAliases": ["R 12 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "Max"
+        }
+      ]
+    },
+    "G 12": {
+      "name": "G",
+      "fineChannelAliases": ["G 12 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "Max"
+        }
+      ]
+    },
+    "B 12": {
+      "name": "B",
+      "fineChannelAliases": ["B 12 fine"],
+      "highlightValue": 65535,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Amber 12": {
+      "name": "Amber",
+      "fineChannelAliases": ["Amber 12 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "comment": "Max"
+        }
+      ]
+    },
+    "Lime 12": {
+      "name": "Lime",
+      "fineChannelAliases": ["Lime 12 fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 65534],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Min > Max"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "ColorIntensity",
+          "color": "Lime",
+          "comment": "Max"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "SSCC Mode",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1",
+        "Ctrl1",
+        "C",
+        "C fine",
+        "Y",
+        "Y fine",
+        "M",
+        "M fine",
+        "CTC"
+      ]
+    },
+    {
+      "name": "SSCC Mode 4 Cell",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1",
+        "Ctrl1",
+        "C",
+        "C fine",
+        "Y",
+        "Y fine",
+        "M",
+        "M fine",
+        "CTC",
+        "Dim 2",
+        "Dim 2 fine",
+        "C 2",
+        "C 2 fine",
+        "Y 2",
+        "Y 2 fine",
+        "M 2",
+        "M 2 fine",
+        "CTC 2",
+        "Dim 3",
+        "Dim 3 fine",
+        "C 3",
+        "C 3 fine",
+        "Y 3",
+        "Y 3 fine",
+        "M 3",
+        "M 3 fine",
+        "CTC 3",
+        "Dim 4",
+        "Dim 4 fine",
+        "C 4",
+        "C 4 fine",
+        "Y 4",
+        "Y 4 fine",
+        "M 4",
+        "M 4 fine",
+        "CTC 4"
+      ]
+    },
+    {
+      "name": "SOCC Mode",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1",
+        "Ctrl1",
+        "R",
+        "R fine",
+        "G",
+        "G fine",
+        "B",
+        "B fine",
+        "Amber",
+        "Amber fine",
+        "Lime",
+        "Lime fine",
+        "C",
+        "C fine"
+      ]
+    },
+    {
+      "name": "SQCC Mode 1 Zone",
+      "rdmPersonalityIndex": 4,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1"
+      ]
+    },
+    {
+      "name": "SOCC Mode 4 Cell",
+      "rdmPersonalityIndex": 5,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1",
+        "Ctrl1",
+        "R",
+        "R fine",
+        "G",
+        "G fine",
+        "B",
+        "B fine",
+        "Amber",
+        "Amber fine",
+        "Lime",
+        "Lime fine",
+        "C",
+        "C fine",
+        "R 2",
+        "R 2 fine",
+        "G 2",
+        "G 2 fine",
+        "B 2",
+        "B 2 fine",
+        "Amber 2",
+        "Amber 2 fine",
+        "Lime 2",
+        "Lime 2 fine",
+        "C 2",
+        "C 2 fine",
+        "R 3",
+        "R 3 fine",
+        "G 3",
+        "G 3 fine",
+        "B 3",
+        "B 3 fine",
+        "Amber 3",
+        "Amber 3 fine",
+        "Lime 3",
+        "Lime 3 fine",
+        "C 3",
+        "C 3 fine",
+        "R 4",
+        "R 4 fine",
+        "G 4",
+        "G 4 fine",
+        "B 4",
+        "B 4 fine",
+        "Amber 4",
+        "Amber 4 fine",
+        "Lime 4",
+        "Lime 4 fine",
+        "C 4",
+        "C 4 fine"
+      ]
+    },
+    {
+      "name": "SSCC Mode 12 Cell",
+      "rdmPersonalityIndex": 6,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1",
+        "Ctrl1",
+        "C",
+        "C fine",
+        "Y",
+        "Y fine",
+        "M",
+        "M fine",
+        "CTC",
+        "Dim 2",
+        "Dim 2 fine",
+        "C 2",
+        "C 2 fine",
+        "Y 2",
+        "Y 2 fine",
+        "M 2",
+        "M 2 fine",
+        "CTC 2",
+        "Dim 3",
+        "Dim 3 fine",
+        "C 3",
+        "C 3 fine",
+        "Y 3",
+        "Y 3 fine",
+        "M 3",
+        "M 3 fine",
+        "CTC 3",
+        "Dim 4",
+        "Dim 4 fine",
+        "C 4",
+        "C 4 fine",
+        "Y 4",
+        "Y 4 fine",
+        "M 4",
+        "M 4 fine",
+        "CTC 4",
+        "Dim 5",
+        "Dim 5 fine",
+        "C 5",
+        "C 5 fine",
+        "Y 5",
+        "Y 5 fine",
+        "M 5",
+        "M 5 fine",
+        "CTC 5",
+        "Dim 6",
+        "Dim 6 fine",
+        "C 6",
+        "C 6 fine",
+        "Y 6",
+        "Y 6 fine",
+        "M 6",
+        "M 6 fine",
+        "CTC 6",
+        "Dim 7",
+        "Dim 7 fine",
+        "C 7",
+        "C 7 fine",
+        "Y 7",
+        "Y 7 fine",
+        "M 7",
+        "M 7 fine",
+        "CTC 7",
+        "Dim 8",
+        "Dim 8 fine",
+        "C 8",
+        "C 8 fine",
+        "Y 8",
+        "Y 8 fine",
+        "M 8",
+        "M 8 fine",
+        "CTC 8",
+        "Dim 9",
+        "Dim 9 fine",
+        "C 9",
+        "C 9 fine",
+        "Y 9",
+        "Y 9 fine",
+        "M 9",
+        "M 9 fine",
+        "CTC 9",
+        "Dim 10",
+        "Dim 10 fine",
+        "C 10",
+        "C 10 fine",
+        "Y 10",
+        "Y 10 fine",
+        "M 10",
+        "M 10 fine",
+        "CTC 10",
+        "Dim 11",
+        "Dim 11 fine",
+        "C 11",
+        "C 11 fine",
+        "Y 11",
+        "Y 11 fine",
+        "M 11",
+        "M 11 fine",
+        "CTC 11",
+        "Dim 12",
+        "Dim 12 fine",
+        "C 12",
+        "C 12 fine",
+        "Y 12",
+        "Y 12 fine",
+        "M 12",
+        "M 12 fine",
+        "CTC 12"
+      ]
+    },
+    {
+      "name": "SOCC Mode 12 Cell",
+      "rdmPersonalityIndex": 7,
+      "channels": [
+        "Dim",
+        "Dim fine",
+        "Sh1",
+        "C1",
+        "Ctrl1",
+        "R",
+        "R fine",
+        "G",
+        "G fine",
+        "B",
+        "B fine",
+        "Amber",
+        "Amber fine",
+        "Lime",
+        "Lime fine",
+        "C",
+        "C fine",
+        "R 2",
+        "R 2 fine",
+        "G 2",
+        "G 2 fine",
+        "B 2",
+        "B 2 fine",
+        "Amber 2",
+        "Amber 2 fine",
+        "Lime 2",
+        "Lime 2 fine",
+        "C 2",
+        "C 2 fine",
+        "R 3",
+        "R 3 fine",
+        "G 3",
+        "G 3 fine",
+        "B 3",
+        "B 3 fine",
+        "Amber 3",
+        "Amber 3 fine",
+        "Lime 3",
+        "Lime 3 fine",
+        "C 3",
+        "C 3 fine",
+        "R 4",
+        "R 4 fine",
+        "G 4",
+        "G 4 fine",
+        "B 4",
+        "B 4 fine",
+        "Amber 4",
+        "Amber 4 fine",
+        "Lime 4",
+        "Lime 4 fine",
+        "C 4",
+        "C 4 fine",
+        "R 5",
+        "R 5 fine",
+        "G 5",
+        "G 5 fine",
+        "B 5",
+        "B 5 fine",
+        "Amber 5",
+        "Amber 5 fine",
+        "Lime 5",
+        "Lime 5 fine",
+        "C 5",
+        "C 5 fine",
+        "R 6",
+        "R 6 fine",
+        "G 6",
+        "G 6 fine",
+        "B 6",
+        "B 6 fine",
+        "Amber 6",
+        "Amber 6 fine",
+        "Lime 6",
+        "Lime 6 fine",
+        "C 6",
+        "C 6 fine",
+        "R 7",
+        "R 7 fine",
+        "G 7",
+        "G 7 fine",
+        "B 7",
+        "B 7 fine",
+        "Amber 7",
+        "Amber 7 fine",
+        "Lime 7",
+        "Lime 7 fine",
+        "C 7",
+        "C 7 fine",
+        "R 8",
+        "R 8 fine",
+        "G 8",
+        "G 8 fine",
+        "B 8",
+        "B 8 fine",
+        "Amber 8",
+        "Amber 8 fine",
+        "Lime 8",
+        "Lime 8 fine",
+        "C 8",
+        "C 8 fine",
+        "R 9",
+        "R 9 fine",
+        "G 9",
+        "G 9 fine",
+        "B 9",
+        "B 9 fine",
+        "Amber 9",
+        "Amber 9 fine",
+        "Lime 9",
+        "Lime 9 fine",
+        "C 9",
+        "C 9 fine",
+        "R 10",
+        "R 10 fine",
+        "G 10",
+        "G 10 fine",
+        "B 10",
+        "B 10 fine",
+        "Amber 10",
+        "Amber 10 fine",
+        "Lime 10",
+        "Lime 10 fine",
+        "C 10",
+        "C 10 fine",
+        "R 11",
+        "R 11 fine",
+        "G 11",
+        "G 11 fine",
+        "B 11",
+        "B 11 fine",
+        "Amber 11",
+        "Amber 11 fine",
+        "Lime 11",
+        "Lime 11 fine",
+        "C 11",
+        "C 11 fine",
+        "R 12",
+        "R 12 fine",
+        "G 12",
+        "G 12 fine",
+        "B 12",
+        "B 12 fine",
+        "Amber 12",
+        "Amber 12 fine",
+        "Lime 12",
+        "Lime 12 fine",
+        "C 12",
+        "C 12 fine"
+      ]
+    }
+  ]
+}
