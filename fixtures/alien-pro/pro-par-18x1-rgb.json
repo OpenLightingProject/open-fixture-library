@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pro PAR 18x1 RGB",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["zamedora"],
+    "createDate": "2026-10-08",
+    "lastModifyDate": "2026-10-08"
+  },
+  "comment": "Reflectores tipo PAR / Washer",
+  "links": {
+    "manual": [
+      "https://alienpro.com.mx/wp-content/uploads/Manual-Par-18x1.pdf"
+    ],
+    "productPage": [
+      "https://alienpro.com.mx/producto/par-18x1/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=sY07xZxIl-g&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Falienpro.com.mx%2F"
+    ]
+  },
+  "physical": {
+    "dimensions": [19, 19, 14],
+    "weight": 1.2,
+    "power": 127,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer General": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PAR 18X1",
+      "channels": [
+        "Dimmer General"
+      ]
+    }
+  ]
+}
