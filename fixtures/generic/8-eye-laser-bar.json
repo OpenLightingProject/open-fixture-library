@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "8 eye laser bar",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["carlos"],
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://yuerlights.com/products/8-eyes-full-color-rgb-laser-bar-light-dmx512-stage-strobe-effect-projector-dj-disco-party-dance-floor-bar-club-music-restaurant"
+    ],
+    "productPage": [
+      "https://yuerlights.com/products/8-eyes-full-color-rgb-laser-bar-light-dmx512-stage-strobe-effect-projector-dj-disco-party-dance-floor-bar-club-music-restaurant"
+    ],
+    "video": [
+      "https://yuerlights.com/products/8-eyes-full-color-rgb-laser-bar-light-dmx512-stage-strobe-effect-projector-dj-disco-party-dance-floor-bar-club-music-restaurant"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "laser"
+    }
+  },
+  "availableChannels": {
+    "CH1 - Motor stroke": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "196deg"
+      }
+    },
+    "CH2 - Main switch": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Generic",
+          "comment": "ON"
+        }
+      ]
+    },
+    "CH3 - Stroboscopic": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "25Hz",
+          "speedEnd": "200Hz"
+        }
+      ]
+    },
+    "CH4 - Laser effect (Macro / Effect 1–17)": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH5 - Laser effect speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CH6 - Motor effect (Macros / Effects 1–7)": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH7 - Motor effect speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "CH8 - Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "RESET AFTER 5 SEC"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channel",
+      "channels": [
+        "CH1 - Motor stroke",
+        "CH2 - Main switch",
+        "CH3 - Stroboscopic",
+        "CH4 - Laser effect (Macro / Effect 1–17)",
+        "CH5 - Laser effect speed",
+        "CH6 - Motor effect (Macros / Effects 1–7)",
+        "CH7 - Motor effect speed",
+        "CH8 - Reset"
+      ]
+    }
+  ]
+}
