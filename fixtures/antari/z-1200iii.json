@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Z-12000III",
+  "name": "Z-1200III",
   "categories": ["Smoke"],
   "meta": {
     "authors": ["Alien"],
@@ -13,6 +13,9 @@
     ],
     "productPage": [
       "https://antari.com/products/z-1200iii/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7X0VaZSF6N8"
     ]
   },
   "physical": {
@@ -42,7 +45,8 @@
   },
   "modes": [
     {
-      "name": "DMX",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Fog Output"
       ]
