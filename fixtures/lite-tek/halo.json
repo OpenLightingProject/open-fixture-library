@@ -1,0 +1,234 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Halo",
+  "shortName": "Halo",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Miguel A. F. Rguez"],
+    "createDate": "2026-09-05",
+    "lastModifyDate": "2026-09-05"
+  },
+  "comment": "Wash 19x15 RGBW con aro Led RGB",
+  "links": {
+    "manual": [
+      "https://es.scribd.com/document/439001018/13-HALO"
+    ],
+    "productPage": [
+      "https://www.gmlighting.com.mx/productos/halo-litetek-z93sl/"
+    ],
+    "video": [
+      "https://youtube.com/shorts/oYzkIfqtaZo?si=2nUGxaOffJ-1D9Oq"
+    ]
+  },
+  "physical": {
+    "dimensions": [320.2, 388.2, 223],
+    "weight": 10,
+    "power": 260,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led",
+      "colorTemperature": 5500,
+      "lumens": 11000
+    },
+    "lens": {
+      "name": "Bee Eye",
+      "degreesMinMax": [7, 60]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "duration": "instant"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "defaultValue": 32767,
+      "highlightValue": 32767,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 32757,
+      "highlightValue": 32757,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "CTC": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTB",
+        "colorTemperatureEnd": "CTO"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Halo 16 Ch",
+      "shortName": "Halo 16 Ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter",
+        "Zoom",
+        "Color Macros",
+        "Effect Speed",
+        "Pan 3",
+        "Tilt 2",
+        "Reserved",
+        "CTC"
+      ]
+    }
+  ]
+}
