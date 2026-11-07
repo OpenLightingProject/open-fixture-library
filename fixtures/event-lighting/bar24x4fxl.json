@@ -1,0 +1,163 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BAR24X4FXL",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2026-09-29",
+    "lastModifyDate": "2026-09-29"
+  },
+  "links": {
+    "manual": [
+      "https://content.event-lighting.com.au/manuals/BAR24X4FXL_User_Manual.pdf"
+    ],
+    "productPage": [
+      "https://eventlighting.com.au/products/bar24x4fxl?srsltid=AU7gw4X9A-j_PPGmz_7ghpFTnup5N2sTv-BounLZgF7QVf3NtMp4_dAn"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Pattern"
+      }
+    },
+    "RGBW effect speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pattern Colour Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Colour effect"
+      }
+    },
+    "LED strip RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED strip GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED strip BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Light Strip Macro": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Strip effect"
+      }
+    },
+    "Light Strip Effect Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pattern Colour Effect 2": {
+      "name": "Pattern Colour Effect",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect Background"
+      }
+    },
+    "Colour Speed": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Colour/Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 CH",
+      "shortName": "15ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "RGBW effect speed",
+        "Pattern Colour Effect",
+        "LED strip RED",
+        "LED strip GREEN",
+        "LED strip BLUE",
+        "Light Strip Macro",
+        "Light Strip Effect Speed",
+        "Pattern Colour Effect 2"
+      ]
+    },
+    {
+      "name": "8 CH",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Colour Speed",
+        "Pattern Colour Effect",
+        "Light Strip Macro",
+        "Light Strip Effect Speed",
+        "Pattern Colour Effect 2"
+      ]
+    }
+  ]
+}
