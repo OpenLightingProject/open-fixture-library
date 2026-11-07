@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02356",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["MJJM"],
+    "createDate": "2026-10-03",
+    "lastModifyDate": "2026-10-03"
+  },
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/de-de/products/7pcs-25w-rgbw-leds-bees-eye-wash-moving-head-dj-light"
+    ]
+  },
+  "rdm": {
+    "modelId": 123,
+    "softwareVersion": "1.0"
+  },
+  "physical": {
+    "dimensions": [20, 40, 20],
+    "weight": 6.8,
+    "power": 350,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 45]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter 2": {
+      "name": "Shutter",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color Macros 3": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 4": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 5": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 6": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "23 CH",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Shutter",
+        "Dimmer",
+        "Shutter 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "No function",
+        "Color Presets",
+        "Color Macros",
+        "Color Macros 2",
+        "Color Macros 3",
+        "No function 2",
+        "No function 3",
+        "No function 4",
+        "No function 5",
+        "No function 6"
+      ]
+    }
+  ]
+}
