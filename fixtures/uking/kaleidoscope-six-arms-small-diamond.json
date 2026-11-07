@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kaleidoscope six arms small diamond",
+  "shortName": "ZQ02623 PARTY LIGHT",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["zamedora"],
+    "createDate": "2026-10-08",
+    "lastModifyDate": "2026-10-08"
+  },
+  "comment": "Kaleidoscope six arms small diamond",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ02623-Six-armed-Stage-light-with-RGBW-Moving-Head-Light.pdf?v=7737787510528484498"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/uking-zq02623-moving-head-light"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Z1EHTa4MiLA"
+    ]
+  },
+  "physical": {
+    "dimensions": [31, 31, 23],
+    "weight": 3.35,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Dimmer General": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Six Arm Vajra kaleidoscope + light belt",
+      "channels": [
+        "Dimmer General"
+      ]
+    }
+  ]
+}
