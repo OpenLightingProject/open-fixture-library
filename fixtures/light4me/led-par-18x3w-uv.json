@@ -16,6 +16,9 @@
     "dimensions": [175, 175, 100],
     "weight": 0.8,
     "power": 55,
+    "powerConnectors": {
+      "Hardwired": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "18x3W UV LED"

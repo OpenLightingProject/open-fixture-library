@@ -16,22 +16,12 @@ Vue.use(VueForm, {
       return range === null || (range[0] !== null && range[1] !== null);
     },
     'valid-range'(range) {
-      if (range === null) {
-        // allowed range
-        return true;
-      }
-
-      if (range[0] === null || range[1] === null) {
-        // let complete-range validator handle this
-        return true;
-      }
-
-      if (Number.isNaN(range[0]) || Number.isNaN(range[1])) {
-        // let number validator handle this
-        return true;
-      }
-
-      return range[0] <= range[1];
+      return (
+        range === null // allowed range
+        || range[0] === null || range[1] === null // let complete-range validator handle this
+        || Number.isNaN(range[0]) || Number.isNaN(range[1]) // let number validator handle this
+        || range[0] <= range[1]
+      );
     },
     'categories-not-empty'(categories) {
       return categories.length > 0;
@@ -46,20 +36,12 @@ Vue.use(VueForm, {
       return !/\bmode\b/i.test(value);
     },
     'no-fine-channel-name'(value) {
-      if (/\bfine\b|\d+[\s_-]*bit/i.test(value)) {
-        return false;
-      }
-
-      return !/\bLSB\b|\bMSB\b/.test(value);
+      return !/\bfine\b|\d+[\s_-]*bit/i.test(value) && !/\bLSB\b|\bMSB\b/.test(value);
     },
     'entity-complete'(value, attributeValue, vnode) {
       const component = vnode.componentInstance;
 
-      if (component.hasNumber) {
-        return component.selectedNumber !== '' && component.selectedNumber !== null;
-      }
-
-      return true;
+      return !component.hasNumber || (component.selectedNumber !== '' && component.selectedNumber !== null);
     },
     'entities-have-same-units'(value, attributeValue, vnode) {
       return vnode.componentInstance.hasSameUnit;

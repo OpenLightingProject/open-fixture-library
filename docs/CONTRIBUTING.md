@@ -6,6 +6,10 @@ We believe in the power of open source development and want to encourage everyon
 
 Please keep being friendly and don't troll. See our [Code of Conduct](CODE_OF_CONDUCT.md) for more information on this.
 
+## AI Policy
+
+We welcome the thoughtful use of AI tools in this repository; however, contributions **must** be backed by a human. Please read the ["Human Voice" AI contribution policy](https://ai-policy.dev/policies/human-voice/) at [`../AI_POLICY.md`](../AI_POLICY.md).
+
 ## Issues
 
 You have an idea about a new feature or you spotted a mistake? Feel free to create an [issue](https://github.com/OpenLightingProject/open-fixture-library/issues) in which you describe the problem / the feature requirements. Please try to find similar issues first though, and add your information there to keep it organized.

@@ -202,7 +202,7 @@
           "comment": "Dimmer mode",
           "switchChannels": {
             "Strobe / Speed / Sensitivity": "Strobe",
-            "Color Macros / Programs": "Unused"
+            "Color Macros / Programs": null
           }
         },
         {
@@ -542,11 +542,6 @@
           "soundControlled": true
         }
       ]
-    },
-    "Unused": {
-      "capability": {
-        "type": "NoFunction"
-      }
     }
   },
   "modes": [

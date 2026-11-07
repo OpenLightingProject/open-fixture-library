@@ -67,11 +67,7 @@ try {
       }
 
       const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
-      if (pluginCompare !== 0) {
-        return pluginCompare;
-      }
-
-      return a.testKey.localeCompare(b.testKey);
+      return pluginCompare === 0 ? a.testKey.localeCompare(b.testKey) : pluginCompare;
     });
 
   if (tasks.length === 0) {
@@ -242,7 +238,7 @@ async function getTaskPromise(task) {
   }
   catch (error) {
     emoji = '❗';
-    detailListItems.push(`Unable to export fixture: ${error.message}`);
+    detailListItems.push(`Unable to export fixture with ${task.pluginKey} plugin: ${error.message}`);
     isTestErrored = true;
   }
 

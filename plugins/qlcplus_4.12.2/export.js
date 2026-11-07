@@ -292,12 +292,14 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
   }
 
   const goboResource = await exportHelpers.getGoboResource(capability);
-  if (goboResource) {
-    xmlCapability.attribute('Res', goboResource);
+  if (!goboResource) {
+    return;
+  }
 
-    if (goboResource.startsWith('ofl/')) {
-      customGobos[goboResource] = capability.wheelSlot[0].resource;
-    }
+  xmlCapability.attribute('Res', goboResource);
+
+  if (goboResource.startsWith('ofl/')) {
+    customGobos[goboResource] = capability.wheelSlot[0].resource;
   }
 }
 
@@ -306,7 +308,7 @@ async function addCapabilityLegacyAttributes(xmlCapability, capability, customGo
  * @param {Capability} capability - The OFL capability object.
  * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
-function addCapabilityAliases(xmlCapability, capability) {
+function addCapabilityAliases(xmlCapability, capability) { // eslint-disable-line unicorn/consistent-boolean-name -- returning a boolean is not the primary purpose
   const fixture = capability._channel.fixture;
 
   let isAliasAdded = false;
@@ -341,16 +343,16 @@ function addCapabilityAliases(xmlCapability, capability) {
 /**
  * @param {object} xml - The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode - The OFL mode object.
- * @param {boolean} createPhysical - Whether to add a Physical XML element to the mode.
+ * @param {boolean} shouldCreatePhysical - Whether to add a Physical XML element to the mode.
  */
-function addMode(xml, mode, createPhysical) {
+function addMode(xml, mode, shouldCreatePhysical) {
   const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name,
     },
   });
 
-  if (createPhysical) {
+  if (shouldCreatePhysical) {
     addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, mode);
   }
 
@@ -486,11 +488,7 @@ function getPanTiltMax(panOrTilt, channels) {
 
   if (panTiltMax === -Infinity) {
     const hasContinuousCapability = capabilities.some((capability) => capability.type === `${panOrTilt}Continuous`);
-    if (hasContinuousCapability) {
-      return 9999;
-    }
-
-    return 0;
+    return hasContinuousCapability ? 9999 : 0;
   }
 
   return Math.round(panTiltMax);
@@ -509,7 +507,7 @@ function addHeads(xmlMode, mode) {
   if (hasMatrixChannels) {
     const pixelKeys = mode.fixture.matrix.getPixelKeysByOrder('X', 'Y', 'Z');
     for (const pixelKey of pixelKeys) {
-      const channels = mode.channels.filter((channel) => controlsPixelKey(channel, pixelKey));
+      const channels = mode.channels.filter((channel) => doesChannelControlPixelKey(channel, pixelKey));
       const xmlHead = xmlMode.element('Head');
 
       for (const channel of channels) {
@@ -525,17 +523,15 @@ function addHeads(xmlMode, mode) {
    * @param {string} pixelKey - The pixel to check for.
    * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
-  function controlsPixelKey(channel, pixelKey) {
+  function doesChannelControlPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
       channel = channel.defaultChannel;
     }
 
     if (channel.pixelKey !== null) {
-      if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
-        return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
-      }
-
-      return channel.pixelKey === pixelKey;
+      return mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)
+        ? mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey)
+        : channel.pixelKey === pixelKey;
     }
 
     return false;
@@ -566,11 +562,9 @@ function getFixtureType(fixture) {
    * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */
   function isBeamBar() {
-    if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
-      return true;
-    }
-
-    return fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
+    return !fixture.physical
+      || !fixture.physical.matrixPixelsSpacing
+      || fixture.physical.matrixPixelsSpacing.some((spacing) => spacing !== 0);
   }
 }
 

@@ -46,11 +46,7 @@ export default {
   },
   computed: {
     errorMessage() {
-      if (this.error.response && this.error.response.data && this.error.response.data.error) {
-        return this.error.response.data.error;
-      }
-
-      return this.error.message;
+      return this.error.response?.data?.error ?? this.error.message;
     },
   },
 };

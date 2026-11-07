@@ -36,11 +36,7 @@ export const exportHelpers = {
           (alias) => qlcplusGoboAliases[alias] === resource.key,
         );
 
-        if (qlcplusGoboAlias) {
-          return qlcplusGoboAlias;
-        }
-
-        return `ofl/${resource.key}.${resource.imageExtension}`;
+        return qlcplusGoboAlias ?? `ofl/${resource.key}.${resource.imageExtension}`;
       }
     }
 
@@ -100,11 +96,7 @@ export const importHelpers = {
       return /wheel/i.test(channelName) ? 'WheelRotation' : 'WheelSlotRotation';
     }
 
-    if (channelType === 'Prism') {
-      return 'PrismRotation';
-    }
-
-    return 'Rotation';
+    return channelType === 'Prism' ? 'PrismRotation' : 'Rotation';
   },
 
   getRotationSpeedCap: (capabilityData, speedStart = '', speedEnd = '') => {
@@ -136,11 +128,7 @@ export const importHelpers = {
       return 'PanTiltSpeed';
     }
 
-    if (channelType === 'Effect' || /program|effect/i.test(channelName)) {
-      return 'EffectSpeed';
-    }
-
-    return 'Speed';
+    return channelType === 'Effect' || /program|effect/i.test(channelName) ? 'EffectSpeed' : 'Speed';
   },
 
   getBeamAngleCap({ channelName, channelType }, isAscending) {
@@ -253,11 +241,12 @@ const channelPresets = {
       const channel = capability._channel;
       const matrix = channel.fixture.matrix;
 
-      if (matrix === null || !channelPresets.IntensityDimmer.isApplicable(capability)) {
-        return false;
-      }
-
-      return channel.pixelKey === null || matrix.pixelGroups[channel.pixelKey] === matrix.pixelKeys;
+      return matrix !== null
+        && channelPresets.IntensityDimmer.isApplicable(capability)
+        && (
+          channel.pixelKey === null
+          || matrix.pixelGroups[channel.pixelKey] === matrix.pixelKeys
+        );
     },
     importCapability: () => ({ type: 'Intensity' }),
   },
@@ -564,13 +553,11 @@ const channelPresets = {
  * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 export function getChannelPreset(channel) {
-  if (channel.capabilities.length > 1) {
-    return null;
-  }
-
-  return Object.keys(channelPresets).find(
-    (preset) => channelPresets[preset].isApplicable(channel.capabilities[0]),
-  ) || null;
+  return channel.capabilities.length > 1
+    ? null
+    : Object.keys(channelPresets).find(
+      (preset) => channelPresets[preset].isApplicable(channel.capabilities[0]),
+    ) || null;
 }
 
 /**

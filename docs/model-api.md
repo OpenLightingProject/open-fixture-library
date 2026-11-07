@@ -67,9 +67,15 @@ Currently used to create matrix channels.</p>
 <dt><a href="#Resolution">Resolution</a> : <code>number</code></dt>
 <dd><p>1 for 8bit, 2 for 16bit, ...</p>
 </dd>
-<dt><a href="#TriggerCapability">TriggerCapability</a> : <code>object</code></dt>
-<dd></dd>
+<dt><a href="#ModeChannelKey">ModeChannelKey</a> : <code>string</code> | <code>null</code></dt>
+<dd><p>A mode channel key, or null for an unused channel.</p>
+</dd>
+<dt><a href="#MatrixChannelInsert">MatrixChannelInsert</a> : <code>object</code></dt>
+<dd><p>A matrix channel insert block from a mode definition.</p>
+</dd>
 <dt><a href="#SwitchingChannelBehavior">SwitchingChannelBehavior</a> : <code>&#x27;keyOnly&#x27;</code> | <code>&#x27;defaultOnly&#x27;</code> | <code>&#x27;switchedOnly&#x27;</code> | <code>&#x27;all&#x27;</code></dt>
+<dd></dd>
+<dt><a href="#TriggerCapability">TriggerCapability</a> : <code>object</code></dt>
 <dd></dd>
 </dl>
 
@@ -1004,6 +1010,7 @@ A physical DMX device.
     * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.nullSwitchingChannelAliases](#Fixture+nullSwitchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
     * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
     * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.allChannels](#Fixture+allChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
@@ -1013,6 +1020,7 @@ A physical DMX device.
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;string&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getNullChannelForSwitchingAlias(alias)](#Fixture+getNullChannelForSwitchingAlias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
@@ -1220,6 +1228,11 @@ Template channels are used to automatically generate channels.
 ### fixture.nullChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>Array.&lt;string&gt;</code> - All null channels' keys.  
+<a name="Fixture+nullSwitchingChannelAliases"></a>
+
+### fixture.nullSwitchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Array.&lt;string&gt;</code> - Switching channel aliases that switch to null, ordered by appearance.  
 <a name="Fixture+nullChannels"></a>
 
 ### fixture.nullChannels ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
@@ -1281,6 +1294,16 @@ Searches the template channel with the given key. Fine and switching template ch
 | Param | Type | Description |
 | --- | --- | --- |
 | channelKey | <code>string</code> | The template channel's key |
+
+<a name="Fixture+getNullChannelForSwitchingAlias"></a>
+
+### fixture.getNullChannelForSwitchingAlias(alias) ⇒ [<code>NullChannel</code>](#NullChannel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>NullChannel</code>](#NullChannel) \| <code>null</code> - The null channel for the alias, or null if it does not switch to null.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| alias | <code>string</code> | The switching channel alias. |
 
 <a name="Fixture+getChannelByKey"></a>
 
@@ -1576,10 +1599,10 @@ A fixture's configuration that enables a fixed set of channels and channel order
     * [.rdmPersonalityIndex](#Mode+rdmPersonalityIndex) ⇒ <code>number</code> \| <code>null</code>
     * [.physicalOverride](#Mode+physicalOverride) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
     * [.physical](#Mode+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
-    * [.channelKeys](#Mode+channelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.channelKeys](#Mode+channelKeys) ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey)
     * [.nullChannelCount](#Mode+nullChannelCount) ⇒ <code>number</code>
     * [.channels](#Mode+channels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
-    * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ <code>Array.&lt;string&gt;</code> ℗
+    * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) ℗
     * [._getRepeatForPixelKeys(repeatFor)](#Mode+_getRepeatForPixelKeys) ⇒ <code>Array.&lt;string&gt;</code> ℗
     * [.getChannelIndex(channelKey, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>number</code>
 
@@ -1636,9 +1659,9 @@ Creates a new Mode instance
 **Returns**: [<code>Physical</code>](#Physical) \| <code>null</code> - Fixture's physical with mode's physical override (if present) applied on. Null if neither fixture nor mode define physical data.  
 <a name="Mode+channelKeys"></a>
 
-### mode.channelKeys ⇒ <code>Array.&lt;string&gt;</code>
+### mode.channelKeys ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey)
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: <code>Array.&lt;string&gt;</code> - The mode's channel keys. The count and position equals to actual DMX channel count and position.  
+**Returns**: [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) - The mode's channel keys. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+nullChannelCount"></a>
 
 ### mode.nullChannelCount ⇒ <code>number</code>
@@ -1651,16 +1674,16 @@ Creates a new Mode instance
 **Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The mode's channels. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+_getMatrixChannelKeysFromInsertBlock"></a>
 
-### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ <code>Array.&lt;string&gt;</code> ℗
+### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) ℗
 Resolves the matrix channel insert block into a list of channel keys
 
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
-**Returns**: <code>Array.&lt;string&gt;</code> - The resolved channel keys  
+**Returns**: [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) - The resolved channel keys  
 **Access**: private  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| channelInsert | <code>object</code> | The JSON channel insert block |
+| channelInsert | [<code>MatrixChannelInsert</code>](#MatrixChannelInsert) | The JSON channel insert block |
 
 <a name="Mode+_getRepeatForPixelKeys"></a>
 
@@ -1695,7 +1718,7 @@ Dummy channel used to represent `null` in a mode's channel list.
 **Extends**: [<code>CoarseChannel</code>](#CoarseChannel)  
 
 * [NullChannel](#NullChannel) ⇐ [<code>CoarseChannel</code>](#CoarseChannel)
-    * [new NullChannel(fixture)](#new_NullChannel_new)
+    * [new NullChannel(fixture, number)](#new_NullChannel_new)
     * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>object</code>
     * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#CoarseChannel+name) ⇒ <code>string</code>
@@ -1731,14 +1754,15 @@ Dummy channel used to represent `null` in a mode's channel list.
 
 <a name="new_NullChannel_new"></a>
 
-### new NullChannel(fixture)
+### new NullChannel(fixture, number)
 Creates a new NullChannel instance by creating a Channel object with NoFunction channel data.
-Uses a unique uuid as channel key.
+Uses a numbered, unique key while always displaying the name "No Function".
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | fixture | [<code>Readonly.&lt;Fixture&gt;</code>](#Fixture) | The fixture this channel is associated to. |
+| number | <code>number</code> | The channel's number, used to make the key unique. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
@@ -2322,7 +2346,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
 
 * [SwitchingChannel](#SwitchingChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new SwitchingChannel(alias, triggerChannel)](#new_SwitchingChannel_new)
-    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+    * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
     * [.fixture](#SwitchingChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
     * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>Record.&lt;string, Array.&lt;Range&gt;&gt;</code>
@@ -2346,13 +2370,13 @@ Creates a new SwitchingChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | alias | <code>string</code> | The unique switching channel alias as defined in the trigger channel's `switchChannels` properties. |
-| triggerChannel | [<code>Readonly.&lt;AbstractChannel&gt;</code>](#AbstractChannel) | The channel whose DMX value this channel depends on. |
+| triggerChannel | [<code>Readonly.&lt;CoarseChannel&gt;</code>](#CoarseChannel) | The channel whose DMX value this channel depends on. |
 
 <a name="SwitchingChannel+triggerChannel"></a>
 
-### switchingChannel.triggerChannel ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
+### switchingChannel.triggerChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>AbstractChannel</code>](#AbstractChannel) - The channel whose DMX value this switching channel depends on.  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The channel whose DMX value this switching channel depends on.  
 <a name="SwitchingChannel+fixture"></a>
 
 ### switchingChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -2686,6 +2710,30 @@ Creates a new WheelSlot instance.
 1 for 8bit, 2 for 16bit, ...
 
 **Kind**: global typedef  
+<a name="ModeChannelKey"></a>
+
+## ModeChannelKey : <code>string</code> \| <code>null</code>
+A mode channel key, or null for an unused channel.
+
+**Kind**: global typedef  
+<a name="MatrixChannelInsert"></a>
+
+## MatrixChannelInsert : <code>object</code>
+A matrix channel insert block from a mode definition.
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| repeatFor | <code>string</code> \| <code>Array.&lt;string&gt;</code> | Pixel or pixel group keys to repeat the channels for. |
+| channelOrder | <code>&#x27;perPixel&#x27;</code> \| <code>&#x27;perChannel&#x27;</code> | The order in which to insert channels. |
+| templateChannels | [<code>Array.&lt;ModeChannelKey&gt;</code>](#ModeChannelKey) | Template channel keys or null channels to insert. |
+
+<a name="SwitchingChannelBehavior"></a>
+
+## SwitchingChannelBehavior : <code>&#x27;keyOnly&#x27;</code> \| <code>&#x27;defaultOnly&#x27;</code> \| <code>&#x27;switchedOnly&#x27;</code> \| <code>&#x27;all&#x27;</code>
+**Kind**: global typedef  
 <a name="TriggerCapability"></a>
 
 ## TriggerCapability : <code>object</code>
@@ -2697,7 +2745,3 @@ Creates a new WheelSlot instance.
 | dmxRange | [<code>Range</code>](#Range) | The DMX range that triggers the switching channel. |
 | switchTo | <code>string</code> | The channel to switch to in the given DMX range. |
 
-<a name="SwitchingChannelBehavior"></a>
-
-## SwitchingChannelBehavior : <code>&#x27;keyOnly&#x27;</code> \| <code>&#x27;defaultOnly&#x27;</code> \| <code>&#x27;switchedOnly&#x27;</code> \| <code>&#x27;all&#x27;</code>
-**Kind**: global typedef  

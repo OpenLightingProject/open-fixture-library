@@ -154,12 +154,7 @@ export default {
           this.update(newUnit);
         }
         else if (this.units[newUnit].unitString === '') {
-          if (this.selectedNumber === '') {
-            this.update('[no unit]');
-          }
-          else {
-            this.update(Number.parseFloat(this.selectedNumber));
-          }
+          this.update(this.selectedNumber === '' ? '[no unit]' : Number.parseFloat(this.selectedNumber));
           this.$emit('unit-selected', '[no unit]');
         }
         else {
@@ -187,12 +182,7 @@ export default {
         }
 
         if (this.units[this.selectedUnit].unitString === '') {
-          if (newNumber === '') {
-            this.update('[no unit]');
-          }
-          else {
-            this.update(Number.parseFloat(newNumber));
-          }
+          this.update(newNumber === '' ? '[no unit]' : Number.parseFloat(newNumber));
         }
         else {
           this.update(newNumber + this.units[this.selectedUnit].unitString);
@@ -212,11 +202,8 @@ export default {
 
       const otherFieldSelectedUnit = getSelectedUnit(this.associatedEntity, this.enumValues, this.unitNames, this.units);
 
-      if (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues)) {
-        return true;
-      }
-
-      return this.selectedUnit === otherFieldSelectedUnit;
+      return (!this.hasNumber && !hasNumber(otherFieldSelectedUnit, this.enumValues))
+        || this.selectedUnit === otherFieldSelectedUnit;
     },
   },
   mounted() {
@@ -284,11 +271,7 @@ function parseUnitFromPattern(pattern) {
  * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
-  if (unitString === '') {
-    return 'number';
-  }
-
-  return unitString.replace('^2', '²').replace('^3', '³');
+  return unitString === '' ? 'number' : unitString.replace('^2', '²').replace('^3', '³');
 }
 
 /**

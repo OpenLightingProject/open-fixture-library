@@ -3,9 +3,9 @@
   "name": "G-2011 / NOVA",
   "categories": ["Laser"],
   "meta": {
-    "authors": ["Nils Van Zuijlen"],
+    "authors": ["Nils Van Zuijlen", "Ken Harris"],
     "createDate": "2018-12-08",
-    "lastModifyDate": "2018-12-08"
+    "lastModifyDate": "2026-10-29"
   },
   "links": {
     "manual": [
@@ -397,7 +397,6 @@
       }
     },
     "Effect Speed": {
-      "precedence": "HTP",
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
@@ -405,7 +404,6 @@
       }
     },
     "Rotation Speed": {
-      "precedence": "HTP",
       "capability": {
         "type": "Rotation",
         "speedStart": "fast CW",

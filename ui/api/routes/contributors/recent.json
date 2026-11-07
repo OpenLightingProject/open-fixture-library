@@ -1,0 +1,54 @@
+{
+  "get": {
+    "operationId": "getRecentContributors",
+    "description": "Returns the five most recent contributors.",
+    "tags": ["contributors"],
+    "responses": {
+      "200": {
+        "description": "Recent contributors returned",
+        "headers": {
+          "Content-Type": {
+            "$ref": "../../openapi.json#/components/headers/Content-Type"
+          },
+          "Access-Control-Allow-Origin": {
+            "$ref": "../../openapi.json#/components/headers/Access-Control-Allow-Origin"
+          },
+          "Vary": {
+            "$ref": "../../openapi.json#/components/headers/Vary"
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "fixtureCount": {
+                    "type": "integer"
+                  },
+                  "latestFixtureKey": {
+                    "type": "string"
+                  },
+                  "latestFixtureName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "fixtureCount",
+                  "latestFixtureKey",
+                  "latestFixtureName"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
