@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AF-40 DMX",
+  "categories": ["Smoke", "Hazer"],
+  "meta": {
+    "authors": ["DD_DE"],
+    "createDate": "2026-09-29",
+    "lastModifyDate": "2026-09-29"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/307680_c_307680_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_af_40_dmx_mini_fog_machine.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i2170p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [360, 210, 240],
+    "weight": 2.1,
+    "power": 400,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "capability": {
+        "type": "FogOutput",
+        "fogOutputStart": "0%",
+        "fogOutputEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Fog Output"
+      ]
+    }
+  ]
+}
