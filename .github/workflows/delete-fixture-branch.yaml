@@ -17,6 +17,12 @@ jobs:
       contents: write
     steps:
       - name: Delete branch
-        run: gh api repos/${{ github.repository }}/git/refs/heads/${{ github.head_ref }} -X DELETE
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/github-script@v9.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `heads/${context.payload.pull_request.head.ref}`,
+            })
