@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evoke 5C",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Adam Cook"],
+    "createDate": "2026-09-07",
+    "lastModifyDate": "2026-09-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.nanlux.com/service-productDetail?t=1788795229983&type=download-item&id=91#/en/Evoke-5C"
+    ],
+    "productPage": [
+      "https://www.nanlux.com/product-evoke-5c#/en"
+    ]
+  },
+  "physical": {
+    "dimensions": [56, 44, 45],
+    "weight": 0.16,
+    "power": 6,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1000K",
+        "colorTemperatureEnd": "20000K"
+      }
+    },
+    "Tint": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Neutral white"
+        },
+        {
+          "dmxRange": [10, 20],
+          "type": "Generic",
+          "comment": "Full Magenta"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Intensity",
+          "brightnessStart": "8%",
+          "brightnessEnd": "46%",
+          "comment": "-199 to -1 Green"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Intensity",
+          "brightnessStart": "57%",
+          "brightnessEnd": "95%",
+          "comment": "+1 to +199 Green"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full Green"
+        }
+      ]
+    },
+    "Crossfade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "CCT to RGBW"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "Random Fast 1-10Hz"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "Random Medium 0.5-1Hz"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "Random Slow 1-10Hz"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT & RGBW 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Tint",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    }
+  ]
+}
