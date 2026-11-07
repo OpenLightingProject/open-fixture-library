@@ -1,0 +1,603 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "25CH Animation Laser Effect",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Assistant", "TL"],
+    "createDate": "2026-10-06",
+    "lastModifyDate": "2026-10-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-06",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer (0 - 100%)"
+      }
+    },
+    "Model": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "Close"
+        },
+        {
+          "dmxRange": [5, 49],
+          "type": "Effect",
+          "effectName": "Auto (0<CH3<250: Pattern, CH3>=250: Loop Playback)"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Sound (0<CH3<250: Pattern, CH3>=250: Loop Playback)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Count down"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Effect",
+          "effectName": "Animation"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Geometric beam"
+        }
+      ]
+    },
+    "Gobo / Frame": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Effect",
+          "effectName": "Pattern select"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control or auto loop animation",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Automatic Playback Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Speed",
+          "comment": "Default speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Speed",
+          "comment": "Speed 0, forbidden",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Speed",
+          "comment": "Playback speed (5 = Slow, 255 = Fast)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "In Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "Fixed color"
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "ColorPreset",
+          "comment": "Color change (CH5 and CH7 pushed here, overall change via CH6)"
+        },
+        {
+          "dmxRange": [7, 9],
+          "type": "ColorPreset",
+          "comment": "Solid color (CH5 and CH7 pushed here, overall change via CH6)"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "ColorPreset",
+          "comment": "Color segment (detail in Table25)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "Discoloration 1"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "Discoloration 2"
+        }
+      ]
+    },
+    "Color Drawing": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Manually Fade Out"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Manually Fade In"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto Fade Out"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Auto Fade In"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Cycle auto fade in and out 1"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Cycle auto fade in and out 2"
+        }
+      ]
+    },
+    "Out Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "Fixed color"
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "ColorPreset",
+          "comment": "Color change (CH5 and CH7 pushed here, overall change via CH6)"
+        },
+        {
+          "dmxRange": [7, 9],
+          "type": "ColorPreset",
+          "comment": "Solid color (CH5 and CH7 pushed here, overall change via CH6)"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "ColorPreset",
+          "comment": "Color segment (detail in Table25)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "Solid color"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "Colour"
+        }
+      ]
+    },
+    "Move X": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "0% Middle pos"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Position (-100% to 100%, 127 = 0%)"
+        }
+      ]
+    },
+    "Auto Move X": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "Effect",
+          "effectName": "Front to end"
+        },
+        {
+          "dmxRange": [85, 169],
+          "type": "Effect",
+          "effectName": "End to front"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Effect",
+          "effectName": "End to end loop"
+        }
+      ]
+    },
+    "Move Y": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "0% Middle pos"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "helpWanted": "Can you provide exact angles?",
+          "comment": "Position (-100% to 100%, 127 = 0%)"
+        }
+      ]
+    },
+    "Auto Move Y": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "Effect",
+          "effectName": "Front to end"
+        },
+        {
+          "dmxRange": [85, 169],
+          "type": "Effect",
+          "effectName": "End to front"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Effect",
+          "effectName": "End to end loop"
+        }
+      ]
+    },
+    "Scale": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Size (0 = 100%, 127 = 1%)"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "Generic",
+          "comment": "Zoom bigger"
+        },
+        {
+          "dmxRange": [170, 211],
+          "type": "Generic",
+          "comment": "Zoom small"
+        },
+        {
+          "dmxRange": [212, 255],
+          "type": "Generic",
+          "comment": "Zoom Big-small loop"
+        }
+      ]
+    },
+    "Center Rotate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Rotate (1 = 5 deg, 128 = 720 deg)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Reverse rotation"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Forward rotation"
+        }
+      ]
+    },
+    "X Zoom Twist": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Manual zoom in X direction"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Auto zoom in X direction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Twist in X direction"
+        }
+      ]
+    },
+    "Y Zoom Twist": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Manual zoom in Y direction"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Auto zoom in Y direction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Twist in Y direction"
+        }
+      ]
+    },
+    "X Wave": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Manually adjust the amplitude"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "X forward wave"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "X reverse wave"
+        }
+      ]
+    },
+    "Y Wave": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Manually adjust the amplitude"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Y forward wave"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Y reverse wave"
+        }
+      ]
+    },
+    "Wave Ref Period and Amplitude": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "1 period wave"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "2 period wave"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "3 period wave"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "4 period wave"
+        }
+      ]
+    },
+    "Show Point Line&surface": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Default display"
+        },
+        {
+          "dmxRange": [10, 129],
+          "type": "Effect",
+          "effectName": "Number of points is 30 to 4 (Lower value = higher brightness)"
+        },
+        {
+          "dmxRange": [130, 191],
+          "type": "Effect",
+          "effectName": "Point number: 16"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Point number: 8"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Flash by frequency",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Array": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "No array"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Effect",
+          "effectName": "1 graph 8 position"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "2 graphs 4 position"
+        },
+        {
+          "dmxRange": [128, 175],
+          "type": "Effect",
+          "effectName": "3 graphs 3 position"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "Effect",
+          "effectName": "4 graphs 2 position"
+        }
+      ]
+    },
+    "Border": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Have subdivide with interpolate"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Real time"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Have subdivide with interpolate"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Real time"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red intensity (0 = 100%, 255 = 0%)"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green intensity (0 = 100%, 255 = 0%)"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue intensity (0 = 100%, 255 = 0%)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "25-channel",
+      "shortName": "25ch",
+      "channels": [
+        "Dimmer",
+        "Model",
+        "Gobo / Frame",
+        "Automatic Playback Speed",
+        "In Color",
+        "Color Drawing",
+        "Out Color",
+        "Move X",
+        "Auto Move X",
+        "Move Y",
+        "Auto Move Y",
+        "Scale",
+        "Center Rotate",
+        "X Zoom Twist",
+        "Y Zoom Twist",
+        "X Wave",
+        "Y Wave",
+        "Wave Ref Period and Amplitude",
+        "Show Point Line&surface",
+        "Strobe",
+        "Array",
+        "Border",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
