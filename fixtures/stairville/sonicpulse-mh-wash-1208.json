@@ -1,0 +1,639 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SonicPulse MH Wash 1208",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["DD_DE"],
+    "createDate": "2026-09-29",
+    "lastModifyDate": "2026-09-29"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/589121_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_sonicpulse_mh_wash_1208.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i12220p8_yd59vq0a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [198, 271, 159],
+    "weight": 3.3,
+    "power": 82,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12 × RGBWW LED, 8 W each"
+    },
+    "lens": {
+      "degreesMinMax": [9, 9]
+    }
+  },
+  "availableChannels": {
+    "Rotation (pan)": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Inclination (tilt)": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Pan/tilt speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "Decreasing speed"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Linear strobe effect, increasing speed"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Random strobe effect, increasing speed"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Red intensity (0% to 100%), all LEDs"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Green intensity (0% to 100%), all LEDs"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Blue intensity (0% to 100%), all LEDs"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "White intensity (0% to 100%), all LEDs"
+      }
+    },
+    "Special functions if the value is transmitted for at least 5 seconds": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset if the value is transmitted for at least 5 seconds"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Automatic ventilation"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Fast ventilation"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Slow ventilation"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Ventilation off"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Linear proportional course (Linear)"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Quadratic curve with a flat profile at the beginning and a steep profile at the end (Square Law)"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Inverted square curve with a steep course at the beginning and a flat course at the end (inverse square law)"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Non-linear curve with a distinctive flat profile at the beginning and end (S-Curve)"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Steep gradient"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Flat course"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Normal rotation"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Inverted rotation"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Normal tilt"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Inverted tilt"
+        },
+        {
+          "dmxRange": [115, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Rotation (pan) 2": {
+      "name": "Rotation (pan)",
+      "fineChannelAliases": ["Rotation (pan) 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Inclination (tilt) 2": {
+      "name": "Inclination (tilt)",
+      "fineChannelAliases": ["Inclination (tilt) 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Colour settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [25, 31],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [32, 38],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [39, 45],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [46, 52],
+          "type": "ColorPreset",
+          "colors": ["#ff3200"]
+        },
+        {
+          "dmxRange": [53, 59],
+          "type": "ColorPreset",
+          "colors": ["#ff9600"]
+        },
+        {
+          "dmxRange": [60, 66],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [67, 73],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [74, 80],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [81, 87],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [88, 94],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [95, 101],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [102, 108],
+          "type": "ColorPreset",
+          "colors": ["#00ff32"]
+        },
+        {
+          "dmxRange": [109, 115],
+          "type": "ColorPreset",
+          "colors": ["#00ff96"]
+        },
+        {
+          "dmxRange": [116, 122],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [123, 129],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [130, 136],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [137, 143],
+          "type": "ColorPreset",
+          "colors": ["#0064ff"]
+        },
+        {
+          "dmxRange": [144, 150],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [151, 157],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [158, 164],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [165, 171],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [172, 178],
+          "type": "ColorPreset",
+          "colors": ["#a000ff"]
+        },
+        {
+          "dmxRange": [179, 185],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [186, 192],
+          "type": "ColorPreset",
+          "colors": ["#ff00af"]
+        },
+        {
+          "dmxRange": [193, 199],
+          "type": "ColorPreset",
+          "colors": ["#ff0064"]
+        },
+        {
+          "dmxRange": [200, 206],
+          "type": "ColorPreset",
+          "colors": ["#ff0064"]
+        },
+        {
+          "dmxRange": [207, 213],
+          "type": "ColorPreset",
+          "colors": ["#ff0019"]
+        },
+        {
+          "dmxRange": [214, 220],
+          "type": "ColorPreset",
+          "colors": ["#ff0019"]
+        },
+        {
+          "dmxRange": [221, 227],
+          "type": "ColorPreset",
+          "colors": ["#ff0019"]
+        },
+        {
+          "dmxRange": [228, 234],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "colorTemperature": "warm"
+        },
+        {
+          "dmxRange": [235, 241],
+          "type": "ColorPreset",
+          "colors": ["#4b4b00"]
+        },
+        {
+          "dmxRange": [242, 248],
+          "type": "ColorPreset",
+          "colors": ["#000064"]
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Colour change": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [18, 34],
+          "type": "Effect",
+          "effectName": "Colour shift 1"
+        },
+        {
+          "dmxRange": [35, 51],
+          "type": "Effect",
+          "effectName": "Colour shift 2"
+        },
+        {
+          "dmxRange": [52, 68],
+          "type": "Effect",
+          "effectName": "Colour shift 3"
+        },
+        {
+          "dmxRange": [69, 85],
+          "type": "Effect",
+          "effectName": "Colour shift 4"
+        },
+        {
+          "dmxRange": [86, 102],
+          "type": "Effect",
+          "effectName": "Colour shift 5"
+        },
+        {
+          "dmxRange": [103, 119],
+          "type": "Effect",
+          "effectName": "Colour shift 6"
+        },
+        {
+          "dmxRange": [120, 136],
+          "type": "Effect",
+          "effectName": "Colour shift 7"
+        },
+        {
+          "dmxRange": [137, 153],
+          "type": "Effect",
+          "effectName": "Colour gradient 1"
+        },
+        {
+          "dmxRange": [154, 170],
+          "type": "Effect",
+          "effectName": "Colour gradient 2"
+        },
+        {
+          "dmxRange": [171, 187],
+          "type": "Effect",
+          "effectName": "Colour gradient 3"
+        },
+        {
+          "dmxRange": [188, 204],
+          "type": "Effect",
+          "effectName": "Colour gradient 4"
+        },
+        {
+          "dmxRange": [205, 221],
+          "type": "Effect",
+          "effectName": "Colour gradient 5"
+        },
+        {
+          "dmxRange": [222, 238],
+          "type": "Effect",
+          "effectName": "Colour gradient 6"
+        },
+        {
+          "dmxRange": [239, 255],
+          "type": "Effect",
+          "effectName": "Colour gradient 7"
+        }
+      ]
+    },
+    "Colour effect": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red LED2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green LED2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue LED2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White LED2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red LED1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Red intensity (0% to 100%), all LEDs"
+      }
+    },
+    "Green LED1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Green intensity (0% to 100%), all LEDs"
+      }
+    },
+    "Blue LED1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Blue intensity (0% to 100%), all LEDs"
+      }
+    },
+    "White LED1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "White intensity (0% to 100%), all LEDs"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Rotation (pan)",
+        "Inclination (tilt)",
+        "Pan/tilt speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Special functions if the value is transmitted for at least 5 seconds"
+      ]
+    },
+    {
+      "name": "19-channel",
+      "shortName": "19ch",
+      "channels": [
+        "Rotation (pan) 2",
+        "Rotation (pan) 2 fine",
+        "Inclination (tilt) 2",
+        "Inclination (tilt) 2 fine",
+        "Pan/tilt speed",
+        "Dimmer",
+        "Strobe",
+        "Colour settings",
+        "Colour change",
+        "Colour effect",
+        "Red LED1",
+        "Green LED1",
+        "Blue LED1",
+        "White LED1",
+        "Red LED2",
+        "Green LED2",
+        "Blue LED2",
+        "White LED2",
+        "Special functions if the value is transmitted for at least 5 seconds"
+      ]
+    }
+  ]
+}
