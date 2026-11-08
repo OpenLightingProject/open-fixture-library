@@ -20,7 +20,7 @@ Link to those files in your review instead of copying their contents.
 
 Only new fixture definitions (`new-fixture` label). For code, plugins, or changes to existing fixtures, use the normal repo workflow instead.
 
-The user may name any `new-fixture` PR; review that PR. If they ask you to find candidates, issue [#2429](https://github.com/OpenLightingProject/open-fixture-library/issues/2429) links to filtered lists. Prioritize non-draft PRs: the website posts new fixture definitions as drafts, while manually submitted fixtures are usually marked ready for review. Then prefer PRs with passing CI and no review yet.
+The user may name any `new-fixture` PR; review that PR. If they ask you to find candidates, issue [#2429](https://github.com/OpenLightingProject/open-fixture-library/issues/2429) links to filtered lists. Prioritise non-draft PRs: the website posts new fixture definitions as drafts, while manually submitted fixtures are usually marked ready for review. Then prefer PRs with passing CI and no review yet.
 
 ## 1. Read the PR
 
@@ -99,7 +99,7 @@ Follow the four steps in `CONTRIBUTING.md#fixtures`. Focus on:
 
 - **Modes:** list every mode in the manual, including 1-channel and extended modes the author may have skipped. Compare names, counts, and channel order with `modes`.
 - **Channels and capabilities:** for each mode, compare every DMX range and capability type. Read the range from the manual; do not infer it. Check the generated capability names in the validator output for misleading types.
-- **Wheels:** compare slot count, order, names, colors, and gobo resources with the manual.
+- **Wheels:** compare slot count, order, names, colours, and gobo resources with the manual.
 - **Physical and metadata:** dimensions, weight, power, connector, lens, categories, authors, dates, and links.
 - **Common mistakes:** use `docs/common-mistakes.md` as the checklist rather than inventing rules.
 - **Patterns:** search existing fixtures for analogous capability types or wheel modelling (`rg`). If the manual is ambiguous, add `helpWanted` instead of guessing.
