@@ -1,0 +1,160 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TDC Sunrise",
+  "categories": ["Flower", "Effect", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Stijn"],
+    "createDate": "2026-11-08",
+    "lastModifyDate": "2026-11-08"
+  },
+  "comment": "LED disco effect with motorised mirror movement, six 1 W LEDs and built-in automatic and sound-controlled programs.",
+  "links": {
+    "manual": [
+      "https://www.bax-shop.nl/downloads/products/9000-0021-6269/ayra_tdc_sunrise_led_lighteffect_user_manual_edit.pdf"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/lichteffecten/ayra-tdc-sunrise-led-lichteffect"
+    ]
+  },
+  "physical": {
+    "dimensions": [190, 170, 170],
+    "weight": 0.55,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red / Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green / White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue / Pink": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed, slow to fast"
+        }
+      ]
+    },
+    "Motor": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Rotation",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Static motor positioning; normalized position range"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "0%",
+          "speedEnd": "100%",
+          "comment": "Back-and-forth motor movement, slow to fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 39],
+          "type": "Effect",
+          "effectName": "Red and yellow on"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "Effect",
+          "effectName": "Green and white on"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "Effect",
+          "effectName": "Blue and pink on"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "Effect",
+          "effectName": "Color mixing and color jump 1"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "Effect",
+          "effectName": "Color mixing and color jump 2"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "Effect",
+          "effectName": "Color fade"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "Effect",
+          "effectName": "Strobe color fade"
+        },
+        {
+          "dmxRange": [220, 249],
+          "type": "Effect",
+          "effectName": "Sound-controlled macro 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled macro 2",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Dimmer",
+        "Red / Yellow",
+        "Green / White",
+        "Blue / Pink",
+        "Strobe",
+        "Motor",
+        "Color Macros"
+      ]
+    }
+  ]
+}
