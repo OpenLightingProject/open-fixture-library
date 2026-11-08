@@ -1,0 +1,316 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02103 Wash Moving Head",
+  "shortName": "ZQ02103",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Noxiy"],
+    "createDate": "2026-05-17",
+    "lastModifyDate": "2026-05-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/cdn/shop/files/ZQ02103-19PCS-LEDs-Focus-Moving-Head-Light.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/products/36pcs-focusing-light-moving-head-light-stage-lighting-effect-dmx-control-for-dj-disco-nightclub-ktv-bar-theater-shopping-mall?"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 390, 200],
+    "weight": 7.8,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED Wash"
+    },
+    "lens": {
+      "name": "Wash",
+      "degreesMinMax": [10, 55]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 2": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 20],
+          "type": "Effect",
+          "effectName": "Color Effect 1"
+        },
+        {
+          "dmxRange": [21, 35],
+          "type": "Effect",
+          "effectName": "Color Effect 2"
+        },
+        {
+          "dmxRange": [36, 50],
+          "type": "Effect",
+          "effectName": "Color Effect 3"
+        },
+        {
+          "dmxRange": [51, 65],
+          "type": "Effect",
+          "effectName": "Color Effect 4"
+        },
+        {
+          "dmxRange": [66, 80],
+          "type": "Effect",
+          "effectName": "Color Effect 5"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "Effect",
+          "effectName": "Color Effect 6"
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "Effect",
+          "effectName": "Color Effect 7"
+        },
+        {
+          "dmxRange": [111, 125],
+          "type": "Effect",
+          "effectName": "Color Effect 8"
+        },
+        {
+          "dmxRange": [126, 140],
+          "type": "Effect",
+          "effectName": "Color Effect 9"
+        },
+        {
+          "dmxRange": [141, 155],
+          "type": "Effect",
+          "effectName": "Color Effect 10"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Effect",
+          "effectName": "Auto Mode",
+          "comment": "Self-Propelled Effect"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fixture Global Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "After 5s The fixture will reset"
+        }
+      ]
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2400K",
+        "colorTemperatureEnd": "8500K"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16CH",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Shutter",
+        "Focus",
+        "Macros",
+        "Effect Speed",
+        "Tilt fine",
+        "Pan fine",
+        "Fixture Global Reset",
+        "CTO"
+      ]
+    },
+    {
+      "name": "24CH",
+      "shortName": "24ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Shutter",
+        "Focus",
+        "Macros",
+        "Effect Speed",
+        "Pan fine",
+        "Tilt fine",
+        "Fixture Global Reset",
+        "CTO"
+      ]
+    }
+  ]
+}
