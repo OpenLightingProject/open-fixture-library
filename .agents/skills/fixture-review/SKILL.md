@@ -5,7 +5,7 @@ description: Use when reviewing a new fixture-definition pull request in OpenLig
 
 # Fixture Review
 
-Review a **new fixture definition** PR. This skill adds the agent workflow on top of the repo's own guidance; it does not replace it.
+Review a **new fixture definition** PR. This skill adds the agent workflow; the repo docs remain the source of truth.
 
 ## Read first
 
@@ -36,7 +36,7 @@ git fetch origin master
 git rev-list --count <headRefOid>..origin/master
 ```
 
-If `mergeStateStatus` is `BEHIND`, or the branch is many commits behind, include a review suggestion to rebase or merge `master`. A green CI on an old branch does not prove it still passes with current tests.
+If `mergeStateStatus` is `BEHIND`, or the branch is many commits behind, include a review suggestion to rebase or merge `master`. Green CI on an old branch can be stale.
 
 ## 2. Build the review workspace from master
 
@@ -93,7 +93,7 @@ A missing `fixtures/register.json` or a stale `.eslintcache` in a fresh worktree
 
 ## 5. Compare the manual with the JSON
 
-Follow the four steps in `CONTRIBUTING.md#fixtures`. These are the parts that catch the most issues:
+Follow the four steps in `CONTRIBUTING.md#fixtures`. Focus on:
 
 - **Modes:** list every mode in the manual, including 1-channel and extended modes the author may have skipped. Compare names, counts, and channel order with `modes`.
 - **Channels and capabilities:** for each mode, compare every DMX range and capability type. Read the range from the manual; do not infer it. Check the generated capability names in the validator output for misleading types.
@@ -102,7 +102,7 @@ Follow the four steps in `CONTRIBUTING.md#fixtures`. These are the parts that ca
 - **Common mistakes:** use `docs/common-mistakes.md` as the checklist rather than inventing rules.
 - **Patterns:** search existing fixtures for analogous capability types or wheel modelling (`rg`). If the manual is ambiguous, add `helpWanted` instead of guessing.
 
-Also check the high-yield items that are easy to miss:
+Also check:
 
 - Pan/Tilt `defaultValue` if the manual specifies a neutral value (often `127`).
 - `physical.power` and the other physical fields.
@@ -113,7 +113,14 @@ Do not trust the PR body's claim that a mode or range is undocumented. Verify it
 
 Record the exact evidence for each finding: file, line, manual page/range, and the expected value.
 
-## 6. Leave a pending review — never submit
+## 6. Write the review
+
+- Write in English, in plain language. Use the manual's and repo docs' terminology.
+- Be direct: what is wrong, where, the correct value, and the evidence.
+- Skip filler, praise padding, and hedging.
+- Prefer a `suggestion` block for every fix that can be expressed as a local replacement.
+
+## 7. Leave a pending review — never submit
 
 Create a **pending** GitHub review with inline comments and suggestion blocks. Do not call `submitPullRequestReview`, do not create a review with `event: REQUEST_CHANGES`, and do not use the REST `createReview` endpoint; those submit the review immediately.
 
@@ -148,7 +155,9 @@ gh api graphql -f query='query { repository(owner:"OpenLightingProject", name:"o
 }
 ```
 
-For a multi-line suggestion, add `"startLine"` and `"startSide": "RIGHT"`. Use a suggestion block only when the exact replacement is known; otherwise use a code block or prose.
+For a multi-line suggestion, add `"startLine"` and `"startSide": "RIGHT"`.
+
+Use a `suggestion` block whenever the exact replacement is local; contributors can apply it with one click. If the fix needs a decision or spans non-contiguous lines, use a code block or prose.
 
 3. Create the pending review and capture the URL:
 
@@ -159,7 +168,7 @@ gh api graphql --input review.json \
 
 The result must be `"state": "PENDING"`. Give the user the URL and say the review is ready for them to check, edit, and submit manually.
 
-## 7. Clean up
+## 8. Clean up
 
 ```sh
 cd -
