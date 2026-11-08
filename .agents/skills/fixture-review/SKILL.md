@@ -67,6 +67,8 @@ Find at least the three links `CONTRIBUTING.md#fixtures` asks for, preferring En
 - the official manufacturer product page,
 - a YouTube or Vimeo video.
 
+If the PR has no manual link, search for one that matches the exact model (manufacturer product page, dealer sites, archived PDFs). Use it for the review and add a review comment suggesting the link. If no reliable manual exists, say so: review against the product page/spec sheet and flag the missing manual.
+
 For the manual, download the PDF and extract the DMX table as text:
 
 ```sh
@@ -110,6 +112,8 @@ Also check:
 - Short-name format warnings and suggested categories from the validator.
 
 Do not trust the PR body's claim that a mode or range is undocumented. Verify it in the manual yourself.
+
+If no manual is available, do not invent DMX values. Mark unverifiable parts with `helpWanted` and ask the contributor for the manual.
 
 Record the exact evidence for each finding: file, line, manual page/range, and the expected value.
 
