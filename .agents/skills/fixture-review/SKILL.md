@@ -20,7 +20,7 @@ Link to those files in your review instead of copying their contents.
 
 Only new fixture definitions (`new-fixture` label). For code, plugins, or changes to existing fixtures, use the normal repo workflow instead.
 
-The user may name any `new-fixture` PR; review that PR. If they ask you to find candidates, issue [#2429](https://github.com/OpenLightingProject/open-fixture-library/issues/2429) links to filtered lists. Prefer PRs with passing CI and no review yet.
+The user may name any `new-fixture` PR; review that PR. If they ask you to find candidates, issue [#2429](https://github.com/OpenLightingProject/open-fixture-library/issues/2429) links to filtered lists. Prioritize non-draft PRs: the website posts new fixture definitions as drafts, while manually submitted fixtures are usually marked ready for review. Then prefer PRs with passing CI and no review yet.
 
 ## 1. Read the PR
 
