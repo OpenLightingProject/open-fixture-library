@@ -24,6 +24,8 @@ The user may name any `new-fixture` PR; review that PR. If they ask you to find 
 
 ## 1. Read the PR
 
+Read the metadata first. Use a temporary worktree for the review so you do not clobber the user's working tree.
+
 ```sh
 gh pr view <N> --repo OpenLightingProject/open-fixture-library \
   --json number,title,author,headRefOid,baseRefName,mergeStateStatus,isDraft,files
