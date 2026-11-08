@@ -16,6 +16,17 @@ Review a **new fixture definition** PR. This skill adds the agent workflow; the 
 
 Link to those files in your review instead of copying their contents.
 
+## Before you start
+
+`gh` must be installed and authenticated with an account that can review PRs in `OpenLightingProject/open-fixture-library`:
+
+```sh
+gh --version
+gh auth status
+```
+
+If either check fails, stop and ask the user to set it up (`gh auth login` or grant access). Without review access you can read the PR but cannot create the pending review.
+
 ## Scope
 
 Only new fixture definitions (`new-fixture` label). For code, plugins, or changes to existing fixtures, use the normal repo workflow instead.
