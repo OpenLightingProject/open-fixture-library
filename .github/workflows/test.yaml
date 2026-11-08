@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Run built-files-committed test
+        run: npm run test:built-files-committed
       - parallel:
           - name: Run ESLint
             run: npm run lint:eslint
@@ -34,8 +36,6 @@ jobs:
             run: npm run test:fixtures-valid
           - name: Run http-status test
             run: npm run test:http-status
-          - name: Run built-files-committed test
-            run: npm run test:built-files-committed
   status:
     name: Status
     runs-on: ubuntu-latest
