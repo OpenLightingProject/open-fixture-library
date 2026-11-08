@@ -13,12 +13,18 @@
     ],
     "productPage": [
       "https://www.chauvetdj.com/products/eve-p-100-ww/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ff6zGjdt2Tc"
     ]
   },
   "physical": {
     "dimensions": [245, 305, 220],
     "weight": 3.5,
     "power": 122,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "100WCOB LED",

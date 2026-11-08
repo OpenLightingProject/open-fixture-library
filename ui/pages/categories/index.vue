@@ -17,27 +17,25 @@
 </template>
 
 <script>
-import register from '../../../fixtures/register.json';
-
 export default {
-  data() {
-    return {
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)).map(
-        category => ({
-          name: category,
-          fixtureCount: register.categories[category].length,
-        }),
-      ),
-    };
+  async asyncData({ $axios, error }) {
+    let categories;
+    try {
+      categories = await $axios.$get('/api/v1/categories');
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { categories };
   },
   head() {
-    const title = `Categories`;
+    const title = 'Categories';
 
     return {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],

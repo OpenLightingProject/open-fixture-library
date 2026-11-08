@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "G-Flame",
+  "shortName": "g-flame",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["William Tessier"],
+    "createDate": "2023-10-15",
+    "lastModifyDate": "2023-10-15"
+  },
+  "comment": "Very versatile flame effect device due to various control inputs: DMX, 12-24V, ext. contact, radio and RS485\n\nNote that this fixture listens to two channels that don't need to be adjacent, so they are represented by different modes here.",
+  "links": {
+    "manual": [
+      "https://www.firing-system.com/wp-content/uploads/User-Manual-G-Flame-V2.43-036.pdf"
+    ],
+    "productPage": [
+      "https://www.firing-system.com/project/g-flame/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8wesqf4VVOQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 300, 350],
+    "weight": 10.5,
+    "DMXconnector": "5-pin XLR IP65"
+  },
+  "availableChannels": {
+    "Flame": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 228],
+          "type": "NoFunction",
+          "comment": "Flame Off"
+        },
+        {
+          "dmxRange": [229, 255],
+          "type": "Effect",
+          "effectName": "Flame On",
+          "comment": "when Safety is off"
+        }
+      ]
+    },
+    "Safety": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Maintenance",
+          "comment": "Safety ON"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Maintenance",
+          "comment": "Safety OFF"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Flame Channel",
+      "shortName": "flame",
+      "channels": [
+        "Flame"
+      ]
+    },
+    {
+      "name": "Safety Channel",
+      "shortName": "safety",
+      "channels": [
+        "Safety"
+      ]
+    }
+  ]
+}

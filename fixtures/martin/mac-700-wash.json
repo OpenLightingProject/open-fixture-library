@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Karl Humbug"],
     "createDate": "2018-07-17",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
@@ -90,8 +90,8 @@
           "dmxRange": [50, 72],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "10Hz",
+          "speedEnd": "2Hz"
         },
         {
           "dmxRange": [73, 79],

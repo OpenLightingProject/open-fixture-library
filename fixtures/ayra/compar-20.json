@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Compar 20",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Ljrens vd Burgt", "Ken Harris", "Flo Edelmann"],
+    "createDate": "2024-03-05",
+    "lastModifyDate": "2024-03-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.bax-shop.nl/index3.php?option=com_download_files&product_id=74745&download_id=1571"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/led-compact-par/ayra-compar-20-rgb-led-spot"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ekqFm7sORMQ"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 36],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [37, 73],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [74, 110],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [111, 147],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [148, 184],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta",
+          "helpWanted": "Is DMX value 147 yellow or magenta?"
+        },
+        {
+          "dmxRange": [185, 221],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [222, 255],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "ColorPreset",
+          "comment": "Color 1…15",
+          "helpWanted": "What colors at what values?"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "shortName": "3ch1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "3-channel 2",
+      "shortName": "3ch2",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Effect"
+      ]
+    }
+  ]
+}

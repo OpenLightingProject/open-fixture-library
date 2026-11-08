@@ -13,7 +13,7 @@
       "https://cdb.s3.amazonaws.com/ItemRelatedFiles/9777/Platinum%20Seven%20-%20User%20Manual%20.pdf"
     ],
     "productPage": [
-      "https://www.elationlighting.com/platinum-seven"
+      "https://www.elationlighting.com/products/platinum-seven"
     ],
     "video": [
       "https://www.youtube.com/watch?v=-PrtJCjpubU",
@@ -55,7 +55,8 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
       }
     },
     "Tilt": {
@@ -64,7 +65,8 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
       }
     },
     "Red": {

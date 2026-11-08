@@ -6,7 +6,7 @@
       <ul class="list fixtures" :class="`category-${categoryClass}`">
         <li v-for="fixture of fixtures" :key="fixture.key">
           <NuxtLink
-            :to="fixture.link"
+            :to="`/${fixture.key}`"
             :style="{ borderLeftColor: fixture.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
@@ -25,21 +25,16 @@
 </template>
 
 <script>
-import register from '../../../fixtures/register.json';
-
 export default {
-  validate({ params }) {
-    return decodeURIComponent(params.category) in register.categories;
-  },
-  async asyncData({ $axios, error }) {
-    let manufacturers;
+  async asyncData({ params, $axios, error }) {
+    let fixtures;
     try {
-      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      ({ fixtures } = await $axios.$get(`/api/v1/categories/${encodeURIComponent(params.category)}`));
     }
     catch (requestError) {
       return error(requestError);
     }
-    return { manufacturers };
+    return { fixtures };
   },
   head() {
     const title = this.categoryName;
@@ -48,7 +43,7 @@ export default {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
@@ -59,24 +54,7 @@ export default {
       return this.$route.params.category;
     },
     categoryClass() {
-      return this.categoryName.toLowerCase().replaceAll(/\W+/g, `-`);
-    },
-    fixtures() {
-      return register.categories[this.categoryName].map(fullFixtureKey => {
-        const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
-        const manufacturerName = this.manufacturers[manufacturerKey].name;
-        const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
-
-        return {
-          key: fullFixtureKey,
-          link: `/${fullFixtureKey}`,
-          name: `${manufacturerName} ${fixtureName}`,
-          categories: Object.keys(register.categories).filter(
-            category => register.categories[category].includes(fullFixtureKey),
-          ),
-          color: this.manufacturers[manufacturerKey].color,
-        };
-      });
+      return this.categoryName.toLowerCase().replaceAll(/\W+/g, '-');
     },
   },
 };

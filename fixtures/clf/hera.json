@@ -5,14 +5,14 @@
   "meta": {
     "authors": ["Guigui"],
     "createDate": "2019-08-21",
-    "lastModifyDate": "2019-08-21"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
       "https://www.clf-lighting.com/wp-content/uploads/CLF_HERA_Manual.pdf"
     ],
     "productPage": [
-      "https://www.clf-lighting.com/product/hera"
+      "https://www.clf-lighting.com/product/hera/"
     ],
     "video": [
       "https://www.youtube.com/watch?v=lxO2bXqmgJE"
@@ -22,6 +22,9 @@
     "dimensions": [260, 290, 180],
     "weight": 3.8,
     "power": 121,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "12× RGBWAUV LEDs"
@@ -87,8 +90,8 @@
           "dmxRange": [25, 64],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [65, 69],

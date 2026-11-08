@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hz-200 Compact Hazer",
+  "shortName": "Hz-200",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Paul Rogalski"],
+    "createDate": "2024-10-01",
+    "lastModifyDate": "2024-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/326263_c_326263_v7_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_hz_200_compact_hazer_dmx.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/intl/thomanntv_video_stairville_hz_200_compact_hazer_dmx_2428.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 242, 380],
+    "weight": 7.5,
+    "power": 600,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Haze": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Haze",
+        "Fan Speed"
+      ]
+    }
+  ]
+}

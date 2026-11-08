@@ -1,0 +1,320 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Moving Head LM70S",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["MARK ALLEMANG", "James Fry", "Flo Edelmann"],
+    "createDate": "2026-10-12",
+    "lastModifyDate": "2026-10-12"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/BETOPPER_Moving_Head_Stage_Led_Light_LM70_LM70S_Standard_User_Manual.pdf"
+    ],
+    "productPage": [
+      "https://web.archive.org/web/20251113180849/https://betopperdj.com/products/betopper-7x8w-rgbw-moving-head-wash-lights-lm70s"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=lpFxo8kybdE",
+      "https://www.youtube.com/watch?v=a1uHqBU6CS0"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 235, 175],
+    "weight": 2.7,
+    "power": 100,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7× 8W RGBW LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer / Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 31],
+          "type": "ColorPreset",
+          "colorsStart": ["#80ff00"],
+          "colorsEnd": ["#ff0000"],
+          "comment": "Yellow-green through yellow and orange to red"
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"],
+          "comment": "Magenta through violet to blue"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"],
+          "comment": "Blue to cyan"
+        },
+        {
+          "dmxRange": [128, 150],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#e0ffe0"],
+          "comment": "Green, paling"
+        },
+        {
+          "dmxRange": [151, 195],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "Near white"
+        },
+        {
+          "dmxRange": [196, 231],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#8000ff"],
+          "comment": "White through lavender to violet"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        }
+      ]
+    },
+    "Color Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0.4Hz",
+        "speedEnd": "3Hz"
+      }
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [38, 53],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [54, 67],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Auto 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Sound 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Sound 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Sound 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Sound 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Sound 8",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Speed",
+        "Auto Programs",
+        "Reset"
+      ]
+    }
+  ]
+}

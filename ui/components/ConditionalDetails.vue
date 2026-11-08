@@ -1,24 +1,16 @@
-<!-- Usage:
+<template>
+  <details v-if="$slots.default">
+    <summary>
+      <slot name="summary" />
+    </summary>
 
-1. with content
-  <ConditionalDetails>
-    <template slot="summary">Hello</template>
+    <slot />
+  </details>
 
-    World
-  </ConditionalDetails>
-
-  renders:
-  <details><summary>Hello</summary>World</details>
-
-2. without content
-  <ConditionalDetails>
-    <template slot="summary">Hello</template>
-  </ConditionalDetails>
-
-  renders:
-  <div class="summary">Hello</div>
-
--->
+  <div v-else class="summary">
+    <slot name="summary" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 summary {
@@ -43,15 +35,15 @@ summary {
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
+    transform: rotate(135deg);
     transition-duration: 0.2s;
     transition-property: transform, top, border-color;
-    transform: rotate(135deg);
   }
 
   &:hover,
   &:focus {
-    background-color: theme-color(hover-background);
     outline: none;
+    background-color: theme-color(hover-background);
 
     &::after {
       border-color: theme-color(icon-hover);
@@ -73,20 +65,3 @@ details {
   }
 }
 </style>
-
-<script>
-export default {
-  render(createElement) {
-    if (this.$slots.default) {
-      return createElement(`details`, [
-        createElement(`summary`, this.$slots.summary),
-        this.$slots.default,
-      ]);
-    }
-
-    return createElement(`div`, {
-      class: `summary`,
-    }, this.$slots.summary);
-  },
-};
-</script>

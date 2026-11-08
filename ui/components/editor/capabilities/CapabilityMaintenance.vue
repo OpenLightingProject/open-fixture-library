@@ -39,8 +39,7 @@
 
 <script>
 import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions, capabilityTypes, entitiesSchema } from '../../../../lib/schema-properties.js';
-
+import { capabilityTypes, entitiesSchema, schemaDefinitions } from '../../../../lib/schema-properties.js';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
@@ -59,7 +58,7 @@ export default {
   },
   data() {
     const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;
-    const holdEntityName = holdPropertySchema.$ref.replace(`definitions.json#/entities/`, ``);
+    const holdEntityName = holdPropertySchema.$ref.replace('definitions.json#/entities/', '');
 
     return {
       schemaDefinitions,
@@ -70,11 +69,11 @@ export default {
        * @public
        */
       defaultData: {
-        parameter: ``,
+        parameter: '',
         parameterStart: null,
         parameterEnd: null,
-        hold: ``,
-        comment: ``,
+        hold: '',
+        comment: '',
       },
     };
   },

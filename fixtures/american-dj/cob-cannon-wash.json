@@ -12,13 +12,16 @@
       "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/8775/COB%20CANNON%20WASH%20-%20USER%20MANUAL.pdf"
     ],
     "productPage": [
-      "https://www.adj.com/cob-cannon-wash"
+      "https://www.adj.com/products/cob-cannon-wash"
     ]
   },
   "physical": {
     "dimensions": [415, 245, 192],
     "weight": 4.1,
     "power": 132,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "150W RGBA COB LED"

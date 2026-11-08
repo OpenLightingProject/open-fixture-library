@@ -9,10 +9,10 @@
   },
   "links": {
     "manual": [
-      "https://www.glp.de/en/products?format=raw&task=download&fid=512"
+      "https://glp.de/files/products/knv-cube-product-data/KNV_CA_User_Manual_EN_Rev.B_SW_14.8_20190704.pdf"
     ],
     "productPage": [
-      "https://www.glp.de/en/products/creative-led-system/knv-cube"
+      "https://glp.de/en/products/entertainment-lighting/static-lights/knv-cube-en"
     ],
     "video": [
       "https://www.youtube.com/watch?v=JavZqUiT_ik",
@@ -23,6 +23,9 @@
     "dimensions": [250, 250, 183],
     "weight": 9.3,
     "power": 800,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
     "bulb": {
       "type": "25× 30W White LEDs, 400× 0.25W RGB LEDs",
       "colorTemperature": 5000,

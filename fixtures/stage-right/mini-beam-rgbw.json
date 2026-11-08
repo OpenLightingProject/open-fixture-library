@@ -20,6 +20,9 @@
     "dimensions": [200, 127, 122],
     "weight": 2,
     "power": 50,
+    "powerConnectors": {
+      "IEC C13": "input only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "RGBW LED"
@@ -65,7 +68,7 @@
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
         "speedEnd": "18Hz",
-        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Red": {

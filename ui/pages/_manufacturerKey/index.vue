@@ -62,19 +62,19 @@ export default {
       title,
       meta: [
         {
-          hid: `title`,
+          hid: 'title',
           content: title,
         },
       ],
       script: [
         {
-          hid: `organizationStructuredData`,
-          type: `application/ld+json`,
+          hid: 'organizationStructuredData',
+          type: 'application/ld+json',
           json: this.organizationStructuredData,
         },
         {
-          hid: `itemListStructuredData`,
-          type: `application/ld+json`,
+          hid: 'itemListStructuredData',
+          type: 'application/ld+json',
           json: this.itemListStructuredData,
         },
       ],
@@ -86,21 +86,21 @@ export default {
     },
     organizationStructuredData() {
       return {
-        '@context': `http://schema.org`,
-        '@type': `Organization`,
-        name: this.manufacturer.name,
-        brand: this.manufacturer.name,
-        sameAs: `website` in this.manufacturer ? this.manufacturer.website : undefined,
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        'name': this.manufacturer.name,
+        'brand': this.manufacturer.name,
+        'sameAs': 'website' in this.manufacturer ? this.manufacturer.website : undefined,
       };
     },
     itemListStructuredData() {
       return {
-        '@context': `http://schema.org`,
-        '@type': `ItemList`,
-        itemListElement: this.fixtures.map((fixture, index) => ({
-          '@type': `ListItem`,
-          position: index + 1,
-          url: `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        'itemListElement': this.fixtures.map((fixture, index) => ({
+          '@type': 'ListItem',
+          'position': index + 1,
+          'url': `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
         })),
       };
     },

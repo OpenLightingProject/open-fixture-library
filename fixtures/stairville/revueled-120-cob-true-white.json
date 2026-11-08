@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "RevueLED 120 COB True White",
-  "categories": ["Dimmer", "Color Changer"],
+  "categories": ["Dimmer"],
   "meta": {
     "authors": ["Hannes Rüger"],
     "createDate": "2021-07-17",
-    "lastModifyDate": "2021-07-17"
+    "lastModifyDate": "2024-01-29"
   },
   "links": {
     "manual": [
@@ -19,6 +19,9 @@
     "dimensions": [440, 250, 160],
     "weight": 5.5,
     "power": 120,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "1× 120W COB CW/WW LED",
@@ -70,7 +73,8 @@
         },
         {
           "dmxRange": [6, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "30Hz"
         }

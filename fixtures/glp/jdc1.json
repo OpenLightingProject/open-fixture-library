@@ -9,10 +9,10 @@
   },
   "links": {
     "manual": [
-      "https://www.glp.de/en/products?format=raw&task=download&fid=571"
+      "https://glp.de/files/products/jdc1-product-data/GLP_JDC1_User_Manual_EN_Rev20240830-01.pdf"
     ],
     "productPage": [
-      "https://www.glp.de/en/products/strobes-led/jdc1"
+      "https://glp.de/en/products/discontinued/jdc1-en"
     ],
     "video": [
       "https://www.youtube.com/watch?v=fUEht-I-nZ4"
@@ -22,6 +22,9 @@
     "dimensions": [390, 284, 154],
     "weight": 12,
     "power": 1200,
+    "powerConnectors": {
+      "powerCON TRUE1": "input only"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "1320x Osram LRTB GVTG RGB LEDs, 216x CREE XP L LEDs"

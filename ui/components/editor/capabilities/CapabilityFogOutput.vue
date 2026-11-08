@@ -30,7 +30,6 @@
 <script>
 import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
@@ -53,7 +52,7 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Doesn't activate fog, only controls the intensity of the fog output.`,
+      hint: 'Doesn\'t activate fog, only controls the intensity of the fog output.',
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -61,9 +60,9 @@ export default {
        */
       defaultData: {
         fogOutput: null,
-        fogOutputStart: `weak`,
-        fogOutputEnd: `strong`,
-        comment: ``,
+        fogOutputStart: 'weak',
+        fogOutputEnd: 'strong',
+        comment: '',
       },
     };
   },

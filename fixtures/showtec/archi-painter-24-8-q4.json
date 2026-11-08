@@ -21,6 +21,9 @@
     "dimensions": [430, 425, 265],
     "weight": 16,
     "power": 140,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "24× 8W RGBW LEDs"
@@ -64,7 +67,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "0Hz",
-        "speedEnd": "20Hz"
+        "speedEnd": "20Hz",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Functions": {

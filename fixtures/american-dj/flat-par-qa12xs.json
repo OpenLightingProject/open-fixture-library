@@ -16,7 +16,7 @@
       "https://www.youtube.com/watch?v=JklRIKHLV3Y"
     ],
     "productPage": [
-      "https://www.adj.com/flat-par-qa12xs"
+      "https://www.adj.com/products/flat-par-qa12xs"
     ]
   },
   "physical": {
@@ -205,7 +205,7 @@
           "comment": "Dimmer mode",
           "switchChannels": {
             "Strobe / Speed / Sensitivity": "Strobe",
-            "Color Macros / Programs": "Unused"
+            "Color Macros / Programs": null
           }
         },
         {
@@ -545,11 +545,6 @@
           "soundControlled": true
         }
       ]
-    },
-    "Unused": {
-      "capability": {
-        "type": "NoFunction"
-      }
     }
   },
   "modes": [

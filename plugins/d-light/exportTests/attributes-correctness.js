@@ -10,8 +10,8 @@ import xml2js from 'xml2js';
  */
 
 /**
- * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @param {ExportFile} exportFile - The file returned by the plugins' export module.
+ * @param {ExportFile[]} allExportFiles - An array of all export files.
  * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testAttributesCorrectness(exportFile, allExportFiles) {

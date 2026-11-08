@@ -6,11 +6,11 @@
   "meta": {
     "authors": ["ameisso", "Flo Edelmann"],
     "createDate": "2019-01-21",
-    "lastModifyDate": "2019-01-21"
+    "lastModifyDate": "2026-10-26"
   },
   "links": {
     "manual": [
-      "https://www.robe.cz/api/support-files/download/downloads/user_manuals/User_manual_Robin_100_LEDBeam.pdf"
+      "https://www.robe.cz/res/downloads/user_manuals/User_manual_Robin_100_LEDBeam.pdf"
     ],
     "productPage": [
       "https://www.robe.cz/ledbeam-100"
@@ -24,6 +24,9 @@
     "dimensions": [233, 314, 149],
     "weight": 4.5,
     "power": 200,
+    "powerConnectors": {
+      "powerCON": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
@@ -374,16 +377,16 @@
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz",
           "comment": "Zones 2 and 3 only"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "speedStart": "0.3Hz",
+          "speedEnd": "20Hz",
           "comment": "All Zones"
         },
         {

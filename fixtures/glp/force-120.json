@@ -10,10 +10,10 @@
   },
   "links": {
     "manual": [
-      "https://www.glp.de/en/products?format=raw&task=download&fid=286"
+      "https://glp.de/files/products/force-120-product-data/Force_120_1.5_en-us.pdf"
     ],
     "productPage": [
-      "https://www.glp.de/en/products/stage-effects/force-120"
+      "https://glp.de/en/products/stage-effects-root/stage-effects/force-120-en"
     ],
     "video": [
       "https://www.youtube.com/watch?v=b2354sK3VaQ"
@@ -23,6 +23,9 @@
     "dimensions": [1400, 1400, 400],
     "weight": 94,
     "power": 1000,
+    "powerConnectors": {
+      "powerCON TRUE1": "input and output"
+    },
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"

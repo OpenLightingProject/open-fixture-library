@@ -24,6 +24,9 @@
     "dimensions": [230, 270, 110],
     "weight": 3,
     "power": 24,
+    "powerConnectors": {
+      "IEC C13": "output only"
+    },
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "5× 5W BCL LED (White+Amber)"
@@ -171,7 +174,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Effect Speed": {
