@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Godox S60Bi",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2023-04-05",
+    "lastModifyDate": "2023-04-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20230308/1678247082929781.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-a/S60-S60Bi.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Vz_wkJV2Dxc"
+    ]
+  },
+  "physical": {
+    "dimensions": [264, 107, 100],
+    "weight": 1.36,
+    "power": 77,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 55]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "CCT",
+          "switchChannels": {
+            "CCT / Effect": "CCT"
+          }
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "Generic",
+          "comment": "Effect",
+          "switchChannels": {
+            "CCT / Effect": "Effect"
+          }
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 22],
+          "type": "Effect",
+          "effectName": "Flash 1"
+        },
+        {
+          "dmxRange": [23, 45],
+          "type": "Effect",
+          "effectName": "Flash 2"
+        },
+        {
+          "dmxRange": [46, 69],
+          "type": "Effect",
+          "effectName": "Flash 3"
+        },
+        {
+          "dmxRange": [70, 92],
+          "type": "Effect",
+          "effectName": "Storm 1"
+        },
+        {
+          "dmxRange": [93, 115],
+          "type": "Effect",
+          "effectName": "Storm 2"
+        },
+        {
+          "dmxRange": [116, 138],
+          "type": "Effect",
+          "effectName": "Storm 3"
+        },
+        {
+          "dmxRange": [139, 161],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [162, 184],
+          "type": "Effect",
+          "effectName": "Broken Bulb"
+        },
+        {
+          "dmxRange": [185, 208],
+          "type": "Effect",
+          "effectName": "Candle"
+        },
+        {
+          "dmxRange": [209, 231],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Mode",
+        "Intensity",
+        "CCT / Effect"
+      ]
+    }
+  ]
+}

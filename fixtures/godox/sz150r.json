@@ -1,0 +1,388 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Godox SZ150R",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2022-09-23",
+    "lastModifyDate": "2022-09-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20220120/1642648663473258.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-d/SZ150R-2.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=0uYgjJHXOTw"
+    ]
+  },
+  "physical": {
+    "dimensions": [336, 199, 165],
+    "weight": 2.7,
+    "power": 150,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 65]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "CCT",
+          "switchChannels": {
+            "CCT / Hue / Red / Effect": "CCT",
+            "GM / Saturation / Green / Effect Speed": "Green-Magenta Point",
+            "Unused / Unused / Blue / Unused": "Unused 1",
+            "Unused / Unused / White / Unused": "Unused 2"
+          }
+        },
+        {
+          "dmxRange": [52, 103],
+          "type": "Generic",
+          "comment": "HSI",
+          "switchChannels": {
+            "CCT / Hue / Red / Effect": "Hue",
+            "GM / Saturation / Green / Effect Speed": "Saturation",
+            "Unused / Unused / Blue / Unused": "Unused 1",
+            "Unused / Unused / White / Unused": "Unused 2"
+          }
+        },
+        {
+          "dmxRange": [104, 155],
+          "type": "Generic",
+          "comment": "RGBW",
+          "switchChannels": {
+            "CCT / Hue / Red / Effect": "Red",
+            "GM / Saturation / Green / Effect Speed": "Green",
+            "Unused / Unused / Blue / Unused": "Blue",
+            "Unused / Unused / White / Unused": "White"
+          }
+        },
+        {
+          "dmxRange": [156, 255],
+          "type": "Generic",
+          "comment": "FX",
+          "switchChannels": {
+            "CCT / Hue / Red / Effect": "Effect",
+            "GM / Saturation / Green / Effect Speed": "Effect Speed",
+            "Unused / Unused / Blue / Unused": "Unused 1",
+            "Unused / Unused / White / Unused": "Unused 2"
+          }
+        }
+      ]
+    },
+    "Mode CCT": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "CCT"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "NoFunction",
+          "comment": "Do Not Use"
+        }
+      ]
+    },
+    "Mode HSI": {
+      "defaultValue": 52,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Do Not Use"
+        },
+        {
+          "dmxRange": [52, 103],
+          "type": "Generic",
+          "comment": "HSI"
+        },
+        {
+          "dmxRange": [104, 255],
+          "type": "NoFunction",
+          "comment": "Do Not Use"
+        }
+      ]
+    },
+    "Mode RGBW": {
+      "defaultValue": 104,
+      "capabilities": [
+        {
+          "dmxRange": [0, 103],
+          "type": "NoFunction",
+          "comment": "Do Not Use"
+        },
+        {
+          "dmxRange": [104, 155],
+          "type": "Generic",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [156, 255],
+          "type": "NoFunction",
+          "comment": "Do Not Use"
+        }
+      ]
+    },
+    "Mode FX": {
+      "defaultValue": 156,
+      "capabilities": [
+        {
+          "dmxRange": [0, 155],
+          "type": "NoFunction",
+          "comment": "Do Not Use"
+        },
+        {
+          "dmxRange": [156, 255],
+          "type": "Generic",
+          "comment": "FX"
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Green-Magenta Point": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [1, 126],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [129, 254],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "RGB Cycle"
+        },
+        {
+          "dmxRange": [20, 38],
+          "type": "Effect",
+          "effectName": "Flash"
+        },
+        {
+          "dmxRange": [39, 58],
+          "type": "Effect",
+          "effectName": "Laser"
+        },
+        {
+          "dmxRange": [59, 77],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [78, 97],
+          "type": "Effect",
+          "effectName": "Broken bulb"
+        },
+        {
+          "dmxRange": [98, 117],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [118, 136],
+          "type": "Effect",
+          "effectName": "Candle"
+        },
+        {
+          "dmxRange": [137, 156],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [157, 175],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        },
+        {
+          "dmxRange": [176, 195],
+          "type": "Effect",
+          "effectName": "Police car"
+        },
+        {
+          "dmxRange": [196, 215],
+          "type": "Effect",
+          "effectName": "Fire truck"
+        },
+        {
+          "dmxRange": [216, 235],
+          "type": "Effect",
+          "effectName": "Ambulance"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "Effect",
+          "effectName": "SOS"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Generic",
+          "comment": "I"
+        },
+        {
+          "dmxRange": [86, 171],
+          "type": "Generic",
+          "comment": "II"
+        },
+        {
+          "dmxRange": [172, 255],
+          "type": "Generic",
+          "comment": "III"
+        }
+      ]
+    },
+    "Unused 1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Unused 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Mode",
+        "Intensity",
+        "CCT / Hue / Red / Effect",
+        "GM / Saturation / Green / Effect Speed",
+        "Unused / Unused / Blue / Unused",
+        "Unused / Unused / White / Unused"
+      ]
+    },
+    {
+      "name": "CCT",
+      "channels": [
+        "Mode CCT",
+        "Intensity",
+        "CCT",
+        "Green-Magenta Point"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Mode HSI",
+        "Intensity",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "Mode RGBW",
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "FX",
+      "channels": [
+        "Mode FX",
+        "Intensity",
+        "Effect",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
