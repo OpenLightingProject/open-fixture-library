@@ -35,7 +35,8 @@
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
-    "test:http-status": "vitest run tests/http-status.test.js",
+    "test:http-status": "node tests/with-server.js \"vitest run tests/http-status.test.js\"",
+    "test:external-links": "node tests/with-server.js \"node --tls-min-v1.0 tests/external-links.js\"",
     "test:built-files-committed": "node tests/built-files-committed.js"
   },
   "dependencies": {
@@ -94,12 +95,12 @@
     "libxml2-wasm": "^0.7.2",
     "minimist": "^1.2.8",
     "postcss-html": "^2.0.0",
+    "start-server-and-test": "^3.0.13",
     "stylelint": "~17.16.0",
     "stylelint-config-html": "~2.0.0",
     "stylelint-config-recess-order": "~7.10.0",
     "stylelint-config-standard-scss": "~17.0.0",
     "stylelint-order": "~8.1.3",
-    "terminate": "^2.8.0",
     "vitest": "^5.1.0",
     "vue-eslint-parser": "~10.4.1",
     "widdershins": "^4.0.1"
