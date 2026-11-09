@@ -1,7 +1,7 @@
 import '../lib/load-env-file.js';
 
 import { styleText } from 'util';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import SiteCrawler from '../lib/site-crawler.js';
 
 describe('http-status', () => {
@@ -10,9 +10,7 @@ describe('http-status', () => {
 
   const crawler = new SiteCrawler();
 
-  beforeAll(async () => {
-    await crawler.startServer();
-
+  beforeAll(() => {
     crawler.addEventListener('passingPage', ({ url }) => {
       console.log(styleText('greenBright', '[PASS]'), url);
     });
@@ -21,10 +19,6 @@ describe('http-status', () => {
       console.log(styleText('redBright', '[FAIL]'), `${url} (${coloredError})`);
       failingLinks.push(`${url} (${error})`);
     });
-  }, 30_000);
-
-  afterAll(async () => {
-    await crawler.stopServer();
   });
 
   it('should have no failing internal links', async () => {
