@@ -3,7 +3,6 @@ import '../lib/load-env-file.js';
 import startServerAndTest from 'start-server-and-test';
 
 const [testCommand] = process.argv.slice(2);
-
 if (!testCommand) {
   throw new Error('A test command is required.');
 }
