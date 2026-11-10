@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pro Pixel Slim PAR-12 / PAR-24",
+  "shortName": "PAR 12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MK.Gaming"],
+    "createDate": "2026-11-10",
+    "lastModifyDate": "2026-11-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/products/Futurelight-Pro-Pixel-Slim-Par-24-Tcl-257185.html"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "0Hz"
+      }
+    },
+    "Effect Programm": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Internal",
+        "soundControlled": true,
+        "soundSensitivity": "100%"
+      }
+    },
+    "Program Speed / Sound": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Dim Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "shortName": "Dim",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Presets",
+        "Strobe",
+        "Effect Programm",
+        "Program Speed / Sound",
+        "Dim Speed"
+      ]
+    }
+  ]
+}
