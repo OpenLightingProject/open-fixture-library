@@ -1,0 +1,1992 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Color STRIKE M",
+  "categories": ["Blinder", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Rene Bribiesca", "Luke Nelson"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02"
+  },
+  "links": {
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/color-strike-m/"
+    ],
+    "manual": [
+      "https://web.archive.org/web/20240806234602/https://www.chauvetprofessional.com/wp-content/uploads/2021/09/Color_STRIKE_M_UM_Rev10.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=TTobzCb1Xoc"
+    ]
+  },
+  "physical": {
+    "dimensions": [175.4, 312.5, 407],
+    "weight": 12.1,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "power": 740
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [
+          "Plate pixel 1",
+          "Plate pixel 2",
+          "Plate pixel 3",
+          "Plate pixel 4",
+          "Plate pixel 5",
+          "Plate pixel 6",
+          "Plate pixel 7",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Beam pixel 1",
+          "Beam pixel 2",
+          "Beam pixel 3",
+          "Beam pixel 4",
+          "Beam pixel 5",
+          "Beam pixel 6",
+          "Beam pixel 7",
+          "Beam pixel 8",
+          "Beam pixel 9",
+          "Beam pixel 10",
+          "Beam pixel 11",
+          "Beam pixel 12",
+          "Beam pixel 13",
+          "Beam pixel 14"
+        ],
+        [
+          "Beam pixel 15",
+          "Beam pixel 16",
+          "Beam pixel 17",
+          "Beam pixel 18",
+          "Beam pixel 19",
+          "Beam pixel 20",
+          "Beam pixel 21",
+          "Beam pixel 22",
+          "Beam pixel 23",
+          "Beam pixel 24",
+          "Beam pixel 25",
+          "Beam pixel 26",
+          "Beam pixel 27",
+          "Beam pixel 28"
+        ],
+        [
+          "Plate pixel 8",
+          "Plate pixel 9",
+          "Plate pixel 10",
+          "Plate pixel 11",
+          "Plate pixel 12",
+          "Plate pixel 13",
+          "Plate pixel 14",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    ],
+    "pixelGroups": {
+      "Plate 1": [
+        "Plate pixel 1",
+        "Plate pixel 2",
+        "Plate pixel 3",
+        "Plate pixel 4",
+        "Plate pixel 5",
+        "Plate pixel 6",
+        "Plate pixel 7"
+      ],
+      "Plate 2": [
+        "Plate pixel 8",
+        "Plate pixel 9",
+        "Plate pixel 10",
+        "Plate pixel 11",
+        "Plate pixel 12",
+        "Plate pixel 13",
+        "Plate pixel 14"
+      ],
+      "Plates 1 & 2": [
+        "Plate pixel 1",
+        "Plate pixel 2",
+        "Plate pixel 3",
+        "Plate pixel 4",
+        "Plate pixel 5",
+        "Plate pixel 6",
+        "Plate pixel 7",
+        "Plate pixel 8",
+        "Plate pixel 9",
+        "Plate pixel 10",
+        "Plate pixel 11",
+        "Plate pixel 12",
+        "Plate pixel 13",
+        "Plate pixel 14"
+      ],
+      "Beam 1": [
+        "Beam pixel 1",
+        "Beam pixel 2",
+        "Beam pixel 3",
+        "Beam pixel 4",
+        "Beam pixel 5",
+        "Beam pixel 6",
+        "Beam pixel 7",
+        "Beam pixel 8",
+        "Beam pixel 9",
+        "Beam pixel 10",
+        "Beam pixel 11",
+        "Beam pixel 12",
+        "Beam pixel 13",
+        "Beam pixel 14"
+      ],
+      "Beam 2": [
+        "Beam pixel 15",
+        "Beam pixel 16",
+        "Beam pixel 17",
+        "Beam pixel 18",
+        "Beam pixel 19",
+        "Beam pixel 20",
+        "Beam pixel 21",
+        "Beam pixel 22",
+        "Beam pixel 23",
+        "Beam pixel 24",
+        "Beam pixel 25",
+        "Beam pixel 26",
+        "Beam pixel 27",
+        "Beam pixel 28"
+      ],
+      "Beams 1 & 2": [
+        "Beam pixel 1",
+        "Beam pixel 2",
+        "Beam pixel 3",
+        "Beam pixel 4",
+        "Beam pixel 5",
+        "Beam pixel 6",
+        "Beam pixel 7",
+        "Beam pixel 8",
+        "Beam pixel 9",
+        "Beam pixel 10",
+        "Beam pixel 11",
+        "Beam pixel 12",
+        "Beam pixel 13",
+        "Beam pixel 14",
+        "Beam pixel 15",
+        "Beam pixel 16",
+        "Beam pixel 17",
+        "Beam pixel 18",
+        "Beam pixel 19",
+        "Beam pixel 20",
+        "Beam pixel 21",
+        "Beam pixel 22",
+        "Beam pixel 23",
+        "Beam pixel 24",
+        "Beam pixel 25",
+        "Beam pixel 26",
+        "Beam pixel 27",
+        "Beam pixel 28"
+      ]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Plate dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [80, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [150, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plates red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plates green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plates blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate flash duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Classic shutter mode: disables duration control"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Plate flash rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Beam flash duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Classic shutter mode: disables duration control"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Beam flash rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Plate Invert": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Normal alignment"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Maintenance",
+          "comment": "Invert Plate 1 and Plate 2"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "Maintenance",
+          "comment": "Invert Plate 1, Plate 2 normal"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Maintenance",
+          "comment": "Invert Plate 2, Plate 1 normal"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Beam Invert": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Normal alignment"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Maintenance",
+          "comment": "Invert Beam 1 and Beam 2"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "Maintenance",
+          "comment": "Invert Beam 1, Beam 2 normal"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Maintenance",
+          "comment": "Invert Beam 2, Beam 1 normal"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Beam FX": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "Effect",
+          "effectName": "Ramp up"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "Effect",
+          "effectName": "Ramp down"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "Effect",
+          "effectName": "Ramp up-down"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "Effect",
+          "effectName": "Random"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Effect",
+          "effectName": "Spikes"
+        }
+      ]
+    },
+    "Plates foreground": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [3, 4],
+          "type": "ColorPreset",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "ColorPreset",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "ColorPreset",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "ColorPreset",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 48],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [50, 86],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [88, 124],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [126, 162],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [164, 200],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [202, 238],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Color index",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Color snap",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Plates background": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [3, 4],
+          "type": "ColorPreset",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "ColorPreset",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "ColorPreset",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "ColorPreset",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 48],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [50, 86],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [88, 124],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [126, 162],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [164, 200],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [202, 238],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "Color index",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Color snap",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Plates foreground dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Plates background dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Plate 1 FX select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "All on"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Effect",
+          "effectName": "Pattern select",
+          "helpWanted": "The individual pattern names are not documented in the manual."
+        }
+      ]
+    },
+    "Plate 1 FX movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Effect",
+          "effectName": "Left to right",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Effect",
+          "effectName": "Right to left",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Plate 1 FX crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Plate 2 FX select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "All on"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Effect",
+          "effectName": "Pattern select",
+          "helpWanted": "The individual pattern names are not documented in the manual."
+        }
+      ]
+    },
+    "Plate 2 FX movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Effect",
+          "effectName": "Left to right",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Effect",
+          "effectName": "Right to left",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Plate 2 FX crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Beam 1 FX select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "All on"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Effect",
+          "effectName": "Pattern select",
+          "helpWanted": "The individual pattern names are not documented in the manual."
+        }
+      ]
+    },
+    "Beam 1 FX movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Effect",
+          "effectName": "Left to right",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Effect",
+          "effectName": "Right to left",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Beam 1 FX crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Beam 2 FX select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "All on"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Effect",
+          "effectName": "Pattern select",
+          "helpWanted": "The individual pattern names are not documented in the manual."
+        }
+      ]
+    },
+    "Beam 2 FX movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Effect",
+          "effectName": "Left to right",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Effect",
+          "effectName": "Right to left",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Beam 2 FX crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Plates FX select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "All on"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Effect",
+          "effectName": "Pattern select",
+          "helpWanted": "The individual pattern names are not documented in the manual."
+        }
+      ]
+    },
+    "Plates FX movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Effect",
+          "effectName": "Left to right",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Effect",
+          "effectName": "Right to left",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Plates FX crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Beams FX select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "All on"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Effect",
+          "effectName": "Pattern select",
+          "helpWanted": "The individual pattern names are not documented in the manual."
+        }
+      ]
+    },
+    "Beams FX movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 124],
+          "type": "Effect",
+          "effectName": "Left to right",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [125, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 249],
+          "type": "Effect",
+          "effectName": "Right to left",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Beams FX crossfade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Maintenance",
+          "comment": "Off (dimmer mode)",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Maintenance",
+          "comment": "Dimmer 1",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Maintenance",
+          "comment": "Dimmer 2",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Maintenance",
+          "comment": "Dimmer 3",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Maintenance",
+          "comment": "PWM 600 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Maintenance",
+          "comment": "PWM 1200 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "comment": "PWM 2000 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Maintenance",
+          "comment": "PWM 4000 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Maintenance",
+          "comment": "PWM 6000 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Maintenance",
+          "comment": "PWM 25 kHz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "Maintenance",
+          "comment": "Fan mode auto",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Maintenance",
+          "comment": "Fan mode on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Maintenance",
+          "comment": "Tilt reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Maintenance",
+          "comment": "Plate 1 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Maintenance",
+          "comment": "Plate 1 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Maintenance",
+          "comment": "Plate 2 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Maintenance",
+          "comment": "Plate 2 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Maintenance",
+          "comment": "Beam 1 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Maintenance",
+          "comment": "Beam 1 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Maintenance",
+          "comment": "Beam 2 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Maintenance",
+          "comment": "Beam 2 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Maintenance",
+          "comment": "Plate swap on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Maintenance",
+          "comment": "Plate swap off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Maintenance",
+          "comment": "Beam swap on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Maintenance",
+          "comment": "Beam swap off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Maintenance",
+          "comment": "FX pattern priority",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Maintenance",
+          "comment": "Color mix HTP on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Maintenance",
+          "comment": "Color mix HTP off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Maintenance",
+          "comment": "Color priority",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Control (basic)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Maintenance",
+          "comment": "Off (dimmer mode)",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Maintenance",
+          "comment": "Dimmer 1",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Maintenance",
+          "comment": "Dimmer 2",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Maintenance",
+          "comment": "Dimmer 3",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Maintenance",
+          "comment": "PWM 600 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Maintenance",
+          "comment": "PWM 1200 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Maintenance",
+          "comment": "PWM 2000 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Maintenance",
+          "comment": "PWM 4000 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Maintenance",
+          "comment": "PWM 6000 Hz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Maintenance",
+          "comment": "PWM 25 kHz",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "Maintenance",
+          "comment": "Fan mode auto",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Maintenance",
+          "comment": "Fan mode on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Maintenance",
+          "comment": "Tilt reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Maintenance",
+          "comment": "Plate 1 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Maintenance",
+          "comment": "Plate 1 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Maintenance",
+          "comment": "Plate 2 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Maintenance",
+          "comment": "Plate 2 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Maintenance",
+          "comment": "Beam 1 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Maintenance",
+          "comment": "Beam 1 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Maintenance",
+          "comment": "Beam 2 invert off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Maintenance",
+          "comment": "Beam 2 invert on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Maintenance",
+          "comment": "Plate swap on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Maintenance",
+          "comment": "Plate swap off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Maintenance",
+          "comment": "Beam swap on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Maintenance",
+          "comment": "Beam swap off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Plate pixel 1 + 8 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 1 + 8 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 1 + 8 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate pixel 2 + 9 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 2 + 9 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 2 + 9 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate pixel 3 + 10 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 3 + 10 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 3 + 10 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate pixel 4 + 11 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 4 + 11 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 4 + 11 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate pixel 5 + 12 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 5 + 12 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 5 + 12 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate pixel 6 + 13 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 6 + 13 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 6 + 13 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Plate pixel 7 + 14 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Plate pixel 7 + 14 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Plate pixel 7 + 14 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Beam pixel 1 + 15": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 2 + 16": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 3 + 17": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 4 + 18": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 5 + 19": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 6 + 20": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 7 + 21": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 8 + 22": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 9 + 23": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 10 + 24": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 11 + 25": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 12 + 26": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 13 + 27": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Beam pixel 14 + 28": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Beam"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plates red",
+        "Plates green",
+        "Plates blue",
+        "Beam"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Plate dimmer",
+        "Beam dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plates red",
+        "Plates green",
+        "Plates blue",
+        "Beam FX",
+        "Control (basic)"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate dimmer",
+        "Beam dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plates red",
+        "Plates green",
+        "Plates blue",
+        "Beam FX",
+        "Plates foreground",
+        "Plates foreground dimmer",
+        "Plates background",
+        "Plates background dimmer",
+        "Plates FX select",
+        "Plates FX movement",
+        "Plates FX crossfade",
+        "Beams FX select",
+        "Beams FX movement",
+        "Beams FX crossfade",
+        "Control (basic)"
+      ]
+    },
+    {
+      "name": "30-channel",
+      "shortName": "30ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate dimmer",
+        "Beam dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plates red",
+        "Plates green",
+        "Plates blue",
+        "Beam FX",
+        "Plates foreground",
+        "Plates foreground dimmer",
+        "Plates background",
+        "Plates background dimmer",
+        "Plate 1 FX select",
+        "Plate 1 FX movement",
+        "Plate 1 FX crossfade",
+        "Plate 2 FX select",
+        "Plate 2 FX movement",
+        "Plate 2 FX crossfade",
+        "Beam 1 FX select",
+        "Beam 1 FX movement",
+        "Beam 1 FX crossfade",
+        "Beam 2 FX select",
+        "Beam 2 FX movement",
+        "Beam 2 FX crossfade",
+        "Control"
+      ]
+    },
+    {
+      "name": "47-channel",
+      "shortName": "47ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate dimmer",
+        "Beam dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        "Plate Invert",
+        "Beam Invert",
+        "Plate pixel 1 + 8 Red",
+        "Plate pixel 1 + 8 Green",
+        "Plate pixel 1 + 8 Blue",
+        "Plate pixel 2 + 9 Red",
+        "Plate pixel 2 + 9 Green",
+        "Plate pixel 2 + 9 Blue",
+        "Plate pixel 3 + 10 Red",
+        "Plate pixel 3 + 10 Green",
+        "Plate pixel 3 + 10 Blue",
+        "Plate pixel 4 + 11 Red",
+        "Plate pixel 4 + 11 Green",
+        "Plate pixel 4 + 11 Blue",
+        "Plate pixel 5 + 12 Red",
+        "Plate pixel 5 + 12 Green",
+        "Plate pixel 5 + 12 Blue",
+        "Plate pixel 6 + 13 Red",
+        "Plate pixel 6 + 13 Green",
+        "Plate pixel 6 + 13 Blue",
+        "Plate pixel 7 + 14 Red",
+        "Plate pixel 7 + 14 Green",
+        "Plate pixel 7 + 14 Blue",
+        "Beam pixel 1 + 15",
+        "Beam pixel 2 + 16",
+        "Beam pixel 3 + 17",
+        "Beam pixel 4 + 18",
+        "Beam pixel 5 + 19",
+        "Beam pixel 6 + 20",
+        "Beam pixel 7 + 21",
+        "Beam pixel 8 + 22",
+        "Beam pixel 9 + 23",
+        "Beam pixel 10 + 24",
+        "Beam pixel 11 + 25",
+        "Beam pixel 12 + 26",
+        "Beam pixel 13 + 27",
+        "Beam pixel 14 + 28",
+        "Control"
+      ]
+    },
+    {
+      "name": "74-channel",
+      "shortName": "74ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "Plate pixel 1",
+            "Plate pixel 2",
+            "Plate pixel 3",
+            "Plate pixel 4",
+            "Plate pixel 5",
+            "Plate pixel 6",
+            "Plate pixel 7",
+            "Plate pixel 8",
+            "Plate pixel 9",
+            "Plate pixel 10",
+            "Plate pixel 11",
+            "Plate pixel 12",
+            "Plate pixel 13",
+            "Plate pixel 14"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "Beam pixel 1",
+            "Beam pixel 2",
+            "Beam pixel 3",
+            "Beam pixel 4",
+            "Beam pixel 5",
+            "Beam pixel 6",
+            "Beam pixel 7",
+            "Beam pixel 8",
+            "Beam pixel 9",
+            "Beam pixel 10",
+            "Beam pixel 11",
+            "Beam pixel 12",
+            "Beam pixel 13",
+            "Beam pixel 14",
+            "Beam pixel 15",
+            "Beam pixel 16",
+            "Beam pixel 17",
+            "Beam pixel 18",
+            "Beam pixel 19",
+            "Beam pixel 20",
+            "Beam pixel 21",
+            "Beam pixel 22",
+            "Beam pixel 23",
+            "Beam pixel 24",
+            "Beam pixel 25",
+            "Beam pixel 26",
+            "Beam pixel 27",
+            "Beam pixel 28"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "97-channel",
+      "shortName": "97ch",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Dimmer",
+        "Plate dimmer",
+        "Beam dimmer",
+        "Plate flash duration",
+        "Plate flash rate",
+        "Beam flash duration",
+        "Beam flash rate",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "Plate pixel 1",
+            "Plate pixel 2",
+            "Plate pixel 3",
+            "Plate pixel 4",
+            "Plate pixel 5",
+            "Plate pixel 6",
+            "Plate pixel 7",
+            "Plate pixel 8",
+            "Plate pixel 9",
+            "Plate pixel 10",
+            "Plate pixel 11",
+            "Plate pixel 12",
+            "Plate pixel 13",
+            "Plate pixel 14"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        },
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "Beam pixel 1",
+            "Beam pixel 2",
+            "Beam pixel 3",
+            "Beam pixel 4",
+            "Beam pixel 5",
+            "Beam pixel 6",
+            "Beam pixel 7",
+            "Beam pixel 8",
+            "Beam pixel 9",
+            "Beam pixel 10",
+            "Beam pixel 11",
+            "Beam pixel 12",
+            "Beam pixel 13",
+            "Beam pixel 14",
+            "Beam pixel 15",
+            "Beam pixel 16",
+            "Beam pixel 17",
+            "Beam pixel 18",
+            "Beam pixel 19",
+            "Beam pixel 20",
+            "Beam pixel 21",
+            "Beam pixel 22",
+            "Beam pixel 23",
+            "Beam pixel 24",
+            "Beam pixel 25",
+            "Beam pixel 26",
+            "Beam pixel 27",
+            "Beam pixel 28"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey"
+          ]
+        },
+        "Beam FX",
+        "Plates foreground",
+        "Plates foreground dimmer",
+        "Plates background",
+        "Plates background dimmer",
+        "Plate 1 FX select",
+        "Plate 1 FX movement",
+        "Plate 1 FX crossfade",
+        "Plate 2 FX select",
+        "Plate 2 FX movement",
+        "Plate 2 FX crossfade",
+        "Beam 1 FX select",
+        "Beam 1 FX movement",
+        "Beam 1 FX crossfade",
+        "Beam 2 FX select",
+        "Beam 2 FX movement",
+        "Beam 2 FX crossfade",
+        "Control"
+      ]
+    }
+  ]
+}
