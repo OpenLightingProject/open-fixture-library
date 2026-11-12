@@ -202,12 +202,12 @@ export default {
       {
         hid: 'image_width',
         property: 'og:image:width',
-        content: '1280',
+        content: '1200',
       },
       {
         hid: 'image_height',
         property: 'og:image:height',
-        content: '640',
+        content: '630',
       },
     ];
 
