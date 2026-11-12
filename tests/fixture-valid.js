@@ -689,7 +689,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          */
         function checkStrobeSpeedCapability() {
           const otherCapabilityHasShutterStrobe = channel.capabilities.some((otherCapability) => otherCapability.type === 'ShutterStrobe');
+          const otherChannelHasShutterStrobe = fixture.coarseChannels
+            .flatMap((otherChannel) => (
+              otherChannel === channel ? [] : otherChannel.capabilities
+            ))
+            .some((otherCapability) => otherCapability.type === 'ShutterStrobe');
           const hasOtherStrobeChannel = fixture.coarseChannels.some((otherChannel) => otherChannel !== channel && otherChannel.type === 'Strobe');
+
+          if (!otherCapabilityHasShutterStrobe && !otherChannelHasShutterStrobe) {
+            result.errors.push(`${errorPrefix}: StrobeSpeed must be used together with a ShutterStrobe capability in another channel.`);
+          }
+
           if (otherCapabilityHasShutterStrobe && !hasOtherStrobeChannel) {
             result.errors.push(`${errorPrefix}: StrobeSpeed can't be used in the same channel as ShutterStrobe. Should this rather be a ShutterStrobe capability with shutterEffect "Strobe"?`);
           }
