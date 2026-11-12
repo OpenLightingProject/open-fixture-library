@@ -149,9 +149,8 @@ export default {
         content: theme === 'dark' ? '#383838' : '#fafafa', // SCSS: theme-color(header-background)
       },
       {
-        // this enables Twitter link previews
         name: 'twitter:card',
-        content: 'summary',
+        content: 'summary_large_image',
       },
       {
         hid: 'url',
