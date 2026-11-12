@@ -1,5 +1,4 @@
 import '../lib/load-env-file.js';
-
 import { styleText } from 'util';
 import { beforeAll, describe, expect, it } from 'vitest';
 import SiteCrawler from '../lib/site-crawler.js';

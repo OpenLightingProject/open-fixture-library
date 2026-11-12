@@ -81,6 +81,7 @@ const stylisticRules = {
 
 // eslint-plugin-import-x
 const importRules = {
+  'import-x/avoid-re-export-all': 'error',
   'import-x/extensions': ['error', 'ignorePackages'],
   'import-x/first': 'error',
   'import-x/newline-after-import': 'error',
@@ -101,6 +102,7 @@ const importRules = {
       cjsExports: false,
     },
     'newlines-between': 'never',
+    'warnOnUnassignedImports': 'top',
   }],
 };
 
