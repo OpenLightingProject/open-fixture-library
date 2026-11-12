@@ -695,7 +695,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           );
 
           if (!hasOtherStrobeEffect) {
-            result.errors.push(`${errorPrefix}: StrobeSpeed can't be used together without a ShutterStrobe capability with a strobe effect in another channel. Should this rather be a ShutterStrobe capability itself with shutterEffect "Strobe"?`);
+            result.errors.push(`${errorPrefix}: StrobeSpeed can't be used without a ShutterStrobe capability with a strobe effect in another channel. Should this rather be a ShutterStrobe capability itself with shutterEffect "Strobe"?`);
           }
         }
 
