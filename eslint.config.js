@@ -102,6 +102,7 @@ const importRules = {
       cjsExports: false,
     },
     'newlines-between': 'never',
+    'warnOnUnassignedImports': 'top',
   }],
 };
 
