@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "spider",
+  "shortName": "spider",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["quimi"],
+    "createDate": "2026-11-12",
+    "lastModifyDate": "2026-11-12"
+  },
+  "comment": "spider",
+  "links": {
+    "manual": [
+      "http://lamier"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "bulb": {
+      "type": "led rgbw"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "570deg",
+        "angleEnd": "570deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "normal",
+      "channels": [
+        "Pan"
+      ]
+    }
+  ]
+}
