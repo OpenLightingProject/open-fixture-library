@@ -159,27 +159,22 @@ export default {
         content: canonicalUrl,
       },
       {
-        hid: 'type',
         property: 'og:type',
         content: 'website',
       },
       {
-        hid: 'site_name',
         property: 'og:site_name',
         content: 'Open Fixture Library',
       },
       {
-        hid: 'locale',
         property: 'og:locale',
         content: 'en_US',
       },
       {
-        hid: 'determiner',
         property: 'og:determiner',
         content: 'the',
       },
       {
-        hid: 'description',
         property: 'og:description',
         content: 'Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!',
       },
@@ -195,17 +190,14 @@ export default {
         content: 'https://open-fixture-library.org/open-graph.png',
       },
       {
-        hid: 'image_type',
         property: 'og:image:type',
         content: 'image/png',
       },
       {
-        hid: 'image_width',
         property: 'og:image:width',
         content: '1200',
       },
       {
-        hid: 'image_height',
         property: 'og:image:height',
         content: '630',
       },
