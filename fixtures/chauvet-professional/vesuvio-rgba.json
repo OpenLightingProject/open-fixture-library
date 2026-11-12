@@ -3,9 +3,9 @@
   "name": "Vesuvio RGBA",
   "categories": ["Smoke", "Color Changer"],
   "meta": {
-    "authors": ["Beerady", "Luke Nelson"],
+    "authors": ["Beerady", "Luke Nelson", "Flo Edelmann"],
     "createDate": "2022-10-18",
-    "lastModifyDate": "2022-10-18"
+    "lastModifyDate": "2026-11-12"
   },
   "links": {
     "productPage": [
@@ -72,10 +72,11 @@
     },
     "Strobe": {
       "capability": {
-        "type": "StrobeSpeed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Macros": {
