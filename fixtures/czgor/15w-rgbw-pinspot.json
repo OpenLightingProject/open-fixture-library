@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "15W RGBW Pinspot",
+  "shortName": "PinSpot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["jeepjohn-ai"],
+    "createDate": "2026-11-13",
+    "lastModifyDate": "2026-11-13"
+  },
+  "comment": "2-pack of 15W RGBW LED pinspots with a 4-button control panel (address set via the A___ menu, 001-512). The manual is a generic 'RGBW Spot Light' leaflet with no brand on it.",
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/dp/B0DFWBWF9W"
+    ]
+  },
+  "physical": {
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction",
+          "comment": "Individual color control on channels 2-5"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "helpWanted": "Is this channel only active when the Dimmer / Strobe channel is 240-255, as the manual suggests?"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 31],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Red static, green/blue/white jump"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Green static, red/blue/white jump"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Blue static, red/green/white jump"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "White static, red/green/blue jump"
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speed": "slow",
+          "comment": "Gradual change, slow"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Red + green gradual, blue + white off"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Red + blue gradual, green + white off"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Green + blue gradual, red + white off"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Sound 1: change color and strobe",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Effect",
+          "effectName": "Sound 2: change colors with sound",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound 3: change colors and flicker with sound",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Programs"
+      ]
+    }
+  ]
+}
