@@ -19,9 +19,9 @@ This file provides guidance for AI coding agents working in this repository.
 
 ## Agent skills
 
-Reusable agent skills live in `.agents/skills/`. That folder is recognised by Codex, Cursor, GitHub Copilot, Gemini CLI, and OpenCode; other agents can read the `SKILL.md` files directly.
+Reusable agent skills live in `.agents/skills/`.
 
-- [`fixture-review`](.agents/skills/fixture-review/SKILL.md) — reviewing new fixture-definition PRs (the `new-fixture` label): manual cross-check, master-based validation, and a pending GitHub review.
+- [`fixture-review`](.agents/skills/fixture-review/SKILL.md) — reviewing new fixture-definition PRs (the `new-fixture` label): cross-check against the manual, validate against `master`, create a pending GitHub review.
 
 ## Common commands
 

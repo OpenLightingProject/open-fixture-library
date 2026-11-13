@@ -1,6 +1,6 @@
 ---
 name: Fixture Review
-description: Use when reviewing a new fixture-definition pull request in OpenLightingProject/open-fixture-library (the `new-fixture` label) — cross-check the manual against the JSON, validate against current master, and leave a pending GitHub review for the user to check and submit.
+description: Use when reviewing a new fixture-definition pull request in OpenLightingProject/open-fixture-library (the `new-fixture` label) — cross-check the JSON against the manual, validate against current master, and leave a pending GitHub review for the user to check and submit.
 ---
 
 # Fixture Review
@@ -136,6 +136,8 @@ Record the exact evidence for each finding: file, line, manual page/range, and t
 - Be direct: what is wrong, where, the correct value, and the evidence.
 - Skip filler, praise padding, and hedging.
 - Prefer a `suggestion` block for every fix that can be expressed as a local replacement.
+- Keep the GitHub review summary short: validation result, branch-behind note, and only findings that cannot be anchored to a line.
+- Put each specific finding on its line. Do not repeat the inline comments in the summary. For example, "Please double-check `physical.dimensions`" belongs on that line, not in the summary.
 
 ## 7. Leave a pending review — never submit
 
@@ -158,7 +160,7 @@ gh api graphql -f query='query { repository(owner:"OpenLightingProject", name:"o
     "input": {
       "pullRequestId": "<PR node ID>",
       "commitOID": "<headRefOid>",
-      "body": "Validation result, what matched, what needs changing, and the branch-behind note.",
+      "body": "Validation result, branch-behind note, and any finding that cannot be anchored to a line. Do not repeat the inline comments.",
       "threads": [
         {
           "path": "fixtures/manufacturer/fixture.json",
@@ -196,7 +198,7 @@ git worktree remove --force .worktrees/fixture-review-<N>
 
 ## Report
 
-Report the pending review URL, the validation result, the blocking findings, the suggestions, and the branch-behind note. Do not say the fixture is approved or ready to merge; it is a draft review.
+Report the pending review URL, the validation result, the blocking findings, the suggestions, and the branch-behind note. The report to the user can list the findings; the GitHub review body should not duplicate them. Do not say the fixture is approved or ready to merge; it is a draft review.
 
 ## Red flags
 
