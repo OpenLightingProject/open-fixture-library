@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import '../lib/load-env-file.js';
-
 import http from 'http';
 import https from 'https';
 import { styleText } from 'util';
@@ -27,16 +26,6 @@ let isErrored = false;
 try {
   const crawler = new SiteCrawler();
 
-  console.log(styleText(['blue', 'bold'], 'Starting OFL server ...'));
-  try {
-    await crawler.startServer();
-  }
-  catch (error) {
-    const header = styleText('redBright', 'Failed to start OFL server. Maybe you forgot running \'npm run build\' or there is already a running server?');
-    throw `${header} ${error.message}`;
-  }
-  console.log();
-
   const externalUrlSet = new Set();
 
   crawler.addEventListener('externalLinkFound', ({ url }) => {
@@ -55,16 +44,6 @@ try {
   const crawlTime = Date.now() - crawlStartTime;
   console.log(`Crawling finished after ${crawlTime / 1000}s.`);
   console.log();
-
-  const { stdout, stderr } = await crawler.stopServer();
-  if (stdout) {
-    console.log(styleText('blueBright', 'Server output (stdout):'));
-    console.log(stdout);
-  }
-  if (stderr) {
-    console.log(styleText('blueBright', 'Server errors (stderr):'));
-    console.log(stderr);
-  }
 
   const urlResults = await fetchExternalUrls([...externalUrlSet]);
   console.log();
