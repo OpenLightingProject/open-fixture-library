@@ -3,10 +3,13 @@ on:
   schedule:
     - cron: '30 18 * * *' # everyday 18:30 UTC
   workflow_dispatch:
+permissions: {}
 jobs:
   production:
     name: Production
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     if: github.repository == 'OpenLightingProject/open-fixture-library'
     steps:
       - name: Checkout

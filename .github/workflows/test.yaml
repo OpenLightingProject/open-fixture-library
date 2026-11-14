@@ -5,10 +5,13 @@ on:
 concurrency:
   group: test-${{ github.ref }}
   cancel-in-progress: true
+permissions: {}
 jobs:
   required:
     name: Required
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -39,6 +42,9 @@ jobs:
   status:
     name: Status
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     continue-on-error: true
     env:
       GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -75,6 +81,8 @@ jobs:
   markdown-link-check:
     name: Markdown Links
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     continue-on-error: true
     steps:
       - name: Checkout

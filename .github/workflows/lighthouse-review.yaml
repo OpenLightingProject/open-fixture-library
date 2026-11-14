@@ -5,10 +5,14 @@ on:
 concurrency:
   group: lighthouse-review-${{ github.ref }}
   cancel-in-progress: true
+permissions: {}
 jobs:
   review:
     name: Review
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     if: contains(github.event.pull_request.labels.*.name, 'component-ui')
     env:
       NODE_ENV: production
