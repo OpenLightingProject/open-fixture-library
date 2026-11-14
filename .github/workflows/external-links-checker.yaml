@@ -16,8 +16,6 @@ jobs:
         with:
           node-version: 26
           cache: 'npm'
-      - name: Setup npm v12
-        run: npm install --global npm@12
       - name: Install dependencies
         run: npm ci
       - name: Build
