@@ -10,6 +10,7 @@ const usedVariables = [
   'PORT',
   'HOST',
   'WEBSITE_URL',
+  'NUXT_PUBLIC_EMBETTY_SERVER_URL',
   'GITHUB_PR_NUMBER',
   'GITHUB_PR_HEAD_REF',
   'GITHUB_PR_BASE_REF',

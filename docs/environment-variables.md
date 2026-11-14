@@ -18,6 +18,7 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 | Name                              | Possible values                           | Description                        |
 |-----------------------------------|-------------------------------------------|------------------------------------|
 |`ALLOW_SEARCH_INDEXING`            | `allowed` or anything else                | If the value is not `allowed`, a `<meta>` tag is added to tell search engines not to index the page. (This is only `allowed` in the [production deployment](ui.md#deployment)) |
+|`NUXT_PUBLIC_EMBETTY_SERVER_URL`   | An absolute URL without a trailing slash. | Base URL of the [embetty](https://github.com/heiseonline/embetty) server that serves the privacy-friendly video posters. Defaults to `https://embetty.open-fixture-library.org`. |
 |`GITHUB_USER_TOKEN`                | A 40-char [GitHub access token][gh-token] | Used to create pull request when adding fixtures and create/delete comments after running [GitHub tests](testing.md) |
 |`GITHUB_BROKEN_LINKS_ISSUE_NUMBER` | A GitHub issue number                     | Used by [tests/external-links.js](../tests/external-links.js) |
 |`NODE_ENV`                         | `production` or `development` (default)   | Read by Nuxt/Nitro and our scripts: `production` enables caching, minimizing and other optimizations [improving the performance a lot][node-env-perf]. |

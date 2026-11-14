@@ -254,6 +254,7 @@ export default defineNuxtConfig({
     public: {
       websiteUrl,
       searchIndexingIsAllowed,
+      embettyServerUrl: 'https://embetty.open-fixture-library.org',
     },
   },
   robots: {
