@@ -1,0 +1,197 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LM 120",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Daniel Harvey"],
+    "createDate": "2026-11-10",
+    "lastModifyDate": "2026-11-10"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/Betopper_LED_120W_RGBW_4in1_Moving_Head_Light_User_Manual.pdf?v=1725257285"
+    ],
+    "productPage": [
+      "https://betopperdj.com/products/betopper-led-120w-rgbw-4in1-moving-head-light"
+    ],
+    "video": [
+      "https://share.google/iaXCBiUl28GO8Kmk3"
+    ]
+  },
+  "physical": {
+    "power": 120,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colour": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Colour fade"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Built in effcts"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Led strip dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Led strip strobe": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Led strip red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Led strip green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Led strip blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Led strip effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Colour fade"
+      }
+    },
+    "Led strip speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Maintenance": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Macros",
+        "Effect",
+        "Effect Speed",
+        "Led strip dimmer",
+        "Led strip strobe",
+        "Led strip green",
+        "Led strip blue",
+        "Led strip effect",
+        "Led strip red",
+        "Led strip speed",
+        "Maintenance"
+      ]
+    }
+  ]
+}
