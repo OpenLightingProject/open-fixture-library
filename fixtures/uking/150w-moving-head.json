@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "150W moving head",
+  "shortName": "Moving head",
+  "categories": ["Moving Head", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Anonymous "],
+    "createDate": "2026-11-14",
+    "lastModifyDate": "2026-11-14"
+  },
+  "links": {
+    "productPage": [
+      "https://www.aliexpress.com/item/1005009979599028.html?spm=a2g0o.cart.0.0.585538daz45Ezs&mp=1&pdp_npi=6%40dis%21GBP%21GBP+129.28%21GBP+53.53%21%21GBP+53.53%21%21%21%400b0fe08917936579450561838e0df1%2112000055944042953%21ct%21UK%21-1%21%211%210%21"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [180, 225, 150],
+    "weight": 4.7,
+    "power": 150,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8500,
+      "lumens": 6000
+    },
+    "lens": {
+      "degreesMinMax": [2.8, 2.8]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Factory Preset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "250-255 3s"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prism",
+        "Factory Preset",
+        "Reset"
+      ]
+    }
+  ]
+}
