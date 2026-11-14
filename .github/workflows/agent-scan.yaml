@@ -5,6 +5,8 @@ on:
     types:
       - opened
       - reopened
+    branches:
+      - master
   issues:
     types:
       - opened
@@ -13,13 +15,14 @@ jobs:
   agentscan:
     runs-on: ubuntu-slim
     timeout-minutes: 10
+    if: github.repository == 'OpenLightingProject/open-fixture-library'
     permissions:
       pull-requests: write
       issues: write
       contents: read
     steps:
       - name: AgentScan
-        uses: MatteoGabriele/agentscan-action@3e61e47813567b9a9a5b7944a14f3eb0798ffd1b # v2.6.0
+        uses: MatteoGabriele/agentscan-action@3e61e47813567b9a9a5b7944a14f3eb0798ffd1b # v.2.6.0
         with:
           scan-pull-requests: true
           scan-issues: true
