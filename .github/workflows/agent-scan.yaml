@@ -5,6 +5,8 @@ on:
     types:
       - opened
       - reopened
+    branches:
+      - master
   issues:
     types:
       - opened
@@ -13,6 +15,7 @@ jobs:
   agentscan:
     runs-on: ubuntu-slim
     timeout-minutes: 10
+    if: github.repository == 'OpenLightingProject/open-fixture-library'
     permissions:
       pull-requests: write
       issues: write
