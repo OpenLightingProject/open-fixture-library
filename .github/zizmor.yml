@@ -1,0 +1,9 @@
+# See https://docs.zizmor.sh/configuration/
+rules:
+  dangerous-triggers:
+    ignore:
+      # Line-anchored on the pull_request_target trigger so any other dangerous
+      # trigger added to this workflow later still gets reported.
+      # AgentScan needs the base-repository token to label PRs from forks. It
+      # never checks out PR code and only adds labels (mode: labels).
+      - agent-scan.yaml:4
