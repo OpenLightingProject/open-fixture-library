@@ -3,9 +3,9 @@
   "name": "xBrick Full-Colour",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["fintch"],
+    "authors": ["fintch", "Flo Edelmann"],
     "createDate": "2023-02-11",
-    "lastModifyDate": "2024-11-23",
+    "lastModifyDate": "2026-11-12",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2022-06-15",
@@ -80,10 +80,11 @@
     "Strobe Speed": {
       "defaultValue": 0,
       "capability": {
-        "type": "StrobeSpeed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "Are the automatically added speed values correct?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off? Are the automatically added speed values correct?"
       }
     }
   },

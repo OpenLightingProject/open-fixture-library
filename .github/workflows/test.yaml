@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Run built-files-committed test
+        run: npm run test:built-files-committed
       - name: Lint
         run: npm run lint
       - name: Typecheck
@@ -36,8 +38,6 @@ jobs:
             run: npm run test:fixtures-valid
           - name: Run http-status test
             run: npm run test:http-status
-          - name: Run built-files-committed test
-            run: npm run test:built-files-committed
   browser:
     name: Browser
     runs-on: ubuntu-latest

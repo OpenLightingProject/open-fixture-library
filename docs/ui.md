@@ -7,14 +7,14 @@ Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a 
 
 Locally, running `npm run dev` (after the [initial setup](README.md#local-installation)) starts the development server at `http://localhost:3000/` with hot module reloading, i.e. a changed Vue component file automatically patches only that component without having to reload the whole page. The port can be changed with the environment variable `PORT`, e.g. in the `.env` file.
 
-To run the production server locally, build first and start the Nitro output directly:
+To run the production server locally, build first and start the Nitro output directly from the repository root:
 
 ```bash
 npm run build
-node .output/server/index.mjs
+npm run start # same as: node .output/server/index.mjs
 ```
 
-(`npm run start` / `nuxt start` also launches the built server, but the Nuxt CLI documents it as a local preview command; run `node .output/server/index.mjs` in production.)
+Start the server from the repository root: the API and download routes load the `ui/` and `lib/` modules relative to the working directory, so `nuxt start` / `nuxt preview` (which run with a different working directory) are not supported.
 
 `npm run build` regenerates the derived data (`fixtures/register.json`, plugin data, test fixtures, model/API docs, the bundled OpenAPI document) and then builds the Nuxt/Nitro server into `.output/`. The Playwright browser tests expect such a build (or a running dev server) and never build the site themselves.
 

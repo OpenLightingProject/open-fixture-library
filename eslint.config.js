@@ -98,6 +98,7 @@ const importResolver = createNodeResolver({
 });
 
 const importRules = {
+  'import-x/avoid-re-export-all': 'error',
   // Nuxt resolves extensionless TypeScript imports; `.vue` and `.js` keep their extension.
   'import-x/extensions': ['error', 'ignorePackages', { ts: 'never' }],
   'import-x/first': 'error',
@@ -125,6 +126,7 @@ const importRules = {
       cjsExports: false,
     },
     'newlines-between': 'never',
+    'warnOnUnassignedImports': 'top',
   }],
 };
 

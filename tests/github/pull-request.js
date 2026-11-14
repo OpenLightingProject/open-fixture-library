@@ -1,5 +1,4 @@
 import '../../lib/load-env-file.js';
-
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { styleText } from 'util';

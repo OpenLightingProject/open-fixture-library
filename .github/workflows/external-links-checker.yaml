@@ -24,7 +24,7 @@ jobs:
         run: npm run build
       - parallel:
           - name: Check external links
-            run: node --tls-min-v1.0 tests/external-links.js
+            run: npm run test:external-links
             env:
               GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999

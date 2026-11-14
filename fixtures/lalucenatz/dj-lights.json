@@ -3,9 +3,9 @@
   "name": "DJ Lights",
   "categories": ["Flower", "Color Changer"],
   "meta": {
-    "authors": ["Anonymous"],
+    "authors": ["Anonymous", "Flo Edelmann"],
     "createDate": "2020-04-17",
-    "lastModifyDate": "2020-04-17"
+    "lastModifyDate": "2026-11-12"
   },
   "links": {
     "productPage": [
@@ -55,10 +55,11 @@
     },
     "Shutter / Strobe": {
       "capability": {
-        "type": "StrobeSpeed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "The manual states fast…slow, which direction is correct? At which DMX values is the light constantly on or off?"
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off? The manual states fast…slow, which direction is correct?"
       }
     },
     "Light Always On": {
