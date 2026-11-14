@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Setup Node.js v26
-        uses: actions/setup-node@v7.1.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 26
           cache: 'npm'
@@ -28,6 +28,6 @@ jobs:
               GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
               NODE_ENV: production
           - name: Check Markdown Links in all files
-            uses: gaurav-nelson/github-action-markdown-link-check@v1
+            uses: tcort/github-action-markdown-link-check@e7c7a18363c842693fadde5d41a3bd3573a7a225 # v1.1.2
             with:
               use-verbose-mode: 'yes'
