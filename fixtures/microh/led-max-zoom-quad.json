@@ -1,0 +1,275 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED MAX ZOOM QUAD",
+  "shortName": "Led Max Zoom Quad",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["EST UQAM"],
+    "createDate": "2024-03-14",
+    "lastModifyDate": "2024-03-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1350878/Microh-Led-Max-Zoom-Quad.html"
+    ],
+    "productPage": [
+      "https://www.manualslib.com/manual/938484/Microh-Led-Max-Zoom-Quad.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=xWhkcv-mWjk"
+    ]
+  },
+  "physical": {
+    "dimensions": [370, 270, 220],
+    "weight": 6.2,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 1"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 2"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 3"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 4"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 5"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 6"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 7"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Color Mixing 8"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Color Change 1"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Color Change 2"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Color Change 3"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Color Change 4"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Color Change 5"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Color Change 6"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channels",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "6 channels",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "7 channels",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "8 channels",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe 2",
+        "Color Presets",
+        "Zoom"
+      ]
+    }
+  ]
+}
