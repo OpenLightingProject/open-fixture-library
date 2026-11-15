@@ -5,8 +5,9 @@ on:
     types:
       - opened
       - reopened
-    branches:
-      - master
+    # No base-branch filter on purpose: fixes for not-yet-merged fixtures target
+    # the fixture's branch. Note that pull_request_target runs this file as
+    # committed on the base branch, so an old branch runs an old copy of it.
   issues:
     types:
       - opened
