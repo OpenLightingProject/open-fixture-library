@@ -89,9 +89,18 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Collect modified Markdown files
+        id: changed
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_BRANCH"
+          git diff --name-only --diff-filter=AM FETCH_HEAD -- '*.md' > "$RUNNER_TEMP/changed-markdown.txt"
+          echo "count=$(grep -c . "$RUNNER_TEMP/changed-markdown.txt" || true)" >> "$GITHUB_OUTPUT"
       - name: Check Markdown Links in modified files
-        uses: tcort/github-action-markdown-link-check@e7c7a18363c842693fadde5d41a3bd3573a7a225 # v1.1.2
+        if: steps.changed.outputs.count != '0'
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
-          use-verbose-mode: 'yes'
-          check-modified-files-only: 'yes'
-          base-branch: 'master'
+          # The wrapper evals its args, so pass filenames through a runner-owned
+          # list file instead of interpolating PR-controlled paths.
+          args: --no-progress --verbose --files-from "$RUNNER_TEMP/changed-markdown.txt"

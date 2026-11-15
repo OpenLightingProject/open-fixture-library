@@ -34,6 +34,6 @@ jobs:
               GITHUB_BROKEN_LINKS_ISSUE_NUMBER: 999
               NODE_ENV: production
           - name: Check Markdown Links in all files
-            uses: tcort/github-action-markdown-link-check@e7c7a18363c842693fadde5d41a3bd3573a7a225 # v1.1.2
+            uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
             with:
-              use-verbose-mode: 'yes'
+              args: --no-progress --verbose './**/*.md'
