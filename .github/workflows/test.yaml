@@ -59,7 +59,9 @@ jobs:
         run: npm install --global npm@12
       - name: Install dependencies
         run: |
-          sudo pip install lxml # for QLC+ fixture-tool-validation export test
+          python3 -m venv .venv
+          .venv/bin/pip install --require-hashes -r requirements-qlc.txt # for QLC+ fixture-tool-validation export test
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
           npm ci
       - name: Build
         run: npm run build
