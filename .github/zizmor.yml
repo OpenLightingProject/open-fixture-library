@@ -1,5 +1,10 @@
 # See https://docs.zizmor.sh/configuration/
 rules:
+  dependabot-cooldown:
+    config:
+      # Dependabot updates wait three days after a release; the audit's
+      # default threshold is seven.
+      days: 3
   dangerous-triggers:
     ignore:
       # Line-anchored on the pull_request_target trigger so any other dangerous
