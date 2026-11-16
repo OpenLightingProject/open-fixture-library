@@ -1,0 +1,170 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FS-x150 LED",
+  "shortName": "Follow Spot",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["JM"],
+    "createDate": "2026-11-16",
+    "lastModifyDate": "2026-11-16"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/478626_537967_v5_en_online.pdf?_gl=1*frvqdt*_gcl_aw*R0NMLjE3OTQ0ODE1MzAuQ2owS0NRaUE1TlhYQmhERUFSSXNBQkFKaGRLQjY5eWMwcWZOYVQ2RjhMQWdzaUlxQnVXYnFMX1VidDJZLUJEUS1qQ1dlQUZSM3VOVUgzMGFBaEJMRUFMd193Y0I.*FPAU*MTUyODU3NDI1Ny4xNzg3MTM4ODc4*_ga*NDY2NzQ3MzAxLjE3OTA2Nzg1MDk.*_ga_QNTG1E3BFT*czE3OTQ4NTcyNDgkbzExJGcxJHQxNzk0ODU4MDcwJGoyMCRsMCRoMTYwNjUzNDU4OA..*_fplc*cGNxd2dsSEFHWVhxaGNOWUI4YURKdXIwQlZNZHJzSlhzVVpmVkVTOGdGSmJEZ01VME9hdThJeVNNT0xsUXJKVVRhYjRKc0olMkJrSE5OblIxdDdnM1BMWnJJZzlkc3FXTU9mZUY0Q0VmZHY1S0V6Q1pSdTBseHJybHM1TGc5NmclM0QlM0Q.*_ga_CQB6MP7VD2*czE3OTQ4NTcyNDgkbzExJGcxJHQxNzk0ODU4MDcwJGoyMSRsMCRoMA.."
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_fs_x150_led_follow_spot.htm"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Color": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [16, 39],
+          "type": "ColorPreset",
+          "comment": "White and Red"
+        },
+        {
+          "dmxRange": [40, 63],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [64, 87],
+          "type": "ColorPreset",
+          "comment": "Red and Yellow"
+        },
+        {
+          "dmxRange": [88, 135],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [136, 159],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [160, 183],
+          "type": "ColorPreset",
+          "comment": "Blue and Purple"
+        },
+        {
+          "dmxRange": [184, 207],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [208, 231],
+          "type": "ColorPreset",
+          "comment": "Green and Orange"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [21, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [50, 101],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        }
+      ]
+    },
+    "Iris": {
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "closed",
+        "openPercentEnd": "open"
+      }
+    },
+    "Dimmer": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Effect": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "Maintenance"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Color",
+        "Color Temperature",
+        "Iris",
+        "Dimmer",
+        "Strobe Effect",
+        "Reset"
+      ]
+    }
+  ]
+}
