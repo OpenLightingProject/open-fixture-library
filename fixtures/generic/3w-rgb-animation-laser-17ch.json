@@ -1,0 +1,518 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3W RGB Animation Laser (17CH)",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Assistant", "TL"],
+    "createDate": "2026-10-06",
+    "lastModifyDate": "2026-10-06",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-06",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [198, 160, 190],
+    "weight": 4.1,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    },
+    "lens": {
+      "degreesMinMax": [0, 30]
+    }
+  },
+  "availableChannels": {
+    "Control Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Maintenance",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Maintenance",
+          "comment": "Sound Activated Mode"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Maintenance",
+          "comment": "PRG File Display Orderly"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Maintenance",
+          "comment": "ILD File Display Circularly"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Maintenance",
+          "comment": "DMX Mode"
+        }
+      ]
+    },
+    "Choose Pattern / File": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Choose Pattern (DMX Mode) / Choose File (PRG/ILD Mode)"
+      }
+    },
+    "Strobe & Display File": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Automatically (Slow to Fast) / Choose Display File",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe via Sound Activated",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Choose Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "Laser Off"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ColorPreset",
+          "comment": "White (ILD Original Color)"
+        },
+        {
+          "dmxRange": [11, 16],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "ColorPreset",
+          "comment": "White, Red, Green, Blue Subsection"
+        },
+        {
+          "dmxRange": [136, 152],
+          "type": "ColorPreset",
+          "comment": "Blue, Yellow, Purple, Cyan Subsection"
+        },
+        {
+          "dmxRange": [153, 169],
+          "type": "ColorPreset",
+          "comment": "White, Red, Green, Blue, Yellow, Purple, Cyan Subsection"
+        },
+        {
+          "dmxRange": [170, 186],
+          "type": "ColorPreset",
+          "comment": "White, Red, Green, Blue Color Flowing"
+        },
+        {
+          "dmxRange": [187, 203],
+          "type": "ColorPreset",
+          "comment": "Blue, Yellow, Purple, Cyan Color Flowing"
+        },
+        {
+          "dmxRange": [204, 220],
+          "type": "ColorPreset",
+          "comment": "White, Red, Green, Blue, Yellow, Purple, Cyan Color Flowing"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "ColorPreset",
+          "comment": "Color Subsection by Pattern Break-Point"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "ColorPreset",
+          "comment": "Color Change by Sound"
+        }
+      ]
+    },
+    "Display Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Effect",
+          "effectName": "Normal Display"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Bright Dot Display"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Subsection Display"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Dot Display"
+        }
+      ]
+    },
+    "Horizontal Move": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Move with Manual Adjust"
+        },
+        {
+          "dmxRange": [126, 225],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Auto Move Left to Right Circularly"
+        },
+        {
+          "dmxRange": [226, 245],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Auto Jump Randomly"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Random Jump by Sound Control"
+        }
+      ]
+    },
+    "Vertical Move": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Move with Manual Adjust"
+        },
+        {
+          "dmxRange": [126, 225],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Auto Move Top-Down Circularly"
+        },
+        {
+          "dmxRange": [226, 245],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Auto Jump Randomly"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "30deg",
+          "comment": "Random Jump by Sound Control"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No Zoom"
+        },
+        {
+          "dmxRange": [11, 87],
+          "type": "Generic",
+          "comment": "Zoom by Manual Adjust"
+        },
+        {
+          "dmxRange": [88, 150],
+          "type": "Generic",
+          "comment": "Zoom Out"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Zoom In"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "Zoom Circularly"
+        }
+      ]
+    },
+    "Horizontal Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "Effect",
+          "effectName": "Manual Adjust Rotation"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Effect",
+          "effectName": "Auto Rotation"
+        }
+      ]
+    },
+    "Vertical Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "Effect",
+          "effectName": "Manual Adjust Rotation"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Effect",
+          "effectName": "Auto Rotation"
+        }
+      ]
+    },
+    "Center Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "Effect",
+          "effectName": "Manual Adjust Rotation"
+        },
+        {
+          "dmxRange": [129, 192],
+          "type": "Effect",
+          "effectName": "Auto Rotation Clockwise"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Effect",
+          "effectName": "Auto Rotation Anti-Clockwise"
+        }
+      ]
+    },
+    "Gradual Drawing": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "No Drawing"
+        },
+        {
+          "dmxRange": [11, 74],
+          "type": "Effect",
+          "effectName": "Gradual Drawing by Manual Adjust"
+        },
+        {
+          "dmxRange": [75, 104],
+          "type": "Effect",
+          "effectName": "Auto Gradual Drawing (Increasing)"
+        },
+        {
+          "dmxRange": [105, 144],
+          "type": "Effect",
+          "effectName": "Auto Gradual Drawing (Decreasing)"
+        },
+        {
+          "dmxRange": [145, 184],
+          "type": "Effect",
+          "effectName": "Auto Gradual Drawing Circularly"
+        },
+        {
+          "dmxRange": [185, 224],
+          "type": "Effect",
+          "effectName": "End to End Gradual Drawing Circularly (Increasing)"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "End to End Gradual Drawing Circularly (Decreasing)"
+        }
+      ]
+    },
+    "Horizontal Wave": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "No Wave"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectName": "Small Wave"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "Middle Wave"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectName": "Big Wave"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectName": "Biggest Wave"
+        }
+      ]
+    },
+    "Vertical Wave": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "No Wave"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectName": "Small Wave"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "Middle Wave"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectName": "Big Wave"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectName": "Biggest Wave"
+        }
+      ]
+    },
+    "Red Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red Dimming (100% to 0%)"
+      }
+    },
+    "Green Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green Dimming (100% to 0%)"
+      }
+    },
+    "Blue Dimming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue Dimming (100% to 0%)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17-channel",
+      "shortName": "17ch",
+      "channels": [
+        "Control Mode",
+        "Choose Pattern / File",
+        "Strobe & Display File",
+        "Choose Color",
+        "Display Mode",
+        "Horizontal Move",
+        "Vertical Move",
+        "Zoom",
+        "Horizontal Rotation",
+        "Vertical Rotation",
+        "Center Rotation",
+        "Gradual Drawing",
+        "Horizontal Wave",
+        "Vertical Wave",
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming"
+      ]
+    }
+  ]
+}
