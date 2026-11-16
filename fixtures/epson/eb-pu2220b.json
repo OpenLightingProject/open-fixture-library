@@ -1,0 +1,324 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "eb-pu2220b",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Schu"],
+    "createDate": "2026-09-11",
+    "lastModifyDate": "2026-09-11"
+  },
+  "comment": "Projector",
+  "links": {
+    "manual": [
+      "https://epson.com/For-Work/Projectors/Large-Venue/EB-PU2220B-20%2C000-Lumen-3LCD-Large-Venue-Laser-Projector-with-4K-Enhancement/p/V11HA66820"
+    ],
+    "productPage": [
+      "https://epson.com/For-Work/Projectors/Large-Venue/EB-PU2220B-20%2C000-Lumen-3LCD-Large-Venue-Laser-Projector-with-4K-Enhancement/p/V11HA66820"
+    ],
+    "video": [
+      "https://epson.com/For-Work/Projectors/Large-Venue/EB-PU2220B-20%2C000-Lumen-3LCD-Large-Venue-Laser-Projector-with-4K-Enhancement/p/V11HA66820"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Closed"
+        }
+      ]
+    },
+    "Input Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "HDMI"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "HDBASET"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "DVI"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "SDI"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Computer"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "LAN"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "USB"
+        },
+        {
+          "dmxRange": [104, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lens Pos (Disabled)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Home Pos"
+        },
+        {
+          "dmxRange": [64, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Hor Lens Shift (Disabled)": {
+      "defaultValue": 128,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Vert Lens Shift (Disabled)": {
+      "defaultValue": 128,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom(Disabled)": {
+      "defaultValue": 128,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Focus (Disabled)": {
+      "defaultValue": 128,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Distortion (Disabled)": {
+      "defaultValue": 128,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Lens Memory": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Generic",
+          "comment": "Mem01"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Generic",
+          "comment": "Mem02"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Generic",
+          "comment": "Mem03"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "Mem04"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "Mem05"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "Mem06"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Generic",
+          "comment": "Mem07"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "Mem08"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Generic",
+          "comment": "Mem09"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Generic",
+          "comment": "Mem10"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Power": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "ON"
+        }
+      ]
+    },
+    "DMX Enable": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Locked"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Unlocked"
+        }
+      ]
+    },
+    "Freeze (Disabled)": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Fade In (Disabled)": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Fade Out (Disabled)": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Geometry (Disabled)": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Light Source": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Content (Disabled)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "EPSON-PU2220B",
+      "channels": [
+        "Intensity",
+        "Shutter",
+        "Input Select",
+        "Lens Pos (Disabled)",
+        "Hor Lens Shift (Disabled)",
+        "Vert Lens Shift (Disabled)",
+        "Zoom(Disabled)",
+        "Focus (Disabled)",
+        "Distortion (Disabled)",
+        "Lens Memory",
+        "Power",
+        "Geometry (Disabled)",
+        "DMX Enable",
+        "Freeze (Disabled)",
+        "Fade In (Disabled)",
+        "Fade Out (Disabled)",
+        "Light Source",
+        "Content (Disabled)"
+      ]
+    }
+  ]
+}
