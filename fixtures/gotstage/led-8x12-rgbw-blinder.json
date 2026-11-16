@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED 8x12 RGBW Blinder",
+  "shortName": "BLW0812",
+  "categories": ["Blinder", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["https://gdtf-share.com/"],
+    "createDate": "2026-10-03",
+    "lastModifyDate": "2026-10-03",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2025-08-21",
+      "comment": "GDTF v1.2 fixture type ID: CF7A10C1-2C42-4F9B-9E2B-1EB477C580DD"
+    }
+  },
+  "comment": "8× 12W RGBW 4-in-1 LED wall wash blinder. Besides DMX-512, it can be controlled via the included IR remote, sound activation, built-in auto programs, or master-slave mode.",
+  "links": {
+    "manual": [
+      "https://manuals.plus/ae/1005006971652397",
+      "https://manuals.plus/m/53d381c36c970ce0f5af0c4889aee2a8bc2c0988d08a2325ed70c8381093c4c5.pdf"
+    ],
+    "productPage": [
+      "https://www.aliexpress.com/item/1005006971652397.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 120, 60],
+    "weight": 0.55,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "8× 12W RGBW LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 90],
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected in this range?"
+        },
+        {
+          "dmxRange": [91, 130],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [131, 170],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [171, 210],
+          "type": "Effect",
+          "effectName": "Color pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled color change",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Effect"
+      ]
+    }
+  ]
+}
