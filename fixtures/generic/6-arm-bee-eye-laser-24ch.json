@@ -1,0 +1,267 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "6 Arm Bee Eye Laser 24CH",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Custom definition - based on supplied manufacturer manual", "Vinicius"],
+    "createDate": "2026-10-02",
+    "lastModifyDate": "2026-10-02",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-02",
+      "comment": "created by Q Light Controller Plus (version 5)"
+    }
+  },
+  "physical": {
+    "dimensions": [310, 310, 170],
+    "weight": 2.45,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500
+    }
+  },
+  "availableChannels": {
+    "Pan / Eixo X": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Velocidade Eixo X": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Bee Eye - Movimento Rotativo": {
+      "fineChannelAliases": ["Flash Luz Branca", "Flash Luz Dourada", "Macro / Controle"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Posição 0-360 graus"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Rotação positiva - lenta para rápida"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Rotação reversa - lenta para rápida"
+        }
+      ]
+    },
+    "Motor Feixe 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Motor Feixe 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Motor Feixe 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Motor Feixe 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Motor Feixe 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Motor Feixe 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Dimmer Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Nenhuma função / aberto",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe: baixa para alta velocidade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Bee Eye - Vermelho": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Bee Eye - Verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bee Eye - Azul": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Bee Eye - Branco": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Raios - Vermelho": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Raios - Verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Raios - Azul": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Raios - Branco": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Laser - Vermelho": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Laser - Verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Macro / Controle": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Nenhuma função"
+        },
+        {
+          "dmxRange": [51, 150],
+          "type": "Effect",
+          "effectName": "Autoprogramado automático (A1)"
+        },
+        {
+          "dmxRange": [151, 250],
+          "type": "Effect",
+          "effectName": "Autoprogramado com ativação por voz (SOM)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Reset - manter aproximadamente 3 segundos"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "Pan / Eixo X",
+        "Velocidade Eixo X",
+        "Bee Eye - Movimento Rotativo",
+        "Motor Feixe 1",
+        "Motor Feixe 2",
+        "Motor Feixe 3",
+        "Motor Feixe 4",
+        "Motor Feixe 5",
+        "Motor Feixe 6",
+        "Dimmer Master",
+        "Strobe",
+        "Bee Eye - Vermelho",
+        "Bee Eye - Verde",
+        "Bee Eye - Azul",
+        "Bee Eye - Branco",
+        "Raios - Vermelho",
+        "Raios - Verde",
+        "Raios - Azul",
+        "Raios - Branco",
+        "Laser - Vermelho",
+        "Laser - Verde",
+        "Flash Luz Branca",
+        "Flash Luz Dourada",
+        "Macro / Controle"
+      ]
+    }
+  ]
+}
