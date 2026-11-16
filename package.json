@@ -8,7 +8,7 @@
   ],
   "engines": {
     "node": "26.x",
-    "npm": "12.x"
+    "npm": "11.x || 12.x"
   },
   "type": "module",
   "scripts": {
@@ -141,10 +141,12 @@
   ],
   "license": "MIT",
   "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
     "core-js@3.29.1": true,
     "core-js@3.51.0": true,
+    "fsevents@1.2.13": false,
+    "fsevents@2.3.3": false,
     "nuxt@2.18.1": true,
-    "@parcel/watcher@2.6.0": true,
     "unrs-resolver@1.12.2": true
   }
 }
