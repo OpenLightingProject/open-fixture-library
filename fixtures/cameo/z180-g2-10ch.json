@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z180 G2 10CH",
+  "shortName": "Z180 10CH",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["PreSaint"],
+    "createDate": "2026-11-10",
+    "lastModifyDate": "2026-11-10"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=5Bi_TSOQ6TE"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBWZ 16 bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Zoom",
+        "Zoom fine"
+      ]
+    }
+  ]
+}
