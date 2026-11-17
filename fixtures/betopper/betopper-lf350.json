@@ -1,0 +1,827 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Betopper LF350",
+  "shortName": "Betopper LF350",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["anon"],
+    "createDate": "2026-05-25",
+    "lastModifyDate": "2026-11-11",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-11-11",
+      "comment": "GDTF v1.2 fixture type ID: 756C3959-AFA1-40A2-B150-76F7B7E95F89"
+    }
+  },
+  "comment": "Betopper betopper LF350: XML import to GDTF modified Via Jason Parsons",
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe Rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "StrobeSpeed",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": 0,
+          "speedEnd": 1,
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "T": {
+      "fineChannelAliases": ["T fine"],
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "Tilt",
+          "angleStart": "-90deg",
+          "angleEnd": "90deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angleStart": "-90deg",
+          "angleEnd": "90deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32769, 65535],
+          "type": "Tilt",
+          "angleStart": "-90deg",
+          "angleEnd": "90deg"
+        }
+      ]
+    },
+    "Movement Speed": {
+      "capability": {
+        "type": "Unknown (PositionSpeed)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Color Macro1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [4, 45],
+          "type": "ColorPreset",
+          "comment": "Color Mode 1"
+        },
+        {
+          "dmxRange": [46, 87],
+          "type": "ColorPreset",
+          "comment": "Color Mode 2"
+        },
+        {
+          "dmxRange": [88, 129],
+          "type": "ColorPreset",
+          "comment": "Color Mode 3"
+        },
+        {
+          "dmxRange": [130, 171],
+          "type": "ColorPreset",
+          "comment": "Color Mode 4"
+        },
+        {
+          "dmxRange": [172, 213],
+          "type": "ColorPreset",
+          "comment": "Color Mode 5"
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "ColorPreset",
+          "comment": "Color Mode 6"
+        }
+      ]
+    },
+    "Ctrl1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Color Select"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Sound Control"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Auto Mode"
+        }
+      ]
+    },
+    "C1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [2, 235],
+          "type": "ColorPreset",
+          "comment": "RGB Color Maco"
+        },
+        {
+          "dmxRange": [236, 253],
+          "type": "ColorPreset",
+          "comment": "Comprehensive Macro"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorPreset",
+          "comment": "Auto switching"
+        }
+      ]
+    },
+    "Color Macro1 Rate": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "StrobeM Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Unknown (NoFeature4)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [2, 218],
+          "type": "Unknown (NoFeature4)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "White MAcro"
+        },
+        {
+          "dmxRange": [219, 252],
+          "type": "Unknown (NoFeature4)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Comprensive Macro"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Unknown (NoFeature4)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Auto switching"
+        }
+      ]
+    },
+    "StrobeM Effect": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Pos FX": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Unknown (macro selection)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [10, 137],
+          "type": "Unknown (macro selection)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Tilt Full Stroke"
+        },
+        {
+          "dmxRange": [138, 155],
+          "type": "Unknown (macro selection)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Tilt Half"
+        },
+        {
+          "dmxRange": [156, 246],
+          "type": "Unknown (macro selection)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Comprehensive"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Unknown (macro selection)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Auto switching"
+        }
+      ]
+    },
+    "Fixture Global Reset": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": 0,
+        "parameterEnd": 1
+      }
+    },
+    "T 2": {
+      "name": "T",
+      "fineChannelAliases": ["T 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-90deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Strobe Rate 2": {
+      "name": "Strobe Rate",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": 0,
+        "speedEnd": 1
+      }
+    },
+    "Ctrl1 2": {
+      "name": "Ctrl1",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Color Selection"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Sound Control Mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Auto Mode"
+        }
+      ]
+    },
+    "Color Macro2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [2, 235],
+          "type": "ColorPreset",
+          "comment": "RGB Macro Function 1-126"
+        },
+        {
+          "dmxRange": [236, 253],
+          "type": "ColorPreset",
+          "comment": "RGB Comprehensive "
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorPreset",
+          "comment": "Automatic Switching"
+        }
+      ]
+    },
+    "Color Macro2 Rate": {
+      "capability": {
+        "type": "Unknown (ColorMacro1Rate)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "StrobeM Strobe 2": {
+      "name": "StrobeM Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1
+        },
+        {
+          "dmxRange": [2, 218],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "White Macro Function"
+        },
+        {
+          "dmxRange": [219, 252],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Comprehensive White"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Unknown (StrobeModeStrobe)",
+          "physicalStart": 0,
+          "physicalEnd": 1,
+          "comment": "Automatic White"
+        }
+      ]
+    },
+    "StrobeM Effect 2": {
+      "name": "StrobeM Effect",
+      "capability": {
+        "type": "Unknown (StrobeModeEffect)",
+        "physicalStart": 0,
+        "physicalEnd": 1
+      }
+    },
+    "Pos FX 2": {
+      "name": "Pos FX",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [10, 137],
+          "type": "Effect",
+          "effectName": "Full Stroke",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [138, 155],
+          "type": "Effect",
+          "effectName": "Half Stroke",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [156, 246],
+          "type": "Effect",
+          "effectName": "Comprehensive",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Effect",
+          "effectName": "Automatic Switching",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "White 2": {
+      "name": "White",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 5": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 5": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 5": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 6": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 6": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 6": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 7": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 7": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 7": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 8": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 8": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 8": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R 9": {
+      "name": "R",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 9": {
+      "name": "G",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 9": {
+      "name": "B",
+      "highlightValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Fixture Global Reset 2": {
+      "name": "Fixture Global Reset",
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "no change"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Fixture Reset"
+        }
+      ]
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 6": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 7": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 8": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 9": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 10": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 11": {
+      "name": "Dim",
+      "dmxValueResolution": "16bit",
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17ch",
+      "channels": [
+        "Dim",
+        "Strobe Rate",
+        "R",
+        "G",
+        "B",
+        "White",
+        "T",
+        "T fine",
+        "Movement Speed",
+        "Color Macro1",
+        "Ctrl1",
+        "C1",
+        "Color Macro1 Rate",
+        "StrobeM Strobe",
+        "StrobeM Effect",
+        "Pos FX",
+        "Fixture Global Reset"
+      ]
+    },
+    {
+      "name": "38Ch",
+      "channels": [
+        "T 2",
+        "T 2 fine",
+        "Movement Speed",
+        "Dim 2",
+        "Strobe Rate 2",
+        "Color Macro1",
+        "Ctrl1 2",
+        "Color Macro2",
+        "Color Macro2 Rate",
+        "StrobeM Strobe 2",
+        "StrobeM Effect 2",
+        "Pos FX 2",
+        "White 2",
+        "R 2",
+        "G 2",
+        "B 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "R 5",
+        "G 5",
+        "B 5",
+        "R 6",
+        "G 6",
+        "B 6",
+        "R 7",
+        "G 7",
+        "B 7",
+        "R 8",
+        "G 8",
+        "B 8",
+        "R 9",
+        "G 9",
+        "B 9",
+        "Fixture Global Reset 2"
+      ]
+    }
+  ]
+}
