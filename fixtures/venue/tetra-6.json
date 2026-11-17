@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Tetra 6",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["John Stoffel", "Llano Lights"],
+    "createDate": "2026-11-17",
+    "lastModifyDate": "2026-11-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-11-17",
+      "comment": "created by Q Light Controller Plus (version 5.1.0 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [145, 94, 195],
+    "weight": 1.55,
+    "power": 19,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "lumens": 1400
+    },
+    "lens": {
+      "degreesMinMax": [15, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer/Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "Master Dimmer"
+        },
+        {
+          "dmxRange": [128, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe (128=Slow/227=Max speed, 23Hz)"
+        },
+        {
+          "dmxRange": [228, 255],
+          "type": "Intensity",
+          "comment": "Master Dimmer at 100%, Strobe off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Dimmer/Strobe"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
