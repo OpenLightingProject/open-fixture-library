@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LCP120",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MFrisbee"],
+    "createDate": "2026-11-05",
+    "lastModifyDate": "2026-11-05"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0084/5230/9047/files/LPC120_-Betopper_60x2W_RGBW_4-in-1_DJ_Wedding_Par_Lights-manual.pdf?v=1723529638"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Total Dimming": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Dimming": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "DMX Dimmer"
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Effect",
+          "effectName": "High CRI of 7 Colors"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Output of 16 Colors"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Jump Change of 16 Colors"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Gradient Color Change"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectName": "Pulse Change of Colors"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound Control"
+        }
+      ]
+    },
+    "Modes for Channel 7": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameter": 0
+      }
+    },
+    "Red Dimming 2": {
+      "name": "Red Dimming",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Total Dimming",
+        "Red Dimming 2",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming",
+        "Strobe Speed",
+        "Effects",
+        "Modes for Channel 7"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Dimming",
+        "Green Dimming",
+        "Blue Dimming",
+        "White Dimming"
+      ]
+    }
+  ]
+}
