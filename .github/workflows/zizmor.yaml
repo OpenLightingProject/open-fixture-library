@@ -1,0 +1,38 @@
+name: Zizmor
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: ["**"]
+
+permissions: {}
+
+jobs:
+  zizmor:
+    name: Audit workflows
+    runs-on: ubuntu-slim
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run zizmor
+        id: zizmor
+        uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
+        with:
+          # Fork PRs get a read-only token, where SARIF upload is not guaranteed
+          # to work, so they fall back to console output and the action itself
+          # fails on findings. Same-repo PRs and master pushes upload SARIF.
+          advanced-security: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+      - name: Fail on findings
+        # In console mode (forks) the action already fails on findings; only
+        # Advanced Security runs produce an output file.
+        if: steps.zizmor.outputs['output-file'] != ''
+        env:
+          SARIF_FILE: ${{ steps.zizmor.outputs['output-file'] }}
+        run: |
+          count=$(jq '[.runs[].results[]] | length' "$SARIF_FILE")
+          echo "zizmor findings: $count"
+          test "$count" -eq 0
