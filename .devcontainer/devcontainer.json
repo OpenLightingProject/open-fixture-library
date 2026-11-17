@@ -6,5 +6,5 @@
   "containerEnv": {
     "HOST": "0.0.0.0" // Let Nuxt listen on all interfaces, otherwise container port forwarding doesn't work.
   },
-  "postCreateCommand": "npm install --global npm@12 && git config --global --add safe.directory ${containerWorkspaceFolder} && npm install"
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && npm install"
 }

@@ -5,32 +5,35 @@ on:
 concurrency:
   group: lighthouse-review-${{ github.ref }}
   cancel-in-progress: true
+permissions: {}
 jobs:
   review:
     name: Review
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     if: contains(github.event.pull_request.labels.*.name, 'component-ui')
     env:
       NODE_ENV: production
       ALLOW_SEARCH_INDEXING: allowed
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
       - name: Setup Node.js v26
-        uses: actions/setup-node@v7.1.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 26
           cache: 'npm'
-      - name: Setup npm v12
-        run: npm install --global npm@12
       - name: Install dependencies
         run: npm ci --include=dev
       - name: Build
         run: npm run build
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@12.6.2
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
         with:
           urls: |
             http://localhost:3000/
