@@ -2,14 +2,15 @@ import { rules as stylisticRules } from '@stylistic/stylelint-config';
 import { defineStylistic } from '@stylistic/stylelint-plugin';
 
 const stylisticCssRules = defineStylistic({ rules: stylisticRules });
+const maxEmptyLinesInSassLists = 1;
 
-const vueScssRules = Object.fromEntries([
-  ...Object.keys(stylisticCssRules)
-    .map((ruleName) => [ruleName, null]),
-  ...Object.entries(defineStylistic({ syntax: 'scss', rules: stylisticRules })),
-  ['@stylistic/scss/block-closing-brace-newline-after', ['always', { ignoreAtRules: ['if', 'else'] }]],
-  ['@stylistic/scss/value-list-max-empty-lines', 1],
-].toSorted(([firstRule], [secondRule]) => firstRule.localeCompare(secondRule)));
+const vueScssRules = {
+  ...Object.fromEntries(Object.keys(stylisticCssRules)
+    .map((ruleName) => [ruleName, null])),
+  ...defineStylistic({ syntax: 'scss', rules: stylisticRules }),
+  '@stylistic/scss/block-closing-brace-newline-after': ['always', { ignoreAtRules: ['if', 'else'] }],
+  '@stylistic/scss/value-list-max-empty-lines': maxEmptyLinesInSassLists,
+};
 
 export default {
   reportNeedlessDisables: true,
@@ -65,11 +66,11 @@ export default {
       },
     ],
 
-    // simplify rules
+    // special `@if`/`@else` formatting
     '@stylistic/scss/block-closing-brace-newline-after': ['always', { ignoreAtRules: ['if', 'else'] }],
 
     // allow grouping in Sass lists
-    '@stylistic/scss/value-list-max-empty-lines': 1,
+    '@stylistic/scss/value-list-max-empty-lines': maxEmptyLinesInSassLists,
 
     // simplify rules
     'scss/block-no-redundant-nesting': true,
