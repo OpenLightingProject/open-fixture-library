@@ -2295,31 +2295,31 @@
         },
         {
           "dmxRange": [10, 49],
-          "type": "Rotation",
-          "speed": "slow CW"
+          "type": "Maintenance",
+          "comment": "Fan quiet"
         },
         {
           "dmxRange": [50, 99],
-          "type": "Rotation",
-          "speed": "slow CW",
-          "comment": "medium"
+          "type": "Maintenance",
+          "comment": "Fan medium"
         },
         {
           "dmxRange": [100, 149],
-          "type": "Rotation",
-          "speed": "fast CW"
+          "type": "Maintenance",
+          "comment": "Fan high"
         },
         {
           "dmxRange": [150, 249],
-          "type": "Maintenance",
+          "type": "NoFunction",
           "comment": "Reserved"
         },
         {
           "dmxRange": [250, 255],
-          "type": "Rotation",
-          "speed": "stop"
+          "type": "Maintenance",
+          "comment": "Fan pause"
         }
       ]
+    },
     },
     "Control": {
       "capability": {
