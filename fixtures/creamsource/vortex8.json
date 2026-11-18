@@ -156,15 +156,14 @@
       "fineChannelAliases": ["Hue fine"],
       "capability": {
         "type": "Generic",
-        "comment": "1° … 360°"
+        "comment": "0°…360°"
       }
     },
     "Saturation": {
       "fineChannelAliases": ["Saturation fine"],
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Generic",
+        "comment": "0…100%"
       }
     },
     "X": {
