@@ -64,7 +64,7 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: |
-          sudo pip install lxml # for QLC+ fixture-tool-validation export test
+          sudo pip install lxml==6.1.3 # for QLC+ fixture-tool-validation export test
           npm ci
       - name: Build
         run: npm run build
