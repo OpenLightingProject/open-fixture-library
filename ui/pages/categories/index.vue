@@ -16,30 +16,22 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ $axios, error }) {
-    let categories;
-    try {
-      categories = await $axios.$get('/api/v1/categories');
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { categories };
-  },
-  head() {
-    const title = 'Categories';
+<script setup lang="ts">
+interface Category {
+  name: string;
+  fixtureCount: number;
+}
 
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-};
+const { data: categories, error } = await useFetch<Category[]>('/api/v1/categories');
+
+if (error.value) {
+  throw createError({
+    statusCode: error.value.statusCode ?? 500,
+    statusMessage: 'Could not load categories',
+  });
+}
+
+useHead({
+  title: 'Categories',
+});
 </script>

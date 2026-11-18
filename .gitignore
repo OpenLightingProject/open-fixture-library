@@ -16,10 +16,19 @@ docker-compose.yml
 
 # Generated files
 .nuxt/
+.nuxtrc
+.output/
 fixtures/register.json
+
+# Parity baseline worktrees
+.worktrees/
+
+# opencode agent config
+.opencode/
 
 # Temporary files
 tmp/
+test-results/
 .eslintcache
 
 # secret files

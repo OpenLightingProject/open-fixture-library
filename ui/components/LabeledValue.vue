@@ -52,20 +52,19 @@ section {
 }
 </style>
 
-<script>
-import { stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+interface Properties {
+  name?: string;
+  label?: string;
+  value?: string;
+}
 
-export default {
-  props: {
-    name: stringProp().optional,
-    label: stringProp().optional,
-    value: stringProp().optional,
-  },
-  emits: {
-    focusin: (event) => true,
-    focusout: (event) => true,
-    mouseover: (event) => true,
-    mouseout: (event) => true,
-  },
-};
+defineProps<Properties>();
+
+defineEmits<{
+  focusin: [event: FocusEvent];
+  focusout: [event: FocusEvent];
+  mouseover: [event: MouseEvent];
+  mouseout: [event: MouseEvent];
+}>();
 </script>

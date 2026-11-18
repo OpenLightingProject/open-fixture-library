@@ -55,30 +55,10 @@ h3 {
 }
 </style>
 
-<script>
-export default {
-  async asyncData({ $axios, error }) {
-    let plugins;
-    try {
-      plugins = await $axios.$get('/api/v1/plugins');
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-    return { plugins };
-  },
-  head() {
-    const title = 'Plugins';
+<script setup lang="ts">
+const { data: plugins } = await useFetch('/api/v1/plugins');
 
-    return {
-      title,
-      meta: [
-        {
-          hid: 'title',
-          content: title,
-        },
-      ],
-    };
-  },
-};
+useHead({
+  title: 'Plugins',
+});
 </script>

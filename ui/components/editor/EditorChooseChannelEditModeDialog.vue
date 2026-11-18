@@ -24,41 +24,41 @@
   </A11yDialog>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
+<script setup lang="ts">
+import type { EditorChannel, EditorFixture } from '~/types/editor';
 import A11yDialog from '../A11yDialog.vue';
 
-export default {
-  components: {
-    A11yDialog,
-  },
-  props: {
-    channel: objectProp().required,
-    fixture: objectProp().required,
-  },
-  methods: {
-    onChooseChannelEditModeDialogOpen() {
-      const channelUsedElsewhere = this.fixture.modes.some(
-        (mode) => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
-      );
+interface Properties {
+  channel: EditorChannel;
+  fixture: EditorFixture;
+}
 
-      if (channelUsedElsewhere) {
-        // let user first choose if they want to edit all or a duplicate
-        return;
-      }
+const properties = defineProps<Properties>();
 
-      // else duplicate makes no sense here -> continue directly
-      this.chooseChannelEditMode('edit-all');
-    },
-    async chooseChannelEditMode(editMode) {
-      // close this dialog
-      this.channel.editMode = '';
+/**
+ * Chooses an edit mode when a channel is not shared with another mode.
+ */
+function onChooseChannelEditModeDialogOpen() {
+  const channelUsedElsewhere = properties.fixture.modes.some(
+    (mode) => mode.uuid !== properties.channel.modeId && mode.channels.includes(properties.channel.uuid),
+  );
 
-      await this.$nextTick();
+  if (channelUsedElsewhere) {
+    return;
+  }
 
-      // open channel dialog
-      this.channel.editMode = editMode;
-    },
-  },
-};
+  chooseChannelEditMode('edit-all');
+}
+
+/**
+ * Applies an edit mode after forcing the dialog to re-render.
+ * @param editMode - The edit mode to apply.
+ */
+async function chooseChannelEditMode(editMode: string) {
+  properties.channel.editMode = '';
+
+  await nextTick();
+
+  properties.channel.editMode = editMode;
+}
 </script>

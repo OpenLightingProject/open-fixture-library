@@ -2,12 +2,12 @@
   <A11yDialog
     id="help-wanted-dialog"
     ref="dialog"
-    :is-alert-dialog="state === `loading`"
+    :is-alert-dialog="state === 'loading'"
     :shown="modelValue !== undefined"
     :title="title"
     @hide="onHide()">
 
-    <form v-if="state === `ready` && modelValue !== undefined" action="#" @submit.prevent="onSubmit()">
+    <form v-if="state === 'ready' && modelValue !== undefined" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
         key="location"
@@ -33,15 +33,15 @@
       </LabeledInput>
 
       <div class="button-bar right">
-        <button :disabled="message === ``" type="submit" class="primary">Send information</button>
+        <button :disabled="message === ''" type="submit" class="primary">Send information</button>
       </div>
     </form>
 
-    <template v-else-if="state === `loading`">
+    <template v-else-if="state === 'loading'">
       Uploading…
     </template>
 
-    <template v-else-if="state === `success`">
+    <template v-else-if="state === 'success'">
       Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank" rel="noopener">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
       <div class="button-bar right">
@@ -50,7 +50,7 @@
       </div>
     </template>
 
-    <template v-else-if="state === `error`">
+    <template v-else-if="state === 'error'">
       <span>Unfortunately, there was an error while uploading. Please copy the following data and manually submit it.</span>
 
       <textarea :value="errorData" readonly />
@@ -71,159 +71,209 @@
   </A11yDialog>
 </template>
 
-<script>
-import { objectProp, stringProp } from 'vue-ts-types';
+<style lang="scss" scoped>
+.form-dialog {
+  .button-bar {
+    margin-top: 2ex;
+  }
+}
+.error-textarea {
+  width: 100%;
+  min-height: 10em;
+  margin-top: 1ex;
+  font-family: $system-monospace-font-stack;
+}
+.loading-text {
+  display: inline-block;
+  margin: 1em 0;
+  font-weight: bold;
+}
+.success-message {
+  margin: 1ex 0;
+}
+.dialog-body {
+  padding: 1ex 0;
+}
+.dialog-footer {
+  text-align: right;
+  padding-top: 1ex;
+}
+
+.loading-text, .success-message {
+  text-align: center;
+}
+
+.error-box {
+  border: 1px solid theme-color(error);
+  background-color: theme-color(error-background);
+  padding: 1em;
+  border-radius: 3px;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.dialog-body .form-control {
+  margin-bottom: 1.5ex;
+}
+
+.dialog-body .error-message {
+  color: theme-color(error);
+  font-weight: bold;
+  margin-top: 0.5ex;
+}
+
+.dialog-body .button-bar {
+  margin-top: 2ex;
+}
+
+.dialog-body textarea {
+  width: 100%;
+  min-height: 5em;
+  margin-top: 1ex;
+  font-family: $system-monospace-font-stack;
+}
+</style>
+
+<script setup lang="ts">
+import type { HelpWantedModel } from '~/types/help-wanted';
 import A11yDialog from './A11yDialog.vue';
-import LabeledInput from './LabeledInput.vue';
-import LabeledValue from './LabeledValue.vue';
 
-export default {
-  components: {
-    A11yDialog,
-    LabeledInput,
-    LabeledValue,
-  },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
-  },
-  props: {
-    type: stringProp().required,
-    modelValue: objectProp().optional,
-  },
-  emits: {
-    'update:model-value': (value) => true,
-  },
-  data: () => {
+interface Properties {
+  type: 'plugin' | 'fixture' | 'capability';
+  modelValue?: HelpWantedModel;
+}
+
+const properties = defineProps<Properties>();
+const emit = defineEmits<{
+  'update:model-value': [value: undefined];
+}>();
+
+const dialog = ref<InstanceType<typeof A11yDialog> | null>(null);
+
+const state = ref<'ready' | 'loading' | 'success' | 'error'>('ready');
+const message = ref('');
+const githubUsername = ref('');
+const issueUrl = ref<string | null>(null);
+const error = ref<string | null>(null);
+
+const title = computed(() => {
+  if (state.value === 'loading') {
+    return 'Sending your message…';
+  }
+  if (state.value === 'success') {
+    return 'Message sent';
+  }
+  if (state.value === 'error') {
+    return 'Failed to send message';
+  }
+  return properties.type === 'plugin' ? 'Improve plugin' : 'Improve fixture';
+});
+
+const location = computed(() => {
+  if (properties.type !== 'capability' || !properties.modelValue?._channel) {
+    return null;
+  }
+
+  const channel = properties.modelValue._channel;
+  return `Channel "${channel.key ?? ''}" → Capability "${properties.modelValue.name ?? ''}" (${properties.modelValue.rawDmxRange ?? ''})`;
+});
+
+const fixtureContext = computed(() => {
+  if (properties.type === 'fixture' && properties.modelValue?.manufacturer && properties.modelValue.key) {
     return {
-      state: 'ready',
-      message: '',
-      githubUsername: '',
-      issueUrl: null,
-      error: null,
+      manufacturer: properties.modelValue.manufacturer,
+      key: properties.modelValue.key,
     };
-  },
-  computed: {
-    title() {
-      switch (this.state) {
-        case 'loading': {
-          return 'Sending your message…';
-        }
-        case 'success': {
-          return 'Message sent';
-        }
-        case 'error': {
-          return 'Failed to send message';
-        }
-        default: {
-          return this.type === 'plugin' ? 'Improve plugin' : 'Improve fixture';
-        }
-      }
-    },
-    location() {
-      if (this.type === 'capability') {
-        const capability = this.modelValue;
-        const channel = capability._channel;
-        return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
-      }
+  }
+  return properties.type === 'capability' ? properties.modelValue?._channel?.fixture ?? null : null;
+});
 
-      return null;
-    },
-    fixture() {
-      switch (this.type) {
-        case 'fixture': {
-          return this.modelValue;
-        }
-        case 'capability': {
-          return this.modelValue._channel.fixture;
-        }
-        default: {
-          return null;
-        }
-      }
-    },
-    sendObject() {
-      const sendObject = {
-        type: this.type,
-        location: this.location,
-        helpWanted: this.modelValue.helpWanted,
-        message: this.message,
-        githubUsername: this.githubUsername === '' ? null : this.githubUsername,
-      };
+const sendObject = computed(() => {
+  const object: Record<string, unknown> = {
+    type: properties.type,
+    location: location.value,
+    helpWanted: properties.modelValue?.helpWanted,
+    message: message.value,
+    githubUsername: githubUsername.value === '' ? null : githubUsername.value,
+  };
 
-      if (this.type === 'plugin') {
-        sendObject.context = this.modelValue.key;
-      }
-      else {
-        const manufacturerKey = this.fixture.manufacturer.key;
-        const fixtureKey = this.fixture.key;
+  if (properties.type === 'plugin' && properties.modelValue?.key) {
+    object.context = properties.modelValue.key;
+  }
+  else if (fixtureContext.value) {
+    object.context = `${fixtureContext.value.manufacturer.key}/${fixtureContext.value.key}`;
+  }
 
-        sendObject.context = `${manufacturerKey}/${fixtureKey}`;
-      }
+  return object;
+});
 
-      return sendObject;
-    },
-    errorData() {
-      return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;
-    },
-    mailtoUrl() {
-      const subject = `Feedback for ${this.sendObject.type} '${this.sendObject.modelValue}'`;
+const errorData = computed(() => `${JSON.stringify(sendObject.value, null, 2)}\n\n${error.value}`);
 
-      const mailBodyData = {
-        'Problem location': this.location,
-        'Problem description': this.modelValue.helpWanted,
-        'Message': this.message,
-      };
+const mailtoUrl = computed(() => {
+  const subject = `Feedback for ${sendObject.value.type} '${sendObject.value.context}'`;
 
-      const body = Object.entries(mailBodyData).filter(
-        ([key, value]) => value !== null,
-      ).map(([key, value]) => {
-        const separator = value.includes('\n') ? '\n' : ' ';
-        return `${key}:${separator}${value}`;
-      }).join('\n');
+  const mailBodyData: Record<string, string | null> = {
+    'Problem location': location.value,
+    'Problem description': properties.modelValue?.helpWanted || null,
+    'Message': message.value,
+  };
 
-      return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    },
-  },
-  mounted() {
-    if (localStorage) {
-      this.githubUsername = localStorage.getItem('prefillGithubUsername') || '';
+  const body = Object.entries(mailBodyData).filter(
+    ([, value]) => value !== null,
+  ).map(([key, value]) => {
+    const separator = value?.includes('\n') ? '\n' : ' ';
+    return `${key}:${separator}${value}`;
+  }).join('\n');
+
+  return `mailto:flo@open-fixture-library.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+onMounted(() => {
+  // eslint-disable-next-line unicorn/prefer-simple-condition-first -- `localStorage` is undefined during SSR
+  if (import.meta.client && localStorage) {
+    githubUsername.value = localStorage.getItem('prefillGithubUsername') || '';
+  }
+});
+
+const onSubmit = async () => {
+  state.value = 'loading';
+  // eslint-disable-next-line unicorn/prefer-simple-condition-first -- `localStorage` is undefined during SSR
+  if (import.meta.client && localStorage) {
+    localStorage.setItem('prefillGithubUsername', githubUsername.value);
+  }
+
+  try {
+    const response = await $fetch<{ error?: string; issueUrl?: string }>('/api/v1/submit-feedback', {
+      method: 'POST',
+      body: sendObject.value,
+    });
+
+    if (response.error) {
+      throw new Error(response.error);
     }
-  },
-  methods: {
-    async onSubmit() {
-      this.state = 'loading';
-      localStorage.setItem('prefillGithubUsername', this.githubUsername);
 
-      try {
-        const response = await this.$axios.post('/api/v1/submit-feedback', this.sendObject);
+    issueUrl.value = response.issueUrl || null;
+    state.value = 'success';
+  }
+  catch (error_) {
+    console.error('There was a problem with the request.', error_);
+    error.value = (error_ as Error).message;
+    state.value = 'error';
+  }
+};
 
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
+const hide = () => {
+  dialog.value?.$emit('hide');
+};
 
-        this.issueUrl = response.data.issueUrl;
-        this.state = 'success';
-      }
-      catch (error) {
-        console.error('There was a problem with the request.', error);
-        this.error = error.message;
-        this.state = 'error';
-      }
-    },
-    hide() {
-      this.$refs.dialog.$emit('hide');
-    },
-    onHide() {
-      if (this.state === 'success') {
-        this.message = '';
-      }
+const onHide = () => {
+  if (state.value === 'success') {
+    message.value = '';
+  }
 
-      this.state = 'ready';
-      this.issueUrl = null;
-      this.error = null;
-      this.$emit('update:model-value', undefined);
-    },
-  },
+  state.value = 'ready';
+  issueUrl.value = null;
+  error.value = null;
+  emit('update:model-value', undefined);
 };
 </script>

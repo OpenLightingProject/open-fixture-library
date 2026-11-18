@@ -46,40 +46,36 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { capabilityTypes, schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { capabilityTypes, schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-      colors: capabilityTypes.ColorIntensity.properties.color.enum,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        color: '',
-        brightness: null,
-        brightnessStart: 'off',
-        brightnessEnd: 'bright',
-        comment: '',
-      },
+interface Properties {
+  capability: {
+    uuid: string;
+    typeData: {
+      color?: string;
+      brightness?: string | null;
+      brightnessStart?: string;
+      brightnessEnd?: string;
+      comment?: string;
     };
-  },
+  };
+  formstate?: object;
+}
+
+defineProps<Properties>();
+
+const colors = capabilityTypes.ColorIntensity.properties.color.enum;
+
+const defaultData = {
+  color: '',
+  brightness: null,
+  brightnessStart: 'off',
+  brightnessEnd: 'bright',
+  comment: '',
 };
+
+defineExpose({
+  defaultData,
+});
 </script>

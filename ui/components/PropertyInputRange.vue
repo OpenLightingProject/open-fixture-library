@@ -1,125 +1,152 @@
 <template>
-  <span class="range">
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        ref="firstInput"
-        v-model="start"
-        :name="`${name}-start`"
-        :schema-property="schemaProperty.items"
-        :minimum="rangeMin"
-        :maximum="end === `invalid` ? rangeMax : end"
-        :required="required || rangeIncomplete"
-        :hint="startHint"
-        lazy
-        @focus="onFocus($event)"
-        @blur="onBlur($event)" />
-    </Validate>
+  <span ref="root" class="range">
+    <PropertyInputNumber
+      ref="firstInput"
+      v-model="start"
+      :name="`${name}-start`"
+      :schema-property="schemaProperty.items"
+      :minimum="rangeMin"
+      :maximum="isInvalidValue(end) ? rangeMax : end"
+      :required="required || rangeIncomplete"
+      :hint="startHint"
+      lazy
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
     …
-    <Validate :state="formstate" tag="span">
-      <PropertyInputNumber
-        v-model="end"
-        :name="`${name}-end`"
-        :schema-property="schemaProperty.items"
-        :minimum="start === `invalid` ? rangeMin : start"
-        :maximum="rangeMax"
-        :required="required || rangeIncomplete"
-        :hint="endHint"
-        lazy
-        @focus="onFocus($event)"
-        @blur="onBlur($event)" />
-    </Validate>
+    <PropertyInputNumber
+      v-model="end"
+      :name="`${name}-end`"
+      :schema-property="schemaProperty.items"
+      :minimum="isInvalidValue(start) ? rangeMin : start"
+      :maximum="rangeMax"
+      :required="required || rangeIncomplete"
+      :hint="endHint"
+      lazy
+      @focus="onFocus()"
+      @blur="onBlur($event)" />
     {{ unit }}
   </span>
 </template>
 
-<script>
-import { arrayProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
+<script setup lang="ts">
+import { useEditorGroupField } from '~/composables/useEditorForm';
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
-export default {
-  components: {
-    PropertyInputNumber,
+interface Properties {
+  modelValue?: number[] | null;
+  name: string;
+  startHint?: string;
+  endHint?: string;
+  rangeMin?: number;
+  rangeMax?: number;
+  schemaProperty: {
+    items: object;
+  };
+  unit?: string;
+  required?: boolean;
+  // eslint-disable-next-line vue/no-unused-properties -- absorbs the shared `formstate` attribute from editor parents
+  formstate: object;
+}
+
+const properties = withDefaults(defineProps<Properties>(), {
+  modelValue: null,
+  startHint: 'start',
+  endHint: 'end',
+  rangeMin: undefined,
+  rangeMax: undefined,
+  unit: '',
+  required: false,
+});
+
+const emit = defineEmits<{
+  'update:model-value': [range: number[] | null];
+  'start-updated': [];
+  'end-updated': [];
+  'focus': [];
+  'blur': [];
+  'vf:validate': [validationData: { 'complete-range': string; 'valid-range': string }];
+}>();
+
+const firstInput = ref<InstanceType<typeof PropertyInputNumber> | null>(null);
+const root = ref<HTMLElement | null>(null);
+
+const { touch } = useEditorGroupField(
+  () => ({
+    name: properties.name,
+    getValue: () => properties.modelValue,
+    getRules: () => [
+      { name: 'complete-range' },
+      { name: 'valid-range' },
+    ],
+    getAttrs: () => ({}),
+    getElement: () => root.value,
+  }),
+  () => properties.modelValue,
+);
+
+const validationData = ref({
+  'complete-range': '',
+  'valid-range': '',
+});
+
+const start = computed({
+  get: () => (properties.modelValue ? properties.modelValue[0] : null),
+  set: (startInput: number | null) => {
+    emit('update:model-value', getRange(startInput, end.value));
+    emit('start-updated');
   },
-  model: {
-    prop: 'model-value',
-    event: 'update:model-value',
+});
+
+const end = computed({
+  get: () => (properties.modelValue ? properties.modelValue[1] : null),
+  set: (endInput: number | null) => {
+    emit('update:model-value', getRange(start.value, endInput));
+    emit('end-updated');
   },
-  props: {
-    modelValue: arrayProp().withDefault(null),
-    name: stringProp().required,
-    startHint: stringProp().withDefault('start'),
-    endHint: stringProp().withDefault('end'),
-    rangeMin: numberProp().optional,
-    rangeMax: numberProp().optional,
-    schemaProperty: objectProp().required,
-    unit: stringProp().optional,
-    required: booleanProp().withDefault(false),
-    formstate: objectProp().required,
-  },
-  emits: {
-    'update:model-value': (range) => true,
-    'start-updated': () => true,
-    'end-updated': () => true,
-    'focus': () => true,
-    'blur': () => true,
-    'vf:validate': (validationData) => true,
-  },
-  data() {
-    return {
-      validationData: {
-        'complete-range': '',
-        'valid-range': '',
-      },
-    };
-  },
-  computed: {
-    start: {
-      get() {
-        return this.modelValue ? this.modelValue[0] : null;
-      },
-      set(startInput) {
-        this.$emit('update:model-value', getRange(startInput, this.end));
-        this.$emit('start-updated');
-      },
-    },
-    end: {
-      get() {
-        return this.modelValue ? this.modelValue[1] : null;
-      },
-      set(endInput) {
-        this.$emit('update:model-value', getRange(this.start, endInput));
-        this.$emit('end-updated');
-      },
-    },
-    rangeIncomplete() {
-      return this.modelValue && (this.start === null || this.end === null);
-    },
-  },
-  mounted() {
-    this.$emit('vf:validate', this.validationData);
-  },
-  methods: {
-    /** @public */
-    focus() {
-      this.$refs.firstInput.focus();
-    },
-    onFocus(event) {
-      this.$emit('focus');
-    },
-    onBlur(event) {
-      if (!(event.target && event.relatedTarget) || event.target.closest('.range') !== event.relatedTarget.closest('.range')) {
-        this.$emit('blur');
-      }
-    },
-  },
-};
+});
+
+const rangeIncomplete = computed(() => properties.modelValue && (start.value === null || end.value === null));
 
 /**
- * @param {number | null} start - Start value of the range or null.
- * @param {number | null} end - End value of the range or null.
- * @returns {[number, number] | null} Range array with the inputs or null if both inputs were null.
+ * Detects the sentinel emitted by the numeric input for unparsable values.
+ * @param value - The value to inspect.
+ * @returns Whether the value is the invalid-value sentinel.
  */
-function getRange(start, end) {
-  return start === null && end === null ? null : [start, end];
+function isInvalidValue(value: unknown): boolean {
+  return value === 'invalid';
+}
+
+onMounted(() => {
+  emit('vf:validate', validationData.value);
+});
+
+const onFocus = () => {
+  emit('focus');
+};
+
+const onBlur = (event: FocusEvent) => {
+  if (event.target && event.relatedTarget
+    && (event.target as Element).closest('.range') === (event.relatedTarget as Element).closest('.range')) {
+    return;
+  }
+
+  touch();
+  emit('blur');
+};
+
+defineExpose({
+  focus: () => {
+    firstInput.value?.focus();
+  },
+});
+
+/**
+ * Builds the range tuple, or `null` when both bounds are empty.
+ * @param startValue - The lower bound.
+ * @param endValue - The upper bound.
+ * @returns The range tuple or `null`.
+ */
+function getRange(startValue: number | null, endValue: number | null): number[] | null {
+  return startValue === null && endValue === null ? null : [startValue, endValue];
 }
 </script>

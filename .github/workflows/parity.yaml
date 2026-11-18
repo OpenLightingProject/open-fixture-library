@@ -1,0 +1,59 @@
+name: Parity
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *' # nightly at 03:00 UTC
+
+concurrency:
+  group: parity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parity:
+    name: Nuxt 2 parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    # Scheduled runs would only be useful in the canonical repository; forks can
+    # still start the workflow manually.
+    if: github.repository == 'OpenLightingProject/open-fixture-library' || github.event_name == 'workflow_dispatch'
+    env:
+      BASELINE_DIR: ${{ github.workspace }}/.worktrees/nuxt2-baseline
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0 # complete history, so the baseline commit is available
+      - name: Setup Node.js v26
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26
+      - name: Setup npm v12
+        run: npm install --global npm@12
+      - name: Fetch canonical Nuxt 2 baseline
+        # In a fork, origin/master may lag behind the upstream master that the
+        # parity suite expects, so fetch the canonical repository as `upstream`.
+        if: github.repository != 'OpenLightingProject/open-fixture-library'
+        run: |
+          git remote add upstream https://github.com/OpenLightingProject/open-fixture-library.git
+          git fetch --no-tags upstream master
+      - name: Create Nuxt 2 baseline worktree
+        run: scripts/parity.sh --prepare
+      - name: Restore npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-parity-${{ hashFiles('package-lock.json', '.worktrees/nuxt2-baseline/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-parity-
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+      - name: Run parity suite
+        run: scripts/parity.sh
+      - name: Upload parity logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: parity-logs
+          path: tmp/parity/
+          if-no-files-found: ignore

@@ -1,5 +1,5 @@
 import scrollIntoView from 'scroll-into-view';
-import { v4 as uuidV4 } from 'uuid';
+import { toRaw } from 'vue';
 
 export const constants = {
   RESOLUTION_8BIT: 1,
@@ -90,7 +90,7 @@ export function getEmptyFixture() {
  */
 export function getEmptyLink(linkType = 'manual') {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     type: linkType,
     url: '',
   };
@@ -123,7 +123,7 @@ export function getEmptyPhysical() {
  */
 export function getEmptyMode() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     name: '',
     shortName: '',
     rdmPersonalityIndex: null,
@@ -138,7 +138,7 @@ export function getEmptyMode() {
  */
 export function getEmptyChannel() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     editMode: '',
     modeId: '',
     name: '',
@@ -170,7 +170,7 @@ export function getEmptyChannel() {
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     coarseChannelId,
     resolution,
   };
@@ -181,7 +181,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
  */
 export function getEmptyCapability() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     open: true,
     dmxRange: null,
     type: '',
@@ -194,7 +194,7 @@ export function getEmptyCapability() {
  */
 export function getEmptyWheelSlot() {
   return {
-    uuid: uuidV4(),
+    uuid: crypto.randomUUID(),
     type: '',
     typeData: {},
   };
@@ -265,11 +265,26 @@ export function colorsHexStringToArray(hexString) {
 }
 
 /**
+ * Creates a deep plain-object clone of editor state. Vue 3 exposes reactive
+ * proxies, which `structuredClone` cannot clone, so JSON is used instead.
+ * @param {unknown} value - The value to clone (may contain reactive proxies).
+ * @returns {unknown} A deep clone without proxies.
+ */
+export function toPlainData(value) {
+  // Keep reading through reactive proxies so a call inside a computed tracks
+  // the cloned properties; `toRaw` would hide them from dependency collection.
+  // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips reactive proxies
+  return JSON.parse(JSON.stringify(value));
+}
+
+/**
  * @param {object} channel - The channel object that shall be sanitized.
  * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
-  const sanitizedChannel = structuredClone(channel);
+  // Vue 3 exposes reactive proxies; `structuredClone` cannot clone those.
+  // eslint-disable-next-line unicorn/prefer-structured-clone -- JSON clone strips the proxy
+  const sanitizedChannel = JSON.parse(JSON.stringify(toRaw(channel)));
   delete sanitizedChannel.editMode;
   delete sanitizedChannel.modeId;
   delete sanitizedChannel.wizard;

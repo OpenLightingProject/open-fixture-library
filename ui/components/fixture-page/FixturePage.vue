@@ -18,19 +18,15 @@
         name="comment"
         label="Comment" />
 
-      <section v-if="videos" class="fixture-videos">
-        <div v-for="video of videos" :key="video.url" class="fixture-video">
-          <EmbettyVideo
-            :type="video.type"
-            :video-id="video.videoId"
-            :start-at="video.startAt"
-            server-url="https://embetty.open-fixture-library.org" />
+      <section v-if="embettableVideos" class="fixture-videos">
+        <div v-for="videoData of embettableVideos" :key="videoData.url" class="fixture-video">
+          <FixtureVideo :video="videoData" />
           <a
-            :href="video.url"
+            :href="videoData.url"
             target="_blank"
             rel="nofollow noopener">
             <OflSvg name="youtube" />
-            Watch video at {{ video.displayType }}
+            Watch video at {{ videoData.displayType }}
           </a>
         </div>
       </section>
@@ -116,7 +112,7 @@
 
       <div class="button-bar">
         <a
-          v-if="isBrowser"
+          v-if="client"
           href="#load-modes"
           class="button primary"
           @click.prevent="modeNumberLoadLimit += modeNumberLoadIncrement">
@@ -125,7 +121,7 @@
         <a
           href="?loadAllModes"
           class="button"
-          :class="isBrowser ? `secondary` : `primary`"
+          :class="client ? `secondary` : `primary`"
           rel="nofollow noindex"
           @click.prevent="modeNumberLoadLimit = undefined">
           Load all {{ fixture.modes.length }} modes
@@ -140,7 +136,7 @@
   border-top: 0.4rem solid transparent;
 }
 
-.comment ::v-deep .value {
+.comment :deep(.value) {
   white-space: pre-line;
 }
 
@@ -207,186 +203,152 @@
 }
 </style>
 
-<script>
-import { EmbettyVideo } from 'embetty-vue';
-import { booleanProp, instanceOfProp, stringProp } from 'vue-ts-types';
-import Fixture from '../../../lib/model/Fixture.js';
-import { linksProperties } from '../../../lib/schema-properties.js';
-import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
-import CategoryBadge from '../../components/CategoryBadge.vue';
-import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
-import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
-import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
-import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
-import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
-import LabeledValue from '../../components/LabeledValue.vue';
-import MasonryCardContainer from '../../components/MasonryCardContainer.vue';
+<script setup lang="ts">
+import fixtureLinkTypes from '@/assets/scripts/fixture-link-types.js';
+import { linksProperties } from '~~/lib/schema-properties.js';
+import FixtureVideo from './FixtureVideo.vue';
+import type { Fixture } from '~/types/models';
+
+interface Properties {
+  fixture: Fixture;
+  loadAllModes?: boolean;
+  manufacturerColor?: string | null;
+}
+
+const properties = withDefaults(defineProps<Properties>(), {
+  loadAllModes: false,
+  manufacturerColor: null,
+});
+
+defineEmits<{
+  'help-wanted-clicked': [event: { context: object; type: string }];
+}>();
+
+const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
+
+// Must start as `false` during SSR and hydration, exactly like the Nuxt 2
+// `isBrowser` data property. `import.meta.client` is already `true` on the
+// first client render and would hydrate the client-only button differently.
+const client = ref(false);
+onMounted(() => {
+  client.value = true;
+});
+
+const modeNumberLoadLimit = ref<number | undefined>(properties.loadAllModes ? undefined : 5);
+const modeNumberLoadThreshold = 15;
+const modeNumberLoadIncrement = 10;
+
+const modesLimited = computed(() => properties.fixture.modes.length > modeNumberLoadThreshold);
+
+const modes = computed(() => {
+  const allModes = properties.fixture.modes;
+
+  return modesLimited.value ? allModes.slice(0, modeNumberLoadLimit.value) : allModes;
+});
+
+const embettableVideos = computed(() => {
+  const videoUrls = properties.fixture.getLinksOfType('video');
+  const embettableVideoData = [];
+
+  for (const url of videoUrls) {
+    if (embettableVideoData.length === VIDEOS_TO_EMBED) {
+      break;
+    }
+
+    const videoInfo = getEmbettableVideoData(url);
+    if (videoInfo !== null) {
+      embettableVideoData.push(videoInfo);
+    }
+  }
+
+  return embettableVideoData;
+});
+
+const links = computed(() => {
+  const linkList = [];
+
+  for (const linkType of Object.keys(linksProperties)) {
+    let linkDisplayNumber = 1;
+    let linksOfType = properties.fixture.getLinksOfType(linkType);
+
+    if (linkType === 'video') {
+      linksOfType = linksOfType.filter(
+        (url) => embettableVideos.value.every((video) => video.url !== url),
+      );
+      linkDisplayNumber += embettableVideos.value.length;
+    }
+
+    for (const url of linksOfType) {
+      let name = linkTypeNames[linkType];
+      const title = `${name} at ${url}`;
+
+      if (linkType === 'other') {
+        name = url;
+      }
+      else if (linkDisplayNumber > 1) {
+        name += ` ${linkDisplayNumber}`;
+      }
+
+      linkList.push({
+        url,
+        name,
+        title,
+        type: linkType,
+        iconName: linkTypeIconNames[linkType],
+        hostname: getHostname(url),
+      });
+
+      linkDisplayNumber++;
+    }
+  }
+
+  return linkList;
+});
 
 const VIDEOS_TO_EMBED = 2;
-
-export default {
-  components: {
-    CategoryBadge,
-    EmbettyVideo,
-    FixturePageMatrix,
-    FixturePageMode,
-    FixturePagePhysical,
-    FixturePageWheel,
-    HelpWantedMessage,
-    LabeledValue,
-    MasonryCardContainer,
-  },
-  props: {
-    fixture: instanceOfProp(Fixture).required,
-    loadAllModes: booleanProp().withDefault(false),
-    manufacturerColor: stringProp().nullable,
-  },
-  emits: {
-    'help-wanted-clicked': (payload) => true,
-  },
-  data() {
-    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
-    return {
-      isBrowser: false,
-      modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
-      modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
-      modeNumberLoadIncrement: 10, // how many modes a button click will load
-      linkTypeIconNames,
-      linkTypeNames,
-    };
-  },
-  computed: {
-    modesLimited() {
-      return this.fixture.modes.length > this.modeNumberLoadThreshold;
-    },
-    modes() {
-      const modes = this.fixture.modes;
-
-      return this.modesLimited ? modes.slice(0, this.modeNumberLoadLimit) : modes;
-    },
-
-    /**
-     * @returns {object[]} Array of videos that can be embetted.
-     */
-    videos() {
-      const videoUrls = this.fixture.getLinksOfType('video');
-      const embettableVideoData = [];
-
-      for (const url of videoUrls) {
-        if (embettableVideoData.length === VIDEOS_TO_EMBED) {
-          break;
-        }
-
-        const videoData = getEmbettableVideoData(url);
-        if (videoData !== null) {
-          embettableVideoData.push(videoData);
-        }
-      }
-
-      return embettableVideoData;
-    },
-
-    links() {
-      const links = [];
-
-      for (const linkType of Object.keys(linksProperties)) {
-        let linkDisplayNumber = 1;
-        let linksOfType = this.fixture.getLinksOfType(linkType);
-
-        if (linkType === 'video') {
-          linksOfType = linksOfType.filter(
-            (url) => this.videos.every((video) => video.url !== url),
-          );
-          linkDisplayNumber += this.videos.length;
-        }
-
-        for (const url of linksOfType) {
-          let name = this.linkTypeNames[linkType];
-          const title = `${name} at ${url}`;
-
-          if (linkType === 'other') {
-            name = url;
-          }
-          else if (linkDisplayNumber > 1) {
-            name += ` ${linkDisplayNumber}`;
-          }
-
-          links.push({
-            url,
-            name,
-            title,
-            type: linkType,
-            iconName: this.linkTypeIconNames[linkType],
-            hostname: getHostname(url),
-          });
-
-          linkDisplayNumber++;
-        }
-      }
-
-      return links;
-    },
-  },
-  mounted() {
-    this.isBrowser = true;
-  },
-};
 
 const supportedVideoFormats = {
 
   native: {
     regex: /\.(?:mp4|avi)$/,
-    displayType: (url) => getHostname(url),
-    videoId: (url, match) => url,
-    startAt: (url, match) => 0,
+    displayType: (url: string) => getHostname(url),
+    videoId: (url: string, match: RegExpMatchArray | null) => url,
+    startAt: (url: string, match: RegExpMatchArray | null) => 0,
   },
 
   youtube: {
-    /**
-     * YouTube videos can be in the following format:
-     * - https://www.youtube.com/watch?v={videoId}&otherParameters
-     */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
-    displayType: (url) => 'YouTube',
-    videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0,
+    displayType: () => 'YouTube',
+    videoId: (url: string, match: RegExpMatchArray | null) => match?.[1] ?? '',
+    startAt: (url: string, match: RegExpMatchArray | null) => match?.[2] ?? 0,
   },
 
   vimeo: {
-    /**
-     * Vimeo videos can be in one of the following formats:
-     * - https://vimeo.com/{videoId}
-     * - https://vimeo.com/channels/{channelName}/{videoId}
-     * - https://vimeo.com/groups/{groupId}/videos/{videoId}
-     */
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
-    displayType: (url) => 'Vimeo',
-    videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0,
+    displayType: () => 'Vimeo',
+    videoId: (url: string, match: RegExpMatchArray | null) => match?.[1] ?? '',
+    startAt: (url: string, match: RegExpMatchArray | null) => match?.[2] ?? 0,
   },
 
   facebook: {
-    /**
-     * Facebook videos can be in the following format:
-     * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
-     */
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
-    displayType: (url) => 'Facebook',
-    videoId: (url, match) => match[1],
-    startAt: (url, match) => 0,
+    displayType: () => 'Facebook',
+    videoId: (url: string, match: RegExpMatchArray | null) => match?.[1] ?? '',
+    startAt: (url: string, match: RegExpMatchArray | null) => 0,
   },
 
 };
 
 /**
- * @param {string} url - The video URL.
- * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
+ * Detects a supported embeddable video URL.
+ * @param url - The video URL.
+ * @returns The video data, or `null` for unsupported URLs.
  */
-function getEmbettableVideoData(url) {
+function getEmbettableVideoData(url: string) {
   const videoTypes = Object.keys(supportedVideoFormats);
 
   for (const type of videoTypes) {
-    const format = supportedVideoFormats[type];
+    const format = supportedVideoFormats[type as keyof typeof supportedVideoFormats];
     const match = url.match(format.regex);
 
     if (match) {
@@ -404,13 +366,12 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {string} url - The URL to extract the hostname from.
- * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * Extracts the hostname from a URL.
+ * @param url - The URL to inspect.
+ * @returns The hostname, or the original string if parsing fails.
  */
-function getHostname(url) {
-  // adapted from https://stackoverflow.com/a/21553982/451391
+function getHostname(url: string) {
   const match = url.match(/^.*?\/\/([^#/:?]*)(?::(\d+)|)/);
   return match ? match[1] : url;
 }
-
 </script>

@@ -1,5 +1,3 @@
-@use "./fonts.scss";
-
 @each $theme-name, $theme in $themes {
   [data-theme="#{$theme-name}"] {
     @each $color-name, $color in $theme {

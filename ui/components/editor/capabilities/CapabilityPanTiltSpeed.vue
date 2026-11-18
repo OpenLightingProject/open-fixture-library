@@ -47,62 +47,61 @@
   </div>
 </template>
 
-<script>
-import { objectProp } from 'vue-ts-types';
-import { schemaDefinitions } from '../../../../lib/schema-properties.js';
-import LabeledInput from '../../LabeledInput.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+<script setup lang="ts">
+import { nextTick } from 'vue';
+import { schemaDefinitions } from '~~/lib/schema-properties.js';
 
-export default {
-  components: {
-    EditorProportionalPropertySwitcher,
-    LabeledInput,
-    PropertyInputText,
-  },
-  props: {
-    capability: objectProp().required,
-    formstate: objectProp().optional,
-  },
-  data() {
-    return {
-      schemaDefinitions,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
-      defaultData: {
-        speedOrDuration: 'speed',
-        speed: null,
-        speedStart: 'fast',
-        speedEnd: 'slow',
-        duration: '',
-        durationStart: null,
-        durationEnd: null,
-        comment: '',
-      },
+interface Properties {
+  capability: {
+    uuid: string;
+    typeData: {
+      speedOrDuration?: string;
+      speed?: string | null;
+      speedStart?: string;
+      speedEnd?: string;
+      duration?: string;
+      durationStart?: string | null;
+      durationEnd?: string | null;
+      comment?: string;
     };
-  },
-  computed: {
-    /**
-     * Called from {@link EditorCapabilityTypeData}
-     * @public
-     * @returns {string[]} Array of all props to reset to default data when capability is saved.
-     */
-    resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrDuration === 'duration' ? 'speed' : 'duration';
+  };
+  formstate?: object;
+}
 
-      return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
-    },
-  },
-  methods: {
-    async changeSpeedOrDuration(newValue) {
-      this.capability.typeData.speedOrDuration = newValue;
+const properties = defineProps<Properties>();
+const speedOrDurationInput = ref<any>(null);
 
-      await this.$nextTick();
-      this.$refs.speedOrDurationInput.focus();
-    },
-  },
+const defaultData = {
+  speedOrDuration: 'speed',
+  speed: null,
+  speedStart: 'fast',
+  speedEnd: 'slow',
+  duration: '',
+  durationStart: null,
+  durationEnd: null,
+  comment: '',
 };
+
+const resetProperties = computed(() => {
+  const resetProperty = properties.capability.typeData.speedOrDuration === 'duration' ? 'speed' : 'duration';
+  return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
+});
+
+/**
+ * Stores the selected speed or duration mode and refocuses the input.
+ * @param newValue - The selected value.
+ */
+async function changeSpeedOrDuration(newValue: string) {
+  properties.capability.typeData.speedOrDuration = newValue;
+
+  await nextTick();
+  if (speedOrDurationInput.value) {
+    speedOrDurationInput.value.focus();
+  }
+}
+
+defineExpose({
+  defaultData,
+  resetProperties,
+});
 </script>
