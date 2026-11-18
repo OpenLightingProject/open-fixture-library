@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import '../../lib/load-env-file.js';
-
 import * as pullRequest from './pull-request.js';
 
 try {

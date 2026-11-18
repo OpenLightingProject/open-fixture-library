@@ -10,6 +10,8 @@ We try to develop unit tests wherever possible. They test specific components of
 
 Tests are located in the [`tests/`](../tests/) directory (surprise!), one test per file. They can be called manually except of the GitHub tests in [`tests/github/`](../tests/github/) (see below).
 
+The HTTP status test starts the production server with [`start-server-and-test`](https://github.com/bahmutov/start-server-and-test); run `npm run build` before `npm run test:http-status`.
+
 We use [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) for continuous integration (CI): It runs our specified tests with every GitHub commit. The exit code returned by a test script tells GitHub Actions whether it has passed or failed: Tests with `0` exit code (in Node.js: `process.exit(0);`) have passed, all others (non-zero exit codes) have failed.
 
 The GitHub repository is configured such that pull requests with failing tests can't be merged. To implement optional tests that don't prevent a PR from being merged, just make it always pass (with exit code `0`) and warn the developers via console output or a GitHub comment.

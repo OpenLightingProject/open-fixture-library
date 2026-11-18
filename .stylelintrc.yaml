@@ -53,7 +53,7 @@ rules:
   scss/load-partial-extension: always
 
   # special `@if`/`@else` formatting
-  '@stylistic/block-closing-brace-newline-after':
+  '@stylistic/scss/block-closing-brace-newline-after':
     - always
     - ignoreAtRules:
       - if
@@ -61,3 +61,4 @@ rules:
 
   # allow grouping in Sass lists
   '@stylistic/value-list-max-empty-lines': 1
+  '@stylistic/scss/value-list-max-empty-lines': 1

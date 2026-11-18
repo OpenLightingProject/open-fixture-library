@@ -17,6 +17,12 @@ This file provides guidance for AI coding agents working in this repository.
 - **[REST API](docs/rest-api.md)** – server-side API endpoints
 - **[Environment variables](docs/environment-variables.md)** – configuration via environment variables
 
+## Agent skills
+
+Reusable agent skills live in `.agents/skills/`.
+
+- [`fixture-review`](.agents/skills/fixture-review/SKILL.md) — reviewing new fixture-definition PRs (the `new-fixture` label): cross-check against the manual, validate against `master`, create a pending GitHub review.
+
 ## Common commands
 
 For validating specific fixtures after changes:

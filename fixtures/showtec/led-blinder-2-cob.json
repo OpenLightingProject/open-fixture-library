@@ -3,9 +3,9 @@
   "name": "LED Blinder 2 COB",
   "categories": ["Blinder", "Dimmer", "Strobe"],
   "meta": {
-    "authors": ["Eric Bessot", "Luke Nelson"],
+    "authors": ["Eric Bessot", "Luke Nelson", "Flo Edelmann"],
     "createDate": "2023-05-07",
-    "lastModifyDate": "2023-05-07"
+    "lastModifyDate": "2026-11-12"
   },
   "links": {
     "manual": [
@@ -48,11 +48,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
