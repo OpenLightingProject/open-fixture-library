@@ -30,7 +30,7 @@
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint --cache",
     "lint:eslint-errors-only": "eslint --cache --quiet",
-    "lint:stylelint": "stylelint --config stylelint.config.js **/*.scss **/*.vue",
+    "lint:stylelint": "stylelint **/*.scss **/*.vue",
 
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "vitest run tests/dmx-value-scaling.test.js",
