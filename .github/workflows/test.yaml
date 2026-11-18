@@ -64,9 +64,7 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: |
-          python3 -m venv .venv
-          .venv/bin/pip install --require-hashes -r requirements-qlc.txt # for QLC+ fixture-tool-validation export test
-          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+          sudo pip install lxml==6.1.3 # for QLC+ fixture-tool-validation export test
           npm ci
       - name: Build
         run: npm run build
