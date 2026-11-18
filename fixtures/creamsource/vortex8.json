@@ -52,16 +52,17 @@
     "Gel CCT": {
       "capabilities": [
         {
-          "dmxRange": [0, 126],
+          "dmxRange": [0, 127],
           "type": "ColorTemperature",
           "colorTemperature": "3200K"
         },
         {
-          "dmxRange": [127, 255],
+          "dmxRange": [128, 255],
           "type": "ColorTemperature",
           "colorTemperature": "5600K"
         }
       ]
+    },
     },
     "Crossfade": {
       "fineChannelAliases": ["Crossfade fine"],
