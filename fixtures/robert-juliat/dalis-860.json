@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DALIS 860",
+  "shortName": "d860",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["jscheidler"],
+    "createDate": "2026-11-16",
+    "lastModifyDate": "2026-11-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.com/Product_Specifications/Fiches_FR/Standard/DSFR241_860.pdf"
+    ],
+    "productPage": [
+      "https://www.robertjuliat.fr/Ambiance/Dalis.html"
+    ],
+    "video": [
+      "https://www.robertjuliat.fr/Ambiance/Dalis.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 860,
+    "softwareVersion": "1.2"
+  },
+  "availableChannels": {
+    "Gradation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "RED"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "GREEN"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "BLUE"
+      }
+    },
+    "PURPLE": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "PURPLE"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "YELLOW"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "WHITE"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "WWhite"
+      }
+    },
+    "Strobe Duration": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "250Hz"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "250Hz"
+      }
+    },
+    "Temps de Reponse": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Control mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Gradation",
+      "shortName": "grad",
+      "channels": [
+        "Gradation",
+        "Red",
+        "Green",
+        "Blue",
+        "PURPLE",
+        "Yellow",
+        "Amber",
+        "White",
+        "Warm White",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Temps de Reponse",
+        "Control mode"
+      ]
+    }
+  ]
+}
