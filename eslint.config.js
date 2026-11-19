@@ -495,16 +495,4 @@ export default defineConfig([
     files: ['tests/*.test.js'],
     ...eslintPluginVitest.configs.recommended,
   },
-  {
-    files: [
-      'fixtures/astera/fp5-nyx-bulb.json',
-      'fixtures/cameo/ts-60-rgbw.json',
-      'lib/internal-eslint-rules/nuxt2/no-env-in-hooks.js',
-      'lib/model/Capability.js',
-      'plugins/op-z/export.js',
-    ],
-    rules: {
-      '@stylistic/list-style': 'error',
-    },
-  },
 ]);
