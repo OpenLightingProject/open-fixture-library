@@ -139,6 +139,7 @@ async function testExternalLink(url) {
       headers: {
         'user-agent': USER_AGENT,
       },
+      maxHeaderSize: 128 * 1024,
       timeout: TIMEOUT,
     };
 
