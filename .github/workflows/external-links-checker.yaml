@@ -36,4 +36,8 @@ jobs:
           - name: Check Markdown Links in all files
             uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
             with:
-              args: --no-progress --verbose './**/*.md'
+              args: >-
+                --no-progress
+                --verbose
+                --exclude-path node_modules
+                './**/*.md'
