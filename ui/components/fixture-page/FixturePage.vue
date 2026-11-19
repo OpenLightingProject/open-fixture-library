@@ -409,7 +409,7 @@ function getEmbettableVideoData(url) {
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
-  const match = url.match(/^.*?\/\/([^#/:?]*)(?::(\d+)|)/);
+  const match = /^.*?\/\/([^#/:?]*)(?::(\d+)|)/.exec(url);
   return match ? match[1] : url;
 }
 

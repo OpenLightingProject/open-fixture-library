@@ -311,7 +311,7 @@ export default {
 
       return [
         ...staticUrls,
-        ...await Promise.all(manufacturerUrlPromises),
+        ...(await Promise.all(manufacturerUrlPromises)),
         ...categoryUrls,
         ...pluginUrls,
       ];
