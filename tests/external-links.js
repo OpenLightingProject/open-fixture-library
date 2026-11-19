@@ -198,6 +198,11 @@ async function updateGithubIssue(urlResults) {
 
   const githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
+    request: {
+      headers: {
+        'X-GitHub-Api-Version': '2026-03-10',
+      },
+    },
   });
 
   const [repositoryOwner, repositoryName] = process.env.GITHUB_REPOSITORY.split('/', 2);
