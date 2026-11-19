@@ -71,7 +71,8 @@ function getOpZChannelType(channel, fixtureKey) {
   if (
     channel instanceof NullChannel
     || channel instanceof FineChannel
-    || (channel instanceof CoarseChannel && channel.type === 'NoFunction')) {
+    || (channel instanceof CoarseChannel && channel.type === 'NoFunction')
+  ) {
     return 'off';
   }
 
