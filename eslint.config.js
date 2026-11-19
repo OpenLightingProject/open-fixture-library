@@ -236,8 +236,11 @@ const vueRules = {
   'vue/no-undef-components': ['error', {
     ignorePatterns: [
       '^Ofl(Date|Svg)$', // global components
-      '^Nuxt(Link)?$', '^ClientOnly$', // Nuxt components
-      '^VueForm$', '^Validate$', '^FieldMessages$', // VueForm components
+      '^Nuxt(Link)?$',
+      '^ClientOnly$', // Nuxt components
+      '^VueForm$',
+      '^Validate$',
+      '^FieldMessages$', // VueForm components
     ],
   }],
   'vue/no-undef-directives': 'error',

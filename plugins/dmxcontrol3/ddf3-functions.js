@@ -152,10 +152,14 @@ export default {
       const xmlPanTiltSpeed = xmlbuilder.create('ptspeed');
 
       const speedCapabilities = getSingleUnitCapabilities(
-        capabilities.filter((capability) => capability.speed !== null), 'speed', '%',
+        capabilities.filter((capability) => capability.speed !== null),
+        'speed',
+        '%',
       );
       const durationCapabilities = getSingleUnitCapabilities(
-        capabilities.filter((capability) => capability.duration !== null), 'duration', '%',
+        capabilities.filter((capability) => capability.duration !== null),
+        'duration',
+        '%',
       );
 
       for (const capability of speedCapabilities) {
@@ -261,7 +265,11 @@ export default {
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
-        capabilities.filter((capability) => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
+        capabilities.filter((capability) => capability.type === 'WheelRotation'),
+        'speed',
+        'Hz',
+        0,
+        15,
       );
       if (rotationCapabilities.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element('wheelrotation');
@@ -468,7 +476,11 @@ export default {
       }
 
       const rotationCapabilities = getSingleUnitCapabilities(
-        capabilities.filter((capability) => capability.type === 'WheelRotation'), 'speed', 'Hz', 0, 15,
+        capabilities.filter((capability) => capability.type === 'WheelRotation'),
+        'speed',
+        'Hz',
+        0,
+        15,
       );
       if (rotationCapabilities.length > 0) {
         const xmlWheelRotation = xmlGoboWheel.element('wheelrotation');
