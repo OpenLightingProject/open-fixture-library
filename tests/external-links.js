@@ -10,6 +10,7 @@ import { appendOrTruncate } from './github/pull-request.js';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0';
 const GITHUB_COMMENT_HEADING = '## Broken links update';
+const MAX_HEADER_SIZE = 128 * 1024;
 const TIMEOUT = 30_000;
 
 const excludedUrls = [
@@ -139,6 +140,7 @@ async function testExternalLink(url) {
       headers: {
         'user-agent': USER_AGENT,
       },
+      maxHeaderSize: MAX_HEADER_SIZE,
       timeout: TIMEOUT,
     };
 
