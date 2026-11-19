@@ -324,29 +324,17 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
 * `"perPixel"`: For the above [matrix structure](#matrix-structure) example, this results in
   ```json
   [
-    "Red Inner ring",
-    "Green Inner ring",
-    "Blue Inner ring",
-    "Red Middle ring",
-    "Green Middle ring",
-    "Blue Middle ring",
-    "Red Outer ring",
-    "Green Outer ring",
-    "Blue Outer ring"
+    "Red Inner ring", "Green Inner ring", "Blue Inner ring",
+    "Red Middle ring", "Green Middle ring", "Blue Middle ring",
+    "Red Outer ring", "Green Outer ring", "Blue Outer ring"
   ]
   ```
 * `"perChannel"`: For the above [matrix structure](#matrix-structure) example, this results in
   ```json
   [
-    "Red Inner ring",
-    "Red Middle ring",
-    "Red Outer ring",
-    "Green Inner ring",
-    "Green Middle ring",
-    "Green Outer ring",
-    "Blue Inner ring",
-    "Blue Middle ring",
-    "Blue Outer ring"
+    "Red Inner ring", "Red Middle ring", "Red Outer ring",
+    "Green Inner ring", "Green Middle ring", "Green Outer ring",
+    "Blue Inner ring", "Blue Middle ring", "Blue Outer ring"
   ]
   ```
 

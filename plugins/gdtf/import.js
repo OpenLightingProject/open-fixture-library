@@ -682,7 +682,8 @@ export async function importFixtures(buffer, filename, authorName) {
           && gdtfCapabilities.every((capability) =>
             capability._channelFunction === target.channelFunction
             && capability._physicalFrom === target.physicalFrom
-            && capability._physicalTo === target.physicalTo);
+            && capability._physicalTo === target.physicalTo,
+          );
       }
 
       /**

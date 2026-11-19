@@ -78,7 +78,8 @@ async function getDiffTasks(changedComponents) {
       const firstEqualTask = array.find((otherTask) =>
         task.manufacturerFixture === otherTask.manufacturerFixture
         && task.currentPluginKey === otherTask.currentPluginKey
-        && task.comparePluginKey === otherTask.comparePluginKey);
+        && task.comparePluginKey === otherTask.comparePluginKey,
+      );
 
       // remove duplicates
       return task === firstEqualTask;

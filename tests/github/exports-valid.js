@@ -49,7 +49,8 @@ try {
         task.manufacturerKey === otherTask.manufacturerKey
         && task.fixtureKey === otherTask.fixtureKey
         && task.pluginKey === otherTask.pluginKey
-        && task.testKey === otherTask.testKey);
+        && task.testKey === otherTask.testKey,
+      );
 
       // remove duplicates
       return task === firstEqualTask;

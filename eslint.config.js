@@ -75,6 +75,7 @@ const stylisticRules = {
   '@stylistic/curly-newline': ['error', 'always'],
   '@stylistic/function-call-spacing': 'error',
   '@stylistic/linebreak-style': 'error',
+  '@stylistic/list-style': 'off', // too restrictive
   '@stylistic/no-confusing-arrow': 'error',
   '@stylistic/quotes': ['error', 'single'],
 };
@@ -236,11 +237,8 @@ const vueRules = {
   'vue/no-undef-components': ['error', {
     ignorePatterns: [
       '^Ofl(Date|Svg)$', // global components
-      '^Nuxt(Link)?$',
-      '^ClientOnly$', // Nuxt components
-      '^VueForm$',
-      '^Validate$',
-      '^FieldMessages$', // VueForm components
+      '^Nuxt(Link)?$', '^ClientOnly$', // Nuxt components
+      '^VueForm$', '^Validate$', '^FieldMessages$', // VueForm components
     ],
   }],
   'vue/no-undef-directives': 'error',
