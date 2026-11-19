@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Lionel"],
+    "createDate": "2026-11-13",
+    "lastModifyDate": "2026-11-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.ltech-led.eu/fr/shop/ltech-dmx-rdm-led-driver-cv-4x6a-dip-switch-lt-904-dip-1123/document/1045"
+    ],
+    "productPage": [
+      "https://www.ltech-led.eu/fr/shop/ltech-dmx-rdm-led-driver-cv-4x6a-dip-switch-lt-904-dip-1123?srsltid=AYCX9vI9MLerxWKcgJB3Sq0p3QGDrTT7sluZl7E1Je17AGSCE02-IA1C&attribute_values=1739%2C1726%2C1819%2C1963%2C1993%2C1883%2C1947%2C1959%2C1722%2C1978%2C1795%2C1890%2C4128%2C4195"
+    ]
+  },
+  "physical": {
+    "dimensions": [122, 110, 37],
+    "weight": 0.55,
+    "power": 576,
+    "DMXconnector": "3-pin XLR IP65"
+  },
+  "availableChannels": {
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBW",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE"
+      ]
+    }
+  ]
+}
