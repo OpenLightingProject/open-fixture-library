@@ -1,0 +1,169 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XC-5388 Strobo",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Gabriele"],
+    "createDate": "2026-11-20",
+    "lastModifyDate": "2026-11-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.lamposhop.com/strobo-2/strobo-led-rgbw-1200w/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [600, 400, 300],
+    "weight": 4,
+    "power": 1200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "10Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "RGB Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade"
+      }
+    },
+    "RGB speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Colourful": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "effect"
+      }
+    },
+    "W Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "W Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "RGBW Mode": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "RGBW Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Background color": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "Background tone": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "Static pattern": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "Static direction": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 ch",
+      "shortName": "4 ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "17 ch",
+      "shortName": "17 ch",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "RGB Effect",
+        "RGB speed",
+        "Colourful",
+        "W Effect",
+        "W Speed",
+        "RGBW Mode",
+        "RGBW Speed",
+        "Background color",
+        "Background tone",
+        "Static pattern",
+        "Static direction"
+      ]
+    }
+  ]
+}
