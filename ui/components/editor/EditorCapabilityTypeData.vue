@@ -43,6 +43,7 @@ import CapabilityBladeSystemRotation from './capabilities/CapabilityBladeSystemR
 import CapabilityColorIntensity from './capabilities/CapabilityColorIntensity.vue';
 import CapabilityColorPreset from './capabilities/CapabilityColorPreset.vue';
 import CapabilityColorTemperature from './capabilities/CapabilityColorTemperature.vue';
+import CapabilityColorXY from './capabilities/CapabilityColorXY.vue';
 import CapabilityEffect from './capabilities/CapabilityEffect.vue';
 import CapabilityEffectDuration from './capabilities/CapabilityEffectDuration.vue';
 import CapabilityEffectParameter from './capabilities/CapabilityEffectParameter.vue';
@@ -90,6 +91,7 @@ export default {
     CapabilityColorIntensity,
     CapabilityColorPreset,
     CapabilityColorTemperature,
+    CapabilityColorXY,
     CapabilityPan,
     CapabilityPanContinuous,
     CapabilityTilt,
