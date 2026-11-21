@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Peter Zuiderent", "Flo Edelmann"],
     "createDate": "2022-05-07",
-    "lastModifyDate": "2022-05-07"
+    "lastModifyDate": "2026-11-21"
   },
   "links": {
     "manual": [
@@ -434,14 +434,16 @@
     },
     "X": {
       "capability": {
-        "type": "Generic",
-        "comment": "0 … 0.8"
+        "type": "ColorXY",
+        "xStart": 0,
+        "xEnd": 0.8
       }
     },
     "Y": {
       "capability": {
-        "type": "Generic",
-        "comment": "0 … 0.8"
+        "type": "ColorXY",
+        "yStart": 0,
+        "yEnd": 0.8
       }
     },
     "Effect": {

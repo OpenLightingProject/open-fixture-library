@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XY Fader",
+  "shortName": "XY",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DeviousCardi"],
+    "createDate": "2026-11-21",
+    "lastModifyDate": "2026-11-21"
+  },
+  "comment": "Generic fixture using the CIE 1931 xy color space: a channel with stepped xy color presets as well as separate channels for the x and y coordinate",
+  "availableChannels": {
+    "Color XY": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 84],
+          "type": "ColorXY",
+          "x": 0.64,
+          "y": 0.33,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [85, 169],
+          "type": "ColorXY",
+          "x": 0.3,
+          "y": 0.6,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "ColorXY",
+          "x": 0.3127,
+          "y": 0.329,
+          "comment": "White (D65)"
+        }
+      ]
+    },
+    "X": {
+      "fineChannelAliases": ["X fine"],
+      "capability": {
+        "type": "ColorXY",
+        "xStart": 0,
+        "xEnd": 1
+      }
+    },
+    "Y": {
+      "fineChannelAliases": ["Y fine"],
+      "capability": {
+        "type": "ColorXY",
+        "yStart": 0,
+        "yEnd": 0.8
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Color XY",
+        "X",
+        "Y"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Color XY",
+        "X",
+        "X fine",
+        "Y",
+        "Y fine"
+      ]
+    }
+  ]
+}

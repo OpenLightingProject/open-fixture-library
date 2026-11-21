@@ -205,6 +205,8 @@ A capability represents a range of a channel.
         * [.insertion](#Capability+insertion) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.fogOutput](#Capability+fogOutput) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.parameter](#Capability+parameter) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.x](#Capability+x) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.y](#Capability+y) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.getDmxRangeWithResolution(desiredResolution)](#Capability+getDmxRangeWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>boolean</code>
         * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ <code>number</code>
@@ -452,6 +454,16 @@ Use only in `WheelShake` capabilities!
 ### capability.parameter ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 **Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end parameter values. Defaults to null.  
+<a name="Capability+x"></a>
+
+### capability.x ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end CIE 1931 x chromaticity coordinate values. Defaults to null.  
+<a name="Capability+y"></a>
+
+### capability.y ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end CIE 1931 y chromaticity coordinate values. Defaults to null.  
 <a name="Capability+getDmxRangeWithResolution"></a>
 
 ### capability.getDmxRangeWithResolution(desiredResolution) ⇒ [<code>Range</code>](#Range)

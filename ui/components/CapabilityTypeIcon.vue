@@ -59,6 +59,9 @@ const specialIconFunctions = {
   ColorPreset(capability, iconProperties) {
     iconProperties.name = 'color-changer';
   },
+  ColorXY(capability, iconProperties) {
+    iconProperties.name = 'color-changer';
+  },
   PanContinuous(capability, iconProperties) {
     if (capability.speed[0].number === 0 && capability.speed[1].number === 0) {
       iconProperties.name = 'speed-stop';
