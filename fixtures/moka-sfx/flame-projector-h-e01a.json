@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flame Projector H-E01A",
+  "shortName": "H-E01A",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["VisualNoob"],
+    "createDate": "2026-11-22",
+    "lastModifyDate": "2026-11-22"
+  },
+  "comment": "LPG Flame Effect",
+  "links": {
+    "productPage": [
+      "https://mokasfx.com/flame-machine/h-e01a-dmx-flame-machine-3/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=0IlmWG03t4I"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 295, 185],
+    "weight": 4.5,
+    "power": 80,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Safety": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 101],
+          "type": "Generic",
+          "comment": "Safety ON"
+        },
+        {
+          "dmxRange": [102, 153],
+          "type": "Generic",
+          "comment": "Safety OFF"
+        },
+        {
+          "dmxRange": [154, 255],
+          "type": "Generic",
+          "comment": "Safety ON"
+        }
+      ]
+    },
+    "Flame": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Flame OFF"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Flame ON"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Safety",
+        "Flame"
+      ]
+    }
+  ]
+}
