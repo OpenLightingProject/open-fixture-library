@@ -247,7 +247,7 @@
       "oneOf": [
         { "$ref": "#/units/xyCoordinate" },
         { "$ref": "#/units/dmxValuePercent" },
-        { "enum": ["off", "low", "high", "slow", "fast", "small", "big", "instant", "short", "long"] }
+        { "enum": ["low", "high"] }
       ]
     },
     "slotNumber": {

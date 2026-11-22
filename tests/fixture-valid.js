@@ -1099,8 +1099,8 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       'Color Changer': {
         isSuggested: isFixtureColorChanger,
         isInvalid: !isFixtureColorChanger,
-        suggestedPhrase: 'there are ColorPreset, ColorXY or ColorIntensity capabilities or Color wheel slots',
-        invalidPhrase: 'there are no ColorPreset, ColorXY and less than two ColorIntensity capabilities and no Color wheel slots',
+        suggestedPhrase: 'there are color capabilities (ColorPreset, ColorXY, ColorIntensity) or Color wheel slots',
+        invalidPhrase: 'there are no color capabilities (ColorPreset, ColorXY, ColorIntensity), at most one ColorIntensity capability, and no Color wheel slots',
       },
       'Moving Head': {
         isSuggested: hasBothPanTiltChannels,
