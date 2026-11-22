@@ -83,6 +83,12 @@
       "type": "number",
       "minimum": 0
     },
+    "xyCoordinate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "$comment": "unitless CIE 1931 xy chromaticity coordinate, ranging from 0 to 1"
+    },
     "positiveInteger": {
       "type": "integer",
       "minimum": 0,
@@ -235,6 +241,13 @@
         { "$ref": "#/units/number" },
         { "$ref": "#/units/percent" },
         { "enum": ["off", "low", "high", "slow", "fast", "small", "big", "instant", "short", "long"] }
+      ]
+    },
+    "xyCoordinate": {
+      "oneOf": [
+        { "$ref": "#/units/xyCoordinate" },
+        { "$ref": "#/units/dmxValuePercent" },
+        { "enum": ["low", "high"] }
       ]
     },
     "slotNumber": {

@@ -22,6 +22,7 @@ To make common percentage values more readable, one can use specific keywords to
 | VerticalAngle    | `deg`, `%`       | top          | –            | center        | –                          | bottom
 | SwingAngle       | `deg`, `%`       | –            | –            | off           | narrow                     | wide
 | Parameter        | (no unit), `%`   | –            | –            | off / instant | low / slow / small / short | high / fast / big / long
+| XYCoordinate     | (no unit) in [0,1], `%` (0–100%) | – | –          | –             | low                        | high                      |
 | SlotNumber       | (no unit)        | –            | –            | –             | –                          | –
 | Percent          | `%`              | –            | –            | off           | low                        | high
 | Insertion        | `%`              | –            | –            | out           | –                          | in
@@ -38,6 +39,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [ColorIntensity](#color-intensity)
 * [ColorPreset](#color-preset)
 * [ColorTemperature](#color-temperature)
+* [ColorXY](#color-xy)
 * [Pan](#pan) / [PanContinuous](#pan-continuous)
 * [Tilt](#tilt) / [TiltContinuous](#tilt-continuous)
 * [PanTiltSpeed](#pan-tilt-speed)
@@ -167,6 +169,19 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top">colorTemperature<br><sub>🌟 required</sub></td>
   <td valign="top">Entity <em>ColorTemperature</em></td>
   <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="color-xy" rowspan="2">
+    <img src="../ui/assets/icons/fixture/color-changer.svg" />
+    ColorXY
+  </th>
+  <td valign="top">x<br><sub>🌟 required</sub></td>
+  <td valign="top">Entity <em>XYCoordinate</em></td>
+  <td valign="top" rowspan="2">Color in the CIE 1931 xy color space; at least one of <em>x</em> or <em>y</em> is required (enforced by the schema). For fixtures with separate channels for the x and y coordinate, use one ColorXY capability per channel (with only <em>x</em> or only <em>y</em> set) — existing fixtures with such channels can be migrated to ColorXY incrementally; the Aputure Nova P300C is the first real-world conversion, and <code>generic/xy-fader.json</code> is the generic example.</td>
+</tr>
+<tr>
+  <td valign="top">y<br><sub>🌟 required</sub></td>
+  <td valign="top">Entity <em>XYCoordinate</em></td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="pan">

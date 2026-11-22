@@ -273,6 +273,50 @@
     {
       "properties": {
         "dmxRange": { "$ref": "#/$defs/dmxRange" },
+        "type": { "const": "ColorXY" },
+        "x": { "$ref": "definitions.json#/entities/xyCoordinate" },
+        "xStart": { "$ref": "definitions.json#/entities/xyCoordinate" },
+        "xEnd": { "$ref": "definitions.json#/entities/xyCoordinate" },
+        "y": { "$ref": "definitions.json#/entities/xyCoordinate" },
+        "yStart": { "$ref": "definitions.json#/entities/xyCoordinate" },
+        "yEnd": { "$ref": "definitions.json#/entities/xyCoordinate" },
+        "comment": { "$ref": "definitions.json#/nonEmptyString" },
+        "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
+        "menuClick": { "$ref": "#/$defs/menuClick" },
+        "switchChannels": { "$ref": "#/$defs/switchChannels" }
+      },
+      "required": ["type"],
+      "anyOf": [
+        {
+          "oneOf": [
+            { "required": ["x"] },
+            { "required": ["xStart"] }
+          ]
+        },
+        {
+          "oneOf": [
+            { "required": ["y"] },
+            { "required": ["yStart"] }
+          ]
+        }
+      ],
+      "not": {
+        "anyOf": [
+          { "required": ["x", "xStart"] },
+          { "required": ["y", "yStart"] }
+        ]
+      },
+      "dependentRequired": {
+        "xStart": ["xEnd"],
+        "xEnd": ["xStart"],
+        "yStart": ["yEnd"],
+        "yEnd": ["yStart"]
+      },
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "dmxRange": { "$ref": "#/$defs/dmxRange" },
         "type": { "const": "Pan" },
         "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
         "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },

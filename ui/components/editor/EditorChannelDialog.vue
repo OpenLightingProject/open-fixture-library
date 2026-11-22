@@ -627,6 +627,7 @@ export default {
         StrobeDuration: /^(?:strobe duration|flash duration)$/i,
         Intensity: /^(?:intensity|dimmer|master dimmer)$/i,
         ColorTemperature: /^(?:colou?r temperature(?: correction)?|ctc|cto|ctb)$/i,
+        ColorXY: /^(?:(?:cie|colorspace)\s*)?(?:x|y|xy)$/i,
         Pan: /^(?:pan|horizontal movement)$/i,
         Tilt: /^(?:tilt|vertical movement)$/i,
         PanTiltSpeed: /^(?:pan ?\/? ?tilt|movement) (?:speed|time|duration)$/i,
