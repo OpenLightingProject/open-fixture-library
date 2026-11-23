@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS 40 WW",
+  "shortName": "TS 40",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-11-23",
+    "lastModifyDate": "2026-11-23"
+  },
+  "links": {
+    "manual": [
+      "https://portal.adamhall.com/api/downloadcenter/article/download/15085bb2-a288-45c4-832b-3fbbc360f14d"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/11910/ts-40-ww#detail-downloads"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 205, 240],
+    "weight": 3.6,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB LED",
+      "colorTemperature": 3200,
+      "lumens": 1570
+    },
+    "lens": {
+      "name": "Plano-convex",
+      "degreesMinMax": [14, 38]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Set Dimmer Curve(non functional)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Linear Dimmer Curve (non functional)"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Exponetial Dimmer Curve (non functional)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Logarithmic Dimmer Curve (non functional)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "S-Curve Dimmer Curve (non functional)"
+        }
+      ]
+    },
+    "Device Settings (non functional)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Maintenance",
+          "comment": "Dimmer Response LED (Hold 3s) (non functional)"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Dimmer Response Halogen (Hold 3s) (non functional)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "1-Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5-Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Set Dimmer Curve(non functional)",
+        "Device Settings (non functional)"
+      ]
+    }
+  ]
+}
