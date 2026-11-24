@@ -1,3 +1,9 @@
+import { rules as stylisticRules } from '@stylistic/stylelint-config';
+import { defineStylistic } from '@stylistic/stylelint-plugin';
+
+const stylisticCssRules = defineStylistic({ rules: stylisticRules });
+const stylisticScssRules = defineStylistic({ syntax: 'scss', rules: stylisticRules });
+
 export default {
   reportNeedlessDisables: true,
   reportInvalidScopeDisables: true,
@@ -42,6 +48,12 @@ export default {
       { severity: 'warning' },
     ],
 
+    // allow keyframe selectors
+    'selector-type-no-unknown': [
+      true,
+      { ignoreTypes: ['from', 'to'] },
+    ],
+
     // allow Vue pseudo elements
     'selector-pseudo-element-no-unknown': [
       true,
@@ -61,12 +73,27 @@ export default {
     'scss/load-partial-extension': 'always',
 
     // special `@if`/`@else` formatting
-    '@stylistic/block-closing-brace-newline-after': [
+    '@stylistic/scss/block-closing-brace-newline-after': [
       'always',
       { ignoreAtRules: ['if', 'else'] },
     ],
 
     // allow grouping in Sass lists
-    '@stylistic/value-list-max-empty-lines': 1,
+    '@stylistic/scss/value-list-max-empty-lines': 1,
   },
+  overrides: [
+    {
+      files: ['**/*.vue'],
+      rules: {
+        ...Object.fromEntries(Object.keys(stylisticCssRules).map((ruleName) => [ruleName, null])),
+        ...stylisticScssRules,
+        '@stylistic/scss/block-closing-brace-newline-after': [
+          'always',
+          { ignoreAtRules: ['if', 'else'] },
+        ],
+        '@stylistic/scss/value-list-max-empty-lines': 1,
+        'no-invalid-position-declaration': null,
+      },
+    },
+  ],
 };
