@@ -75,6 +75,7 @@ const stylisticRules = {
   '@stylistic/curly-newline': ['error', 'always'],
   '@stylistic/function-call-spacing': 'error',
   '@stylistic/linebreak-style': 'error',
+  '@stylistic/list-style': 'off', // too restrictive
   '@stylistic/no-confusing-arrow': 'error',
   '@stylistic/quotes': ['error', 'single'],
 };

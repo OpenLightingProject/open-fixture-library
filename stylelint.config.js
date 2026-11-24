@@ -62,6 +62,13 @@ export default {
         ignorePseudoElements: ['v-deep'],
       },
     ],
+    'selector-type-no-unknown': [
+      true,
+      {
+        ignore: ['custom-elements'],
+        ignoreTypes: ['from', 'to'],
+      },
+    ],
 
     // special `@if`/`@else` formatting
     '@stylistic/scss/block-closing-brace-newline-after': ['always', { ignoreAtRules: ['if', 'else'] }],
@@ -84,7 +91,10 @@ export default {
   overrides: [
     {
       files: ['**/*.vue'],
-      rules: vueScssRules,
+      rules: {
+        'no-invalid-position-declaration': null,
+        ...vueScssRules,
+      },
     },
   ],
 };
