@@ -39,17 +39,13 @@ export default {
     // decrease severity for this rule only
     'no-descending-specificity': [
       true,
-      {
-        severity: 'warning',
-      },
+      { severity: 'warning' },
     ],
 
     // allow Vue pseudo elements
     'selector-pseudo-element-no-unknown': [
       true,
-      {
-        ignorePseudoElements: ['v-deep'],
-      },
+      { ignorePseudoElements: ['v-deep'] },
     ],
 
     // simplify rules
@@ -67,9 +63,7 @@ export default {
     // special `@if`/`@else` formatting
     '@stylistic/block-closing-brace-newline-after': [
       'always',
-      {
-        ignoreAtRules: ['if', 'else'],
-      },
+      { ignoreAtRules: ['if', 'else'] },
     ],
 
     // allow grouping in Sass lists
