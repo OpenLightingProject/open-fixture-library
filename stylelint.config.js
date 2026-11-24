@@ -50,17 +50,13 @@ export default {
     // decrease severity for this rule only
     'no-descending-specificity': [
       true,
-      {
-        severity: 'warning',
-      },
+      { severity: 'warning' },
     ],
 
     // allow Vue pseudo elements
     'selector-pseudo-element-no-unknown': [
       true,
-      {
-        ignorePseudoElements: ['v-deep'],
-      },
+      { ignorePseudoElements: ['v-deep'] },
     ],
     'selector-type-no-unknown': [
       true,
@@ -69,12 +65,6 @@ export default {
         ignoreTypes: ['from', 'to'],
       },
     ],
-
-    // special `@if`/`@else` formatting
-    '@stylistic/scss/block-closing-brace-newline-after': ['always', { ignoreAtRules: ['if', 'else'] }],
-
-    // allow grouping in Sass lists
-    '@stylistic/scss/value-list-max-empty-lines': maxEmptyLinesInSassLists,
 
     // simplify rules
     'scss/block-no-redundant-nesting': true,
@@ -87,6 +77,14 @@ export default {
 
     // make imported files more explicit
     'scss/load-partial-extension': 'always',
+
+    // special `@if`/`@else` formatting
+    '@stylistic/block-closing-brace-newline-after': ['always', { ignoreAtRules: ['if', 'else'] }],
+    '@stylistic/scss/block-closing-brace-newline-after': ['always', { ignoreAtRules: ['if', 'else'] }],
+
+    // allow grouping in Sass lists
+    '@stylistic/value-list-max-empty-lines': maxEmptyLinesInSassLists,
+    '@stylistic/scss/value-list-max-empty-lines': maxEmptyLinesInSassLists,
   },
   overrides: [
     {
