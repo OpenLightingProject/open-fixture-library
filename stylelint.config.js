@@ -28,7 +28,7 @@ export default {
         ignoreFunctions: [
           'theme-color',
           'color-to-rgb-string',
-          /^[a-z]+\.[a-z\-]+$/, // all `@use`d Sass functions
+          /^[a-z]+\.[a-z-]+$/, // all `@use`d Sass functions
         ],
       },
     ],
