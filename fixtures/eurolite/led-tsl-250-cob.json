@@ -1,0 +1,392 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TSL-250 COB",
+  "shortName": "LED TSL-250",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["JeB"],
+    "createDate": "2026-11-06",
+    "lastModifyDate": "2026-11-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51786125-Anleitung-131438-1.1000-eurolite-led-tsl-250-scan-cob-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/mpn51786125-eurolite-led-tsl-250-scan-cob.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wUgPzIKuq-E"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 330, 150],
+    "weight": 3.16,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [9, 9]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-80deg",
+        "angleEnd": "80deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-45deg",
+        "angleEnd": "45deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "lightBlue"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Orange+lightBlue"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "lightBlue+Magenta"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Magenta+Yellow"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Yellow-Blue"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Blue+Green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Green+Red"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "Generic",
+          "comment": "RainbowFX"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Gobo Shake 1"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Gobo Shake 2"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Gobo Shake 3"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "Gobo Shake 4"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "Gobo Shake 5"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Gobo Shake 6"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Gobo Shake 7"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Generic",
+          "comment": "Gobo Rotation front low"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Generic",
+          "comment": "no rotation"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Generic",
+          "comment": "Gobo rotate rear"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 255,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "Generic",
+          "comment": "Strobe-FX"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "no function"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Generic",
+          "comment": "Gobo-Angle"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Generic",
+          "comment": "gobowheel - rear - low"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Generic",
+          "comment": "no rotation"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Generic",
+          "comment": "robo wheer rear - up"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Generic",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Generic",
+          "comment": "int_Prog 1"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Generic",
+          "comment": "int_Prog 2"
+        },
+        {
+          "dmxRange": [110, 159],
+          "type": "Generic",
+          "comment": "int_Prog 3"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Generic",
+          "comment": "music_prog 1"
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Generic",
+          "comment": "music_prog 2"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Generic",
+          "comment": "music_prog 3"
+        }
+      ]
+    },
+    "Macros/Reset": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Generic",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Generic",
+          "comment": "PAN-wipes"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Generic",
+          "comment": "TILT-wipes"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Generic",
+          "comment": "PAN/TILT movement"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset PAN/TILT"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10-Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Programs",
+        "Macros/Reset"
+      ]
+    }
+  ]
+}
