@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CAT-80",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Hermanos Germanos"],
+    "createDate": "2026-11-25",
+    "lastModifyDate": "2026-11-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.bedienungsanleitu.ng/eurolite/cat-80/anleitung"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/mpn51918595-eurolite-led-cat-80-strahleneffekt.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=EZ_vUDdFpjw"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Color Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Blade Rotation": {
+      "capability": {
+        "type": "WheelSlotRotation"
+      }
+    },
+    "Blade System Rotation": {
+      "capability": {
+        "type": "PanContinuous"
+      }
+    },
+    "Program Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Eurolight Cat-80",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Gobo Wheel",
+        "Color Wheel Rotation",
+        "Blade Rotation",
+        "Blade System Rotation",
+        "Program Duration"
+      ]
+    }
+  ]
+}
