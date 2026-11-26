@@ -1,0 +1,158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lotus",
+  "shortName": "Titan 800 Aqua",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Lotus"],
+    "createDate": "2026-09-04",
+    "lastModifyDate": "2026-09-04"
+  },
+  "comment": "Lotus Light AQUA 800 – 21CH",
+  "links": {
+    "productPage": [
+      "https://lotuseu.com/titan-800-aqua/"
+    ],
+    "video": [
+      "https://lotuseu.com/titan-800-aqua/",
+      "https://lotuseu.com/titan-800-aqua/"
+    ]
+  },
+  "physical": {
+    "weight": 17,
+    "power": 500,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "500w",
+      "colorTemperature": 10000,
+      "lumens": 1000
+    },
+    "lens": {
+      "name": "honeycomb gapless plano-convex optics",
+      "degreesMinMax": [3.5, 45]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "highlightValue": "65535%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightness": "off"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "50deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "50deg"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angle": "narrow"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Rotation"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "shortName": "Titan800 Aqua-21",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Color Macros",
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Intensity",
+        "Reserved",
+        "Zoom",
+        "Zoom 2"
+      ]
+    }
+  ]
+}
