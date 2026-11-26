@@ -1,0 +1,550 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-51",
+  "shortName": "TMH-51",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Marc Engbarth"],
+    "createDate": "2026-11-26",
+    "lastModifyDate": "2026-11-26"
+  },
+  "links": {
+    "productPage": [
+      "https://www.steinigke.de/mpn51785897-eurolite-led-tmh-51-hypno-moving-head-beam.html"
+    ],
+    "video": [
+      "https://www.youtube-nocookie.com/embed/niVmTvQWFqI"
+    ]
+  },
+  "physical": {
+    "dimensions": [170, 245, 160],
+    "weight": 2.82,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [8, 8]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "510deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "SMD Section 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 44],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [45, 79],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [80, 114],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [115, 149],
+          "type": "ColorPreset",
+          "comment": "Red and green"
+        },
+        {
+          "dmxRange": [150, 184],
+          "type": "ColorPreset",
+          "comment": "Red and blue"
+        },
+        {
+          "dmxRange": [185, 219],
+          "type": "ColorPreset",
+          "comment": "Green and blue"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        }
+      ]
+    },
+    "SMD Section 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 44],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [45, 79],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [80, 114],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [115, 149],
+          "type": "ColorPreset",
+          "comment": "Red and green"
+        },
+        {
+          "dmxRange": [150, 184],
+          "type": "ColorPreset",
+          "comment": "Red and blue"
+        },
+        {
+          "dmxRange": [185, 219],
+          "type": "ColorPreset",
+          "comment": "Green and blue"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        }
+      ]
+    },
+    "SMD Section 3": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 44],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [45, 79],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [80, 114],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [115, 149],
+          "type": "ColorPreset",
+          "comment": "Red and green"
+        },
+        {
+          "dmxRange": [150, 184],
+          "type": "ColorPreset",
+          "comment": "Red and blue"
+        },
+        {
+          "dmxRange": [185, 219],
+          "type": "ColorPreset",
+          "comment": "Green and blue"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        }
+      ]
+    },
+    "SMD Section 4": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 44],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [45, 79],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [80, 114],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [115, 149],
+          "type": "ColorPreset",
+          "comment": "Red and green"
+        },
+        {
+          "dmxRange": [150, 184],
+          "type": "ColorPreset",
+          "comment": "Red and blue"
+        },
+        {
+          "dmxRange": [185, 219],
+          "type": "ColorPreset",
+          "comment": "Green and blue"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        }
+      ]
+    },
+    "Misc": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Sound controlled"
+        }
+      ]
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "510deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "SMD Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SMD Section 4 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Dimmer",
+        "SMD Strobe",
+        "SMD Section 1",
+        "SMD Section 2",
+        "SMD Section 3",
+        "SMD Section 4",
+        "Misc"
+      ]
+    },
+    {
+      "name": "21 channel",
+      "shortName": "21ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Dimmer",
+        "SMD Strobe",
+        "SMD Red",
+        "SMD Green",
+        "SMD Blue",
+        "SMD Section 1",
+        "SMD Section 2",
+        "SMD Section 3",
+        "SMD Section 4",
+        "Misc"
+      ]
+    },
+    {
+      "name": "23 channel",
+      "shortName": "23ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "SMD Section 1 Red",
+        "SMD Section 1 Green",
+        "SMD Section 1 Blue",
+        "SMD Section 2 Red",
+        "SMD Section 2 Green",
+        "SMD Section 2 Blue",
+        "SMD Section 3 Red",
+        "SMD Section 3 Green",
+        "SMD Section 3 Blue",
+        "SMD Section 4 Red",
+        "SMD Section 4 Green",
+        "SMD Section 4 Blue"
+      ]
+    }
+  ]
+}
