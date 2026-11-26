@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SixPAR Z19 IP",
+  "shortName": "SixPAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["David Brunander"],
+    "createDate": "2026-11-16",
+    "lastModifyDate": "2026-11-16"
+  },
+  "links": {
+    "manual": [
+      "https://assets.centryngroup.com/dl/files/SIX119__DL__008.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/products/six-par-z19-ip"
+    ]
+  },
+  "physical": {
+    "dimensions": [363, 396, 305],
+    "weight": 12.2,
+    "power": 288,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Zoom",
+      "degreesMinMax": [5, 45]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "5deg",
+        "angleEnd": "45deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Zoom"
+      ]
+    }
+  ]
+}
