@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02109 Mini Bee Eye (30CH)",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["DM", "Didier"],
+    "createDate": "2026-08-08",
+    "lastModifyDate": "2026-08-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-08-08",
+      "comment": "created by Q Light Controller Plus (version 5.2.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [240, 340, 170],
+    "weight": 4.5,
+    "power": 279,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 60]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Pan Coarse (0-540°)"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg",
+        "comment": "Tilt Coarse (0-210°)"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Serré à Large"
+      }
+    },
+    "Rotation Lentille Principale": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Indexé de 0° à 60°"
+        },
+        {
+          "dmxRange": [128, 188],
+          "type": "Effect",
+          "effectName": "Rotation de rapide à lent dans le sens inverse des aiguilles d'une montre"
+        },
+        {
+          "dmxRange": [189, 193],
+          "type": "Effect",
+          "effectName": "Arrêt rotation"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Effect",
+          "effectName": "Rotation de lent à rapide dans le sens des aiguilles d'une montre"
+        }
+      ]
+    },
+    "Variateur Général": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "comment": "Mini à Maxi",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Fermer (Lighting Off)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe Synchgro de Lent à Rapide",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert (Lighting Up)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Strobe Pulse, vitesse de Lent à Rapide (1Hz à 25Hz)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert (Lighting Up)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Slow Random Flash",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Medium Random Flash",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "High-Speed Random Flash",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert (Lighting Up)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Rouge Global": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Variateur Rouge de 0 à 255 (mini -> maxi)"
+      }
+    },
+    "Vert Global": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Variateur Vert de 0 à 255 (mini -> maxi)"
+      }
+    },
+    "Reset / Special": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Variateur Bleu de 0 à 255 (mini -> maxi)"
+      }
+    },
+    "Blanc Global": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Variateur Blanc de 0 à 255 (mini -> maxi)"
+      }
+    },
+    "Température Couleur": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Non utilisé"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Maintenance",
+          "comment": "8000K à 2000K"
+        }
+      ]
+    },
+    "Dégradé de Couleurs": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Fonction Macro des Couleurs"
+      }
+    },
+    "Effets Statics": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "Effect",
+          "effectName": "Non utilisé"
+        },
+        {
+          "dmxRange": [30, 134],
+          "type": "Effect",
+          "effectName": "Effets Statics 1 à 7 (Couleurs contrôlées avec les canaux 10, 11, 12 et 13) (15 effets de premier plan)"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "Effect",
+          "effectName": "Effets statics 8 à 16 (couleur) (15 effets)"
+        }
+      ]
+    },
+    "Effets Dynamics": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Non utilisé"
+        },
+        {
+          "dmxRange": [10, 124],
+          "type": "Effect",
+          "effectName": "Effets Dynamics 1 à 23 (Couleurs contrôlées avec les canaux 10, 11, 12 et 13) (5 effets de premier plan)"
+        },
+        {
+          "dmxRange": [125, 255],
+          "type": "Effect",
+          "effectName": "Effets Dynamics 24 à 40 (coleur fixe) (5 effets de premier plan)"
+        }
+      ]
+    },
+    "Vitesse des Effets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Stop sur Motif"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Maintenance",
+          "comment": "Le motif de l'effet dans le sens inverse des aiguilles d'une montre de Rapide à Lent"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Maintenance",
+          "comment": "Stop sur Motif"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Maintenance",
+          "comment": "Le Motif de l'Effet est dans le sens des auguilles d'une montre de Lent à Rapide"
+        }
+      ]
+    },
+    "Background Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Background Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Background Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Background White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "comment": "Non utilisé"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "comment": "Reset du Moteur d'effet (Reset Lampe 5s)"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "comment": "Reset XY - Pan et Tilt (Reset Lampe 5s)"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Reset de tous les Moteurs (Reset Lampe 5s)"
+        }
+      ]
+    },
+    "Bandeau LED - Variateur": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Bandeau LED - Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "Lumière Ouverte (Light Open)"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "Effect",
+          "effectName": "Strobe de Lent à Rapide"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Lumière Ouverte (Light Open)"
+        }
+      ]
+    },
+    "Bandeau LED - Rouge": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Bandeau LED - Vert": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bandeau LED - Bleu": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Bandeau LED - Effets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Effect",
+          "effectName": "Mode Variateur"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "Effect",
+          "effectName": "Mode effet de Lampe (4 exemplaires d'effets)"
+        }
+      ]
+    },
+    "Bandeau LED - Vitesse des Effets": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Vitesse des Effets de Lampe de Lent à Rapide"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "30-channel",
+      "shortName": "30ch",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Rotation Lentille Principale",
+        "Variateur Général",
+        "Strobe",
+        "Rouge Global",
+        "Vert Global",
+        "Reset / Special",
+        "Blanc Global",
+        "Température Couleur",
+        "Dégradé de Couleurs",
+        "Effets Statics",
+        "Effets Dynamics",
+        "Vitesse des Effets",
+        "Background Red",
+        "Background Green",
+        "Background Blue",
+        "Background White",
+        "Reset",
+        "Bandeau LED - Variateur",
+        "Bandeau LED - Strobe",
+        "Bandeau LED - Rouge",
+        "Bandeau LED - Vert",
+        "Bandeau LED - Bleu",
+        "Bandeau LED - Effets",
+        "Bandeau LED - Vitesse des Effets"
+      ]
+    }
+  ]
+}
