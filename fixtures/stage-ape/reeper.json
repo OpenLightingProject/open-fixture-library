@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "REEPER",
+  "shortName": "REEPER",
+  "categories": ["Scanner", "Effect"],
+  "meta": {
+    "authors": ["jeepjohn-ai"],
+    "createDate": "2026-11-13",
+    "lastModifyDate": "2026-11-13"
+  },
+  "comment": "Three-mirror LED gobo scanner (also sold as 'LED THREE HAND light' with a generic manual).",
+  "links": {
+    "manual": [
+      "https://web.archive.org/web/20150418062644/http://www.stageape.com:80/manuals/reeper%20manual.pdf"
+    ],
+    "productPage": [
+      "https://web.archive.org/web/20110811174624/http://www.stageape.com:80/pages/115reeper.html"
+    ],
+    "other": [
+      "https://forums.elationlighting.com/topic/i-need-a-profile-for-a-couple-stage-ape-lights-please"
+    ]
+  },
+  "physical": {
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "72\u00d7 5mm LEDs (RGB)"
+    }
+  },
+  "availableChannels": {
+    "Mirror A": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "90deg",
+        "helpWanted": "Estimated sweep \u2014 the manual only says the slider controls the mirror. What are the actual angles?"
+      }
+    },
+    "Mirror B": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "90deg",
+        "helpWanted": "Estimated sweep \u2014 the manual only says the slider controls the mirror. What are the actual angles?"
+      }
+    },
+    "Mirror C": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "90deg",
+        "helpWanted": "Estimated sweep \u2014 the manual only says the slider controls the mirror. What are the actual angles?"
+      }
+    },
+    "Mirror Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Gobo A": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What do the values on this channel do? The manual says it controls gobo change for mirror A, but gives no value ranges."
+      }
+    },
+    "Gobo B": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What do the values on this channel do? The manual says it controls gobo change for mirror B, but gives no value ranges."
+      }
+    },
+    "Gobo C": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What do the values on this channel do? The manual says it controls gobo change for mirror C, but gives no value ranges."
+      }
+    },
+    "Gobo Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Mirror A",
+        "Mirror B",
+        "Mirror C",
+        "Mirror Speed",
+        "Gobo A",
+        "Gobo B",
+        "Gobo C",
+        "Gobo Speed"
+      ]
+    }
+  ]
+}
