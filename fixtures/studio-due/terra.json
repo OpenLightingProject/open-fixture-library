@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Terra",
+  "categories": ["Strobe", "Dimmer", "Color Changer", "Other"],
+  "meta": {
+    "authors": ["Puukko23"],
+    "createDate": "2026-08-17",
+    "lastModifyDate": "2026-08-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.studiodue.com/en/shop/terra-plus-tl-316ss-rgbw-it-207010-46/document/549"
+    ]
+  },
+  "physical": {
+    "weight": 5.5,
+    "DMXconnector": "4-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0.4Hz",
+        "speedEnd": "25Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Led Fade time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "0.1s",
+        "timeEnd": "22.5s"
+      }
+    },
+    "Rainbow": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "White WW CW": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Dimmer",
+        "Led Fade time",
+        "Rainbow",
+        "White WW CW"
+      ]
+    }
+  ]
+}
