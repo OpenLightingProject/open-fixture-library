@@ -1,0 +1,410 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorBeam 150 BFX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["cris", "Cris"],
+    "createDate": "2026-11-17",
+    "lastModifyDate": "2026-11-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-11-17",
+      "comment": "created by Q Light Controller Plus (version 4.12.7)"
+    }
+  },
+  "physical": {
+    "weight": 3.2,
+    "power": 210,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 170],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Flash simple",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [171, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "RGB MACRO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "RGB MACRO"
+      }
+    },
+    "Vitesse MACRO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Dimmer Couronne LED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED Couronne 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 20": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 21": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 22": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 23": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Couronne 24": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Couronne": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 170],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Flash simple",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [171, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double flash",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Ouvert",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "MACRO Couronne": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "MACRO Couronne"
+      }
+    },
+    "Vitesse MACRO Couronne": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "35 Canaux",
+      "channels": [
+        "Dimmer",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Strobe",
+        "RGB MACRO",
+        "Vitesse MACRO",
+        "Dimmer Couronne LED",
+        "LED Couronne 1",
+        "LED Couronne 2",
+        "LED Couronne 3",
+        "LED Couronne 4",
+        "LED Couronne 5",
+        "LED Couronne 6",
+        "LED Couronne 7",
+        "LED Couronne 8",
+        "LED Couronne 9",
+        "LED Couronne 10",
+        "LED Couronne 11",
+        "LED Couronne 12",
+        "LED Couronne 13",
+        "LED Couronne 14",
+        "LED Couronne 15",
+        "LED Couronne 16",
+        "LED Couronne 17",
+        "LED Couronne 18",
+        "LED Couronne 19",
+        "LED Couronne 20",
+        "LED Couronne 21",
+        "LED Couronne 22",
+        "LED Couronne 23",
+        "LED Couronne 24",
+        "Strobe Couronne",
+        "MACRO Couronne",
+        "Vitesse MACRO Couronne"
+      ]
+    },
+    {
+      "name": "11 Canaux",
+      "channels": [
+        "Dimmer",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Strobe",
+        "RGB MACRO",
+        "Vitesse MACRO",
+        "Dimmer Couronne LED",
+        "Strobe Couronne",
+        "MACRO Couronne",
+        "Vitesse MACRO Couronne"
+      ]
+    },
+    {
+      "name": "7 Canaux",
+      "channels": [
+        "Dimmer",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Dimmer Couronne LED",
+        "MACRO Couronne",
+        "Vitesse MACRO Couronne"
+      ]
+    }
+  ]
+}
