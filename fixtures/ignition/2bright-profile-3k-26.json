@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2bright Profile 3K 26º",
+  "shortName": "Profile3K",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["RGB AV srvs"],
+    "createDate": "2026-06-15",
+    "lastModifyDate": "2026-06-15"
+  },
+  "links": {
+    "manual": [
+      "https://current-rms.s3.amazonaws.com/edfe4480-b9e7-0132-f593-0a9ca217e95b/attachments/3118/original/2f8345a8ab09fb6641ddad935386110cb5a3b0c5502eb24a34b94237404a6233_optim.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAYESX23ZCXATL6YKV%2F20260615%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260615T082142Z&X-Amz-Expires=2834&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEIv%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCcdNr9ebm9c23YZLhTH06zjgXnhbsigfkgU4aNYd0dHwIhAOo8wAznLlWZrnyA2D7LkPOHMN78wDfdahQrsIYzQY9oKrQFCFQQABoMNTU5NjAzNzAzMzY1Igy6JkUdx41pNc8OTHgqkQVa5vKzvGksLDDbLcN7kEwo5C8m9oF07cNR8JV4RazzJvCZCQ9qzXCNIwMnFV6BKcrcv%2B1CfaA7xOomtXyBiXUrJb3Ue5Mm1m4w505ZH4%2F%2BZK2zXnrZT%2Fepqak9%2F8%2BhdNqPvj8w7o6%2F8vPhixWc8qQ0AysEsilEjq4xRS%2F2YH2LOpdbSEuZbIl1QqkTRFX2c6uT874BIhg42NxB7DUdxICYumuETFPeqCrQrIrEMQFM6v4nZI3CDTIQQRxQ5NLPBztHnJ%2FRzq6FJzmyyb%2BlRsZIzcv44owCv1ArqqOSB9Micbipi%2BysELWDI8uFkHR5ec4Ki0HSzavD3BLeGGwWDTCT46WYNxKPNzNIsiUabxzi86pr%2Bpxu6IKTJIVa3tEmC0dIvys5G%2B19c%2FqfBB2I1mzlM5MgWKG5Lusp3SFSrgQ7EhfsoARz6FrjQy9K883WjOAi%2B4oR19fyBWMPonpDOpO%2BpU1sTJoT3kxFWqw7A4Swd5C6M9ukB78YKRi26tpkwxZIRkLBTngwQ11kERGN3c5GstJ3LA%2BaB6aiObdwJRrbRAPKXwC9Qw6sQtkxS0s3%2Fm3krtGjPicGrzJPaHSXFrKIwRWS%2B%2BsNmDB6PEZogZ6e1%2BQP3ySzFrsrz5ZqLJRXWZ9MH%2F0ViUGwlUjyA7rbvErkBvqtOYu2zevCXbjlsnGw5g2h7BY1xWt219AbP2vPkWQgLcK6fRT84iewgXZJ1m74VwEN7YSnY9G4i4o1%2F3Br72oQ0JyjC7NmdbJJ7Bb9D07qPPIt%2FihFnwxOkhImUjoMW9X7HUqpaE2Fv27KCdkDlqIFAW355%2BL6cG5or5VBRnQqE9z9vzttzD1%2Fz8o%2BQUPncEWK4g75%2F9uWOFO2Z1unBTUw1s%2B90QY6sAHPqY0z773eHeTWd0RNe4H4KMATzmYbCwc67WwYeGgYA4TbHrbNarnT70%2FNoqsfYs4E6GuHgYqtMfY3Rgs0nApVUQO2ki0x6N7mm9QoHYvOC7Gx8BHhRZ7NGXzxW15zl26wXEPybLuMLyVSWxF6902JhaKcn9R6v3FizTzT2F%2BphFvT86iIbCQmBCRtOn%2FtYWL1i4yu2vsbO%2BmVtTJibCa69iSaBvxieVIhnz5pqVUW2g%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=668b87442729303f3aa5e6a6e2eb320576aa98fdf11aa2559d6fdaf91e7366b1"
+    ],
+    "productPage": [
+      "https://www.thomann.es/ignition_2bright_profile_3k_26.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i8917p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 700, 230],
+    "weight": 6,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1 LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "degreesMinMax": [19, 26]
+    }
+  },
+  "availableChannels": {
+    "1 Channel": {
+      "defaultValue": "1%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "2 Channels": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Maintenance",
+          "parameter": "off",
+          "comment": "LED off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "2 Channels 2": {
+      "name": "2 Channels",
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "LED off"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random Impulses, increasing speed"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "Random Increasing brightness, increasing speedo"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "dark",
+          "comment": "Random DEcreasing brightness, increasing speedo"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "Effect",
+          "effectName": "Random strobe effect, increasing speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "parameterStart": 80,
+          "parameterEnd": 102
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "EffectParameter",
+          "parameterStart": "high",
+          "parameterEnd": "low",
+          "comment": "Strobe break effect, 5 s...1 s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe effect, increasing speed (1 ... 20 Hz)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off",
+          "comment": "LED off"
+        }
+      ]
+    },
+    "4 Channels": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "Imitation of the dimming behaviour for halogen light"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "1 Channel"
+      ]
+    },
+    {
+      "name": "DMX 2 Channels",
+      "shortName": "2ch",
+      "channels": [
+        "1 Channel",
+        "2 Channels"
+      ]
+    },
+    {
+      "name": "DMX 4 Channels",
+      "shortName": "4ch",
+      "channels": [
+        "1 Channel",
+        "2 Channels 2",
+        "4 Channels"
+      ]
+    }
+  ]
+}
