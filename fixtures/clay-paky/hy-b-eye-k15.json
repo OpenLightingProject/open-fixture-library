@@ -1,0 +1,2138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HY B-EYE K15",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Massimo Callegari", "claus"],
+    "createDate": "2026-08-27",
+    "lastModifyDate": "2026-08-27",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-08-27",
+      "comment": "created by Q Light Controller Plus (version 4.12.4 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [387, 438, 329],
+    "weight": 20,
+    "power": 600,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6000
+    },
+    "lens": {
+      "degreesMinMax": [4, 60]
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      5,
+      4,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Linear CTO": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Unused range"
+        },
+        {
+          "dmxRange": [10, 53],
+          "type": "ColorPreset",
+          "comment": "8000K"
+        },
+        {
+          "dmxRange": [54, 98],
+          "type": "ColorPreset",
+          "comment": "7000K"
+        },
+        {
+          "dmxRange": [99, 116],
+          "type": "ColorPreset",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [117, 143],
+          "type": "ColorPreset",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [144, 187],
+          "type": "ColorPreset",
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [188, 223],
+          "type": "ColorPreset",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [224, 253],
+          "type": "ColorPreset",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorPreset",
+          "comment": "2500K"
+        }
+      ]
+    },
+    "Macro Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Macro Color OFF"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "White 7000 K",
+          "colors": ["#d8ed3d", "#ffffff"]
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "White 3700 K",
+          "colors": ["#ffc919", "#ffffff"]
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "comment": "White 5000 K",
+          "colors": ["#ff8900", "#ffffff"]
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "ColorPreset",
+          "comment": "Black",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "ColorPreset",
+          "comment": "Medium Yellow",
+          "colors": ["#9c7e00"]
+        },
+        {
+          "dmxRange": [23, 26],
+          "type": "ColorPreset",
+          "comment": "Straw Tint",
+          "colors": ["#987309"]
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "Surprise Peach",
+          "colors": ["#c67209"]
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "ColorPreset",
+          "comment": "Fire",
+          "colors": ["#ff3800"]
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorPreset",
+          "comment": "Medium Amber",
+          "colors": ["#ff8700"]
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "ColorPreset",
+          "comment": "Gold Amber",
+          "colors": ["#ff6400"]
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorPreset",
+          "comment": "Dark Amber",
+          "colors": ["#ff4100"]
+        },
+        {
+          "dmxRange": [35, 44],
+          "type": "ColorPreset",
+          "comment": "Sunrise Red",
+          "colors": ["#ff5302"]
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorPreset",
+          "comment": "Light Pink",
+          "colors": ["#ffc8d2"]
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "ColorPreset",
+          "comment": "Medium Pink",
+          "colors": ["#ffa0b9"]
+        },
+        {
+          "dmxRange": [49, 61],
+          "type": "ColorPreset",
+          "comment": "Pink Carnation",
+          "colors": ["#ffbde1"]
+        },
+        {
+          "dmxRange": [62, 67],
+          "type": "ColorPreset",
+          "comment": "Light Lavender",
+          "colors": ["#e6aafa"]
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#b46ef0"]
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#00ff87"]
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "ColorPreset",
+          "comment": "Just Blue",
+          "colors": ["#00c282"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Dark Yellow Green",
+          "colors": ["#29db00"]
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "ColorPreset",
+          "comment": "Spring Yellow",
+          "colors": ["#f5ca00"]
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "comment": "Light Amber",
+          "colors": ["#eda300"]
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "ColorPreset",
+          "comment": "Straw",
+          "colors": ["#fceacc"]
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "ColorPreset",
+          "comment": "Deep Amber",
+          "colors": ["#ffa600"]
+        },
+        {
+          "dmxRange": [115, 116],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff7a00"]
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "ColorPreset",
+          "comment": "Light Rose",
+          "colors": ["#ffa5af"]
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "ColorPreset",
+          "comment": "English Rose",
+          "colors": ["#fcbea9"]
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "Light Salmon",
+          "colors": ["#ffb2af"]
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "comment": "Middle Rose",
+          "colors": ["#ffb4c8"]
+        },
+        {
+          "dmxRange": [121, 122],
+          "type": "ColorPreset",
+          "comment": "Dark Pink",
+          "colors": ["#ff8cbe"]
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "ColorPreset",
+          "comment": "Magenta2",
+          "colors": ["#ff0064"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "Peacock Blue",
+          "colors": ["#00ebc8"]
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "ColorPreset",
+          "comment": "Med Blue Green",
+          "colors": ["#00c8b9"]
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorPreset",
+          "comment": "Steel Blue",
+          "colors": ["#b4faf5"]
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#00e1eb"]
+        },
+        {
+          "dmxRange": [129, 130],
+          "type": "ColorPreset",
+          "comment": "Dark Blue",
+          "colors": ["#0078c8"]
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "ColorPreset",
+          "comment": "Leaf Green",
+          "colors": ["#b4ff64"]
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "ColorPreset",
+          "comment": "Dark Green",
+          "colors": ["#00dc78"]
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#be009b"]
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "ColorPreset",
+          "comment": "Bright Pink",
+          "colors": ["#ff50b4"]
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "ColorPreset",
+          "comment": "Medium Blue",
+          "colors": ["#00a0dc"]
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "ColorPreset",
+          "comment": "Deep Golden Amber",
+          "colors": ["#ff5f00"]
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "ColorPreset",
+          "comment": "Pale Lavender",
+          "colors": ["#f0bee6"]
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "ColorPreset",
+          "comment": "Special Lavender",
+          "colors": ["#c8b4e6"]
+        },
+        {
+          "dmxRange": [149, 150],
+          "type": "ColorPreset",
+          "comment": "Primary Green",
+          "colors": ["#4bc300"]
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "ColorPreset",
+          "comment": "Bright Blue",
+          "colors": ["#00d2e6"]
+        },
+        {
+          "dmxRange": [157, 161],
+          "type": "ColorPreset",
+          "comment": "Apricot",
+          "colors": ["#fcb98c"]
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "ColorPreset",
+          "comment": "Pale Gold",
+          "colors": ["#ffd2c1"]
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "ColorPreset",
+          "comment": "Deep Orange",
+          "colors": ["#ff8700"]
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "ColorPreset",
+          "comment": "Bastard Amber",
+          "colors": ["#fcded8"]
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "ColorPreset",
+          "comment": "Flame Red",
+          "colors": ["#ff3200"]
+        },
+        {
+          "dmxRange": [175, 178],
+          "type": "ColorPreset",
+          "comment": "Daylight Blue",
+          "colors": ["#5ac8eb"]
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "ColorPreset",
+          "comment": "Lilac Tint",
+          "colors": ["#fadcf0"]
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "ColorPreset",
+          "comment": "Deep Lavender",
+          "colors": ["#e6aadc"]
+        },
+        {
+          "dmxRange": [184, 190],
+          "type": "ColorPreset",
+          "comment": "Dark Steel Blue",
+          "colors": ["#afe1fa"]
+        },
+        {
+          "dmxRange": [191, 206],
+          "type": "ColorPreset",
+          "comment": "Congo Blue",
+          "colors": ["#5000aa"]
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "ColorPreset",
+          "comment": "Alice Blue",
+          "colors": ["#82aae6"]
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "ColorPreset",
+          "comment": "Dirty White",
+          "colors": ["#ebd1d3"]
+        },
+        {
+          "dmxRange": [209, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "No light"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Strobe Slow to Fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz",
+          "comment": "Pulse Slow to Fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Slow Strobe"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Medium Strobe"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Fast Strobe"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Effect",
+          "effectName": "Unused range"
+        },
+        {
+          "dmxRange": [12, 24],
+          "type": "Effect",
+          "effectName": "Pan Tilt fast (default)"
+        },
+        {
+          "dmxRange": [25, 37],
+          "type": "Effect",
+          "effectName": "Pan Tilt normal"
+        },
+        {
+          "dmxRange": [38, 42],
+          "type": "Effect",
+          "effectName": "Dimmer Curve 1"
+        },
+        {
+          "dmxRange": [43, 47],
+          "type": "Effect",
+          "effectName": "Dimmer Curve 2"
+        },
+        {
+          "dmxRange": [48, 52],
+          "type": "Effect",
+          "effectName": "Dimmer Curve 3 (default)"
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "Effect",
+          "effectName": "Dimmer Curve 4"
+        },
+        {
+          "dmxRange": [58, 62],
+          "type": "Effect",
+          "effectName": "RGBW Gamma Curve 1 - gamma = 1.0"
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "Effect",
+          "effectName": "RGBW Gamma Curve 2 - gamma = 1.5 (default)"
+        },
+        {
+          "dmxRange": [68, 72],
+          "type": "Effect",
+          "effectName": "RGBW Gamma Curve 3 - gamma = 2.0"
+        },
+        {
+          "dmxRange": [73, 77],
+          "type": "Effect",
+          "effectName": "Halogen Lamp simulation Off (default)"
+        },
+        {
+          "dmxRange": [78, 82],
+          "type": "Effect",
+          "effectName": "Halogen Lamp simulation - Linear CTO @ 0bit - 750W"
+        },
+        {
+          "dmxRange": [83, 87],
+          "type": "Effect",
+          "effectName": "Halogen Lamp simulation - Linear CTO @ 0bit - 1000W"
+        },
+        {
+          "dmxRange": [88, 92],
+          "type": "Effect",
+          "effectName": "Halogen Lamp simulation - Linear CTO @ 0bit - 1200W"
+        },
+        {
+          "dmxRange": [93, 97],
+          "type": "Effect",
+          "effectName": "Halogen Lamp simulation - Linear CTO @ 0bit - 2000W"
+        },
+        {
+          "dmxRange": [98, 102],
+          "type": "Effect",
+          "effectName": "Halogen Lamp simulation - Linear CTO @ 0bit - 2500W"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "Effect",
+          "effectName": "Pixel Map enable"
+        },
+        {
+          "dmxRange": [106, 163],
+          "type": "Effect",
+          "effectName": "Reserved"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Effect",
+          "effectName": "Base frequency = 1000Hz"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Effect",
+          "effectName": "Base frequency = 1500Hz (default)"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Effect",
+          "effectName": "Base frequency = 2400Hz"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Effect",
+          "effectName": "Base frequency = 3700Hz"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Effect",
+          "effectName": "Base frequency = 5600Hz"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Effect",
+          "effectName": "Base frequency = 9400Hz"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Effect",
+          "effectName": "Base frequency = 15100Hz"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Effect",
+          "effectName": "Base frequency = 21400Hz"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Effect",
+          "effectName": "Base frequency = 31000Hz"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Effect",
+          "effectName": "Base frequency = 43700Hz"
+        },
+        {
+          "dmxRange": [174, 176],
+          "type": "Effect",
+          "effectName": "Unused range"
+        },
+        {
+          "dmxRange": [177, 178],
+          "type": "Effect",
+          "effectName": "Emulate K10/K20 OFF"
+        },
+        {
+          "dmxRange": [179, 180],
+          "type": "Effect",
+          "effectName": "Emulate K10/K20 ON"
+        },
+        {
+          "dmxRange": [181, 182],
+          "type": "Effect",
+          "effectName": "Standard"
+        },
+        {
+          "dmxRange": [183, 184],
+          "type": "Effect",
+          "effectName": "Silent"
+        },
+        {
+          "dmxRange": [185, 186],
+          "type": "Effect",
+          "effectName": "Theater"
+        },
+        {
+          "dmxRange": [187, 255],
+          "type": "Effect",
+          "effectName": "Unused range"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Maintenance",
+          "comment": "Unused range"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "comment": "Zoom Reset"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "comment": "Pan Tilt Reset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Complete Reset"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Ratation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "speed": "fast CCW",
+          "comment": "Linear rotation"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW",
+          "comment": "CCW Rotation (fast to slow)"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Rotation",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "CW Rotation (slow to fast)"
+        }
+      ]
+    },
+    "Shape Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Macro Off"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Pixel 1"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Ring 1"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Ring 2"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Ring 3"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 1"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Simple Ring"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Filled Rings"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Open/Close 1"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Open/Close 2"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Random pixels 1"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Random pixels 2"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Rainbow 1"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Rainbow 2"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Fan"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Bar 1"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "Half moon"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "Triangle"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "Segment 1"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "Arc 1"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "Arc 2"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Bar 2"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Random explosion"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Segment 2"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "X bump"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Image"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Bumping section"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Ramp by 6"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Ramp by 4"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Left / Right scrolling bar"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "Up / Down scrolling bar"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Bar 3"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Vertical arc 1"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "Vertical arc 2"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "Horizontal arc 1"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "Horizontal arc 2"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "Mirrored pixel"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "Pixel animation 1"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "Pixel animation 2"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "Pixel animation 3"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "Pixel animation 4"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Pixel animation 5"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Semi arc"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Bumping arc section"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "Pixel animation 6"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Vertical ramp by 2"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "Following pixel by 2"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "Syncopation"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "Bumping 1"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "Bumping 2"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Bumpoing 3"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Vertical pixel scrolling"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Random vertical section"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Random central section"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Random ring 2"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Random ring 3"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Random ring 1 and 3"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Random ring 2 and 3"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Single pixel ring 1"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "Single pixel ring 2"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "Single pixel ring 3"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Spiral"
+        },
+        {
+          "dmxRange": [71, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shape Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Min < Max",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Shape Fade": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Snap"
+        },
+        {
+          "dmxRange": [16, 245],
+          "type": "Effect",
+          "effectName": "Smooth, fading curve gamma 0.5 < 2"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Smooth, fading curve Automatic gamma"
+        }
+      ]
+    },
+    "Shape R": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Led OFF to ON"
+      }
+    },
+    "Shape G": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Led OFF to ON"
+      }
+    },
+    "Shape B": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Led OFF to ON"
+      }
+    },
+    "Shape W": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Led OFF to ON"
+      }
+    },
+    "Shape Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Background Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shape Transition": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Effect",
+          "effectName": "No fade"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Effect",
+          "effectName": "Transition from 100ms to 4sec"
+        }
+      ]
+    },
+    "Shape Offset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Min < Max"
+      }
+    },
+    "Foreground Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Background Stobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Background Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Effect",
+          "effectName": "No selection"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Pixel 1"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Ring 2"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Ring 3"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Ring 4"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 3"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 4"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 3"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 4"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 4"
+        },
+        {
+          "dmxRange": [24, 254],
+          "type": "Effect",
+          "effectName": "No selection"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Mirror effect"
+        }
+      ]
+    },
+    "Red LED 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 17": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 18": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red LED 19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED 19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED 19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED 19": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Linear CTO",
+        "Macro Color",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
+        "Zoom",
+        "Zoom Ratation"
+      ]
+    },
+    {
+      "name": "Shapes",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Linear CTO",
+        "Macro Color",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
+        "Zoom",
+        "Zoom Ratation",
+        "Shape Selection",
+        "Shape Speed",
+        "Shape Fade",
+        "Shape R",
+        "Shape G",
+        "Shape B",
+        "Shape W",
+        "Shape Dimmer",
+        "Background Dimmer",
+        "Shape Transition",
+        "Shape Offset",
+        "Foreground Strobe",
+        "Background Stobe",
+        "Background Select"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red LED 1",
+        "Green LED 1",
+        "Blue LED 1",
+        "Red LED 2",
+        "Green LED 2",
+        "Blue LED 2",
+        "Red LED 3",
+        "Green LED 3",
+        "Blue LED 3",
+        "Red LED 4",
+        "Green LED 4",
+        "Blue LED 4",
+        "Red LED 5",
+        "Green LED 5",
+        "Blue LED 5",
+        "Red LED 6",
+        "Green LED 6",
+        "Blue LED 6",
+        "Red LED 7",
+        "Green LED 7",
+        "Blue LED 7",
+        "Red LED 8",
+        "Green LED 8",
+        "Blue LED 8",
+        "Red LED 9",
+        "Green LED 9",
+        "Blue LED 9",
+        "Red LED 10",
+        "Green LED 10",
+        "Blue LED 10",
+        "Red LED 11",
+        "Green LED 11",
+        "Blue LED 11",
+        "Red LED 12",
+        "Green LED 12",
+        "Blue LED 12",
+        "Red LED 13",
+        "Green LED 13",
+        "Blue LED 13",
+        "Red LED 14",
+        "Green LED 14",
+        "Blue LED 14",
+        "Red LED 15",
+        "Green LED 15",
+        "Blue LED 15",
+        "Red LED 16",
+        "Green LED 16",
+        "Blue LED 16",
+        "Red LED 17",
+        "Green LED 17",
+        "Blue LED 17",
+        "Red LED 18",
+        "Green LED 18",
+        "Blue LED 18",
+        "Red LED 19",
+        "Green LED 19",
+        "Blue LED 19"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "Red LED 1",
+        "Green LED 1",
+        "Blue LED 1",
+        "White LED 1",
+        "Red LED 2",
+        "Green LED 2",
+        "Blue LED 2",
+        "White LED 2",
+        "Red LED 3",
+        "Green LED 3",
+        "Blue LED 3",
+        "White LED 3",
+        "Red LED 4",
+        "Green LED 4",
+        "Blue LED 4",
+        "White LED 4",
+        "Red LED 5",
+        "Green LED 5",
+        "Blue LED 5",
+        "White LED 5",
+        "Red LED 6",
+        "Green LED 6",
+        "Blue LED 6",
+        "White LED 6",
+        "Red LED 7",
+        "Green LED 7",
+        "Blue LED 7",
+        "White LED 7",
+        "Red LED 8",
+        "Green LED 8",
+        "Blue LED 8",
+        "White LED 8",
+        "Red LED 9",
+        "Green LED 9",
+        "Blue LED 9",
+        "White LED 9",
+        "Red LED 10",
+        "Green LED 10",
+        "Blue LED 10",
+        "White LED 10",
+        "Red LED 11",
+        "Green LED 11",
+        "Blue LED 11",
+        "White LED 11",
+        "Red LED 12",
+        "Green LED 12",
+        "Blue LED 12",
+        "White LED 12",
+        "Red LED 13",
+        "Green LED 13",
+        "Blue LED 13",
+        "White LED 13",
+        "Red LED 14",
+        "Green LED 14",
+        "Blue LED 14",
+        "White LED 14",
+        "Red LED 15",
+        "Green LED 15",
+        "Blue LED 15",
+        "White LED 15",
+        "Red LED 16",
+        "Green LED 16",
+        "Blue LED 16",
+        "White LED 16",
+        "Red LED 17",
+        "Green LED 17",
+        "Blue LED 17",
+        "White LED 17",
+        "Red LED 18",
+        "Green LED 18",
+        "Blue LED 18",
+        "White LED 18",
+        "Red LED 19",
+        "Green LED 19",
+        "Blue LED 19",
+        "White LED 19"
+      ]
+    }
+  ]
+}
