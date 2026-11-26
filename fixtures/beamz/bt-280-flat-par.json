@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT 280 Flat PAr",
+  "categories": ["Dimmer", "Effect", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["KaJuBi"],
+    "createDate": "2026-11-03",
+    "lastModifyDate": "2026-11-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.beamzlighting.com/wp-content/uploads/2025/09/151.308-BT280-LED-Flat-Par-7x10W-RGBWA-UV-6-1_manual-V2.0.pdf"
+    ],
+    "productPage": [
+      "https://www.ltt-versand.de/licht/scheinwerfer/led-scheinwerfer/led-par-scheinwerfer/49308/beamz-bt280-led-flat-par-7x10w-6-in-1-rgbaw-uv?clicked_sku=125000475&gads_cid=19848145152&gad_source=1&gad_campaignid=19848150219&gbraid=0AAAAADQU9mHnK5U_5w3_dHMDQ0hxK_tyv&gclid=CjwKCAiAqabXBhBUEiwAw_SQpUyNcsVS87IOmPhPYjZmNiDOHkC8H4EzGT36H26EIuudPHczMVUlTRoC2KkQAvD_BwE"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Auto/Sound": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Auto/Sound"
+      ]
+    }
+  ]
+}
