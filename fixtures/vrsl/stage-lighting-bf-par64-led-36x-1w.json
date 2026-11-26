@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Lighting BF-PAR64 LED 36x 1W",
+  "shortName": "PAR 64 LED",
+  "categories": ["Strobe", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["CK"],
+    "createDate": "2026-06-19",
+    "lastModifyDate": "2026-06-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/de/stairville_led_board_par64_36x1w_rgb.htm"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "Lamp off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "ColorPreset",
+          "comment": "Color fade (speed --> channel 2)"
+        },
+        {
+          "dmxRange": [200, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speed": "100Hz",
+          "comment": "Strobe (speed --> channel 2)"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "NoFunction",
+          "comment": "Lamp off"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "All colors full on"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Shutter/Strobe_Speed_RGB",
+      "channels": [
+        "Shutter / Strobe",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
