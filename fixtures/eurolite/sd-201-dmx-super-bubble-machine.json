@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SD-201 DMX Super-Bubble Machine",
+  "shortName": "Bubble Machine",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-11-18",
+    "lastModifyDate": "2026-11-18"
+  },
+  "comment": "Bubble Effect",
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/584338_51705141-anleitung-118904-2.000-eurolite-sd-201-dmx-super-seifenblasenmaschine-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.nl/eurolite_sd201_dmx_super_bubble_machine.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gsWlUJYpg68"
+    ]
+  },
+  "physical": {
+    "dimensions": [490, 390, 420],
+    "weight": 12.35,
+    "power": 70,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fan Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Variable Fan speed",
+      "shortName": "spd",
+      "channels": [
+        "Fan Speed"
+      ]
+    }
+  ]
+}
