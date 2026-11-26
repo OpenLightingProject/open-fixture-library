@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cold Spark Machine",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["MFrisbee"],
+    "createDate": "2026-11-05",
+    "lastModifyDate": "2026-11-05"
+  },
+  "links": {
+    "manual": [
+      "https://manuals.plus/asin/B0BJ6Y6LSD#google_vignette"
+    ]
+  },
+  "availableChannels": {
+    "Pre Heat": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Spray Height": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Clean Out": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Cold Spark",
+      "shortName": "CS",
+      "channels": [
+        "Pre Heat",
+        "Spray Height",
+        "Clean Out"
+      ]
+    }
+  ]
+}
