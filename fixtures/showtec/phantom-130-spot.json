@@ -1,0 +1,273 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Phantom 130 Spot",
+  "shortName": "Phantom 130 Spot",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Zac"],
+    "createDate": "2026-09-10",
+    "lastModifyDate": "2026-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.jpleisure.co.uk/Data/showtec_phantom130spot_manual.pdf?"
+    ],
+    "productPage": [
+      "https://www.showtec.co.uk/onlineshop/index.php?product_id=716&route=product%2Fproduct&utm_"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=eyYGLF2FTb4"
+    ]
+  },
+  "rdm": {
+    "modelId": 10676,
+    "softwareVersion": "B1.0 V1.5"
+  },
+  "physical": {
+    "dimensions": [210, 460, 330],
+    "weight": 13.1,
+    "power": 270,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "White LED",
+      "colorTemperature": 7000,
+      "lumens": 6000
+    },
+    "lens": {
+      "name": "Spot lens",
+      "degreesMinMax": [12, 21]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff69b4"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#87ceeb"]
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 1,
+        "slotNumberEnd": 8
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "0rpm",
+        "speedEnd": "600rpm"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 1,
+        "slotNumberEnd": 7
+      }
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Prism",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16CH",
+      "shortName": "16CH",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation 2",
+        "Gobo Wheel",
+        "Prism",
+        "Focus",
+        "Zoom",
+        "No function",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "12CH",
+      "shortName": "12CH",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel",
+        "Prism",
+        "Focus",
+        "Zoom",
+        "Program Speed",
+        "Gobo Wheel Rotation 2"
+      ]
+    }
+  ]
+}
