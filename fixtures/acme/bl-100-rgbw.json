@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BL-100 RGBW",
+  "shortName": "LED PAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anon"],
+    "createDate": "2026-07-08",
+    "lastModifyDate": "2026-07-08"
+  },
+  "links": {
+    "manual": [
+      "https://en.acmelighting.com/Uploads/download/file_material/16172490747fafb811ee0b3443.pdf"
+    ],
+    "productPage": [
+      "https://en.acmelighting.com/cms/old/productdetailold?cat_id=195&id=3910"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=X7XejI90Wxg"
+    ]
+  },
+  "physical": {
+    "dimensions": [234, 307, 247],
+    "weight": 3.5,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ACME BL-100",
+      "shortName": "LED PAR",
+      "channels": [
+        "Color Wheel"
+      ]
+    }
+  ]
+}
