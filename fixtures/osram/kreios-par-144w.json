@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KREIOS PAR 144W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["David", "grosserd"],
+    "createDate": "2026-10-11",
+    "lastModifyDate": "2026-10-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-11",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [315, 319, 201],
+    "weight": 5.7,
+    "power": 144,
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "name": "Adjustable",
+      "degreesMinMax": [15, 60]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 20],
+          "type": "ColorPreset",
+          "comment": "HIGH"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 255],
+          "type": "ColorPreset",
+          "comment": "Dynamic RGB (see color selection table in manual)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "STAG (6-channel)",
+      "shortName": "STAG (6ch)",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macro"
+      ]
+    },
+    {
+      "name": "ARC.1 RGB (3-channel)",
+      "shortName": "ARC.1 RGB (3ch)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "AR1.d RGB + Dimmer (4-channel)",
+      "shortName": "AR1.d RGB + Dimmer (4ch)",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "ARC.2 RGBW (4-channel)",
+      "shortName": "ARC.2 RGBW (4ch)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
