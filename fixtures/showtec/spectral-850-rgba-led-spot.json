@@ -1,0 +1,429 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spectral 850 RGBA LED Spot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Stefan Krumm", "JP"],
+    "createDate": "2022-03-28",
+    "lastModifyDate": "2022-03-28",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-03-28",
+      "comment": "created by Q Light Controller Plus (version 4.12.5 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [280, 300, 195],
+    "weight": 4.7,
+    "power": 100,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer intensity": {
+      "fineChannelAliases": ["Fine dimmer intensity "],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "ColorPreset",
+          "comment": "Not functional",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [14, 18],
+          "type": "ColorPreset",
+          "comment": "Moroccan pink (790)",
+          "colors": ["#ffb4a5"]
+        },
+        {
+          "dmxRange": [19, 24],
+          "type": "ColorPreset",
+          "comment": "Pink (157)",
+          "colors": ["#f38c8f"]
+        },
+        {
+          "dmxRange": [25, 30],
+          "type": "ColorPreset",
+          "comment": "Special rose pink (332)",
+          "colors": ["#df0e89"]
+        },
+        {
+          "dmxRange": [31, 36],
+          "type": "ColorPreset",
+          "comment": "Follies pink (328)",
+          "colors": ["#dc559e"]
+        },
+        {
+          "dmxRange": [37, 42],
+          "type": "ColorPreset",
+          "comment": "Fuchsia pink (345)",
+          "colors": ["#876fb0"]
+        },
+        {
+          "dmxRange": [43, 48],
+          "type": "ColorPreset",
+          "comment": "Surprise pink (194)",
+          "colors": ["#af95c2"]
+        },
+        {
+          "dmxRange": [49, 54],
+          "type": "ColorPreset",
+          "comment": "Congo blue (181)",
+          "colors": ["#4c4b8d"]
+        },
+        {
+          "dmxRange": [55, 60],
+          "type": "ColorPreset",
+          "comment": "Tokyo blue (071)",
+          "colors": ["#0102b5"]
+        },
+        {
+          "dmxRange": [61, 66],
+          "type": "ColorPreset",
+          "comment": "Deep blue (120)",
+          "colors": ["#005ebe"]
+        },
+        {
+          "dmxRange": [67, 72],
+          "type": "ColorPreset",
+          "comment": "Just blue (079)",
+          "colors": ["#3d8dd1"]
+        },
+        {
+          "dmxRange": [73, 78],
+          "type": "ColorPreset",
+          "comment": "Medium blue (132)",
+          "colors": ["#0191d2"]
+        },
+        {
+          "dmxRange": [79, 84],
+          "type": "ColorPreset",
+          "comment": "Double CT blue (200)",
+          "colors": ["#7086c0"]
+        },
+        {
+          "dmxRange": [85, 90],
+          "type": "ColorPreset",
+          "comment": "State blue (161)",
+          "colors": ["#63abd9"]
+        },
+        {
+          "dmxRange": [91, 96],
+          "type": "ColorPreset",
+          "comment": "Full CT blue (201)",
+          "colors": ["#b5cfe6"]
+        },
+        {
+          "dmxRange": [97, 102],
+          "type": "ColorPreset",
+          "comment": "Half CT blue (202)",
+          "colors": ["#d5e8ef"]
+        },
+        {
+          "dmxRange": [103, 108],
+          "type": "ColorPreset",
+          "comment": "Steel blue (117)",
+          "colors": ["#b4fbf6"]
+        },
+        {
+          "dmxRange": [109, 114],
+          "type": "ColorPreset",
+          "comment": "Lighter blue (353)",
+          "colors": ["#42b2be"]
+        },
+        {
+          "dmxRange": [115, 120],
+          "type": "ColorPreset",
+          "comment": "Light blue (118)",
+          "colors": ["#02e1ec"]
+        },
+        {
+          "dmxRange": [121, 126],
+          "type": "ColorPreset",
+          "comment": "Medium blue green (116)",
+          "colors": ["#00c9b7"]
+        },
+        {
+          "dmxRange": [127, 132],
+          "type": "ColorPreset",
+          "comment": "Dark green (124)",
+          "colors": ["#00dd79"]
+        },
+        {
+          "dmxRange": [133, 138],
+          "type": "ColorPreset",
+          "comment": "Primary green (139)",
+          "colors": ["#4bc302"]
+        },
+        {
+          "dmxRange": [139, 144],
+          "type": "ColorPreset",
+          "comment": "Moss green (089)",
+          "colors": ["#29f533"]
+        },
+        {
+          "dmxRange": [145, 150],
+          "type": "ColorPreset",
+          "comment": "Fern green (122)",
+          "colors": ["#77fb6f"]
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "ColorPreset",
+          "comment": "JAS green (738)",
+          "colors": ["#a8ff01"]
+        },
+        {
+          "dmxRange": [157, 162],
+          "type": "ColorPreset",
+          "comment": "Lime green (088)",
+          "colors": ["#ddff64"]
+        },
+        {
+          "dmxRange": [163, 169],
+          "type": "ColorPreset",
+          "comment": "Spring yellow (100)",
+          "colors": ["#f6ff00"]
+        },
+        {
+          "dmxRange": [170, 176],
+          "type": "ColorPreset",
+          "comment": "Deep amber (104)",
+          "colors": ["#ffdd00"]
+        },
+        {
+          "dmxRange": [177, 183],
+          "type": "ColorPreset",
+          "comment": "Chrome orange (179)",
+          "colors": ["#f4ae2d"]
+        },
+        {
+          "dmxRange": [184, 190],
+          "type": "ColorPreset",
+          "comment": "Orange (105)",
+          "colors": ["#ff9f01"]
+        },
+        {
+          "dmxRange": [191, 197],
+          "type": "ColorPreset",
+          "comment": "Gold amber (021)",
+          "colors": ["#ff8d34"]
+        },
+        {
+          "dmxRange": [198, 204],
+          "type": "ColorPreset",
+          "comment": "Millenium gold (778)",
+          "colors": ["#f87e26"]
+        },
+        {
+          "dmxRange": [205, 211],
+          "type": "ColorPreset",
+          "comment": "Deep golden amber (135)",
+          "colors": ["#ff6002"]
+        },
+        {
+          "dmxRange": [212, 218],
+          "type": "ColorPreset",
+          "comment": "Flame red (164)",
+          "colors": ["#de3e30"]
+        },
+        {
+          "dmxRange": [219, 225],
+          "type": "ColorPreset",
+          "comment": "White 1: 2700K",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [226, 232],
+          "type": "ColorPreset",
+          "comment": "White 2: 4000K",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [233, 239],
+          "type": "ColorPreset",
+          "comment": "White 3: 5600K",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [240, 246],
+          "type": "ColorPreset",
+          "comment": "White 4: 6000K",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "ColorPreset",
+          "comment": "White 5: 7200K",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Off",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Flash frequency",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Dimming curve": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Control Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "Effect",
+          "effectName": "Manual Mode"
+        },
+        {
+          "dmxRange": [36, 71],
+          "type": "Effect",
+          "effectName": "Programm 1 - fade in"
+        },
+        {
+          "dmxRange": [72, 107],
+          "type": "Effect",
+          "effectName": "Program 2 – fade out"
+        },
+        {
+          "dmxRange": [108, 143],
+          "type": "Effect",
+          "effectName": "Program 3 – fade in/out"
+        },
+        {
+          "dmxRange": [144, 179],
+          "type": "Effect",
+          "effectName": "Program 4 – color flow"
+        },
+        {
+          "dmxRange": [180, 215],
+          "type": "Effect",
+          "effectName": "Program 5 – 3 color switch"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Effect",
+          "effectName": "Program 6 – 7 color switch"
+        }
+      ]
+    },
+    "Programm Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Program speed adjustment, from"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Macros",
+        "Strobe",
+        "Dimming curve"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Dimmer intensity",
+        "Fine dimmer intensity ",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Macros",
+        "Strobe",
+        "Dimming curve",
+        "Control Modes",
+        "Programm Speed"
+      ]
+    }
+  ]
+}
