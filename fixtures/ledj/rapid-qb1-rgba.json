@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rapid QB1 RGBA",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Cathach"],
+    "createDate": "2022-02-21",
+    "lastModifyDate": "2022-02-21"
+  },
+  "comment": "Battery powered LED uplighter",
+  "links": {
+    "manual": [
+      "http://www.prolight.co.uk/ftp-in/LEDJ350_ManualV1.00.pdf"
+    ],
+    "productPage": [
+      "https://prolight.co.uk/product/ledj350"
+    ]
+  },
+  "physical": {
+    "dimensions": [138, 204, 144],
+    "weight": 3,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "Amber Dimmer"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "Amber Dimmer",
+        "Master Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
