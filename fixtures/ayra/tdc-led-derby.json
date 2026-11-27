@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TDC led Derby",
+  "shortName": "Derby",
+  "categories": ["Effect", "Flower", "Strobe"],
+  "meta": {
+    "authors": ["Thijs"],
+    "createDate": "2022-12-12",
+    "lastModifyDate": "2022-12-12"
+  },
+  "links": {
+    "productPage": [
+      "https://www.bax-shop.nl/led-lichteffect/ayra-tdc-led-derby-lichteffect"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2xaaZvfciAM"
+    ]
+  },
+  "rdm": {
+    "modelId": 393162,
+    "softwareVersion": "firmware version xxx"
+  },
+  "physical": {
+    "dimensions": [32.5, 27, 24],
+    "weight": 4,
+    "power": 20,
+    "DMXconnector": "3-pin (swapped +/-)",
+    "bulb": {
+      "type": "Led",
+      "colorTemperature": 10
+    },
+    "lens": {
+      "name": "messcherpe lenzen",
+      "degreesMinMax": [10, 50]
+    }
+  },
+  "availableChannels": {
+    "Rood": {
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "verlengd",
+      "channels": [
+        "Rood"
+      ]
+    }
+  ]
+}
