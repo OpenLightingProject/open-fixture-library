@@ -1,0 +1,521 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED KLS-3002 NEXT",
+  "shortName": "KLS3002NEXT",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Martin Schumacher"],
+    "createDate": "2026-10-30",
+    "lastModifyDate": "2026-10-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/494500/Eurolite-Led-Kls-3002-Next.html"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn42109895-eurolite-led-kls-3002-next-compact-light-set.html",
+      "https://www.thomann.de/de/eurolite_kls_3002_next_comp._light_set.htm"
+    ],
+    "other": [
+      "https://www.steinigke.de/download/42109895-Dimensions-162657-1.0000-eurolite-led-kls-3002-next-kompakt-lichtset-42109895-dimensions-en.pdf"
+    ]
+  },
+  "comment": "Compact light set: cross beam with 4 spots, each with 7 × 10 W 6-in-1 RGBWA+UV LEDs. Color channels only work while the program channel is at 0–5.",
+  "physical": {
+    "dimensions": [1280, 290, 80],
+    "weight": 11.14,
+    "power": 225,
+    "DMXconnector": "3-pin",
+    "powerConnectors": {
+      "powerCON": "input and output",
+      "IEC C13": "output only"
+    },
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [19, 19]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4"]
+      ]
+    ]
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 16],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [17, 28],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [29, 40],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [41, 52],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [53, 64],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [65, 76],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8000ff"]
+        },
+        {
+          "dmxRange": [77, 88],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [89, 100],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "dmxRange": [101, 112],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [113, 124],
+          "type": "ColorPreset",
+          "comment": "Red + Amber",
+          "colors": ["#ff0000", "#ffbf00"]
+        },
+        {
+          "dmxRange": [125, 136],
+          "type": "ColorPreset",
+          "comment": "Red + UV",
+          "colors": ["#ff0000", "#8000ff"]
+        },
+        {
+          "dmxRange": [137, 148],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [149, 160],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [161, 172],
+          "type": "ColorPreset",
+          "comment": "Green + Amber",
+          "colors": ["#00ff00", "#ffbf00"]
+        },
+        {
+          "dmxRange": [173, 184],
+          "type": "ColorPreset",
+          "comment": "Green + UV",
+          "colors": ["#00ff00", "#8000ff"]
+        },
+        {
+          "dmxRange": [185, 196],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [197, 208],
+          "type": "ColorPreset",
+          "comment": "Blue + Amber",
+          "colors": ["#0000ff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [209, 220],
+          "type": "ColorPreset",
+          "comment": "Blue + UV",
+          "colors": ["#0000ff", "#8000ff"]
+        },
+        {
+          "dmxRange": [221, 232],
+          "type": "ColorPreset",
+          "comment": "White + Amber",
+          "colors": ["#ffffff", "#ffbf00"]
+        },
+        {
+          "dmxRange": [233, 244],
+          "type": "ColorPreset",
+          "comment": "White + UV",
+          "colors": ["#ffffff", "#8000ff"]
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorPreset",
+          "comment": "Amber + UV",
+          "colors": ["#ffbf00", "#8000ff"]
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "20%",
+          "comment": "Speed 1"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "40%",
+          "comment": "Speed 2"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "60%",
+          "comment": "Speed 3"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "80%",
+          "comment": "Speed 4"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "100%",
+          "comment": "Speed 5"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 17],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [18, 30],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [31, 42],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [43, 56],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [57, 69],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [70, 82],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [83, 95],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [96, 108],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [109, 121],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [122, 134],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [135, 147],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [148, 160],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [161, 173],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [174, 186],
+          "type": "Effect",
+          "effectName": "Program 14"
+        },
+        {
+          "dmxRange": [187, 199],
+          "type": "Effect",
+          "effectName": "Program 15"
+        },
+        {
+          "dmxRange": [200, 212],
+          "type": "Effect",
+          "effectName": "Program 16"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "Effect",
+          "effectName": "Program 17"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "Effect",
+          "effectName": "Program 18"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "Effect",
+          "effectName": "Program 19"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Program 20"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Color Macros",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color Macros",
+        "Master Dimmer",
+        "Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Master Dimmer",
+        "Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "28-channel",
+      "shortName": "28ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Strobe",
+        "Master Dimmer",
+        "Programs",
+        "Program Speed"
+      ]
+    }
+  ]
+}
