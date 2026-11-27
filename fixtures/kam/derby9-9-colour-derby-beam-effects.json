@@ -1,0 +1,218 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Derby9 9 colour derby beam effects",
+  "shortName": "Derby9",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["docmathoc"],
+    "createDate": "2026-04-27",
+    "lastModifyDate": "2026-04-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.jpleisure.co.uk/Data/qtx_derby9_manual.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 162, 140],
+    "weight": 1.1,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "9 x 3W R/G/B/A/Y/P/WW/CW/UV"
+    }
+  },
+  "wheels": {
+    "Motor": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "linear dimmer"
+        }
+      ]
+    },
+    "Red + Blue + Warm White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "linear dimmer"
+        }
+      ]
+    },
+    "Amber + Yellow + Cool White": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "linear dimmer"
+        }
+      ]
+    },
+    "Green + purple + UV": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Intensity",
+          "comment": "linear dimmer"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "No Strobe"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "comment": "6 speeds"
+        }
+      ]
+    },
+    "Motor": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Motor Stop"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "EffectParameter",
+          "parameter": "instant",
+          "comment": "Static Position"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Oscillation 9 speeds"
+        }
+      ]
+    },
+    "Choose Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Manual channels 1-6 availale"
+        },
+        {
+          "dmxRange": [10, 39],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Red + Blue + Warm White"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Amber + Cool White + Yellow"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Green + Purple + UV"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "9 colour jump change"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "3 colour jump change"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Gradual change no strobe"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "EffectSpeed",
+          "speed": "slow",
+          "comment": "Gradual change with strobe"
+        },
+        {
+          "dmxRange": [220, 249],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound mode 1"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound mode 2"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master Dimmer",
+        "Red + Blue + Warm White",
+        "Amber + Yellow + Cool White",
+        "Green + purple + UV",
+        "Strobe",
+        "Motor",
+        "Choose Program"
+      ]
+    }
+  ]
+}
