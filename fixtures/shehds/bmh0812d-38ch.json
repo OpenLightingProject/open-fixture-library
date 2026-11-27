@@ -1,0 +1,217 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BMH0812D-38CH",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["FeiYu", "Delv95"],
+    "createDate": "2026-05-16",
+    "lastModifyDate": "2026-05-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-05-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "TiltContinuous",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity",
+          "comment": "Auto mode 1"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Intensity",
+          "comment": "Auto mode 2"
+        },
+        {
+          "dmxRange": [21, 31],
+          "type": "Intensity",
+          "comment": "Auto mode 3"
+        },
+        {
+          "dmxRange": [32, 42],
+          "type": "Intensity",
+          "comment": "Auto mode 4"
+        },
+        {
+          "dmxRange": [43, 53],
+          "type": "Intensity",
+          "comment": "Auto mode 5"
+        },
+        {
+          "dmxRange": [54, 64],
+          "type": "Intensity",
+          "comment": "Auto mode 6"
+        },
+        {
+          "dmxRange": [65, 75],
+          "type": "Intensity",
+          "comment": "Auto mode 7"
+        },
+        {
+          "dmxRange": [76, 86],
+          "type": "Intensity",
+          "comment": "Auto mode 8"
+        },
+        {
+          "dmxRange": [87, 97],
+          "type": "Intensity",
+          "comment": "Auto mode 9"
+        },
+        {
+          "dmxRange": [98, 108],
+          "type": "Intensity",
+          "comment": "Auto mode 10"
+        },
+        {
+          "dmxRange": [109, 119],
+          "type": "Intensity",
+          "comment": "Auto mode 11"
+        },
+        {
+          "dmxRange": [120, 130],
+          "type": "Intensity",
+          "comment": "Auto mode 12"
+        },
+        {
+          "dmxRange": [131, 141],
+          "type": "Intensity",
+          "comment": "Auto mode 13"
+        },
+        {
+          "dmxRange": [142, 152],
+          "type": "Intensity",
+          "comment": "Auto mode 14"
+        },
+        {
+          "dmxRange": [153, 163],
+          "type": "Intensity",
+          "comment": "Auto mode 15"
+        },
+        {
+          "dmxRange": [164, 174],
+          "type": "Intensity",
+          "comment": "Auto mode 16"
+        },
+        {
+          "dmxRange": [175, 185],
+          "type": "Intensity",
+          "comment": "Auto mode 17"
+        },
+        {
+          "dmxRange": [186, 196],
+          "type": "Intensity",
+          "comment": "Auto mode 18"
+        },
+        {
+          "dmxRange": [197, 207],
+          "type": "Intensity",
+          "comment": "Auto mode 19"
+        },
+        {
+          "dmxRange": [208, 218],
+          "type": "Intensity",
+          "comment": "Auto mode 20"
+        },
+        {
+          "dmxRange": [219, 229],
+          "type": "Intensity",
+          "comment": "Auto mode 21"
+        },
+        {
+          "dmxRange": [230, 240],
+          "type": "Intensity",
+          "comment": "Auto mode 22"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Intensity",
+          "comment": "Auto mode 23"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Intensity",
+          "comment": "Sound mode"
+        }
+      ]
+    },
+    "Auto mode speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": []
+}
