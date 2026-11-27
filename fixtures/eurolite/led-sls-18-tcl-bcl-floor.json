@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED SLS-18 TCL/BCL Floor",
+  "shortName": "LED 18 Floor",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Benjamin Blaikner/ Theater der Mitte"],
+    "createDate": "2024-07-19",
+    "lastModifyDate": "2024-07-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/de/mpn51915398-eurolite-led-sls-18-tcl-bcl-floor.html?gad_source=1&gbraid=0AAAAADvR0-cYXC3vbWoKvpSu8rdTHZBot&gclid=EAIaIQobChMI8fSMsMGyhwMVxZSDBx24nxiSEAAYASAAEgLaSfD_BwE"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51915398-eurolite-led-sls-18-tcl-bcl-floor.html?gad_source=1&gbraid=0AAAAADvR0-cYXC3vbWoKvpSu8rdTHZBot&gclid=EAIaIQobChMI8fSMsMGyhwMVxZSDBx24nxiSEAAYASAAEgLaSfD_BwE"
+    ]
+  },
+  "physical": {
+    "dimensions": [95, 270, 315],
+    "weight": 3.45,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Sound/ Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound Control"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Strobe (increasing)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Dimmer",
+        "Sound/ Strobe"
+      ]
+    }
+  ]
+}
