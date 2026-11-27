@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stingray Mini 20W VW",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Tim Linamen"],
+    "createDate": "2025-01-16",
+    "lastModifyDate": "2025-01-16"
+  },
+  "links": {
+    "manual": [
+      "https://myelektralite.com/wp-content/uploads/2023/11/Elektralite-Variable-White-Mini-Stingray-Manual-V2.1.pdf"
+    ],
+    "productPage": [
+      "https://myelektralite.com/products/stingray-mini-20w/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cool White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "Generic",
+          "comment": "Turn on \"delay by controller\""
+        },
+        {
+          "dmxRange": [26, 100],
+          "type": "Generic",
+          "comment": "Turn off \"delay by controller\""
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "Cool/warm fade up & down"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Cool/warm snap"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic",
+          "comment": "Cool/warm crossfade"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Sound mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "A",
+      "channels": [
+        "Dimmer",
+        "Cool White",
+        "Warm White",
+        "Strobe",
+        "Macros"
+      ]
+    },
+    {
+      "name": "D",
+      "channels": [
+        "Cool White",
+        "Warm White"
+      ]
+    }
+  ]
+}
