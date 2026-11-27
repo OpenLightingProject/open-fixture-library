@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PARty Hybrid",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2022-11-03",
+    "lastModifyDate": "2022-11-03"
+  },
+  "comment": "Channel 6 controls macro speed when macros are being used such as increasing the colour switch speed.",
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1640268/Eurolite-Led-Party-Hybrid-Spot.html"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/eurolite_led_party_hybrid_spot.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=l7mJXyC-mTg"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe / Macro Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Colour Change \"Switching\""
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Effect",
+          "effectName": "Colour Change \"Fading\""
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe / Macro Speed",
+        "Macro"
+      ]
+    }
+  ]
+}
