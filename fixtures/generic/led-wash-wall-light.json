@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Wash Wall Light",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Orbital Productions LLC"],
+    "createDate": "2025-08-24",
+    "lastModifyDate": "2025-08-24"
+  },
+  "comment": "Batten",
+  "links": {
+    "manual": [
+      "https://manuals.plus/m/eb97cff87e50c2cd9b6fcabf46d26e24f1bac74da5a3c3d33044b8432c3a9dc6"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "R1 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G1 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B1 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R2 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G2 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B2 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R3 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "B3 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R4 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "B4 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "G3 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G4 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "R5 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R6 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R7 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "R8 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G5 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G6 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G7 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "G8 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B5 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B6 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B7 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "B8 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Eight Segment",
+      "channels": [
+        "R1 Red Dimming",
+        "G1 Green Dimming",
+        "B1 Blue Dimming",
+        "R2 Red Dimming",
+        "G2 Green Dimming",
+        "B2 Blue Dimming",
+        "R3 Red Dimming",
+        "G3 Green Dimming",
+        "B3 Blue Dimming",
+        "R4 Red Dimming",
+        "G4 Green Dimming",
+        "B4 Blue Dimming",
+        "R5 Red Dimming",
+        "G5 Green Dimming",
+        "B5 Blue Dimming",
+        "R6 Red Dimming",
+        "G6 Green Dimming",
+        "B6 Blue Dimming",
+        "R7 Red Dimming",
+        "G7 Green Dimming",
+        "B7 Blue Dimming",
+        "R8 Red Dimming",
+        "G8 Green Dimming",
+        "B8 Blue Dimming"
+      ]
+    }
+  ]
+}
