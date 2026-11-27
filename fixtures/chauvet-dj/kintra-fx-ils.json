@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kintra FX ILS",
+  "shortName": "KFX",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Jason Ritter"],
+    "createDate": "2023-01-09",
+    "lastModifyDate": "2023-01-09"
+  },
+  "links": {
+    "manual": [
+      "http://www.chauvetet.com"
+    ]
+  },
+  "availableChannels": {
+    "Automatic Program": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Color": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speed": "fast"
+        }
+      ]
+    },
+    "Effect Motor": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Sstrobe program": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Laser Color": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Laser Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 254],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "sound activated"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "STOP"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "COUNTER ROTATION S-FAST"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "Generic",
+          "comment": "STOP"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "CLOCKWISE ROTATION"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9 channel",
+      "shortName": "9ch",
+      "channels": [
+        "Automatic Program",
+        "Program Speed",
+        "Effect Color",
+        "Strobe",
+        "Effect Motor",
+        "Sstrobe program",
+        "Laser Color",
+        "Laser Strobe",
+        "Prism Rotation"
+      ]
+    }
+  ]
+}
