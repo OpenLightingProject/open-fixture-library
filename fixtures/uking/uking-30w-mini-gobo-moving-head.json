@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Uking 30W mini gobo moving head",
+  "shortName": "gobo moving head",
+  "categories": ["Moving Head", "Effect"],
+  "meta": {
+    "authors": ["myname"],
+    "createDate": "2026-06-30",
+    "lastModifyDate": "2026-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.aliexpress.com/item/1005009939367471.html?spm=a2g0o.productlist.main.1.2a8cgqmygqmyse&algo_pvid=525d69c4-ae87-4e5c-88ae-f6975d573a39&pdp_ext_f=%7B%22order%22%3A%221329%22%2C%22eval%22%3A%221%22%2C%22orig_sl_item_id%22%3A%221005009939367471%22%2C%22orig_item_id%22%3A%221005009818549807%22%2C%22fromPage%22%3A%22search%22%7D&utparam-url=scene%3Asearch%7Cquery_from%3A%7Cx_object_id%3A1005009939367471%7C_p_origin_prod%3A1005009818549807"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "weight": 1.25,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Beam dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Laser dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Light belt": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "WheelSlotRotation"
+        }
+      ]
+    },
+    "Light belt speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Gobo Wheel Rotation",
+        "Dimmer",
+        "Strobe",
+        "Gobo Wheel",
+        "Beam dimmer",
+        "Laser dimmer",
+        "Light belt",
+        "Light belt speed",
+        "Macro"
+      ]
+    }
+  ]
+}
