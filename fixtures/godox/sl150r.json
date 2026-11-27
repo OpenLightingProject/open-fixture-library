@@ -1,0 +1,368 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Godox SL150R",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-05-17",
+    "lastModifyDate": "2024-05-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.godox.com/static/upload/file/20240218/1708266647228442.pdf"
+    ],
+    "productPage": [
+      "https://www.godox.com/product-d/LED-SL150R/SL300R.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [288, 199, 283],
+    "weight": 2.35,
+    "power": 310,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Green-Magenta Point": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-50%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…50%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Crossfade": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "CCT crossfade to RGB"
+        }
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "RGB Cycle"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Party"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Flash"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Cloudy"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Broken bulb"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Candle"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Explosion"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Welding"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Cop car"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "SOS"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Preset"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Preset"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Preset"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "Effect",
+          "effectName": "Preset"
+        }
+      ]
+    },
+    "FX Param 1": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "FX Param"
+        }
+    },
+    "FX Param 2": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "FX Param"
+        }
+    },
+    "FX Param 3": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "FX Param"
+        }
+    },
+    "FX Param 4": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "FX Param"
+        }
+    },
+    "FX Param 5": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "FX Param"
+        }
+    },
+    "FX Param 6": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "FX Param"
+        }
+    },
+    "Gel Type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "R-GEL"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "L-GEL"
+        }
+      ]
+    },
+    "Gel No.": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green-Magenta Point"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "CCT & HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green-Magenta Point",
+        "Crossfade",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "CCT & RGBW",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Green-Magenta Point",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "GEL",
+      "channels": [
+        "Intensity",
+        "CCT Stepped",
+        "Gel Type",
+        "Gel No.",
+        "Reserved",
+        "Reserved 2"
+      ]
+    },
+    {
+      "name": "FX",
+      "channels": [
+        "Intensity",
+        "Effect",
+        "FX Param 1",
+        "FX Param 2",
+        "FX Param 3",
+        "FX Param 4",
+        "FX Param 5",
+        "FX Param 6"
+      ]
+    }
+  ]
+}
