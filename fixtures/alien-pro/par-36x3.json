@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 36X3",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["zamedora"],
+    "createDate": "2026-10-08",
+    "lastModifyDate": "2026-10-08"
+  },
+  "comment": "RGB 3 en 1",
+  "links": {
+    "manual": [
+      "https://alienpro.com.mx/wp-content/uploads/Manual-Par-36x3W.pdf"
+    ],
+    "productPage": [
+      "https://alienpro.com.mx/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=KWXM-oyzpnE&time_continue=10&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Falienpro.com.mx%2F"
+    ]
+  },
+  "physical": {
+    "dimensions": [23, 11.5, 22],
+    "weight": 1.6,
+    "power": 120,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LEDs 36 x 3W RGB 3 en 1",
+      "shortName": "PAR 36X3",
+      "physical": {
+        "dimensions": [23, 11.5, 22],
+        "weight": 1.6,
+        "power": 120,
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "LED",
+          "colorTemperature": 3200,
+          "lumens": 1600
+        },
+        "lens": {
+          "name": "ECO36PLUS",
+          "degreesMinMax": [0, 25]
+        }
+      },
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
