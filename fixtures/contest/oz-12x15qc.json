@@ -1,0 +1,800 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Oz-12x15QC",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["David Lauriou", "david lauriou"],
+    "createDate": "2025-03-25",
+    "lastModifyDate": "2025-03-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2025-03-25",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [498, 594, 330],
+    "weight": 22.5,
+    "power": 650,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [16, 56]
+    }
+  },
+  "availableChannels": {
+    "Pan movement": {
+      "fineChannelAliases": ["Pan movement fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt movement": {
+      "fineChannelAliases": ["Tilt movement fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "265deg"
+      }
+    },
+    "Pan/Tilt movement speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "comment": "Fast to slow speed settings",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "PanTiltSpeed",
+          "comment": "Black out during movements",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "PanTiltSpeed",
+          "comment": "No function, max speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Shutter & Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "LEDs off"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "No function, LEDs on"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow to fast strobe"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "No function, LEDs on"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Slow to fast pulse effect"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "No function, LEDs on"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Slow to fast random strobe"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "No function, LEDs off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "All LEDs Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "All LEDs Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "All LEDs Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "All LEDs White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone 1 LEDs Red": {
+      "fineChannelAliases": ["Zone 1 LEDs Red Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone 1 LEDs Green": {
+      "fineChannelAliases": ["Zone 1 LEDs Green Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone 1 LEDs Blue": {
+      "fineChannelAliases": ["Zone 1 LEDs Blue Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone 1 LEDs White": {
+      "fineChannelAliases": ["Zone 1 LEDs White Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone 2 LEDs Red": {
+      "fineChannelAliases": ["Zone 2 LEDs Red Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone 2 LEDs Green": {
+      "fineChannelAliases": ["Zone 2 LEDs Green Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone 2 LEDs Blue": {
+      "fineChannelAliases": ["Zone 2 LEDs Blue Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone 2 LEDs White": {
+      "fineChannelAliases": ["Zone 2 LEDs White Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zone 3 LEDs Red": {
+      "fineChannelAliases": ["Zone 3 LEDs Red Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Zone 3 LEDs Green": {
+      "fineChannelAliases": ["Zone 3 LEDs Green Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Zone 3 LEDs Blue": {
+      "fineChannelAliases": ["Zone 3 LEDs Blue Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zone 3 LEDs White": {
+      "fineChannelAliases": ["Zone 3 LEDs White Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Colour macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 39],
+          "type": "ColorPreset",
+          "comment": "From red to yellow",
+          "colors": ["#ff0000", "#ffff00"]
+        },
+        {
+          "dmxRange": [40, 71],
+          "type": "ColorPreset",
+          "comment": "From yellow to green",
+          "colors": ["#ffff00", "#55ff00"]
+        },
+        {
+          "dmxRange": [72, 103],
+          "type": "ColorPreset",
+          "comment": "From green to cyan",
+          "colors": ["#55ff00", "#55ffff"]
+        },
+        {
+          "dmxRange": [104, 135],
+          "type": "ColorPreset",
+          "comment": "From cyan to blue",
+          "colors": ["#55ffff", "#0000ff"]
+        },
+        {
+          "dmxRange": [136, 167],
+          "type": "ColorPreset",
+          "comment": "From blue to magenta",
+          "colors": ["#0000ff", "#ff00ff"]
+        },
+        {
+          "dmxRange": [168, 199],
+          "type": "ColorPreset",
+          "comment": "From magenta to red",
+          "colors": ["#ff00ff", "#ff0000"]
+        },
+        {
+          "dmxRange": [200, 231],
+          "type": "ColorPreset",
+          "comment": "From red to white",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorPreset",
+          "comment": "Slow to fast rainbow effect"
+        }
+      ]
+    },
+    "Preset colours": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "White 2700K"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "White 3200K"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "White 4300K"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "White 5600K"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "White 6500K"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "White 8000K"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#55ff00"]
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Cold white"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Warm white"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Salmon",
+          "colors": ["#ffa07a"]
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#40e0d0"]
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "Steel Blue",
+          "colors": ["#4682b4"]
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffa500"]
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "Straw",
+          "colors": ["#f0e68c"]
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "Light Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "Red/White",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "Green/White",
+          "colors": ["#ffffff", "#ff0000"]
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "Blue/Red",
+          "colors": ["#0000ff", "#ff0000"]
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "White/Red",
+          "colors": ["#ffffff", "#ff0000"]
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "White/Pink",
+          "colors": ["#ffffff", "#ffaaff"]
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "White/Turquoise",
+          "colors": ["#ffffff", "#00ffff"]
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "Light red/White",
+          "colors": ["#ff5163", "#ffffff"]
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "ColorPreset",
+          "comment": "Slow to fast rainbow effect"
+        }
+      ]
+    },
+    "Preset colour dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "100% - 0%"
+      }
+    },
+    "Patterns sequencing": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 40],
+          "type": "Effect",
+          "effectName": "Sequences 1"
+        },
+        {
+          "dmxRange": [41, 70],
+          "type": "Effect",
+          "effectName": "Sequences 2"
+        },
+        {
+          "dmxRange": [71, 100],
+          "type": "Effect",
+          "effectName": "Sequences 3"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "Effect",
+          "effectName": "Sequences 4"
+        },
+        {
+          "dmxRange": [131, 160],
+          "type": "Effect",
+          "effectName": "Sequences 5"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "Effect",
+          "effectName": "Sequences 6"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "Effect",
+          "effectName": "Sequences 7"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Sequences 8"
+        }
+      ]
+    },
+    "Patterns sequencing speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "From"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "From"
+        }
+      ]
+    },
+    "Patterns sequencing fader": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Fast to slow fader"
+      }
+    },
+    "White balance": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 254],
+          "type": "Maintenance",
+          "comment": "New white balance"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Save new balance"
+        }
+      ]
+    },
+    "Internal programs and options": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "Resets Motors",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Maintenance",
+          "comment": "Reset Zoom Motor"
+        },
+        {
+          "dmxRange": [91, 93],
+          "type": "Maintenance",
+          "comment": "White Balance Memorie Enabled"
+        },
+        {
+          "dmxRange": [94, 96],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Maintenance",
+          "comment": "Reset others motors"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Maintenance",
+          "comment": "Internal Programme 1"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Maintenance",
+          "comment": "Internal Programme 2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Maintenance",
+          "comment": "Internal Programme 3"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Maintenance",
+          "comment": "Internal Programme 4"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Maintenance",
+          "comment": "Internal Programme 5"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Maintenance",
+          "comment": "Internal Programme 6"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Maintenance",
+          "comment": "Internal Programme 7"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Music sensitive program"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "18-channel Basic",
+      "shortName": "18ch Basic",
+      "channels": [
+        "Pan movement",
+        "Tilt movement",
+        "Pan/Tilt movement speed",
+        "Shutter & Strobe",
+        "Dimmer",
+        "All LEDs Red",
+        "All LEDs Green",
+        "All LEDs Blue",
+        "All LEDs White",
+        "Zoom",
+        "Colour macros",
+        "Preset colours",
+        "Preset colour dimmer",
+        "Patterns sequencing",
+        "Patterns sequencing speed",
+        "Patterns sequencing fader",
+        "White balance",
+        "Internal programs and options"
+      ]
+    },
+    {
+      "name": "24-channel Standard",
+      "shortName": "24ch Standard",
+      "channels": [
+        "Pan movement",
+        "Pan movement fine",
+        "Tilt movement",
+        "Tilt movement fine",
+        "Pan/Tilt movement speed",
+        "Shutter & Strobe",
+        "Dimmer",
+        "Zone 1 LEDs Red",
+        "Zone 1 LEDs Green",
+        "Zone 1 LEDs Blue",
+        "Zone 1 LEDs White",
+        "Zone 2 LEDs Red",
+        "Zone 2 LEDs Green",
+        "Zone 2 LEDs Blue",
+        "Zone 2 LEDs White",
+        "Zoom",
+        "Colour macros",
+        "Preset colours",
+        "Preset colour dimmer",
+        "Patterns sequencing",
+        "Patterns sequencing speed",
+        "Patterns sequencing fader",
+        "White balance",
+        "Internal programs and options"
+      ]
+    },
+    {
+      "name": "42-channel Expert",
+      "shortName": "42ch Expert",
+      "channels": [
+        "Pan movement",
+        "Pan movement fine",
+        "Tilt movement",
+        "Tilt movement fine",
+        "Pan/Tilt movement speed",
+        "Shutter & Strobe",
+        "Dimmer",
+        "Dimmer Fine",
+        "Zone 1 LEDs Red",
+        "Zone 1 LEDs Red Fine",
+        "Zone 1 LEDs Green",
+        "Zone 1 LEDs Green Fine",
+        "Zone 1 LEDs Blue",
+        "Zone 1 LEDs Blue Fine",
+        "Zone 1 LEDs White",
+        "Zone 1 LEDs White Fine",
+        "Zone 2 LEDs Red",
+        "Zone 2 LEDs Red Fine",
+        "Zone 2 LEDs Green",
+        "Zone 2 LEDs Green Fine",
+        "Zone 2 LEDs Blue",
+        "Zone 2 LEDs Blue Fine",
+        "Zone 2 LEDs White",
+        "Zone 2 LEDs White Fine",
+        "Zone 3 LEDs Red",
+        "Zone 3 LEDs Red Fine",
+        "Zone 3 LEDs Green",
+        "Zone 3 LEDs Green Fine",
+        "Zone 3 LEDs Blue",
+        "Zone 3 LEDs Blue Fine",
+        "Zone 3 LEDs White",
+        "Zone 3 LEDs White Fine",
+        "Zoom",
+        "Zoom Fine",
+        "Colour macros",
+        "Preset colours",
+        "Preset colour dimmer",
+        "Patterns sequencing",
+        "Patterns sequencing speed",
+        "Patterns sequencing fader",
+        "White balance",
+        "Internal programs and options"
+      ]
+    }
+  ]
+}
