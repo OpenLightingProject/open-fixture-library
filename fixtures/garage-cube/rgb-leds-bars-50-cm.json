@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB LEDs bars (50 cm)",
+  "shortName": "RBG bars (50 cm)",
+  "categories": ["Color Changer", "Dimmer", "Pixel Bar"],
+  "meta": {
+    "authors": ["Hieros Gamos"],
+    "createDate": "2022-11-23",
+    "lastModifyDate": "2022-11-23"
+  },
+  "links": {
+    "manual": [
+      "http://fr.3drgb.com/stage-lighting/geometry-led-rgb-3d-bar/garage-cube-led-pixel-bar-24v.html"
+    ],
+    "productPage": [
+      "http://www.garagecube.com/led/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=pv1S0F_K7go"
+    ]
+  },
+  "physical": {
+    "dimensions": [565, 27, 38],
+    "power": 6,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "RGB Leds Bars": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "bright"
+        },
+        {
+          "dmxRange": [1, 3],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [4, 6],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [7, 9],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [16, 18],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [19, 21],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [22, 24],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [25, 27],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [28, 30],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [31, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB (50 cm)",
+      "shortName": "RGB (50 cm)",
+      "channels": [
+        "RGB Leds Bars"
+      ]
+    }
+  ]
+}
