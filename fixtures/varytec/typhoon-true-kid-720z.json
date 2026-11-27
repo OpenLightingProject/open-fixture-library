@@ -1,0 +1,994 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Typhoon True Kid 720Z",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Crumeniferus", "Ian Cheesbrough"],
+    "createDate": "2026-03-08",
+    "lastModifyDate": "2026-03-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-03-08",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [295, 189, 369],
+    "weight": 5,
+    "power": 150,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5500,
+      "lumens": 27700
+    },
+    "lens": {
+      "degreesMinMax": [8, 50]
+    }
+  },
+  "availableChannels": {
+    "Intensity red": {
+      "fineChannelAliases": ["Intensity red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity green": {
+      "fineChannelAliases": ["Intensity green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity blue": {
+      "fineChannelAliases": ["Intensity blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity white": {
+      "fineChannelAliases": ["Intensity white fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Brightness": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer curves": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Effect",
+          "effectName": "Standard dimmer curve"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Dimmer mode 1 (slight after-glow)"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Dimmer mode 2"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "Dimmer mode 3"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Dimmer mode 4 (strong after-glow)"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Strobe open (no strobing)"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed (slow to fast)"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Motor speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Zoom speed (Slow to fast)"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "None",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [10, 13],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [14, 17],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [18, 21],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [22, 25],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [26, 29],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [30, 33],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [34, 37],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [38, 41],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [42, 45],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff319f"]
+        },
+        {
+          "dmxRange": [46, 49],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#a201ff"]
+        },
+        {
+          "dmxRange": [50, 53],
+          "type": "ColorPreset",
+          "comment": "Aquamarine",
+          "colors": ["#55ffff"]
+        },
+        {
+          "dmxRange": [54, 57],
+          "type": "ColorPreset",
+          "comment": "Sky blue",
+          "colors": ["#5858ff"]
+        },
+        {
+          "dmxRange": [58, 61],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [62, 65],
+          "type": "ColorPreset",
+          "comment": "Cold white",
+          "colors": ["#d8d8ff"]
+        },
+        {
+          "dmxRange": [66, 69],
+          "type": "ColorPreset",
+          "comment": "Warm white",
+          "colors": ["#ffffb2"]
+        },
+        {
+          "dmxRange": [70, 73],
+          "type": "ColorPreset",
+          "comment": "White 3200",
+          "colors": ["#ffff9c"]
+        },
+        {
+          "dmxRange": [74, 77],
+          "type": "ColorPreset",
+          "comment": "White 2500",
+          "colors": ["#ffff83"]
+        },
+        {
+          "dmxRange": [78, 81],
+          "type": "ColorPreset",
+          "comment": "Yellow 2",
+          "colors": ["#ffff47"]
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "ColorPreset",
+          "comment": "Straw",
+          "colors": ["#ffff8c"]
+        },
+        {
+          "dmxRange": [86, 89],
+          "type": "ColorPreset",
+          "comment": "Orange 2",
+          "colors": ["#ffaa38"]
+        },
+        {
+          "dmxRange": [90, 93],
+          "type": "ColorPreset",
+          "comment": "Light pink",
+          "colors": ["#ff9193"]
+        },
+        {
+          "dmxRange": [94, 97],
+          "type": "ColorPreset",
+          "comment": "Dark pink",
+          "colors": ["#e5484a"]
+        },
+        {
+          "dmxRange": [98, 101],
+          "type": "ColorPreset",
+          "comment": "Magenta 2",
+          "colors": ["#ff4dff"]
+        },
+        {
+          "dmxRange": [102, 105],
+          "type": "ColorPreset",
+          "comment": "Blue 2",
+          "colors": ["#8591ff"]
+        },
+        {
+          "dmxRange": [106, 109],
+          "type": "ColorPreset",
+          "comment": "Medium teal",
+          "colors": ["#00dcdc"]
+        },
+        {
+          "dmxRange": [110, 113],
+          "type": "ColorPreset",
+          "comment": "Dark blue",
+          "colors": ["#00007f"]
+        },
+        {
+          "dmxRange": [114, 117],
+          "type": "ColorPreset",
+          "comment": "Bright pink",
+          "colors": ["#ff6ffd"]
+        },
+        {
+          "dmxRange": [118, 121],
+          "type": "ColorPreset",
+          "comment": "Medium blue",
+          "colors": ["#0000cd"]
+        },
+        {
+          "dmxRange": [122, 125],
+          "type": "ColorPreset",
+          "comment": "Golden amber",
+          "colors": ["#ffe100"]
+        },
+        {
+          "dmxRange": [126, 129],
+          "type": "ColorPreset",
+          "comment": "Deep golden amber",
+          "colors": ["#e2c400"]
+        },
+        {
+          "dmxRange": [130, 133],
+          "type": "ColorPreset",
+          "comment": "Bright lavendar",
+          "colors": ["#d3d3ff"]
+        },
+        {
+          "dmxRange": [134, 137],
+          "type": "ColorPreset",
+          "comment": "Apricot",
+          "colors": ["#ffb27f"]
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "ColorPreset",
+          "comment": "Dark lavendar",
+          "colors": ["#9292b1"]
+        },
+        {
+          "dmxRange": [142, 145],
+          "type": "ColorPreset",
+          "comment": "Chocolate",
+          "colors": ["#713600"]
+        },
+        {
+          "dmxRange": [146, 149],
+          "type": "ColorPreset",
+          "comment": "Simple blue",
+          "colors": ["#0000d5"]
+        },
+        {
+          "dmxRange": [150, 153],
+          "type": "ColorPreset",
+          "comment": "Bright Pink",
+          "colors": ["#ff46a2"]
+        },
+        {
+          "dmxRange": [154, 157],
+          "type": "ColorPreset",
+          "comment": "Scarlet",
+          "colors": ["#ed2100"]
+        },
+        {
+          "dmxRange": [158, 161],
+          "type": "ColorPreset",
+          "comment": "Peach coloured",
+          "colors": ["#ffd3ac"]
+        },
+        {
+          "dmxRange": [162, 165],
+          "type": "ColorPreset",
+          "comment": "Fire",
+          "colors": ["#ffc800"]
+        },
+        {
+          "dmxRange": [166, 169],
+          "type": "ColorPreset",
+          "comment": "English pink",
+          "colors": ["#dd9300"]
+        },
+        {
+          "dmxRange": [170, 173],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#e0b0ff"]
+        },
+        {
+          "dmxRange": [174, 177],
+          "type": "ColorPreset",
+          "comment": "Beaming blue",
+          "colors": ["#33ffff"]
+        },
+        {
+          "dmxRange": [178, 181],
+          "type": "ColorPreset",
+          "comment": "Alice blue",
+          "colors": ["#f0f8ff"]
+        },
+        {
+          "dmxRange": [182, 185],
+          "type": "ColorPreset",
+          "comment": "Indigo rose",
+          "colors": ["#6959b1"]
+        },
+        {
+          "dmxRange": [186, 189],
+          "type": "ColorPreset",
+          "comment": "Urban blue",
+          "colors": ["#166bf5"]
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "ColorPreset",
+          "comment": "Cold blue",
+          "colors": ["#88dddd"]
+        },
+        {
+          "dmxRange": [194, 197],
+          "type": "ColorPreset",
+          "comment": "Light salmon coloured",
+          "colors": ["#ffa07a"]
+        },
+        {
+          "dmxRange": [198, 201],
+          "type": "ColorPreset",
+          "comment": "Maya sun",
+          "colors": ["#fed361"]
+        },
+        {
+          "dmxRange": [202, 205],
+          "type": "ColorPreset",
+          "comment": "Cherry rose",
+          "colors": ["#b51818"]
+        },
+        {
+          "dmxRange": [206, 209],
+          "type": "ColorPreset",
+          "comment": "Flesh coloured",
+          "colors": ["#ebbfa3"]
+        },
+        {
+          "dmxRange": [210, 213],
+          "type": "ColorPreset",
+          "comment": "Skeleton exotic sangria",
+          "colors": ["#b14566"]
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "ColorPreset",
+          "comment": "RGBW",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Automatic shows": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Standard"
+        },
+        {
+          "dmxRange": [8, 10],
+          "type": "Effect",
+          "effectName": "Programme 1"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Programme 2"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Effect",
+          "effectName": "Programme 3"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Effect",
+          "effectName": "Programme 4"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Programme 5"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Programme 6"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Programme 7"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Programme 8"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Programme 9"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Programme 10"
+        },
+        {
+          "dmxRange": [101, 109],
+          "type": "Effect",
+          "effectName": "Programme 11"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "Effect",
+          "effectName": "None"
+        }
+      ]
+    },
+    "Auto prorgamme running speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Auto programme running speed"
+      }
+    },
+    "Motor reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Maintenance"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Device ID": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "all IDs"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "comment": "ID1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "ID2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "ID3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "comment": "ID4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "ID5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "ID6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "ID7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "ID8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "ID9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "ID10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "comment": "ID11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "comment": "ID12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Maintenance",
+          "comment": "ID13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "ID14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "ID15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "comment": "ID16"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "ID17"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "ID18"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "ID19"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "ID20"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Maintenance",
+          "comment": "ID21"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Maintenance",
+          "comment": "ID22"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Maintenance",
+          "comment": "ID23"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Maintenance",
+          "comment": "ID24"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Maintenance",
+          "comment": "ID25"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Maintenance",
+          "comment": "ID26"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Maintenance",
+          "comment": "ID27"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Maintenance",
+          "comment": "ID28"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Maintenance",
+          "comment": "ID29"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Maintenance",
+          "comment": "ID30"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Maintenance",
+          "comment": "ID31"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Maintenance",
+          "comment": "ID32"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Maintenance",
+          "comment": "ID33"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Maintenance",
+          "comment": "ID34"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Maintenance",
+          "comment": "ID35"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Maintenance",
+          "comment": "ID36"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Maintenance",
+          "comment": "ID37"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Maintenance",
+          "comment": "ID38"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Maintenance",
+          "comment": "ID39"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Maintenance",
+          "comment": "ID40"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Maintenance",
+          "comment": "ID41"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Maintenance",
+          "comment": "ID42"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Maintenance",
+          "comment": "ID43"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Maintenance",
+          "comment": "ID44"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Maintenance",
+          "comment": "ID45"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Maintenance",
+          "comment": "ID46"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Maintenance",
+          "comment": "ID47"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Maintenance",
+          "comment": "ID48"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Maintenance",
+          "comment": "ID49"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Maintenance",
+          "comment": "ID50"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Maintenance",
+          "comment": "ID51"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Maintenance",
+          "comment": "ID52"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Maintenance",
+          "comment": "ID53"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Maintenance",
+          "comment": "ID54"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Maintenance",
+          "comment": "ID55"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Maintenance",
+          "comment": "ID56"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Maintenance",
+          "comment": "ID57"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Maintenance",
+          "comment": "ID58"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Maintenance",
+          "comment": "ID59"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Maintenance",
+          "comment": "ID60"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Maintenance",
+          "comment": "ID61"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Maintenance",
+          "comment": "ID62"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Maintenance",
+          "comment": "ID63"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Maintenance",
+          "comment": "ID64"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Maintenance",
+          "comment": "ID65"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "ID66"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Color selection",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Saturation",
+        "Brightness",
+        "Hue",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Brightness",
+        "Intensity red",
+        "Intensity green",
+        "Intensity blue",
+        "Intensity white",
+        "Strobe",
+        "Zoom",
+        "Motor speed"
+      ]
+    },
+    {
+      "name": "17-channel",
+      "shortName": "17ch",
+      "channels": [
+        "Brightness",
+        "No function",
+        "Intensity red",
+        "Intensity red fine",
+        "Intensity green",
+        "Intensity green fine",
+        "Intensity blue",
+        "Intensity blue fine",
+        "Intensity white",
+        "Intensity white fine",
+        "Dimmer curves",
+        "Strobe",
+        "Zoom",
+        "Motor speed",
+        "Automatic shows",
+        "Auto prorgamme running speed",
+        "Motor reset"
+      ]
+    },
+    {
+      "name": "19-channel",
+      "shortName": "19ch",
+      "channels": [
+        "Brightness",
+        "No function",
+        "Intensity red",
+        "Intensity red fine",
+        "Intensity green",
+        "Intensity green fine",
+        "Intensity blue",
+        "Intensity blue fine",
+        "Intensity white",
+        "Intensity white fine",
+        "Dimmer curves",
+        "Color selection",
+        "Strobe",
+        "Zoom",
+        "Motor speed",
+        "Device ID",
+        "Automatic shows",
+        "Auto prorgamme running speed",
+        "Motor reset"
+      ]
+    }
+  ]
+}
