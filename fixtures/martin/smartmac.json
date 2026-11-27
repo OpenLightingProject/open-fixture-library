@@ -1,0 +1,1495 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "smartMAC",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Mads Vejrup"],
+    "createDate": "2024-11-11",
+    "lastModifyDate": "2024-11-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-11-11",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [352, 454, 387],
+    "weight": 21,
+    "power": 216,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "MSD or CMD",
+      "colorTemperature": 8500,
+      "lumens": 4600
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Open/Blue",
+          "colors": ["#ffffff", "#0433ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0433ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue/Green",
+          "colors": ["#0433ff", "#00f900"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00f900"]
+        },
+        {
+          "type": "Color",
+          "name": "Green/Orange",
+          "colors": ["#00f900", "#ff9300"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff9300"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange/Yellow",
+          "colors": ["#ff9300", "#fffb00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#fffb00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow/Pink",
+          "colors": ["#fffb00", "#ff8ad8"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff8ad8"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink/Magenta",
+          "colors": ["#ff8ad8", "#ff40ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff40ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta/Congo",
+          "colors": ["#ff40ff", "#2b14c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Congo",
+          "colors": ["#2b14c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Congo/Red",
+          "colors": ["#2b14c6", "#ff2600"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff2600"]
+        },
+        {
+          "type": "Color",
+          "name": "Red/Open",
+          "colors": ["#ff2600", "#ffffff"]
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff2600"]
+        },
+        {
+          "type": "Color",
+          "name": "Congo",
+          "colors": ["#2b14c6"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff40ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff8ad8"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#fffb00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff9300"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00f900"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0433ff"]
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Music trigger fast"
+        },
+        {
+          "type": "Color",
+          "name": "Music trigger medium"
+        },
+        {
+          "type": "Color",
+          "name": "Music trigger slow"
+        },
+        {
+          "type": "Color",
+          "name": "Random color fast"
+        },
+        {
+          "type": "Color",
+          "name": "Random color medium"
+        },
+        {
+          "type": "Color",
+          "name": "Random color slow"
+        }
+      ]
+    },
+    "Gobo": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Open gobo"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 1 (Indexing)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 2 (Indexing)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 3 (Indexing)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 4 (Indexing)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 5 (Indexing)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 6 (Indexing)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Open gobo"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 1 shake slow to fast (indexed)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 2 shake slow to fast (indexed)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 3 shake slow to fast (indexed)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 4 shake slow to fast (indexed)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 5 shake slow to fast (indexed)"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/aliases/qlcplus//Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/",
+          "name": "Gobo 6 shake slow to fast (indexed)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Music triggered fast"
+        },
+        {
+          "type": "Gobo",
+          "name": "Music triggered medium"
+        },
+        {
+          "type": "Gobo",
+          "name": "Music triggered slow"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter fade in"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter fade out"
+        },
+        {
+          "dmxRange": [50, 72],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Strobe fast to slow"
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Opening pulse fast to slow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Closing pulse fast to slow"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Music triggered shutter",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe fast"
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe medium"
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random strobe slow"
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [191, 193],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Random opening pulse fast",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Random opening pulse slow",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Random closing pulse fast",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "Random closing pulse slow",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Generic",
+          "comment": "Reset fixture",
+          "helpWanted": "Unknown QLC+ capability preset ResetAll, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Generic",
+          "comment": "Lamp on",
+          "helpWanted": "Unknown QLC+ capability preset LampOn, Res1=\"undefined\", Res2=\"undefined\"."
+        },
+        {
+          "dmxRange": [238, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Lamp power off (hold for 5 sec.)",
+          "helpWanted": "Unknown QLC+ capability preset LampOff, Res1=\"undefined\", Res2=\"undefined\"."
+        }
+      ]
+    },
+    "Shutter Fading": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Open/Blue"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [17, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Blue/Green"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [33, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Green/Orange"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [49, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Orange/Yellow"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [65, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Yellow/Pink"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Pink/Magenta"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [97, 111],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Magenta/Congo"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Congo"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Congo/Red"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [129, 143],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Red/Open"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [145, 148],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [149, 152],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "Congo"
+        },
+        {
+          "dmxRange": [153, 156],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [157, 160],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [161, 164],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [165, 168],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [169, 172],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [173, 176],
+          "type": "WheelSlot",
+          "slotNumber": 27,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "WheelSlot",
+          "slotNumber": 28,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [181, 203],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "CW fast to slow"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "Color Wheel stop"
+        },
+        {
+          "dmxRange": [208, 230],
+          "type": "WheelRotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Are these the correct angles?",
+          "comment": "CCW slow to fast"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "WheelSlot",
+          "slotNumber": 32,
+          "comment": "Music trigger fast"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "WheelSlot",
+          "slotNumber": 33,
+          "comment": "Music trigger medium"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "WheelSlot",
+          "slotNumber": 34,
+          "comment": "Music trigger slow"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "WheelSlot",
+          "slotNumber": 35,
+          "comment": "Random color fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "WheelSlot",
+          "slotNumber": 36,
+          "comment": "Random color medium"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 37,
+          "comment": "Random color slow"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open gobo"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Gobo 1 (Indexing)"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Gobo 2 (Indexing)"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Gobo 3 (Indexing)"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Gobo 4 (Indexing)"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Gobo 5 (Indexing)"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Gobo 6 (Indexing)"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Open gobo"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Gobo 1 (Rotation)"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Gobo 2 (Rotation)"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Gobo 3 (Rotation)"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Gobo 4 (Rotation)"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Gobo 5 (Rotation)"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Gobo 6 (Rotation)"
+        },
+        {
+          "dmxRange": [56, 66],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Gobo 1 shake slow to fast (indexed)"
+        },
+        {
+          "dmxRange": [67, 77],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Gobo 2 shake slow to fast (indexed)"
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Gobo 3 shake slow to fast (indexed)"
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Gobo 4 shake slow to fast (indexed)"
+        },
+        {
+          "dmxRange": [100, 110],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "Gobo 5 shake slow to fast (indexed)"
+        },
+        {
+          "dmxRange": [111, 121],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "Gobo 6 shake slow to fast (indexed)"
+        },
+        {
+          "dmxRange": [122, 132],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "Gobo 1 shake slow to fast (rotating)"
+        },
+        {
+          "dmxRange": [133, 143],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "Gobo 2 shake slow to fast (rotating)"
+        },
+        {
+          "dmxRange": [144, 154],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "Gobo 3 shake slow to fast (rotating)"
+        },
+        {
+          "dmxRange": [155, 165],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "Gobo 4 shake slow to fast (rotating)"
+        },
+        {
+          "dmxRange": [166, 176],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "Gobo 5 shake slow to fast (rotating)"
+        },
+        {
+          "dmxRange": [177, 187],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "Gobo 6 shake slow to fast (rotating)"
+        },
+        {
+          "dmxRange": [188, 215],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [216, 243],
+          "type": "WheelRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "WheelSlot",
+          "slotNumber": 29,
+          "comment": "Music triggered fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "WheelSlot",
+          "slotNumber": 30,
+          "comment": "Music triggered medium"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "WheelSlot",
+          "slotNumber": 31,
+          "comment": "Music triggered slow"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "fineChannelAliases": ["Gobo Rotation Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Speed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [3, 121],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [122, 240],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Speed",
+          "speed": "stop"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan/Tilt Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "No Macro"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "Effect",
+          "effectName": "Macro 1.1"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "Effect",
+          "effectName": "Macro 1.2"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "Effect",
+          "effectName": "Macro 1.3"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "Effect",
+          "effectName": "Macro 1.4"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "Effect",
+          "effectName": "Macro 2.1"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "Effect",
+          "effectName": "Macro 2.2"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "Effect",
+          "effectName": "Macro 2.3"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "Effect",
+          "effectName": "Macro 2.4"
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "Effect",
+          "effectName": "Macro 3.1"
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "Effect",
+          "effectName": "Macro 3.2"
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "Effect",
+          "effectName": "Macro 3.3"
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "Effect",
+          "effectName": "Macro 3.4"
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "Effect",
+          "effectName": "Macro 4.1"
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "Effect",
+          "effectName": "Macro 4.2"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "Effect",
+          "effectName": "Macro 4.3"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "Effect",
+          "effectName": "Macro 4.4"
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "Effect",
+          "effectName": "Macro 5.1"
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "Effect",
+          "effectName": "Macro 5.2"
+        },
+        {
+          "dmxRange": [114, 119],
+          "type": "Effect",
+          "effectName": "Macro 5.3"
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "Effect",
+          "effectName": "Macro 5.4"
+        },
+        {
+          "dmxRange": [126, 131],
+          "type": "Effect",
+          "effectName": "Macro 6.1"
+        },
+        {
+          "dmxRange": [132, 137],
+          "type": "Effect",
+          "effectName": "Macro 6.2"
+        },
+        {
+          "dmxRange": [138, 143],
+          "type": "Effect",
+          "effectName": "Macro 6.3"
+        },
+        {
+          "dmxRange": [144, 149],
+          "type": "Effect",
+          "effectName": "Macro 6.4"
+        },
+        {
+          "dmxRange": [150, 155],
+          "type": "Effect",
+          "effectName": "Macro 7.1"
+        },
+        {
+          "dmxRange": [156, 161],
+          "type": "Effect",
+          "effectName": "Macro 7.2"
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "Effect",
+          "effectName": "Macro 7.3"
+        },
+        {
+          "dmxRange": [168, 173],
+          "type": "Effect",
+          "effectName": "Macro 7.4"
+        },
+        {
+          "dmxRange": [174, 179],
+          "type": "Effect",
+          "effectName": "Macro 8.1"
+        },
+        {
+          "dmxRange": [180, 185],
+          "type": "Effect",
+          "effectName": "Macro 8.2"
+        },
+        {
+          "dmxRange": [186, 191],
+          "type": "Effect",
+          "effectName": "Macro 8.3"
+        },
+        {
+          "dmxRange": [192, 197],
+          "type": "Effect",
+          "effectName": "Macro 8.4"
+        },
+        {
+          "dmxRange": [198, 203],
+          "type": "Effect",
+          "effectName": "Macro 9.1"
+        },
+        {
+          "dmxRange": [204, 209],
+          "type": "Effect",
+          "effectName": "Macro 9.2"
+        },
+        {
+          "dmxRange": [210, 215],
+          "type": "Effect",
+          "effectName": "Macro 9.3"
+        },
+        {
+          "dmxRange": [216, 221],
+          "type": "Effect",
+          "effectName": "Macro 9.4"
+        },
+        {
+          "dmxRange": [222, 227],
+          "type": "Effect",
+          "effectName": "Macro 10.1"
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "Effect",
+          "effectName": "Macro 10.2"
+        },
+        {
+          "dmxRange": [234, 239],
+          "type": "Effect",
+          "effectName": "Macro 10.3"
+        },
+        {
+          "dmxRange": [240, 245],
+          "type": "Effect",
+          "effectName": "Macro 10.4"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Reserved (no effect)"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "256deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "PanTiltSpeed",
+          "comment": "Tracking mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Vector mode -"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "PanTiltSpeed",
+          "comment": "Tracking mode - PTSP=NORM",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "PanTiltSpeed",
+          "comment": "Tracking mode - PTSP=FAST",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "PanTiltSpeed",
+          "comment": "Blackout while moving",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Effects Speed (Shutter, focus)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Speed",
+          "comment": "Tracking mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Vector mode -"
+        },
+        {
+          "dmxRange": [246, 251],
+          "type": "Speed",
+          "comment": "Tracking mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Speed",
+          "comment": "Vector mode - maximum speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    },
+    "Effect Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectName": "No Macro"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "Effect",
+          "effectName": "Macro 1.1"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "Effect",
+          "effectName": "Macro 1.2"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "Effect",
+          "effectName": "Macro 1.3"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "Effect",
+          "effectName": "Macro 1.4"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "Effect",
+          "effectName": "Macro 2.1"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "Effect",
+          "effectName": "Macro 2.2"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "Effect",
+          "effectName": "Macro 2.3"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "Effect",
+          "effectName": "Macro 2.4"
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "Effect",
+          "effectName": "Macro 3.1"
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "Effect",
+          "effectName": "Macro 3.2"
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "Effect",
+          "effectName": "Macro 3.3"
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "Effect",
+          "effectName": "Macro 3.4"
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "Effect",
+          "effectName": "Macro 4.1"
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "Effect",
+          "effectName": "Macro 4.2"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "Effect",
+          "effectName": "Macro 4.3"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "Effect",
+          "effectName": "Macro 4.4"
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "Effect",
+          "effectName": "Macro 5.1"
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "Effect",
+          "effectName": "Macro 5.2"
+        },
+        {
+          "dmxRange": [114, 119],
+          "type": "Effect",
+          "effectName": "Macro 5.3"
+        },
+        {
+          "dmxRange": [120, 125],
+          "type": "Effect",
+          "effectName": "Macro 5.4"
+        },
+        {
+          "dmxRange": [126, 131],
+          "type": "Effect",
+          "effectName": "Macro 6.1"
+        },
+        {
+          "dmxRange": [132, 137],
+          "type": "Effect",
+          "effectName": "Macro 6.2"
+        },
+        {
+          "dmxRange": [138, 143],
+          "type": "Effect",
+          "effectName": "Macro 6.3"
+        },
+        {
+          "dmxRange": [144, 149],
+          "type": "Effect",
+          "effectName": "Macro 6.4"
+        },
+        {
+          "dmxRange": [150, 155],
+          "type": "Effect",
+          "effectName": "Macro 7.1"
+        },
+        {
+          "dmxRange": [156, 161],
+          "type": "Effect",
+          "effectName": "Macro 7.2"
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "Effect",
+          "effectName": "Macro 7.3"
+        },
+        {
+          "dmxRange": [168, 173],
+          "type": "Effect",
+          "effectName": "Macro 7.4"
+        },
+        {
+          "dmxRange": [174, 179],
+          "type": "Effect",
+          "effectName": "Macro 8.1"
+        },
+        {
+          "dmxRange": [180, 185],
+          "type": "Effect",
+          "effectName": "Macro 8.2"
+        },
+        {
+          "dmxRange": [186, 191],
+          "type": "Effect",
+          "effectName": "Macro 8.3"
+        },
+        {
+          "dmxRange": [192, 197],
+          "type": "Effect",
+          "effectName": "Macro 8.4"
+        },
+        {
+          "dmxRange": [198, 203],
+          "type": "Effect",
+          "effectName": "Macro 9.1"
+        },
+        {
+          "dmxRange": [204, 209],
+          "type": "Effect",
+          "effectName": "Macro 9.2"
+        },
+        {
+          "dmxRange": [210, 215],
+          "type": "Effect",
+          "effectName": "Macro 9.3"
+        },
+        {
+          "dmxRange": [216, 221],
+          "type": "Effect",
+          "effectName": "Macro 9.4"
+        },
+        {
+          "dmxRange": [222, 227],
+          "type": "Effect",
+          "effectName": "Macro 10.1"
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "Effect",
+          "effectName": "Macro 10.2"
+        },
+        {
+          "dmxRange": [234, 239],
+          "type": "Effect",
+          "effectName": "Macro 10.3"
+        },
+        {
+          "dmxRange": [240, 245],
+          "type": "Effect",
+          "effectName": "Macro 10.4"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Reserved (no effect)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16-bit",
+      "channels": [
+        "Shutter / Strobe",
+        "Shutter Fading",
+        "Color Wheel",
+        "Gobo",
+        "Gobo Rotation",
+        "Gobo Rotation Fine",
+        "Focus",
+        "Pan/Tilt Macros",
+        "Effect Macros",
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "Pan/Tilt Speed",
+        "Effects Speed (Shutter, focus)"
+      ]
+    },
+    {
+      "name": "8-bit",
+      "channels": [
+        "Shutter / Strobe",
+        "Shutter Fading",
+        "Color Wheel",
+        "Gobo",
+        "Gobo Rotation",
+        "Focus",
+        "Pan/Tilt Macros",
+        "Effect Macros",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Effects Speed (Shutter, focus)"
+      ]
+    }
+  ]
+}
