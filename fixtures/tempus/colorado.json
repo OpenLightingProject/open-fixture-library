@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "colorado",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["stefcolor"],
+    "createDate": "2025-04-29",
+    "lastModifyDate": "2025-04-29"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=cjAj6Vi3GVk"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blanc": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Aucune fonction": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "colorado",
+      "channels": [
+        "Dimmer",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc",
+        "Zoom",
+        "Aucune fonction"
+      ]
+    }
+  ]
+}
