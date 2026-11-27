@@ -1,0 +1,180 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Swing Batten",
+  "shortName": "Swing",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["unseatedsun1402"],
+    "createDate": "2023-05-07",
+    "lastModifyDate": "2023-05-07"
+  },
+  "comment": "8 quad colour RGBW moving light batten",
+  "links": {
+    "manual": [
+      "http://www.prolight.co.uk/ftp-in/EQLED033_Manual.pdf"
+    ],
+    "productPage": [
+      "https://prolight.co.uk/product/eqled033"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Vz6xBCWcDWU"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 1065, 80],
+    "weight": 7.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 16000
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Show": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Show Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Colour Chase": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "LED 1": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 2": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 3": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 4": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 5": {
+      "constant": true,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 6": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 7": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "LED 8": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Show",
+        "Show Speed",
+        "Colour Chase",
+        "Chase Speed"
+      ]
+    },
+    {
+      "name": "12-ch",
+      "channels": [
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Master Dimmer",
+        "Strobe",
+        "LED 1",
+        "LED 2",
+        "LED 3",
+        "LED 4",
+        "LED 5",
+        "LED 6",
+        "LED 7",
+        "LED 8"
+      ]
+    },
+    {
+      "name": "16-ch",
+      "channels": [
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Master Dimmer",
+        "Strobe",
+        "LED 1",
+        "LED 2",
+        "LED 3",
+        "LED 4",
+        "LED 5",
+        "LED 6",
+        "LED 7",
+        "LED 8",
+        "Show",
+        "Show Speed",
+        "Colour Chase",
+        "Chase Speed"
+      ]
+    }
+  ]
+}
