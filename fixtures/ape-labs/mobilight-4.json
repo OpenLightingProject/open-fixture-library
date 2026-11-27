@@ -1,0 +1,325 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mobilight 4",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gloryfire"],
+    "createDate": "2021-10-17",
+    "lastModifyDate": "2021-10-17"
+  },
+  "links": {
+    "manual": [
+      "https://apelabs.com/wp-content/uploads/Ape_Labs_-_MobiLight4_-_Manual_-_web.pdf"
+    ],
+    "productPage": [
+      "https://apelabs.com/products/uplighting/mobilight-4/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4PtPoZdSBOc"
+    ]
+  },
+  "physical": {
+    "dimensions": [197, 56, 197],
+    "weight": 2.5,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Programm": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Programm Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer (all LEDs)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Preset of LED 1 (left)": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Preset of LED 2 (middle)": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Preset of LED 3 (right)": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red of LED 1 (left)": {
+      "fineChannelAliases": ["Red of LED 1 (left) fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green of LED 1 (left)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue of LED 1 (left)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White of LED 1 (left)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red of LED 2 (middle)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green of LED 2 (middle)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue of LED 2 (middle)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White of LED 2 (middle)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red of LED 3 (right)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green of LED 3 (right)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue of LED 3 (right)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White of LED3 (right)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red of LED 1 (left) 2": {
+      "name": "Red of LED 1 (left)",
+      "fineChannelAliases": ["Red of LED 1 (left) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red of LED 1 (left) 3": {
+      "name": "Red of LED 1 (left)",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red of LED 1 (left) 4": {
+      "name": "Red of LED 1 (left)",
+      "fineChannelAliases": ["Red of LED 1 (left) 4 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green of LED 1 (left) 2": {
+      "name": "Green of LED 1 (left)",
+      "fineChannelAliases": ["Green of LED 1 (left) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green of LED 1 (left) 3": {
+      "name": "Green of LED 1 (left)",
+      "fineChannelAliases": ["Green of LED 1 (left) 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue of LED 1 (left) 2": {
+      "name": "Blue of LED 1 (left)",
+      "fineChannelAliases": ["Blue of LED 1 (left) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White of LED 1 (left) 2": {
+      "name": "White of LED 1 (left)",
+      "fineChannelAliases": ["White of LED 1 (left) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red of LED 2 (middle) 2": {
+      "name": "Red of LED 2 (middle)",
+      "fineChannelAliases": ["Red of LED 2 (middle) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green of LED 2 (middle) 2": {
+      "name": "Green of LED 2 (middle)",
+      "fineChannelAliases": ["Green of LED 2 (middle) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue of LED 2 (middle) 2": {
+      "name": "Blue of LED 2 (middle)",
+      "fineChannelAliases": ["Blue of LED 2 (middle) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White of LED 2 (middle) 2": {
+      "name": "White of LED 2 (middle)",
+      "fineChannelAliases": ["White of LED 2 (middle) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red of LED 3 (right) 2": {
+      "name": "Red of LED 3 (right)",
+      "fineChannelAliases": ["Red of LED 3 (right) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green of LED 3 (right) 2": {
+      "name": "Green of LED 3 (right)",
+      "fineChannelAliases": ["Green of LED 3 (right) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue of LED 3 (right) 2": {
+      "name": "Blue of LED 3 (right)",
+      "fineChannelAliases": ["Blue of LED 3 (right) 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White of LED 3 (right)": {
+      "fineChannelAliases": ["White of LED 3 (right) fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Programm",
+        "Programm Speed"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer (all LEDs)",
+        "Color Preset of LED 1 (left)",
+        "Color Preset of LED 2 (middle)",
+        "Color Preset of LED 3 (right)"
+      ]
+    },
+    {
+      "name": "12ch",
+      "channels": [
+        "Red of LED 1 (left) 3",
+        "Green of LED 1 (left)",
+        "Blue of LED 1 (left)",
+        "White of LED 1 (left)",
+        "Red of LED 2 (middle)",
+        "Green of LED 2 (middle)",
+        "Blue of LED 2 (middle)",
+        "White of LED 2 (middle)",
+        "Red of LED 3 (right)",
+        "Green of LED 3 (right)",
+        "Blue of LED 3 (right)",
+        "White of LED3 (right)"
+      ]
+    },
+    {
+      "name": "24ch",
+      "channels": [
+        "Red of LED 1 (left)",
+        "Red of LED 1 (left) fine",
+        "Green of LED 1 (left) 3",
+        "Green of LED 1 (left) 3 fine",
+        "Blue of LED 1 (left) 2",
+        "Blue of LED 1 (left) 2 fine",
+        "White of LED 1 (left) 2",
+        "White of LED 1 (left) 2 fine",
+        "Red of LED 2 (middle) 2",
+        "Red of LED 2 (middle) 2 fine",
+        "Green of LED 2 (middle) 2",
+        "Green of LED 2 (middle) 2 fine",
+        "Blue of LED 2 (middle) 2",
+        "Blue of LED 2 (middle) 2 fine",
+        "White of LED 2 (middle) 2",
+        "White of LED 2 (middle) 2 fine",
+        "Red of LED 3 (right) 2",
+        "Red of LED 3 (right) 2 fine",
+        "Green of LED 3 (right) 2",
+        "Green of LED 3 (right) 2 fine",
+        "Blue of LED 3 (right) 2",
+        "Blue of LED 3 (right) 2 fine",
+        "White of LED 3 (right)",
+        "White of LED 3 (right) fine"
+      ]
+    }
+  ]
+}
