@@ -1,0 +1,265 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-AKKULITE IP",
+  "shortName": "BT-AKKULITE-IP",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["rem5"],
+    "createDate": "2025-04-02",
+    "lastModifyDate": "2025-04-02"
+  },
+  "comment": "Fixed 22° beam angle (40° with frost filter)",
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fr/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1588072028.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/fr/bt-akkulite-ip"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 198, 150],
+    "weight": 4.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBWA-LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 40]
+    }
+  },
+  "availableChannels": {
+    "Color mixing 0% - 100%": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master Dimmer 0% - 100%": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe slow to fast"
+        }
+      ]
+    },
+    "Automatic Modes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "comment": "Close-open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "comment": "Open-close"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "comment": "Open-close-open (white)"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Color fading"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "comment": "Open-close-open (colors)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color changing"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound",
+          "comment": "Sound"
+        }
+      ]
+    },
+    "Speed automatic modes": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed automatic modes"
+      }
+    },
+    "Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 190],
+          "type": "Intensity",
+          "comment": "Master dimmer (0% to 100%)"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Sound control (7 colors)",
+          "comment": "Audio sensitivity: 191=low, 200=high"
+        },
+        {
+          "dmxRange": [201, 247],
+          "type": "Speed",
+          "speed": "1Hz",
+          "comment": "Strobe speed, 201=slow, 247=fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "comment": "Master dimmer is full open"
+        }
+      ]
+    },
+    "Dimmer type": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "Uses the nodE setting"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "Generic",
+          "comment": "Dimmer 0 (fast)"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "Generic",
+          "comment": "Dimmer 1"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "Generic",
+          "comment": "Dimmer 2"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Generic",
+          "comment": "Dimmer 3"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Generic",
+          "comment": "Dimmer 4 (slow)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Color mixing 0% - 100%",
+        "White",
+        "Amber",
+        "Master Dimmer 0% - 100%"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "9ch",
+      "channels": [
+        "Master Dimmer 0% - 100%",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Automatic Modes",
+        "Speed automatic modes"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Master Dimmer 0% - 100%",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Automatic Modes",
+        "Speed automatic modes",
+        "Dimmer type"
+      ]
+    },
+    {
+      "name": "LEDc",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Macros"
+      ]
+    }
+  ]
+}
