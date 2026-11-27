@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Exoraa² Zoom",
+  "shortName": "Zoom",
+  "categories": ["Other", "Strobe"],
+  "meta": {
+    "authors": ["Skouza97"],
+    "createDate": "2024-07-17",
+    "lastModifyDate": "2024-07-17"
+  },
+  "links": {
+    "productPage": [
+      "https://exalux.eu/product/exoraa%c2%b2-small-studios-track-mounting-zoom-spotlight-bk/"
+    ]
+  },
+  "physical": {
+    "weight": 2.553,
+    "power": 38,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "1%"
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "Intensity",
+          "brightnessStart": "1.1%",
+          "brightnessEnd": "4%"
+        },
+        {
+          "dmxRange": [51, 75],
+          "type": "Intensity",
+          "brightnessStart": "4.2%",
+          "brightnessEnd": "9%"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Intensity",
+          "brightnessStart": "9.5%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "5700K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5720K",
+          "colorTemperatureEnd": "5800K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity+CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
