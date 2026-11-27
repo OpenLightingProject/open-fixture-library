@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Partybar2",
+  "categories": ["Stand", "Color Changer", "Flower"],
+  "meta": {
+    "authors": ["Neil Carmichael"],
+    "createDate": "2025-09-16",
+    "lastModifyDate": "2025-09-16"
+  },
+  "links": {
+    "manual": [
+      "https://sonomateriel.com/amfile/file/download/file/558/product/4007/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "RedDerby1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GreenDerby1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BlueDerby1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WhiteDerby1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "MotorDerby1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "RedPARS": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BluePARS": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "GreenPARS": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "WhitePARS": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RedDerby2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BlueDerby2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "GreenDerby2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "WhiteDerby2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "MotorDerby2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "channels": [
+        "RedDerby1",
+        "GreenDerby1",
+        "BlueDerby1",
+        "WhiteDerby1",
+        "MotorDerby1",
+        "RedPARS",
+        "BluePARS",
+        "GreenPARS",
+        "WhitePARS",
+        "RedDerby2",
+        "BlueDerby2",
+        "GreenDerby2",
+        "WhiteDerby2",
+        "MotorDerby2",
+        "Strobe"
+      ]
+    }
+  ]
+}
