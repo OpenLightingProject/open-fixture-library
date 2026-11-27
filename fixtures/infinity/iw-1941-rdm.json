@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "iW-1941 RDM",
+  "shortName": "iW-1941",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Dario"],
+    "createDate": "2023-05-23",
+    "lastModifyDate": "2023-05-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/it/mwdownloads/download/link/id/17429705"
+    ],
+    "productPage": [
+      "https://www.highlite.com/it/41529-iw-1941-rdm.html"
+    ],
+    "video": [
+      "https://vimeo.com/572920728"
+    ]
+  },
+  "physical": {
+    "dimensions": [304, 468, 365],
+    "weight": 19.26,
+    "power": 625,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2700,
+      "lumens": 101571
+    },
+    "lens": {
+      "name": "19x 40W RGBW (Osram)",
+      "degreesMinMax": [3.6, 60]
+    }
+  },
+  "availableChannels": {
+    "25ch": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "96ch": {
+      "fineChannelAliases": ["96ch fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "177ch": {
+      "fineChannelAliases": ["177ch fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "76+13ch": {
+      "fineChannelAliases": ["76+13ch fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Infinity iW-1941 RDM 25ch",
+      "shortName": "iW-1941 25ch",
+      "channels": [
+        "25ch"
+      ]
+    }
+  ]
+}
