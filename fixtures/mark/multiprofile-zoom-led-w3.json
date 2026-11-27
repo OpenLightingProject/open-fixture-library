@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Multiprofile Zoom Led W3",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Ukr"],
+    "createDate": "2024-11-30",
+    "lastModifyDate": "2024-11-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/MULTIPROFILE_ZOOM_LED_W3_17-50_v1_0.pdf"
+    ],
+    "productPage": [
+      "https://products.equipson.es/store-multiprofile-zoom-led-w3-17-50"
+    ],
+    "video": [
+      "https://products.equipson.es/store-multiprofile-zoom-led-w3-17-50"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "A2ch",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "B2ch",
+      "channels": [
+        "Dimmer",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Strobe 2"
+      ]
+    },
+    {
+      "name": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
