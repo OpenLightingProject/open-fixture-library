@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SCENA S",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["J2M"],
+    "createDate": "2023-02-17",
+    "lastModifyDate": "2023-02-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-02-17",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [279, 247, 383],
+    "weight": 5.5,
+    "power": 1000,
+    "bulb": {
+      "type": "Halogen",
+      "colorTemperature": 3200,
+      "lumens": 5250
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [10, 64]
+    }
+  },
+  "availableChannels": {
+    "1 ch": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "1 ch"
+      ]
+    }
+  ]
+}
