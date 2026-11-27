@@ -1,0 +1,384 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DJ Lase 25+25-G MK-II",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Simon Popp"],
+    "createDate": "2024-08-07",
+    "lastModifyDate": "2024-08-07"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_276237_v3_en_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [195, 145, 85],
+    "weight": 1.5,
+    "power": 12,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Operating mode selection": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Automatic show in random order"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Sound controlled automatic show in random order"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "DMX mode This setting enables the function of the other DMX channels"
+        }
+      ]
+    },
+    "Pattern selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "Circle"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Dashed Circle"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Triangle"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Square"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Dashed Square"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Square in Square"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Plus"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "Star"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Stair"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Bow Tie"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Spiral"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Open Circles"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Curved"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Subcircles"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Glasses"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Waves"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "V"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "M"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Snake"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Minus"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Dashed Line"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "Line"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "Double Line"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "Plus"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "Half Double Lines"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "Corner Lines"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "Two Squares"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "Four Squares"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Little Circle"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Generic",
+          "comment": "Fine Dashed Line"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "Fine Dashed Semicircle"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "Line Array"
+        }
+      ]
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Zoom",
+          "angleStart": "wide",
+          "angleEnd": "narrow",
+          "comment": "Fixed zoom (100 %…5 %)"
+        },
+        {
+          "dmxRange": [128, 169],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Zooming in effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Zooming out effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Zooming in effect, speed increasing from slow to fast"
+        }
+      ]
+    },
+    "Y axis rotation (rolling)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "359deg",
+          "comment": "Fixed position of Y-axis (0…359°)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Clockwise rotating effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Anti-clockwise rotating effect, speed increasing from slow to fast"
+        }
+      ]
+    },
+    "X axis rotation (rolling)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "359deg",
+          "comment": "Fixed position of X-axis (0…359°)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Clockwise rotating effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Anti-clockwise rotating effect, speed increasing from slow to fast"
+        }
+      ]
+    },
+    "Z axis rotation (rolling)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "359deg",
+          "comment": "Fixed position of Z-axis (0…359°)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Anti-clockwise rotating effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Clockwise rotating effect, speed increasing from slow to fast"
+        }
+      ]
+    },
+    "X axis moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Pan",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Fixed positions on X-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Clockwise moving effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse",
+          "comment": "Anti-clockwise moving effect, speed increasing from slow to fast"
+        }
+      ]
+    },
+    "Y axis moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Tilt",
+          "angleStart": "0%",
+          "angleEnd": "100%",
+          "comment": "Fixed positions on Y-axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Clockwise moving effect, speed increasing from slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse",
+          "comment": "Anti-clockwise moving effect, speed increasing from slow to fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Operating mode selection",
+        "Pattern selection",
+        "Zoom",
+        "Y axis rotation (rolling)",
+        "X axis rotation (rolling)",
+        "Z axis rotation (rolling)",
+        "X axis moving",
+        "Y axis moving"
+      ]
+    }
+  ]
+}
