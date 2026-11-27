@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Strobe 1000 RGBW",
+  "shortName": "Strb 1000 RGBW",
+  "categories": ["Blinder", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Angel Martin Ramirez"],
+    "createDate": "2022-04-27",
+    "lastModifyDate": "2022-04-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1280935/Elan-Strobe-1000-Led-RgbPlusw.html"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "long",
+        "durationEnd": "short"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Built-In Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "Effect",
+          "effectName": "Ramp up effect (slow<--->fast)"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "Effect",
+          "effectName": "Ramp Down Effect (Slow<--->Fast)"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "Effect",
+          "effectName": "Ramp up-down effect (slow<--->fast)"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "Effect",
+          "effectName": "Random Effect (Slow<--->Fast)"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "Effect",
+          "effectName": "Lighting Effect"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Effect",
+          "effectName": "Spike Effect"
+        }
+      ]
+    },
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightness": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16-Channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Built-In Programs",
+        "Red1",
+        "Green1",
+        "Blue1",
+        "White1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "White2"
+      ]
+    }
+  ]
+}
