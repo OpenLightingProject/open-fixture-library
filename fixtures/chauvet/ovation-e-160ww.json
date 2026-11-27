@@ -1,0 +1,197 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ovation E-160WW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Caeden"],
+    "createDate": "2024-06-03",
+    "lastModifyDate": "2024-06-03",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2024-06-03",
+      "comment": "created by Q Light Controller Plus (version 4.13.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [285, 487, 495],
+    "weight": 6.4,
+    "power": 103,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3031,
+      "lumens": 5675
+    },
+    "lens": {
+      "degreesMinMax": [15, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Fine Dimmer"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 70],
+          "type": "Effect",
+          "effectName": "Auto Program 1",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [71, 130],
+          "type": "Effect",
+          "effectName": "Auto Program 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [131, 190],
+          "type": "Effect",
+          "effectName": "Auto Program 3",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "Effect",
+          "effectName": "Auto Program 4",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [112, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Fine Dimmer",
+        "Strobe",
+        "Auto Programs",
+        "Auto Speed",
+        "Control"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Fine Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Fine Dimmer"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
