@@ -1,0 +1,337 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED SLS-12 HCL MK2 Floor",
+  "categories": ["Color Changer", "Strobe", "Effect", "Stand"],
+  "meta": {
+    "authors": ["jorge pax"],
+    "createDate": "2022-02-03",
+    "lastModifyDate": "2022-02-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51915381-Manual-110849-1.000-eurolite-led-sls-12-hcl-mk2-floor-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51915381-eurolite-led-sls-12-hcl-mk2-floor.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-xIHIRE9iEQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [26.5, 28.5, 12.5],
+    "weight": 2.04,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [17, 39]
+    }
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Preset colors": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "amber"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "uv"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "magenta"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "dark orange"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "green yellow"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "salmon"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "ice blue"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "light green"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "orange"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "lavender"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "steel blue"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "dark blue"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ColorPreset",
+          "comment": "pink"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Auto mode/Sound control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "color fade + speed"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "color change + speed"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber 2": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "UV 2": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Master dimmer",
+        "Preset colors"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe",
+        "Preset colors",
+        "Auto mode/Sound control"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue 2",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe",
+        "Red 2",
+        "Green 2",
+        "Blue 4",
+        "White 2",
+        "Amber 2",
+        "UV 2",
+        "Preset colors",
+        "Auto mode/Sound control"
+      ]
+    }
+  ]
+}
