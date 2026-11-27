@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "led bar 1810 FC",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["JOERBD"],
+    "createDate": "2026-07-02",
+    "lastModifyDate": "2026-07-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.karmaitaliana.it/catalogmedia/docs/LEDBAR_1810FC_22468.pdf"
+    ],
+    "productPage": [
+      "https://www.bekafun.com/fr/a/4487436/nicols-ledbar1810fc-nicols-ledbar-18-x-10-w-led"
+    ],
+    "video": [
+      "https://share.google/5Rb4jwSUAVFqSDd2K"
+    ]
+  },
+  "physical": {
+    "dimensions": [980, 90, 150],
+    "weight": 5.5,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 2800
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "150Hz"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 CANAUX",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "No function",
+        "No function 2",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
