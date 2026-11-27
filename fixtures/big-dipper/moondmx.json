@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MoonDMX",
+  "shortName": "MoonDMX",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["LyonZion"],
+    "createDate": "2026-10-17",
+    "lastModifyDate": "2026-10-17"
+  },
+  "links": {
+    "manual": [
+      "https://share.google/EDOewzejCq7Aq2xir"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Ch02": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch03": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch04": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch05": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch06": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch07": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch08": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch09": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch10": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch11": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ch12": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ch01",
+      "shortName": "ch01",
+      "channels": [
+        "Ch02",
+        "Ch03",
+        "Ch04",
+        "Ch05",
+        "Ch06",
+        "Ch07",
+        "Ch08",
+        "Ch09",
+        "Ch10",
+        "Ch11",
+        "Ch12"
+      ]
+    }
+  ]
+}
