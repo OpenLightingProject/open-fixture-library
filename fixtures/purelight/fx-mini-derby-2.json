@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FX Mini Derby 2",
+  "shortName": "fxminiderby2",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["kgooris"],
+    "createDate": "2024-12-30",
+    "lastModifyDate": "2024-12-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/2405867/Purelight-Fx-Mini-Derby-2.html"
+    ],
+    "productPage": [
+      "https://www.musicstore.com/en_GB/GBP/PURElight-FX-Mini-Derby-2/art-LIG0016522-000"
+    ]
+  },
+  "physical": {
+    "dimensions": [205, 220, 220],
+    "weight": 1.5,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Red+Orange": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Red + Orange Dimmer"
+      }
+    },
+    "Dimmer Green+Purple": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Green + Purple Dimmer"
+      }
+    },
+    "Dimmer Blue+White": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer Blue + White"
+      }
+    },
+    "Dimmer Green+Yellow": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer Green+Yellow"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "0Hz"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer Red+Orange",
+        "Dimmer Green+Purple",
+        "Dimmer Blue+White",
+        "Dimmer Green+Yellow",
+        "Strobe Speed",
+        "Program Speed",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
