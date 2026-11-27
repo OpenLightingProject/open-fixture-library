@@ -1,0 +1,141 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EL-300RGB",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Bertram Beierlein"],
+    "createDate": "2021-12-11",
+    "lastModifyDate": "2021-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.12.4a)"
+    }
+  },
+  "physical": {
+    "dimensions": [192, 89, 150],
+    "weight": 1.25,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [1, 60]
+    }
+  },
+  "availableChannels": {
+    "Modus": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Effect",
+          "effectName": "Laser aus"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Automatikmodus"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Effect",
+          "effectName": "Automatikmodus - langsam"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "Effect",
+          "effectName": "Sound-to-light",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "DMX Modus aktiv"
+        }
+      ]
+    },
+    "Rot Intensität": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün Intensität": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau Intensität": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobo Effekt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Strobe"
+      }
+    },
+    "Rotationsgeschwindigkeit": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Rotate X axis",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    },
+    "Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Speed",
+          "comment": "Uhrzeigersinn",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Speed",
+          "comment": "Keine Rotation",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Speed",
+          "comment": "gegen Uhrzeigersinn",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Modus",
+        "Rot Intensität",
+        "Grün Intensität",
+        "Blau Intensität",
+        "Strobo Effekt",
+        "Rotationsgeschwindigkeit",
+        "Rotation"
+      ]
+    }
+  ]
+}
