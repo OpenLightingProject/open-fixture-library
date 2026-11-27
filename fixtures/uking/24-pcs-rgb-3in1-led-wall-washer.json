@@ -1,0 +1,213 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "24 PCS RGB 3IN1 LED Wall Washer",
+  "shortName": "24 RGB LED Bar",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Phil"],
+    "createDate": "2022-08-23",
+    "lastModifyDate": "2022-08-23"
+  },
+  "comment": "24 Channel Mode teilt die 24 nebeneinander gelegenen RGB LEDs in 8 jeweils 3 LEDs umfassende Segmente. Gibt es mit und ohne IR Fernbedienung, ändert allerdings nichts an der Belegung\n\n24 Channel Mode divides the 24 adjacent RGB LEDs into 8 segments of 3 LEDs each. Comes with and without IR remote control, but does not change the assignment",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/06/ZQ-B354.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/b354-led-bar-rgb-24-leds-wall-light-with-remote-controller/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [104.4, 10.7, 12.2],
+    "weight": 2.49,
+    "power": 72,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "R1 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G1 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B1 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R2 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G2 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B2 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R3 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G3 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B3 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R4 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G4 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B4 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R5 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G5 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B5 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R6 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G6 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B6 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R7 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G7 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B7 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "R8 Red Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G8 Green Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B8 Blue Dimming": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24 Channel",
+      "shortName": "24ch",
+      "channels": [
+        "R1 Red Dimming",
+        "G1 Green Dimming",
+        "B1 Blue Dimming",
+        "R2 Red Dimming",
+        "G2 Green Dimming",
+        "B2 Blue Dimming",
+        "R3 Red Dimming",
+        "G3 Green Dimming",
+        "B3 Blue Dimming",
+        "R4 Red Dimming",
+        "G4 Green Dimming",
+        "B4 Blue Dimming",
+        "R5 Red Dimming",
+        "G5 Green Dimming",
+        "B5 Blue Dimming",
+        "R6 Red Dimming",
+        "G6 Green Dimming",
+        "B6 Blue Dimming",
+        "R7 Red Dimming",
+        "G7 Green Dimming",
+        "B7 Blue Dimming",
+        "R8 Red Dimming",
+        "G8 Green Dimming",
+        "B8 Blue Dimming"
+      ]
+    }
+  ]
+}
