@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Exoraa² Panel",
+  "shortName": "Panel",
+  "categories": ["Dimmer", "Other"],
+  "meta": {
+    "authors": ["Skouza97"],
+    "createDate": "2024-07-17",
+    "lastModifyDate": "2024-07-17"
+  },
+  "links": {
+    "productPage": [
+      "https://exalux.eu/product/exoraa%c2%b2-bicolor-dmx-track-panel-panel-black/"
+    ]
+  },
+  "physical": {
+    "weight": 3,
+    "power": 45,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "1%"
+        },
+        {
+          "dmxRange": [21, 50],
+          "type": "Intensity",
+          "brightnessStart": "1.1%",
+          "brightnessEnd": "4%"
+        },
+        {
+          "dmxRange": [51, 75],
+          "type": "Intensity",
+          "brightnessStart": "4.2%",
+          "brightnessEnd": "9%"
+        },
+        {
+          "dmxRange": [76, 255],
+          "type": "Intensity",
+          "brightnessStart": "9.5%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3100K",
+        "colorTemperatureEnd": "5800K",
+        "comment": "pas constante"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity+CCT",
+      "shortName": "CCT",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
