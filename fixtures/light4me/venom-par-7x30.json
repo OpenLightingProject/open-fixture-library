@@ -1,0 +1,194 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VENOM PAR 7X30",
+  "shortName": "VENOM 7X30",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Karel z Hor"],
+    "createDate": "2025-01-19",
+    "lastModifyDate": "2025-01-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.musicexpress.pl/downloadable/download/attachment/id/13291/?srsltid=AfmBOooqBK-w5J5DDIaIAwhbEtLb2aJP4y60o0EjsI-M90mLC_fZ5x6o"
+    ],
+    "productPage": [
+      "https://www.profi-dj.cz/svetelna-technika/led-efekty/led-reflektory/led-reflektory-pro-vnitrni-pouziti/light4me-venom-par-7x30-rgbw/"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 230, 150],
+    "weight": 2.2,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led COB"
+    }
+  },
+  "wheels": {
+    "Static color selection": {
+      "slots": [
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Macro Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "Control via channels CH1 - CH6"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Generic",
+          "comment": "Static color, add 8CH for color selection"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "Color Jump mode"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Color Gradient mode"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Generic",
+          "comment": "Color Pulse mode"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Sound mode"
+        }
+      ]
+    },
+    "Static color selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Red + Green + Blue + White"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "MODE1",
+      "shortName": "8channel",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Macro Function",
+        "Static color selection"
+      ]
+    },
+    {
+      "name": "MODE2",
+      "shortName": "4channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
