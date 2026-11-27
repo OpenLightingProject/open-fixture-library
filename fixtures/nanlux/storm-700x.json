@@ -1,0 +1,792 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Storm 700X",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2026-01-30",
+    "lastModifyDate": "2026-01-30"
+  },
+  "links": {
+    "productPage": [
+      "https://aputure.com/en-US/products/storm-700x"
+    ]
+  },
+  "physical": {
+    "dimensions": [274, 272, 503],
+    "weight": 5.15,
+    "power": 880,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "G/M 8bit": {
+      "name": "G/M",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "-100%"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "100%"
+        }
+      ]
+    },
+    "G/M 16bit": {
+      "name": "G/M",
+      "fineChannelAliases": ["G/M 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2621],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [2622, 5243],
+          "type": "Generic",
+          "comment": "-100%"
+        },
+        {
+          "dmxRange": [5244, 30146],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30147, 37355],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [37356, 62914],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [62915, 65535],
+          "type": "Generic",
+          "comment": "100%"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Crossfade": {
+      "fineChannelAliases": ["Crossfade fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "fineChannelAliases": ["Amber fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "X Coord": {
+      "fineChannelAliases": ["X Coord fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Y Coord": {
+      "fineChannelAliases": ["Y Coord fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0.0…0.8"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [14, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz",
+          "comment": "Random"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 38],
+          "type": "Maintenance",
+          "comment": "Smart"
+        },
+        {
+          "dmxRange": [39, 77],
+          "type": "Maintenance",
+          "comment": "Full Speed"
+        },
+        {
+          "dmxRange": [78, 115],
+          "type": "Maintenance",
+          "comment": "Half Speed"
+        },
+        {
+          "dmxRange": [116, 153],
+          "type": "Maintenance",
+          "comment": "Low Speed"
+        },
+        {
+          "dmxRange": [154, 191],
+          "type": "Maintenance",
+          "comment": "Delayed"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Silent"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [11, 13],
+          "type": "Maintenance",
+          "comment": "Signal Flash Enabled",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [14, 16],
+          "type": "Maintenance",
+          "comment": "Signal Flash Disabled",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [17, 19],
+          "type": "Maintenance",
+          "comment": "Side BT On",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "Maintenance",
+          "comment": "Side BT Off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "Maintenance",
+          "comment": "Side BT Reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [26, 28],
+          "type": "Maintenance",
+          "comment": "DMX Smoothing: Off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [29, 31],
+          "type": "Maintenance",
+          "comment": "DMX Smoothing: Smooth",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "Maintenance",
+          "comment": "DMX Smoothing: Super Smooth",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [35, 37],
+          "type": "Maintenance",
+          "comment": "DMX Smoothing: Feather",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [38, 40],
+          "type": "Maintenance",
+          "comment": "CRMX On",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "Maintenance",
+          "comment": "CRMX Off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [44, 46],
+          "type": "Maintenance",
+          "comment": "CRMX Unlink",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [47, 49],
+          "type": "Maintenance",
+          "comment": "CRMX Link",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [50, 52],
+          "type": "Maintenance",
+          "comment": "CRMX Mode RX",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [53, 55],
+          "type": "Maintenance",
+          "comment": "CRMX Mode TX",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [56, 61],
+          "type": "NoFunction",
+          "comment": "N/A"
+        },
+        {
+          "dmxRange": [62, 64],
+          "type": "Maintenance",
+          "comment": "High Speed Mode On",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "Maintenance",
+          "comment": "High Speed Mode Off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "Maintenance",
+          "comment": "Constant Output",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [71, 73],
+          "type": "Maintenance",
+          "comment": "Maximum Output",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [74, 76],
+          "type": "Maintenance",
+          "comment": "Studio Mode On",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "Maintenance",
+          "comment": "Studio Mode Off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [80, 97],
+          "type": "NoFunction",
+          "comment": "N/A"
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "Maintenance",
+          "comment": "Dim curve Linear",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "Maintenance",
+          "comment": "Dim curve Exponential",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [104, 106],
+          "type": "Maintenance",
+          "comment": "Dim curve Logarithmic",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [107, 109],
+          "type": "Maintenance",
+          "comment": "Dim curve S-Curve",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [110, 249],
+          "type": "NoFunction",
+          "comment": "N/A"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "Maintenance",
+          "comment": "Turn On Control Channel",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Maintenance",
+          "comment": "Turn Off Control Channel",
+          "hold": "3s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT+ 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit"
+      ]
+    },
+    {
+      "name": "CCT+ 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine"
+      ]
+    },
+    {
+      "name": "XY 8bit",
+      "channels": [
+        "Dimmer",
+        "X Coord",
+        "Y Coord"
+      ]
+    },
+    {
+      "name": "XY 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "X Coord",
+        "X Coord fine",
+        "Y Coord",
+        "Y Coord fine"
+      ]
+    },
+    {
+      "name": "CCT & XY 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Crossfade",
+        "X Coord",
+        "Y Coord"
+      ]
+    },
+    {
+      "name": "CCT & XY 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Crossfade",
+        "Crossfade fine",
+        "X Coord",
+        "X Coord fine",
+        "Y Coord",
+        "Y Coord fine"
+      ]
+    },
+    {
+      "name": "Limited CCT & RGB 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "Limited CCT & RGB 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    },
+    {
+      "name": "Limited HSIC+ 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "Limited HSIC+ 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "RGB 8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "RGB 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    },
+    {
+      "name": "RGBA 8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber"
+      ]
+    },
+    {
+      "name": "RGBA 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine"
+      ]
+    },
+    {
+      "name": "CCT+ & Control 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "CCT+ & Control 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "XY & Control 8bit",
+      "channels": [
+        "Dimmer",
+        "X Coord",
+        "Y Coord",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "XY & Control 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "X Coord",
+        "X Coord fine",
+        "Y Coord",
+        "Y Coord fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "CCT & XY & Control 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Crossfade",
+        "X Coord",
+        "Y Coord",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "CCT & XY & Control 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Crossfade",
+        "Crossfade fine",
+        "X Coord",
+        "X Coord fine",
+        "Y Coord",
+        "Y Coord fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Limited CCT & RGB & Control 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Crossfade",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Limited CCT & RGB & Control 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Crossfade",
+        "Crossfade fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Limited HSIC+ & Control 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "G/M 8bit",
+        "Hue",
+        "Saturation",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Limited HSIC+ & Control 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "G/M 16bit",
+        "G/M 16bit fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "RGB & Control 8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "RGB & Control 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "RGBA & Control 8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "RGBA & Control 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Amber",
+        "Amber fine",
+        "Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    }
+  ]
+}

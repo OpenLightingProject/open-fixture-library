@@ -1,0 +1,424 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evoke 2400B",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2024-01-23",
+    "lastModifyDate": "2024-01-23"
+  },
+  "links": {
+    "manual": [
+      "https://static1.squarespace.com/static/5c342d48f79392268631583d/t/65668c2a2fe34e1c7500a002/1701219371431/Evoke+2400B+DMX+REFERENCE+GUIDE.pdf"
+    ],
+    "productPage": [
+      "https://www.nanlux.com/product-evoke-2400b?t=1706029663505#/en"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 241, 210],
+    "weight": 7.8,
+    "power": 2400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "fineChannelAliases": ["CCT fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Green-Magenta Point": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 99],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [100, 165],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [166, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Green-Magenta Point 16bit": {
+      "name": "Green-Magenta Point",
+      "fineChannelAliases": ["Green-Magenta Point 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5001, 10000],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [10001, 29999],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30000, 40000],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [40001, 59999],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60000, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Fan Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Smart"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Full Speed"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Half Speed"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Fan off"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random Fast"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random Medium"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Random Slow"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Mode CCT": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to CCT Mode"
+      }
+    },
+    "Mode Effect": {
+      "defaultValue": 64,
+      "highlightValue": 64,
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "This sets Ultimate mode to Effect Mode"
+      }
+    },
+    "Reserved1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved5": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved6": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved7": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 18],
+          "type": "Generic",
+          "comment": "CCT LOOP"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "Generic",
+          "comment": "INT LOOP"
+        },
+        {
+          "dmxRange": [37, 54],
+          "type": "Generic",
+          "comment": "FLASH"
+        },
+        {
+          "dmxRange": [55, 72],
+          "type": "Generic",
+          "comment": "PULSE"
+        },
+        {
+          "dmxRange": [73, 91],
+          "type": "Generic",
+          "comment": "STORM"
+        },
+        {
+          "dmxRange": [92, 109],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "Generic",
+          "comment": "PAPARAZZI"
+        },
+        {
+          "dmxRange": [128, 145],
+          "type": "Generic",
+          "comment": "CANDLE/FIRE"
+        },
+        {
+          "dmxRange": [146, 163],
+          "type": "Generic",
+          "comment": "BAD BULB"
+        },
+        {
+          "dmxRange": [164, 182],
+          "type": "Generic",
+          "comment": "FIREWORK"
+        },
+        {
+          "dmxRange": [183, 200],
+          "type": "Generic",
+          "comment": "EXPLOSION"
+        },
+        {
+          "dmxRange": [201, 218],
+          "type": "Generic",
+          "comment": "WELDING"
+        },
+        {
+          "dmxRange": [219, 255],
+          "type": "Generic",
+          "comment": "RESERVED"
+        }
+      ]
+    },
+    "Param1": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param2": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param3": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param4": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param5": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param6": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param7": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Param8": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CCT 8bit Reduced",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point"
+      ]
+    },
+    {
+      "name": "CCT 8bit",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2"
+      ]
+    },
+    {
+      "name": "CCT 16bit Reduced",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine"
+      ]
+    },
+    {
+      "name": "CCT 16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "CCT fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Fan Control",
+        "Strobe",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - CCT",
+      "shortName": "Ultimate CCT",
+      "channels": [
+        "Dimmer",
+        "Mode CCT",
+        "CCT",
+        "Green-Magenta Point",
+        "Reserved1",
+        "Reserved2",
+        "Reserved3",
+        "Reserved4",
+        "Reserved5",
+        "Reserved6",
+        "Reserved7",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "ULTIMATE DMX 8bit - EFFECT",
+      "shortName": "Ultimate EFFECT",
+      "channels": [
+        "Dimmer",
+        "Mode Effect",
+        "Effect Mode",
+        "Param1",
+        "Param2",
+        "Param3",
+        "Param4",
+        "Param5",
+        "Param6",
+        "Param7",
+        "Param8",
+        "Fan Control"
+      ]
+    }
+  ]
+}
