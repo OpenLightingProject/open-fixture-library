@@ -1,0 +1,446 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lonestar",
+  "shortName": "Lonestar",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Flower", "Moving Head", "Strobe", "Other"],
+  "meta": {
+    "authors": ["Radiolucy"],
+    "createDate": "2022-10-05",
+    "lastModifyDate": "2022-10-05"
+  },
+  "links": {
+    "manual": [
+      "https://shop.bmisupply.com/Resources/en/ItemDocuments/3921054/BMI.HighEnd.Lonestar.Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Lonestar/"
+    ]
+  },
+  "physical": {
+    "weight": 23,
+    "power": 290,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 15400
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        null,
+        null,
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan Coarse": {
+      "fineChannelAliases": ["Pan Coarse fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "251deg"
+      }
+    },
+    "Color Presets": {
+      "fineChannelAliases": ["Color Presets fine"],
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "fineChannelAliases": ["CTO fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "CTO"
+      }
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    },
+    "Color Wheel 2": {
+      "name": "Color Wheel",
+      "fineChannelAliases": ["Color Wheel 2 fine"],
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 37
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "fineChannelAliases": ["Gobo Wheel Rotation 2 fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel": {
+      "fineChannelAliases": ["Gobo Wheel fine"],
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 6
+      }
+    },
+    "Gobo Stencil Rotation": {
+      "fineChannelAliases": ["Gobo Stencil Rotation fine"],
+      "capability": {
+        "type": "Rotation",
+        "angle": "359deg"
+      }
+    },
+    "Blade 1 Angle A": {
+      "fineChannelAliases": ["Blade 1 Angle A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Top",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 1 Angle B": {
+      "fineChannelAliases": ["Blade 1 Angle B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Top",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2 Angle A": {
+      "fineChannelAliases": ["Blade 2 Angle A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Bottom",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2 Angle B": {
+      "fineChannelAliases": ["Blade 2 Angle B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Bottom",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3 Angle A": {
+      "fineChannelAliases": ["Blade 3 Angle A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Left",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3 Angle B": {
+      "fineChannelAliases": ["Blade 3 Angle B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Left",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4 Angle A": {
+      "fineChannelAliases": ["Blade 4 Angle A fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Right",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4 Angle B": {
+      "fineChannelAliases": ["Blade 4 Angle B fine"],
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": "Right",
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Frame Rotation": {
+      "fineChannelAliases": ["Frame Rotation fine"],
+      "capability": {
+        "type": "Rotation",
+        "angle": "120deg"
+      }
+    },
+    "Animation Insertion": {
+      "fineChannelAliases": ["Animation Insertion fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Animation": {
+      "fineChannelAliases": ["Animation fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prisme 1 Mode": {
+      "fineChannelAliases": ["Prisme 1 Mode fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prisme 1 Rotate": {
+      "fineChannelAliases": ["Prisme 1 Rotate fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism 2 Mode": {
+      "fineChannelAliases": ["Prism 2 Mode fine"],
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism 2 Rotate": {
+      "fineChannelAliases": ["Prism 2 Rotate fine"],
+      "capability": {
+        "type": "PrismRotation",
+        "angle": "360deg"
+      }
+    },
+    "Diffusion Light": {
+      "fineChannelAliases": ["Diffusion Light fine"],
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Diffusion Medium": {
+      "fineChannelAliases": ["Diffusion Medium fine"],
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "3.8deg",
+        "angleEnd": "55deg"
+      }
+    },
+    "Iris": {
+      "fineChannelAliases": ["Iris fine"],
+      "defaultValue": "100%",
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "closed",
+        "openPercentEnd": "open"
+      }
+    },
+    "Strobe Mode": {
+      "fineChannelAliases": ["Strobe Mode fine"],
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "fineChannelAliases": ["Strobe fine"],
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mspeed": {
+      "fineChannelAliases": ["Mspeed fine"],
+      "capability": {
+        "type": "Speed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Control": {
+      "fineChannelAliases": ["Control fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Fan": {
+      "fineChannelAliases": ["Fan fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standart",
+      "shortName": "ETC Lonestar Standart",
+      "channels": [
+        "Pan Coarse",
+        "Pan Coarse fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Presets",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Color Wheel 2",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation 2",
+        "Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Gobo Stencil Rotation fine",
+        "Blade 1 Angle A",
+        "Blade 1 Angle B",
+        "Blade 2 Angle A",
+        "Blade 2 Angle B",
+        "Blade 3 Angle A",
+        "Blade 3 Angle B",
+        "Blade 4 Angle A",
+        "Blade 4 Angle B",
+        "Frame Rotation",
+        "Frame Rotation fine",
+        "Animation Insertion",
+        "Animation",
+        "Prisme 1 Mode",
+        "Prisme 1 Rotate",
+        "Prisme 1 Rotate fine",
+        "Prism 2 Mode",
+        "Prism 2 Rotate",
+        "Prism 2 Rotate fine",
+        "Diffusion Light",
+        "Diffusion Medium",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Zoom fine",
+        "Iris",
+        "Strobe Mode",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Mspeed",
+        "Control",
+        "Fan"
+      ]
+    }
+  ]
+}
