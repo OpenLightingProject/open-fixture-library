@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "5x60 rgb retro lamp tribe",
+  "shortName": "tribe",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["CRDJ"],
+    "createDate": "2026-02-25",
+    "lastModifyDate": "2026-02-25"
+  },
+  "links": {
+    "productPage": [
+      "https://www.alibaba.com/?src=sem_ggl&field=UG&from=sem_ggl&cmpgn=9922923043&adgrp=97780318062&fditm=&tgt=kwd-14739453&locintrst=&locphyscl=9204744&mtchtyp=e&ntwrk=g&device=c&dvcmdl=&creative=432272606776&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&gad_campaignid=9922923043&gbraid=0AAAAAD8m77pTjEu3BkjOWMpd4GNLrsOGp&gclid=CjwKCAiA2PrMBhA4EiwAwpHyC_ZTnfuXB20pQjNaudSeZXATpzhLO29ff0XkcbOE5Vlc7FVlGz3quxoCBCUQAvD_BwE",
+      "https://www.alibaba.com/?src=sem_ggl&field=UG&from=sem_ggl&cmpgn=9922923043&adgrp=97780318062&fditm=&tgt=kwd-14739453&locintrst=&locphyscl=9204744&mtchtyp=e&ntwrk=g&device=c&dvcmdl=&creative=432272606776&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&gad_campaignid=9922923043&gbraid=0AAAAAD8m77pTjEu3BkjOWMpd4GNLrsOGp&gclid=CjwKCAiA2PrMBhA4EiwAwpHyC_ZTnfuXB20pQjNaudSeZXATpzhLO29ff0XkcbOE5Vlc7FVlGz3quxoCBCUQAvD_BwE",
+      "https://www.alibaba.com/?src=sem_ggl&field=UG&from=sem_ggl&cmpgn=9922923043&adgrp=97780318062&fditm=&tgt=kwd-14739453&locintrst=&locphyscl=9204744&mtchtyp=e&ntwrk=g&device=c&dvcmdl=&creative=432272606776&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&gad_campaignid=9922923043&gbraid=0AAAAAD8m77pTjEu3BkjOWMpd4GNLrsOGp&gclid=CjwKCAiA2PrMBhA4EiwAwpHyC_ZTnfuXB20pQjNaudSeZXATpzhLO29ff0XkcbOE5Vlc7FVlGz3quxoCBCUQAvD_BwE"
+    ]
+  },
+  "rdm": {
+    "modelId": "invalid"
+  },
+  "physical": {
+    "dimensions": [970, 130, 100],
+    "weight": 3.7,
+    "power": 300,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe RGB": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "Red": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Mode": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Mode rgb"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Background color": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Background tone light": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Strobe white": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "30Hz"
+      }
+    },
+    "White": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Mode white": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13ch",
+      "channels": [
+        "Intensity",
+        "Strobe RGB",
+        "Red",
+        "Green",
+        "Blue",
+        "Mode",
+        "Effect Speed",
+        "Background color",
+        "Background tone light",
+        "Strobe white",
+        "White",
+        "Mode white",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
