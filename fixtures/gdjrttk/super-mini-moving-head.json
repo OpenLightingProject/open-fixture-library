@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Super Mini Moving Head",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["John Wesley"],
+    "createDate": "2026-10-29",
+    "lastModifyDate": "2026-10-29"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/dp/B0FG7VNYXF?plpRedirect=mhFallback&ref=clp_cat_related_p_0"
+    ]
+  },
+  "availableChannels": {
+    "X Motor": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "450deg"
+      }
+    },
+    "Y Motor": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "XY Motor Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Z Motor": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "None"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Linear dimming from dark to light"
+      }
+    },
+    "STROB": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Gobo": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Beam": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Laser": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Light Belt": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Change effect every 10 seconds"
+        }
+      ]
+    },
+    "Light Belt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Macro Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "comment": "Channel 1 to Channel 11... It's active"
+        },
+        {
+          "dmxRange": [51, 150],
+          "type": "Generic",
+          "comment": "Auto Run"
+        },
+        {
+          "dmxRange": [151, 250],
+          "type": "Generic",
+          "comment": "Voice"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "3 Second Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX-255",
+      "channels": [
+        "X Motor",
+        "Y Motor",
+        "XY Motor Speed",
+        "Z Motor",
+        "Dimmer",
+        "STROB",
+        "Gobo",
+        "Beam",
+        "Laser",
+        "Light Belt",
+        "Light Belt Speed",
+        "Macro Function"
+      ]
+    }
+  ]
+}
