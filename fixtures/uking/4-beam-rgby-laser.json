@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "4 Beam RGBY Laser",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2022-10-22",
+    "lastModifyDate": "2022-10-22"
+  },
+  "comment": "Created this, because could not find one",
+  "links": {
+    "productPage": [
+      "https://www.uking-online.com/product/rgby-four-hole-laser-light-stage-effect-lighting-11ch-dmx-sound-control-for-dj-club-party-show/"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser diodes"
+    }
+  },
+  "wheels": {
+    "Pattern": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction",
+          "comment": "Close, laser OFF"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound Active"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "AUTO"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "DMX"
+        }
+      ]
+    },
+    "Pattern": {
+      "capability": {
+        "type": "IrisEffect",
+        "effectName": "Pattern"
+      }
+    },
+    "Position-X": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1%",
+        "angleEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Mode",
+        "Pattern",
+        "Position-X"
+      ]
+    }
+  ]
+}
