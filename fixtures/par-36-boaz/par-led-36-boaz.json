@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR LED 36 BOAZ",
+  "shortName": "PL36BZ",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["gzatxo"],
+    "createDate": "2026-04-10",
+    "lastModifyDate": "2026-04-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.instagram.com/gaztoxik/"
+    ],
+    "productPage": [
+      "https://www.instagram.com/gaztoxik/"
+    ],
+    "video": [
+      "https://www.instagram.com/gaztoxik/"
+    ]
+  },
+  "rdm": {
+    "modelId": 2
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 4000,
+      "lumens": 400
+    }
+  },
+  "availableChannels": {
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "499Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DIM R G B STROBE MACRO",
+      "shortName": "DRGBSM6ch",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    }
+  ]
+}
