@@ -1,0 +1,445 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "M004-30 LED Moving Head",
+  "shortName": "M004-30",
+  "categories": ["Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["velolala"],
+    "createDate": "2025-03-13",
+    "lastModifyDate": "2025-03-13"
+  },
+  "comment": "The housing looks very similar to some other moving heads, e.g. Fun Generation PicoSpot 45, BoomTownDJ Crazy Spot 30, and probably others. However, it comes with its own DMX settings (9/11 channel).",
+  "links": {
+    "manual": [
+      "http://www.e-lektron.de/media/pdf/Bedienungsanleitungen/153804_led_m004-30_german_manual.pdf"
+    ],
+    "productPage": [
+      "https://www.e-lektron.de/detail/el153804-e-lektron-m004-30-led-moving-head-scheinwerfer-dmx"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 285, 145],
+    "weight": 2.5,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "white LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "red"
+        },
+        {
+          "type": "Color",
+          "name": "yellow"
+        },
+        {
+          "type": "Color",
+          "name": "blue"
+        },
+        {
+          "type": "Color",
+          "name": "green"
+        },
+        {
+          "type": "Color",
+          "name": "orange"
+        },
+        {
+          "type": "Color",
+          "name": "purple"
+        },
+        {
+          "type": "Color",
+          "name": "turquoise"
+        },
+        {
+          "type": "Color",
+          "name": "Split turquoise / purple"
+        },
+        {
+          "type": "Color",
+          "name": "Split purple / orange"
+        },
+        {
+          "type": "Color",
+          "name": "Split orange / green"
+        },
+        {
+          "type": "Color",
+          "name": "Split green / blue"
+        },
+        {
+          "type": "Color",
+          "name": "Split blue / yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Split yellow / red"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ring"
+        },
+        {
+          "type": "Gobo",
+          "name": "Tunnel"
+        },
+        {
+          "type": "Gobo",
+          "name": "Dot Cloud Triple"
+        },
+        {
+          "type": "Gobo",
+          "name": "Geometric Bricks"
+        },
+        {
+          "type": "Gobo",
+          "name": "Dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "Pinwheel"
+        },
+        {
+          "type": "Gobo",
+          "name": "Zebra"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [140, 254],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "I had to add this last NoFunction because the form wouldn't validate without it. In reality 255 is still WheelRotation"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngle": "closed"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "this rotates the gobo wheel"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "had to add this for the form to validate"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "2Hz",
+          "speedEnd": "20Hz",
+          "comment": "note: I have not measured the exact speed of the strobe."
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Chase": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction",
+          "comment": "manual says \"dmx channel 1-9 active\" but I could not figure out what it does."
+        },
+        {
+          "dmxRange": [60, 159],
+          "type": "Effect",
+          "effectName": "automatic"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "sound automatic",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset / Test": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "full pan rotation back and forth"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "full tilt rotation back and forth"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Maintenance",
+          "comment": "full pan+tilt rotation back and forth"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "full reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9 channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Chase",
+        "Reset / Test"
+      ]
+    }
+  ]
+}
