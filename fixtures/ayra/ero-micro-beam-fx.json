@@ -1,0 +1,229 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ERO Micro Beam FX",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["M. Peters"],
+    "createDate": "2024-06-21",
+    "lastModifyDate": "2024-06-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.bax-shop.nl/index3.php?option=com_download_files&product_id=514480&download_id=170502"
+    ],
+    "productPage": [
+      "https://www.bax-shop.nl/moving-head/ayra-ero-micro-beam-fx"
+    ],
+    "video": [
+      "https://www.bax-shop.nl/moving-head/ayra-ero-micro-beam-fx#video"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 140, 240],
+    "weight": 2.6,
+    "power": 35,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1x 15W RGBW multichip LED en 24x 5050RGB SMD LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [5, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed 2": {
+      "name": "Pan/Tilt Speed",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red Beam": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red Beam"
+      }
+    },
+    "Green Beam": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green Beam"
+      }
+    },
+    "Blue Beam": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue Beam"
+      }
+    },
+    "Red Ring": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red Ring"
+      }
+    },
+    "Green Ring": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Ring": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "DMX Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Normal DMX mode"
+        },
+        {
+          "dmxRange": [11, 95],
+          "type": "Generic",
+          "comment": "Auto run mode 1 (colour fade mode)"
+        },
+        {
+          "dmxRange": [96, 180],
+          "type": "Generic",
+          "comment": "Auto run mode 2 (colour jump mode)"
+        },
+        {
+          "dmxRange": [181, 255],
+          "type": "Generic",
+          "comment": "Sound controlled mode, random effects"
+        }
+      ]
+    },
+    "Auto Show Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed slow to fast, only when channel 15 is running auto show mode values (095 - 180)"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed 2",
+        "Red Beam",
+        "Green Beam",
+        "Blue Beam",
+        "White",
+        "Red Ring",
+        "Green Ring",
+        "Blue Ring",
+        "DMX Mode",
+        "Auto Show Speed"
+      ]
+    }
+  ]
+}
