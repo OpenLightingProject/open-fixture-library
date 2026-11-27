@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "aliali",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["psaldaña"],
+    "createDate": "2026-10-20",
+    "lastModifyDate": "2026-10-20"
+  },
+  "links": {
+    "productPage": [
+      "https://es.aliexpress.com/item/1005009847917915.html?spm=a2g0o.order_list.order_list_main.4.365a194dU1sagN&gatewayAdapt=glo2esp"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "164bpm"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14 canales",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Pan",
+        "Pan 2",
+        "Pan 2 fine"
+      ]
+    }
+  ]
+}
