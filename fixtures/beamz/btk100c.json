@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BTK100C",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Caleb Hawkins"],
+    "createDate": "2025-05-30",
+    "lastModifyDate": "2025-05-30"
+  },
+  "links": {
+    "productPage": [
+      "https://www.beamzlighting.com/product/btk100c-fresnel-100w-cw-ww-manual-zoom/"
+    ]
+  },
+  "physical": {
+    "dimensions": [355, 390, 210],
+    "weight": 4.95,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": "invalid",
+      "lumens": 43.854
+    },
+    "lens": {
+      "degreesMinMax": [15, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimming": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "0%"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "12Hz"
+      }
+    },
+    "Low CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "High CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Standard CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "No polar CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Dimming",
+        "Strobe",
+        "Low CCT",
+        "High CCT",
+        "Standard CCT",
+        "No polar CCT"
+      ]
+    }
+  ]
+}
