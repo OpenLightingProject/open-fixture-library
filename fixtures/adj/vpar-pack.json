@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VPar Pack",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Anto for Oh show"],
+    "createDate": "2026-07-14",
+    "lastModifyDate": "2026-07-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/642"
+    ],
+    "productPage": [
+      "https://www.adj.eu/vpar-pak"
+    ]
+  },
+  "physical": {
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4 in 1 led RGBA"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 7 channels",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Intensity",
+        "Strobe",
+        "Color Macros"
+      ]
+    }
+  ]
+}
