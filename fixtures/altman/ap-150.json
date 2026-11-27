@@ -1,0 +1,920 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AP-150",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Randy Hall"],
+    "createDate": "2024-09-09",
+    "lastModifyDate": "2024-09-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.altmanlighting.com/wp-content/uploads/2022/10/AP150_USER_MANUAL_49-0400_20221007.pdf"
+    ],
+    "productPage": [
+      "https://www.altmanlighting.com/product/ap-150-rgbw-par/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=921fFRvdD2E"
+    ]
+  },
+  "rdm": {
+    "modelId": 8192
+  },
+  "physical": {
+    "dimensions": [286, 343, 259],
+    "weight": 5.08,
+    "power": 135,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "colorTemperature": 6500,
+      "lumens": 1664
+    },
+    "lens": {
+      "degreesMinMax": [12, 65]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Channel OFF"
+        },
+        {
+          "dmxRange": [5, 7],
+          "type": "ColorPreset",
+          "comment": "Preset_1"
+        },
+        {
+          "dmxRange": [8, 10],
+          "type": "ColorPreset",
+          "comment": "Preset_2"
+        },
+        {
+          "dmxRange": [11, 13],
+          "type": "ColorPreset",
+          "comment": "Preset_3"
+        },
+        {
+          "dmxRange": [14, 16],
+          "type": "ColorPreset",
+          "comment": "Preset_4"
+        },
+        {
+          "dmxRange": [17, 19],
+          "type": "ColorPreset",
+          "comment": "Preset_5"
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "ColorPreset",
+          "comment": "Preset_6"
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "ColorPreset",
+          "comment": "Preset_7"
+        },
+        {
+          "dmxRange": [26, 28],
+          "type": "ColorPreset",
+          "comment": "Preset_8"
+        },
+        {
+          "dmxRange": [29, 31],
+          "type": "ColorPreset",
+          "comment": "Preset_9"
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorPreset",
+          "comment": "Preset_10"
+        },
+        {
+          "dmxRange": [35, 37],
+          "type": "ColorPreset",
+          "comment": "Preset_11"
+        },
+        {
+          "dmxRange": [38, 40],
+          "type": "ColorPreset",
+          "comment": "Preset_12"
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "ColorPreset",
+          "comment": "Preset_13"
+        },
+        {
+          "dmxRange": [44, 46],
+          "type": "ColorPreset",
+          "comment": "Preset_14"
+        },
+        {
+          "dmxRange": [47, 49],
+          "type": "ColorPreset",
+          "comment": "Preset_15"
+        },
+        {
+          "dmxRange": [50, 52],
+          "type": "ColorPreset",
+          "comment": "Preset_16"
+        },
+        {
+          "dmxRange": [53, 55],
+          "type": "ColorPreset",
+          "comment": "Preset_17"
+        },
+        {
+          "dmxRange": [56, 58],
+          "type": "ColorPreset",
+          "comment": "Preset_18"
+        },
+        {
+          "dmxRange": [59, 61],
+          "type": "ColorPreset",
+          "comment": "Preset_19"
+        },
+        {
+          "dmxRange": [62, 64],
+          "type": "ColorPreset",
+          "comment": "Preset_20"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "ColorPreset",
+          "comment": "CF_0_OFF"
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "ColorPreset",
+          "comment": "CF_1_10000K",
+          "colorTemperature": "10000K"
+        },
+        {
+          "dmxRange": [71, 73],
+          "type": "ColorPreset",
+          "comment": "CF_2_8000K",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [74, 76],
+          "type": "ColorPreset",
+          "comment": "CF_3_6500K",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "ColorPreset",
+          "comment": "CF_4_5600K",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [80, 82],
+          "type": "ColorPreset",
+          "comment": "CF_5_5000K",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "ColorPreset",
+          "comment": "CF_6_4500K",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [86, 88],
+          "type": "ColorPreset",
+          "comment": "CF_7_4000K",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [89, 91],
+          "type": "ColorPreset",
+          "comment": "CF_8_3200K",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [92, 94],
+          "type": "ColorPreset",
+          "comment": "CF_9_3000K",
+          "colorTemperature": "3000K"
+        },
+        {
+          "dmxRange": [95, 97],
+          "type": "ColorPreset",
+          "comment": "CF_10_2700K",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "ColorPreset",
+          "comment": "CF_11_Moroccan Pink"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "ColorPreset",
+          "comment": "CF_12_Pink"
+        },
+        {
+          "dmxRange": [104, 106],
+          "type": "ColorPreset",
+          "comment": "CF_13_Special Rose Pink"
+        },
+        {
+          "dmxRange": [107, 109],
+          "type": "ColorPreset",
+          "comment": "CF_14_Follies Pink"
+        },
+        {
+          "dmxRange": [110, 112],
+          "type": "ColorPreset",
+          "comment": "CF_15_Fuchsia Pink"
+        },
+        {
+          "dmxRange": [113, 115],
+          "type": "ColorPreset",
+          "comment": "CF_16_Surprise Pink"
+        },
+        {
+          "dmxRange": [116, 118],
+          "type": "ColorPreset",
+          "comment": "CF_17_Congo Blue"
+        },
+        {
+          "dmxRange": [119, 121],
+          "type": "ColorPreset",
+          "comment": "CF_18_Deep Blue"
+        },
+        {
+          "dmxRange": [122, 124],
+          "type": "ColorPreset",
+          "comment": "CF_19_Just Blue"
+        },
+        {
+          "dmxRange": [125, 127],
+          "type": "ColorPreset",
+          "comment": "CF_20_Medium Blue"
+        },
+        {
+          "dmxRange": [128, 130],
+          "type": "ColorPreset",
+          "comment": "CF_21_Double CT Blue"
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "ColorPreset",
+          "comment": "CF_22_Slate Blue"
+        },
+        {
+          "dmxRange": [134, 136],
+          "type": "ColorPreset",
+          "comment": "CF_23_Regal Blue"
+        },
+        {
+          "dmxRange": [137, 139],
+          "type": "ColorPreset",
+          "comment": "CF_24_Full CT Blue"
+        },
+        {
+          "dmxRange": [140, 142],
+          "type": "ColorPreset",
+          "comment": "CF_25_Half CT Blue"
+        },
+        {
+          "dmxRange": [143, 145],
+          "type": "ColorPreset",
+          "comment": "CF_26_Steel Blue"
+        },
+        {
+          "dmxRange": [146, 148],
+          "type": "ColorPreset",
+          "comment": "CF_27_Lighter Blue"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "ColorPreset",
+          "comment": "CF_28_Light Blue"
+        },
+        {
+          "dmxRange": [152, 154],
+          "type": "ColorPreset",
+          "comment": "CF_29_Medium Blue Green"
+        },
+        {
+          "dmxRange": [155, 157],
+          "type": "ColorPreset",
+          "comment": "CF_30_Dark Green"
+        },
+        {
+          "dmxRange": [158, 160],
+          "type": "ColorPreset",
+          "comment": "CF_31_Primary Green"
+        },
+        {
+          "dmxRange": [161, 163],
+          "type": "ColorPreset",
+          "comment": "CF_32_Moss Green"
+        },
+        {
+          "dmxRange": [164, 166],
+          "type": "ColorPreset",
+          "comment": "CF_33_Fem Green"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "ColorPreset",
+          "comment": "CF_34_JAS Green"
+        },
+        {
+          "dmxRange": [170, 172],
+          "type": "ColorPreset",
+          "comment": "CF_35_Lime Green"
+        },
+        {
+          "dmxRange": [173, 175],
+          "type": "ColorPreset",
+          "comment": "CF_36_Spring Yellow"
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "ColorPreset",
+          "comment": "CF_37_Deep Ambe"
+        },
+        {
+          "dmxRange": [179, 181],
+          "type": "ColorPreset",
+          "comment": "CF_38_Chrome Orange"
+        },
+        {
+          "dmxRange": [182, 184],
+          "type": "ColorPreset",
+          "comment": "CF_39_Orange"
+        },
+        {
+          "dmxRange": [185, 187],
+          "type": "ColorPreset",
+          "comment": "CF_40_Gold Amber"
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "ColorPreset",
+          "comment": "CF_41_Millennium Gold"
+        },
+        {
+          "dmxRange": [191, 193],
+          "type": "ColorPreset",
+          "comment": "CF_42_Deep Golden Amber"
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "ColorPreset",
+          "comment": "CF_43_Flame Red"
+        },
+        {
+          "dmxRange": [197, 255],
+          "type": "NoFunction",
+          "comment": "Reserved for Future Use"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "0.4Hz",
+          "randomTiming": true,
+          "comment": "Slow Random (0.4 Hz)"
+        },
+        {
+          "dmxRange": [8, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "5Hz",
+          "randomTiming": true,
+          "comment": "Med Random (5 Hz)"
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "30Hz",
+          "randomTiming": true,
+          "comment": "Fast Random (30 Hz)"
+        },
+        {
+          "dmxRange": [13, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.4Hz",
+          "speedEnd": "30Hz",
+          "randomTiming": true,
+          "comment": "Strobe Range (0.4-30 Hz)"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "0.4Hz",
+          "randomTiming": true,
+          "comment": "Pulse + Slow Random (0.4 Hz)"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "5Hz",
+          "randomTiming": true,
+          "comment": "Pulse + Med Random (5 Hz)"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "30Hz",
+          "randomTiming": true,
+          "comment": "Pulse + Fast Random (30 Hz)"
+        },
+        {
+          "dmxRange": [134, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.4Hz",
+          "speedEnd": "30Hz",
+          "comment": "Pulse + Range (0.4-30 Hz)"
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "0.4Hz",
+          "randomTiming": true,
+          "comment": "Pulse - Slow Random (0.4 Hz)"
+        },
+        {
+          "dmxRange": [194, 195],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "5Hz",
+          "randomTiming": true,
+          "comment": "Pulse - Med Random (5 Hz)"
+        },
+        {
+          "dmxRange": [196, 197],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "30Hz",
+          "comment": "Pulse - Fast Random (30 Hz)"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.4Hz",
+          "speedEnd": "30Hz",
+          "comment": "Pulse - Range (0.4-30 Hz)"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "Default Setting on Console"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display on/off toggle"
+        },
+        {
+          "dmxRange": [6, 8],
+          "type": "NoFunction",
+          "comment": "Reserved for Future Use"
+        },
+        {
+          "dmxRange": [9, 11],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Control by DMX channel"
+        },
+        {
+          "dmxRange": [12, 14],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Speed 0%"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Speed 20%"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Speed 40%"
+        },
+        {
+          "dmxRange": [21, 23],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Speed 60%"
+        },
+        {
+          "dmxRange": [24, 26],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Speed 80%"
+        },
+        {
+          "dmxRange": [27, 29],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan Speed 100%"
+        },
+        {
+          "dmxRange": [30, 32],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom Control by DMX"
+        },
+        {
+          "dmxRange": [33, 35],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom VNSP"
+        },
+        {
+          "dmxRange": [36, 38],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom NSP"
+        },
+        {
+          "dmxRange": [39, 41],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom MFL"
+        },
+        {
+          "dmxRange": [42, 44],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom WFL"
+        },
+        {
+          "dmxRange": [45, 47],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom XWFL"
+        },
+        {
+          "dmxRange": [48, 50],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 1 Store"
+        },
+        {
+          "dmxRange": [51, 53],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 2 Store"
+        },
+        {
+          "dmxRange": [54, 56],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 3 Store"
+        },
+        {
+          "dmxRange": [57, 59],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 4 Store"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 5 Store"
+        },
+        {
+          "dmxRange": [63, 65],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 6 Store"
+        },
+        {
+          "dmxRange": [66, 68],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 7 Store"
+        },
+        {
+          "dmxRange": [69, 71],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 8 Store"
+        },
+        {
+          "dmxRange": [72, 74],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 9 Store"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 10 Store"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 11 Store"
+        },
+        {
+          "dmxRange": [81, 83],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 12 Store"
+        },
+        {
+          "dmxRange": [84, 86],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 13 Store"
+        },
+        {
+          "dmxRange": [87, 89],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 14 Store"
+        },
+        {
+          "dmxRange": [90, 92],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 15 Store"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 16 Store"
+        },
+        {
+          "dmxRange": [96, 98],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 17 Store"
+        },
+        {
+          "dmxRange": [99, 101],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 18 Store"
+        },
+        {
+          "dmxRange": [102, 104],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 19 Store"
+        },
+        {
+          "dmxRange": [105, 107],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Preset 20 Store"
+        },
+        {
+          "dmxRange": [108, 196],
+          "type": "NoFunction",
+          "comment": "Reserved for Future Use"
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Erase all User Presets"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "NoFunction",
+          "comment": "Reserved for Future Use"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fixture Reset"
+        }
+      ]
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Fan Control": {
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%",
+        "comment": "Only works when fixture is set to Fan DMX control"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "constant": true,
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue wheel from Red (0) to Yellow (21845) to Blue (43690) and back to Red (65535)"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "0 Saturation will prevent hue value from being asserted"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Saturation from 0% to 100%"
+        }
+      ]
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "10000K",
+        "comment": "Color Temperature modification to Hue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBW 16 Bit Direct",
+      "shortName": "16-bit-direct",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Zoom",
+        "Color Presets",
+        "Shutter / Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "RGBW 8 Bit Direct",
+      "shortName": "8-bit-direct",
+      "channels": [
+        "Intensity",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Zoom",
+        "Color Presets",
+        "Shutter / Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Hue/Saturation/Intensity/CCT",
+      "shortName": "hsic",
+      "channels": [
+        "Intensity",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "CCT",
+        "Zoom",
+        "Color Presets",
+        "Shutter / Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "rgb",
+      "channels": [
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Zoom",
+        "Color Presets",
+        "Shutter / Strobe",
+        "Control",
+        "Fan Control"
+      ]
+    }
+  ]
+}
