@@ -1,0 +1,167 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evoke 1200/1200-B",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["LAP70"],
+    "createDate": "2023-06-02",
+    "lastModifyDate": "2023-06-02",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2023-06-02",
+      "comment": "created by OFL – https://open-fixture-library.org/nanlux/evoke-1200-1200-b (version 1.3.0)"
+    }
+  },
+  "physical": {
+    "weight": 10,
+    "power": 1200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "FAN": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Intensity",
+          "comment": "OFF"
+        }
+      ]
+    },
+    "Dimmer 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold",
+        "helpWanted": "Is this the correct direction? Can you provide exact color temperature values in Kelvin?"
+      }
+    },
+    "FAN 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Intensity",
+          "comment": "SMART"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Intensity",
+          "comment": "FULL SPEED"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Intensity",
+          "comment": "HALF SPEED"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Intensity",
+          "comment": "FAN OFF"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe duration 0% (OFF)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe duration 1.6% (Random Fast)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe duration 2% (Random Medium)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe duration 2.4% (Random Slow)",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed 0.4…25Hz (Variable Strobe(0.4Hz --> 25Hz))"
+        }
+      ]
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Evoke 1200",
+      "channels": [
+        "Dimmer",
+        "FAN"
+      ]
+    },
+    {
+      "name": "Evoke 1200-B",
+      "channels": [
+        "Dimmer 2",
+        "Color Temperature",
+        "FAN 2",
+        "Strobe",
+        "Reserved",
+        "Reserved 2"
+      ]
+    }
+  ]
+}
