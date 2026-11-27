@@ -1,0 +1,793 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Swarm Wash FX ILS",
+  "categories": ["Color Changer", "Laser", "Strobe"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2025-08-13",
+    "lastModifyDate": "2025-08-13"
+  },
+  "links": {
+    "productPage": [
+      "https://www.chauvetdj.com/products/swarm-wash-fx-ils/"
+    ]
+  },
+  "availableChannels": {
+    "Automatic Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 30],
+          "type": "Effect",
+          "effectName": "Wash Only"
+        },
+        {
+          "dmxRange": [31, 45],
+          "type": "Effect",
+          "effectName": "Laser Only"
+        },
+        {
+          "dmxRange": [46, 60],
+          "type": "Effect",
+          "effectName": "Swarm Only"
+        },
+        {
+          "dmxRange": [61, 75],
+          "type": "Effect",
+          "effectName": "Strobe Only"
+        },
+        {
+          "dmxRange": [76, 90],
+          "type": "Effect",
+          "effectName": "Wash, Laser, and Swarm"
+        },
+        {
+          "dmxRange": [91, 105],
+          "type": "Effect",
+          "effectName": "Wash, Laser, and Strobe"
+        },
+        {
+          "dmxRange": [106, 120],
+          "type": "Effect",
+          "effectName": "Wash, Swarm, and Strobe"
+        },
+        {
+          "dmxRange": [121, 135],
+          "type": "Effect",
+          "effectName": "Laser, Swarm, and Strobe"
+        },
+        {
+          "dmxRange": [136, 150],
+          "type": "Effect",
+          "effectName": "Wash and Laser"
+        },
+        {
+          "dmxRange": [151, 165],
+          "type": "Effect",
+          "effectName": "Wash and Swarm"
+        },
+        {
+          "dmxRange": [166, 180],
+          "type": "Effect",
+          "effectName": "Wash and Strobe"
+        },
+        {
+          "dmxRange": [181, 195],
+          "type": "Effect",
+          "effectName": "Laser and Swarm"
+        },
+        {
+          "dmxRange": [196, 210],
+          "type": "Effect",
+          "effectName": "Laser and Strobe"
+        },
+        {
+          "dmxRange": [211, 225],
+          "type": "Effect",
+          "effectName": "Swarm and Strobe"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Effect",
+          "effectName": "All Effects"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Mode",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Wash Led 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 5": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 6": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 7": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash LED 8": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 102],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [103, 153],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [154, 204],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "ColorPreset",
+          "comment": "UV"
+        }
+      ]
+    },
+    "Wash Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound Sensitivity",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Swarm Effect Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "RW"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "RG"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "GB"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "BA"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "AW"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "GW"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "GA"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "RA"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "RB"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "BW"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "RGB"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "RGA"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "RGW"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "RBA"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "RBW"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "RAW"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "GBA"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "GBW"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "GAW"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "BAW"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "RGBA"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "GBAW"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "comment": "RGAW"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "comment": "RBAW"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "comment": "RGBAW"
+        },
+        {
+          "dmxRange": [165, 209],
+          "type": "Effect",
+          "effectName": "Auto Color Chase"
+        },
+        {
+          "dmxRange": [210, 222],
+          "type": "Effect",
+          "effectName": "Auto Multi Color Chase"
+        },
+        {
+          "dmxRange": [223, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Swarm Effect Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 200],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Swarm Effect Motor": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "SMD Strobe Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 200],
+          "type": "Effect",
+          "effectName": "Full On"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Active Strobe",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Laser Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorPreset",
+          "comment": "Red and Green Alternating Strobe"
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorPreset",
+          "comment": "Red and Strobing Green"
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "comment": "Green and Strobing Red"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "ColorPreset",
+          "comment": "Red and Green"
+        }
+      ]
+    },
+    "Laser Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 254],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Laser Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Automatic Program",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "18ch",
+      "channels": [
+        "Automatic Program",
+        "Program Speed",
+        "Wash Led 1",
+        "Wash LED 2",
+        "Wash LED 3",
+        "Wash LED 4",
+        "Wash LED 5",
+        "Wash LED 6",
+        "Wash LED 7",
+        "Wash LED 8",
+        "Wash Strobe",
+        "Swarm Effect Color",
+        "Swarm Effect Strobe",
+        "Swarm Effect Motor",
+        "SMD Strobe Programs",
+        "Laser Color",
+        "Laser Strobe",
+        "Laser Rotation"
+      ]
+    }
+  ]
+}
