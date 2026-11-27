@@ -1,0 +1,366 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Freedom Stick",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Caden Lackey"],
+    "createDate": "2023-03-11",
+    "lastModifyDate": "2023-03-11"
+  },
+  "comment": "Vertical pixel bar. Wireless. Uses D-Fi",
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/01/Freedom_Stick_UM_Rev2_WO.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [161, 1550, 161],
+    "weight": 1.6,
+    "power": 35,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Macros": {
+      "slots": [
+        {
+          "type": "Color",
+          "colorTemperature": "default"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "None",
+          "colors": ["#000000"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red to Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow to Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green to Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan to Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue to Magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta to Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red to White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White to Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"],
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "11 Unknown Colors"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Strobe Disabled"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [11, 18],
+          "type": "Generic",
+          "comment": "Auto Program 1"
+        },
+        {
+          "dmxRange": [19, 26],
+          "type": "Generic",
+          "comment": "Auto Program 2"
+        },
+        {
+          "dmxRange": [27, 34],
+          "type": "Generic",
+          "comment": "Auto Program 3"
+        },
+        {
+          "dmxRange": [35, 42],
+          "type": "Generic",
+          "comment": "Auto Program 4"
+        },
+        {
+          "dmxRange": [43, 50],
+          "type": "Generic",
+          "comment": "Auto Program 5"
+        },
+        {
+          "dmxRange": [51, 58],
+          "type": "Generic",
+          "comment": "Auto Program 6"
+        },
+        {
+          "dmxRange": [59, 66],
+          "type": "Generic",
+          "comment": "Auto Program 7"
+        },
+        {
+          "dmxRange": [67, 74],
+          "type": "Generic",
+          "comment": "Auto Program 8"
+        },
+        {
+          "dmxRange": [75, 82],
+          "type": "Generic",
+          "comment": "Auto Program 9"
+        },
+        {
+          "dmxRange": [83, 90],
+          "type": "Generic",
+          "comment": "Auto Program 10"
+        },
+        {
+          "dmxRange": [91, 98],
+          "type": "Generic",
+          "comment": "Auto Program 11"
+        },
+        {
+          "dmxRange": [99, 106],
+          "type": "Generic",
+          "comment": "Auto Program 12"
+        },
+        {
+          "dmxRange": [107, 114],
+          "type": "Generic",
+          "comment": "Auto Program 13"
+        },
+        {
+          "dmxRange": [115, 122],
+          "type": "Generic",
+          "comment": "Auto Program 14"
+        },
+        {
+          "dmxRange": [123, 130],
+          "type": "Generic",
+          "comment": "Auto Program 15"
+        },
+        {
+          "dmxRange": [131, 138],
+          "type": "Generic",
+          "comment": "Auto Program 16"
+        },
+        {
+          "dmxRange": [139, 146],
+          "type": "Generic",
+          "comment": "Auto Program 17"
+        },
+        {
+          "dmxRange": [147, 154],
+          "type": "Generic",
+          "comment": "Auto Program 18"
+        },
+        {
+          "dmxRange": [155, 162],
+          "type": "Generic",
+          "comment": "Auto Program 19"
+        },
+        {
+          "dmxRange": [163, 170],
+          "type": "Generic",
+          "comment": "Auto Program 20"
+        },
+        {
+          "dmxRange": [171, 178],
+          "type": "Generic",
+          "comment": "Auto Program 21"
+        },
+        {
+          "dmxRange": [179, 186],
+          "type": "Generic",
+          "comment": "Auto Program 22"
+        },
+        {
+          "dmxRange": [187, 194],
+          "type": "Generic",
+          "comment": "Auto Program 23"
+        },
+        {
+          "dmxRange": [195, 202],
+          "type": "Generic",
+          "comment": "Auto Program 24"
+        },
+        {
+          "dmxRange": [203, 210],
+          "type": "Generic",
+          "comment": "Auto Program 25"
+        },
+        {
+          "dmxRange": [211, 218],
+          "type": "Generic",
+          "comment": "Auto Program 26"
+        },
+        {
+          "dmxRange": [219, 226],
+          "type": "Generic",
+          "comment": "Auto Program 27"
+        },
+        {
+          "dmxRange": [227, 234],
+          "type": "Generic",
+          "comment": "Auto Program 28 (Cycle Auto Programs 1-21)"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Generic",
+          "comment": "Sound-Active Program"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Only when Channel 7 is 011 to 234"
+      }
+    },
+    "Sound Sensitivity": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "When Ch. 7 is 011-234: Auto Speed Slow to Fast || When Ch.7 is 235-255: Sound Sensitivity Off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Generic",
+          "comment": "When Ch. 7 is 011-234: Auto Speed Slow to Fast || When Ch.7 is 235-255: Sound Sensitivity Low to High"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe",
+        "Auto Programs",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
