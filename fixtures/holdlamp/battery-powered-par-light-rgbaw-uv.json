@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Battery Powered Par Light RGBAW+UV",
+  "categories": ["Color Changer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["Anonymouse"],
+    "createDate": "2023-12-13",
+    "lastModifyDate": "2023-12-13"
+  },
+  "links": {
+    "manual": [
+      "https://m.media-amazon.com/images/I/A1AE0OAoiSL.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 3.2,
+    "power": 108,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 50],
+          "type": "Effect",
+          "effectName": "32 Color Mix",
+          "comment": "Enables the ColorSpeed channel to determine the color"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Color Jump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Jump instantly between colors, speed controlled by ColorSpeed channel"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Color Pulse",
+          "comment": "jump to color, then fade out, speed controlled by ColorSpeed channel"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Gradual",
+          "comment": "fade between colors, speed controlled by ColorSpeed channel"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Effect",
+          "effectName": "Sound Mode 1"
+        },
+        {
+          "dmxRange": [221, 240],
+          "type": "Effect",
+          "effectName": "Sound Mode 2"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 3"
+        }
+      ]
+    },
+    "Color Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Magenta"
+      ]
+    },
+    {
+      "name": "10-Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Magenta",
+        "Strobe",
+        "Effect",
+        "Color Speed"
+      ]
+    }
+  ]
+}
