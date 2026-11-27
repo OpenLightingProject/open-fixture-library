@@ -1,0 +1,224 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cyan6000XE",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["", "tomo"],
+    "createDate": "2026-10-28",
+    "lastModifyDate": "2026-10-28",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-10-28",
+      "comment": "created by Cyan6000XE (version 1)"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe 1…20Hz"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt blackout ON"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt blackout OFF"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Maintenance",
+          "comment": "Fan auto"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Maintenance",
+          "comment": "Fan slow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Maintenance",
+          "comment": "Fan normal"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Maintenance",
+          "comment": "Fan fast"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Auto 1 (hold 3s)"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "Auto 2 (hold 3s)"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "comment": "Test (hold 3s)"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "Custom (hold 3s)"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "Tone 1"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "comment": "Tone 2"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Maintenance",
+          "comment": "Reset (hold 3s)"
+        },
+        {
+          "dmxRange": [220, 235],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Maintenance",
+          "comment": "Dimmer speed DIM0 (fastest)"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Maintenance",
+          "comment": "Dimmer speed DIM1"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Maintenance",
+          "comment": "Dimmer speed DIM2"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Maintenance",
+          "comment": "Dimmer speed DIM3"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed DIM4 (slowest)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Person1 10-channel",
+      "shortName": "Person1 10ch",
+      "physical": {
+        "dimensions": [297, 341, 270],
+        "weight": 10,
+        "power": 350,
+        "DMXconnector": "5-pin",
+        "bulb": {
+          "type": "19x 4in1 LEDs"
+        }
+      },
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe",
+        "Zoom",
+        "Control"
+      ]
+    }
+  ]
+}
