@@ -1,0 +1,199 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EclPanel TWCJr",
+  "shortName": "EclPanel Jr",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Lucas Hütter"],
+    "createDate": "2022-04-05",
+    "lastModifyDate": "2022-04-05"
+  },
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=35638&ID_USER=&__hstc=244193946.9fd07b1811f43b86873cfe803bc6e4c7.1649145958240.1649145958240.1649145958240.1&__hssc=244193946.1.1649145958240&__hsfp=708705328"
+    ],
+    "productPage": [
+      "https://www.prolights.it/en/product/ECLPANELTWCJR"
+    ]
+  },
+  "physical": {
+    "dimensions": [529, 432, 144],
+    "weight": 10.5,
+    "power": 230,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4000,
+      "lumens": 17109
+    },
+    "lens": {
+      "name": "medium density diffusion panel",
+      "degreesMinMax": [102, 102]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Hue": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm",
+        "comment": "Hue"
+      }
+    },
+    "Dimmer Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [31, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [131, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "ColorPreset",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "ColorPreset",
+          "comment": "Amber Shift on"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 255,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Theatre 1Ch",
+      "shortName": "Theatre 1Ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Theatre 4ch",
+      "shortName": "Theatre 4ch",
+      "channels": [
+        "Dimmer",
+        "CTO",
+        "Hue",
+        "Dimmer Fade"
+      ]
+    },
+    {
+      "name": "Theatre 6Ch",
+      "shortName": "Theatre 6Ch",
+      "channels": [
+        "Dimmer",
+        "CTO",
+        "Hue",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Dimmer Fade"
+      ]
+    },
+    {
+      "name": "Theatre 10ch",
+      "shortName": "Theatre 10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Hue",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Dimmer Fade"
+      ]
+    }
+  ]
+}
