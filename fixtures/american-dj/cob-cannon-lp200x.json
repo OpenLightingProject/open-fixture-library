@@ -1,0 +1,192 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COB Cannon LP200X",
+  "shortName": "LP200X",
+  "categories": ["Other", "Dimmer"],
+  "meta": {
+    "authors": ["Leo"],
+    "createDate": "2025-10-10",
+    "lastModifyDate": "2025-10-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/cdn/shop/files/ADJ_COB_CANNON_LP200X_-_USER_MANUAL_2.pdf?v=6044163630766092840"
+    ],
+    "productPage": [
+      "https://www.adj.com/products/cob-cannon-lp200x"
+    ]
+  },
+  "rdm": {
+    "modelId": 4800,
+    "softwareVersion": "unknown"
+  },
+  "physical": {
+    "dimensions": [245, 192, 415],
+    "weight": 4.3,
+    "power": 175,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 9900,
+      "lumens": 4300
+    },
+    "lens": {
+      "name": "Lens kit (40, 50, 80)",
+      "degreesMinMax": [40, 80]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Colour Macros"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2300K",
+        "colorTemperatureEnd": "9900K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 Channel",
+      "shortName": "5ch",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime"
+      ]
+    },
+    {
+      "name": "8 Channel - A",
+      "shortName": "8ach",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Lime",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "8 Channel - B (UNFINISHED)",
+      "shortName": "8bch",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Color Macros",
+        "Color Temperature",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}
