@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wild Wash Pro 648 LED RGB",
+  "shortName": "George Pickering",
+  "categories": ["Blinder", "Matrix", "Pixel Bar"],
+  "meta": {
+    "authors": ["George Pickering"],
+    "createDate": "2025-06-14",
+    "lastModifyDate": "2025-06-14"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/432585_c_432585_432586_481229_v4_en_online.pdf?_gl=1*aznysl*FPAU*MTI1NDY0MDYyNS4xNzQ5ODk5MjM1*_ga*MTAxNDA5NDYyNi4xNzQ5ODk5MjM2*_ga_CQB6MP7VD2*czE3NDk4OTkyMzUkbzEkZzAkdDE3NDk4OTkyMzUkajYwJGwwJGgw*_fplc*b3dEJTJCaUVEMzZLTlNwTWx3WkZiJTJCJTJGV2FhbWJkc2c1SjVCOXo1QmdvR2ZkUmVDWE9aazUyJTJGTnZKUnJHZSUyQjh3SVhVODhVWkNsY1U4QjE0bzc0MDJYZWczaE9QbSUyRmpQcjg1bGRTZm1NdE1vWEklMkYxVDRFbDklMkZSa1lzbzRIZm1oQSUzRCUzRA..*_ga_QNTG1E3BFT*czE3NDk4OTkyMzUkbzEkZzAkdDE3NDk4OTkyNDAkajU1JGwwJGgyMDQzNzM5NTE3"
+    ],
+    "productPage": [
+      "https://www.thomann.co.uk/stairville_wild_wash_pro_648_led_rgb_dmx.htm?srsltid=AfmBOoqPpdHOUWakVErJ0JEUFuo4sYSeRA3-nFzCbrMlH_LYDlDO4j_aeHo"
+    ]
+  },
+  "physical": {
+    "lens": {
+      "name": "George Pickering"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sound macro": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch standard",
+      "shortName": "George Pickering",
+      "channels": [
+        "Dimmer",
+        "Shutter",
+        "Red",
+        "Green",
+        "Blue",
+        "Sound macro"
+      ]
+    }
+  ]
+}
