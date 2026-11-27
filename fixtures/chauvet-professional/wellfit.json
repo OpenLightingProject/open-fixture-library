@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "wellfit",
+  "shortName": "wellfit",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["lightmatt"],
+    "createDate": "2026-10-26",
+    "lastModifyDate": "2026-10-26"
+  },
+  "links": {
+    "manual": [
+      "https://static.rt-events.fr/document/well_fit_um_rev3_wo.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [138, 202, 138],
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led",
+      "lumens": 800
+    },
+    "lens": {
+      "degreesMinMax": [11, 11]
+    }
+  },
+  "availableChannels": {
+    "Intensité": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rouge": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Ambre": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Obturateur / Stroboscope": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "22Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 ch",
+      "channels": [
+        "Intensité",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Ambre",
+        "Obturateur / Stroboscope"
+      ]
+    }
+  ]
+}
