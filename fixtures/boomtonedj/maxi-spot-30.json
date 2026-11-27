@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Maxi Spot 30",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["POWERAW"],
+    "createDate": "2026-01-05",
+    "lastModifyDate": "2026-01-05"
+  },
+  "links": {
+    "manual": [
+      "https://static.sonovente.com/pdf/manual/63/63719_manuelboomtonemaxispot30.pdf"
+    ],
+    "productPage": [
+      "https://www.sonovente.com/boomtonedj-maxi-spot-30-p63719.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=TZfJAni8Tvw"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [160, 150, 285],
+    "weight": 2.8,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Color": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Auto": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "RESET": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Anneau leds": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 109],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Protocole DMX 10 canaux",
+      "shortName": "DMX 10",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Auto",
+        "RESET",
+        "Anneau leds"
+      ]
+    }
+  ]
+}
