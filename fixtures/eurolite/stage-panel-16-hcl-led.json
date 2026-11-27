@@ -1,0 +1,284 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Panel 16 hcl led",
+  "shortName": "StagePanel16",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["sg"],
+    "createDate": "2021-07-05",
+    "lastModifyDate": "2025-05-30",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-10-16",
+      "comment": "GDTF v1.2 fixture type ID: 980A613A-F8EA-478A-A687-5BB41C6F00D2"
+    }
+  },
+  "availableChannels": {
+    "Dim": {
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "R": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "R 2": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 2": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 2": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 2": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 2": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "R 3": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 3": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 3": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 3": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 3": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "R 4": {
+      "name": "R",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "G 4": {
+      "name": "G",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "B 4": {
+      "name": "B",
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber 4": {
+      "name": "Amber",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV 4": {
+      "name": "UV",
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "dmxValueResolution": "32bit",
+      "highlightValue": 4294967295,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24-Ch",
+      "channels": [
+        "R",
+        "G",
+        "B",
+        "White",
+        "Amber",
+        "UV",
+        "R 2",
+        "G 2",
+        "B 2",
+        "White 2",
+        "Amber 2",
+        "UV 2",
+        "R 3",
+        "G 3",
+        "B 3",
+        "White 3",
+        "Amber 3",
+        "UV 3",
+        "R 4",
+        "G 4",
+        "B 4",
+        "White 4",
+        "Amber 4",
+        "UV 4"
+      ]
+    }
+  ]
+}
