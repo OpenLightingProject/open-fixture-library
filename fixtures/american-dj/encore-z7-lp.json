@@ -1,0 +1,155 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore Z7 LP",
+  "shortName": "Z7 LP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Poliforma"],
+    "createDate": "2024-11-27",
+    "lastModifyDate": "2024-11-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.eu/mwdownloads/download/link/id/1551"
+    ],
+    "productPage": [
+      "https://www.adj.eu/encore-z7-lp"
+    ]
+  },
+  "rdm": {
+    "modelId": 42
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED",
+      "lumens": 2500
+    },
+    "lens": {
+      "degreesMinMax": [5, 50]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Warm White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "cold"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Temp Presets": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "2700K"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Auto programs": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fade": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Dim Mode": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dim Curves": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Zoom Lineal": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Color Macros",
+        "Warm White",
+        "Color Temp Presets",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Zoom Lineal",
+        "Zoom",
+        "Dim Mode",
+        "Dim Curves"
+      ]
+    }
+  ]
+}
