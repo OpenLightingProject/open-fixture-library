@@ -1,0 +1,210 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "StudioCob PFC2",
+  "shortName": "StudCobPFC2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Theater der Mitte"],
+    "createDate": "2024-09-04",
+    "lastModifyDate": "2024-09-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.prolights.it/product/STUDIOCOBPFC2"
+    ],
+    "productPage": [
+      "https://www.prolights.it/product/STUDIOCOBPFC2"
+    ]
+  },
+  "physical": {
+    "dimensions": [259, 187, 370],
+    "weight": 5.6,
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 100],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe Slow to fast"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [131, 200],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Random strobe effect slow to fast"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 85],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "ColorPreset",
+          "comment": "White presets"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorPreset",
+          "comment": "Color macro"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "Maintenance",
+          "comment": "RGB 100%, 0~100%, 0%"
+        },
+        {
+          "dmxRange": [29, 56],
+          "type": "Maintenance",
+          "comment": "RGB 0~100%, 100%, 0%"
+        },
+        {
+          "dmxRange": [57, 84],
+          "type": "Maintenance",
+          "comment": "RGB 0%, 100%, 0~100%"
+        },
+        {
+          "dmxRange": [85, 112],
+          "type": "Maintenance",
+          "comment": "RGB 0%, 0~100%, 100%"
+        },
+        {
+          "dmxRange": [113, 140],
+          "type": "Maintenance",
+          "comment": "RGB 0~100%, 0%, 100%"
+        },
+        {
+          "dmxRange": [141, 168],
+          "type": "Maintenance",
+          "comment": "RGB 100%, 0%, 0% ~ 100%"
+        },
+        {
+          "dmxRange": [169, 196],
+          "type": "Maintenance",
+          "comment": "RGB 100%, 0% ~ 100%, 0% ~ 100%"
+        },
+        {
+          "dmxRange": [197, 224],
+          "type": "Maintenance",
+          "comment": "RGB 0% ~ 100%, 0% ~ 100%, 100%"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Maintenance",
+          "comment": "RGBW 100%, 100%, 100%, 100%"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Color macro speed slow to fast"
+      }
+    },
+    "Dimmer fade": {
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Dimmer fade from fast to slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color function",
+        "Color Presets",
+        "Color Macros",
+        "Dimmer fade"
+      ]
+    }
+  ]
+}
