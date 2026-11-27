@@ -1,0 +1,326 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "7x12w Zoom LED Mini Moving Head",
+  "shortName": "ML-WZ007",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Rob"],
+    "createDate": "2024-09-19",
+    "lastModifyDate": "2024-09-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.riukoe.com/upfiles/202209/22/ac4dbe22d507ea4c.pdf"
+    ],
+    "productPage": [
+      "https://www.riukoe.com/c14352.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=ItTR3ca3hZE&si=3Gs45NoF8fSpUJlj"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 270, 270],
+    "weight": 5,
+    "power": 95,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "lumens": 7541
+    },
+    "lens": {
+      "name": "Zoom"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan_fine": {
+      "fineChannelAliases": ["Pan_fine fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "1deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "190deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "190deg"
+      }
+    },
+    "XY speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Color step macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "OFF",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "comment": "Red + Green",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "comment": "Green + Blue",
+          "colors": ["#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "Blue + White",
+          "colors": ["#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "comment": "Red + Blue",
+          "colors": ["#ff0000", "#0000ff"]
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "comment": "Green + White",
+          "colors": ["#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "comment": "Red + White",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"]
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Line Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Effect",
+          "effectName": "Internakl Program 1"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Effect",
+          "effectName": "Internal Program 2"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Effect",
+          "effectName": "Internal Program 3"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Effect",
+          "effectName": "Internal Program 4"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Effect",
+          "effectName": "Internal Program 5"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Effect",
+          "effectName": "Internal Program 6"
+        },
+        {
+          "dmxRange": [141, 160],
+          "type": "Effect",
+          "effectName": "Internal Program 7"
+        },
+        {
+          "dmxRange": [161, 180],
+          "type": "Effect",
+          "effectName": "Internal Program 8"
+        },
+        {
+          "dmxRange": [181, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Generic",
+          "comment": "Motor Reset"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "XY speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color step macro",
+        "Color Line Macro",
+        "Program",
+        "Zoom"
+      ]
+    }
+  ]
+}
