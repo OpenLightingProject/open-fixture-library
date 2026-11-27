@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "fog smoke",
+  "shortName": "fog",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["anonymous"],
+    "createDate": "2026-11-27",
+    "lastModifyDate": "2026-11-27"
+  },
+  "links": {
+    "other": [
+      "https://rocketshow.net/designer/app/?id=&token="
+    ]
+  },
+  "rdm": {
+    "modelId": 2
+  },
+  "physical": {
+    "dimensions": [4, 3, 1],
+    "weight": 1,
+    "power": 900,
+    "bulb": {
+      "type": "haze",
+      "colorTemperature": 7,
+      "lumens": 0
+    },
+    "lens": {
+      "degreesMinMax": [1, 50]
+    }
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": 5,
+      "highlightValue": 12,
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "FogType",
+        "fogType": "Haze"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "extend",
+      "channels": [
+        "Fog",
+        "Frost"
+      ]
+    },
+    {
+      "name": "exdended extra",
+      "shortName": "extra",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Fog",
+        "Frost"
+      ]
+    }
+  ]
+}
