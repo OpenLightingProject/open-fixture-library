@@ -1,0 +1,325 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Evos W3",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["KK"],
+    "createDate": "2022-07-04",
+    "lastModifyDate": "2022-07-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/solutions/rental/moving-lights/wash-moving-heads/20664/evos-w3#detail-downloads"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/rental/moving-lights/wash-moving-heads/20664/evos-w3#detail-downloads"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=mjty6hC5ps4"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Running Effect Pattern": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pattern Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Macro": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Device Settings": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Hue 2": {
+      "name": "Hue",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Colour Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Tint": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Colour Macro": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Colour Macro Crossfade": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colour Temperature 2": {
+      "name": "Colour Temperature",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Tint 2": {
+      "name": "Tint",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Colour Macro 2": {
+      "name": "Colour Macro",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Colour Macro Crossfade 2": {
+      "name": "Colour Macro Crossfade",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom 3": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Device Settings 2": {
+      "name": "Device Settings",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Ch RGBW",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Dimmer",
+        "Dimmer 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Running Effect Pattern",
+        "Pattern Speed",
+        "Pan/Tilt Macro",
+        "Pan/Tilt Speed",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "18 CH Wash Light HSI",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Dimmer",
+        "Dimmer 2",
+        "Strobe",
+        "Hue",
+        "Hue 2",
+        "Saturation",
+        "Colour Temperature",
+        "Tint",
+        "Colour Macro",
+        "Colour Macro Crossfade",
+        "Zoom",
+        "Zoom 2",
+        "Pan/Tilt Speed",
+        "Device Settings"
+      ]
+    },
+    {
+      "name": "23 CH Wash Light RBW",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Dimmer",
+        "Dimmer 2",
+        "Strobe 2",
+        "Red",
+        "Red 2",
+        "Green",
+        "Green 2",
+        "Blue",
+        "Blue 2",
+        "White",
+        "White 2",
+        "Colour Temperature 2",
+        "Tint 2",
+        "Colour Macro 2",
+        "Colour Macro Crossfade 2",
+        "Zoom",
+        "Zoom 3",
+        "Pan/Tilt Speed",
+        "Device Settings 2"
+      ]
+    }
+  ]
+}
