@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vega Spot 60",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ingo"],
+    "createDate": "2022-11-14",
+    "lastModifyDate": "2022-11-14"
+  },
+  "links": {
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/lightmaXX-VEGA-SPOT-60-Focus-Prisma-7-Farben-5-Gobos/art-LIG0013616-000?campaign=keyword/DE&ProgramUUID=lpvAqJareSgAAAFl7exyjI8f&campaign=keyword/DE&ProgramUUID=lpvAqJareSgAAAFl7exyjI8f&gclid=Cj0KCQiAyMKbBhD1ARIsANs7rEGhuXEqf8bsIBgNdf1L9Rf57vdt40rATnvMzd0zX_3MN7hAonQ_QRwaAmVyEALw_wcB"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 255,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 4,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "Shutter Closed"
+        },
+        {
+          "dmxRange": [5, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "5Hz",
+          "speedEnd": "250Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Shutter open"
+        }
+      ]
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "defaultValue": 255,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Ch.",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter"
+      ]
+    }
+  ]
+}
