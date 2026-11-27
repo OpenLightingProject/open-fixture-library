@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Laser Derby MK2",
+  "shortName": "51741079",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["derhoen"],
+    "createDate": "2026-07-06",
+    "lastModifyDate": "2026-07-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/817067/Eurolite-Led-Laser-Derby-Mk2.html"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/eurolite_led_laser_derby_mk2.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 190, 190],
+    "weight": 2.3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Derby red": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Derby red"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Derby green": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Derby green"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Derby blue": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Derby blue"
+        }
+      ]
+    },
+    "Derby white": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Derby white"
+      }
+    },
+    "Derby motor rotation": {
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Laser red": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "auto",
+          "comment": "Laser red"
+        }
+      ]
+    },
+    "Laser green": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "auto green"
+        }
+      ]
+    },
+    "Laser Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "NoFunction",
+          "comment": "stop"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speed": "100%"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "sound strobe"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Derby red",
+        "Derby green",
+        "Derby blue",
+        "Derby white",
+        "Derby motor rotation",
+        "Laser red",
+        "Laser green",
+        "Laser Rotation",
+        "Strobe"
+      ]
+    }
+  ]
+}
