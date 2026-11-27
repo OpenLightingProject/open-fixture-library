@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Quantum Wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Ryan Brady"],
+    "createDate": "2023-12-19",
+    "lastModifyDate": "2023-12-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en-US/products/mac-quantum-wash"
+    ]
+  },
+  "rdm": {
+    "modelId": 34654457,
+    "softwareVersion": "V1"
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Dimmer Fade": {
+      "fineChannelAliases": ["Dimmer Fade fine"],
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "ColorIntensity",
+          "color": "Red"
+        }
+      ]
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "0%"
+        },
+        {
+          "dmxRange": [11, 170],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "10000K"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "10000K",
+          "colorTemperatureEnd": "10000K"
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "shortName": "Basic",
+      "rdmPersonalityIndex": 15,
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Red 2",
+        "Red 2 fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "CTC",
+        "Color Presets",
+        "Zoom",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Reserved"
+      ]
+    }
+  ]
+}
