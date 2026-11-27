@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VEGA Silent PAR II Quad",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Santi"],
+    "createDate": "2024-07-28",
+    "lastModifyDate": "2024-07-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de/manual/465984/Lightmaxx-Vega-Silent-Par-Series.html"
+    ],
+    "productPage": [
+      "https://www.musicstore.de/de_DE/EUR/lightmaXX-VEGA-Silent-PAR-II-Quad-18x-8W-RGBW/art-LIG0015758-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=opFkG2NbkFk&ab_channel=MusicStoreTV"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Pulse"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Color Macros 2",
+        "Dimmer RED",
+        "Dimmer GREEN",
+        "Dimmer BLUE",
+        "Dimmer WHITE"
+      ]
+    }
+  ]
+}
