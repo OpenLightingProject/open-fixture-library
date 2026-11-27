@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Iowa 70",
+  "shortName": "7x8_Iowa",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["sanlega"],
+    "createDate": "2022-01-09",
+    "lastModifyDate": "2022-01-09"
+  },
+  "comment": "Cabeza móvil de LED (7 led, 8W) 4 en 1 (RGBW)\nCanales de DMX: 9/14\nModos de Control: Audio rítmico/Automático/DMX/Master y Esclavo\nPotencia de entrega: 100W\nEstructura en fibra (poliuretano)\nPeso 3Kg",
+  "links": {
+    "manual": [
+      "https://www.madridhifi.com/crm/documents/produit/0/0/10107900/photos/pdf/2/Manual%20Usuario%20Audibax%20Iowa%20ES.pdf"
+    ],
+    "productPage": [
+      "https://www.madridhifi.com/p/4-cabezas-moviles-lm70-flightcase/"
+    ]
+  },
+  "physical": {
+    "weight": 2.7,
+    "power": 8,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Wash"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg",
+        "comment": "PAN"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg",
+        "comment": "TILT"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [9, 135],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright",
+          "comment": "DIMMER"
+        },
+        {
+          "dmxRange": [136, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "instant",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "ON"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "RED DIMMER"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "GREEN DIMMER"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "BLUE DIMMER"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "WHITE DIMMER"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "PAN TILT SPEED"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Generic",
+          "comment": "RESET"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9 channels",
+      "shortName": "9 ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
