@@ -1,0 +1,173 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB LED PAR 180W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["KEK"],
+    "createDate": "2026-03-25",
+    "lastModifyDate": "2026-03-25",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2026-03-25",
+      "comment": "created by Q Light Controller Plus (version 4.14.4)"
+    }
+  },
+  "physical": {
+    "dimensions": [110, 280, 290],
+    "weight": 2.8,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Total diming": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RED": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "R Close"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "comment": "R Open"
+        }
+      ]
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "G Close"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "comment": "G Open"
+        }
+      ]
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "B Close"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "comment": "B Open"
+        }
+      ]
+    },
+    "Strobescopic": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "No Stroboscopic",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Open DMX": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Open DMX"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Program color selection"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Jump change"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Gradual change"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectName": "Pulse change"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Voice Control"
+        }
+      ]
+    },
+    "Total speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Are the automatically added speed values correct?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "RED",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Total diming",
+        "RED",
+        "Green",
+        "Blue",
+        "Strobescopic",
+        "Open DMX",
+        "Total speed"
+      ]
+    }
+  ]
+}
