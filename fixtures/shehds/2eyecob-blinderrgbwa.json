@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "2eyeCOB BlinderRGBWA",
+  "shortName": "COB2",
+  "categories": ["Blinder", "Color Changer"],
+  "meta": {
+    "authors": ["JLF"],
+    "createDate": "2023-12-29",
+    "lastModifyDate": "2023-12-29"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1tvfUSh2N2CucbLhq1wIVKP-kfSGbgwGS/view"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/fashional-2eyes-2x100w-led-blinder-200w-cob-par-rgbw-4in1-and-rgbwauv-6in1-dmx-stage-lighting-effect-audience-lighting-dj-equipment-disco"
+    ]
+  },
+  "physical": {
+    "dimensions": [400, 210, 240],
+    "weight": 2,
+    "power": 200,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Violet": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "10Hz"
+      }
+    },
+    "Macro": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet",
+        "Strobe",
+        "Macro",
+        "Macro Speed"
+      ]
+    },
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet"
+      ]
+    }
+  ]
+}
