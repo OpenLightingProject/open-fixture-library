@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F2 FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["P"],
+    "createDate": "2022-01-26",
+    "lastModifyDate": "2022-01-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/solutions/rental/static-lighting/theater-lights/19891/f2-fc#detail-downloads"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/rental/static-lighting/theater-lights/19891/f2-fc"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=xqZE76lsrRg"
+    ]
+  },
+  "physical": {
+    "dimensions": [302, 433, 442],
+    "weight": 9,
+    "power": 250,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8Ch Direct",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    }
+  ]
+}
