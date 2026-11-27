@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ORLASER103",
+  "categories": ["Laser", "Effect", "Scanner"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-18",
+    "lastModifyDate": "2026-01-18"
+  },
+  "links": {
+    "manual": [
+      "https://orion-fxlights.com/images/products/ownersman/om_orlaser103.pdf"
+    ],
+    "productPage": [
+      "https://orion-fxlights.com/lasers/product/431328/orlaser103"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 950, 310],
+    "weight": 1.7,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "Lasers off"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true,
+          "comment": "Sound Active"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Auto Mode"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "Static Patterns"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Dynamic Patterns"
+        }
+      ]
+    },
+    "Pattern Select": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "52 Static & Dynamic patterns"
+      }
+    },
+    "Position X": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "0deg",
+        "comment": "Degrees unknown"
+      }
+    },
+    "Position Y": {
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg",
+        "comment": "Degrees unknown"
+      }
+    },
+    "Scanner Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pattern speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pattern Size": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7ch",
+      "channels": [
+        "Mode",
+        "Pattern Select",
+        "Position X",
+        "Position Y",
+        "Scanner Speed",
+        "Pattern speed",
+        "Pattern Size"
+      ]
+    }
+  ]
+}
