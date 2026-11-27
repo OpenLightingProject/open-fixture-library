@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schemas/plugin.json",
+  "name": "Daslight (SSL)",
+  "description": [
+    "<p>Lighting software developed by Daslight, commonly used for DMX control.",
+    "Works on Windows and macOS.</p>",
+    "",
+    "<p>This plugin handles <em>SSL Fixture Definition Files</em> (<em>SSL</em>)",
+    "used in Daslight software. They are saved as .ssl2 files",
+    "(one file per mode) and can be created with the ScanLibrary program.</p>"
+  ],
+  "links": {
+    "Website": "https://www.daslight.com/",
+    "Tutorial on how to create a device definition": "https://www.daslight.com/tutorials",
+    "Device definition specification": "https://www.daslight.com/support"
+  },
+  "fixtureUsage": [
+    "<p>Import fixture in the fixture library,",
+    "then patch it within the Daslight software.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": false,
+    "Windows": {
+      "main": "C:\\Program Files\\Daslight\\Library\\Fixtures\\"
+    }
+  },
+  "additionalInfo": [
+    "<p>Definition files may be stored in subfolders, but the filenames still",
+    "need to be unique (<code>Library\\manA\\fix123.ssl2</code> and",
+    "<code>Library\\manB\\fix123.ssl2</code> doesn't work). Note that the",
+    "ScanLibrary software doesn't recognize subfolders.</p>"
+  ],
+
+  "helpWanted": "Note that this plugin does not produce very reliable SSL fixture definitions yet, so please double-check the output and report any issues. Code contributions via pull requests are of course very welcome!"
+}
