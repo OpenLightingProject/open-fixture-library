@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Ocular RGBL",
+  "shortName": "Ocular RGBL",
+  "categories": ["Dimmer", "Color Changer", "Effect", "Other"],
+  "meta": {
+    "authors": ["Kasun Rathnayaka"],
+    "createDate": "2026-06-08",
+    "lastModifyDate": "2026-06-08"
+  },
+  "links": {
+    "manual": [
+      "https://myelektralite.com/wp-content/uploads/2023/11/elektraLite_Ocular-RGBW-Manual_V1.0.pdf"
+    ]
+  },
+  "physical": {
+    "power": 100,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [24, 51]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "AR2.S",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Strobe"
+      ]
+    }
+  ]
+}
