@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Followspot 200ST",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["David Dempsey"],
+    "createDate": "2026-03-27",
+    "lastModifyDate": "2026-03-27"
+  },
+  "comment": "22.9 x 11 x 8.5 in (582 x 279 x 216 mm)",
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2024/12/Followspot-200ST_UM_Rev2.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/followspot-200st/"
+    ]
+  },
+  "physical": {
+    "dimensions": [582, 279, 216],
+    "weight": 6.6,
+    "power": 264,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6000,
+      "lumens": 9349
+    },
+    "lens": {
+      "name": "Zoom",
+      "degreesMinMax": [12, 17]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "CTO"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Orange"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Generic",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [8, 215],
+          "type": "Generic",
+          "comment": "Slow to Fast"
+        },
+        {
+          "dmxRange": [216, 255],
+          "type": "Generic",
+          "comment": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "shortName": "DMX",
+      "channels": [
+        "Dimmer",
+        "Color Wheel",
+        "Strobe"
+      ]
+    }
+  ]
+}
