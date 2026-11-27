@@ -1,0 +1,296 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Shark Zoom Wash One",
+  "categories": ["Moving Head", "Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["stcky"],
+    "createDate": "2023-09-27",
+    "lastModifyDate": "2023-09-27"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/419517_shark_zoom_wash_one_uk.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 300, 215],
+    "weight": 4.2,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7x15W RGBW 4-in-1 LED"
+    },
+    "lens": {
+      "degreesMinMax": [6, 36]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorPreset",
+          "comment": "Red+White"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorPreset",
+          "comment": "Green+White"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "Blue+White"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorPreset",
+          "comment": "Red+Green"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorPreset",
+          "comment": "Green+Blue"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorPreset",
+          "comment": "Red+Blue"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorPreset",
+          "comment": "Red+Green+White"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorPreset",
+          "comment": "Green+Blue+White"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorPreset",
+          "comment": "Red+Blue+White"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorPreset",
+          "comment": "Red+Green+Blue+White"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ColorPreset",
+          "comment": "Color step program"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorPreset",
+          "comment": "Color fade program"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "6deg",
+        "angleEnd": "36deg"
+      }
+    },
+    "Built-in programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "Generic",
+          "comment": "Sound-controlled mode, from OFF to high sound sensivity"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "Reset after 3 seconds"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "No function"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "15 CH",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Temperature",
+        "Color Macros",
+        "Zoom",
+        "Built-in programs"
+      ]
+    }
+  ]
+}
