@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lustr+ Desire 40",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2022-10-25",
+    "lastModifyDate": "2022-10-25"
+  },
+  "links": {
+    "manual": [
+      "https://etc.com"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Ch",
+      "channels": [
+        "Red",
+        "White",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
