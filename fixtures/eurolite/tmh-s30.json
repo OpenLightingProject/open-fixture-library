@@ -1,0 +1,455 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TMH-S30",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ulf Kreutzberg"],
+    "createDate": "2022-10-17",
+    "lastModifyDate": "2022-10-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51786070-Anleitung-127372-1.000-eurolite-led-tmh-s30-moving-head-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51786070-eurolite-led-tmh-s30-moving-head-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=dtcpSKBgQfc"
+    ]
+  },
+  "physical": {
+    "dimensions": [170, 240, 170],
+    "weight": 3.03,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000
+    },
+    "lens": {
+      "degreesMinMax": [8, 8]
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        }
+      ]
+    },
+    "Gobo Stencil Rotation": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo 7"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "PAN": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "170deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Open/White"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "White + Red"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Blue + Yellow"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Yellow + Light blue"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Light Blue + Orange"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Orange + Rose red"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "Rose red"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Rose red + White"
+        },
+        {
+          "dmxRange": [80, 166],
+          "type": "ColorPreset",
+          "comment": "Rainbow effect counterclockwise with decreasing speed"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "ColorPreset",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow effect clowise with increasing speed"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "comment": "Gobo 1 shake with increasing speed"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "comment": "Gobo 2 shake with increasing speed"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "comment": "Gobo 3 shake with increasing speed"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "comment": "Gobo 4 shake with increasing speed"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "comment": "Gobo 5 shake with increasing speed"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "comment": "Gobo 6 shake with increasing speed"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "comment": "Gobo 7 shake with increasing speed"
+        },
+        {
+          "dmxRange": [150, 202],
+          "type": "WheelRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW",
+          "comment": "Counter-Clockwise Gobo change rotation with decreasing speed"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Gobo Stencil Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 126],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 255],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Internal program, sound control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 159],
+          "type": "Generic",
+          "comment": "Internal Program"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Generic",
+          "comment": "Sound Control"
+        }
+      ]
+    },
+    "Special functions, reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "PAN Movement"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "PanTiltSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "TILT Movement"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "PAN/TILT movement"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "PAN 2": {
+      "name": "PAN",
+      "fineChannelAliases": ["PAN 2 fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 32767,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "170deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "PAN",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Strobe",
+        "Dimmer",
+        "Internal program, sound control",
+        "Special functions, reset"
+      ]
+    },
+    {
+      "name": "12ch",
+      "channels": [
+        "PAN 2",
+        "PAN 2 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Strobe",
+        "Dimmer",
+        "Internal program, sound control",
+        "Special functions, reset"
+      ]
+    }
+  ]
+}
