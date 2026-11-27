@@ -1,0 +1,274 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED BC-6",
+  "categories": ["Effect", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["LikeRedstone"],
+    "createDate": "2025-11-15",
+    "lastModifyDate": "2025-11-15"
+  },
+  "comment": "The most glorious thing eurolite ever produced. Owned 2, 2 of them were faulty. Heres the fixture data anyway... =)",
+  "links": {
+    "manual": [
+      "https://data.showtechnic.de/data/documents/00119096.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51918806-eurolite-led-bc-6-beam-effect.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=udO-saJqBgs"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 150, 185],
+    "weight": 0.5,
+    "power": 14,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Presets": {
+      "slots": [
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Music controlled mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Auto mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "DMX mode"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green - Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue - White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset",
+          "comment": "RR"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset",
+          "comment": "GY"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "ColorPreset",
+          "comment": "BW"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "ColorPreset",
+          "comment": "RR-GY"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "ColorPreset",
+          "comment": "GY-BW"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "ColorPreset",
+          "comment": "RR-BW"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "ColorPreset",
+          "comment": "RR-GY-BW"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "RR-GY-BW"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "RRGY-RRBW-GYBW"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "RR-GY-BW-RRGY-RRBW-GYBW-RRGYBW"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "comment": "RR-GY-BW"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "comment": "RRGY-RRBW-GYBW"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "comment": "RR-GY-BW-RRGY-RRBW-GYBW-RRGYBW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic program"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Music program"
+        }
+      ]
+    },
+    "ColorFade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [16, 223],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic fade"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "soundControlled": true,
+          "comment": "Music controlled fade"
+        }
+      ]
+    },
+    "Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 95],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [96, 255],
+          "type": "Rotation",
+          "speed": "10rpm",
+          "comment": "Tells the motor to rotate, reverses when at end point"
+        }
+      ]
+    },
+    "RotationSpeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Controls the speed of the motor"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Program",
+        "Red",
+        "Green - Yellow",
+        "Blue - White",
+        "Color Presets",
+        "Strobe",
+        "ColorFade",
+        "Rotation",
+        "RotationSpeed"
+      ]
+    }
+  ]
+}
