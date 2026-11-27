@@ -1,0 +1,320 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Jet Spot 4Z",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Videoestudio"],
+    "createDate": "2023-10-23",
+    "lastModifyDate": "2023-10-23"
+  },
+  "links": {
+    "manual": [
+      "https://support.musiclights.it/ajx.php?usst=1&docs=26615&ID_USER="
+    ],
+    "productPage": [
+      "https://www.prolights.it/en/product/JETSPOT4Z"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "defaultValue": 2,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg",
+        "comment": "Fine"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Color Wheel 2": {
+      "name": "Color Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Color Wheel 3": {
+      "name": "Color Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Color Wheel 4": {
+      "name": "Color Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 1
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 7,
+        "slotNumberEnd": 7
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumberStart": 8,
+        "slotNumberEnd": 8
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "100%"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Iris": {
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "27ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Color Wheel",
+        "Color Wheel 2",
+        "Color Wheel 3",
+        "Color Wheel 4",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation fine",
+        "Gobo Wheel 2",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Iris",
+        "No function"
+      ]
+    },
+    {
+      "name": "25ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter",
+        "Color Wheel",
+        "Color Wheel 2",
+        "Color Wheel 4",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel 2",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Iris",
+        "No function"
+      ]
+    },
+    {
+      "name": "23ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter",
+        "Color Wheel",
+        "Color Wheel 2",
+        "Color Wheel 3",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel 2",
+        "Prism Rotation",
+        "Frost",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Iris",
+        "No function"
+      ]
+    }
+  ]
+}
