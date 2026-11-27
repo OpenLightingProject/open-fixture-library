@@ -1,0 +1,128 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hyulight 180W BEAM & SPOT & ZOOM",
+  "shortName": "HYULIGHT BEAM & SPOT & ZOOM",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Martin"],
+    "createDate": "2026-03-16",
+    "lastModifyDate": "2026-03-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.aliexpress.com/item/1005011543313466.html?spm=a2g0o.order_list.order_list_main.5.63721802LfUSkn"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelRotation",
+        "speed": "slow CW"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "slow CW"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "slow CW"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HYULIGHTS 180W BEAM&SPOT&ZOOM",
+      "shortName": "HYULIGHTS 180W BEAM & SPOT & ZOOM",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Color Macros",
+        "Gobo Wheel",
+        "Focus",
+        "Color Wheel",
+        "Prism",
+        "No function",
+        "Reserved"
+      ]
+    }
+  ]
+}
