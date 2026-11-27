@@ -1,0 +1,333 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ORFX107",
+  "categories": ["Laser", "Effect", "Color Changer", "Blinder"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2026-01-17",
+    "lastModifyDate": "2026-01-17"
+  },
+  "links": {
+    "manual": [
+      "https://orion-fxlights.com/images/products/ownersman/om_orfx107.pdf"
+    ],
+    "productPage": [
+      "https://orion-fxlights.com/led-effects/product/763950/orfx107"
+    ]
+  },
+  "physical": {
+    "dimensions": [457, 178, 165],
+    "weight": 3.63,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "LED Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "4in1 LED+UV"
+      }
+    },
+    "LED Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "LED Effect Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "EffectParameter",
+          "parameterStart": "slow",
+          "parameterEnd": "fast",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "Blinder Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "5050Strobe"
+      }
+    },
+    "Blinder Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Blinder Effect Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Spot Effect": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "LED spot",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Spot Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Spot Effect Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Laser Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "Effect",
+          "effectName": "laser"
+        }
+      ]
+    },
+    "Laser Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "LED Effect Strobe 2": {
+      "name": "LED Effect Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "EffectParameter",
+          "parameterStart": "slow",
+          "parameterEnd": "fast",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "UV dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color mix 1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "4in1 LED+UV"
+      }
+    },
+    "Color mix 2": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "4in1 LED+UV"
+      }
+    },
+    "Blinder dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Spot dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Spot color mix 1": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Spot color mix 2": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Spot color mix 3": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Spot color mix 4": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Green laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Laser movement": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [11, 120],
+          "type": "Generic",
+          "comment": "Movement forward fast to slow"
+        },
+        {
+          "dmxRange": [121, 134],
+          "type": "NoFunction",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [135, 245],
+          "type": "Generic",
+          "comment": "Movement forward Slow to Fast"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction",
+          "comment": "Stop"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11 CH",
+      "shortName": "11ch",
+      "channels": [
+        "LED Effect",
+        "LED Effect Speed",
+        "LED Effect Strobe",
+        "Blinder Effect",
+        "Blinder Effect Speed",
+        "Blinder Effect Strobe",
+        "Spot Effect",
+        "Spot Effect Speed",
+        "Spot Effect Strobe",
+        "Laser Effect",
+        "Laser Effect Speed"
+      ]
+    },
+    {
+      "name": "24 CH",
+      "shortName": "24ch",
+      "channels": [
+        "Master Dimmer",
+        "LED Effect Strobe 2",
+        "UV dimmer",
+        "Color mix 1",
+        "Color mix 2",
+        "LED Effect",
+        "LED Effect Speed",
+        "Blinder dimmer",
+        "Blinder Effect Strobe",
+        "Blinder Effect",
+        "Blinder Effect Speed",
+        "Spot dimmer",
+        "Spot Effect Strobe",
+        "Spot color mix 1",
+        "Spot color mix 2",
+        "Spot color mix 3",
+        "Spot color mix 4",
+        "Spot Effect",
+        "Spot Effect Speed",
+        "Red laser",
+        "Green laser",
+        "Laser movement",
+        "Laser Effect",
+        "Laser Effect Speed"
+      ]
+    }
+  ]
+}
