@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH Bar S120",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["F.Konert"],
+    "createDate": "2026-11-05",
+    "lastModifyDate": "2026-11-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.de"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Ch38": {
+      "defaultValue": "100%",
+      "constant": true,
+      "capability": {
+        "type": "Rotation"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "38 kanal modus",
+      "physical": {
+        "dimensions": [1200, 100, 80],
+        "weight": 18,
+        "power": 500,
+        "DMXconnector": "3-pin"
+      },
+      "channels": [
+        "Ch38"
+      ]
+    }
+  ]
+}
