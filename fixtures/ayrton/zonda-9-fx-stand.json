@@ -1,0 +1,789 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Zonda 9 FX Stand",
+  "shortName": "Zonda",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["LeGlou"],
+    "createDate": "2026-11-03",
+    "lastModifyDate": "2026-11-03"
+  },
+  "comment": "51 CH All array on Pixel Mapper",
+  "links": {
+    "productPage": [
+      "https://www.ayrton.eu/produit/zonda-9-fx/"
+    ]
+  },
+  "physical": {
+    "dimensions": [530, 625, 280],
+    "weight": 29.2,
+    "power": 1400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 25000
+    },
+    "lens": {
+      "degreesMinMax": [4, 56]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "720deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "stop"
+      }
+    },
+    "Tilt Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "stop"
+      }
+    },
+    "Red All": {
+      "fineChannelAliases": ["Red All fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green All": {
+      "fineChannelAliases": ["Green All fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue All": {
+      "fineChannelAliases": ["Blue All fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White All": {
+      "fineChannelAliases": ["White All fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Blue All 2": {
+      "name": "Blue All",
+      "fineChannelAliases": ["Blue All 2 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue All 3": {
+      "name": "Blue All",
+      "fineChannelAliases": ["Blue All 3 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White All 2": {
+      "name": "White All",
+      "fineChannelAliases": ["White All 2 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 40,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTO": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 21],
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "NoFonction"
+        },
+        {
+          "dmxRange": [22, 42],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [43, 63],
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
+        },
+        {
+          "dmxRange": [64, 84],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [85, 105],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [106, 126],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [127, 147],
+          "type": "ColorTemperature",
+          "colorTemperature": "5500K"
+        },
+        {
+          "dmxRange": [148, 168],
+          "type": "ColorTemperature",
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [169, 189],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [190, 210],
+          "type": "ColorTemperature",
+          "colorTemperature": "4000K"
+        },
+        {
+          "dmxRange": [211, 231],
+          "type": "ColorTemperature",
+          "colorTemperature": "3500K"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Presets 2": {
+      "name": "Color Presets",
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "RGBW"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorPreset",
+          "comment": "RGBW-->ColorPreset"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset",
+          "comment": "ColorPreset"
+        }
+      ]
+    },
+    "Color Presets 3": {
+      "name": "Color Presets",
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "No Fade"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ColorPreset",
+          "comment": "2Color Fade"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Chase Pattern": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "Chase Off"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "Chase 1"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Chase 2"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Chase 3"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Chase 4"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Chase 5"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "Chase 6"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "Chase 7"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "Chase 8"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "Chase 9"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "Chase 10"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "Chase 11"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "Chase 12"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "Chase 13"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "Chase 14"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "Chase 15"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "Chase 16"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "Chase 17"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "Chase 18"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "Chase 19"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "Chase 20"
+        },
+        {
+          "dmxRange": [110, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Chase Speed": {
+      "defaultValue": "50%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Chase Speed"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Speed",
+          "speed": "stop",
+          "comment": "Speed=0"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Chase Speed"
+        }
+      ]
+    },
+    "Chase Fade": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "EffectDuration",
+        "duration": "short",
+        "comment": "Fade Chase"
+      }
+    },
+    "Chase Size": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red Chase": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Chase": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Chase": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Chase": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer Chase": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer BG Chase": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off",
+        "comment": "Inverted disabled when Chase Off"
+      }
+    },
+    "Chase Strobe": {
+      "defaultValue": "49%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "FX Control": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "No Effect"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Main LED"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "RGB Zonda Color"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Zonda FX Chase"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Led Mapper"
+        },
+        {
+          "dmxRange": [50, 255],
+          "type": "Effect",
+          "effectName": "Reserved"
+        }
+      ]
+    },
+    "FX Dimmer": {
+      "fineChannelAliases": ["FX Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "FX Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "FX Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "FX Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "FX Chase": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "No FX"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "FX1"
+        },
+        {
+          "dmxRange": [11, 254],
+          "type": "Effect",
+          "effectName": "FX 2 --> FX 244"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "FX 245"
+        }
+      ]
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "FX Chase Speed": {
+      "defaultValue": "50%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 125],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [131, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "BG FX Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "BG FX Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "BG FX Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BG FX Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGBW to Pixel Mode": {
+      "capability": {
+        "type": "Generic",
+        "comment": "RGBW--->Pixel"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Zonda 9 Fx Stand",
+      "shortName": "Zonda",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Pan Rotation",
+        "Tilt Rotation",
+        "Red All",
+        "Red All fine",
+        "Green All",
+        "Green All fine",
+        "Blue All 3",
+        "Blue All 3 fine",
+        "White All 2",
+        "White All 2 fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "CTO",
+        "Color Presets",
+        "Color Presets 2",
+        "Color Presets 3",
+        "Zoom",
+        "Zoom fine",
+        "No function",
+        "Reserved",
+        "Chase Pattern",
+        "Chase Speed",
+        "Chase Fade",
+        "Chase Size",
+        "Red Chase",
+        "Green Chase",
+        "Blue Chase",
+        "White Chase",
+        "Dimmer Chase",
+        "Dimmer BG Chase",
+        "Chase Strobe",
+        "FX Control",
+        "FX Dimmer",
+        "FX Dimmer fine",
+        "FX Red",
+        "FX Green",
+        "FX Blue",
+        "FX Chase",
+        "Reserved 2",
+        "FX Chase Speed",
+        "BG FX Dimmer",
+        "BG FX Red",
+        "BG FX Green",
+        "BG FX Blue",
+        "RGBW to Pixel Mode"
+      ]
+    }
+  ]
+}
