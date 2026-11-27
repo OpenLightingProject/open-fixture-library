@@ -1,0 +1,304 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "WEBB LED Bee Eye 7x40W RGBW Wash & Zoom Moving Head Light",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["FT"],
+    "createDate": "2025-09-17",
+    "lastModifyDate": "2025-09-17"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1Vb_ESXgjobmwXC5t6SWE-rkLMz_oi41P/view"
+    ],
+    "productPage": [
+      "https://shehds.com/products/jms-webb-led-wash-zoom-bee-eye-7x40w-rgbw-moving-head?srsltid=AfmBOoq4hhLhXjBqOqL-9ot_i2IhAu8uwuM1u63cxMxfCGPHZ6uClM0s"
+    ],
+    "other": [
+      "https://www.youtube.com/watch?v=n4ENvZoPY2I&si=q9Zg_jhdboFhpAs3"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 4": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 4 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan 5": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 5 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [213, 225],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 238],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [239, 251],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Intensity",
+          "brightnessStart": "bright",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "7500K"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "no function"
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "Effect",
+          "effectName": "Wave effects"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "Effect",
+          "effectName": "dream effects"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "Effect",
+          "effectName": "colors chase"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "Effect",
+          "effectName": "red wave effects"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "Effect",
+          "effectName": "green wave effects"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "Effect",
+          "effectName": "blu wave effects"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "Effect",
+          "effectName": "yellow wave effects"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "Effect",
+          "effectName": "magenta wave effects"
+        },
+        {
+          "dmxRange": [208, 233],
+          "type": "Effect",
+          "effectName": "cyan wave effects"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Effect",
+          "effectName": "white wave effects"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Effect Speed 2": {
+      "name": "Effect Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan"
+      ]
+    },
+    {
+      "name": "17 channel",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan 4",
+        "Pan 4 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTO",
+        "Color Macros",
+        "Zoom",
+        "Effect Speed",
+        "Effect Speed 2",
+        "No function"
+      ]
+    }
+  ]
+}
