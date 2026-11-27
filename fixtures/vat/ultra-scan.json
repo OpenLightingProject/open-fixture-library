@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ultra Scan",
+  "categories": ["Barrel Scanner"],
+  "meta": {
+    "authors": ["Noah beducker"],
+    "createDate": "2026-10-29",
+    "lastModifyDate": "2026-10-29"
+  },
+  "links": {
+    "other": [
+      "http://leckmich.de"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "180%"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "normal",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Gobo Wheel",
+        "Color Wheel",
+        "Strobe"
+      ]
+    }
+  ]
+}
