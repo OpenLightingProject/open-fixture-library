@@ -1,0 +1,640 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ-B243 50W Moving Head Light with LED Belt-Black/White",
+  "shortName": "ZQ-B243 LED Movinghead",
+  "categories": ["Moving Head", "Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Kim Patrick"],
+    "createDate": "2023-05-05",
+    "lastModifyDate": "2023-05-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/05/ZQ-B243.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/b243-50w-moving-head-light-with-led-belt-black-white/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-KHipiWfXqI"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 295, 200],
+    "weight": 2.5,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ec54f4"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#e0ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan/Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta/Amber"
+        },
+        {
+          "type": "Color",
+          "name": "Amber/Green"
+        },
+        {
+          "type": "Color",
+          "name": "Green/Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Blue/yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow/Red"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower"
+        },
+        {
+          "type": "Gobo",
+          "name": "Dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "Fish"
+        },
+        {
+          "type": "Gobo",
+          "name": "Leaves"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rose"
+        },
+        {
+          "type": "Gobo",
+          "name": "Turbine"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower"
+        },
+        {
+          "type": "Gobo",
+          "name": "Dots"
+        },
+        {
+          "type": "Gobo",
+          "name": "Fish"
+        },
+        {
+          "type": "Gobo",
+          "name": "Leaves"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Rose"
+        },
+        {
+          "type": "Gobo",
+          "name": "Turbine"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "OPEN/WHITE"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "RED"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "YELLOW"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "BLUE"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "GREEN"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "AMBER"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "MAGENTA"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "CYAN"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "CYAN/MAGENTA"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "MAGENTA/AMBER"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "AMBER/GREEN"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "GREEN/BLUE"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "BLUE/YELLOW"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "YELLOW/RED"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Colour Wheel Rot."
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelShake",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelShake",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Effect",
+          "effectName": "Auto Mode 1",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Effect",
+          "effectName": "Auto Mode 2",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant"
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Effect",
+          "effectName": "Auto Mode 3",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant"
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Effect",
+          "effectName": "Auto Mode 4",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [210, 234],
+          "type": "Effect",
+          "effectName": "Sound Mode 3",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 4",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "instant",
+          "soundControlled": true,
+          "soundSensitivity": "high"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "parameter": "instant",
+          "hold": "5s",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 19],
+          "type": "ColorPreset",
+          "comment": "Red Ring",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [20, 34],
+          "type": "ColorPreset",
+          "comment": "Green Ring",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [35, 49],
+          "type": "ColorPreset",
+          "comment": "Blue Ring",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [50, 64],
+          "type": "ColorPreset",
+          "comment": "Yellow Ring",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [65, 79],
+          "type": "ColorPreset",
+          "comment": "Magenta Ring",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [80, 94],
+          "type": "ColorPreset",
+          "comment": "Cyan Ring",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [95, 109],
+          "type": "ColorPreset",
+          "comment": "White Ring",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [110, 124],
+          "type": "ColorPreset",
+          "comment": "Red Yellow Ring Rot.",
+          "colors": ["#ff7700"]
+        },
+        {
+          "dmxRange": [125, 139],
+          "type": "ColorPreset",
+          "comment": "Red Blue Ring Rot.",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [140, 154],
+          "type": "ColorPreset",
+          "comment": "Red White Ring Rot.",
+          "colors": ["#ff8888"]
+        },
+        {
+          "dmxRange": [155, 169],
+          "type": "ColorPreset",
+          "comment": "Green Yellow Ring Rot.",
+          "colors": ["#aaff00"]
+        },
+        {
+          "dmxRange": [170, 184],
+          "type": "ColorPreset",
+          "comment": "Green Cyan Ring Rot.",
+          "colors": ["#00ff99"]
+        },
+        {
+          "dmxRange": [185, 199],
+          "type": "ColorPreset",
+          "comment": "Green White Ring Rot.",
+          "colors": ["#99ff99"]
+        },
+        {
+          "dmxRange": [200, 214],
+          "type": "ColorPreset",
+          "comment": "Blue Magenta Ring Rot.",
+          "colors": ["#7700ff"]
+        },
+        {
+          "dmxRange": [215, 229],
+          "type": "ColorPreset",
+          "comment": "Blue Cyan Ring Rot.",
+          "colors": ["#00aaff"]
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "ColorPreset",
+          "comment": "Blue White Ring Rot.",
+          "colors": ["#8888ff"]
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ColorPreset",
+          "comment": "ALL Ring Rot.",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "530deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Auto Mode",
+        "Reset",
+        "Effect"
+      ]
+    },
+    {
+      "name": "12 Channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Auto Mode",
+        "Reset",
+        "Effect"
+      ]
+    }
+  ]
+}
