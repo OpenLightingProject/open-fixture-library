@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-13",
+  "shortName": "eurolite-led-tmh-13",
+  "categories": ["Moving Head", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["anonymous"],
+    "createDate": "2023-08-22",
+    "lastModifyDate": "2023-08-22"
+  },
+  "links": {
+    "productPage": [
+      "https://www.prolighting.de/lichttechnik/movinglights/movinghead-spot/eurolite-led-tmh-13-moving-head-spot-10w.html"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Program / Music": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Special": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9-Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Program / Music",
+        "Special"
+      ]
+    }
+  ]
+}
