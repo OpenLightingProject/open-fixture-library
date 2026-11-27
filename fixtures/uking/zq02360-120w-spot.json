@@ -1,0 +1,456 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZQ02360 120W Spot",
+  "shortName": "ZQ02360",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Thomas Borgogno"],
+    "createDate": "2026-11-27",
+    "lastModifyDate": "2026-11-27"
+  },
+  "links": {
+    "manual": [
+      "https://ae-pic-a1.aliexpress-media.com/kf/Sdaa20bbd323e46b3b233d567490e210aZ.pdf"
+    ],
+    "productPage": [
+      "https://it.aliexpress.com/item/1005007676196140.html"
+    ]
+  },
+  "physical": {
+    "power": 120
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "Color selection",
+          "helpWanted": "Which colors are on the color wheel and which DMX values select them?"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Effect",
+          "effectName": "Color flow forward"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "NoFunction",
+          "comment": "Color flow stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Effect",
+          "effectName": "Color flow reverse"
+        }
+      ]
+    },
+    "Pattern": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction",
+          "comment": "White light"
+        },
+        {
+          "dmxRange": [4, 54],
+          "type": "Effect",
+          "effectName": "Pattern selection",
+          "helpWanted": "Which patterns are available and which DMX values select them?"
+        },
+        {
+          "dmxRange": [55, 191],
+          "type": "Effect",
+          "effectName": "Pattern dither"
+        },
+        {
+          "dmxRange": [192, 201],
+          "type": "NoFunction",
+          "comment": "White light"
+        },
+        {
+          "dmxRange": [202, 227],
+          "type": "Effect",
+          "effectName": "Pattern forward rotation"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "NoFunction",
+          "comment": "Pattern rotation stop"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Pattern reverse rotation"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 128],
+          "type": "Prism"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Prism",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Prism rotation"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Aperture Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Effect",
+          "effectName": "Light circle off"
+        },
+        {
+          "dmxRange": [10, 15],
+          "type": "ColorPreset",
+          "comment": "Color macro 1",
+          "helpWanted": "Which colors do the color macros produce?"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "ColorPreset",
+          "comment": "Color macro 2"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "ColorPreset",
+          "comment": "Color macro 3"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "ColorPreset",
+          "comment": "Color macro 4"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "ColorPreset",
+          "comment": "Color macro 5"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "ColorPreset",
+          "comment": "Color macro 6"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "ColorPreset",
+          "comment": "Color macro 7"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "ColorPreset",
+          "comment": "Color macro 8"
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "ColorPreset",
+          "comment": "Color macro 9"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "ColorPreset",
+          "comment": "Color macro 10"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "ColorPreset",
+          "comment": "Color macro 11"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "Effect",
+          "effectName": "Color macro self-propelled effect 1"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "Effect",
+          "effectName": "Color macro self-propelled effect 2"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "Effect",
+          "effectName": "Color macro self-propelled effect 3"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "Effect",
+          "effectName": "Color macro self-propelled effect 4"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Effect",
+          "effectName": "Color macro self-propelled effect 5"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "Effect",
+          "effectName": "Horse racing effect 1"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "Effect",
+          "effectName": "Horse racing effect 2"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "Effect",
+          "effectName": "Horse racing effect 3"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "Effect",
+          "effectName": "Horse racing effect 4"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "Effect",
+          "effectName": "Horse racing effect 5"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "Effect",
+          "effectName": "Horse racing effect 6"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "Effect",
+          "effectName": "Horse racing effect 7"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "Effect",
+          "effectName": "Horse racing effect 8"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "Effect",
+          "effectName": "Horse racing effect 9"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "Effect",
+          "effectName": "Horse racing effect 10"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "Effect",
+          "effectName": "Horse racing effect 11"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "Effect",
+          "effectName": "Horse racing effect 12"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "Effect",
+          "effectName": "Horse racing effect 13"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "Effect",
+          "effectName": "Horse racing effect 14"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "Effect",
+          "effectName": "Horse racing effect 15"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "Effect",
+          "effectName": "Horse racing effect 16"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Effect",
+          "effectName": "Horse racing effect 17"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "Effect",
+          "effectName": "Horse racing effect 18"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "Effect",
+          "effectName": "Horse racing effect 19"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "Horse racing effect 20"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Lamp bead water flow speed"
+      }
+    },
+    "Macro Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 209],
+          "type": "Effect",
+          "effectName": "Automatic program"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "comment": "Effect reset"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt reset"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "Reset the whole machine"
+        },
+        {
+          "dmxRange": [40, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Pattern",
+        "Prism",
+        "Focus",
+        "Aperture Effect",
+        "Effect Speed",
+        "Macro Function",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel",
+        "Pattern",
+        "Prism",
+        "Focus",
+        "Aperture Effect",
+        "Effect Speed",
+        "Macro Function",
+        "Reset"
+      ]
+    }
+  ]
+}
