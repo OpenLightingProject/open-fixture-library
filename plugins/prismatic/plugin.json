@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Prismatic",
+  "description": [
+    "<p><em>Prismatic</em> is a cross-platform modular Audio Video software for creating stunning visuals and graphics prototypes, the Prismatic is intended to be used as both the studio tool and live performance tool. Prismatic supports mixing, creating, and composing video assets, 3D, textures, sounds, MIDI/OSC, and can directly render into display output or use NDI/Spout.</p>"
+  ],
+  "links": {
+    "Website": "https://prismatic.art/"
+  },
+  "fixtureUsage": [
+    "<p>Drag the <code>.prd</code> files onto Prismatic main window and dialog will show up about fixture installation.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": false,
+    "Windows": {
+      "main": "C:\\Prismatic",
+      "user": "C:\\Users\\[user name]\\Prismatic"
+    },
+    "Linux": {
+      "main": "/usr/share/prismatic",
+      "user": "~/Prismatic"
+    }
+  }
+}
