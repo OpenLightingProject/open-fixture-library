@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED-PLL-432-cw-ww-panel",
+  "shortName": "ppl-432",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Leon allik"],
+    "createDate": "2025-04-11",
+    "lastModifyDate": "2025-04-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.manua.ls/eurolite/led-pll-432/manual"
+    ]
+  },
+  "availableChannels": {
+    "1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "1",
+        "2"
+      ]
+    }
+  ]
+}
