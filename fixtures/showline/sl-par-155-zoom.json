@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SL PAR 155 ZOOM",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Anonym"],
+    "createDate": "2026-05-18",
+    "lastModifyDate": "2026-05-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.vari-lite.com/b-dam/vari-lite/products/sl-par-155-zoom/guides-and-manuals/SL_PAR_155_USER_MANUAL.pdf"
+    ],
+    "productPage": [
+      "https://www.vari-lite.com/global/products/sl-par-155-zoom#_guides-manuals"
+    ],
+    "video": [
+      "https://www.vari-lite.com/global/products/sl-par-155-zoom#_guides-manuals"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "simple 8",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
