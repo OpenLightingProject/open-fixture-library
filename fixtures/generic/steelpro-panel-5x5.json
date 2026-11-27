@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SteelPro Panel 5x5",
+  "shortName": "Panel 5x5",
+  "categories": ["Blinder", "Color Changer", "Strobe", "Dimmer"],
+  "meta": {
+    "authors": ["Ricardo Mtz"],
+    "createDate": "2023-06-30",
+    "lastModifyDate": "2023-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.steelpro.mx/MLM-1366931997-panel-led-profesional-dj-25x15-w-rgbw-4-en-1-steelpro-_JM"
+    ],
+    "productPage": [
+      "https://www.steelpro.mx/MLM-1366931997-panel-led-profesional-dj-25x15-w-rgbw-4-en-1-steelpro-_JM"
+    ],
+    "video": [
+      "https://www.steelpro.mx/MLM-1366931997-panel-led-profesional-dj-25x15-w-rgbw-4-en-1-steelpro-_JM"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 70],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [71, 120],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        },
+        {
+          "dmxRange": [121, 170],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "No function"
+      ]
+    }
+  ]
+}
