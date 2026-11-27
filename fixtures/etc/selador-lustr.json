@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Selador Lustr",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Clément"],
+    "createDate": "2025-05-14",
+    "lastModifyDate": "2025-05-14"
+  },
+  "links": {
+    "manual": [
+      "https://shopwl.com/content/Lustr%20Classic%20LED%20Fixtures%20-%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Legacy/Lighting-Fixtures/Classic-Lustr/Documentation.aspx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=RforC8sqEMg"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red-orange": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channels",
+      "channels": [
+        "Red",
+        "Red-orange",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo",
+        "Dimmer"
+      ]
+    }
+  ]
+}
