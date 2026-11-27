@@ -1,0 +1,366 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "120W LED Moving Head Light",
+  "categories": ["Moving Head", "Color Changer", "Strobe", "Dimmer"],
+  "meta": {
+    "authors": ["Kyle Mohr"],
+    "createDate": "2025-11-01",
+    "lastModifyDate": "2025-11-01"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1qYQDzCd80RJhf38fK--pbcBlPYQrWPFh/view?usp=sharing"
+    ],
+    "productPage": [
+      "https://www.amazon.com/dp/B09Y9HSPDP"
+    ]
+  },
+  "physical": {
+    "dimensions": [33, 26, 22],
+    "weight": 4.8,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Color Macros": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Smaller Circle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Snowflake"
+        },
+        {
+          "type": "Gobo",
+          "name": "Vortex"
+        },
+        {
+          "type": "Gobo",
+          "name": "Star"
+        },
+        {
+          "type": "Gobo",
+          "name": "Labyrinth"
+        },
+        {
+          "type": "Gobo",
+          "name": "Spiral"
+        },
+        {
+          "type": "Gobo",
+          "name": "Reticle"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan (Coarse)": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt (Coarse)": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow/Green",
+          "colors": ["#80ff00"]
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#6600ff"]
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "ColorPreset",
+          "comment": "Blueish/White",
+          "colors": ["#66ffff"]
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "ColorPreset",
+          "comment": "Auto-Switch Colors, Slow to Fast",
+          "colors": ["#ff0000", "#ffff00", "#80ff00", "#00ff00", "#0000ff", "#6600ff", "#66ffff"]
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 0,
+          "comment": "None (Regular Circle)"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelSlotRotation",
+          "slotNumberStart": 0,
+          "slotNumberEnd": 7,
+          "speedStart": "1.5Hz",
+          "speedEnd": "3Hz"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "speed": "stop",
+          "comment": "Prism Off"
+        },
+        {
+          "dmxRange": [128, 156],
+          "type": "Prism",
+          "speed": "100%",
+          "comment": "Prism On"
+        },
+        {
+          "dmxRange": [157, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Modes": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 59],
+          "type": "Generic",
+          "comment": "Auto Mode 1"
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "Generic",
+          "comment": "Auto Mode 2"
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "Generic",
+          "comment": "Auto Mode 3"
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "Generic",
+          "comment": "Auto Mode 4"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "No function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Hold for 3s to reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Pan (Coarse)",
+        "Pan",
+        "Tilt (Coarse)",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Gobo Wheel",
+        "Prism",
+        "Modes",
+        "No function"
+      ]
+    }
+  ]
+}
