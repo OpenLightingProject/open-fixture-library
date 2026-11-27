@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dimmer RGBAW",
+  "shortName": "D-RGBAW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["LeGlou"],
+    "createDate": "2026-11-04",
+    "lastModifyDate": "2026-11-04"
+  },
+  "links": {
+    "productPage": [
+      "https://ledbox.fr/catalogue/vente/creative-led/rubans-de-led-matrices/"
+    ]
+  },
+  "physical": {
+    "dimensions": [50, 50, 50],
+    "weight": 2,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "COB",
+      "colorTemperature": 4000
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dim RGBAW",
+      "shortName": "D-RGBAW",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White"
+      ]
+    }
+  ]
+}
