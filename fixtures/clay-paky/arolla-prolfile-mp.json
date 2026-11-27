@@ -1,0 +1,333 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Arolla Prolfile MP",
+  "shortName": "Arolla standar",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Marcos"],
+    "createDate": "2026-02-09",
+    "lastModifyDate": "2026-02-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.claypaky.it/products/arolla-profile-mp/"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 360, 593],
+    "weight": 25,
+    "power": 720,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "led",
+      "colorTemperature": 6400,
+      "lumens": 22000
+    },
+    "lens": {
+      "name": "120mm",
+      "degreesMinMax": [6.2, 48.8]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CTO": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTB",
+        "colorTemperatureEnd": "CTO"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Iris": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Gobo Stencil Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Rotation"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Prism": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation"
+      }
+    },
+    "Gobo Wheel Rotation 2": {
+      "name": "Gobo Wheel Rotation",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot"
+      }
+    },
+    "Gobo Wheel Rotation 3": {
+      "name": "Gobo Wheel Rotation",
+      "defaultValue": "0%",
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Frost": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Blade 1": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 1 Rotation": {
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 1,
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Blade 2": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 2 Rotaiton": {
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 2,
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Blade 3": {
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 3 Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 3,
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Balde 4": {
+      "defaultValue": "4%",
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Blade 4 Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "BladeRotation",
+        "blade": 4,
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Blade System Rotation": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "BladeSystemRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Framing macro": {
+      "capability": {
+        "type": "BladeSystemRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Framing macro speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Reset": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Funcion": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standar",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "CTO",
+        "Color Macros",
+        "Color Wheel",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Iris",
+        "Gobo Stencil Rotation",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation fine",
+        "Prism",
+        "Prism Rotation",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation 3",
+        "Frost",
+        "Focus",
+        "Zoom",
+        "Blade 1",
+        "Blade 1 Rotation",
+        "Blade 2",
+        "Blade 2 Rotaiton",
+        "Blade 3",
+        "Blade 3 Rotation",
+        "Balde 4",
+        "Blade 4 Rotation",
+        "Blade System Rotation",
+        "Framing macro",
+        "Framing macro speed",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Reset",
+        "Funcion"
+      ]
+    }
+  ]
+}
