@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q-7",
+  "shortName": "Q-7",
+  "categories": ["Other", "Strobe"],
+  "meta": {
+    "authors": ["Michal"],
+    "createDate": "2021-11-20",
+    "lastModifyDate": "2021-11-20"
+  },
+  "comment": "RGBW wash/strobe",
+  "links": {
+    "manual": [
+      "https://sgmlight.com/Admin/Public/DWSDownload.aspx?File=%5CFiles%5CFiles%5CPerfion%5CStrRDDATAUserManualFileGroup%5CQ-7_Q-7W%5CFileRDDATAUserManualQ7SeriesWEB%5CSGM%20Q-7%20series%20User%20Manual%20STD%20and%20POI%20(Rev.%20E).pdf"
+    ],
+    "productPage": [
+      "https://sgmlight.com/products/q%C2%B77"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jOmFlbZAAGM"
+    ]
+  },
+  "physical": {
+    "dimensions": [497, 312, 185],
+    "weight": 8.1,
+    "power": 400,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [110, 145]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Duration": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "25ms"
+      }
+    },
+    "Strobe Speed": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "120Hz"
+      }
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "XC-5",
+      "shortName": "Q-7_XC5",
+      "channels": [
+        "Intensity",
+        "Strobe Duration",
+        "Strobe Speed",
+        "Effect",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
