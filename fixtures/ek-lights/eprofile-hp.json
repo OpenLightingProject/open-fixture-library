@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EProfile HP",
+  "shortName": "EProfile HP",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Immanuel"],
+    "createDate": "2023-09-20",
+    "lastModifyDate": "2023-09-20",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-10-19",
+      "comment": "GDTF v1.2 fixture type ID: 9269937F-A276-424E-966B-A1811E5FE854"
+    }
+  },
+  "comment": "200W 3200K/5700K LED光源\n冷白，暖白双版本可选\n高显色指数，CRI最高可达95\n4种调光曲线，高效光学系统\n色温高度一致，像场平坦均匀\n静音操作，无闪烁输出, 低维护设计\n铝合金抗冲击外壳\n可选光学透镜: 19°、 26°、 36°、 50°\nDMX控制",
+  "availableChannels": {
+    "Dim": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 1
+      }
+    },
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "FX1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "No Function",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [11, 70],
+          "type": "Effect",
+          "effectName": "Auto Program 1",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [71, 130],
+          "type": "Effect",
+          "effectName": "Auto Program 2",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [131, 190],
+          "type": "Effect",
+          "effectName": "Auto Program 3",
+          "speedStart": 0,
+          "speedEnd": 1
+        },
+        {
+          "dmxRange": [191, 255],
+          "type": "Effect",
+          "effectName": "Auto Program 4",
+          "speedStart": 0,
+          "speedEnd": 1
+        }
+      ]
+    },
+    "FX1 Rate": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "1Hz",
+        "comment": "Speed Slow to Fast"
+      }
+    },
+    "Dim Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Menu Set"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Dim Curve Off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Curve 1 (Fast)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Curve 2 (Mid)"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": 1,
+          "comment": "Curve 3 (Slow)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1CH",
+      "channels": [
+        "Dim"
+      ]
+    },
+    {
+      "name": "2CH",
+      "channels": [
+        "Dim",
+        "Sh1"
+      ]
+    },
+    {
+      "name": "5CH",
+      "channels": [
+        "Dim",
+        "Sh1",
+        "FX1",
+        "FX1 Rate",
+        "Dim Curve"
+      ]
+    }
+  ]
+}
