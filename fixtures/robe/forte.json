@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FORTE",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Anoymous"],
+    "createDate": "2026-10-15",
+    "lastModifyDate": "2026-10-15"
+  },
+  "links": {
+    "productPage": [
+      "https://www.robe.cz/forte"
+    ]
+  },
+  "rdm": {
+    "modelId": 273,
+    "softwareVersion": "1.8"
+  },
+  "physical": {
+    "dimensions": [843, 483.5, 335],
+    "weight": 41,
+    "power": 1250,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "TE™ 1.000W White LED TRANSFERABLE ENGINE",
+      "colorTemperature": 6.7,
+      "lumens": 82
+    },
+    "lens": {
+      "name": "TE™ 1.000W HP White LED Engine (Patented)",
+      "degreesMinMax": [5, 55]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "MagFrost™",
+      "rdmPersonalityIndex": 273,
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
