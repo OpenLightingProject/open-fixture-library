@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SPS-120",
+  "shortName": "SPS-120",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ole"],
+    "createDate": "2024-04-21",
+    "lastModifyDate": "2024-04-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.kirstein.de/docs/manuals/sl-SPS-120-DMX-dt-0820.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 140, 90],
+    "weight": 0.34,
+    "power": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Default Value for controlling via ch 1-4"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction",
+          "comment": "not used"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Effect"
+      ]
+    }
+  ]
+}
