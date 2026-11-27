@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LEDStrob140",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2023-09-14",
+    "lastModifyDate": "2023-09-14"
+  },
+  "links": {
+    "manual": [
+      "https://invask.ru/files/upload/involight-led-strob140_1298885199.pdf"
+    ],
+    "productPage": [
+      "https://invask.ru/product/72493"
+    ]
+  },
+  "physical": {
+    "dimensions": [460, 200, 125],
+    "weight": 4.9,
+    "power": 34,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 189],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [190, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    }
+  ]
+}
