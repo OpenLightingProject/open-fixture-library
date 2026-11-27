@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ariance 1430",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["jj"],
+    "createDate": "2025-06-04",
+    "lastModifyDate": "2025-06-04"
+  },
+  "comment": "ariane 1430",
+  "links": {
+    "productPage": [
+      "https://www.eurolight-system.com/produit/ariane-1430fc-mkii/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color mix mode": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color mix mode 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color mix mode 3": {
+      "name": "Color mix mode",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Fracture fixture",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Color mix mode",
+        "Color mix mode 2",
+        "Color mix mode 3",
+        "Rouge",
+        "Vert",
+        "Bleu"
+      ]
+    }
+  ]
+}
