@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Outdoor Stage Par 12x3W",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Anto for Oh show"],
+    "createDate": "2026-07-14",
+    "lastModifyDate": "2026-07-14"
+  },
+  "links": {
+    "manual": [
+      "https://fast-images.static-thomann.de/pics/atg/atgdata/document/manual/c_256293_v9_fr_online.pd"
+    ],
+    "productPage": [
+      "https://www.thomann.fr/stairville_outdoor_stage_par_12x3w_tri.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [246, 300, 200],
+    "weight": 3.5,
+    "power": 42,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "3 in 1 Led RGB"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 4 channels",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Blue",
+        "Green"
+      ]
+    }
+  ]
+}
