@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 64 200W LED ZOOM AUTO",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Tobias Rüggemeier"],
+    "createDate": "2026-02-09",
+    "lastModifyDate": "2026-02-09"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=u6KULQuUDtw"
+    ],
+    "other": [
+      "https://www.muziker.de/light4me-par-64-200w-led-zoom-auto"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 390, 200],
+    "weight": 4,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [10, 50]
+    }
+  },
+  "availableChannels": {
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Generic",
+          "comment": "Dimmer Mode 1"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Generic",
+          "comment": "Dimmer Mode 2"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Generic",
+          "comment": "Dimmer Mode 3"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Generic",
+          "comment": "Dimmer Mode 4"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Zoom Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Strobe Soundmode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Zoom",
+        "Master Dimmer",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Zoom",
+        "Zoom Speed",
+        "Master Dimmer",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "5 Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Zoom",
+        "Zoom Speed",
+        "Master Dimmer",
+        "Strobe",
+        "Dimmer Mode"
+      ]
+    }
+  ]
+}
