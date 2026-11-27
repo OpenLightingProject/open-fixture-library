@@ -1,0 +1,2936 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "impression X4 Bar 20",
+  "categories": ["Pixel Bar", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["KAILASH"],
+    "createDate": "2021-12-17",
+    "lastModifyDate": "2021-12-17"
+  },
+  "comment": "impression X4 BAR 20 DMX chart (v1.0) from software version: v0.60",
+  "links": {
+    "manual": [
+      "https://www.glp.de/en/products/entertainment-lighting/moving-lights-led?format=raw&task=download&fid=114"
+    ],
+    "productPage": [
+      "https://www.glp.de/en/products/entertainment-lighting/moving-lights-led/impression-x4-bar-20"
+    ],
+    "video": [
+      "https://www.glp.de/en/products/entertainment-lighting/moving-lights-led/impression-x4-bar-20"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 240, 100],
+    "weight": 16,
+    "power": 400,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Osram Ostar RGBW multi-chip LED",
+      "colorTemperature": 10000
+    },
+    "lens": {
+      "degreesMinMax": [7, 50]
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Tilt low": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg",
+        "comment": "Fine channel of Tilt (channel 1)"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "50deg",
+        "angleEnd": "7deg"
+      }
+    },
+    "CTO": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "0%",
+          "comment": "NO CTO"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "default",
+          "colorTemperatureEnd": "default",
+          "comment": "Continuous color temperature correction. Applicable for ALL colors"
+        }
+      ]
+    },
+    "Set 1 Color (fixed)": {
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Colors adjustable via RGB"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Malve"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "White - CTO",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "White - CTB",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect Stop"
+        },
+        {
+          "dmxRange": [129, 223],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect slow - fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorPreset",
+          "comment": "Random colors slow - fast"
+        }
+      ]
+    },
+    "Set 1 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Color mixing system - Red"
+      }
+    },
+    "Set 1 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Color mixing system - Green"
+      }
+    },
+    "Set 1 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Color mixing system - Blue"
+      }
+    },
+    "Set 1 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Color mixing system - White"
+      }
+    },
+    "Set 1 Intensity": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Shutter": {
+      "defaultValue": "0%",
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed"
+        },
+        {
+          "dmxRange": [16, 47],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Shutter pulse random"
+        },
+        {
+          "dmxRange": [48, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "durationStart": "5s",
+          "durationEnd": "0.1s",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Special": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Maintenance",
+          "comment": "no mirror"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Maintenance",
+          "comment": "mirror color priority"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Maintenance",
+          "comment": "mirror color mixing"
+        },
+        {
+          "dmxRange": [12, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt slow mode off (hold 3s)"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt slow mode on (hold 3s)"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt current off (hold 3s)"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt current on (hold 3s)"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt reset off (hold 3s)"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt reset on (hold 3s)"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display Flip off (hold 3s)"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display Flip on (hold 3s)"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode DPixH (HiRes) (hold 3s)"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode SPixH (HiRes) (hold 3s)"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode High Resolution (hold 3s)"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode Normal (hold 3s)"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode Compressed (hold 3s)"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode DPix (hold 3s)"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode SPix (hold 3s)"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve ESoft (hold 3s)"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Soft (hold 3s)"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Lin (hold 3s)"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X4 Compatibility off (hold 3s)"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X4 Compatibility on (hold 3s)"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Silent-Mode off (hold 3s)"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Silent-Mode on (hold 3s)"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Position Feedback off (hold 3s)"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Position Feedback on (hold 3s)"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX hold off (hold 3s)"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX hold on (hold 3s)"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt inverse off (hold 3s)"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt inverse on (hold 3s)"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pixel inverse off (hold 3s)"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pixel inverse on (hold 3s)"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom inverse off (hold 3s)"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom inverse on (hold 3s)"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fixture default (hold 3s)"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fixture reset (hold 3s)"
+        }
+      ]
+    },
+    "Set 2 Color": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Colors adjustable via RGB"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Malve"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "White - CTO (3200K)"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "White (5600K)"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "White - CTB (7200K)"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "Rainbow Effect Stop"
+        },
+        {
+          "dmxRange": [129, 223],
+          "type": "Effect",
+          "effectName": "Rainbow effect",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Random colors",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Set 2 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 2 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 2 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 2 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Set 2 Intensity": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3 Color": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Colors adjustable via RGB"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Malve"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "White - CTO"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "White - CTB"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Effect",
+          "effectName": "Rainbow Effect Stop"
+        },
+        {
+          "dmxRange": [129, 223],
+          "type": "Effect",
+          "effectName": "Rainbow Effect",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Random colors",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Set 3 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3 Intensity": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Crossfade": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Crossfade",
+        "durationStart": "0s",
+        "durationEnd": "2s",
+        "comment": "0..2 seconds transition time"
+      }
+    },
+    "Star Effect": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Star Effect",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Random internal shutter effect"
+      }
+    },
+    "Set 1 Pattern Select": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Set 1 Pattern Movement": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Set 2 Pattern Select": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Set 2 Pattern Movement": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Pixel Select 1 - 8": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Pixel Select 9 - 16": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Pixel Select 17 - 20": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Special 2": {
+      "name": "Special",
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Maintenance",
+          "comment": "no mirror"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Maintenance",
+          "comment": "mirror color priority"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Maintenance",
+          "comment": "mirror color mixing"
+        },
+        {
+          "dmxRange": [12, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt slow mode off (hold 3s)"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt slow mode on (hold 3s)"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt current off (hold 3s)"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt current on (hold 3s)"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt reset off (hold 3s)"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt reset on (hold 3s)"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display Flip off (hold 3s)"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display Flip on (hold 3s)"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode DPixH (HiRes) (hold 3s)"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode SPixH (HiRes) (hold 3s)"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode High Resolution (hold 3s)"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode Normal (hold 3s)"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode Compressed (hold 3s)"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode DPix (hold 3s)"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX Mode SPix (hold 3s)"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve ESoft (hold 3s)"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Soft (hold 3s)"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Curve Lin (hold 3s)"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X4 Compatibility off (hold 3s)"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "X4 Compatibility on (hold 3s)"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Silent-Mode off (hold 3s)"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Silent-Mode on (hold 3s)"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Position Feedback off (hold 3s)"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Position Feedback on (hold 3s)"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX hold off (hold 3s)"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX hold on (hold 3s)"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt inverse off (hold 3s)"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt inverse on (hold 3s)"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pixel inverse off (hold 3s)"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pixel inverse on (hold 3s)"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom inverse off (hold 3s)"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom inverse on (hold 3s)"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fixture default (hold 3s)"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fixture reset (hold 3s)"
+        }
+      ]
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "defaultValue": "0%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Intensity fine"
+      }
+    },
+    "Intensity low": {
+      "fineChannelAliases": ["Intensity low fine"],
+      "precedence": "LTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "Intensity fine"
+      }
+    },
+    "Intensity 3": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 3 fine", "Intensity 3 fine^2"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 1&2 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 1&2 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 1&2 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 1&2 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3&4 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3&4 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 3&4 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Set 3&4 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5&6 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Set 5&6 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5&6 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5&6 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7&8 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7&8 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7&8 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7&8 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9&10 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9&10 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9&10 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9&10 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11&12 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11&12 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11&12 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11&12 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13&14 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13&14 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13&14 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13&14 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15&16 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15&16 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15&16 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15&16 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17&18 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17&18 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17&18 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17&18 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19&20 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "255%"
+      }
+    },
+    "Set 19&20 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19&20 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19&20 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity low 2": {
+      "name": "Intensity low",
+      "fineChannelAliases": ["Intensity low 2 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity 4": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 4 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Intensity 5": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 5 fine"],
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity 6": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 6 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Intensity 7": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 7 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity 8": {
+      "name": "Intensity",
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 4 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 4 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 4 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 4 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 5 White": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 6 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 6 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 6 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 6 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7 White 2": {
+      "name": "Set 7 White",
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 7 White 3": {
+      "name": "Set 7 White",
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 8 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 8 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "255%"
+      }
+    },
+    "Set 8 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 8 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 9 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 10 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 10 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 10 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 10 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 11 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 12 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 12 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 12 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 12 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "255%"
+      }
+    },
+    "Set 13 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 13 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 14 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 14 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 14 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 14 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 15 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 16 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 16 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 16 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 16 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 17 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 18 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 18 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 18 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 18 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 19 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 20 Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 20 Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 20 Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Set 20 White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity 9": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 9 fine"],
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity 10": {
+      "name": "Intensity",
+      "fineChannelAliases": ["Intensity 10 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "shortName": "norm",
+      "channels": [
+        "Tilt",
+        "Tilt low",
+        "Zoom",
+        "CTO",
+        "Set 1 Color (fixed)",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Set 1 Intensity",
+        "Shutter",
+        "Intensity",
+        "Special",
+        "Set 2 Color",
+        "Set 2 Red",
+        "Set 2 Green",
+        "Set 2 Blue",
+        "Set 2 White",
+        "Set 2 Intensity",
+        "Set 3 Color",
+        "Set 3 Red",
+        "Set 3 Green",
+        "Set 3 Blue",
+        "Set 3 White",
+        "Set 3 Intensity",
+        "Crossfade",
+        "Star Effect",
+        "Set 1 Pattern Select",
+        "Set 1 Pattern Movement",
+        "Set 2 Pattern Select",
+        "Set 2 Pattern Movement",
+        "Pixel Select 1 - 8",
+        "Pixel Select 9 - 16",
+        "Pixel Select 17 - 20"
+      ]
+    },
+    {
+      "name": "Compressed",
+      "shortName": "comp",
+      "channels": [
+        "No function",
+        "No function 2",
+        "Tilt",
+        "Tilt low",
+        "Set 1 Color (fixed)",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Set 1 Pattern Movement",
+        "Zoom",
+        "Set 1 Pattern Select",
+        "Pixel Select 1 - 8",
+        "Pixel Select 9 - 16",
+        "Pixel Select 17 - 20"
+      ]
+    },
+    {
+      "name": "High Resolution",
+      "shortName": "Hires",
+      "channels": [
+        "Tilt",
+        "Tilt low",
+        "Zoom",
+        "CTO",
+        "Set 1 Color (fixed)",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Set 1 Intensity",
+        "Shutter",
+        "Intensity 4",
+        "Intensity low 2",
+        "Special",
+        "Set 2 Color",
+        "Set 2 Red",
+        "Set 2 Green",
+        "Set 2 Blue",
+        "Set 2 White",
+        "Set 2 Intensity",
+        "Set 3 Color",
+        "Set 3 Red",
+        "Set 3 Green",
+        "Set 3 Blue",
+        "Set 3 White",
+        "Set 3 Intensity",
+        "Crossfade",
+        "Star Effect",
+        "Set 1 Pattern Select",
+        "Set 1 Pattern Movement",
+        "Set 2 Pattern Select",
+        "Set 2 Pattern Movement",
+        "Pixel Select 1 - 8",
+        "Pixel Select 9 - 16",
+        "Pixel Select 17 - 20"
+      ]
+    },
+    {
+      "name": "Dual Pixel",
+      "shortName": "dpix",
+      "channels": [
+        "Tilt",
+        "Tilt low",
+        "Shutter",
+        "Intensity 8",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        "Set 1&2 Red",
+        "Set 1&2 Green",
+        "Set 1&2 Blue",
+        "Set 1&2 White",
+        "Set 3&4 Red",
+        "Set 3&4 Green",
+        "Set 3&4 Blue",
+        "Set 3&4 White",
+        "Set 5&6 Red",
+        "Set 5&6 Green",
+        "Set 5&6 Blue",
+        "Set 5&6 White",
+        "Set 7&8 Red",
+        "Set 7&8 Green",
+        "Set 7&8 Blue",
+        "Set 7&8 White",
+        "Set 9&10 Red",
+        "Set 9&10 Green",
+        "Set 9&10 Blue",
+        "Set 9&10 White",
+        "Set 11&12 Red",
+        "Set 11&12 Green",
+        "Set 11&12 Blue",
+        "Set 11&12 White",
+        "Set 13&14 Red",
+        "Set 13&14 Green",
+        "Set 13&14 Blue",
+        "Set 13&14 White",
+        "Set 15&16 Red",
+        "Set 15&16 Green",
+        "Set 15&16 Blue",
+        "Set 15&16 White",
+        "Set 17&18 Red",
+        "Set 17&18 Green",
+        "Set 17&18 Blue",
+        "Set 17&18 White",
+        "Set 19&20 Red",
+        "Set 19&20 Green",
+        "Set 19&20 Blue",
+        "Set 19&20 White"
+      ]
+    },
+    {
+      "name": "Dual Pixel High Resolution",
+      "shortName": "DPixH",
+      "channels": [
+        "Tilt",
+        "Tilt low",
+        "Shutter",
+        "Intensity 5",
+        "Intensity 5 fine",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        "Set 1&2 Red",
+        "Set 1&2 Green",
+        "Set 1&2 Blue",
+        "Set 1&2 White",
+        "Set 3&4 Red",
+        "Set 3&4 Green",
+        "Set 3&4 Blue",
+        "Set 3&4 White",
+        "Set 5&6 Red",
+        "Set 5&6 Green",
+        "Set 5&6 Blue",
+        "Set 5&6 White",
+        "Set 7&8 Red",
+        "Set 7&8 Green",
+        "Set 7&8 Blue",
+        "Set 7&8 White",
+        "Set 9&10 Red",
+        "Set 9&10 Green",
+        "Set 9&10 Blue",
+        "Set 9&10 White",
+        "Set 11&12 Red",
+        "Set 11&12 Green",
+        "Set 11&12 Blue",
+        "Set 11&12 White",
+        "Set 13&14 Red",
+        "Set 13&14 Green",
+        "Set 13&14 Blue",
+        "Set 13&14 White",
+        "Set 15&16 Red",
+        "Set 15&16 Green",
+        "Set 15&16 Blue",
+        "Set 15&16 White",
+        "Set 17&18 Red",
+        "Set 17&18 Green",
+        "Set 17&18 Blue",
+        "Set 17&18 White",
+        "Set 19&20 Red",
+        "Set 19&20 Green",
+        "Set 19&20 Blue",
+        "Set 19&20 White"
+      ]
+    },
+    {
+      "name": "Single Pixel",
+      "shortName": "spix",
+      "channels": [
+        "Tilt",
+        "Tilt low",
+        "Shutter",
+        "Intensity",
+        "CTO",
+        "Special",
+        "Crossfade",
+        "Zoom",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Set 2 Red",
+        "Set 2 Green",
+        "Set 2 Blue",
+        "Set 2 White",
+        "Set 3 Red",
+        "Set 3 Green",
+        "Set 3 Blue",
+        "Set 3 White",
+        "Set 4 Red",
+        "Set 4 Green",
+        "Set 4 Blue",
+        "Set 4 White",
+        "Set 5 Red",
+        "Set 5 Green",
+        "Set 5 Blue",
+        "Set 5 White",
+        "Set 6 Red",
+        "Set 6 Green",
+        "Set 6 Blue",
+        "Set 6 White",
+        "Set 7 Red",
+        "Set 7 Green",
+        "Set 7 Blue",
+        "Set 7 White 3",
+        "Set 8 Red",
+        "Set 8 Green",
+        "Set 8 Blue",
+        "Set 8 White",
+        "Set 9 Red",
+        "Set 9 Green",
+        "Set 9 Blue",
+        "Set 9 White",
+        "Set 10 Red",
+        "Set 10 Green",
+        "Set 10 Blue",
+        "Set 10 White",
+        "Set 11 Red",
+        "Set 11 Green",
+        "Set 11 Blue",
+        "Set 11 White",
+        "Set 12 Red",
+        "Set 12 Green",
+        "Set 12 Blue",
+        "Set 12 White",
+        "Set 13 Red",
+        "Set 13 Green",
+        "Set 13 Blue",
+        "Set 13 White",
+        "Set 14 Red",
+        "Set 14 Green",
+        "Set 14 Blue",
+        "Set 14 White",
+        "Set 15 Red",
+        "Set 15 Green",
+        "Set 15 Blue",
+        "Set 15 White",
+        "Set 16 Red",
+        "Set 16 Green",
+        "Set 16 Blue",
+        "Set 16 White",
+        "Set 17 Red",
+        "Set 17 Green",
+        "Set 17 Blue",
+        "Set 17 White",
+        "Set 18 Red",
+        "Set 18 Green",
+        "Set 18 Blue",
+        "Set 18 White",
+        "Set 19 Red",
+        "Set 19 Green",
+        "Set 19 Blue",
+        "Set 19 White",
+        "Set 20 Red",
+        "Set 20 Green",
+        "Set 20 Blue",
+        "Set 20 White"
+      ]
+    },
+    {
+      "name": "Single Pixel High Resolution",
+      "shortName": "SPixH",
+      "channels": [
+        "Tilt",
+        "Tilt low",
+        "Shutter",
+        "Intensity 10",
+        "Intensity 10 fine",
+        "CTO",
+        "Special 2",
+        "Crossfade",
+        "Zoom",
+        "Set 1 Red",
+        "Set 1 Green",
+        "Set 1 Blue",
+        "Set 1 White",
+        "Set 2 Red",
+        "Set 2 Green",
+        "Set 2 Blue",
+        "Set 2 White",
+        "Set 3 Red",
+        "Set 3 Green",
+        "Set 3 Blue",
+        "Set 3 White",
+        "Set 4 Red",
+        "Set 4 Green",
+        "Set 4 Blue",
+        "Set 4 White",
+        "Set 5 Red",
+        "Set 5 Green",
+        "Set 5 Blue",
+        "Set 5 White",
+        "Set 6 Red",
+        "Set 6 Green",
+        "Set 6 Blue",
+        "Set 6 White",
+        "Set 7 Red",
+        "Set 7 Green",
+        "Set 7 Blue",
+        "Set 7 White",
+        "Set 8 Red",
+        "Set 8 Green",
+        "Set 8 Blue",
+        "Set 8 White",
+        "Set 9 Red",
+        "Set 9 Green",
+        "Set 9 Blue",
+        "Set 9 White",
+        "Set 10 Red",
+        "Set 10 Green",
+        "Set 10 Blue",
+        "Set 10 White",
+        "Set 11 Red",
+        "Set 11 Green",
+        "Set 11 Blue",
+        "Set 11 White",
+        "Set 12 Red",
+        "Set 12 Green",
+        "Set 12 Blue",
+        "Set 12 White",
+        "Set 13 Red",
+        "Set 13 Green",
+        "Set 13 Blue",
+        "Set 13 White",
+        "Set 14 Red",
+        "Set 14 Green",
+        "Set 14 Blue",
+        "Set 14 White",
+        "Set 15 Red",
+        "Set 15 Green",
+        "Set 15 Blue",
+        "Set 15 White",
+        "Set 16 Red",
+        "Set 16 Green",
+        "Set 16 Blue",
+        "Set 16 White",
+        "Set 17 Red",
+        "Set 17 Green",
+        "Set 17 Blue",
+        "Set 17 White",
+        "Set 18 Red",
+        "Set 18 Green",
+        "Set 18 Blue",
+        "Set 18 White",
+        "Set 19 Red",
+        "Set 19 Green",
+        "Set 19 Blue",
+        "Set 19 White",
+        "Set 20 Red",
+        "Set 20 Green",
+        "Set 20 Blue",
+        "Set 20 White"
+      ]
+    }
+  ]
+}
