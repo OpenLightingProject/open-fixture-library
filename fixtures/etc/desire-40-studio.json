@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Desire 40 Studio",
+  "shortName": "D40 Studio",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Pierre Pino"],
+    "createDate": "2021-09-29",
+    "lastModifyDate": "2021-09-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737484228"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/Desire-D40/Caractéristiques.aspx"
+    ]
+  },
+  "physical": {
+    "dimensions": [215.392, 272.288, 254],
+    "weight": 6.4,
+    "power": 104,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 5600,
+      "lumens": 3.194
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Tint": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green/Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3000 K": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "6000 K": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTB",
+        "colorTemperatureEnd": "default"
+      }
+    },
+    "Dummy": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Dummy"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Studio",
+      "channels": [
+        "Intensity",
+        "Color Presets",
+        "Tint",
+        "Amber",
+        "Red",
+        "Green/Cyan",
+        "Blue",
+        "3000 K",
+        "6000 K",
+        "Dummy",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red",
+        "Green/Cyan",
+        "Blue",
+        "Dummy",
+        "Strobe"
+      ]
+    }
+  ]
+}
