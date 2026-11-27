@@ -1,0 +1,262 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "120W CW MovinHead",
+  "categories": ["Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["Reiner"],
+    "createDate": "2025-07-02",
+    "lastModifyDate": "2025-07-02"
+  },
+  "comment": "120 W Cool & Warm White Moving Head",
+  "links": {
+    "manual": [
+      "https://drive.google.com/drive/folders/1X90xAzqREpi6PP5Ai_Z1hBCoyHDvzaLY?usp=sharing"
+    ],
+    "productPage": [
+      "https://shehds.com/products/led-wash-120w-rgbw-moving-head-lighting?_pos=3&_sid=abd4bab6c&_ss=r&variant=52104177942896"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Xw-7w1LVrZ0&list=TLGGUFTWHVG1i5UwMjA3MjAyNQ&t=2s"
+    ]
+  },
+  "physical": {
+    "dimensions": [210, 260, 150],
+    "weight": 4.5,
+    "power": 140,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000,
+      "lumens": 65300
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Close"
+        },
+        {
+          "dmxRange": [4, 251],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz",
+          "comment": "Slow / Fast"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Cool White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "cold",
+          "colorTemperatureEnd": "warm"
+        }
+      ]
+    },
+    "Color Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Generic",
+          "comment": "Color Macro"
+        }
+      ]
+    },
+    "Color Macro Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 199],
+          "type": "Generic",
+          "comment": "Auto mode"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "Generic",
+          "comment": "After 5 sec to reset"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound Mode"
+        }
+      ]
+    },
+    "Aux Light Dim": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "RGB light - RGB dim"
+      }
+    },
+    "Aux light strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 63],
+          "type": "Generic",
+          "comment": "Effect Mode 1"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Effect Mode 2"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Effect Mode 3"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Effect Mode 4"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "20ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Cool White",
+        "Warm White",
+        "CTO",
+        "Color Macro",
+        "Color Macro Speed",
+        "Function",
+        "Aux Light Dim",
+        "Aux light strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB Effect",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
