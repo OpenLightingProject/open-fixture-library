@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "propulsion Life SMT-01510EU - 18led RGBWA + UV 6 en 1 - 200 W -",
+  "shortName": "propulsion Life SMT-01510EU",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Djalex"],
+    "createDate": "2026-04-20",
+    "lastModifyDate": "2026-04-20"
+  },
+  "comment": "18led RGBWA + UV 6 en 1 - 200 W -",
+  "links": {
+    "productPage": [
+      "https://www.amazon.it/Palcoscenico-Stroboscopica-Illuminazione-Discoteca-Spettacolo/dp/B0CGLRZZDY?th=1"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [250, 250, 170],
+    "weight": 2.7,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBWA"
+    },
+    "lens": {
+      "name": "18 led",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Intensità": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rosso": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Verde": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Blu": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Bianco": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ambra": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobo": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Macro a colori": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto/sound speed": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Propulsion Life",
+      "shortName": "SMT-01510EU.",
+      "channels": [
+        "Intensità",
+        "Rosso",
+        "Verde",
+        "Blu",
+        "Bianco",
+        "Ambra",
+        "UV",
+        "Strobo",
+        "Macro a colori",
+        "Auto/sound speed"
+      ]
+    }
+  ]
+}
