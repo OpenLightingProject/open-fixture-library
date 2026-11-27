@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Quad Rope Rig",
+  "shortName": "",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Aetherios"],
+    "createDate": "2026-06-30",
+    "lastModifyDate": "2026-06-30",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2026-10-27",
+      "comment": "GDTF v1.2 fixture type ID: C94AE709-D5B8-4529-8949-69893B6C19F5"
+    }
+  },
+  "availableChannels": {
+    "Sh1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Defaults"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ShutterStrobe",
+          "helpWanted": "What does physical value 0…1 mean?",
+          "comment": "Controlled"
+        }
+      ]
+    },
+    "Dim": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 13
+      }
+    },
+    "Dim 2": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 13
+      }
+    },
+    "Dim 3": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 13
+      }
+    },
+    "Dim 4": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 13
+      }
+    },
+    "Dim 5": {
+      "name": "Dim",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": 0,
+        "brightnessEnd": 13
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 1",
+      "channels": [
+        "Sh1",
+        "Dim 2",
+        "Dim 3",
+        "Dim 4",
+        "Dim 5"
+      ]
+    }
+  ]
+}
