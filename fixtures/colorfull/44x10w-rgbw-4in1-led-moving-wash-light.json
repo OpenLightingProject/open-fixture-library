@@ -1,0 +1,185 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "44x10w RGBW 4in1 LED moving wash light",
+  "shortName": "44x10w",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["DaFF"],
+    "createDate": "2023-11-13",
+    "lastModifyDate": "2023-11-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.colorfullight.net/en/down/download.html?id=55&fileurl=https%3A%2F%2Fcdn.socialarks.com%2Fsbsp%2Fwhatcc%2F1049%2F2023%2F0710%2F64ab643218340.pdf"
+    ],
+    "productPage": [
+      "https://www.colorfullight.net/en/down-d55.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [482, 243, 178],
+    "weight": 12.5,
+    "power": 400,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "Leds"
+    }
+  },
+  "availableChannels": {
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "185deg"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "185deg"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 42],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [43, 85],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [86, 128],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [129, 171],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [172, 214],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 45],
+          "type": "Generic",
+          "comment": "FullON"
+        },
+        {
+          "dmxRange": [46, 115],
+          "type": "Generic",
+          "comment": "ColorChange"
+        },
+        {
+          "dmxRange": [116, 185],
+          "type": "Generic",
+          "comment": "ColorFade"
+        },
+        {
+          "dmxRange": [186, 255],
+          "type": "Generic",
+          "comment": "ColorSpeed"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 chan.",
+      "channels": [
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "12 chan.",
+      "channels": [
+        "Tilt",
+        "Tilt 2",
+        "Strobe",
+        "Dimmer 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature",
+        "Pan/Tilt Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
